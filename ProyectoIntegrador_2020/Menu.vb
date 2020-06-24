@@ -77,10 +77,10 @@ Public Class Menu
     Private Sub btnMenu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenu.Click
         If Me.panelMenu.Width = 200 Then
             tmrOcultarMenu.Enabled = True
-            imgLogo.Visible = False
+            imgLogo.Width = 249
         Else
             tmrMostrarMenu.Enabled = True
-            imgLogo.Visible = True
+            imgLogo.Width = 291
         End If
 
     End Sub
