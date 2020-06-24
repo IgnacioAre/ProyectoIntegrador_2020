@@ -75,11 +75,7 @@ Partial Class Menu
         Me.TablaInicio.ColumnCount = 3
         Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.11917!))
         Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.88083!))
-<<<<<<< HEAD:ProyectoIntegrador_2020/Menu.designer.vb
-        Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193.0!))
-=======
         Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 192.0!))
->>>>>>> 51645fc26fee34cd9bd9b1194e085df796b5172d:ProyectoIntegrador_2020/ProyectoIntegrador_2020/Menu.Designer.vb
         Me.TablaInicio.Controls.Add(Me.Panel4, 1, 1)
         Me.TablaInicio.Controls.Add(Me.Panel5, 1, 0)
         Me.TablaInicio.Dock = System.Windows.Forms.DockStyle.Fill
@@ -99,7 +95,7 @@ Partial Class Menu
         Me.Panel4.Controls.Add(Me.imgCofre)
         Me.Panel4.Controls.Add(Me.gifCofre)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(257, 206)
+        Me.Panel4.Location = New System.Drawing.Point(258, 206)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(390, 266)
         Me.Panel4.TabIndex = 0
@@ -138,7 +134,7 @@ Partial Class Menu
         'Panel5
         '
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel5.Location = New System.Drawing.Point(257, 3)
+        Me.Panel5.Location = New System.Drawing.Point(258, 3)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(390, 197)
         Me.Panel5.TabIndex = 1
@@ -147,7 +143,7 @@ Partial Class Menu
         '
         Me.panelSuperior.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.panelSuperior.BackColor = System.Drawing.Color.Red
+        Me.panelSuperior.BackColor = System.Drawing.Color.Black
         Me.panelSuperior.Controls.Add(Me.btnRestaurar)
         Me.panelSuperior.Controls.Add(Me.btnMaximizar)
         Me.panelSuperior.Controls.Add(Me.btnAyuda)
@@ -254,7 +250,7 @@ Partial Class Menu
         '
         Me.panelMenu.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.panelMenu.BackColor = System.Drawing.Color.DeepSkyBlue
+        Me.panelMenu.BackColor = System.Drawing.Color.Black
         Me.panelMenu.Controls.Add(Me.btnProductos)
         Me.panelMenu.Controls.Add(Me.btnNotas)
         Me.panelMenu.Controls.Add(Me.btnProveedores)
