@@ -35,3 +35,13 @@ C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\Proyecto
 C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Resources.resources
 C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbproj.GenerateResource.Cache
 C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\mysql.data.dll
+C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.exe
+C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.xml
+C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.pdb
+C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.exe
+C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.pdb
+C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.xml
+C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbprojResolveAssemblyReference.cache
+C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Menu.resources
+C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Resources.resources
+C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbproj.GenerateResource.Cache
