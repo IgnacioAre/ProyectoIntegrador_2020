@@ -1,0 +1,37 @@
+C:\Users\ignac\AppData\Local\Temporary Projects\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.exe
+C:\Users\ignac\AppData\Local\Temporary Projects\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.pdb
+C:\Users\ignac\AppData\Local\Temporary Projects\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.xml
+C:\Users\ignac\AppData\Local\Temporary Projects\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Form1.resources
+C:\Users\ignac\AppData\Local\Temporary Projects\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Resources.resources
+C:\Users\ignac\AppData\Local\Temporary Projects\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbproj.GenerateResource.Cache
+C:\Users\ignac\AppData\Local\Temporary Projects\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.exe
+C:\Users\ignac\AppData\Local\Temporary Projects\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.xml
+C:\Users\ignac\AppData\Local\Temporary Projects\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.pdb
+C:\Users\ignac\onedrive\documentos\visual studio 2010\Projects\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.exe
+C:\Users\ignac\onedrive\documentos\visual studio 2010\Projects\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.xml
+C:\Users\ignac\onedrive\documentos\visual studio 2010\Projects\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.pdb
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.exe
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.xml
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.pdb
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.exe
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.pdb
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.xml
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Resources.resources
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbproj.GenerateResource.Cache
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Menu.resources
+C:\Users\Lew\Documents\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.exe
+C:\Users\Lew\Documents\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.xml
+C:\Users\Lew\Documents\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.pdb
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\mysql.data.dll
+C:\Users\ignac\OneDrive\Documentos\GitHub\Proyecto-New-Visual\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbprojResolveAssemblyReference.cache
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.exe
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.xml
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.pdb
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.exe
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.pdb
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.xml
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbprojResolveAssemblyReference.cache
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Menu.resources
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Resources.resources
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbproj.GenerateResource.Cache
+C:\Users\ignac\OneDrive\Escritorio\Visual Basic\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\mysql.data.dll
