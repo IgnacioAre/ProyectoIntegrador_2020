@@ -84,4 +84,8 @@ Public Class Menu
         End If
 
     End Sub
+
+    Private Sub btnProveedores_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProveedores.Click
+        Pruebas.Show()
+    End Sub
 End Class
