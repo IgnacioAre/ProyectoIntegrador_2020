@@ -60,7 +60,7 @@ Partial Class Menu
         '
         'panelSuperior
         '
-        Me.panelSuperior.BackColor = System.Drawing.Color.Black
+        Me.panelSuperior.BackColor = System.Drawing.Color.Gray
         Me.panelSuperior.Controls.Add(Me.btnRestaurar)
         Me.panelSuperior.Controls.Add(Me.btnMaximizar)
         Me.panelSuperior.Controls.Add(Me.btnAyuda)
