@@ -86,6 +86,25 @@ Public Class Menu
     End Sub
 
     Private Sub btnProveedores_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProveedores.Click
-        Pruebas.Show()
+        openFromOnPanel(Of Pruebas)()
+    End Sub
+
+    '----MOSTRAR FORMULARIOS EN UN PANEL----'
+
+    Private Sub openFromOnPanel(Of FormH As {Form, New})()
+        Dim Formulario As Form
+        Formulario = PanelContenedor.Controls.OfType(Of FormH)().FirstOrDefault()
+        If Formulario Is Nothing Then
+            Formulario = New FormH()
+            Formulario.TopLevel = False
+            Formulario.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+            Formulario.Dock = DockStyle.Fill
+            PanelContenedor.Controls.Add(Formulario)
+            PanelContenedor.Tag = Formulario
+            Formulario.Show()
+            Formulario.BringToFront()
+        Else
+            Formulario.BringToFront()
+        End If
     End Sub
 End Class

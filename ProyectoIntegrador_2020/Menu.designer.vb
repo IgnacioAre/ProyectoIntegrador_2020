@@ -24,13 +24,6 @@ Partial Class Menu
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Menu))
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.TablaInicio = New System.Windows.Forms.TableLayoutPanel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.imgCofre = New System.Windows.Forms.PictureBox()
-        Me.gifCofre = New System.Windows.Forms.PictureBox()
-        Me.Panel5 = New System.Windows.Forms.Panel()
         Me.panelSuperior = New System.Windows.Forms.Panel()
         Me.btnRestaurar = New System.Windows.Forms.Button()
         Me.btnMaximizar = New System.Windows.Forms.Button()
@@ -47,108 +40,33 @@ Partial Class Menu
         Me.btnClientes = New System.Windows.Forms.Button()
         Me.tmrOcultarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarMenu = New System.Windows.Forms.Timer(Me.components)
-        Me.Panel1.SuspendLayout()
-        Me.TablaInicio.SuspendLayout()
-        Me.Panel4.SuspendLayout()
-        CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelContenedor = New System.Windows.Forms.Panel()
+        Me.TablaInicio = New System.Windows.Forms.TableLayoutPanel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.imgCofre = New System.Windows.Forms.PictureBox()
+        Me.gifCofre = New System.Windows.Forms.PictureBox()
+        Me.Panel5 = New System.Windows.Forms.Panel()
         Me.panelSuperior.SuspendLayout()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelMenu.SuspendLayout()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelContenedor.SuspendLayout()
+        Me.TablaInicio.SuspendLayout()
+        Me.Panel4.SuspendLayout()
+        CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Panel1
-        '
-        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.TablaInicio)
-        Me.Panel1.Location = New System.Drawing.Point(194, 31)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(844, 587)
-        Me.Panel1.TabIndex = 1
-        '
-        'TablaInicio
-        '
-        Me.TablaInicio.ColumnCount = 3
-        Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.11917!))
-        Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.88083!))
-        Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193.0!))
-        Me.TablaInicio.Controls.Add(Me.Panel4, 1, 1)
-        Me.TablaInicio.Controls.Add(Me.Panel5, 1, 0)
-        Me.TablaInicio.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TablaInicio.Location = New System.Drawing.Point(0, 0)
-        Me.TablaInicio.Name = "TablaInicio"
-        Me.TablaInicio.RowCount = 3
-        Me.TablaInicio.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.76316!))
-        Me.TablaInicio.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.23684!))
-        Me.TablaInicio.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 111.0!))
-        Me.TablaInicio.Size = New System.Drawing.Size(844, 587)
-        Me.TablaInicio.TabIndex = 3
-        '
-        'Panel4
-        '
-        Me.Panel4.BackColor = System.Drawing.Color.White
-        Me.Panel4.Controls.Add(Me.Label1)
-        Me.Panel4.Controls.Add(Me.imgCofre)
-        Me.Panel4.Controls.Add(Me.gifCofre)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(257, 206)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(390, 266)
-        Me.Panel4.TabIndex = 0
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(3, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(391, 36)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "¡Bienvenido Administrador!"
-        '
-        'imgCofre
-        '
-        Me.imgCofre.Image = CType(resources.GetObject("imgCofre.Image"), System.Drawing.Image)
-        Me.imgCofre.Location = New System.Drawing.Point(52, 49)
-        Me.imgCofre.Name = "imgCofre"
-        Me.imgCofre.Size = New System.Drawing.Size(249, 188)
-        Me.imgCofre.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgCofre.TabIndex = 3
-        Me.imgCofre.TabStop = False
-        Me.imgCofre.Visible = False
-        '
-        'gifCofre
-        '
-        Me.gifCofre.Image = CType(resources.GetObject("gifCofre.Image"), System.Drawing.Image)
-        Me.gifCofre.Location = New System.Drawing.Point(49, 49)
-        Me.gifCofre.Name = "gifCofre"
-        Me.gifCofre.Size = New System.Drawing.Size(255, 192)
-        Me.gifCofre.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.gifCofre.TabIndex = 2
-        Me.gifCofre.TabStop = False
-        '
-        'Panel5
-        '
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel5.Location = New System.Drawing.Point(257, 3)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(390, 197)
-        Me.Panel5.TabIndex = 1
         '
         'panelSuperior
         '
-        Me.panelSuperior.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panelSuperior.BackColor = System.Drawing.Color.Black
         Me.panelSuperior.Controls.Add(Me.btnRestaurar)
         Me.panelSuperior.Controls.Add(Me.btnMaximizar)
         Me.panelSuperior.Controls.Add(Me.btnAyuda)
         Me.panelSuperior.Controls.Add(Me.btnMinimizar)
         Me.panelSuperior.Controls.Add(Me.btnCerrar)
+        Me.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelSuperior.Location = New System.Drawing.Point(0, 0)
         Me.panelSuperior.Name = "panelSuperior"
         Me.panelSuperior.Size = New System.Drawing.Size(1038, 34)
@@ -248,8 +166,6 @@ Partial Class Menu
         '
         'panelMenu
         '
-        Me.panelMenu.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.panelMenu.BackColor = System.Drawing.Color.Black
         Me.panelMenu.Controls.Add(Me.btnProductos)
         Me.panelMenu.Controls.Add(Me.btnNotas)
@@ -257,9 +173,10 @@ Partial Class Menu
         Me.panelMenu.Controls.Add(Me.btnMenu)
         Me.panelMenu.Controls.Add(Me.btnClientes)
         Me.panelMenu.Controls.Add(Me.imgLogo)
-        Me.panelMenu.Location = New System.Drawing.Point(0, 28)
+        Me.panelMenu.Dock = System.Windows.Forms.DockStyle.Left
+        Me.panelMenu.Location = New System.Drawing.Point(0, 34)
         Me.panelMenu.Name = "panelMenu"
-        Me.panelMenu.Size = New System.Drawing.Size(200, 587)
+        Me.panelMenu.Size = New System.Drawing.Size(200, 581)
         Me.panelMenu.TabIndex = 2
         '
         'btnProductos
@@ -358,34 +275,111 @@ Partial Class Menu
         '
         Me.tmrMostrarMenu.Interval = 1
         '
+        'PanelContenedor
+        '
+        Me.PanelContenedor.Controls.Add(Me.TablaInicio)
+        Me.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelContenedor.Location = New System.Drawing.Point(200, 34)
+        Me.PanelContenedor.Name = "PanelContenedor"
+        Me.PanelContenedor.Size = New System.Drawing.Size(838, 581)
+        Me.PanelContenedor.TabIndex = 3
+        '
+        'TablaInicio
+        '
+        Me.TablaInicio.ColumnCount = 3
+        Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.11917!))
+        Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.88083!))
+        Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 195.0!))
+        Me.TablaInicio.Controls.Add(Me.Panel4, 1, 1)
+        Me.TablaInicio.Controls.Add(Me.Panel5, 1, 0)
+        Me.TablaInicio.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TablaInicio.Location = New System.Drawing.Point(0, 0)
+        Me.TablaInicio.Name = "TablaInicio"
+        Me.TablaInicio.RowCount = 3
+        Me.TablaInicio.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.76316!))
+        Me.TablaInicio.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.23684!))
+        Me.TablaInicio.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 111.0!))
+        Me.TablaInicio.Size = New System.Drawing.Size(838, 581)
+        Me.TablaInicio.TabIndex = 4
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.White
+        Me.Panel4.Controls.Add(Me.Label1)
+        Me.Panel4.Controls.Add(Me.imgCofre)
+        Me.Panel4.Controls.Add(Me.gifCofre)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel4.Location = New System.Drawing.Point(254, 203)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(385, 263)
+        Me.Panel4.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(3, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(391, 36)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "¡Bienvenido Administrador!"
+        '
+        'imgCofre
+        '
+        Me.imgCofre.Image = CType(resources.GetObject("imgCofre.Image"), System.Drawing.Image)
+        Me.imgCofre.Location = New System.Drawing.Point(52, 49)
+        Me.imgCofre.Name = "imgCofre"
+        Me.imgCofre.Size = New System.Drawing.Size(249, 188)
+        Me.imgCofre.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.imgCofre.TabIndex = 3
+        Me.imgCofre.TabStop = False
+        Me.imgCofre.Visible = False
+        '
+        'gifCofre
+        '
+        Me.gifCofre.Image = CType(resources.GetObject("gifCofre.Image"), System.Drawing.Image)
+        Me.gifCofre.Location = New System.Drawing.Point(49, 49)
+        Me.gifCofre.Name = "gifCofre"
+        Me.gifCofre.Size = New System.Drawing.Size(255, 192)
+        Me.gifCofre.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.gifCofre.TabIndex = 2
+        Me.gifCofre.TabStop = False
+        '
+        'Panel5
+        '
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel5.Location = New System.Drawing.Point(254, 3)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(385, 194)
+        Me.Panel5.TabIndex = 1
+        '
         'Menu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1038, 615)
+        Me.Controls.Add(Me.PanelContenedor)
         Me.Controls.Add(Me.panelMenu)
         Me.Controls.Add(Me.panelSuperior)
-        Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Menu"
         Me.Text = "El Cofre"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.Panel1.ResumeLayout(False)
+        Me.panelSuperior.ResumeLayout(False)
+        CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelMenu.ResumeLayout(False)
+        CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelContenedor.ResumeLayout(False)
         Me.TablaInicio.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.panelSuperior.ResumeLayout(False)
-        CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.panelMenu.ResumeLayout(False)
-        CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents panelSuperior As System.Windows.Forms.Panel
     Friend WithEvents btnMinimizar As System.Windows.Forms.Button
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
@@ -401,12 +395,13 @@ Partial Class Menu
     Friend WithEvents btnMenu As System.Windows.Forms.PictureBox
     Friend WithEvents tmrOcultarMenu As System.Windows.Forms.Timer
     Friend WithEvents tmrMostrarMenu As System.Windows.Forms.Timer
+    Friend WithEvents btnProductos As System.Windows.Forms.Button
+    Friend WithEvents PanelContenedor As System.Windows.Forms.Panel
     Friend WithEvents TablaInicio As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents imgCofre As System.Windows.Forms.PictureBox
     Friend WithEvents gifCofre As System.Windows.Forms.PictureBox
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
-    Friend WithEvents btnProductos As System.Windows.Forms.Button
 
 End Class
