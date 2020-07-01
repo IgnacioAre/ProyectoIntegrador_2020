@@ -2,7 +2,7 @@
 Public Class Conexion
 
 
-    Private conexion As New MySqlConnection("data source=localhost;user id=proyecto;password='proyecto2020';database=original_el_cofre")
+    Private conexion As New MySqlConnection("data source=localhost;user id=proyecto;password='proyecto2020';database=original_el_cofre; port=3306")
     Private adaptador As MySqlDataAdapter
     Private comando As MySqlCommand
     Private dataReader As MySqlDataReader

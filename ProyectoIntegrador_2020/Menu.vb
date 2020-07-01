@@ -141,7 +141,7 @@ Public Class Menu
     '----INICIO DEL FORMULARIO----'
 
     Private Sub Menu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Introducir Producto")
+        SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
     End Sub
 
 End Class

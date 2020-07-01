@@ -41,6 +41,7 @@ Partial Class Menu
         Me.tmrOcultarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.PanelContenedor = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPrecioProductos = New System.Windows.Forms.TextBox()
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.lblHora = New System.Windows.Forms.Label()
@@ -48,7 +49,6 @@ Partial Class Menu
         Me.imgCofre = New System.Windows.Forms.PictureBox()
         Me.gifCofre = New System.Windows.Forms.PictureBox()
         Me.tmrHoraFecha = New System.Windows.Forms.Timer(Me.components)
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.panelSuperior.SuspendLayout()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelMenu.SuspendLayout()
@@ -78,7 +78,7 @@ Partial Class Menu
         Me.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Default
         Me.btnRestaurar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnRestaurar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnRestaurar.ForeColor = System.Drawing.Color.White
         Me.btnRestaurar.Image = CType(resources.GetObject("btnRestaurar.Image"), System.Drawing.Image)
         Me.btnRestaurar.Location = New System.Drawing.Point(971, 3)
@@ -93,7 +93,7 @@ Partial Class Menu
         Me.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Default
         Me.btnMaximizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnMaximizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnMaximizar.ForeColor = System.Drawing.Color.White
         Me.btnMaximizar.Image = CType(resources.GetObject("btnMaximizar.Image"), System.Drawing.Image)
         Me.btnMaximizar.Location = New System.Drawing.Point(971, 3)
@@ -106,10 +106,11 @@ Partial Class Menu
         'btnAyuda
         '
         Me.btnAyuda.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAyuda.BackColor = System.Drawing.Color.Black
         Me.btnAyuda.Cursor = System.Windows.Forms.Cursors.Help
         Me.btnAyuda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnAyuda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnAyuda.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAyuda.ForeColor = System.Drawing.Color.White
         Me.btnAyuda.Location = New System.Drawing.Point(901, 2)
@@ -117,7 +118,7 @@ Partial Class Menu
         Me.btnAyuda.Size = New System.Drawing.Size(30, 30)
         Me.btnAyuda.TabIndex = 2
         Me.btnAyuda.Text = "?"
-        Me.btnAyuda.UseVisualStyleBackColor = True
+        Me.btnAyuda.UseVisualStyleBackColor = False
         '
         'btnMinimizar
         '
@@ -125,13 +126,15 @@ Partial Class Menu
         Me.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Default
         Me.btnMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnMinimizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnMinimizar.ForeColor = System.Drawing.Color.White
         Me.btnMinimizar.Location = New System.Drawing.Point(936, 2)
         Me.btnMinimizar.Name = "btnMinimizar"
         Me.btnMinimizar.Size = New System.Drawing.Size(30, 30)
         Me.btnMinimizar.TabIndex = 1
         Me.btnMinimizar.Text = "_"
+        Me.btnMinimizar.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnMinimizar.UseVisualStyleBackColor = True
         '
         'btnCerrar
@@ -140,7 +143,7 @@ Partial Class Menu
         Me.btnCerrar.Cursor = System.Windows.Forms.Cursors.Default
         Me.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnCerrar.ForeColor = System.Drawing.Color.White
         Me.btnCerrar.Image = CType(resources.GetObject("btnCerrar.Image"), System.Drawing.Image)
         Me.btnCerrar.Location = New System.Drawing.Point(1006, 3)
@@ -277,6 +280,7 @@ Partial Class Menu
         '
         'PanelContenedor
         '
+        Me.PanelContenedor.BackColor = System.Drawing.Color.White
         Me.PanelContenedor.Controls.Add(Me.Label2)
         Me.PanelContenedor.Controls.Add(Me.txtPrecioProductos)
         Me.PanelContenedor.Controls.Add(Me.lblFecha)
@@ -290,11 +294,22 @@ Partial Class Menu
         Me.PanelContenedor.Size = New System.Drawing.Size(838, 581)
         Me.PanelContenedor.TabIndex = 3
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(73, 20)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(248, 24)
+        Me.Label2.TabIndex = 10
+        Me.Label2.Text = "¿Qué precio necesita?"
+        '
         'txtPrecioProductos
         '
-        Me.txtPrecioProductos.Location = New System.Drawing.Point(128, 73)
+        Me.txtPrecioProductos.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrecioProductos.Location = New System.Drawing.Point(97, 55)
         Me.txtPrecioProductos.Name = "txtPrecioProductos"
-        Me.txtPrecioProductos.Size = New System.Drawing.Size(160, 20)
+        Me.txtPrecioProductos.Size = New System.Drawing.Size(190, 27)
         Me.txtPrecioProductos.TabIndex = 9
         '
         'lblFecha
@@ -357,16 +372,6 @@ Partial Class Menu
         '
         Me.tmrHoraFecha.Enabled = True
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(97, 38)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(248, 24)
-        Me.Label2.TabIndex = 10
-        Me.Label2.Text = "¿Qué precio necesita?"
-        '
         'Menu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -401,7 +406,6 @@ Partial Class Menu
     Friend WithEvents btnClientes As System.Windows.Forms.Button
     Friend WithEvents btnNotas As System.Windows.Forms.Button
     Friend WithEvents btnProveedores As System.Windows.Forms.Button
-    Friend WithEvents btnAyuda As System.Windows.Forms.Button
     Friend WithEvents btnMaximizar As System.Windows.Forms.Button
     Friend WithEvents btnRestaurar As System.Windows.Forms.Button
     Friend WithEvents btnMenu As System.Windows.Forms.PictureBox
@@ -417,5 +421,6 @@ Partial Class Menu
     Friend WithEvents lblHora As System.Windows.Forms.Label
     Friend WithEvents txtPrecioProductos As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents btnAyuda As System.Windows.Forms.Button
 
 End Class
