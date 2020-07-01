@@ -38,8 +38,24 @@ Partial Class Login
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.chbGuardarUsuario = New System.Windows.Forms.CheckBox()
+        Me.panelLogin = New System.Windows.Forms.Panel()
+        Me.panelRegistro = New System.Windows.Forms.Panel()
+        Me.pbRegresar = New System.Windows.Forms.PictureBox()
+        Me.btnRegistrar = New System.Windows.Forms.Button()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.panelTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelLogin.SuspendLayout()
+        Me.panelRegistro.SuspendLayout()
+        CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelTitulo
@@ -93,22 +109,24 @@ Partial Class Login
         '
         'PictureBox1
         '
+        Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(151, 58)
+        Me.PictureBox1.Location = New System.Drawing.Point(148, 5)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(98, 102)
+        Me.PictureBox1.Size = New System.Drawing.Size(114, 119)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 13
         Me.PictureBox1.TabStop = False
         '
         'btnEntrar
         '
+        Me.btnEntrar.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btnEntrar.BackColor = System.Drawing.Color.Black
         Me.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEntrar.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEntrar.ForeColor = System.Drawing.Color.White
-        Me.btnEntrar.Location = New System.Drawing.Point(89, 396)
+        Me.btnEntrar.Location = New System.Drawing.Point(83, 364)
         Me.btnEntrar.Name = "btnEntrar"
         Me.btnEntrar.Size = New System.Drawing.Size(202, 62)
         Me.btnEntrar.TabIndex = 12
@@ -117,8 +135,9 @@ Partial Class Login
         '
         'txtContraseña
         '
+        Me.txtContraseña.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.txtContraseña.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtContraseña.Location = New System.Drawing.Point(89, 300)
+        Me.txtContraseña.Location = New System.Drawing.Point(83, 268)
         Me.txtContraseña.Name = "txtContraseña"
         Me.txtContraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContraseña.Size = New System.Drawing.Size(202, 27)
@@ -126,9 +145,10 @@ Partial Class Login
         '
         'Label2
         '
+        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(70, 262)
+        Me.Label2.Location = New System.Drawing.Point(64, 230)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(117, 23)
         Me.Label2.TabIndex = 10
@@ -136,18 +156,20 @@ Partial Class Login
         '
         'txtUsuario
         '
+        Me.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.txtUsuario.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsuario.Location = New System.Drawing.Point(89, 192)
+        Me.txtUsuario.Location = New System.Drawing.Point(83, 160)
         Me.txtUsuario.Name = "txtUsuario"
         Me.txtUsuario.Size = New System.Drawing.Size(202, 27)
         Me.txtUsuario.TabIndex = 0
         '
         'Label1
         '
+        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(70, 154)
+        Me.Label1.Location = New System.Drawing.Point(64, 122)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(78, 23)
         Me.Label1.TabIndex = 8
@@ -155,8 +177,9 @@ Partial Class Login
         '
         'Panel1
         '
+        Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Panel1.BackColor = System.Drawing.Color.Black
-        Me.Panel1.Location = New System.Drawing.Point(45, 477)
+        Me.Panel1.Location = New System.Drawing.Point(39, 445)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(303, 1)
         Me.Panel1.TabIndex = 14
@@ -164,10 +187,12 @@ Partial Class Login
         'LinkLabel1
         '
         Me.LinkLabel1.ActiveLinkColor = System.Drawing.Color.Turquoise
+        Me.LinkLabel1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LinkLabel1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkColor = System.Drawing.Color.DarkRed
-        Me.LinkLabel1.Location = New System.Drawing.Point(42, 502)
+        Me.LinkLabel1.Location = New System.Drawing.Point(36, 470)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(94, 17)
         Me.LinkLabel1.TabIndex = 15
@@ -177,10 +202,12 @@ Partial Class Login
         'LinkLabel2
         '
         Me.LinkLabel2.ActiveLinkColor = System.Drawing.Color.Turquoise
+        Me.LinkLabel2.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.LinkLabel2.AutoSize = True
+        Me.LinkLabel2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LinkLabel2.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel2.LinkColor = System.Drawing.Color.DarkRed
-        Me.LinkLabel2.Location = New System.Drawing.Point(171, 500)
+        Me.LinkLabel2.Location = New System.Drawing.Point(165, 468)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(201, 18)
         Me.LinkLabel2.TabIndex = 16
@@ -189,9 +216,10 @@ Partial Class Login
         '
         'Label3
         '
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(110, 353)
+        Me.Label3.Location = New System.Drawing.Point(104, 321)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(117, 17)
         Me.Label3.TabIndex = 17
@@ -199,43 +227,195 @@ Partial Class Login
         '
         'chbGuardarUsuario
         '
+        Me.chbGuardarUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.chbGuardarUsuario.AutoSize = True
-        Me.chbGuardarUsuario.Location = New System.Drawing.Point(89, 353)
+        Me.chbGuardarUsuario.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.chbGuardarUsuario.Location = New System.Drawing.Point(83, 321)
         Me.chbGuardarUsuario.Name = "chbGuardarUsuario"
         Me.chbGuardarUsuario.Size = New System.Drawing.Size(15, 14)
         Me.chbGuardarUsuario.TabIndex = 18
         Me.chbGuardarUsuario.UseVisualStyleBackColor = True
         '
+        'panelLogin
+        '
+        Me.panelLogin.BackColor = System.Drawing.Color.White
+        Me.panelLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panelLogin.Controls.Add(Me.PictureBox1)
+        Me.panelLogin.Controls.Add(Me.chbGuardarUsuario)
+        Me.panelLogin.Controls.Add(Me.Label1)
+        Me.panelLogin.Controls.Add(Me.Label3)
+        Me.panelLogin.Controls.Add(Me.txtUsuario)
+        Me.panelLogin.Controls.Add(Me.LinkLabel2)
+        Me.panelLogin.Controls.Add(Me.Label2)
+        Me.panelLogin.Controls.Add(Me.LinkLabel1)
+        Me.panelLogin.Controls.Add(Me.txtContraseña)
+        Me.panelLogin.Controls.Add(Me.Panel1)
+        Me.panelLogin.Controls.Add(Me.btnEntrar)
+        Me.panelLogin.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelLogin.Location = New System.Drawing.Point(0, 40)
+        Me.panelLogin.Name = "panelLogin"
+        Me.panelLogin.Size = New System.Drawing.Size(402, 513)
+        Me.panelLogin.TabIndex = 19
+        '
+        'panelRegistro
+        '
+        Me.panelRegistro.BackColor = System.Drawing.Color.White
+        Me.panelRegistro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panelRegistro.Controls.Add(Me.pbRegresar)
+        Me.panelRegistro.Controls.Add(Me.btnRegistrar)
+        Me.panelRegistro.Controls.Add(Me.TextBox4)
+        Me.panelRegistro.Controls.Add(Me.Label8)
+        Me.panelRegistro.Controls.Add(Me.TextBox3)
+        Me.panelRegistro.Controls.Add(Me.Label7)
+        Me.panelRegistro.Controls.Add(Me.TextBox2)
+        Me.panelRegistro.Controls.Add(Me.Label6)
+        Me.panelRegistro.Controls.Add(Me.TextBox1)
+        Me.panelRegistro.Controls.Add(Me.Label5)
+        Me.panelRegistro.Controls.Add(Me.Label4)
+        Me.panelRegistro.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelRegistro.Location = New System.Drawing.Point(0, 40)
+        Me.panelRegistro.Name = "panelRegistro"
+        Me.panelRegistro.Size = New System.Drawing.Size(402, 513)
+        Me.panelRegistro.TabIndex = 19
+        Me.panelRegistro.Visible = False
+        '
+        'pbRegresar
+        '
+        Me.pbRegresar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbRegresar.Image = CType(resources.GetObject("pbRegresar.Image"), System.Drawing.Image)
+        Me.pbRegresar.Location = New System.Drawing.Point(12, 462)
+        Me.pbRegresar.Name = "pbRegresar"
+        Me.pbRegresar.Size = New System.Drawing.Size(31, 32)
+        Me.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbRegresar.TabIndex = 10
+        Me.pbRegresar.TabStop = False
+        '
+        'btnRegistrar
+        '
+        Me.btnRegistrar.BackColor = System.Drawing.Color.Black
+        Me.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnRegistrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRegistrar.ForeColor = System.Drawing.Color.White
+        Me.btnRegistrar.Location = New System.Drawing.Point(278, 451)
+        Me.btnRegistrar.Name = "btnRegistrar"
+        Me.btnRegistrar.Size = New System.Drawing.Size(112, 44)
+        Me.btnRegistrar.TabIndex = 9
+        Me.btnRegistrar.Text = "Registrar"
+        Me.btnRegistrar.UseVisualStyleBackColor = False
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox4.Location = New System.Drawing.Point(83, 408)
+        Me.TextBox4.MaxLength = 30
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox4.Size = New System.Drawing.Size(215, 27)
+        Me.TextBox4.TabIndex = 8
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(34, 364)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(161, 23)
+        Me.Label8.TabIndex = 7
+        Me.Label8.Text = "Clave de admin"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox3.Location = New System.Drawing.Point(83, 324)
+        Me.TextBox3.MaxLength = 30
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox3.Size = New System.Drawing.Size(215, 27)
+        Me.TextBox3.TabIndex = 6
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(34, 280)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(184, 23)
+        Me.Label7.TabIndex = 5
+        Me.Label7.Text = "Repetir contraseña"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox2.Location = New System.Drawing.Point(83, 234)
+        Me.TextBox2.MaxLength = 30
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox2.Size = New System.Drawing.Size(215, 27)
+        Me.TextBox2.TabIndex = 4
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(34, 190)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(117, 23)
+        Me.Label6.TabIndex = 3
+        Me.Label6.Text = "Contraseña"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(83, 143)
+        Me.TextBox1.MaxLength = 30
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(215, 27)
+        Me.TextBox1.TabIndex = 2
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(34, 99)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(186, 23)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "Nombre de usuario"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(33, 17)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(326, 32)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "CREAR USUARIO ADMIN"
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.White
+        Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(402, 553)
-        Me.Controls.Add(Me.chbGuardarUsuario)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.LinkLabel2)
-        Me.Controls.Add(Me.LinkLabel1)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.btnEntrar)
-        Me.Controls.Add(Me.txtContraseña)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.txtUsuario)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.panelRegistro)
+        Me.Controls.Add(Me.panelLogin)
         Me.Controls.Add(Me.panelTitulo)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimizeBox = False
         Me.Name = "Login"
-        Me.Opacity = 0.95R
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         Me.panelTitulo.ResumeLayout(False)
         Me.panelTitulo.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelLogin.ResumeLayout(False)
+        Me.panelLogin.PerformLayout()
+        Me.panelRegistro.ResumeLayout(False)
+        Me.panelRegistro.PerformLayout()
+        CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents panelTitulo As System.Windows.Forms.Panel
@@ -253,4 +433,17 @@ Partial Class Login
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents chbGuardarUsuario As System.Windows.Forms.CheckBox
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
+    Friend WithEvents panelLogin As System.Windows.Forms.Panel
+    Friend WithEvents panelRegistro As System.Windows.Forms.Panel
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents btnRegistrar As System.Windows.Forms.Button
+    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents pbRegresar As System.Windows.Forms.PictureBox
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Menu
+Partial Class MenuPrincipal
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -23,7 +23,7 @@ Partial Class Menu
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Menu))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuPrincipal))
         Me.panelSuperior = New System.Windows.Forms.Panel()
         Me.btnRestaurar = New System.Windows.Forms.Button()
         Me.btnMaximizar = New System.Windows.Forms.Button()
@@ -49,6 +49,7 @@ Partial Class Menu
         Me.imgCofre = New System.Windows.Forms.PictureBox()
         Me.gifCofre = New System.Windows.Forms.PictureBox()
         Me.tmrHoraFecha = New System.Windows.Forms.Timer(Me.components)
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.panelSuperior.SuspendLayout()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelMenu.SuspendLayout()
@@ -56,6 +57,7 @@ Partial Class Menu
         Me.PanelContenedor.SuspendLayout()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelSuperior
@@ -170,6 +172,7 @@ Partial Class Menu
         'panelMenu
         '
         Me.panelMenu.BackColor = System.Drawing.Color.Black
+        Me.panelMenu.Controls.Add(Me.PictureBox1)
         Me.panelMenu.Controls.Add(Me.btnProductos)
         Me.panelMenu.Controls.Add(Me.btnNotas)
         Me.panelMenu.Controls.Add(Me.btnProveedores)
@@ -372,7 +375,19 @@ Partial Class Menu
         '
         Me.tmrHoraFecha.Enabled = True
         '
-        'Menu
+        'PictureBox1
+        '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(70, 546)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(32, 32)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox1.TabIndex = 8
+        Me.PictureBox1.TabStop = False
+        '
+        'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -383,17 +398,19 @@ Partial Class Menu
         Me.Controls.Add(Me.panelSuperior)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "Menu"
+        Me.Name = "MenuPrincipal"
         Me.Text = "El Cofre"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.panelSuperior.ResumeLayout(False)
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelMenu.ResumeLayout(False)
+        Me.panelMenu.PerformLayout()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelContenedor.ResumeLayout(False)
         Me.PanelContenedor.PerformLayout()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -422,5 +439,6 @@ Partial Class Menu
     Friend WithEvents txtPrecioProductos As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnAyuda As System.Windows.Forms.Button
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 
 End Class

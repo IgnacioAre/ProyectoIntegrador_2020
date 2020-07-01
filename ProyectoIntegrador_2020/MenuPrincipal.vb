@@ -1,8 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
-Public Class Menu
-
-    Dim resizeBool = False
-
+Public Class MenuPrincipal
 
     '----CIERRA EL FORUMULARIO DEL MENÚ (Y FINALIZA SU EJECUCIÓN)----'
 
@@ -22,7 +19,6 @@ Public Class Menu
         btnMaximizar.Visible = False
         btnRestaurar.Visible = True
         Me.WindowState = FormWindowState.Maximized
-        resizeBool = False
     End Sub
 
     '----RESTAURA EL FORUMULARIO DEL MENÚ----'
@@ -31,7 +27,6 @@ Public Class Menu
         btnMaximizar.Visible = True
         btnRestaurar.Visible = False
         Me.WindowState = FormWindowState.Normal
-        resizeBool = True
     End Sub
 
     '----TIEMPO QUE SE EJECUTA EL GIF DEL COFRE----'
@@ -61,13 +56,8 @@ Public Class Menu
     End Sub
 
     Private Sub panelSuperior_MouseMove(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panelSuperior.MouseMove
-        If resizeBool Then
-            ReleaseCapture()
-            SendMessage(Me.Handle, &H112&, &HF012&, 0)
-            panelSuperior.Cursor = Cursors.SizeAll
-        Else
-            panelSuperior.Cursor = Cursors.Default
-        End If
+        ReleaseCapture()
+        SendMessage(Me.Handle, &H112&, &HF012&, 0)
     End Sub
 
     Private Sub tmrOcultarMenu_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrOcultarMenu.Tick

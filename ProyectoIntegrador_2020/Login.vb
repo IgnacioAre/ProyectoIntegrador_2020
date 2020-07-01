@@ -26,20 +26,13 @@ Public Class Login
     Private Sub panelTitulo_MouseMove(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panelTitulo.MouseMove
         ReleaseCapture()
         SendMessage(Me.Handle, &H112&, &HF012&, 0)
-        panelTitulo.Cursor = Cursors.SizeAll
-        btnCerrar.Cursor = Cursors.Default
-        btnMinimizar.Cursor = Cursors.Default
     End Sub
 
-    '----MÉTODO PARA REDONDEAR EL BOTÓN ENTRAR----'
-
-    Private Sub btnEntrar_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles btnEntrar.Paint
-        Dim buttonPath As Drawing2D.GraphicsPath = New Drawing2D.GraphicsPath()
-        Dim myRectangle As Rectangle = btnEntrar.ClientRectangle
-        myRectangle.Inflate(-3, -3)
-        buttonPath.AddEllipse(myRectangle)
-        btnEntrar.Region = New Region(buttonPath)
+    Private Sub lblTitulo_MouseMove(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles lblTitulo.MouseMove
+        ReleaseCapture()
+        SendMessage(Me.Handle, &H112&, &HF012&, 0)
     End Sub
+
 
     '----PLACEHOLDERS----'
 
@@ -67,7 +60,27 @@ Public Class Login
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
-        RegistroUsuario.Show()
+        panelLogin.Visible = False
+        panelRegistro.Visible = True
+    End Sub
+
+    Private Sub btnRegresar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbRegresar.Click
+        panelLogin.Visible = True
+        panelRegistro.Visible = False
+    End Sub
+
+    '----CAMBIAR TAMAÑO DEL pbRegresar----'
+
+    Private Sub pbRegresar_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbRegresar.MouseHover
+        pbRegresar.Size = New Size(34, 36)
+    End Sub
+
+    Private Sub pbRegresar_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbRegresar.MouseLeave
+        pbRegresar.Size = New Size(31, 32)
+    End Sub
+
+    Private Sub btnEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEntrar.Click
+        MenuPrincipal.Show()
         Me.Close()
     End Sub
 End Class
