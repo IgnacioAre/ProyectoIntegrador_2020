@@ -24,8 +24,9 @@ Partial Class Login
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Login))
         Me.panelTitulo = New System.Windows.Forms.Panel()
-        Me.btnCerrar = New System.Windows.Forms.Button()
+        Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnMinimizar = New System.Windows.Forms.Button()
+        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnEntrar = New System.Windows.Forms.Button()
         Me.txtContraseña = New System.Windows.Forms.TextBox()
@@ -37,7 +38,6 @@ Partial Class Login
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.chbGuardarUsuario = New System.Windows.Forms.CheckBox()
-        Me.lblTitulo = New System.Windows.Forms.Label()
         Me.panelTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -54,17 +54,16 @@ Partial Class Login
         Me.panelTitulo.Size = New System.Drawing.Size(402, 40)
         Me.panelTitulo.TabIndex = 0
         '
-        'btnCerrar
+        'lblTitulo
         '
-        Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnCerrar.ForeColor = System.Drawing.Color.White
-        Me.btnCerrar.Image = CType(resources.GetObject("btnCerrar.Image"), System.Drawing.Image)
-        Me.btnCerrar.Location = New System.Drawing.Point(365, 3)
-        Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(34, 34)
-        Me.btnCerrar.TabIndex = 0
-        Me.btnCerrar.UseVisualStyleBackColor = True
+        Me.lblTitulo.AutoSize = True
+        Me.lblTitulo.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.ForeColor = System.Drawing.Color.White
+        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
+        Me.lblTitulo.Name = "lblTitulo"
+        Me.lblTitulo.Size = New System.Drawing.Size(130, 18)
+        Me.lblTitulo.TabIndex = 2
+        Me.lblTitulo.Text = "Login  |  El Cofre"
         '
         'btnMinimizar
         '
@@ -79,6 +78,18 @@ Partial Class Login
         Me.btnMinimizar.Text = "_"
         Me.btnMinimizar.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnMinimizar.UseVisualStyleBackColor = True
+        '
+        'btnCerrar
+        '
+        Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnCerrar.ForeColor = System.Drawing.Color.White
+        Me.btnCerrar.Image = CType(resources.GetObject("btnCerrar.Image"), System.Drawing.Image)
+        Me.btnCerrar.Location = New System.Drawing.Point(365, 3)
+        Me.btnCerrar.Name = "btnCerrar"
+        Me.btnCerrar.Size = New System.Drawing.Size(34, 34)
+        Me.btnCerrar.TabIndex = 0
+        Me.btnCerrar.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
@@ -180,31 +191,20 @@ Partial Class Login
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(71, 350)
+        Me.Label3.Location = New System.Drawing.Point(110, 353)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(112, 17)
+        Me.Label3.Size = New System.Drawing.Size(117, 17)
         Me.Label3.TabIndex = 17
-        Me.Label3.Text = "Guardar usuario"
+        Me.Label3.Text = "Recordar usuario"
         '
         'chbGuardarUsuario
         '
         Me.chbGuardarUsuario.AutoSize = True
-        Me.chbGuardarUsuario.Location = New System.Drawing.Point(189, 353)
+        Me.chbGuardarUsuario.Location = New System.Drawing.Point(89, 353)
         Me.chbGuardarUsuario.Name = "chbGuardarUsuario"
         Me.chbGuardarUsuario.Size = New System.Drawing.Size(15, 14)
         Me.chbGuardarUsuario.TabIndex = 18
         Me.chbGuardarUsuario.UseVisualStyleBackColor = True
-        '
-        'lblTitulo
-        '
-        Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitulo.ForeColor = System.Drawing.Color.White
-        Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
-        Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(130, 18)
-        Me.lblTitulo.TabIndex = 2
-        Me.lblTitulo.Text = "Login  |  El Cofre"
         '
         'Login
         '

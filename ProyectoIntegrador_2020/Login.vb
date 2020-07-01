@@ -57,4 +57,17 @@ Public Class Login
         SendMessage(txtContraseña.Handle, EM_SETCUEBANNER, 0, "*******************")
     End Sub
 
+    '----CAMBIAR FOCO A LA CONTRASEÑA----'
+
+    Private Sub txtUsuario_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtUsuario.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+            txtContraseña.Focus()
+        End If
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        RegistroUsuario.Show()
+        Me.Close()
+    End Sub
 End Class
