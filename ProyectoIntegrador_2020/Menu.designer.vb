@@ -41,26 +41,26 @@ Partial Class Menu
         Me.tmrOcultarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.PanelContenedor = New System.Windows.Forms.Panel()
-        Me.TablaInicio = New System.Windows.Forms.TableLayoutPanel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.txtPrecioProductos = New System.Windows.Forms.TextBox()
+        Me.lblFecha = New System.Windows.Forms.Label()
+        Me.lblHora = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.imgCofre = New System.Windows.Forms.PictureBox()
         Me.gifCofre = New System.Windows.Forms.PictureBox()
-        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.tmrHoraFecha = New System.Windows.Forms.Timer(Me.components)
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.panelSuperior.SuspendLayout()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelMenu.SuspendLayout()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelContenedor.SuspendLayout()
-        Me.TablaInicio.SuspendLayout()
-        Me.Panel4.SuspendLayout()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelSuperior
         '
-        Me.panelSuperior.BackColor = System.Drawing.Color.Gray
+        Me.panelSuperior.BackColor = System.Drawing.Color.Black
         Me.panelSuperior.Controls.Add(Me.btnRestaurar)
         Me.panelSuperior.Controls.Add(Me.btnMaximizar)
         Me.panelSuperior.Controls.Add(Me.btnAyuda)
@@ -277,81 +277,95 @@ Partial Class Menu
         '
         'PanelContenedor
         '
-        Me.PanelContenedor.Controls.Add(Me.TablaInicio)
+        Me.PanelContenedor.Controls.Add(Me.Label2)
+        Me.PanelContenedor.Controls.Add(Me.txtPrecioProductos)
+        Me.PanelContenedor.Controls.Add(Me.lblFecha)
+        Me.PanelContenedor.Controls.Add(Me.lblHora)
+        Me.PanelContenedor.Controls.Add(Me.Label1)
+        Me.PanelContenedor.Controls.Add(Me.imgCofre)
+        Me.PanelContenedor.Controls.Add(Me.gifCofre)
         Me.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelContenedor.Location = New System.Drawing.Point(200, 34)
         Me.PanelContenedor.Name = "PanelContenedor"
         Me.PanelContenedor.Size = New System.Drawing.Size(838, 581)
         Me.PanelContenedor.TabIndex = 3
         '
-        'TablaInicio
+        'txtPrecioProductos
         '
-        Me.TablaInicio.ColumnCount = 3
-        Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.11917!))
-        Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.88083!))
-        Me.TablaInicio.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 195.0!))
-        Me.TablaInicio.Controls.Add(Me.Panel4, 1, 1)
-        Me.TablaInicio.Controls.Add(Me.Panel5, 1, 0)
-        Me.TablaInicio.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TablaInicio.Location = New System.Drawing.Point(0, 0)
-        Me.TablaInicio.Name = "TablaInicio"
-        Me.TablaInicio.RowCount = 3
-        Me.TablaInicio.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.76316!))
-        Me.TablaInicio.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.23684!))
-        Me.TablaInicio.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 111.0!))
-        Me.TablaInicio.Size = New System.Drawing.Size(838, 581)
-        Me.TablaInicio.TabIndex = 4
+        Me.txtPrecioProductos.Location = New System.Drawing.Point(128, 73)
+        Me.txtPrecioProductos.Name = "txtPrecioProductos"
+        Me.txtPrecioProductos.Size = New System.Drawing.Size(160, 20)
+        Me.txtPrecioProductos.TabIndex = 9
         '
-        'Panel4
+        'lblFecha
         '
-        Me.Panel4.BackColor = System.Drawing.Color.White
-        Me.Panel4.Controls.Add(Me.Label1)
-        Me.Panel4.Controls.Add(Me.imgCofre)
-        Me.Panel4.Controls.Add(Me.gifCofre)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(254, 203)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(385, 263)
-        Me.Panel4.TabIndex = 0
+        Me.lblFecha.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblFecha.AutoSize = True
+        Me.lblFecha.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFecha.Location = New System.Drawing.Point(733, 42)
+        Me.lblFecha.Name = "lblFecha"
+        Me.lblFecha.Size = New System.Drawing.Size(96, 21)
+        Me.lblFecha.TabIndex = 8
+        Me.lblFecha.Text = "30/06/2020"
+        '
+        'lblHora
+        '
+        Me.lblHora.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblHora.AutoSize = True
+        Me.lblHora.Font = New System.Drawing.Font("Century Gothic", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHora.Location = New System.Drawing.Point(704, 6)
+        Me.lblHora.Name = "lblHora"
+        Me.lblHora.Size = New System.Drawing.Size(125, 36)
+        Me.lblHora.TabIndex = 7
+        Me.lblHora.Text = "19:44:23"
         '
         'Label1
         '
+        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(3, 0)
+        Me.Label1.Location = New System.Drawing.Point(225, 170)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(391, 36)
-        Me.Label1.TabIndex = 0
+        Me.Label1.TabIndex = 4
         Me.Label1.Text = "¡Bienvenido Administrador!"
         '
         'imgCofre
         '
+        Me.imgCofre.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.imgCofre.Image = CType(resources.GetObject("imgCofre.Image"), System.Drawing.Image)
-        Me.imgCofre.Location = New System.Drawing.Point(52, 49)
+        Me.imgCofre.Location = New System.Drawing.Point(274, 219)
         Me.imgCofre.Name = "imgCofre"
         Me.imgCofre.Size = New System.Drawing.Size(249, 188)
         Me.imgCofre.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgCofre.TabIndex = 3
+        Me.imgCofre.TabIndex = 6
         Me.imgCofre.TabStop = False
         Me.imgCofre.Visible = False
         '
         'gifCofre
         '
+        Me.gifCofre.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.gifCofre.Image = CType(resources.GetObject("gifCofre.Image"), System.Drawing.Image)
-        Me.gifCofre.Location = New System.Drawing.Point(49, 49)
+        Me.gifCofre.Location = New System.Drawing.Point(271, 219)
         Me.gifCofre.Name = "gifCofre"
         Me.gifCofre.Size = New System.Drawing.Size(255, 192)
         Me.gifCofre.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.gifCofre.TabIndex = 2
+        Me.gifCofre.TabIndex = 5
         Me.gifCofre.TabStop = False
         '
-        'Panel5
+        'tmrHoraFecha
         '
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel5.Location = New System.Drawing.Point(254, 3)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(385, 194)
-        Me.Panel5.TabIndex = 1
+        Me.tmrHoraFecha.Enabled = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(97, 38)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(248, 24)
+        Me.Label2.TabIndex = 10
+        Me.Label2.Text = "¿Qué precio necesita?"
         '
         'Menu
         '
@@ -372,9 +386,7 @@ Partial Class Menu
         Me.panelMenu.ResumeLayout(False)
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelContenedor.ResumeLayout(False)
-        Me.TablaInicio.ResumeLayout(False)
-        Me.Panel4.ResumeLayout(False)
-        Me.Panel4.PerformLayout()
+        Me.PanelContenedor.PerformLayout()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -397,11 +409,13 @@ Partial Class Menu
     Friend WithEvents tmrMostrarMenu As System.Windows.Forms.Timer
     Friend WithEvents btnProductos As System.Windows.Forms.Button
     Friend WithEvents PanelContenedor As System.Windows.Forms.Panel
-    Friend WithEvents TablaInicio As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents Panel4 As System.Windows.Forms.Panel
+    Friend WithEvents tmrHoraFecha As System.Windows.Forms.Timer
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents imgCofre As System.Windows.Forms.PictureBox
     Friend WithEvents gifCofre As System.Windows.Forms.PictureBox
-    Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents lblFecha As System.Windows.Forms.Label
+    Friend WithEvents lblHora As System.Windows.Forms.Label
+    Friend WithEvents txtPrecioProductos As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 
 End Class

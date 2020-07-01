@@ -16,4 +16,8 @@
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
         DataGridView.DataSource = consultas.mostrarBusquedaClientesEnTabla(TextBox1.Text)
     End Sub
+
+    Private Sub Pruebas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
