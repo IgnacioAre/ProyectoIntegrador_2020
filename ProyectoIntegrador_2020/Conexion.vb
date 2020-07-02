@@ -2,7 +2,7 @@
 Public Class Conexion
 
 
-    Private conexion As New MySqlConnection("data source=localhost;user id=proyecto;password='proyecto2020';database=original_el_cofre; port=3306")
+    Private conexion As New MySqlConnection("data source=localhost;user id=proyecto;password='proyecto2020';database=original_el_cofre; port=3306.")
     Private adaptador As MySqlDataAdapter
     Private comando As MySqlCommand
     Private dataReader As MySqlDataReader
@@ -27,7 +27,7 @@ Public Class Conexion
     '----MOSTRAR TODO DE LA TABLA PRODUCTO EN UN DATATABLE----'
     Public Function mostrarProductosEnTabla() As DataTable
 
-        consultaSQL = "SELECT idProducto AS id," &
+        consultaSQL = "SELECT idProducto AS ID," &
                         "nombre AS Nombre," &
                         "cantidad AS Stock," &
                         "precio AS Precio " &

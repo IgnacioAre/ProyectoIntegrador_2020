@@ -83,4 +83,16 @@ Public Class Login
         MenuPrincipal.Show()
         Me.Close()
     End Sub
+
+    Private Sub lblCheckUsuario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblCheckUsuario.Click
+        If chbGuardarUsuario.Checked Then
+            chbGuardarUsuario.Checked = False
+        Else
+            chbGuardarUsuario.Checked = True
+        End If
+    End Sub
+
+    Private Sub btnRegistrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrar.Click
+
+    End Sub
 End Class

@@ -36,7 +36,7 @@ Partial Class Login
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblCheckUsuario = New System.Windows.Forms.Label()
         Me.chbGuardarUsuario = New System.Windows.Forms.CheckBox()
         Me.panelLogin = New System.Windows.Forms.Panel()
         Me.panelRegistro = New System.Windows.Forms.Panel()
@@ -124,6 +124,9 @@ Partial Class Login
         Me.btnEntrar.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btnEntrar.BackColor = System.Drawing.Color.Black
         Me.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnEntrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEntrar.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEntrar.ForeColor = System.Drawing.Color.White
         Me.btnEntrar.Location = New System.Drawing.Point(83, 364)
@@ -159,6 +162,7 @@ Partial Class Login
         Me.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.txtUsuario.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsuario.Location = New System.Drawing.Point(83, 160)
+        Me.txtUsuario.MaxLength = 30
         Me.txtUsuario.Name = "txtUsuario"
         Me.txtUsuario.Size = New System.Drawing.Size(202, 27)
         Me.txtUsuario.TabIndex = 0
@@ -214,16 +218,16 @@ Partial Class Login
         Me.LinkLabel2.TabStop = True
         Me.LinkLabel2.Text = "¿Olvidaste tu contraseña?"
         '
-        'Label3
+        'lblCheckUsuario
         '
-        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(104, 321)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(117, 17)
-        Me.Label3.TabIndex = 17
-        Me.Label3.Text = "Recordar usuario"
+        Me.lblCheckUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.lblCheckUsuario.AutoSize = True
+        Me.lblCheckUsuario.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCheckUsuario.Location = New System.Drawing.Point(104, 321)
+        Me.lblCheckUsuario.Name = "lblCheckUsuario"
+        Me.lblCheckUsuario.Size = New System.Drawing.Size(117, 17)
+        Me.lblCheckUsuario.TabIndex = 17
+        Me.lblCheckUsuario.Text = "Recordar usuario"
         '
         'chbGuardarUsuario
         '
@@ -243,7 +247,7 @@ Partial Class Login
         Me.panelLogin.Controls.Add(Me.PictureBox1)
         Me.panelLogin.Controls.Add(Me.chbGuardarUsuario)
         Me.panelLogin.Controls.Add(Me.Label1)
-        Me.panelLogin.Controls.Add(Me.Label3)
+        Me.panelLogin.Controls.Add(Me.lblCheckUsuario)
         Me.panelLogin.Controls.Add(Me.txtUsuario)
         Me.panelLogin.Controls.Add(Me.LinkLabel2)
         Me.panelLogin.Controls.Add(Me.Label2)
@@ -294,6 +298,9 @@ Partial Class Login
         '
         Me.btnRegistrar.BackColor = System.Drawing.Color.Black
         Me.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnRegistrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnRegistrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRegistrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRegistrar.ForeColor = System.Drawing.Color.White
         Me.btnRegistrar.Location = New System.Drawing.Point(278, 451)
@@ -430,7 +437,7 @@ Partial Class Login
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabel2 As System.Windows.Forms.LinkLabel
-    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents lblCheckUsuario As System.Windows.Forms.Label
     Friend WithEvents chbGuardarUsuario As System.Windows.Forms.CheckBox
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents panelLogin As System.Windows.Forms.Panel
