@@ -29,26 +29,26 @@ Partial Class Login
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnEntrar = New System.Windows.Forms.Button()
-        Me.txtContraseña = New System.Windows.Forms.TextBox()
+        Me.txtContraseñaLogin = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtUsuario = New System.Windows.Forms.TextBox()
+        Me.txtUsuarioLogin = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
+        Me.linkCrearUsuario = New System.Windows.Forms.LinkLabel()
+        Me.linkContraseñaOvidada = New System.Windows.Forms.LinkLabel()
         Me.lblCheckUsuario = New System.Windows.Forms.Label()
         Me.chbGuardarUsuario = New System.Windows.Forms.CheckBox()
         Me.panelLogin = New System.Windows.Forms.Panel()
         Me.panelRegistro = New System.Windows.Forms.Panel()
         Me.pbRegresar = New System.Windows.Forms.PictureBox()
         Me.btnRegistrar = New System.Windows.Forms.Button()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.txtClaveAdminRegistro = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.txtRepContraseñaRegistro = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtContraseñaRegistro = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtUsuarioRegistro = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.panelTitulo.SuspendLayout()
@@ -136,15 +136,15 @@ Partial Class Login
         Me.btnEntrar.Text = "Entrar"
         Me.btnEntrar.UseVisualStyleBackColor = False
         '
-        'txtContraseña
+        'txtContraseñaLogin
         '
-        Me.txtContraseña.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.txtContraseña.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtContraseña.Location = New System.Drawing.Point(83, 268)
-        Me.txtContraseña.Name = "txtContraseña"
-        Me.txtContraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtContraseña.Size = New System.Drawing.Size(202, 27)
-        Me.txtContraseña.TabIndex = 11
+        Me.txtContraseñaLogin.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.txtContraseñaLogin.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContraseñaLogin.Location = New System.Drawing.Point(83, 268)
+        Me.txtContraseñaLogin.Name = "txtContraseñaLogin"
+        Me.txtContraseñaLogin.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 27)
+        Me.txtContraseñaLogin.TabIndex = 11
         '
         'Label2
         '
@@ -157,15 +157,15 @@ Partial Class Login
         Me.Label2.TabIndex = 10
         Me.Label2.Text = "Contraseña"
         '
-        'txtUsuario
+        'txtUsuarioLogin
         '
-        Me.txtUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.txtUsuario.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsuario.Location = New System.Drawing.Point(83, 160)
-        Me.txtUsuario.MaxLength = 30
-        Me.txtUsuario.Name = "txtUsuario"
-        Me.txtUsuario.Size = New System.Drawing.Size(202, 27)
-        Me.txtUsuario.TabIndex = 0
+        Me.txtUsuarioLogin.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.txtUsuarioLogin.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsuarioLogin.Location = New System.Drawing.Point(83, 160)
+        Me.txtUsuarioLogin.MaxLength = 30
+        Me.txtUsuarioLogin.Name = "txtUsuarioLogin"
+        Me.txtUsuarioLogin.Size = New System.Drawing.Size(202, 27)
+        Me.txtUsuarioLogin.TabIndex = 0
         '
         'Label1
         '
@@ -188,35 +188,35 @@ Partial Class Login
         Me.Panel1.Size = New System.Drawing.Size(303, 1)
         Me.Panel1.TabIndex = 14
         '
-        'LinkLabel1
+        'linkCrearUsuario
         '
-        Me.LinkLabel1.ActiveLinkColor = System.Drawing.Color.Turquoise
-        Me.LinkLabel1.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LinkLabel1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel1.LinkColor = System.Drawing.Color.DarkRed
-        Me.LinkLabel1.Location = New System.Drawing.Point(36, 470)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(94, 17)
-        Me.LinkLabel1.TabIndex = 15
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Crear Usuario"
+        Me.linkCrearUsuario.ActiveLinkColor = System.Drawing.Color.Turquoise
+        Me.linkCrearUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.linkCrearUsuario.AutoSize = True
+        Me.linkCrearUsuario.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.linkCrearUsuario.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.linkCrearUsuario.LinkColor = System.Drawing.Color.DarkRed
+        Me.linkCrearUsuario.Location = New System.Drawing.Point(36, 470)
+        Me.linkCrearUsuario.Name = "linkCrearUsuario"
+        Me.linkCrearUsuario.Size = New System.Drawing.Size(94, 17)
+        Me.linkCrearUsuario.TabIndex = 15
+        Me.linkCrearUsuario.TabStop = True
+        Me.linkCrearUsuario.Text = "Crear Usuario"
         '
-        'LinkLabel2
+        'linkContraseñaOvidada
         '
-        Me.LinkLabel2.ActiveLinkColor = System.Drawing.Color.Turquoise
-        Me.LinkLabel2.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.LinkLabel2.AutoSize = True
-        Me.LinkLabel2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LinkLabel2.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel2.LinkColor = System.Drawing.Color.DarkRed
-        Me.LinkLabel2.Location = New System.Drawing.Point(165, 468)
-        Me.LinkLabel2.Name = "LinkLabel2"
-        Me.LinkLabel2.Size = New System.Drawing.Size(201, 18)
-        Me.LinkLabel2.TabIndex = 16
-        Me.LinkLabel2.TabStop = True
-        Me.LinkLabel2.Text = "¿Olvidaste tu contraseña?"
+        Me.linkContraseñaOvidada.ActiveLinkColor = System.Drawing.Color.Turquoise
+        Me.linkContraseñaOvidada.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.linkContraseñaOvidada.AutoSize = True
+        Me.linkContraseñaOvidada.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.linkContraseñaOvidada.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.linkContraseñaOvidada.LinkColor = System.Drawing.Color.DarkRed
+        Me.linkContraseñaOvidada.Location = New System.Drawing.Point(165, 468)
+        Me.linkContraseñaOvidada.Name = "linkContraseñaOvidada"
+        Me.linkContraseñaOvidada.Size = New System.Drawing.Size(201, 18)
+        Me.linkContraseñaOvidada.TabIndex = 16
+        Me.linkContraseñaOvidada.TabStop = True
+        Me.linkContraseñaOvidada.Text = "¿Olvidaste tu contraseña?"
         '
         'lblCheckUsuario
         '
@@ -248,11 +248,11 @@ Partial Class Login
         Me.panelLogin.Controls.Add(Me.chbGuardarUsuario)
         Me.panelLogin.Controls.Add(Me.Label1)
         Me.panelLogin.Controls.Add(Me.lblCheckUsuario)
-        Me.panelLogin.Controls.Add(Me.txtUsuario)
-        Me.panelLogin.Controls.Add(Me.LinkLabel2)
+        Me.panelLogin.Controls.Add(Me.txtUsuarioLogin)
+        Me.panelLogin.Controls.Add(Me.linkContraseñaOvidada)
         Me.panelLogin.Controls.Add(Me.Label2)
-        Me.panelLogin.Controls.Add(Me.LinkLabel1)
-        Me.panelLogin.Controls.Add(Me.txtContraseña)
+        Me.panelLogin.Controls.Add(Me.linkCrearUsuario)
+        Me.panelLogin.Controls.Add(Me.txtContraseñaLogin)
         Me.panelLogin.Controls.Add(Me.Panel1)
         Me.panelLogin.Controls.Add(Me.btnEntrar)
         Me.panelLogin.Dock = System.Windows.Forms.DockStyle.Fill
@@ -267,13 +267,13 @@ Partial Class Login
         Me.panelRegistro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panelRegistro.Controls.Add(Me.pbRegresar)
         Me.panelRegistro.Controls.Add(Me.btnRegistrar)
-        Me.panelRegistro.Controls.Add(Me.TextBox4)
+        Me.panelRegistro.Controls.Add(Me.txtClaveAdminRegistro)
         Me.panelRegistro.Controls.Add(Me.Label8)
-        Me.panelRegistro.Controls.Add(Me.TextBox3)
+        Me.panelRegistro.Controls.Add(Me.txtRepContraseñaRegistro)
         Me.panelRegistro.Controls.Add(Me.Label7)
-        Me.panelRegistro.Controls.Add(Me.TextBox2)
+        Me.panelRegistro.Controls.Add(Me.txtContraseñaRegistro)
         Me.panelRegistro.Controls.Add(Me.Label6)
-        Me.panelRegistro.Controls.Add(Me.TextBox1)
+        Me.panelRegistro.Controls.Add(Me.txtUsuarioRegistro)
         Me.panelRegistro.Controls.Add(Me.Label5)
         Me.panelRegistro.Controls.Add(Me.Label4)
         Me.panelRegistro.Dock = System.Windows.Forms.DockStyle.Fill
@@ -310,15 +310,15 @@ Partial Class Login
         Me.btnRegistrar.Text = "Registrar"
         Me.btnRegistrar.UseVisualStyleBackColor = False
         '
-        'TextBox4
+        'txtClaveAdminRegistro
         '
-        Me.TextBox4.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(83, 408)
-        Me.TextBox4.MaxLength = 30
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TextBox4.Size = New System.Drawing.Size(215, 27)
-        Me.TextBox4.TabIndex = 8
+        Me.txtClaveAdminRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClaveAdminRegistro.Location = New System.Drawing.Point(83, 408)
+        Me.txtClaveAdminRegistro.MaxLength = 30
+        Me.txtClaveAdminRegistro.Name = "txtClaveAdminRegistro"
+        Me.txtClaveAdminRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtClaveAdminRegistro.Size = New System.Drawing.Size(215, 27)
+        Me.txtClaveAdminRegistro.TabIndex = 8
         '
         'Label8
         '
@@ -330,15 +330,15 @@ Partial Class Login
         Me.Label8.TabIndex = 7
         Me.Label8.Text = "Clave de admin"
         '
-        'TextBox3
+        'txtRepContraseñaRegistro
         '
-        Me.TextBox3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(83, 324)
-        Me.TextBox3.MaxLength = 30
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TextBox3.Size = New System.Drawing.Size(215, 27)
-        Me.TextBox3.TabIndex = 6
+        Me.txtRepContraseñaRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtRepContraseñaRegistro.Location = New System.Drawing.Point(83, 324)
+        Me.txtRepContraseñaRegistro.MaxLength = 30
+        Me.txtRepContraseñaRegistro.Name = "txtRepContraseñaRegistro"
+        Me.txtRepContraseñaRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtRepContraseñaRegistro.Size = New System.Drawing.Size(215, 27)
+        Me.txtRepContraseñaRegistro.TabIndex = 6
         '
         'Label7
         '
@@ -350,15 +350,15 @@ Partial Class Login
         Me.Label7.TabIndex = 5
         Me.Label7.Text = "Repetir contraseña"
         '
-        'TextBox2
+        'txtContraseñaRegistro
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(83, 234)
-        Me.TextBox2.MaxLength = 30
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TextBox2.Size = New System.Drawing.Size(215, 27)
-        Me.TextBox2.TabIndex = 4
+        Me.txtContraseñaRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContraseñaRegistro.Location = New System.Drawing.Point(83, 234)
+        Me.txtContraseñaRegistro.MaxLength = 30
+        Me.txtContraseñaRegistro.Name = "txtContraseñaRegistro"
+        Me.txtContraseñaRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtContraseñaRegistro.Size = New System.Drawing.Size(215, 27)
+        Me.txtContraseñaRegistro.TabIndex = 4
         '
         'Label6
         '
@@ -370,14 +370,14 @@ Partial Class Login
         Me.Label6.TabIndex = 3
         Me.Label6.Text = "Contraseña"
         '
-        'TextBox1
+        'txtUsuarioRegistro
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(83, 143)
-        Me.TextBox1.MaxLength = 30
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(215, 27)
-        Me.TextBox1.TabIndex = 2
+        Me.txtUsuarioRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsuarioRegistro.Location = New System.Drawing.Point(83, 143)
+        Me.txtUsuarioRegistro.MaxLength = 30
+        Me.txtUsuarioRegistro.Name = "txtUsuarioRegistro"
+        Me.txtUsuarioRegistro.Size = New System.Drawing.Size(215, 27)
+        Me.txtUsuarioRegistro.TabIndex = 2
         '
         'Label5
         '
@@ -430,27 +430,27 @@ Partial Class Login
     Friend WithEvents btnMinimizar As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents btnEntrar As System.Windows.Forms.Button
-    Friend WithEvents txtContraseña As System.Windows.Forms.TextBox
+    Friend WithEvents txtContraseñaLogin As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents txtUsuario As System.Windows.Forms.TextBox
+    Friend WithEvents txtUsuarioLogin As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
-    Friend WithEvents LinkLabel2 As System.Windows.Forms.LinkLabel
+    Friend WithEvents linkCrearUsuario As System.Windows.Forms.LinkLabel
+    Friend WithEvents linkContraseñaOvidada As System.Windows.Forms.LinkLabel
     Friend WithEvents lblCheckUsuario As System.Windows.Forms.Label
     Friend WithEvents chbGuardarUsuario As System.Windows.Forms.CheckBox
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents panelLogin As System.Windows.Forms.Panel
     Friend WithEvents panelRegistro As System.Windows.Forms.Panel
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtContraseñaRegistro As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtUsuarioRegistro As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents btnRegistrar As System.Windows.Forms.Button
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents txtClaveAdminRegistro As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents txtRepContraseñaRegistro As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents pbRegresar As System.Windows.Forms.PictureBox
 End Class

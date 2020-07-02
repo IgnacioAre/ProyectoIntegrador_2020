@@ -255,4 +255,13 @@ Public Class MenuPrincipal
     Private Sub imgCofre_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles imgCofre.Click
         My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
     End Sub
+
+    '----MENSAJE PERSONALIZADO----'
+
+    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
+        Dim mensaje As New Mensaje(mensajeObtenido)
+        mensaje.Show()
+    End Sub
+
+
 End Class

@@ -2,13 +2,36 @@
 Public Class Conexion
 
 
-    Private conexion As New MySqlConnection("data source=localhost;user id=proyecto;password='proyecto2020';database=original_el_cofre; port=3306.")
+    Private conexion As New MySqlConnection("data source=localhost;user id=proyecto;password='proyecto2020';database=original_el_cofre;port=3306")
     Private adaptador As MySqlDataAdapter
     Private comando As MySqlCommand
     Private dataReader As MySqlDataReader
+    Private Query As Queryable
+    Private dr As MySqlDataReader
 
     Private consultaSQL As String
     Private tabla As DataTable
+
+    Public Sub establecerConexion()
+        Try
+            conexion.Open()
+        Catch ex As Exception
+            MsgBox("Error al conectar a la base de datos. " & ex.Message)
+        End Try
+    End Sub
+
+    '----REALIZA UNA CONSULTA A LA BASE DE DATOS (Sale una excepción)----'
+
+    Public Sub consultaHide(ByVal Sql As String)
+        Try
+            comando = New MySqlCommand(Sql, conexion)
+            comando.ExecuteNonQuery()
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
+            conexion.Close()
+        End Try
+    End Sub
 
     Private Function insertarEnTabla(ByVal consulta As String) As DataTable
         Try
@@ -22,6 +45,8 @@ Public Class Conexion
         End Try
         Return Me.tabla
     End Function
+
+    
 
 
     '----MOSTRAR TODO DE LA TABLA PRODUCTO EN UN DATATABLE----'
@@ -56,12 +81,13 @@ Public Class Conexion
 
     End Function
 
-    '----BUSCAR CLIENTE POR NOMBRE----
+    '----BUSCAR CLIENTE POR NOMBRE----'
     Public Function mostrarBusquedaClientesEnTabla(ByVal nombre As String) As DataTable
 
         consultaSQL = "SELECT * FROM clientes WHERE nombre LIKE '%" & nombre & "%'"
 
         Return insertarEnTabla(consultaSQL)
-
     End Function
+
+
 End Class

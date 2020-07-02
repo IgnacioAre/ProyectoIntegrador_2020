@@ -1,9 +1,18 @@
 ﻿Imports System.Runtime.InteropServices
+Imports MySql.Data.MySqlClient
 Public Class Login
+
+    Dim dr As MySqlDataReader
 
     '----CLAVE PARA CREAR UN USUARIO ADMIN----'
     Dim claveAdmin As String = "7r7w7x"
 
+    '----INICIO DEL FORMULARIO----'
+
+    Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        SendMessage(txtUsuarioLogin.Handle, EM_SETCUEBANNER, 0, "Nombre de usuario")
+        SendMessage(txtContraseñaLogin.Handle, EM_SETCUEBANNER, 0, "*******************")
+    End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
         Me.Close()
@@ -43,30 +52,28 @@ Public Class Login
     <MarshalAs(UnmanagedType.LPWStr)> ByVal lParam As String) As Int32
     End Function
 
-    '----INICIO DEL FORMULARIO----'
-
-    Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        SendMessage(txtUsuario.Handle, EM_SETCUEBANNER, 0, "Nombre de usuario")
-        SendMessage(txtContraseña.Handle, EM_SETCUEBANNER, 0, "*******************")
-    End Sub
 
     '----CAMBIAR FOCO A LA CONTRASEÑA----'
 
-    Private Sub txtUsuario_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtUsuario.KeyPress
+    Private Sub txtUsuario_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtUsuarioLogin.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
-            txtContraseña.Focus()
+            txtContraseñaLogin.Focus()
         End If
     End Sub
 
-    Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+    Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles linkCrearUsuario.LinkClicked
         panelLogin.Visible = False
         panelRegistro.Visible = True
+        lblTitulo.Text = "Registrarse  |  El Cofre"
+        txtUsuarioRegistro.Focus()
     End Sub
 
     Private Sub btnRegresar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbRegresar.Click
         panelLogin.Visible = True
         panelRegistro.Visible = False
+        lblTitulo.Text = "Login  |  El Cofre"
+        txtUsuarioLogin.Focus()
     End Sub
 
     '----CAMBIAR TAMAÑO DEL pbRegresar----'
@@ -79,10 +86,14 @@ Public Class Login
         pbRegresar.Size = New Size(31, 32)
     End Sub
 
+    '----ENTRA AL MENÚ PRINCIPAL----'
+
     Private Sub btnEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEntrar.Click
         MenuPrincipal.Show()
         Me.Close()
     End Sub
+
+    '----LE DA EL CECK AL CLICKEAR LA ETIQUETA----'
 
     Private Sub lblCheckUsuario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblCheckUsuario.Click
         If chbGuardarUsuario.Checked Then
@@ -92,7 +103,38 @@ Public Class Login
         End If
     End Sub
 
-    Private Sub btnRegistrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrar.Click
+    '----CREA UN USUARIO ADMINISTRADOR----'
 
+    Private Sub btnRegistrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrar.Click
+        If txtClaveAdminRegistro.Text.Equals(claveAdmin) Then
+            If Not txtUsuarioRegistro.Text.Equals("") And Not txtContraseñaRegistro.Text.Equals("") And Not txtRepContraseñaRegistro.Text.Equals("") Then
+                consulta("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text & "','SHA2(" & txtContraseñaRegistro.Text & ",256)')")
+                mostrarMensaje("Usuario Creado Correctamente!")
+            Else
+                mostrarMensaje("Error. Debe completar todos los campos vacios.")
+            End If
+        Else
+            mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
+        End If
     End Sub
+
+    '----MENSAJE PERSONALIZADO----'
+
+    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
+        Dim mensaje As New Mensaje(mensajeObtenido)
+        mensaje.Show()
+    End Sub
+
+    '----REALIZAR CONSULTA----'
+
+    Private Sub consulta(ByVal consultaSQL As String)
+        Try
+            Dim conectar = New Conexion
+            conectar.consultaHide(consultaSQL)
+        Catch ex As Exception
+            mostrarMensaje("Error al realizar consulta: " & ex.Message)
+        End Try
+    End Sub
+
+
 End Class
