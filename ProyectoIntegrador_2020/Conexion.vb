@@ -5,9 +5,9 @@ Public Class Conexion
     Private conexion As New MySqlConnection("data source=localhost;user id=proyecto;password='proyecto2020';database=original_el_cofre;port=3306")
     Private adaptador As MySqlDataAdapter
     Private comando As MySqlCommand
-    Private dataReader As MySqlDataReader
     Private Query As Queryable
     Private dr As MySqlDataReader
+    Protected ds As DataSet
 
     Private consultaSQL As String
     Private tabla As DataTable
@@ -17,21 +17,45 @@ Public Class Conexion
             conexion.Open()
         Catch ex As Exception
             MsgBox("Error al conectar a la base de datos. " & ex.Message)
+        Finally
+            conexion.Dispose()
         End Try
     End Sub
 
     '----REALIZA UNA CONSULTA A LA BASE DE DATOS (Sale una excepción)----'
 
     Public Sub consultaHide(ByVal Sql As String)
+
         Try
+            conexion.Open()
             comando = New MySqlCommand(Sql, conexion)
             comando.ExecuteNonQuery()
+            Login.resultado = 1
             conexion.Close()
         Catch ex As Exception
+            Login.resultado = 0
             MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
+        Finally
             conexion.Close()
         End Try
     End Sub
+
+
+    Public Function consultaReturnHide(ByVal Sql As String) As MySqlDataReader
+        Try
+            conexion.Open()
+            comando = New MySqlCommand(Sql, conexion)
+            dr = comando.ExecuteReader()
+            conexion.Close()
+        Catch ex As Exception
+            MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
+        Finally
+            conexion.Close()
+        End Try
+        Return dr
+    End Function
+
+
 
     Private Function insertarEnTabla(ByVal consulta As String) As DataTable
         Try

@@ -2,7 +2,8 @@
 Imports MySql.Data.MySqlClient
 Public Class Login
 
-    Dim dr As MySqlDataReader
+    Public resultado As Byte = 0
+    Dim drRes As MySqlDataReader
 
     '----CLAVE PARA CREAR UN USUARIO ADMIN----'
     Dim claveAdmin As String = "7r7w7x"
@@ -10,6 +11,8 @@ Public Class Login
     '----INICIO DEL FORMULARIO----'
 
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Dim conectar = New Conexion
+        conectar.establecerConexion()
         SendMessage(txtUsuarioLogin.Handle, EM_SETCUEBANNER, 0, "Nombre de usuario")
         SendMessage(txtContraseñaLogin.Handle, EM_SETCUEBANNER, 0, "*******************")
     End Sub
@@ -89,8 +92,19 @@ Public Class Login
     '----ENTRA AL MENÚ PRINCIPAL----'
 
     Private Sub btnEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEntrar.Click
-        MenuPrincipal.Show()
-        Me.Close()
+        Try
+            consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
+            MsgBox(drRes(0))
+            If drRes.HasRows() Then
+                MenuPrincipal.Show()
+                Me.Close()
+            Else
+                mostrarMensaje("No se encuentra un usuario con esos datos." & vbCrLf & "Intentelo nuevamente.")
+            End If
+            
+        Catch ex As Exception
+            mostrarMensaje("Error: " & ex.Message)
+        End Try
     End Sub
 
     '----LE DA EL CECK AL CLICKEAR LA ETIQUETA----'
@@ -108,14 +122,25 @@ Public Class Login
     Private Sub btnRegistrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrar.Click
         If txtClaveAdminRegistro.Text.Equals(claveAdmin) Then
             If Not txtUsuarioRegistro.Text.Equals("") And Not txtContraseñaRegistro.Text.Equals("") And Not txtRepContraseñaRegistro.Text.Equals("") Then
-                consulta("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text & "','SHA2(" & txtContraseñaRegistro.Text & ",256)')")
-                mostrarMensaje("Usuario Creado Correctamente!")
+                consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
+                If resultado = 1 Then
+                    mostrarMensaje("Usuario creado exitosamente!")
+                    txtUsuarioRegistro.Text = ""
+                    txtContraseñaRegistro.Text = ""
+                    txtRepContraseñaRegistro.Text = ""
+                    txtClaveAdminRegistro.Text = ""
+                Else
+                    mostrarMensaje("Error al intentar crear usuario.")
+                End If
+
             Else
                 mostrarMensaje("Error. Debe completar todos los campos vacios.")
             End If
         Else
             mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
         End If
+
+        resultado = 0
     End Sub
 
     '----MENSAJE PERSONALIZADO----'
@@ -127,7 +152,7 @@ Public Class Login
 
     '----REALIZAR CONSULTA----'
 
-    Private Sub consulta(ByVal consultaSQL As String)
+    Private Sub consultaHide(ByVal consultaSQL As String)
         Try
             Dim conectar = New Conexion
             conectar.consultaHide(consultaSQL)
@@ -135,6 +160,16 @@ Public Class Login
             mostrarMensaje("Error al realizar consulta: " & ex.Message)
         End Try
     End Sub
+
+    Private Sub consultaReturnHide(ByVal consultaSQL As String)
+        Try
+            Dim conectar = New Conexion
+            drRes = conectar.consultaReturnHide(consultaSQL)
+        Catch ex As Exception
+            mostrarMensaje("Error al realizar consulta: " & ex.Message)
+        End Try
+    End Sub
+
 
 
 End Class
