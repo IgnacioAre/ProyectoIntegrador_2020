@@ -2,7 +2,7 @@
 Imports MySql.Data.MySqlClient
 Public Class Login
 
-    Public resultado As Byte = 0
+    Public resultado As String
     Dim drRes As MySqlDataReader
 
     '----CLAVE PARA CREAR UN USUARIO ADMIN----'
@@ -94,28 +94,19 @@ Public Class Login
     Private Sub btnEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEntrar.Click
         Try
             consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
-            MsgBox(drRes(0))
-            If drRes.HasRows() Then
+
+            If Not resultado = "" Then
                 MenuPrincipal.Show()
                 Me.Close()
             Else
                 mostrarMensaje("No se encuentra un usuario con esos datos." & vbCrLf & "Intentelo nuevamente.")
             End If
-            
+
         Catch ex As Exception
             mostrarMensaje("Error: " & ex.Message)
         End Try
     End Sub
 
-    '----LE DA EL CECK AL CLICKEAR LA ETIQUETA----'
-
-    Private Sub lblCheckUsuario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblCheckUsuario.Click
-        If chbGuardarUsuario.Checked Then
-            chbGuardarUsuario.Checked = False
-        Else
-            chbGuardarUsuario.Checked = True
-        End If
-    End Sub
 
     '----CREA UN USUARIO ADMINISTRADOR----'
 
@@ -143,6 +134,16 @@ Public Class Login
         resultado = 0
     End Sub
 
+    '----LE DA EL CECK AL CLICKEAR LA ETIQUETA----'
+
+    Private Sub lblCheckUsuario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblCheckUsuario.Click
+        If chbGuardarUsuario.Checked Then
+            chbGuardarUsuario.Checked = False
+        Else
+            chbGuardarUsuario.Checked = True
+        End If
+    End Sub
+
     '----MENSAJE PERSONALIZADO----'
 
     Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
@@ -164,7 +165,7 @@ Public Class Login
     Private Sub consultaReturnHide(ByVal consultaSQL As String)
         Try
             Dim conectar = New Conexion
-            drRes = conectar.consultaReturnHide(consultaSQL)
+            resultado = conectar.consultaReturnHide(consultaSQL)
         Catch ex As Exception
             mostrarMensaje("Error al realizar consulta: " & ex.Message)
         End Try

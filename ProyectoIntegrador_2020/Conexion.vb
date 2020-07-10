@@ -9,6 +9,8 @@ Public Class Conexion
     Private dr As MySqlDataReader
     Protected ds As DataSet
 
+    Private valorReturn As String = ""
+
     Private consultaSQL As String
     Private tabla As DataTable
 
@@ -41,21 +43,18 @@ Public Class Conexion
     End Sub
 
 
-    Public Function consultaReturnHide(ByVal Sql As String) As MySqlDataReader
+    Public Function consultaReturnHide(ByVal Sql As String) As String
         Try
             conexion.Open()
             comando = New MySqlCommand(Sql, conexion)
-            dr = comando.ExecuteReader()
-            conexion.Close()
+            valorReturn = comando.ExecuteScalar()
         Catch ex As Exception
             MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
         Finally
             conexion.Close()
         End Try
-        Return dr
+        Return valorReturn
     End Function
-
-
 
     Private Function insertarEnTabla(ByVal consulta As String) As DataTable
         Try

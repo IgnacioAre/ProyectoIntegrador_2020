@@ -47,7 +47,7 @@ Partial Class MenuPrincipal
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnClientes = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnInicio = New System.Windows.Forms.Button()
         Me.pbConfiguracion = New System.Windows.Forms.PictureBox()
         Me.btnMenu = New System.Windows.Forms.PictureBox()
         Me.tmrOcultarMenu = New System.Windows.Forms.Timer(Me.components)
@@ -211,7 +211,7 @@ Partial Class MenuPrincipal
         Me.panelControles.Controls.Add(Me.btnProveedores)
         Me.panelControles.Controls.Add(Me.submenuClientes)
         Me.panelControles.Controls.Add(Me.btnClientes)
-        Me.panelControles.Controls.Add(Me.Button2)
+        Me.panelControles.Controls.Add(Me.btnInicio)
         Me.panelControles.Location = New System.Drawing.Point(3, 146)
         Me.panelControles.Name = "panelControles"
         Me.panelControles.Size = New System.Drawing.Size(233, 511)
@@ -231,6 +231,7 @@ Partial Class MenuPrincipal
         Me.btnNotas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnNotas.Location = New System.Drawing.Point(0, 549)
         Me.btnNotas.Name = "btnNotas"
+        Me.btnNotas.Padding = New System.Windows.Forms.Padding(3, 0, 0, 0)
         Me.btnNotas.Size = New System.Drawing.Size(216, 54)
         Me.btnNotas.TabIndex = 26
         Me.btnNotas.Text = " Notas"
@@ -459,32 +460,33 @@ Partial Class MenuPrincipal
         Me.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnClientes.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnInicio
         '
-        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(0, 0)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(216, 54)
-        Me.Button2.TabIndex = 14
-        Me.Button2.Text = "    Inicio"
-        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnInicio.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnInicio.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnInicio.FlatAppearance.BorderSize = 0
+        Me.btnInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnInicio.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnInicio.ForeColor = System.Drawing.Color.White
+        Me.btnInicio.Image = CType(resources.GetObject("btnInicio.Image"), System.Drawing.Image)
+        Me.btnInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnInicio.Location = New System.Drawing.Point(0, 0)
+        Me.btnInicio.Name = "btnInicio"
+        Me.btnInicio.Padding = New System.Windows.Forms.Padding(9, 0, 0, 0)
+        Me.btnInicio.Size = New System.Drawing.Size(216, 54)
+        Me.btnInicio.TabIndex = 14
+        Me.btnInicio.Text = "     Inicio"
+        Me.btnInicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnInicio.UseVisualStyleBackColor = True
         '
         'pbConfiguracion
         '
         Me.pbConfiguracion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.pbConfiguracion.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbConfiguracion.Image = CType(resources.GetObject("pbConfiguracion.Image"), System.Drawing.Image)
-        Me.pbConfiguracion.Location = New System.Drawing.Point(102, 663)
+        Me.pbConfiguracion.Location = New System.Drawing.Point(12, 663)
         Me.pbConfiguracion.Name = "pbConfiguracion"
         Me.pbConfiguracion.Size = New System.Drawing.Size(32, 32)
         Me.pbConfiguracion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -673,7 +675,7 @@ Partial Class MenuPrincipal
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents btnClientes As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnInicio As System.Windows.Forms.Button
     Friend WithEvents btnNotas As System.Windows.Forms.Button
     Friend WithEvents submenuProductos As System.Windows.Forms.Panel
     Friend WithEvents Button6 As System.Windows.Forms.Button

@@ -78,6 +78,18 @@ Public Class MenuPrincipal
         If Me.panelMenu.Width = 236 Then
             tmrOcultarMenu.Enabled = True
             imgLogo.Width = 249
+
+            If submenuClienteBool Then
+                submenuClienteBool = False
+                tmrOcultarSubMenu.Enabled = True
+            ElseIf submenuProductoBool Then
+                submenuProductoBool = False
+                tmrOcultarSubMenu.Enabled = True
+            ElseIf submenuProveedorBool Then
+                submenuProveedorBool = False
+                tmrOcultarSubMenu.Enabled = True
+            End If
+
         Else
             tmrMostrarMenu.Enabled = True
             imgLogo.Width = 291
@@ -107,6 +119,11 @@ Public Class MenuPrincipal
             submenuClientes.Height = 1
             submenuClientes.Visible = True
 
+            If Me.panelMenu.Width < 236 Then
+                tmrMostrarMenu.Enabled = True
+                imgLogo.Width = 291
+            End If
+
             submenuFalse()
             submenuClienteBool = True
 
@@ -124,6 +141,11 @@ Public Class MenuPrincipal
             submenuProveedores.Height = 1
             submenuProveedores.Visible = True
 
+            If Me.panelMenu.Width < 236 Then
+                tmrMostrarMenu.Enabled = True
+                imgLogo.Width = 291
+            End If
+
             submenuFalse()
             submenuProveedorBool = True
 
@@ -140,6 +162,11 @@ Public Class MenuPrincipal
         If Not submenuProductoBool Then
             submenuProductos.Height = 1
             submenuProductos.Visible = True
+
+            If Me.panelMenu.Width < 236 Then
+                tmrMostrarMenu.Enabled = True
+                imgLogo.Width = 291
+            End If
 
             submenuFalse()
             submenuProductoBool = True
@@ -205,7 +232,7 @@ Public Class MenuPrincipal
 
     'openFromOnPanel(Of Pruebas)()
 
-    '----MOSTRAR FORMULARIOS EN UN PANEL----'
+    '----MÉTODO PARA MOSTRAR FORMULARIOS EN UN PANEL----'
 
     Private Sub openFromOnPanel(Of FormH As {Form, New})()
         Dim Formulario As Form
@@ -223,6 +250,8 @@ Public Class MenuPrincipal
             Formulario.BringToFront()
         End If
     End Sub
+
+    '----MUESTRA LA HORA Y FECHA EN EL FORMULARIO----'
 
     Private Sub tmrHoraFecha_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrHoraFecha.Tick
         lblHora.Text = DateTime.Now.ToString("HH:mm:ss")
