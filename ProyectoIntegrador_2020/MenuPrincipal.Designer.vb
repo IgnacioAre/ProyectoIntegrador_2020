@@ -48,7 +48,7 @@ Partial Class MenuPrincipal
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnClientes = New System.Windows.Forms.Button()
         Me.btnInicio = New System.Windows.Forms.Button()
-        Me.pbConfiguracion = New System.Windows.Forms.PictureBox()
+        Me.pbCerrarSesion = New System.Windows.Forms.PictureBox()
         Me.btnMenu = New System.Windows.Forms.PictureBox()
         Me.tmrOcultarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarMenu = New System.Windows.Forms.Timer(Me.components)
@@ -70,7 +70,7 @@ Partial Class MenuPrincipal
         Me.submenuProductos.SuspendLayout()
         Me.submenuProveedores.SuspendLayout()
         Me.submenuClientes.SuspendLayout()
-        CType(Me.pbConfiguracion, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbCerrarSesion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelContenedor.SuspendLayout()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -190,7 +190,7 @@ Partial Class MenuPrincipal
         '
         Me.panelMenu.BackColor = System.Drawing.Color.Black
         Me.panelMenu.Controls.Add(Me.panelControles)
-        Me.panelMenu.Controls.Add(Me.pbConfiguracion)
+        Me.panelMenu.Controls.Add(Me.pbCerrarSesion)
         Me.panelMenu.Controls.Add(Me.btnMenu)
         Me.panelMenu.Controls.Add(Me.imgLogo)
         Me.panelMenu.Dock = System.Windows.Forms.DockStyle.Left
@@ -214,7 +214,7 @@ Partial Class MenuPrincipal
         Me.panelControles.Controls.Add(Me.btnInicio)
         Me.panelControles.Location = New System.Drawing.Point(3, 146)
         Me.panelControles.Name = "panelControles"
-        Me.panelControles.Size = New System.Drawing.Size(233, 511)
+        Me.panelControles.Size = New System.Drawing.Size(233, 419)
         Me.panelControles.TabIndex = 11
         '
         'btnNotas
@@ -481,17 +481,17 @@ Partial Class MenuPrincipal
         Me.btnInicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnInicio.UseVisualStyleBackColor = True
         '
-        'pbConfiguracion
+        'pbCerrarSesion
         '
-        Me.pbConfiguracion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.pbConfiguracion.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbConfiguracion.Image = CType(resources.GetObject("pbConfiguracion.Image"), System.Drawing.Image)
-        Me.pbConfiguracion.Location = New System.Drawing.Point(12, 663)
-        Me.pbConfiguracion.Name = "pbConfiguracion"
-        Me.pbConfiguracion.Size = New System.Drawing.Size(32, 32)
-        Me.pbConfiguracion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.pbConfiguracion.TabIndex = 8
-        Me.pbConfiguracion.TabStop = False
+        Me.pbCerrarSesion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.pbCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbCerrarSesion.Image = CType(resources.GetObject("pbCerrarSesion.Image"), System.Drawing.Image)
+        Me.pbCerrarSesion.Location = New System.Drawing.Point(12, 663)
+        Me.pbCerrarSesion.Name = "pbCerrarSesion"
+        Me.pbCerrarSesion.Size = New System.Drawing.Size(32, 32)
+        Me.pbCerrarSesion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbCerrarSesion.TabIndex = 8
+        Me.pbCerrarSesion.TabStop = False
         '
         'btnMenu
         '
@@ -633,12 +633,11 @@ Partial Class MenuPrincipal
         Me.panelSuperior.ResumeLayout(False)
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelMenu.ResumeLayout(False)
-        Me.panelMenu.PerformLayout()
         Me.panelControles.ResumeLayout(False)
         Me.submenuProductos.ResumeLayout(False)
         Me.submenuProveedores.ResumeLayout(False)
         Me.submenuClientes.ResumeLayout(False)
-        CType(Me.pbConfiguracion, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbCerrarSesion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelContenedor.ResumeLayout(False)
         Me.PanelContenedor.PerformLayout()
@@ -668,7 +667,7 @@ Partial Class MenuPrincipal
     Friend WithEvents txtPrecioProductos As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnAyuda As System.Windows.Forms.Button
-    Friend WithEvents pbConfiguracion As System.Windows.Forms.PictureBox
+    Friend WithEvents pbCerrarSesion As System.Windows.Forms.PictureBox
     Friend WithEvents panelControles As System.Windows.Forms.Panel
     Friend WithEvents btnProveedores As System.Windows.Forms.Button
     Friend WithEvents submenuClientes As System.Windows.Forms.Panel

@@ -293,4 +293,8 @@ Public Class MenuPrincipal
     End Sub
 
 
+    Private Sub pbCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbCerrarSesion.Click
+        Login.Show()
+        Me.Close()
+    End Sub
 End Class

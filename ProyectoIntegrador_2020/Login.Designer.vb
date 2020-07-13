@@ -40,6 +40,8 @@ Partial Class Login
         Me.chbGuardarUsuario = New System.Windows.Forms.CheckBox()
         Me.panelLogin = New System.Windows.Forms.Panel()
         Me.panelRegistro = New System.Windows.Forms.Panel()
+        Me.lblAceptable2 = New System.Windows.Forms.Label()
+        Me.lblAceptable1 = New System.Windows.Forms.Label()
         Me.pbRegresar = New System.Windows.Forms.PictureBox()
         Me.btnRegistrar = New System.Windows.Forms.Button()
         Me.txtClaveAdminRegistro = New System.Windows.Forms.TextBox()
@@ -144,7 +146,7 @@ Partial Class Login
         Me.txtContraseñaLogin.Name = "txtContraseñaLogin"
         Me.txtContraseñaLogin.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 27)
-        Me.txtContraseñaLogin.TabIndex = 11
+        Me.txtContraseñaLogin.TabIndex = 1
         '
         'Label2
         '
@@ -265,6 +267,8 @@ Partial Class Login
         '
         Me.panelRegistro.BackColor = System.Drawing.Color.White
         Me.panelRegistro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panelRegistro.Controls.Add(Me.lblAceptable2)
+        Me.panelRegistro.Controls.Add(Me.lblAceptable1)
         Me.panelRegistro.Controls.Add(Me.pbRegresar)
         Me.panelRegistro.Controls.Add(Me.btnRegistrar)
         Me.panelRegistro.Controls.Add(Me.txtClaveAdminRegistro)
@@ -282,6 +286,30 @@ Partial Class Login
         Me.panelRegistro.Size = New System.Drawing.Size(402, 513)
         Me.panelRegistro.TabIndex = 19
         Me.panelRegistro.Visible = False
+        '
+        'lblAceptable2
+        '
+        Me.lblAceptable2.AutoSize = True
+        Me.lblAceptable2.Font = New System.Drawing.Font("Century Gothic", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAceptable2.ForeColor = System.Drawing.Color.Red
+        Me.lblAceptable2.Location = New System.Drawing.Point(304, 324)
+        Me.lblAceptable2.Name = "lblAceptable2"
+        Me.lblAceptable2.Size = New System.Drawing.Size(24, 23)
+        Me.lblAceptable2.TabIndex = 12
+        Me.lblAceptable2.Text = "X"
+        Me.lblAceptable2.Visible = False
+        '
+        'lblAceptable1
+        '
+        Me.lblAceptable1.AutoSize = True
+        Me.lblAceptable1.Font = New System.Drawing.Font("Century Gothic", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAceptable1.ForeColor = System.Drawing.Color.Red
+        Me.lblAceptable1.Location = New System.Drawing.Point(304, 235)
+        Me.lblAceptable1.Name = "lblAceptable1"
+        Me.lblAceptable1.Size = New System.Drawing.Size(24, 23)
+        Me.lblAceptable1.TabIndex = 11
+        Me.lblAceptable1.Text = "X"
+        Me.lblAceptable1.Visible = False
         '
         'pbRegresar
         '
@@ -453,4 +481,6 @@ Partial Class Login
     Friend WithEvents txtRepContraseñaRegistro As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents pbRegresar As System.Windows.Forms.PictureBox
+    Friend WithEvents lblAceptable2 As System.Windows.Forms.Label
+    Friend WithEvents lblAceptable1 As System.Windows.Forms.Label
 End Class

@@ -1,9 +1,13 @@
 ﻿Imports System.Runtime.InteropServices
 Imports MySql.Data.MySqlClient
+Imports System.IO
 Public Class Login
 
-    Public resultado As String
+    Public resultado As Byte
+    Public resultadoTxt As String
     Dim drRes As MySqlDataReader
+    Dim ruta As String = "./usuario/"
+    Dim archivoGuardarNombreUsr As String = "usuario.txt"
 
     '----CLAVE PARA CREAR UN USUARIO ADMIN----'
     Dim claveAdmin As String = "7r7w7x"
@@ -11,10 +15,13 @@ Public Class Login
     '----INICIO DEL FORMULARIO----'
 
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        leerUsuarioTxt()
+        If Not txtUsuarioLogin.Text.Equals("") Then chbGuardarUsuario.Checked = True
         Dim conectar = New Conexion
         conectar.establecerConexion()
         SendMessage(txtUsuarioLogin.Handle, EM_SETCUEBANNER, 0, "Nombre de usuario")
         SendMessage(txtContraseñaLogin.Handle, EM_SETCUEBANNER, 0, "*******************")
+        txtContraseñaLogin.Focus()
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
@@ -66,6 +73,7 @@ Public Class Login
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles linkCrearUsuario.LinkClicked
+        txtContraseñaLogin.Text = ""
         panelLogin.Visible = False
         panelRegistro.Visible = True
         lblTitulo.Text = "Registrarse  |  El Cofre"
@@ -73,6 +81,10 @@ Public Class Login
     End Sub
 
     Private Sub btnRegresar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbRegresar.Click
+        txtUsuarioRegistro.Text = ""
+        txtContraseñaRegistro.Text = ""
+        txtRepContraseñaRegistro.Text = ""
+        txtClaveAdminRegistro.Text = ""
         panelLogin.Visible = True
         panelRegistro.Visible = False
         lblTitulo.Text = "Login  |  El Cofre"
@@ -89,13 +101,18 @@ Public Class Login
         pbRegresar.Size = New Size(31, 32)
     End Sub
 
-    '----ENTRA AL MENÚ PRINCIPAL----'
+    '----ENTRA AL MENÚ PRINCIPAL (VALIDACIÓN EN LOGIN)----'
 
     Private Sub btnEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEntrar.Click
         Try
             consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
 
-            If Not resultado = "" Then
+            If Not resultadoTxt = "" Then
+                If chbGuardarUsuario.Checked Then
+                    guardarUsuarioTxt(txtUsuarioLogin.Text.ToUpper)
+                Else
+                    guardarUsuarioTxt("")
+                End If
                 MenuPrincipal.Show()
                 Me.Close()
             Else
@@ -105,27 +122,41 @@ Public Class Login
         Catch ex As Exception
             mostrarMensaje("Error: " & ex.Message)
         End Try
+
     End Sub
 
 
-    '----CREA UN USUARIO ADMINISTRADOR----'
+    '----CREAR UN USUARIO ADMINISTRADOR----'
 
     Private Sub btnRegistrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrar.Click
         If txtClaveAdminRegistro.Text.Equals(claveAdmin) Then
             If Not txtUsuarioRegistro.Text.Equals("") And Not txtContraseñaRegistro.Text.Equals("") And Not txtRepContraseñaRegistro.Text.Equals("") Then
-                consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
-                If resultado = 1 Then
-                    mostrarMensaje("Usuario creado exitosamente!")
-                    txtUsuarioRegistro.Text = ""
-                    txtContraseñaRegistro.Text = ""
-                    txtRepContraseñaRegistro.Text = ""
-                    txtClaveAdminRegistro.Text = ""
+                If Not txtContraseñaRegistro.Text.Equals(txtRepContraseñaRegistro.Text) Then
+                    mostrarMensaje("Las contraseñas no coinciden." & vbCrLf & "Intente nuevamente.")
                 Else
-                    mostrarMensaje("Error al intentar crear usuario.")
-                End If
 
+                    consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
+                    If Not resultadoTxt = "" Then
+                        mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
+                    Else
+
+                        consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
+                        If resultado = 1 Then
+                            mostrarMensaje("Usuario creado exitosamente!")
+                            txtUsuarioRegistro.Text = ""
+                            txtContraseñaRegistro.Text = ""
+                            txtRepContraseñaRegistro.Text = ""
+                            txtClaveAdminRegistro.Text = ""
+                            panelRegistro.Hide()
+                            panelLogin.Show()
+                        Else
+                            mostrarMensaje("Error al intentar crear usuario.")
+                        End If
+                    End If
+                End If
             Else
                 mostrarMensaje("Error. Debe completar todos los campos vacios.")
+
             End If
         Else
             mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
@@ -151,7 +182,83 @@ Public Class Login
         mensaje.Show()
     End Sub
 
-    '----REALIZAR CONSULTA----'
+
+    '----SI LE MARCÓ PARA GUARDAR USUARIO, ENTONCES CREAMOS UN ARCHIVO TXT CON EL NOMBRE DE USUARIO.----'
+
+    Private Sub guardarUsuarioTxt(ByVal nomUsuario As String)
+
+        Dim fs As FileStream
+
+        '----Validamos si la carpeta de ruta existe, si no existe la creamos----'
+        Try
+            If File.Exists(ruta) Then
+
+                '----Si la carpeta existe creamos o sobreescribios el archivo txt----'
+                fs = File.Create(ruta & archivoGuardarNombreUsr)
+                fs.Close()
+
+                '----Creamos un objeto de tipo StreamWriter que nos permite escribir en ficheros TXT----'
+                Dim escribir As New StreamWriter(ruta & archivoGuardarNombreUsr)
+                Try
+                    '----Escribimos una linea en nuestro archivo TXT----'
+                    escribir.WriteLine(nomUsuario)
+                    escribir.Close()
+                Catch ex As Exception
+                    mostrarMensaje("Error al intentar crear el archivo." & vbCrLf & ex.Message)
+                End Try
+            Else
+
+                '----Si la carpeta no existe la creamos----'
+                Directory.CreateDirectory(ruta)
+
+                '----Una vez creada la carpeta creamos o sobreescribios el archivo txt----'
+                fs = File.Create(ruta & archivoGuardarNombreUsr)
+                fs.Close()
+
+                '----Creamos un objeto de tipo StreamWriter que nos permite escribir en ficheros TXT----'
+                Dim escribir As New StreamWriter(ruta & archivoGuardarNombreUsr)
+                Try
+                    '----Escribimos una linea en nuestro archivo TXT----'
+                    escribir.WriteLine(nomUsuario)
+                    escribir.Close()
+                Catch ex As Exception
+                    mostrarMensaje("Se presento un problema al escribir en el archivo: " & vbCrLf & ex.Message)
+                End Try
+
+            End If
+
+        Catch ex As Exception
+            mostrarMensaje("Error al intentar crear el archivo." & vbCrLf & ex.Message)
+        End Try
+
+    End Sub
+
+
+    '----LEER NOMBRE DE USUARIO DEL ARCHIVO TXT----'
+
+    Private Sub leerUsuarioTxt()
+        Dim leer As New StreamReader(ruta & archivoGuardarNombreUsr)
+
+        Try
+            ':::Indicamos mediante un While que mientras no sea el ultimo caracter repita el proceso
+            While leer.Peek <> -1
+                ':::Leemos cada linea del archivo TXT
+                Dim linea As String = leer.ReadLine()
+                ':::Validamos que la linea no este vacia
+                If String.IsNullOrEmpty(linea) Then
+                    Continue While
+                End If
+                ':::Agregramos los registros encontrados
+                txtUsuarioLogin.Text = linea
+            End While
+
+            leer.Close()
+        Catch ex As Exception
+            mostrarMensaje("Error al intentar leer el archivo de usuario. " & vbCrLf & ex.Message)
+        End Try
+    End Sub
+
+    '----CONSULTAS MySQL----'
 
     Private Sub consultaHide(ByVal consultaSQL As String)
         Try
@@ -165,12 +272,40 @@ Public Class Login
     Private Sub consultaReturnHide(ByVal consultaSQL As String)
         Try
             Dim conectar = New Conexion
-            resultado = conectar.consultaReturnHide(consultaSQL)
+            resultadoTxt = conectar.consultaReturnHide(consultaSQL)
         Catch ex As Exception
             mostrarMensaje("Error al realizar consulta: " & ex.Message)
         End Try
     End Sub
 
 
+    '----VALIDACIÓN DE CONTRASEÑAS----'
 
+    Private Sub txtContraseñaRegistro_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtContraseñaRegistro.KeyUp
+        If Not lblAceptable1.Visible Then
+            lblAceptable1.Visible = True
+        End If
+
+        If txtContraseñaRegistro.Text.Count >= 8 Then
+            lblAceptable1.Text = "✓"
+            lblAceptable1.ForeColor = Color.Green
+        Else
+            lblAceptable1.Text = "X"
+            lblAceptable1.ForeColor = Color.Red
+        End If
+    End Sub
+
+    Private Sub txtRepContraseñaRegistro_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtRepContraseñaRegistro.KeyUp
+        If Not lblAceptable2.Visible Then
+            lblAceptable2.Visible = True
+        End If
+
+        If txtRepContraseñaRegistro.Text.Count >= 8 And txtRepContraseñaRegistro.Text.Equals(txtContraseñaRegistro.Text) Then
+            lblAceptable2.Text = "✓"
+            lblAceptable2.ForeColor = Color.Green
+        Else
+            lblAceptable2.Text = "X"
+            lblAceptable2.ForeColor = Color.Red
+        End If
+    End Sub
 End Class
