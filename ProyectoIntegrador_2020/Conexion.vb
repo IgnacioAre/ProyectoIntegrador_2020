@@ -26,7 +26,7 @@ Public Class Conexion
 
     '----REALIZA UNA CONSULTA A LA BASE DE DATOS (Sale una excepción)----'
 
-    Public Sub consultaHide(ByVal Sql As String)
+    Private Sub consultaHideEstructura(ByVal Sql As String)
 
         Try
             conexion.Open()
@@ -43,7 +43,7 @@ Public Class Conexion
     End Sub
 
 
-    Public Function consultaReturnHide(ByVal Sql As String) As String
+    Public Function consultaReturnHideEstructura(ByVal Sql As String) As String
         Try
             conexion.Open()
             comando = New MySqlCommand(Sql, conexion)
@@ -73,6 +73,7 @@ Public Class Conexion
 
 
     '----MOSTRAR TODO DE LA TABLA PRODUCTO EN UN DATATABLE----'
+
     Public Function mostrarProductosEnTabla() As DataTable
 
         consultaSQL = "SELECT idProducto AS ID," &
@@ -85,6 +86,34 @@ Public Class Conexion
 
     End Function
 
+    '----CONSULTAS MySQL----'
+
+    Public Sub consultaHide(ByVal consultaSQL As String)
+        Try
+            consultaHideEstructura(consultaSQL)
+        Catch ex As Exception
+            mostrarMensaje("Error al realizar consulta: " & ex.Message)
+        End Try
+    End Sub
+
+    Public Sub consultaReturnHide(ByVal consultaSQL As String)
+        Try
+            Login.resultadoTxt = consultaReturnHideEstructura(consultaSQL)
+        Catch ex As Exception
+            mostrarMensaje("Error al realizar consulta: " & ex.Message)
+        End Try
+    End Sub
+
+    '----MOSTRAR NOMBRE Y PRECIO DE LA TABLA PRODUCTO EN UN DATATABLE----'
+    Public Function mostrarRapidoProductoEnTabla() As DataTable
+
+        consultaSQL = "SELECT nombre AS Nombre," &
+                                    "precio AS Precio " &
+                                     "FROM producto where nombre like '%" & MenuPrincipal.txtPrecioProductos.Text & "%'"
+
+        Return insertarEnTabla(consultaSQL)
+
+    End Function
 
     '----MOSTRAR TODO DE LA TABLA PROVEEDORES EN UN DATATABLE----'
     Public Function mostrarProveedoresEnTabla() As DataTable
@@ -112,5 +141,11 @@ Public Class Conexion
         Return insertarEnTabla(consultaSQL)
     End Function
 
+    '----MENSAJE PERSONALIZADO----'
+
+    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
+        Dim mensaje As New Mensaje(mensajeObtenido)
+        mensaje.Show()
+    End Sub
 
 End Class

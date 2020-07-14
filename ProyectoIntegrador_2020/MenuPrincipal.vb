@@ -5,6 +5,16 @@ Public Class MenuPrincipal
     Dim submenuClienteBool As Boolean = False
     Dim submenuProveedorBool As Boolean = False
     Dim submenuProductoBool As Boolean = False
+    Public resultado As Byte
+    Public resultadoTxt As String
+
+
+    '----INICIO DEL FORMULARIO----'
+
+    Private Sub Menu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
+        SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
+    End Sub
 
     '----CIERRA EL FORUMULARIO DEL MENÚ (Y FINALIZA SU EJECUCIÓN)----'
 
@@ -228,10 +238,6 @@ Public Class MenuPrincipal
     End Sub
 
 
-    '----MOSTRAR FORMULARIOS EN UN PANEL----'
-
-    'openFromOnPanel(Of Pruebas)()
-
     '----MÉTODO PARA MOSTRAR FORMULARIOS EN UN PANEL----'
 
     Private Sub openFromOnPanel(Of FormH As {Form, New})()
@@ -256,14 +262,17 @@ Public Class MenuPrincipal
     Private Sub tmrHoraFecha_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrHoraFecha.Tick
         lblHora.Text = DateTime.Now.ToString("HH:mm:ss")
         lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy")
+        Dim hora As Byte = Val(DateTime.Now.ToString("HH"))
+        If hora > 6 And hora < 12 Then
+            lblBienvenida.Text = "¡Buen día!" & vbCrLf & "    Bienvenido"
+        ElseIf hora >= 13 And hora <= 18 Then
+            lblBienvenida.Text = "¡Buenas Tardes!" & vbCrLf & "    Bienvenido"
+        Else
+            lblBienvenida.Text = "¡Buenas Noches!" & vbCrLf & "   Bienvenido"
+        End If
+
     End Sub
 
-    '----INICIO DEL FORMULARIO----'
-
-    Private Sub Menu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
-        SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
-    End Sub
 
     '----OCULTAR SUBMENUS----'
 
@@ -280,21 +289,30 @@ Public Class MenuPrincipal
         submenuProveedorBool = False
         submenuProductoBool = False
     End Sub
-   
+
+    '----SONIDO DEL COFRE----'
+
     Private Sub imgCofre_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles imgCofre.Click
         My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
-    End Sub
-
-    '----MENSAJE PERSONALIZADO----'
-
-    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
-        Dim mensaje As New Mensaje(mensajeObtenido)
-        mensaje.Show()
     End Sub
 
 
     Private Sub pbCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbCerrarSesion.Click
         Login.Show()
         Me.Close()
+    End Sub
+
+    Private Sub txtPrecioProductos_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPrecioProductos.KeyUp
+        Dim conectar = New Conexion
+        dgvPreciosRapidos.DataSource = conectar.mostrarRapidoProductoEnTabla()
+        dgvPreciosRapidos.Columns(1).Width = 60
+    End Sub
+
+    '----EVENTO BOTÓN CLIENTES----'
+
+    Private Sub btnNuevoCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoCliente.Click
+        '----MOSTRAR FORMULARIO CLIENTES EN EL MENÚ PRINCIPAL----'
+
+        openFromOnPanel(Of Pruebas)()
     End Sub
 End Class

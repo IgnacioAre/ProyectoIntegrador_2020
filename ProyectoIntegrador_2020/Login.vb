@@ -3,6 +3,7 @@ Imports MySql.Data.MySqlClient
 Imports System.IO
 Public Class Login
 
+    Dim conectar = New Conexion
     Public resultado As Byte
     Public resultadoTxt As String
     Dim drRes As MySqlDataReader
@@ -15,13 +16,18 @@ Public Class Login
     '----INICIO DEL FORMULARIO----'
 
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.ToolTip1.SetToolTip(lblAceptable1, "La contraseña debe contenter al menos 8 caracteres.")
+        Me.ToolTip2.SetToolTip(lblAceptable2, "Las contraseñas deben coincidir.")
         leerUsuarioTxt()
-        If Not txtUsuarioLogin.Text.Equals("") Then chbGuardarUsuario.Checked = True
-        Dim conectar = New Conexion
+        If Not txtUsuarioLogin.Text.Equals("") Then
+            chbGuardarUsuario.Checked = True
+            txtContraseñaLogin.Focus()
+        Else
+            txtUsuarioLogin.Focus()
+        End If
         conectar.establecerConexion()
         SendMessage(txtUsuarioLogin.Handle, EM_SETCUEBANNER, 0, "Nombre de usuario")
-        SendMessage(txtContraseñaLogin.Handle, EM_SETCUEBANNER, 0, "*******************")
-        txtContraseñaLogin.Focus()
+        SendMessage(txtUsuarioRegistro.Handle, EM_SETCUEBANNER, 0, "Ej: Admin")
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
@@ -105,7 +111,7 @@ Public Class Login
 
     Private Sub btnEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEntrar.Click
         Try
-            consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
+            conectar.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
 
             If Not resultadoTxt = "" Then
                 If chbGuardarUsuario.Checked Then
@@ -135,12 +141,12 @@ Public Class Login
                     mostrarMensaje("Las contraseñas no coinciden." & vbCrLf & "Intente nuevamente.")
                 Else
 
-                    consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
+                    conectar.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
                     If Not resultadoTxt = "" Then
                         mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
                     Else
 
-                        consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
+                        conectar.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
                         If resultado = 1 Then
                             mostrarMensaje("Usuario creado exitosamente!")
                             txtUsuarioRegistro.Text = ""
@@ -258,26 +264,6 @@ Public Class Login
         End Try
     End Sub
 
-    '----CONSULTAS MySQL----'
-
-    Private Sub consultaHide(ByVal consultaSQL As String)
-        Try
-            Dim conectar = New Conexion
-            conectar.consultaHide(consultaSQL)
-        Catch ex As Exception
-            mostrarMensaje("Error al realizar consulta: " & ex.Message)
-        End Try
-    End Sub
-
-    Private Sub consultaReturnHide(ByVal consultaSQL As String)
-        Try
-            Dim conectar = New Conexion
-            resultadoTxt = conectar.consultaReturnHide(consultaSQL)
-        Catch ex As Exception
-            mostrarMensaje("Error al realizar consulta: " & ex.Message)
-        End Try
-    End Sub
-
 
     '----VALIDACIÓN DE CONTRASEÑAS----'
 
@@ -295,6 +281,9 @@ Public Class Login
         End If
     End Sub
 
+
+    '----EVENTO DE TECLAS----'
+
     Private Sub txtRepContraseñaRegistro_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtRepContraseñaRegistro.KeyUp
         If Not lblAceptable2.Visible Then
             lblAceptable2.Visible = True
@@ -306,6 +295,72 @@ Public Class Login
         Else
             lblAceptable2.Text = "X"
             lblAceptable2.ForeColor = Color.Red
+        End If
+    End Sub
+
+    Private Sub txtContraseñaLogin_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtContraseñaLogin.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+
+            Try
+                conectar.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
+
+                If Not resultadoTxt = "" Then
+                    If chbGuardarUsuario.Checked Then
+                        guardarUsuarioTxt(txtUsuarioLogin.Text.ToUpper)
+                    Else
+                        guardarUsuarioTxt("")
+                    End If
+                    MenuPrincipal.Show()
+                    Me.Close()
+                Else
+                    mostrarMensaje("No se encuentra un usuario con esos datos." & vbCrLf & "Intentelo nuevamente.")
+                End If
+
+            Catch ex As Exception
+                mostrarMensaje("Error: " & ex.Message)
+            End Try
+
+        End If
+    End Sub
+
+    Private Sub txtClaveAdminRegistro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtClaveAdminRegistro.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+            If txtClaveAdminRegistro.Text.Equals(claveAdmin) Then
+                If Not txtUsuarioRegistro.Text.Equals("") And Not txtContraseñaRegistro.Text.Equals("") And Not txtRepContraseñaRegistro.Text.Equals("") Then
+                    If Not txtContraseñaRegistro.Text.Equals(txtRepContraseñaRegistro.Text) Then
+                        mostrarMensaje("Las contraseñas no coinciden." & vbCrLf & "Intente nuevamente.")
+                    Else
+
+                        conectar.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
+                        If Not resultadoTxt = "" Then
+                            mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
+                        Else
+
+                            conectar.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
+                            If resultado = 1 Then
+                                mostrarMensaje("Usuario creado exitosamente!")
+                                txtUsuarioRegistro.Text = ""
+                                txtContraseñaRegistro.Text = ""
+                                txtRepContraseñaRegistro.Text = ""
+                                txtClaveAdminRegistro.Text = ""
+                                panelRegistro.Hide()
+                                panelLogin.Show()
+                            Else
+                                mostrarMensaje("Error al intentar crear usuario.")
+                            End If
+                        End If
+                    End If
+                Else
+                    mostrarMensaje("Error. Debe completar todos los campos vacios.")
+
+                End If
+            Else
+                mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
+            End If
+
+            resultado = 0
         End If
     End Sub
 End Class

@@ -22,6 +22,7 @@ Partial Class Login
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Login))
         Me.panelTitulo = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
@@ -35,7 +36,6 @@ Partial Class Login
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.linkCrearUsuario = New System.Windows.Forms.LinkLabel()
-        Me.linkContraseñaOvidada = New System.Windows.Forms.LinkLabel()
         Me.lblCheckUsuario = New System.Windows.Forms.Label()
         Me.chbGuardarUsuario = New System.Windows.Forms.CheckBox()
         Me.panelLogin = New System.Windows.Forms.Panel()
@@ -53,6 +53,8 @@ Partial Class Login
         Me.txtUsuarioRegistro = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.panelTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelLogin.SuspendLayout()
@@ -146,7 +148,7 @@ Partial Class Login
         Me.txtContraseñaLogin.Name = "txtContraseñaLogin"
         Me.txtContraseñaLogin.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 27)
-        Me.txtContraseñaLogin.TabIndex = 1
+        Me.txtContraseñaLogin.TabIndex = 0
         '
         'Label2
         '
@@ -205,21 +207,6 @@ Partial Class Login
         Me.linkCrearUsuario.TabStop = True
         Me.linkCrearUsuario.Text = "Crear Usuario"
         '
-        'linkContraseñaOvidada
-        '
-        Me.linkContraseñaOvidada.ActiveLinkColor = System.Drawing.Color.Turquoise
-        Me.linkContraseñaOvidada.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.linkContraseñaOvidada.AutoSize = True
-        Me.linkContraseñaOvidada.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.linkContraseñaOvidada.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.linkContraseñaOvidada.LinkColor = System.Drawing.Color.DarkRed
-        Me.linkContraseñaOvidada.Location = New System.Drawing.Point(165, 468)
-        Me.linkContraseñaOvidada.Name = "linkContraseñaOvidada"
-        Me.linkContraseñaOvidada.Size = New System.Drawing.Size(201, 18)
-        Me.linkContraseñaOvidada.TabIndex = 16
-        Me.linkContraseñaOvidada.TabStop = True
-        Me.linkContraseñaOvidada.Text = "¿Olvidaste tu contraseña?"
-        '
         'lblCheckUsuario
         '
         Me.lblCheckUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
@@ -251,7 +238,6 @@ Partial Class Login
         Me.panelLogin.Controls.Add(Me.Label1)
         Me.panelLogin.Controls.Add(Me.lblCheckUsuario)
         Me.panelLogin.Controls.Add(Me.txtUsuarioLogin)
-        Me.panelLogin.Controls.Add(Me.linkContraseñaOvidada)
         Me.panelLogin.Controls.Add(Me.Label2)
         Me.panelLogin.Controls.Add(Me.linkCrearUsuario)
         Me.panelLogin.Controls.Add(Me.txtContraseñaLogin)
@@ -296,6 +282,7 @@ Partial Class Login
         Me.lblAceptable2.Name = "lblAceptable2"
         Me.lblAceptable2.Size = New System.Drawing.Size(24, 23)
         Me.lblAceptable2.TabIndex = 12
+        Me.lblAceptable2.Tag = ""
         Me.lblAceptable2.Text = "X"
         Me.lblAceptable2.Visible = False
         '
@@ -308,6 +295,7 @@ Partial Class Login
         Me.lblAceptable1.Name = "lblAceptable1"
         Me.lblAceptable1.Size = New System.Drawing.Size(24, 23)
         Me.lblAceptable1.TabIndex = 11
+        Me.lblAceptable1.Tag = ""
         Me.lblAceptable1.Text = "X"
         Me.lblAceptable1.Visible = False
         '
@@ -464,7 +452,6 @@ Partial Class Login
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents linkCrearUsuario As System.Windows.Forms.LinkLabel
-    Friend WithEvents linkContraseñaOvidada As System.Windows.Forms.LinkLabel
     Friend WithEvents lblCheckUsuario As System.Windows.Forms.Label
     Friend WithEvents chbGuardarUsuario As System.Windows.Forms.CheckBox
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
@@ -483,4 +470,6 @@ Partial Class Login
     Friend WithEvents pbRegresar As System.Windows.Forms.PictureBox
     Friend WithEvents lblAceptable2 As System.Windows.Forms.Label
     Friend WithEvents lblAceptable1 As System.Windows.Forms.Label
+    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents ToolTip2 As System.Windows.Forms.ToolTip
 End Class

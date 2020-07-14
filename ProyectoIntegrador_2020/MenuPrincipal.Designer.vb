@@ -24,6 +24,9 @@ Partial Class MenuPrincipal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuPrincipal))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelSuperior = New System.Windows.Forms.Panel()
         Me.btnRestaurar = New System.Windows.Forms.Button()
         Me.btnMaximizar = New System.Windows.Forms.Button()
@@ -36,16 +39,16 @@ Partial Class MenuPrincipal
         Me.panelControles = New System.Windows.Forms.Panel()
         Me.btnNotas = New System.Windows.Forms.Button()
         Me.submenuProductos = New System.Windows.Forms.Panel()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.btnActualizarProducto = New System.Windows.Forms.Button()
+        Me.btnListadoProducto = New System.Windows.Forms.Button()
         Me.btnProductos = New System.Windows.Forms.Button()
         Me.submenuProveedores = New System.Windows.Forms.Panel()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.btnGestionarProveedor = New System.Windows.Forms.Button()
+        Me.btnNuevoProveedor = New System.Windows.Forms.Button()
         Me.btnProveedores = New System.Windows.Forms.Button()
         Me.submenuClientes = New System.Windows.Forms.Panel()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnGestionarCliente = New System.Windows.Forms.Button()
+        Me.btnNuevoCliente = New System.Windows.Forms.Button()
         Me.btnClientes = New System.Windows.Forms.Button()
         Me.btnInicio = New System.Windows.Forms.Button()
         Me.pbCerrarSesion = New System.Windows.Forms.PictureBox()
@@ -53,11 +56,12 @@ Partial Class MenuPrincipal
         Me.tmrOcultarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.PanelContenedor = New System.Windows.Forms.Panel()
+        Me.dgvPreciosRapidos = New Guna.UI.WinForms.GunaDataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPrecioProductos = New System.Windows.Forms.TextBox()
         Me.lblFecha = New System.Windows.Forms.Label()
         Me.lblHora = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblBienvenida = New System.Windows.Forms.Label()
         Me.imgCofre = New System.Windows.Forms.PictureBox()
         Me.gifCofre = New System.Windows.Forms.PictureBox()
         Me.tmrHoraFecha = New System.Windows.Forms.Timer(Me.components)
@@ -73,6 +77,7 @@ Partial Class MenuPrincipal
         CType(Me.pbCerrarSesion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelContenedor.SuspendLayout()
+        CType(Me.dgvPreciosRapidos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -100,9 +105,9 @@ Partial Class MenuPrincipal
         Me.btnRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnRestaurar.ForeColor = System.Drawing.Color.White
         Me.btnRestaurar.Image = CType(resources.GetObject("btnRestaurar.Image"), System.Drawing.Image)
-        Me.btnRestaurar.Location = New System.Drawing.Point(971, 3)
+        Me.btnRestaurar.Location = New System.Drawing.Point(971, 0)
         Me.btnRestaurar.Name = "btnRestaurar"
-        Me.btnRestaurar.Size = New System.Drawing.Size(30, 30)
+        Me.btnRestaurar.Size = New System.Drawing.Size(32, 33)
         Me.btnRestaurar.TabIndex = 4
         Me.btnRestaurar.UseVisualStyleBackColor = True
         '
@@ -115,9 +120,9 @@ Partial Class MenuPrincipal
         Me.btnMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnMaximizar.ForeColor = System.Drawing.Color.White
         Me.btnMaximizar.Image = CType(resources.GetObject("btnMaximizar.Image"), System.Drawing.Image)
-        Me.btnMaximizar.Location = New System.Drawing.Point(971, 3)
+        Me.btnMaximizar.Location = New System.Drawing.Point(971, 0)
         Me.btnMaximizar.Name = "btnMaximizar"
-        Me.btnMaximizar.Size = New System.Drawing.Size(30, 30)
+        Me.btnMaximizar.Size = New System.Drawing.Size(32, 33)
         Me.btnMaximizar.TabIndex = 3
         Me.btnMaximizar.UseVisualStyleBackColor = True
         Me.btnMaximizar.Visible = False
@@ -132,9 +137,9 @@ Partial Class MenuPrincipal
         Me.btnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnAyuda.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAyuda.ForeColor = System.Drawing.Color.White
-        Me.btnAyuda.Location = New System.Drawing.Point(901, 2)
+        Me.btnAyuda.Location = New System.Drawing.Point(901, 0)
         Me.btnAyuda.Name = "btnAyuda"
-        Me.btnAyuda.Size = New System.Drawing.Size(30, 30)
+        Me.btnAyuda.Size = New System.Drawing.Size(32, 33)
         Me.btnAyuda.TabIndex = 2
         Me.btnAyuda.Text = "?"
         Me.btnAyuda.UseVisualStyleBackColor = False
@@ -148,9 +153,9 @@ Partial Class MenuPrincipal
         Me.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnMinimizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnMinimizar.ForeColor = System.Drawing.Color.White
-        Me.btnMinimizar.Location = New System.Drawing.Point(936, 2)
+        Me.btnMinimizar.Location = New System.Drawing.Point(936, 0)
         Me.btnMinimizar.Name = "btnMinimizar"
-        Me.btnMinimizar.Size = New System.Drawing.Size(30, 30)
+        Me.btnMinimizar.Size = New System.Drawing.Size(32, 33)
         Me.btnMinimizar.TabIndex = 1
         Me.btnMinimizar.Text = "_"
         Me.btnMinimizar.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -165,9 +170,9 @@ Partial Class MenuPrincipal
         Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnCerrar.ForeColor = System.Drawing.Color.White
         Me.btnCerrar.Image = CType(resources.GetObject("btnCerrar.Image"), System.Drawing.Image)
-        Me.btnCerrar.Location = New System.Drawing.Point(1006, 3)
+        Me.btnCerrar.Location = New System.Drawing.Point(1006, 0)
         Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(30, 30)
+        Me.btnCerrar.Size = New System.Drawing.Size(32, 33)
         Me.btnCerrar.TabIndex = 0
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
@@ -241,8 +246,8 @@ Partial Class MenuPrincipal
         'submenuProductos
         '
         Me.submenuProductos.BackColor = System.Drawing.Color.White
-        Me.submenuProductos.Controls.Add(Me.Button6)
-        Me.submenuProductos.Controls.Add(Me.Button7)
+        Me.submenuProductos.Controls.Add(Me.btnActualizarProducto)
+        Me.submenuProductos.Controls.Add(Me.btnListadoProducto)
         Me.submenuProductos.Dock = System.Windows.Forms.DockStyle.Top
         Me.submenuProductos.Location = New System.Drawing.Point(0, 438)
         Me.submenuProductos.Name = "submenuProductos"
@@ -250,47 +255,47 @@ Partial Class MenuPrincipal
         Me.submenuProductos.TabIndex = 25
         Me.submenuProductos.Visible = False
         '
-        'Button6
+        'btnActualizarProducto
         '
-        Me.Button6.BackColor = System.Drawing.Color.Black
-        Me.Button6.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button6.FlatAppearance.BorderSize = 0
-        Me.Button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.ForeColor = System.Drawing.Color.White
-        Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(3, 54)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(230, 54)
-        Me.Button6.TabIndex = 5
-        Me.Button6.Text = " Gestionar"
-        Me.Button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button6.UseVisualStyleBackColor = False
+        Me.btnActualizarProducto.BackColor = System.Drawing.Color.Black
+        Me.btnActualizarProducto.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnActualizarProducto.FlatAppearance.BorderSize = 0
+        Me.btnActualizarProducto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnActualizarProducto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnActualizarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnActualizarProducto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActualizarProducto.ForeColor = System.Drawing.Color.White
+        Me.btnActualizarProducto.Image = CType(resources.GetObject("btnActualizarProducto.Image"), System.Drawing.Image)
+        Me.btnActualizarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnActualizarProducto.Location = New System.Drawing.Point(3, 54)
+        Me.btnActualizarProducto.Name = "btnActualizarProducto"
+        Me.btnActualizarProducto.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnActualizarProducto.Size = New System.Drawing.Size(230, 54)
+        Me.btnActualizarProducto.TabIndex = 5
+        Me.btnActualizarProducto.Text = " Actualizar"
+        Me.btnActualizarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnActualizarProducto.UseVisualStyleBackColor = False
         '
-        'Button7
+        'btnListadoProducto
         '
-        Me.Button7.BackColor = System.Drawing.Color.Black
-        Me.Button7.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button7.FlatAppearance.BorderSize = 0
-        Me.Button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.ForeColor = System.Drawing.Color.White
-        Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
-        Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button7.Location = New System.Drawing.Point(3, 0)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button7.Size = New System.Drawing.Size(230, 57)
-        Me.Button7.TabIndex = 4
-        Me.Button7.Text = " Listado"
-        Me.Button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button7.UseVisualStyleBackColor = False
+        Me.btnListadoProducto.BackColor = System.Drawing.Color.Black
+        Me.btnListadoProducto.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnListadoProducto.FlatAppearance.BorderSize = 0
+        Me.btnListadoProducto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnListadoProducto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnListadoProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnListadoProducto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnListadoProducto.ForeColor = System.Drawing.Color.White
+        Me.btnListadoProducto.Image = CType(resources.GetObject("btnListadoProducto.Image"), System.Drawing.Image)
+        Me.btnListadoProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnListadoProducto.Location = New System.Drawing.Point(3, 0)
+        Me.btnListadoProducto.Name = "btnListadoProducto"
+        Me.btnListadoProducto.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnListadoProducto.Size = New System.Drawing.Size(230, 57)
+        Me.btnListadoProducto.TabIndex = 4
+        Me.btnListadoProducto.Text = " Listado"
+        Me.btnListadoProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnListadoProducto.UseVisualStyleBackColor = False
         '
         'btnProductos
         '
@@ -315,8 +320,8 @@ Partial Class MenuPrincipal
         'submenuProveedores
         '
         Me.submenuProveedores.BackColor = System.Drawing.Color.White
-        Me.submenuProveedores.Controls.Add(Me.Button4)
-        Me.submenuProveedores.Controls.Add(Me.Button5)
+        Me.submenuProveedores.Controls.Add(Me.btnGestionarProveedor)
+        Me.submenuProveedores.Controls.Add(Me.btnNuevoProveedor)
         Me.submenuProveedores.Dock = System.Windows.Forms.DockStyle.Top
         Me.submenuProveedores.Location = New System.Drawing.Point(0, 273)
         Me.submenuProveedores.Name = "submenuProveedores"
@@ -324,47 +329,47 @@ Partial Class MenuPrincipal
         Me.submenuProveedores.TabIndex = 22
         Me.submenuProveedores.Visible = False
         '
-        'Button4
+        'btnGestionarProveedor
         '
-        Me.Button4.BackColor = System.Drawing.Color.Black
-        Me.Button4.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.Color.White
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
-        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(3, 54)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button4.Size = New System.Drawing.Size(230, 54)
-        Me.Button4.TabIndex = 5
-        Me.Button4.Text = " Gestionar"
-        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.btnGestionarProveedor.BackColor = System.Drawing.Color.Black
+        Me.btnGestionarProveedor.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnGestionarProveedor.FlatAppearance.BorderSize = 0
+        Me.btnGestionarProveedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnGestionarProveedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnGestionarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGestionarProveedor.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGestionarProveedor.ForeColor = System.Drawing.Color.White
+        Me.btnGestionarProveedor.Image = CType(resources.GetObject("btnGestionarProveedor.Image"), System.Drawing.Image)
+        Me.btnGestionarProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnGestionarProveedor.Location = New System.Drawing.Point(3, 54)
+        Me.btnGestionarProveedor.Name = "btnGestionarProveedor"
+        Me.btnGestionarProveedor.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnGestionarProveedor.Size = New System.Drawing.Size(230, 54)
+        Me.btnGestionarProveedor.TabIndex = 5
+        Me.btnGestionarProveedor.Text = " Gestionar"
+        Me.btnGestionarProveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnGestionarProveedor.UseVisualStyleBackColor = False
         '
-        'Button5
+        'btnNuevoProveedor
         '
-        Me.Button5.BackColor = System.Drawing.Color.Black
-        Me.Button5.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button5.FlatAppearance.BorderSize = 0
-        Me.Button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.ForeColor = System.Drawing.Color.White
-        Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
-        Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.Location = New System.Drawing.Point(3, 0)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button5.Size = New System.Drawing.Size(230, 57)
-        Me.Button5.TabIndex = 4
-        Me.Button5.Text = " Nuevo"
-        Me.Button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button5.UseVisualStyleBackColor = False
+        Me.btnNuevoProveedor.BackColor = System.Drawing.Color.Black
+        Me.btnNuevoProveedor.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnNuevoProveedor.FlatAppearance.BorderSize = 0
+        Me.btnNuevoProveedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnNuevoProveedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnNuevoProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNuevoProveedor.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevoProveedor.ForeColor = System.Drawing.Color.White
+        Me.btnNuevoProveedor.Image = CType(resources.GetObject("btnNuevoProveedor.Image"), System.Drawing.Image)
+        Me.btnNuevoProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnNuevoProveedor.Location = New System.Drawing.Point(3, 0)
+        Me.btnNuevoProveedor.Name = "btnNuevoProveedor"
+        Me.btnNuevoProveedor.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnNuevoProveedor.Size = New System.Drawing.Size(230, 57)
+        Me.btnNuevoProveedor.TabIndex = 4
+        Me.btnNuevoProveedor.Text = " Nuevo"
+        Me.btnNuevoProveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnNuevoProveedor.UseVisualStyleBackColor = False
         '
         'btnProveedores
         '
@@ -389,8 +394,8 @@ Partial Class MenuPrincipal
         'submenuClientes
         '
         Me.submenuClientes.BackColor = System.Drawing.Color.White
-        Me.submenuClientes.Controls.Add(Me.Button3)
-        Me.submenuClientes.Controls.Add(Me.Button1)
+        Me.submenuClientes.Controls.Add(Me.btnGestionarCliente)
+        Me.submenuClientes.Controls.Add(Me.btnNuevoCliente)
         Me.submenuClientes.Dock = System.Windows.Forms.DockStyle.Top
         Me.submenuClientes.Location = New System.Drawing.Point(0, 108)
         Me.submenuClientes.Name = "submenuClientes"
@@ -398,47 +403,47 @@ Partial Class MenuPrincipal
         Me.submenuClientes.TabIndex = 16
         Me.submenuClientes.Visible = False
         '
-        'Button3
+        'btnGestionarCliente
         '
-        Me.Button3.BackColor = System.Drawing.Color.Black
-        Me.Button3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.White
-        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(3, 54)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button3.Size = New System.Drawing.Size(230, 54)
-        Me.Button3.TabIndex = 5
-        Me.Button3.Text = " Gestionar"
-        Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.btnGestionarCliente.BackColor = System.Drawing.Color.Black
+        Me.btnGestionarCliente.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnGestionarCliente.FlatAppearance.BorderSize = 0
+        Me.btnGestionarCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnGestionarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnGestionarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGestionarCliente.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGestionarCliente.ForeColor = System.Drawing.Color.White
+        Me.btnGestionarCliente.Image = CType(resources.GetObject("btnGestionarCliente.Image"), System.Drawing.Image)
+        Me.btnGestionarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnGestionarCliente.Location = New System.Drawing.Point(3, 54)
+        Me.btnGestionarCliente.Name = "btnGestionarCliente"
+        Me.btnGestionarCliente.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnGestionarCliente.Size = New System.Drawing.Size(230, 54)
+        Me.btnGestionarCliente.TabIndex = 5
+        Me.btnGestionarCliente.Text = " Gestionar"
+        Me.btnGestionarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnGestionarCliente.UseVisualStyleBackColor = False
         '
-        'Button1
+        'btnNuevoCliente
         '
-        Me.Button1.BackColor = System.Drawing.Color.Black
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(3, 0)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button1.Size = New System.Drawing.Size(230, 57)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = " Nuevo"
-        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnNuevoCliente.BackColor = System.Drawing.Color.Black
+        Me.btnNuevoCliente.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnNuevoCliente.FlatAppearance.BorderSize = 0
+        Me.btnNuevoCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnNuevoCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnNuevoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNuevoCliente.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevoCliente.ForeColor = System.Drawing.Color.White
+        Me.btnNuevoCliente.Image = CType(resources.GetObject("btnNuevoCliente.Image"), System.Drawing.Image)
+        Me.btnNuevoCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnNuevoCliente.Location = New System.Drawing.Point(3, 0)
+        Me.btnNuevoCliente.Name = "btnNuevoCliente"
+        Me.btnNuevoCliente.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnNuevoCliente.Size = New System.Drawing.Size(230, 57)
+        Me.btnNuevoCliente.TabIndex = 4
+        Me.btnNuevoCliente.Text = " Nuevo"
+        Me.btnNuevoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnNuevoCliente.UseVisualStyleBackColor = False
         '
         'btnClientes
         '
@@ -516,11 +521,12 @@ Partial Class MenuPrincipal
         'PanelContenedor
         '
         Me.PanelContenedor.BackColor = System.Drawing.Color.White
+        Me.PanelContenedor.Controls.Add(Me.dgvPreciosRapidos)
         Me.PanelContenedor.Controls.Add(Me.Label2)
         Me.PanelContenedor.Controls.Add(Me.txtPrecioProductos)
         Me.PanelContenedor.Controls.Add(Me.lblFecha)
         Me.PanelContenedor.Controls.Add(Me.lblHora)
-        Me.PanelContenedor.Controls.Add(Me.Label1)
+        Me.PanelContenedor.Controls.Add(Me.lblBienvenida)
         Me.PanelContenedor.Controls.Add(Me.imgCofre)
         Me.PanelContenedor.Controls.Add(Me.gifCofre)
         Me.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill
@@ -528,6 +534,68 @@ Partial Class MenuPrincipal
         Me.PanelContenedor.Name = "PanelContenedor"
         Me.PanelContenedor.Size = New System.Drawing.Size(802, 707)
         Me.PanelContenedor.TabIndex = 3
+        '
+        'dgvPreciosRapidos
+        '
+        Me.dgvPreciosRapidos.AllowUserToAddRows = False
+        Me.dgvPreciosRapidos.AllowUserToDeleteRows = False
+        Me.dgvPreciosRapidos.AllowUserToResizeColumns = False
+        Me.dgvPreciosRapidos.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvPreciosRapidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvPreciosRapidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvPreciosRapidos.BackgroundColor = System.Drawing.Color.White
+        Me.dgvPreciosRapidos.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvPreciosRapidos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgvPreciosRapidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvPreciosRapidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvPreciosRapidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPreciosRapidos.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvPreciosRapidos.EnableHeadersVisualStyles = False
+        Me.dgvPreciosRapidos.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.dgvPreciosRapidos.Location = New System.Drawing.Point(38, 102)
+        Me.dgvPreciosRapidos.Name = "dgvPreciosRapidos"
+        Me.dgvPreciosRapidos.ReadOnly = True
+        Me.dgvPreciosRapidos.RowHeadersVisible = False
+        Me.dgvPreciosRapidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvPreciosRapidos.Size = New System.Drawing.Size(246, 136)
+        Me.dgvPreciosRapidos.TabIndex = 12
+        Me.dgvPreciosRapidos.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
+        Me.dgvPreciosRapidos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvPreciosRapidos.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.dgvPreciosRapidos.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.dgvPreciosRapidos.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.dgvPreciosRapidos.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.dgvPreciosRapidos.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.dgvPreciosRapidos.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.dgvPreciosRapidos.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        Me.dgvPreciosRapidos.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.dgvPreciosRapidos.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        Me.dgvPreciosRapidos.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.dgvPreciosRapidos.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvPreciosRapidos.ThemeStyle.HeaderStyle.Height = 23
+        Me.dgvPreciosRapidos.ThemeStyle.ReadOnly = True
+        Me.dgvPreciosRapidos.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.dgvPreciosRapidos.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgvPreciosRapidos.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        Me.dgvPreciosRapidos.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
+        Me.dgvPreciosRapidos.ThemeStyle.RowsStyle.Height = 22
+        Me.dgvPreciosRapidos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
+        Me.dgvPreciosRapidos.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White
         '
         'Label2
         '
@@ -569,16 +637,15 @@ Partial Class MenuPrincipal
         Me.lblHora.TabIndex = 7
         Me.lblHora.Text = "19:44:23"
         '
-        'Label1
+        'lblBienvenida
         '
-        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(207, 233)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(391, 36)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "¡Bienvenido Administrador!"
+        Me.lblBienvenida.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.lblBienvenida.AutoSize = True
+        Me.lblBienvenida.Font = New System.Drawing.Font("Century Gothic", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBienvenida.Location = New System.Drawing.Point(262, 202)
+        Me.lblBienvenida.Name = "lblBienvenida"
+        Me.lblBienvenida.Size = New System.Drawing.Size(0, 36)
+        Me.lblBienvenida.TabIndex = 4
         '
         'imgCofre
         '
@@ -641,6 +708,7 @@ Partial Class MenuPrincipal
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelContenedor.ResumeLayout(False)
         Me.PanelContenedor.PerformLayout()
+        CType(Me.dgvPreciosRapidos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -659,7 +727,7 @@ Partial Class MenuPrincipal
     Friend WithEvents tmrMostrarMenu As System.Windows.Forms.Timer
     Friend WithEvents PanelContenedor As System.Windows.Forms.Panel
     Friend WithEvents tmrHoraFecha As System.Windows.Forms.Timer
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblBienvenida As System.Windows.Forms.Label
     Friend WithEvents imgCofre As System.Windows.Forms.PictureBox
     Friend WithEvents gifCofre As System.Windows.Forms.PictureBox
     Friend WithEvents lblFecha As System.Windows.Forms.Label
@@ -671,19 +739,20 @@ Partial Class MenuPrincipal
     Friend WithEvents panelControles As System.Windows.Forms.Panel
     Friend WithEvents btnProveedores As System.Windows.Forms.Button
     Friend WithEvents submenuClientes As System.Windows.Forms.Panel
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnGestionarCliente As System.Windows.Forms.Button
+    Friend WithEvents btnNuevoCliente As System.Windows.Forms.Button
     Friend WithEvents btnClientes As System.Windows.Forms.Button
     Friend WithEvents btnInicio As System.Windows.Forms.Button
     Friend WithEvents btnNotas As System.Windows.Forms.Button
     Friend WithEvents submenuProductos As System.Windows.Forms.Panel
-    Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents btnActualizarProducto As System.Windows.Forms.Button
+    Friend WithEvents btnListadoProducto As System.Windows.Forms.Button
     Friend WithEvents btnProductos As System.Windows.Forms.Button
     Friend WithEvents submenuProveedores As System.Windows.Forms.Panel
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents btnGestionarProveedor As System.Windows.Forms.Button
+    Friend WithEvents btnNuevoProveedor As System.Windows.Forms.Button
     Friend WithEvents tmrMostrarSubMenu As System.Windows.Forms.Timer
     Friend WithEvents tmrOcultarSubMenu As System.Windows.Forms.Timer
+    Friend WithEvents dgvPreciosRapidos As Guna.UI.WinForms.GunaDataGridView
 
 End Class
