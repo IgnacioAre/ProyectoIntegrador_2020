@@ -39,6 +39,8 @@ Partial Class Login
         Me.lblCheckUsuario = New System.Windows.Forms.Label()
         Me.chbGuardarUsuario = New System.Windows.Forms.CheckBox()
         Me.panelLogin = New System.Windows.Forms.Panel()
+        Me.pbEsconder = New System.Windows.Forms.PictureBox()
+        Me.pbMostrar = New System.Windows.Forms.PictureBox()
         Me.panelRegistro = New System.Windows.Forms.Panel()
         Me.lblAceptable2 = New System.Windows.Forms.Label()
         Me.lblAceptable1 = New System.Windows.Forms.Label()
@@ -58,6 +60,8 @@ Partial Class Login
         Me.panelTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelLogin.SuspendLayout()
+        CType(Me.pbEsconder, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbMostrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelRegistro.SuspendLayout()
         CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -146,7 +150,6 @@ Partial Class Login
         Me.txtContraseñaLogin.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContraseñaLogin.Location = New System.Drawing.Point(83, 268)
         Me.txtContraseñaLogin.Name = "txtContraseñaLogin"
-        Me.txtContraseñaLogin.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 27)
         Me.txtContraseñaLogin.TabIndex = 0
         '
@@ -233,6 +236,8 @@ Partial Class Login
         '
         Me.panelLogin.BackColor = System.Drawing.Color.White
         Me.panelLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panelLogin.Controls.Add(Me.pbEsconder)
+        Me.panelLogin.Controls.Add(Me.pbMostrar)
         Me.panelLogin.Controls.Add(Me.PictureBox1)
         Me.panelLogin.Controls.Add(Me.chbGuardarUsuario)
         Me.panelLogin.Controls.Add(Me.Label1)
@@ -248,6 +253,29 @@ Partial Class Login
         Me.panelLogin.Name = "panelLogin"
         Me.panelLogin.Size = New System.Drawing.Size(402, 513)
         Me.panelLogin.TabIndex = 19
+        '
+        'pbEsconder
+        '
+        Me.pbEsconder.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbEsconder.Image = CType(resources.GetObject("pbEsconder.Image"), System.Drawing.Image)
+        Me.pbEsconder.Location = New System.Drawing.Point(305, 268)
+        Me.pbEsconder.Name = "pbEsconder"
+        Me.pbEsconder.Size = New System.Drawing.Size(27, 27)
+        Me.pbEsconder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbEsconder.TabIndex = 20
+        Me.pbEsconder.TabStop = False
+        Me.pbEsconder.Visible = False
+        '
+        'pbMostrar
+        '
+        Me.pbMostrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbMostrar.Image = CType(resources.GetObject("pbMostrar.Image"), System.Drawing.Image)
+        Me.pbMostrar.Location = New System.Drawing.Point(305, 268)
+        Me.pbMostrar.Name = "pbMostrar"
+        Me.pbMostrar.Size = New System.Drawing.Size(27, 27)
+        Me.pbMostrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbMostrar.TabIndex = 19
+        Me.pbMostrar.TabStop = False
         '
         'panelRegistro
         '
@@ -435,6 +463,8 @@ Partial Class Login
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelLogin.ResumeLayout(False)
         Me.panelLogin.PerformLayout()
+        CType(Me.pbEsconder, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbMostrar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelRegistro.ResumeLayout(False)
         Me.panelRegistro.PerformLayout()
         CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).EndInit()
@@ -472,4 +502,6 @@ Partial Class Login
     Friend WithEvents lblAceptable1 As System.Windows.Forms.Label
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents ToolTip2 As System.Windows.Forms.ToolTip
+    Friend WithEvents pbEsconder As System.Windows.Forms.PictureBox
+    Friend WithEvents pbMostrar As System.Windows.Forms.PictureBox
 End Class

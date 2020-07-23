@@ -16,6 +16,7 @@ Public Class Login
     '----INICIO DEL FORMULARIO----'
 
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        txtContraseñaLogin.UseSystemPasswordChar = True
         Me.ToolTip1.SetToolTip(lblAceptable1, "La contraseña debe contenter al menos 8 caracteres.")
         Me.ToolTip2.SetToolTip(lblAceptable2, "Las contraseñas deben coincidir.")
         leerUsuarioTxt()
@@ -362,5 +363,17 @@ Public Class Login
 
             resultado = 0
         End If
+    End Sub
+
+    Private Sub pbMostrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbMostrar.Click
+        pbEsconder.Visible = True
+        pbMostrar.Visible = False
+        txtContraseñaLogin.UseSystemPasswordChar = False
+    End Sub
+
+    Private Sub pbEsconder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbEsconder.Click
+        pbEsconder.Visible = False
+        pbMostrar.Visible = True
+        txtContraseñaLogin.UseSystemPasswordChar = True
     End Sub
 End Class
