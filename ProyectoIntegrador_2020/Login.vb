@@ -31,7 +31,11 @@ Public Class Login
         SendMessage(txtUsuarioRegistro.Handle, EM_SETCUEBANNER, 0, "Ej: Admin")
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+
+    '----CIERRA EL FORUMULARIO DEL MENÚ (Y FINALIZA SU EJECUCIÓN)----'
+
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        MenuPrincipal.Close()
         Me.Close()
     End Sub
 

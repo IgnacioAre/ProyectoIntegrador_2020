@@ -1,24 +1,23 @@
 ﻿Imports System.Windows.Forms
 Imports System.Runtime.InteropServices
 
-Public Class Mensaje
+Public Class ConfirmacionMensaje
 
-    Private Sub btnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
-        Me.DialogResult = System.Windows.Forms.DialogResult.OK
+
+    Public Function confirmacion(ByVal mensaje As String)
+        lblMensaje.Text = mensaje
+        Return DialogResult
+    End Function
+
+    Public Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
+        MenuPrincipal.confirmacionResult = 1
+        MenuPrincipal.Close()
         Me.Close()
     End Sub
 
-
-    Sub New(ByVal mensaje As String)
-        InitializeComponent()
-        lblMensaje.Text = mensaje
-    End Sub
-
-    Private Sub Mensaje_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles MyBase.KeyPress
-        If e.KeyChar = ChrW(Keys.Enter) Then
-            e.Handled = True
-            Me.Close()
-        End If
+    Public Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
+        MenuPrincipal.confirmacionResult = 0
+        Me.Close()
     End Sub
 
     '----MÉTODOS PARA MOVER EL FORMULARIO----'
@@ -40,4 +39,5 @@ Public Class Mensaje
         ReleaseCapture()
         SendMessage(Me.Handle, &H112&, &HF012&, 0)
     End Sub
+
 End Class

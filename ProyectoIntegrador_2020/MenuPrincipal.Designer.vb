@@ -572,7 +572,7 @@ Partial Class MenuPrincipal
         Me.dgvPreciosRapidos.ReadOnly = True
         Me.dgvPreciosRapidos.RowHeadersVisible = False
         Me.dgvPreciosRapidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvPreciosRapidos.Size = New System.Drawing.Size(246, 136)
+        Me.dgvPreciosRapidos.Size = New System.Drawing.Size(224, 136)
         Me.dgvPreciosRapidos.TabIndex = 12
         Me.dgvPreciosRapidos.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
         Me.dgvPreciosRapidos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))

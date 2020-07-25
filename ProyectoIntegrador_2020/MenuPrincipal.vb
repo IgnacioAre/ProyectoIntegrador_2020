@@ -8,7 +8,7 @@ Public Class MenuPrincipal
     Public resultado As Byte
     Public resultadoTxt As String
 
-    '----FORMULARIO QUE SE VA A MOSTRAR ENCIMA DEL FORMULARIO PRINCUPAL----'
+    '----FORMULARIO QUE SE VA A MOSTRAR ENCIMA DEL FORMULARIO PRINCIPAL----'
     Private formulario As Form
     Public formularioBool As Boolean = False
 
@@ -20,13 +20,30 @@ Public Class MenuPrincipal
         SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
     End Sub
 
-    '----CIERRA EL FORUMULARIO DEL MENÚ (Y FINALIZA SU EJECUCIÓN)----'
+    Public confirmacionResult As Byte = 0
+    Private Sub MenuPrincipal_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
+        ConfirmacionMensaje.Show()
+        ConfirmacionMensaje.confirmacion("                     ¿Desea Salir?")
 
+        If confirmacionResult = 1 Then
+            confirmacion()
+        Else
+            e.Cancel = True
+        End If
+    End Sub
+
+
+    '----CIERRA EL FORUMULARIO DEL MENÚ (Y FINALIZA SU EJECUCIÓN)----'
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        ConfirmacionMensaje.Show()
+        ConfirmacionMensaje.confirmacion("                     ¿Desea Salir?")
+    End Sub
+
+    Public Sub confirmacion()
         If formularioBool Then formulario.Close()
         formularioBool = False
-        Me.Close()
     End Sub
+
 
     '----MINIMIZA EL FORUMULARIO DEL MENÚ----'
 
@@ -301,12 +318,13 @@ Public Class MenuPrincipal
         My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
     End Sub
 
+    '----BOTÓN CERRAR SESIÓN----'
 
     Private Sub pbCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbCerrarSesion.Click
         If formularioBool Then formulario.Close()
         formularioBool = False
         Login.Show()
-        Me.Close()
+        Me.Hide()
     End Sub
 
     Private Sub txtPrecioProductos_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPrecioProductos.KeyUp
@@ -318,9 +336,22 @@ Public Class MenuPrincipal
     '----EVENTO BOTÓN CLIENTES----'
 
     Private Sub btnNuevoCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoCliente.Click
+        
+    End Sub
+
+    Private Sub btnGestionarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarCliente.Click
         '----MOSTRAR FORMULARIO CLIENTES EN EL MENÚ PRINCIPAL----'
 
         openFromOnPanel(Of Clientes)()
         formularioBool = True
     End Sub
+
+    '----MOSTRAR MENSAJE PERSONALIZADO----'
+
+    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
+        Dim mensaje As New Mensaje(mensajeObtenido)
+        mensaje.Show()
+    End Sub
+
+
 End Class
