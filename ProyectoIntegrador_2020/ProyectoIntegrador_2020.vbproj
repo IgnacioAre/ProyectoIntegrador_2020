@@ -80,12 +80,6 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clientes.Designer.vb">
-      <DependentUpon>Clientes.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Clientes.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Conexion.vb" />
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
@@ -139,17 +133,14 @@
     <Compile Include="Proveedores.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pruebas.Designer.vb">
-      <DependentUpon>Pruebas.vb</DependentUpon>
+    <Compile Include="Clientes.Designer.vb">
+      <DependentUpon>Clientes.vb</DependentUpon>
     </Compile>
-    <Compile Include="Pruebas.vb">
+    <Compile Include="Clientes.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Clientes.resx">
-      <DependentUpon>Clientes.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
@@ -165,8 +156,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pruebas.resx">
-      <DependentUpon>Pruebas.vb</DependentUpon>
+    <EmbeddedResource Include="Clientes.resx">
+      <DependentUpon>Clientes.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

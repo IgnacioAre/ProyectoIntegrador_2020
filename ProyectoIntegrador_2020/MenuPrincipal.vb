@@ -8,6 +8,10 @@ Public Class MenuPrincipal
     Public resultado As Byte
     Public resultadoTxt As String
 
+    '----FORMULARIO QUE SE VA A MOSTRAR ENCIMA DEL FORMULARIO PRINCUPAL----'
+    Private formulario As Form
+    Public formularioBool As Boolean = False
+
 
     '----INICIO DEL FORMULARIO----'
 
@@ -19,6 +23,8 @@ Public Class MenuPrincipal
     '----CIERRA EL FORUMULARIO DEL MENÚ (Y FINALIZA SU EJECUCIÓN)----'
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        If formularioBool Then formulario.Close()
+        formularioBool = False
         Me.Close()
     End Sub
 
@@ -241,7 +247,6 @@ Public Class MenuPrincipal
     '----MÉTODO PARA MOSTRAR FORMULARIOS EN UN PANEL----'
 
     Private Sub openFromOnPanel(Of FormH As {Form, New})()
-        Dim Formulario As Form
         Formulario = PanelContenedor.Controls.OfType(Of FormH)().FirstOrDefault()
         If Formulario Is Nothing Then
             Formulario = New FormH()
@@ -298,6 +303,8 @@ Public Class MenuPrincipal
 
 
     Private Sub pbCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbCerrarSesion.Click
+        If formularioBool Then formulario.Close()
+        formularioBool = False
         Login.Show()
         Me.Close()
     End Sub
@@ -313,6 +320,7 @@ Public Class MenuPrincipal
     Private Sub btnNuevoCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoCliente.Click
         '----MOSTRAR FORMULARIO CLIENTES EN EL MENÚ PRINCIPAL----'
 
-        openFromOnPanel(Of Pruebas)()
+        openFromOnPanel(Of Clientes)()
+        formularioBool = True
     End Sub
 End Class

@@ -166,7 +166,7 @@ Partial Class MenuPrincipal
         Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrar.Cursor = System.Windows.Forms.Cursors.Default
         Me.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
         Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnCerrar.ForeColor = System.Drawing.Color.White
         Me.btnCerrar.Image = CType(resources.GetObject("btnCerrar.Image"), System.Drawing.Image)

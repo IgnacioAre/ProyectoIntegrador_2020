@@ -109,7 +109,7 @@ Public Class Conexion
 
         consultaSQL = "SELECT nombre AS Nombre," &
                                     "precio AS Precio " &
-                                     "FROM producto where nombre like '%" & MenuPrincipal.txtPrecioProductos.Text & "%'"
+                                     "FROM productos where nombre like '%" & MenuPrincipal.txtPrecioProductos.Text & "%'"
 
         Return insertarEnTabla(consultaSQL)
 

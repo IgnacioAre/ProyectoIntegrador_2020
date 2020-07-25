@@ -54,7 +54,6 @@ C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bi
 C:\Users\Lew\Documents\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\Guna.UI.pdb
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbprojResolveAssemblyReference.cache
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Resources.resources
-C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Pruebas.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbproj.GenerateResource.Cache
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.exe
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\ProyectoIntegrador_2020.pdb
