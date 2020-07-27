@@ -9,6 +9,7 @@ Public Class Conexion
     Private dr As MySqlDataReader
     Protected ds As DataSet
 
+    Public resultado As Byte = 0
     Private valorReturn As String = ""
 
     Private consultaSQL As String
@@ -32,10 +33,10 @@ Public Class Conexion
             conexion.Open()
             comando = New MySqlCommand(Sql, conexion)
             comando.ExecuteNonQuery()
-            Login.resultado = 1
+            resultado = 1
             conexion.Close()
         Catch ex As Exception
-            Login.resultado = 0
+            resultado = 0
             MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
         Finally
             conexion.Close()

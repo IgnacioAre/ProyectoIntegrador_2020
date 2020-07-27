@@ -1,12 +1,9 @@
 ﻿Imports System.Runtime.InteropServices
-Imports MySql.Data.MySqlClient
 Imports System.IO
 Public Class Login
 
     Dim conectar = New Conexion
-    Public resultado As Byte
     Public resultadoTxt As String
-    Dim drRes As MySqlDataReader
     Dim ruta As String = "./usuario/"
     Dim archivoGuardarNombreUsr As String = "usuario.txt"
 
@@ -32,14 +29,14 @@ Public Class Login
     End Sub
 
 
-    '----CIERRA EL FORUMULARIO DEL MENÚ (Y FINALIZA SU EJECUCIÓN)----'
+    '----CIERRA EL FORUMULARIO DEL MENÚ (FINALIZA SU EJECUCIÓN)----'
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
         MenuPrincipal.Close()
         Me.Close()
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMinimizar.Click
+    Private Sub btnMinimizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMinimizar.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
@@ -152,7 +149,7 @@ Public Class Login
                     Else
 
                         conectar.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
-                        If resultado = 1 Then
+                        If conectar.resultado = 1 Then
                             mostrarMensaje("Usuario creado exitosamente!")
                             txtUsuarioRegistro.Text = ""
                             txtContraseñaRegistro.Text = ""
@@ -173,7 +170,7 @@ Public Class Login
             mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
         End If
 
-        resultado = 0
+        conectar.resultado = 0
     End Sub
 
     '----LE DA EL CECK AL CLICKEAR LA ETIQUETA----'
@@ -344,7 +341,7 @@ Public Class Login
                         Else
 
                             conectar.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
-                            If resultado = 1 Then
+                            If conectar.resultado = 1 Then
                                 mostrarMensaje("Usuario creado exitosamente!")
                                 txtUsuarioRegistro.Text = ""
                                 txtContraseñaRegistro.Text = ""
@@ -365,7 +362,7 @@ Public Class Login
                 mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
             End If
 
-            resultado = 0
+            conectar.resultado = 0
         End If
     End Sub
 

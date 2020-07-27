@@ -336,11 +336,13 @@ Public Class MenuPrincipal
     '----EVENTO BOTÓN CLIENTES----'
 
     Private Sub btnNuevoCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoCliente.Click
-        
+        '----MOSTRAR FORMULARIO "NUEVO" EN EL MENÚ PRINCIPAL----'
+        Nuevo.lblTitulo.Text = "Nuevo Cliente"
+        Nuevo.Show()
     End Sub
 
     Private Sub btnGestionarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarCliente.Click
-        '----MOSTRAR FORMULARIO CLIENTES EN EL MENÚ PRINCIPAL----'
+        '----MOSTRAR FORMULARIO "CLIENTES" EN EL MENÚ PRINCIPAL----'
 
         openFromOnPanel(Of Clientes)()
         formularioBool = True

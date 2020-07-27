@@ -42,7 +42,7 @@ Partial Class ConfirmacionMensaje
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(77, 163)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(77, 136)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -93,9 +93,9 @@ Partial Class ConfirmacionMensaje
         '
         Me.Panel2.AutoScroll = True
         Me.Panel2.Controls.Add(Me.lblMensaje)
-        Me.Panel2.Location = New System.Drawing.Point(0, 70)
+        Me.Panel2.Location = New System.Drawing.Point(0, 49)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(313, 84)
+        Me.Panel2.Size = New System.Drawing.Size(313, 67)
         Me.Panel2.TabIndex = 3
         '
         'lblMensaje
@@ -113,7 +113,7 @@ Partial Class ConfirmacionMensaje
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(313, 204)
+        Me.ClientSize = New System.Drawing.Size(313, 177)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.panelTitulo)
         Me.Controls.Add(Me.TableLayoutPanel1)
