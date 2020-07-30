@@ -106,10 +106,10 @@
       <DependentUpon>MenuPrincipal.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModificarInfo.Designer.vb">
-      <DependentUpon>ModificarInfo.vb</DependentUpon>
+    <Compile Include="Explorador.Designer.vb">
+      <DependentUpon>Explorador.vb</DependentUpon>
     </Compile>
-    <Compile Include="ModificarInfo.vb">
+    <Compile Include="Explorador.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -151,10 +151,10 @@
     <Compile Include="Proveedores.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Clientes.Designer.vb">
-      <DependentUpon>Clientes.vb</DependentUpon>
+    <Compile Include="CuentaCorriente.Designer.vb">
+      <DependentUpon>CuentaCorriente.vb</DependentUpon>
     </Compile>
-    <Compile Include="Clientes.vb">
+    <Compile Include="CuentaCorriente.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -171,17 +171,17 @@
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModificarInfo.resx">
-      <DependentUpon>ModificarInfo.vb</DependentUpon>
+    <EmbeddedResource Include="Explorador.resx">
+      <DependentUpon>Explorador.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Clientes.resx">
-      <DependentUpon>Clientes.vb</DependentUpon>
+    <EmbeddedResource Include="CuentaCorriente.resx">
+      <DependentUpon>CuentaCorriente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nuevo.resx">
       <DependentUpon>Nuevo.vb</DependentUpon>
@@ -197,9 +197,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\addUser.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

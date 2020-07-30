@@ -335,16 +335,17 @@ Public Class MenuPrincipal
 
     '----EVENTO BOTÓN CLIENTES----'
 
-    Private Sub btnNuevoCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoCliente.Click
-        '----MOSTRAR FORMULARIO "NUEVO" EN EL MENÚ PRINCIPAL----'
-        Nuevo.lblTitulo.Text = "Nuevo Cliente"
-        Nuevo.Show()
+    Private Sub btnExploradorClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExploradorClientes.Click
+        '----MOSTRAR FORMULARIO "Explorador" EN EL MENÚ PRINCIPAL----'
+        If formularioBool = True Then formulario.Close()
+        openFromOnPanel(Of Explorador)()
+        formularioBool = True
     End Sub
 
     Private Sub btnGestionarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarCliente.Click
         '----MOSTRAR FORMULARIO "CLIENTES" EN EL MENÚ PRINCIPAL----'
-
-        openFromOnPanel(Of Clientes)()
+        If formularioBool = True Then formulario.Close()
+        openFromOnPanel(Of CuentaCorriente)()
         formularioBool = True
     End Sub
 
@@ -354,6 +355,5 @@ Public Class MenuPrincipal
         Dim mensaje As New Mensaje(mensajeObtenido)
         mensaje.Show()
     End Sub
-
 
 End Class

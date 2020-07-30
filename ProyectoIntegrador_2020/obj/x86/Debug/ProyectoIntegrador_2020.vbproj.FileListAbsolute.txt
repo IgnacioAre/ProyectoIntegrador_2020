@@ -63,6 +63,7 @@ C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegr
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Login.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.MenuPrincipal.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Mensaje.resources
-C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Clientes.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.ConfirmacionMensaje.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Nuevo.resources
+C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Explorador.resources
+C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.CuentaCorriente.resources
