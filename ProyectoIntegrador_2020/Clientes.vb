@@ -7,6 +7,7 @@
     End Sub
 
     Private Sub Pruebas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        consultas.establecerConexion()
         dgvCientes.DataSource = consultas.mostrarClientesEnTabla
     End Sub
 

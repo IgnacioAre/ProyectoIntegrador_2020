@@ -2,7 +2,7 @@
 Imports System.IO
 Public Class Login
 
-    Dim conectar = New Conexion
+    Dim consultas As Conexion = New Conexion
     Public resultadoTxt As String
     Dim ruta As String = "./usuario/"
     Dim archivoGuardarNombreUsr As String = "usuario.txt"
@@ -23,7 +23,7 @@ Public Class Login
         Else
             txtUsuarioLogin.Focus()
         End If
-        conectar.establecerConexion()
+        consultas.establecerConexion()
         SendMessage(txtUsuarioLogin.Handle, EM_SETCUEBANNER, 0, "Nombre de usuario")
         SendMessage(txtUsuarioRegistro.Handle, EM_SETCUEBANNER, 0, "Ej: Admin")
     End Sub
@@ -113,7 +113,7 @@ Public Class Login
 
     Private Sub btnEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEntrar.Click
         Try
-            conectar.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
+            consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
 
             If Not resultadoTxt = "" Then
                 If chbGuardarUsuario.Checked Then
@@ -143,13 +143,13 @@ Public Class Login
                     mostrarMensaje("Las contraseñas no coinciden." & vbCrLf & "Intente nuevamente.")
                 Else
 
-                    conectar.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
+                    consultas.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
                     If Not resultadoTxt = "" Then
                         mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
                     Else
 
-                        conectar.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
-                        If conectar.resultado = 1 Then
+                        consultas.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
+                        If consultas.resultado = 1 Then
                             mostrarMensaje("Usuario creado exitosamente!")
                             txtUsuarioRegistro.Text = ""
                             txtContraseñaRegistro.Text = ""
@@ -170,7 +170,7 @@ Public Class Login
             mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
         End If
 
-        conectar.resultado = 0
+        consultas.resultado = 0
     End Sub
 
     '----LE DA EL CECK AL CLICKEAR LA ETIQUETA----'
@@ -305,7 +305,7 @@ Public Class Login
             e.Handled = True
 
             Try
-                conectar.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
+                consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
 
                 If Not resultadoTxt = "" Then
                     If chbGuardarUsuario.Checked Then
@@ -335,13 +335,13 @@ Public Class Login
                         mostrarMensaje("Las contraseñas no coinciden." & vbCrLf & "Intente nuevamente.")
                     Else
 
-                        conectar.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
+                        consultas.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
                         If Not resultadoTxt = "" Then
                             mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
                         Else
 
-                            conectar.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
-                            If conectar.resultado = 1 Then
+                            consultas.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
+                            If consultas.resultado = 1 Then
                                 mostrarMensaje("Usuario creado exitosamente!")
                                 txtUsuarioRegistro.Text = ""
                                 txtContraseñaRegistro.Text = ""
@@ -362,7 +362,7 @@ Public Class Login
                 mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
             End If
 
-            conectar.resultado = 0
+            consultas.resultado = 0
         End If
     End Sub
 

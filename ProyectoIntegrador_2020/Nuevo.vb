@@ -1,11 +1,11 @@
 ﻿Public Class Nuevo
 
-    Dim conectar = New Conexion
+    Dim consultas As Conexion = New Conexion
 
     '----INICIO DEL FORMULARIO----'
 
     Private Sub Nuevo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        conectar.establecerConexion()
+        consultas.establecerConexion()
     End Sub
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
@@ -13,14 +13,13 @@
     End Sub
 
     Private Sub btnRegistrarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrarCliente.Click
+        Dim fechaActual = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
         If txtNombreCliente.Text.Equals("") Then
             mostrarMensaje("El nombre del cliente no puede estar vacío.")
-        Else 'FALTA CAMPO DE DEUDA, FECHA INGRESO...
-            If Not txtDireccionCliente.Text.Equals("") And txtTelefonoCliente.Text.Equals("") Then conectar.consultaHide("INSERT INTO Clientes (Nombre, Direccion) VALUES ('" & txtNombreCliente.Text & "', '" & txtDireccionCliente.Text & "');")
-            If Not txtTelefonoCliente.Text.Equals("") And txtDireccionCliente.Text.Equals("") Then conectar.consultaHide("INSERT INTO Clientes (Nombre, Telefono) VALUES ('" & txtNombreCliente.Text & "', '" & txtTelefonoCliente.Text & "');")
-            If Not txtTelefonoCliente.Text.Equals("") And Not txtDireccionCliente.Text.Equals("") Then conectar.consultaHide("INSERT INTO Clientes (Nombre, Direccion, Telefono) VALUES ('" & txtNombreCliente.Text & "', '" & txtDireccionCliente.Text & "', '" & txtTelefonoCliente.Text & "');")
+        Else
+            If Not txtTelefonoCliente.Text.Equals("") And Not txtDireccionCliente.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Deuda, Historial, fechaIngreso, Telefono, Direccion, estadoBool, idAdmin) VALUES ('" & txtNombreCliente.Text & "', 0," & "'Usuario Creado " & fechaActual & "', NOW()," & txtTelefonoCliente.Text & ", '" & txtDireccionCliente.Text & "', 1,  1);")
 
-            If conectar.resultado = 1 Then
+            If consultas.resultado = 1 Then
                 mostrarMensaje("Cliente creado correctamente!")
                 txtNombreCliente.Text = ""
                 txtDireccionCliente.Text = ""

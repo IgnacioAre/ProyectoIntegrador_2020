@@ -29,6 +29,9 @@ Partial Class Clientes
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
+        Me.btnDebe = New System.Windows.Forms.Button()
+        Me.btnHaber = New System.Windows.Forms.Button()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         CType(Me.dgvCientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -64,12 +67,12 @@ Partial Class Clientes
         Me.dgvCientes.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvCientes.EnableHeadersVisualStyles = False
         Me.dgvCientes.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.dgvCientes.Location = New System.Drawing.Point(166, 40)
+        Me.dgvCientes.Location = New System.Drawing.Point(97, 41)
         Me.dgvCientes.Name = "dgvCientes"
         Me.dgvCientes.ReadOnly = True
         Me.dgvCientes.RowHeadersVisible = False
         Me.dgvCientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCientes.Size = New System.Drawing.Size(696, 180)
+        Me.dgvCientes.Size = New System.Drawing.Size(665, 180)
         Me.dgvCientes.TabIndex = 3
         Me.dgvCientes.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
         Me.dgvCientes.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
@@ -96,15 +99,14 @@ Partial Class Clientes
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(166, 227)
+        Me.TextBox1.Location = New System.Drawing.Point(97, 227)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(696, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(244, 20)
         Me.TextBox1.TabIndex = 4
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(71, 227)
+        Me.Label1.Location = New System.Drawing.Point(2, 227)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(89, 23)
         Me.Label1.TabIndex = 5
@@ -113,13 +115,54 @@ Partial Class Clientes
         '
         'btnCerrar
         '
-        Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCerrar.Location = New System.Drawing.Point(909, 0)
+        Me.btnCerrar.Location = New System.Drawing.Point(1, -1)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(46, 21)
         Me.btnCerrar.TabIndex = 6
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
+        '
+        'btnDebe
+        '
+        Me.btnDebe.BackColor = System.Drawing.Color.Black
+        Me.btnDebe.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDebe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnDebe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnDebe.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDebe.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDebe.ForeColor = System.Drawing.Color.White
+        Me.btnDebe.Location = New System.Drawing.Point(783, 41)
+        Me.btnDebe.Name = "btnDebe"
+        Me.btnDebe.Size = New System.Drawing.Size(157, 44)
+        Me.btnDebe.TabIndex = 11
+        Me.btnDebe.Text = "Debe"
+        Me.btnDebe.UseVisualStyleBackColor = False
+        '
+        'btnHaber
+        '
+        Me.btnHaber.BackColor = System.Drawing.Color.Black
+        Me.btnHaber.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnHaber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnHaber.ForeColor = System.Drawing.Color.White
+        Me.btnHaber.Location = New System.Drawing.Point(783, 91)
+        Me.btnHaber.Name = "btnHaber"
+        Me.btnHaber.Size = New System.Drawing.Size(157, 44)
+        Me.btnHaber.TabIndex = 12
+        Me.btnHaber.Text = "Haber"
+        Me.btnHaber.UseVisualStyleBackColor = False
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(48, 325)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(53, 13)
+        Me.LinkLabel1.TabIndex = 13
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "+ Historial"
         '
         'Clientes
         '
@@ -127,6 +170,9 @@ Partial Class Clientes
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gold
         Me.ClientSize = New System.Drawing.Size(952, 548)
+        Me.Controls.Add(Me.LinkLabel1)
+        Me.Controls.Add(Me.btnHaber)
+        Me.Controls.Add(Me.btnDebe)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox1)
@@ -143,4 +189,7 @@ Partial Class Clientes
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
+    Friend WithEvents btnDebe As System.Windows.Forms.Button
+    Friend WithEvents btnHaber As System.Windows.Forms.Button
+    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
 End Class

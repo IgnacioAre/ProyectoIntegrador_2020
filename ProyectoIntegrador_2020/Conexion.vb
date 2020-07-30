@@ -2,7 +2,7 @@
 Public Class Conexion
 
 
-    Private conexion As New MySqlConnection("data source=localhost;user id=proyecto;password='proyecto2020';database=elcofre;port=3306")
+    Private conexion As New MySqlConnection("data source=localhost;user id=proyecto;password='proyecto2020';database=elcofre;port=3306;CHARSET=utf8;")
     Private adaptador As MySqlDataAdapter
     Private comando As MySqlCommand
     Private Query As Queryable
@@ -128,7 +128,7 @@ Public Class Conexion
     '----MOSTRAR TODO DE LA TABLA CLIENTES EN UN DATATABLE----'
     Public Function mostrarClientesEnTabla() As DataTable
 
-        consultaSQL = "SELECT * FROM clientes"
+        consultaSQL = "SELECT idCliente As ID, Nombre, Deuda As Saldo, Telefono As Teléfono, Direccion As Dirección, estadoBool As Activo FROM clientes"
 
         Return insertarEnTabla(consultaSQL)
 
@@ -137,7 +137,7 @@ Public Class Conexion
     '----BUSCAR CLIENTE POR NOMBRE----'
     Public Function mostrarBusquedaClientesEnTabla(ByVal nombre As String) As DataTable
 
-        consultaSQL = "SELECT * FROM clientes WHERE nombre LIKE '%" & nombre & "%'"
+        consultaSQL = "SELECT idCliente As ID, Nombre, Deuda As Saldo, Telefono As Teléfono, Direccion As Dirección, estadoBool As Activo FROM clientes WHERE nombre LIKE '%" & nombre & "%'"
 
         Return insertarEnTabla(consultaSQL)
     End Function

@@ -286,7 +286,7 @@ Public Class MenuPrincipal
         lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy")
         Dim hora As Byte = Val(DateTime.Now.ToString("HH"))
         If hora > 6 And hora < 12 Then
-            lblBienvenida.Text = "¡Buen día!" & vbCrLf & "    Bienvenido"
+            lblBienvenida.Text = "     ¡Buen día!" & vbCrLf & "    Bienvenido"
         ElseIf hora >= 13 And hora <= 18 Then
             lblBienvenida.Text = "¡Buenas Tardes!" & vbCrLf & "    Bienvenido"
         Else
