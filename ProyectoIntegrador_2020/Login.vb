@@ -3,7 +3,6 @@ Imports System.IO
 Public Class Login
 
     Dim consultas As Conexion = New Conexion
-    Public resultadoTxt As String
     Dim ruta As String = "./usuario/"
     Dim archivoGuardarNombreUsr As String = "usuario.txt"
 
@@ -115,7 +114,7 @@ Public Class Login
         Try
             consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
 
-            If Not resultadoTxt = "" Then
+            If Not consultas.resultadoTxt = "" Then
                 If chbGuardarUsuario.Checked Then
                     guardarUsuarioTxt(txtUsuarioLogin.Text.ToUpper)
                 Else
@@ -144,7 +143,7 @@ Public Class Login
                 Else
 
                     consultas.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
-                    If Not resultadoTxt = "" Then
+                    If Not consultas.resultadoTxt = "" Then
                         mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
                     Else
 
@@ -307,7 +306,7 @@ Public Class Login
             Try
                 consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
 
-                If Not resultadoTxt = "" Then
+                If Not consultas.resultadoTxt = "" Then
                     If chbGuardarUsuario.Checked Then
                         guardarUsuarioTxt(txtUsuarioLogin.Text.ToUpper)
                     Else
@@ -336,7 +335,7 @@ Public Class Login
                     Else
 
                         consultas.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
-                        If Not resultadoTxt = "" Then
+                        If Not consultas.resultadoTxt = "" Then
                             mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
                         Else
 

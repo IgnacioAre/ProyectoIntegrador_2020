@@ -20,6 +20,7 @@
             If txtTelefonoCliente.Text.Equals("") And Not txtDireccionCliente.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Deuda, Historial, fechaIngreso, Direccion, estadoBool, idAdmin) VALUES ('" & txtNombreCliente.Text & "', 0," & "'Usuario Creado " & fechaActual & "', NOW(),'" & txtDireccionCliente.Text & "', 1,  1);")
             If Not txtTelefonoCliente.Text.Equals("") And txtDireccionCliente.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Deuda, Historial, fechaIngreso, Telefono, estadoBool, idAdmin) VALUES ('" & txtNombreCliente.Text & "', 0," & "'Usuario Creado " & fechaActual & "', NOW()," & txtTelefonoCliente.Text & ", 1,  1);")
             If Not txtTelefonoCliente.Text.Equals("") And Not txtDireccionCliente.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Deuda, Historial, fechaIngreso, Telefono, Direccion, estadoBool, idAdmin) VALUES ('" & txtNombreCliente.Text & "', 0," & "'Usuario Creado " & fechaActual & "', NOW()," & txtTelefonoCliente.Text & ", '" & txtDireccionCliente.Text & "', 1,  1);")
+            If txtTelefonoCliente.Text.Equals("") And txtDireccionCliente.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Deuda, Historial, fechaIngreso, estadoBool, idAdmin) VALUES ('" & txtNombreCliente.Text & "', 0," & "'Usuario Creado " & fechaActual & "', NOW()," & " 1,  1);")
 
             If consultas.resultado = 1 Then
                 mostrarMensaje("Cliente creado correctamente!")

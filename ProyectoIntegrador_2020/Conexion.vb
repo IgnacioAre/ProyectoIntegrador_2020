@@ -10,6 +10,7 @@ Public Class Conexion
     Protected ds As DataSet
 
     Public resultado As Byte = 0
+    Public resultadoTxt As String
     Private valorReturn As String = ""
 
     Private consultaSQL As String
@@ -25,7 +26,6 @@ Public Class Conexion
         End Try
     End Sub
 
-    '----REALIZA UNA CONSULTA A LA BASE DE DATOS (Sale una excepción)----'
 
     Private Sub consultaHideEstructura(ByVal Sql As String)
 
@@ -44,11 +44,24 @@ Public Class Conexion
     End Sub
 
 
-    Public Function consultaReturnHideEstructura(ByVal Sql As String) As String
+    Private Function consultaReturnHideEstructura(ByVal Sql As String) As String
         Try
             conexion.Open()
             comando = New MySqlCommand(Sql, conexion)
             valorReturn = comando.ExecuteScalar()
+        Catch ex As Exception
+            MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
+        Finally
+            conexion.Close()
+        End Try
+        Return valorReturn
+    End Function
+
+    Private Function consultaReturnHideVariosValores(ByVal Sql As String) As String
+        Try
+            conexion.Open()
+            comando = New MySqlCommand(Sql, conexion)
+            dr = comando.ExecuteScalar
         Catch ex As Exception
             MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
         Finally
@@ -72,16 +85,11 @@ Public Class Conexion
 
     
 
-
     '----MOSTRAR TODO DE LA TABLA PRODUCTO EN UN DATATABLE----'
 
     Public Function mostrarProductosEnTabla() As DataTable
 
-        consultaSQL = "SELECT idProducto AS ID," &
-                        "nombre AS Nombre," &
-                        "cantidad AS Stock," &
-                        "precio AS Precio " &
-                        "FROM producto"
+        consultaSQL = "SELECT idProducto AS ID," & "nombre AS Nombre," & "cantidad AS Stock," & "precio AS Precio " & "FROM producto"
 
         Return insertarEnTabla(consultaSQL)
 
@@ -99,7 +107,7 @@ Public Class Conexion
 
     Public Sub consultaReturnHide(ByVal consultaSQL As String)
         Try
-            Login.resultadoTxt = consultaReturnHideEstructura(consultaSQL)
+            resultadoTxt = consultaReturnHideEstructura(consultaSQL)
         Catch ex As Exception
             mostrarMensaje("Error al realizar consulta: " & ex.Message)
         End Try
@@ -108,9 +116,7 @@ Public Class Conexion
     '----MOSTRAR NOMBRE Y PRECIO DE LA TABLA PRODUCTO EN UN DATATABLE----'
     Public Function mostrarRapidoProductoEnTabla() As DataTable
 
-        consultaSQL = "SELECT nombre AS Nombre," &
-                                    "precio AS Precio " &
-                                     "FROM productos where nombre like '%" & MenuPrincipal.txtPrecioProductos.Text & "%'"
+        consultaSQL = "SELECT nombre AS Nombre," & "precio AS Precio " & "FROM productos where nombre like '%" & MenuPrincipal.txtPrecioProductos.Text & "%'"
 
         Return insertarEnTabla(consultaSQL)
 
@@ -125,21 +131,10 @@ Public Class Conexion
 
     End Function
 
-    '----MOSTRAR TODO DE LA TABLA CLIENTES EN UN DATATABLE----'
-    Public Function mostrarClientesEnTabla() As DataTable
-
-        consultaSQL = "SELECT idCliente As ID, Nombre, Deuda As Saldo, Telefono As Teléfono, Direccion As Dirección, estadoBool As Activo FROM clientes"
-
-        Return insertarEnTabla(consultaSQL)
-
-    End Function
-
     '----BUSCAR CLIENTE POR NOMBRE----'
-    Public Function mostrarBusquedaClientesEnTabla(ByVal nombre As String) As DataTable
+    Public Function mostrarClientesEnTabla(ByVal consulta As String) As DataTable
 
-        consultaSQL = "SELECT idCliente As ID, Nombre, Deuda As Saldo, Telefono As Teléfono, Direccion As Dirección, estadoBool As Activo FROM clientes WHERE nombre LIKE '%" & nombre & "%'"
-
-        Return insertarEnTabla(consultaSQL)
+        Return insertarEnTabla(consulta)
     End Function
 
     '----MENSAJE PERSONALIZADO----'

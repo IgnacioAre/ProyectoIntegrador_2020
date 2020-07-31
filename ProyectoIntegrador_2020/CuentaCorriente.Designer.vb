@@ -22,101 +22,52 @@ Partial Class CuentaCorriente
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CuentaCorriente))
-        Me.dgvCientes = New Guna.UI.WinForms.GunaDataGridView()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txtBuscarClientes = New System.Windows.Forms.TextBox()
         Me.btnDebe = New System.Windows.Forms.Button()
         Me.btnHaber = New System.Windows.Forms.Button()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.btnVerHistorial = New System.Windows.Forms.LinkLabel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnCerrar = New System.Windows.Forms.Button()
-        CType(Me.dgvCientes, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtHistorial = New System.Windows.Forms.TextBox()
+        Me.dgvClientes = New Guna.UI.WinForms.GunaDataGridView()
+        Me.gbDinero = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.pbActualizarTabla = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbDinero.SuspendLayout()
+        CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'dgvCientes
-        '
-        Me.dgvCientes.AllowUserToAddRows = False
-        Me.dgvCientes.AllowUserToDeleteRows = False
-        Me.dgvCientes.AllowUserToResizeColumns = False
-        Me.dgvCientes.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvCientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgvCientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.dgvCientes.BackgroundColor = System.Drawing.Color.DarkOrange
-        Me.dgvCientes.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgvCientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvCientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvCientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.dgvCientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvCientes.DefaultCellStyle = DataGridViewCellStyle3
-        Me.dgvCientes.EnableHeadersVisualStyles = False
-        Me.dgvCientes.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.dgvCientes.Location = New System.Drawing.Point(75, 79)
-        Me.dgvCientes.Name = "dgvCientes"
-        Me.dgvCientes.ReadOnly = True
-        Me.dgvCientes.RowHeadersVisible = False
-        Me.dgvCientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCientes.Size = New System.Drawing.Size(665, 180)
-        Me.dgvCientes.TabIndex = 3
-        Me.dgvCientes.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
-        Me.dgvCientes.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvCientes.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.dgvCientes.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.dgvCientes.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.dgvCientes.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.dgvCientes.ThemeStyle.BackColor = System.Drawing.Color.DarkOrange
-        Me.dgvCientes.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.dgvCientes.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        Me.dgvCientes.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dgvCientes.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        Me.dgvCientes.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.dgvCientes.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvCientes.ThemeStyle.HeaderStyle.Height = 23
-        Me.dgvCientes.ThemeStyle.ReadOnly = True
-        Me.dgvCientes.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        Me.dgvCientes.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvCientes.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        Me.dgvCientes.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
-        Me.dgvCientes.ThemeStyle.RowsStyle.Height = 22
-        Me.dgvCientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
-        Me.dgvCientes.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White
         '
         'txtBuscarClientes
         '
         Me.txtBuscarClientes.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarClientes.Location = New System.Drawing.Point(75, 43)
+        Me.txtBuscarClientes.Location = New System.Drawing.Point(89, 26)
         Me.txtBuscarClientes.Name = "txtBuscarClientes"
         Me.txtBuscarClientes.Size = New System.Drawing.Size(244, 27)
-        Me.txtBuscarClientes.TabIndex = 4
+        Me.txtBuscarClientes.TabIndex = 0
         '
         'btnDebe
         '
-        Me.btnDebe.BackColor = System.Drawing.Color.Black
+        Me.btnDebe.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnDebe.BackColor = System.Drawing.Color.Coral
         Me.btnDebe.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnDebe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnDebe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnDebe.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDebe.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDebe.ForeColor = System.Drawing.Color.White
-        Me.btnDebe.Location = New System.Drawing.Point(761, 79)
+        Me.btnDebe.ForeColor = System.Drawing.Color.Black
+        Me.btnDebe.Location = New System.Drawing.Point(597, 83)
         Me.btnDebe.Name = "btnDebe"
         Me.btnDebe.Size = New System.Drawing.Size(157, 44)
         Me.btnDebe.TabIndex = 11
@@ -125,34 +76,37 @@ Partial Class CuentaCorriente
         '
         'btnHaber
         '
-        Me.btnHaber.BackColor = System.Drawing.Color.Black
+        Me.btnHaber.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnHaber.BackColor = System.Drawing.Color.Chartreuse
         Me.btnHaber.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnHaber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnHaber.ForeColor = System.Drawing.Color.White
-        Me.btnHaber.Location = New System.Drawing.Point(761, 129)
+        Me.btnHaber.ForeColor = System.Drawing.Color.Black
+        Me.btnHaber.Location = New System.Drawing.Point(597, 145)
         Me.btnHaber.Name = "btnHaber"
         Me.btnHaber.Size = New System.Drawing.Size(157, 44)
         Me.btnHaber.TabIndex = 12
         Me.btnHaber.Text = "Haber"
         Me.btnHaber.UseVisualStyleBackColor = False
         '
-        'LinkLabel1
+        'btnVerHistorial
         '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(48, 325)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(53, 13)
-        Me.LinkLabel1.TabIndex = 13
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "+ Historial"
+        Me.btnVerHistorial.AutoSize = True
+        Me.btnVerHistorial.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVerHistorial.Location = New System.Drawing.Point(12, 272)
+        Me.btnVerHistorial.Name = "btnVerHistorial"
+        Me.btnVerHistorial.Size = New System.Drawing.Size(82, 21)
+        Me.btnVerHistorial.TabIndex = 13
+        Me.btnVerHistorial.TabStop = True
+        Me.btnVerHistorial.Text = "+ Historial"
+        Me.btnVerHistorial.VisitedLinkColor = System.Drawing.Color.Blue
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(325, 37)
+        Me.PictureBox1.Location = New System.Drawing.Point(42, 17)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(41, 36)
         Me.PictureBox1.TabIndex = 14
@@ -170,33 +124,230 @@ Partial Class CuentaCorriente
         Me.btnCerrar.Text = "X"
         Me.btnCerrar.UseVisualStyleBackColor = False
         '
+        'txtHistorial
+        '
+        Me.txtHistorial.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtHistorial.BackColor = System.Drawing.Color.White
+        Me.txtHistorial.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtHistorial.Location = New System.Drawing.Point(16, 314)
+        Me.txtHistorial.Multiline = True
+        Me.txtHistorial.Name = "txtHistorial"
+        Me.txtHistorial.ReadOnly = True
+        Me.txtHistorial.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtHistorial.Size = New System.Drawing.Size(420, 214)
+        Me.txtHistorial.TabIndex = 17
+        Me.txtHistorial.Visible = False
+        '
+        'dgvClientes
+        '
+        Me.dgvClientes.AllowUserToAddRows = False
+        Me.dgvClientes.AllowUserToDeleteRows = False
+        Me.dgvClientes.AllowUserToResizeColumns = False
+        Me.dgvClientes.AllowUserToResizeRows = False
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        Me.dgvClientes.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvClientes.BackgroundColor = System.Drawing.Color.DarkOrange
+        Me.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvClientes.DefaultCellStyle = DataGridViewCellStyle6
+        Me.dgvClientes.EnableHeadersVisualStyles = False
+        Me.dgvClientes.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.dgvClientes.Location = New System.Drawing.Point(89, 62)
+        Me.dgvClientes.Name = "dgvClientes"
+        Me.dgvClientes.ReadOnly = True
+        Me.dgvClientes.RowHeadersVisible = False
+        Me.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvClientes.Size = New System.Drawing.Size(361, 180)
+        Me.dgvClientes.TabIndex = 18
+        Me.dgvClientes.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
+        Me.dgvClientes.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvClientes.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.dgvClientes.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.dgvClientes.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.dgvClientes.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.dgvClientes.ThemeStyle.BackColor = System.Drawing.Color.DarkOrange
+        Me.dgvClientes.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.dgvClientes.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        Me.dgvClientes.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.dgvClientes.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvClientes.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.dgvClientes.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvClientes.ThemeStyle.HeaderStyle.Height = 23
+        Me.dgvClientes.ThemeStyle.ReadOnly = True
+        Me.dgvClientes.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.dgvClientes.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgvClientes.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvClientes.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
+        Me.dgvClientes.ThemeStyle.RowsStyle.Height = 22
+        Me.dgvClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
+        Me.dgvClientes.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White
+        '
+        'gbDinero
+        '
+        Me.gbDinero.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gbDinero.Controls.Add(Me.Label2)
+        Me.gbDinero.Controls.Add(Me.TextBox2)
+        Me.gbDinero.Controls.Add(Me.LinkLabel1)
+        Me.gbDinero.Controls.Add(Me.Button1)
+        Me.gbDinero.Controls.Add(Me.CheckBox1)
+        Me.gbDinero.Controls.Add(Me.Label1)
+        Me.gbDinero.Controls.Add(Me.TextBox1)
+        Me.gbDinero.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbDinero.ForeColor = System.Drawing.Color.Navy
+        Me.gbDinero.Location = New System.Drawing.Point(522, 222)
+        Me.gbDinero.Name = "gbDinero"
+        Me.gbDinero.Size = New System.Drawing.Size(345, 253)
+        Me.gbDinero.TabIndex = 19
+        Me.gbDinero.TabStop = False
+        Me.gbDinero.Text = "Debe"
+        Me.gbDinero.Visible = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.ForeColor = System.Drawing.Color.Green
+        Me.Label2.Location = New System.Drawing.Point(28, 75)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(18, 19)
+        Me.Label2.TabIndex = 6
+        Me.Label2.Text = "$"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox2.Location = New System.Drawing.Point(32, 157)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(292, 27)
+        Me.TextBox2.TabIndex = 5
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel1.Location = New System.Drawing.Point(19, 122)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(79, 21)
+        Me.LinkLabel1.TabIndex = 4
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "+ Detalle"
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Black
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Location = New System.Drawing.Point(245, 210)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(94, 37)
+        Me.Button1.TabIndex = 3
+        Me.Button1.Text = "Guardar"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox1.ForeColor = System.Drawing.Color.Blue
+        Me.CheckBox1.Location = New System.Drawing.Point(32, 221)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(149, 20)
+        Me.CheckBox1.TabIndex = 2
+        Me.CheckBox1.Text = "Importante (Notas)"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.Location = New System.Drawing.Point(19, 50)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(59, 19)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Dinero"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(48, 72)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(133, 27)
+        Me.TextBox1.TabIndex = 0
+        '
+        'pbActualizarTabla
+        '
+        Me.pbActualizarTabla.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbActualizarTabla.Image = CType(resources.GetObject("pbActualizarTabla.Image"), System.Drawing.Image)
+        Me.pbActualizarTabla.Location = New System.Drawing.Point(16, 103)
+        Me.pbActualizarTabla.Name = "pbActualizarTabla"
+        Me.pbActualizarTabla.Size = New System.Drawing.Size(35, 35)
+        Me.pbActualizarTabla.TabIndex = 23
+        Me.pbActualizarTabla.TabStop = False
+        '
         'CuentaCorriente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkOrange
-        Me.ClientSize = New System.Drawing.Size(952, 548)
+        Me.ClientSize = New System.Drawing.Size(920, 620)
+        Me.Controls.Add(Me.pbActualizarTabla)
+        Me.Controls.Add(Me.gbDinero)
+        Me.Controls.Add(Me.dgvClientes)
+        Me.Controls.Add(Me.txtHistorial)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.LinkLabel1)
+        Me.Controls.Add(Me.btnVerHistorial)
         Me.Controls.Add(Me.btnHaber)
         Me.Controls.Add(Me.btnDebe)
         Me.Controls.Add(Me.txtBuscarClientes)
-        Me.Controls.Add(Me.dgvCientes)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "CuentaCorriente"
         Me.Text = "Pruebas"
-        CType(Me.dgvCientes, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbDinero.ResumeLayout(False)
+        Me.gbDinero.PerformLayout()
+        CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents dgvCientes As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents txtBuscarClientes As System.Windows.Forms.TextBox
     Friend WithEvents btnDebe As System.Windows.Forms.Button
     Friend WithEvents btnHaber As System.Windows.Forms.Button
-    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
+    Friend WithEvents btnVerHistorial As System.Windows.Forms.LinkLabel
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
+    Friend WithEvents txtHistorial As System.Windows.Forms.TextBox
+    Friend WithEvents dgvClientes As Guna.UI.WinForms.GunaDataGridView
+    Friend WithEvents gbDinero As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents pbActualizarTabla As System.Windows.Forms.PictureBox
 End Class
