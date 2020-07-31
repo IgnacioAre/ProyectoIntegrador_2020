@@ -75,6 +75,10 @@ Public Class Explorador
         End If
 
         consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text & "', Deuda=" & txtDeuda.Text & ", Historial='" & txtHistorial.Text & "', Telefono=" & txtTel.Text & ", Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & " where idCliente=" & idCliente & ";")
+        If consultas.resultado = 1 Then
+            gpInformacion.Visible = False
+            mostrarMensaje("Base de datos actualizada!")
+        End If
 
         ActualizarTabla()
     End Sub
@@ -95,5 +99,16 @@ Public Class Explorador
 
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         ActualizarTabla()
+    End Sub
+
+    '----MENSAJE PERSONALIZADO----'
+
+    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
+        Dim mensaje As New Mensaje(mensajeObtenido)
+        mensaje.Show()
+    End Sub
+
+    Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarInfo.Click
+        gpInformacion.Visible = False
     End Sub
 End Class

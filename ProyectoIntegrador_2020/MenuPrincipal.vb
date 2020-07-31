@@ -7,6 +7,7 @@ Public Class MenuPrincipal
     Dim submenuProductoBool As Boolean = False
     Public resultado As Byte
     Public resultadoTxt As String
+    Public idIngresoAdmin As Byte
 
     '----FORMULARIO QUE SE VA A MOSTRAR ENCIMA DEL FORMULARIO PRINCIPAL----'
     Private formulario As Form
@@ -111,7 +112,7 @@ Public Class MenuPrincipal
         If Me.panelMenu.Width = 236 Then
             tmrOcultarMenu.Enabled = True
             imgLogo.Width = 249
-
+            lblTituloVentana.Location = New Point(64, 6)
             If submenuClienteBool Then
                 submenuClienteBool = False
                 tmrOcultarSubMenu.Enabled = True
@@ -126,6 +127,7 @@ Public Class MenuPrincipal
         Else
             tmrMostrarMenu.Enabled = True
             imgLogo.Width = 291
+            lblTituloVentana.Location = New Point(241, 6)
         End If
     End Sub
 
@@ -337,6 +339,7 @@ Public Class MenuPrincipal
 
     Private Sub btnExploradorClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExploradorClientes.Click
         '----MOSTRAR FORMULARIO "Explorador" EN EL MENÚ PRINCIPAL----'
+        lblTituloVentana.Text = "Explorador de Clientes"
         If formularioBool = True Then formulario.Close()
         openFromOnPanel(Of Explorador)()
         formularioBool = True
@@ -344,6 +347,7 @@ Public Class MenuPrincipal
 
     Private Sub btnGestionarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarCliente.Click
         '----MOSTRAR FORMULARIO "CLIENTES" EN EL MENÚ PRINCIPAL----'
+        lblTituloVentana.Text = "Cuenta Corriente de Clientes"
         If formularioBool = True Then formulario.Close()
         openFromOnPanel(Of CuentaCorriente)()
         formularioBool = True
@@ -354,6 +358,28 @@ Public Class MenuPrincipal
     Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
         Dim mensaje As New Mensaje(mensajeObtenido)
         mensaje.Show()
+    End Sub
+
+    Private Sub btnInicio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInicio.Click
+        formulario.Close()
+        lblTituloVentana.Text = "Menú Principal"
+    End Sub
+
+    Private Sub btnNuevoProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoProveedor.Click
+        lblTituloVentana.Text = "Explorador de Proveedores"
+    End Sub
+
+    Private Sub btnGestionarProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarProveedor.Click
+        lblTituloVentana.Text = "Cuanta Corriente de Proveedores"
+    End Sub
+
+    
+    Private Sub btnActualizarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarProducto.Click
+        lblTituloVentana.Text = "Actualizar Productos"
+    End Sub
+
+    Private Sub btnListadoProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnListadoProducto.Click
+        lblTituloVentana.Text = "Listado de Productos y Stock"
     End Sub
 
 End Class

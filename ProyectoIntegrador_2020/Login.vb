@@ -120,6 +120,8 @@ Public Class Login
                 Else
                     guardarUsuarioTxt("")
                 End If
+                consultas.consultaReturnHide("Select idAdmin from Admin where Usuario='" & txtUsuarioLogin.Text & "';")
+                MenuPrincipal.idIngresoAdmin = Val(consultas.resultadoTxt)
                 MenuPrincipal.Show()
                 Me.Close()
             Else

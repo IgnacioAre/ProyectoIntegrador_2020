@@ -78,7 +78,7 @@ Partial Class Nuevo
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.DarkOrange
+        Me.Panel1.BackColor = System.Drawing.Color.OrangeRed
         Me.Panel1.Controls.Add(Me.btnRegistrarCliente)
         Me.Panel1.Controls.Add(Me.txtTelefonoCliente)
         Me.Panel1.Controls.Add(Me.lblTelefono)

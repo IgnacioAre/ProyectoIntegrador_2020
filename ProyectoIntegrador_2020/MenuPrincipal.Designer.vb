@@ -28,6 +28,7 @@ Partial Class MenuPrincipal
         Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelSuperior = New System.Windows.Forms.Panel()
+        Me.lblTituloVentana = New System.Windows.Forms.Label()
         Me.btnRestaurar = New System.Windows.Forms.Button()
         Me.btnMaximizar = New System.Windows.Forms.Button()
         Me.btnAyuda = New System.Windows.Forms.Button()
@@ -85,6 +86,7 @@ Partial Class MenuPrincipal
         'panelSuperior
         '
         Me.panelSuperior.BackColor = System.Drawing.Color.Black
+        Me.panelSuperior.Controls.Add(Me.lblTituloVentana)
         Me.panelSuperior.Controls.Add(Me.btnRestaurar)
         Me.panelSuperior.Controls.Add(Me.btnMaximizar)
         Me.panelSuperior.Controls.Add(Me.btnAyuda)
@@ -95,6 +97,17 @@ Partial Class MenuPrincipal
         Me.panelSuperior.Name = "panelSuperior"
         Me.panelSuperior.Size = New System.Drawing.Size(1038, 34)
         Me.panelSuperior.TabIndex = 2
+        '
+        'lblTituloVentana
+        '
+        Me.lblTituloVentana.AutoSize = True
+        Me.lblTituloVentana.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTituloVentana.ForeColor = System.Drawing.Color.White
+        Me.lblTituloVentana.Location = New System.Drawing.Point(241, 6)
+        Me.lblTituloVentana.Name = "lblTituloVentana"
+        Me.lblTituloVentana.Size = New System.Drawing.Size(125, 19)
+        Me.lblTituloVentana.TabIndex = 5
+        Me.lblTituloVentana.Text = "Menú Principal"
         '
         'btnRestaurar
         '
@@ -269,7 +282,7 @@ Partial Class MenuPrincipal
         Me.btnActualizarProducto.ForeColor = System.Drawing.Color.White
         Me.btnActualizarProducto.Image = CType(resources.GetObject("btnActualizarProducto.Image"), System.Drawing.Image)
         Me.btnActualizarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnActualizarProducto.Location = New System.Drawing.Point(3, 54)
+        Me.btnActualizarProducto.Location = New System.Drawing.Point(-3, 0)
         Me.btnActualizarProducto.Name = "btnActualizarProducto"
         Me.btnActualizarProducto.Padding = New System.Windows.Forms.Padding(28, 0, 0, 0)
         Me.btnActualizarProducto.Size = New System.Drawing.Size(230, 54)
@@ -290,7 +303,7 @@ Partial Class MenuPrincipal
         Me.btnListadoProducto.ForeColor = System.Drawing.Color.White
         Me.btnListadoProducto.Image = CType(resources.GetObject("btnListadoProducto.Image"), System.Drawing.Image)
         Me.btnListadoProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnListadoProducto.Location = New System.Drawing.Point(3, 0)
+        Me.btnListadoProducto.Location = New System.Drawing.Point(-3, 54)
         Me.btnListadoProducto.Name = "btnListadoProducto"
         Me.btnListadoProducto.Padding = New System.Windows.Forms.Padding(28, 0, 0, 0)
         Me.btnListadoProducto.Size = New System.Drawing.Size(230, 57)
@@ -507,7 +520,7 @@ Partial Class MenuPrincipal
         Me.btnMenu.Image = CType(resources.GetObject("btnMenu.Image"), System.Drawing.Image)
         Me.btnMenu.Location = New System.Drawing.Point(182, 3)
         Me.btnMenu.Name = "btnMenu"
-        Me.btnMenu.Size = New System.Drawing.Size(42, 46)
+        Me.btnMenu.Size = New System.Drawing.Size(51, 46)
         Me.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.btnMenu.TabIndex = 2
         Me.btnMenu.TabStop = False
@@ -700,6 +713,7 @@ Partial Class MenuPrincipal
         Me.Text = "El Cofre"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.panelSuperior.ResumeLayout(False)
+        Me.panelSuperior.PerformLayout()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelMenu.ResumeLayout(False)
         Me.panelControles.ResumeLayout(False)
@@ -756,5 +770,6 @@ Partial Class MenuPrincipal
     Friend WithEvents tmrMostrarSubMenu As System.Windows.Forms.Timer
     Friend WithEvents tmrOcultarSubMenu As System.Windows.Forms.Timer
     Friend WithEvents dgvPreciosRapidos As Guna.UI.WinForms.GunaDataGridView
+    Friend WithEvents lblTituloVentana As System.Windows.Forms.Label
 
 End Class

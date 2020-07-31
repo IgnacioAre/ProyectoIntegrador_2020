@@ -76,4 +76,12 @@ Public Class CuentaCorriente
         consultas.consultaReturnHide("SELECT Historial FROM Clientes where idCliente=" & idCliente & ";")
         txtHistorial.Text = consultas.resultadoTxt
     End Sub
+
+    '----MENSAJE PERSONALIZADO----'
+
+    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
+        Dim mensaje As New Mensaje(mensajeObtenido)
+        mensaje.Show()
+    End Sub
+
 End Class
