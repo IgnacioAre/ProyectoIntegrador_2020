@@ -36,12 +36,12 @@ Partial Class CuentaCorriente
         Me.dgvClientes = New Guna.UI.WinForms.GunaDataGridView()
         Me.gbDinero = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtDetalle = New System.Windows.Forms.TextBox()
+        Me.btnAgregarDetalle = New System.Windows.Forms.LinkLabel()
+        Me.btnActualizarDeuda = New System.Windows.Forms.Button()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtDinero = New System.Windows.Forms.TextBox()
         Me.pbActualizarTabla = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -154,7 +154,7 @@ Partial Class CuentaCorriente
         Me.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
         DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
@@ -207,12 +207,12 @@ Partial Class CuentaCorriente
         '
         Me.gbDinero.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbDinero.Controls.Add(Me.Label2)
-        Me.gbDinero.Controls.Add(Me.TextBox2)
-        Me.gbDinero.Controls.Add(Me.LinkLabel1)
-        Me.gbDinero.Controls.Add(Me.Button1)
+        Me.gbDinero.Controls.Add(Me.txtDetalle)
+        Me.gbDinero.Controls.Add(Me.btnAgregarDetalle)
+        Me.gbDinero.Controls.Add(Me.btnActualizarDeuda)
         Me.gbDinero.Controls.Add(Me.CheckBox1)
         Me.gbDinero.Controls.Add(Me.Label1)
-        Me.gbDinero.Controls.Add(Me.TextBox1)
+        Me.gbDinero.Controls.Add(Me.txtDinero)
         Me.gbDinero.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbDinero.ForeColor = System.Drawing.Color.Navy
         Me.gbDinero.Location = New System.Drawing.Point(522, 222)
@@ -233,38 +233,40 @@ Partial Class CuentaCorriente
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "$"
         '
-        'TextBox2
+        'txtDetalle
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(32, 157)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(292, 27)
-        Me.TextBox2.TabIndex = 5
+        Me.txtDetalle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDetalle.Location = New System.Drawing.Point(32, 157)
+        Me.txtDetalle.Name = "txtDetalle"
+        Me.txtDetalle.Size = New System.Drawing.Size(292, 27)
+        Me.txtDetalle.TabIndex = 5
+        Me.txtDetalle.Visible = False
         '
-        'LinkLabel1
+        'btnAgregarDetalle
         '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel1.Location = New System.Drawing.Point(19, 122)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(79, 21)
-        Me.LinkLabel1.TabIndex = 4
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "+ Detalle"
+        Me.btnAgregarDetalle.AutoSize = True
+        Me.btnAgregarDetalle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregarDetalle.Location = New System.Drawing.Point(19, 122)
+        Me.btnAgregarDetalle.Name = "btnAgregarDetalle"
+        Me.btnAgregarDetalle.Size = New System.Drawing.Size(79, 21)
+        Me.btnAgregarDetalle.TabIndex = 4
+        Me.btnAgregarDetalle.TabStop = True
+        Me.btnAgregarDetalle.Text = "+ Detalle"
         '
-        'Button1
+        'btnActualizarDeuda
         '
-        Me.Button1.BackColor = System.Drawing.Color.Black
-        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(245, 210)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(94, 37)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Guardar"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnActualizarDeuda.BackColor = System.Drawing.Color.Black
+        Me.btnActualizarDeuda.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnActualizarDeuda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnActualizarDeuda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnActualizarDeuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnActualizarDeuda.ForeColor = System.Drawing.Color.White
+        Me.btnActualizarDeuda.Location = New System.Drawing.Point(245, 210)
+        Me.btnActualizarDeuda.Name = "btnActualizarDeuda"
+        Me.btnActualizarDeuda.Size = New System.Drawing.Size(94, 37)
+        Me.btnActualizarDeuda.TabIndex = 3
+        Me.btnActualizarDeuda.Text = "Guardar"
+        Me.btnActualizarDeuda.UseVisualStyleBackColor = False
         '
         'CheckBox1
         '
@@ -288,12 +290,12 @@ Partial Class CuentaCorriente
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Dinero"
         '
-        'TextBox1
+        'txtDinero
         '
-        Me.TextBox1.Location = New System.Drawing.Point(48, 72)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(133, 27)
-        Me.TextBox1.TabIndex = 0
+        Me.txtDinero.Location = New System.Drawing.Point(48, 72)
+        Me.txtDinero.Name = "txtDinero"
+        Me.txtDinero.Size = New System.Drawing.Size(133, 27)
+        Me.txtDinero.TabIndex = 0
         '
         'pbActualizarTabla
         '
@@ -342,12 +344,12 @@ Partial Class CuentaCorriente
     Friend WithEvents txtHistorial As System.Windows.Forms.TextBox
     Friend WithEvents dgvClientes As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents gbDinero As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents txtDetalle As System.Windows.Forms.TextBox
+    Friend WithEvents btnAgregarDetalle As System.Windows.Forms.LinkLabel
+    Friend WithEvents btnActualizarDeuda As System.Windows.Forms.Button
     Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtDinero As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents pbActualizarTabla As System.Windows.Forms.PictureBox
 End Class

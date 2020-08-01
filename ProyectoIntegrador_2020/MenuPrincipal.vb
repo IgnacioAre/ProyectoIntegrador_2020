@@ -7,7 +7,7 @@ Public Class MenuPrincipal
     Dim submenuProductoBool As Boolean = False
     Public resultado As Byte
     Public resultadoTxt As String
-    Public idIngresoAdmin As Byte
+
 
     '----FORMULARIO QUE SE VA A MOSTRAR ENCIMA DEL FORMULARIO PRINCIPAL----'
     Private formulario As Form
@@ -43,6 +43,7 @@ Public Class MenuPrincipal
     Public Sub confirmacion()
         If formularioBool Then formulario.Close()
         formularioBool = False
+        End
     End Sub
 
 
@@ -361,7 +362,7 @@ Public Class MenuPrincipal
     End Sub
 
     Private Sub btnInicio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInicio.Click
-        formulario.Close()
+        If formularioBool Then formulario.Close()
         lblTituloVentana.Text = "Menú Principal"
     End Sub
 

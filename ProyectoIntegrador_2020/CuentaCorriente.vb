@@ -4,6 +4,7 @@ Public Class CuentaCorriente
 
     Dim consultas As Conexion = New Conexion
     Dim idCliente As Byte
+    Dim deudaActual As Integer
 
     Private Sub Pruebas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         txtBuscarClientes.Focus()
@@ -12,7 +13,7 @@ Public Class CuentaCorriente
         btnVerHistorial.Enabled = False
         consultas.establecerConexion()
         SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
-        dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo FROM Clientes;")
+        actualizarTabla()
     End Sub
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -36,6 +37,7 @@ Public Class CuentaCorriente
     Private Sub btnCerrar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
         MenuPrincipal.formularioBool = False
         Me.Close()
+        MenuPrincipal.lblTituloVentana.Text = "Menú Principal"
     End Sub
 
 
@@ -50,31 +52,40 @@ Public Class CuentaCorriente
 
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        gbDinero.Visible = False
+    Private Sub btnActualizarDeuda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarDeuda.Click
+        Dim dineroResultado As Integer
+        If gbDinero.Text.Equals("Debe") Then
+            consultas.consultaReturnHide("SELECT Deuda FROM Clientes WHERE idCliente=" & idCliente & ";")
+            deudaActual = Val(consultas.valorReturn)
+
+            dineroResultado = deudaActual + Val(txtDinero.Text)
+
+            consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & " WHERE idCliente=" & idCliente & ";")
+            If consultas.resultado = 1 Then
+                txtDinero.Text = ""
+                txtDetalle.Text = ""
+                gbDinero.Visible = False
+                consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
+                mostrarMensaje(consultas.valorReturn & vbCrLf & "El saldo actual es $" & dineroResultado)
+                actualizarTabla()
+
+            End If
+
+        End If
+
+
     End Sub
 
     Private Sub btnDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDebe.Click
         gbDinero.Text = "Debe"
         gbDinero.Visible = True
+        txtDinero.Focus()
     End Sub
 
     Private Sub btnHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHaber.Click
         gbDinero.Text = "Haber"
         gbDinero.Visible = True
-    End Sub
-
-    Private Sub dgvClientes_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles dgvClientes.MouseDown
-        If dgvClientes.SelectedCells.Count <> 0 Then
-            idCliente = dgvClientes.SelectedCells(0).Value
-        End If
-        If idCliente >= 0 Then
-            btnDebe.Enabled = True
-            btnHaber.Enabled = True
-            btnVerHistorial.Enabled = True
-        End If
-        consultas.consultaReturnHide("SELECT Historial FROM Clientes where idCliente=" & idCliente & ";")
-        txtHistorial.Text = consultas.resultadoTxt
+        txtDinero.Focus()
     End Sub
 
     '----MENSAJE PERSONALIZADO----'
@@ -84,4 +95,42 @@ Public Class CuentaCorriente
         mensaje.Show()
     End Sub
 
+    Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvClientes.SelectionChanged
+        If dgvClientes.SelectedCells.Count <> 0 Then
+            idCliente = dgvClientes.SelectedCells(0).Value
+        End If
+        If idCliente >= 0 Then
+            btnDebe.Enabled = True
+            btnHaber.Enabled = True
+            btnVerHistorial.Enabled = True
+        End If
+        consultas.consultaReturnHide("SELECT Historial FROM Clientes WHERE idCliente=" & idCliente & ";")
+        txtHistorial.Text = consultas.valorReturn
+    End Sub
+
+
+    Private Sub btnAgregarDetalle_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles btnAgregarDetalle.LinkClicked
+        If btnAgregarDetalle.Text.Equals("+ Detalle") Then
+            btnAgregarDetalle.Text = "- Detalle"
+            txtDetalle.Visible = True
+            txtDetalle.Focus()
+        Else
+            btnAgregarDetalle.Text = "+ Detalle"
+            txtDetalle.Visible = False
+        End If
+    End Sub
+
+    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
+        actualizarTabla()
+    End Sub
+
+    Private Sub actualizarTabla()
+        dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo FROM Clientes;")
+    End Sub
+
+    Private Sub txtDinero_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDinero.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+        End If
+    End Sub
 End Class

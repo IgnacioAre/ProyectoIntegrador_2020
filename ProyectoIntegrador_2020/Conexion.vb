@@ -10,8 +10,7 @@ Public Class Conexion
     Protected ds As DataSet
 
     Public resultado As Byte = 0
-    Public resultadoTxt As String
-    Private valorReturn As String = ""
+    Public valorReturn As String = ""
 
     Private consultaSQL As String
     Private tabla As DataTable
@@ -48,6 +47,7 @@ Public Class Conexion
         Try
             conexion.Open()
             comando = New MySqlCommand(Sql, conexion)
+            valorReturn = ""
             valorReturn = comando.ExecuteScalar()
         Catch ex As Exception
             MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
@@ -56,6 +56,28 @@ Public Class Conexion
         End Try
         Return valorReturn
     End Function
+
+
+    '----CONSULTAS MYSQL GLOBALES----'
+
+    Public Sub consultaHide(ByVal consultaSQL As String)
+        Try
+            consultaHideEstructura(consultaSQL)
+        Catch ex As Exception
+            mostrarMensaje("Error al realizar consulta: " & ex.Message)
+        End Try
+    End Sub
+
+    Public Sub consultaReturnHide(ByVal consultaSQL As String)
+        Try
+            consultaReturnHideEstructura(consultaSQL)
+        Catch ex As Exception
+            mostrarMensaje("Error al realizar consulta: " & ex.Message)
+        End Try
+    End Sub
+
+
+
 
     Private Function consultaReturnHideVariosValores(ByVal Sql As String) As String
         Try
@@ -95,23 +117,6 @@ Public Class Conexion
 
     End Function
 
-    '----CONSULTAS MySQL----'
-
-    Public Sub consultaHide(ByVal consultaSQL As String)
-        Try
-            consultaHideEstructura(consultaSQL)
-        Catch ex As Exception
-            mostrarMensaje("Error al realizar consulta: " & ex.Message)
-        End Try
-    End Sub
-
-    Public Sub consultaReturnHide(ByVal consultaSQL As String)
-        Try
-            resultadoTxt = consultaReturnHideEstructura(consultaSQL)
-        Catch ex As Exception
-            mostrarMensaje("Error al realizar consulta: " & ex.Message)
-        End Try
-    End Sub
 
     '----MOSTRAR NOMBRE Y PRECIO DE LA TABLA PRODUCTO EN UN DATATABLE----'
     Public Function mostrarRapidoProductoEnTabla() As DataTable

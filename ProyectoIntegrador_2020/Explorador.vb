@@ -9,6 +9,7 @@ Public Class Explorador
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
         MenuPrincipal.formularioBool = False
         Me.Close()
+        MenuPrincipal.lblTituloVentana.Text = "Menú Principal"
     End Sub
 
     Private Sub btnClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click

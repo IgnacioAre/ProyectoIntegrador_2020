@@ -114,14 +114,14 @@ Public Class Login
         Try
             consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
 
-            If Not consultas.resultadoTxt = "" Then
+            If Not consultas.valorReturn = "" Then
                 If chbGuardarUsuario.Checked Then
                     guardarUsuarioTxt(txtUsuarioLogin.Text.ToUpper)
                 Else
                     guardarUsuarioTxt("")
                 End If
                 consultas.consultaReturnHide("Select idAdmin from Admin where Usuario='" & txtUsuarioLogin.Text & "';")
-                MenuPrincipal.idIngresoAdmin = Val(consultas.resultadoTxt)
+                Nuevo.idIngresoAdmin = Val(consultas.valorReturn)
                 MenuPrincipal.Show()
                 Me.Close()
             Else
@@ -145,7 +145,7 @@ Public Class Login
                 Else
 
                     consultas.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
-                    If Not consultas.resultadoTxt = "" Then
+                    If Not consultas.valorReturn = "" Then
                         mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
                     Else
 
@@ -308,12 +308,14 @@ Public Class Login
             Try
                 consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
 
-                If Not consultas.resultadoTxt = "" Then
+                If Not consultas.valorReturn = "" Then
                     If chbGuardarUsuario.Checked Then
                         guardarUsuarioTxt(txtUsuarioLogin.Text.ToUpper)
                     Else
                         guardarUsuarioTxt("")
                     End If
+                    consultas.consultaReturnHide("Select idAdmin from Admin where Usuario='" & txtUsuarioLogin.Text & "';")
+                    Nuevo.idIngresoAdmin = Val(consultas.valorReturn)
                     MenuPrincipal.Show()
                     Me.Close()
                 Else
@@ -337,7 +339,7 @@ Public Class Login
                     Else
 
                         consultas.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
-                        If Not consultas.resultadoTxt = "" Then
+                        If Not consultas.valorReturn = "" Then
                             mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
                         Else
 
