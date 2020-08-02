@@ -53,6 +53,7 @@ Partial Class Explorador
         Me.btnNuevo = New System.Windows.Forms.Button()
         Me.dgvClientes = New Guna.UI.WinForms.GunaDataGridView()
         Me.btnCerrar = New System.Windows.Forms.Button()
+        Me.chbPermitido = New System.Windows.Forms.CheckBox()
         Me.panelClientes.SuspendLayout()
         CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpInformacion.SuspendLayout()
@@ -91,6 +92,7 @@ Partial Class Explorador
         '
         'gpInformacion
         '
+        Me.gpInformacion.Controls.Add(Me.chbPermitido)
         Me.gpInformacion.Controls.Add(Me.btnCerrarInfo)
         Me.gpInformacion.Controls.Add(Me.btnActualizar)
         Me.gpInformacion.Controls.Add(Me.txtHistorial)
@@ -171,7 +173,7 @@ Partial Class Explorador
         '
         Me.chbActivo.AutoSize = True
         Me.chbActivo.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chbActivo.Location = New System.Drawing.Point(438, 68)
+        Me.chbActivo.Location = New System.Drawing.Point(57, 224)
         Me.chbActivo.Name = "chbActivo"
         Me.chbActivo.Size = New System.Drawing.Size(82, 25)
         Me.chbActivo.TabIndex = 13
@@ -313,7 +315,7 @@ Partial Class Explorador
         Me.btnEliminar.ForeColor = System.Drawing.Color.White
         Me.btnEliminar.Image = CType(resources.GetObject("btnEliminar.Image"), System.Drawing.Image)
         Me.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEliminar.Location = New System.Drawing.Point(430, 276)
+        Me.btnEliminar.Location = New System.Drawing.Point(429, 282)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(150, 54)
         Me.btnEliminar.TabIndex = 18
@@ -334,7 +336,7 @@ Partial Class Explorador
         Me.btnModificar.ForeColor = System.Drawing.Color.White
         Me.btnModificar.Image = CType(resources.GetObject("btnModificar.Image"), System.Drawing.Image)
         Me.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnModificar.Location = New System.Drawing.Point(264, 276)
+        Me.btnModificar.Location = New System.Drawing.Point(263, 282)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(150, 54)
         Me.btnModificar.TabIndex = 17
@@ -354,7 +356,7 @@ Partial Class Explorador
         Me.btnNuevo.ForeColor = System.Drawing.Color.White
         Me.btnNuevo.Image = CType(resources.GetObject("btnNuevo.Image"), System.Drawing.Image)
         Me.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnNuevo.Location = New System.Drawing.Point(96, 276)
+        Me.btnNuevo.Location = New System.Drawing.Point(95, 282)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Size = New System.Drawing.Size(150, 54)
         Me.btnNuevo.TabIndex = 16
@@ -370,23 +372,22 @@ Partial Class Explorador
         Me.dgvClientes.AllowUserToResizeRows = False
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
         Me.dgvClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgvClientes.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvClientes.BackgroundColor = System.Drawing.Color.Gold
         Me.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.5!)
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.5!)
         DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
@@ -401,7 +402,7 @@ Partial Class Explorador
         Me.dgvClientes.ReadOnly = True
         Me.dgvClientes.RowHeadersVisible = False
         Me.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvClientes.Size = New System.Drawing.Size(811, 180)
+        Me.dgvClientes.Size = New System.Drawing.Size(892, 187)
         Me.dgvClientes.TabIndex = 4
         Me.dgvClientes.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
         Me.dgvClientes.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
@@ -420,10 +421,10 @@ Partial Class Explorador
         Me.dgvClientes.ThemeStyle.ReadOnly = True
         Me.dgvClientes.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
         Me.dgvClientes.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvClientes.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        Me.dgvClientes.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvClientes.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
         Me.dgvClientes.ThemeStyle.RowsStyle.Height = 22
-        Me.dgvClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
+        Me.dgvClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Gray
         Me.dgvClientes.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White
         '
         'btnCerrar
@@ -437,6 +438,16 @@ Partial Class Explorador
         Me.btnCerrar.TabIndex = 0
         Me.btnCerrar.Text = "X"
         Me.btnCerrar.UseVisualStyleBackColor = False
+        '
+        'chbPermitido
+        '
+        Me.chbPermitido.AutoSize = True
+        Me.chbPermitido.Location = New System.Drawing.Point(158, 224)
+        Me.chbPermitido.Name = "chbPermitido"
+        Me.chbPermitido.Size = New System.Drawing.Size(102, 25)
+        Me.chbPermitido.TabIndex = 18
+        Me.chbPermitido.Text = "Permitido"
+        Me.chbPermitido.UseVisualStyleBackColor = True
         '
         'Explorador
         '
@@ -484,4 +495,5 @@ Partial Class Explorador
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents pbActualizarTabla As System.Windows.Forms.PictureBox
     Friend WithEvents btnCerrarInfo As System.Windows.Forms.Button
+    Friend WithEvents chbPermitido As System.Windows.Forms.CheckBox
 End Class

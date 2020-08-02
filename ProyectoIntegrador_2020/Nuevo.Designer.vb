@@ -123,9 +123,9 @@ Partial Class Nuevo
         Me.lblTelefono.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTelefono.Location = New System.Drawing.Point(31, 249)
         Me.lblTelefono.Name = "lblTelefono"
-        Me.lblTelefono.Size = New System.Drawing.Size(193, 23)
+        Me.lblTelefono.Size = New System.Drawing.Size(95, 23)
         Me.lblTelefono.TabIndex = 8
-        Me.lblTelefono.Text = "Teléfono (Opcional)"
+        Me.lblTelefono.Text = "Teléfono*"
         '
         'txtDireccionCliente
         '
@@ -142,9 +142,9 @@ Partial Class Nuevo
         Me.lblDireccion.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDireccion.Location = New System.Drawing.Point(31, 140)
         Me.lblDireccion.Name = "lblDireccion"
-        Me.lblDireccion.Size = New System.Drawing.Size(204, 23)
+        Me.lblDireccion.Size = New System.Drawing.Size(106, 23)
         Me.lblDireccion.TabIndex = 6
-        Me.lblDireccion.Text = "Dirección (Opcional)"
+        Me.lblDireccion.Text = "Dirección*"
         '
         'txtNombreCliente
         '

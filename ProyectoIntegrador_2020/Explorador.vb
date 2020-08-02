@@ -4,6 +4,8 @@ Public Class Explorador
 
     Dim consultas As Conexion = New Conexion
     Dim idCliente As Byte
+    Dim activo As Byte
+    Dim permitido As Byte
 
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
@@ -63,19 +65,29 @@ Public Class Explorador
                 chbActivo.Checked = False
             End If
             txtHistorial.Text = row.Cells(7).Value.ToString
+            If row.Cells(8).Value.ToString.Equals("True") Then
+                chbPermitido.Checked = True
+            Else
+                chbPermitido.Checked = False
+            End If
         End If
     End Sub
 
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
-        Dim activo As Byte
         If chbActivo.Checked Then
             activo = 1
         Else
             activo = 0
         End If
 
-        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text & "', Deuda=" & txtDeuda.Text & ", Historial='" & txtHistorial.Text & "', Telefono='" & txtTel.Text & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & " where idCliente=" & idCliente & ";")
+        If chbPermitido.Checked Then
+            permitido = 1
+        Else
+            permitido = 0
+        End If
+
+        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text & "', Deuda=" & txtDeuda.Text & ", Historial='" & txtHistorial.Text & "', Telefono='" & txtTel.Text & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & ", maxPermitidoBool=" & permitido & " WHERE idCliente=" & idCliente & ";")
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False
@@ -94,12 +106,9 @@ Public Class Explorador
     End Sub
 
     Private Sub ActualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, fechaIngreso,Telefono As Teléfono, Direccion As Dirección, estadoBool As Activo, Historial, estadoBool FROM clientes;")
+        dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, fechaIngreso,Telefono As Teléfono, Direccion As Dirección, estadoBool As Activo, Historial, maxPermitidoBool As p FROM clientes;")
         dgvClientes.Columns(7).Visible = False
-        dgvClientes.Columns(8).Visible = False
-        dgvClientes.Columns(0).Width = 40
-        dgvClientes.Columns(2).Width = 70
-        dgvClientes.Columns(6).Width = 60
+        dgvClientes.Columns(8).Width = 0
     End Sub
 
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
@@ -115,5 +124,15 @@ Public Class Explorador
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarInfo.Click
         gpInformacion.Visible = False
+    End Sub
+
+    Private Sub dgvClientes_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvClientes.CellFormatting
+        If dgvClientes.Columns(e.ColumnIndex).Name = "p" Then
+
+            If e.Value = "False" Then
+                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 6).Style.ForeColor = Color.Red
+            End If
+        End If
+
     End Sub
 End Class

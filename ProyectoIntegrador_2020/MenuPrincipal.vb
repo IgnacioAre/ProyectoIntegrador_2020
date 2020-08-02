@@ -53,23 +53,6 @@ Public Class MenuPrincipal
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
-    '----MAXIMIZA EL FORUMULARIO DEL MENÚ----'
-
-    Private Sub btnMaximizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMaximizar.Click
-        btnMaximizar.Visible = False
-        btnRestaurar.Visible = True
-        Me.WindowState = FormWindowState.Maximized
-        moverMenuBool = False
-    End Sub
-
-    '----RESTAURA EL FORUMULARIO DEL MENÚ----'
-
-    Private Sub btnRestaurar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRestaurar.Click
-        btnMaximizar.Visible = True
-        btnRestaurar.Visible = False
-        Me.WindowState = FormWindowState.Normal
-        moverMenuBool = True
-    End Sub
 
     '----TIEMPO QUE SE EJECUTA EL GIF DEL COFRE----'
 
@@ -109,7 +92,7 @@ Public Class MenuPrincipal
 
     '----DESLPEGAR Y CONTRAER MENÚ LATERAL----'
 
-    Private Sub btnMenu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenu.Click
+    Private Sub moverMenuLateral()
         If Me.panelMenu.Width = 236 Then
             tmrOcultarMenu.Enabled = True
             imgLogo.Width = 249
@@ -130,6 +113,10 @@ Public Class MenuPrincipal
             imgLogo.Width = 291
             lblTituloVentana.Location = New Point(241, 6)
         End If
+    End Sub
+
+    Private Sub btnMenu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenu.Click
+        moverMenuLateral()
     End Sub
 
     Private Sub tmrMostrarMenu_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarMenu.Tick

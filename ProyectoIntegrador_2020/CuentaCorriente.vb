@@ -4,7 +4,9 @@ Public Class CuentaCorriente
 
     Dim consultas As Conexion = New Conexion
     Dim idCliente As Byte
+    Dim dineroResultado As Integer
     Dim deudaActual As Integer
+    Dim historialActual As String
 
     Private Sub Pruebas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         txtBuscarClientes.Focus()
@@ -53,14 +55,24 @@ Public Class CuentaCorriente
     End Sub
 
     Private Sub btnActualizarDeuda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarDeuda.Click
-        Dim dineroResultado As Integer
+        Dim fechaActual = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
+
         If gbDinero.Text.Equals("Debe") Then
             consultas.consultaReturnHide("SELECT Deuda FROM Clientes WHERE idCliente=" & idCliente & ";")
             deudaActual = Val(consultas.valorReturn)
 
+            consultas.consultaReturnHide("SELECT Historial FROM Clientes WHERE idCliente=" & idCliente & ";")
+            historialActual = consultas.valorReturn
+
             dineroResultado = deudaActual + Val(txtDinero.Text)
 
-            consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & " WHERE idCliente=" & idCliente & ";")
+            If txtDetalle.Text.Equals("") Then
+                consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "+" & txtDinero.Text & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
+            Else
+                consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "+" & txtDinero.Text & "  *" & txtDetalle.Text & "*" & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
+            End If
+
+
             If consultas.resultado = 1 Then
                 txtDinero.Text = ""
                 txtDetalle.Text = ""
@@ -125,12 +137,23 @@ Public Class CuentaCorriente
     End Sub
 
     Private Sub actualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo FROM Clientes;")
+        dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, maxPermitidoBool As p FROM Clientes;")
+        dgvClientes.Columns(3).Width = 0
     End Sub
 
     Private Sub txtDinero_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDinero.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
+        End If
+    End Sub
+
+    Private Sub dgvClientes_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvClientes.CellFormatting
+        If dgvClientes.Columns(e.ColumnIndex).Name = "p" Then
+
+            If e.Value = "False" Then
+                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 1).Style.ForeColor = Color.Red
+            End If
+
         End If
     End Sub
 End Class
