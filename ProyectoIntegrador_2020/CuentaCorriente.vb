@@ -8,6 +8,8 @@ Public Class CuentaCorriente
     Dim deudaActual As Integer
     Dim historialActual As String
 
+    '----INICIO DEL FORMULARIO----'
+
     Private Sub Pruebas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         txtBuscarClientes.Focus()
         btnDebe.Enabled = False
@@ -32,8 +34,10 @@ Public Class CuentaCorriente
     <MarshalAs(UnmanagedType.LPWStr)> ByVal lParam As String) As Int32
     End Function
 
+    '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
+
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo FROM Clientes WHERE nombre LIKE '%" & txtBuscarClientes.Text & "%';")
+        dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, maxPermitidoBool As p FROM Clientes WHERE nombre LIKE '%" & txtBuscarClientes.Text & "%';")
     End Sub
 
     Private Sub btnCerrar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
@@ -42,6 +46,7 @@ Public Class CuentaCorriente
         MenuPrincipal.lblTituloVentana.Text = "Menú Principal"
     End Sub
 
+    '----PERMITE VER O ESCONDER EL HISTORIAL DEL CLIENTE SELECCIONADO----'
 
     Private Sub btnVerHistorial_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles btnVerHistorial.LinkClicked
         If btnVerHistorial.Text.Equals("+ Historial") Then
@@ -54,8 +59,13 @@ Public Class CuentaCorriente
 
     End Sub
 
+
+    '----ACTUALIZA EL SALDO DEL CLIENTE SELECCIONADO----'
+
     Private Sub btnActualizarDeuda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarDeuda.Click
         Dim fechaActual = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
+
+        '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL DEBE----'
 
         If gbDinero.Text.Equals("Debe") Then
             consultas.consultaReturnHide("SELECT Deuda FROM Clientes WHERE idCliente=" & idCliente & ";")
@@ -83,10 +93,17 @@ Public Class CuentaCorriente
 
             End If
 
+            '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL HABER----'
+
+        Else
+
+
         End If
 
 
     End Sub
+
+    '----HACE VISIBLE LA SECCIÓN DE ACTUALIZAR SALDO----'
 
     Private Sub btnDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDebe.Click
         gbDinero.Text = "Debe"
@@ -107,6 +124,9 @@ Public Class CuentaCorriente
         mensaje.Show()
     End Sub
 
+
+    '----OBTIENE EL ID DEL CLIENTE SELECCIONADO----'
+
     Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvClientes.SelectionChanged
         If dgvClientes.SelectedCells.Count <> 0 Then
             idCliente = dgvClientes.SelectedCells(0).Value
@@ -120,6 +140,7 @@ Public Class CuentaCorriente
         txtHistorial.Text = consultas.valorReturn
     End Sub
 
+    '----MUESTRA O ESCONDE CAMPO DE AGREGAR DETALLE----'
 
     Private Sub btnAgregarDetalle_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles btnAgregarDetalle.LinkClicked
         If btnAgregarDetalle.Text.Equals("+ Detalle") Then
@@ -132,14 +153,23 @@ Public Class CuentaCorriente
         End If
     End Sub
 
+    '----ACTUAIZA LA TABLA AL DARLE CLICK AL BOTON----'
+
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         actualizarTabla()
+        txtBuscarClientes.Text = ""
+        txtBuscarClientes.Focus()
     End Sub
+
+    '----MÉTODO QUE ACTUALIZA LA TABLA----'
 
     Private Sub actualizarTabla()
         dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, maxPermitidoBool As p FROM Clientes;")
         dgvClientes.Columns(3).Width = 0
     End Sub
+
+
+    '----MÉTODO QUE SOLO DEJA INGRESAR NÚMEROS Y TECLA RETROCESO----'
 
     Private Sub txtDinero_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDinero.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
@@ -147,13 +177,24 @@ Public Class CuentaCorriente
         End If
     End Sub
 
+    '----MÉTODO QUE PINTA DE ROJO LOS SALDOS QUE NO SEAN PERMITIDOS POR EL ADMINISTRADOR----'
+
     Private Sub dgvClientes_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvClientes.CellFormatting
         If dgvClientes.Columns(e.ColumnIndex).Name = "p" Then
 
             If e.Value = "False" Then
                 dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 1).Style.ForeColor = Color.Red
+                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 1).Style.SelectionForeColor = Color.Red
             End If
 
+        End If
+    End Sub
+
+    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+
+            dgvClientes.Focus()
         End If
     End Sub
 End Class

@@ -16,15 +16,18 @@ Public Class Login
         Me.ToolTip1.SetToolTip(lblAceptable1, "La contraseña debe contenter al menos 8 caracteres.")
         Me.ToolTip2.SetToolTip(lblAceptable2, "Las contraseñas deben coincidir.")
         leerUsuarioTxt()
-        If Not txtUsuarioLogin.Text.Equals("") Then
-            chbGuardarUsuario.Checked = True
-            txtContraseñaLogin.Focus()
-        Else
-            txtUsuarioLogin.Focus()
-        End If
-        consultas.establecerConexion()
         SendMessage(txtUsuarioLogin.Handle, EM_SETCUEBANNER, 0, "Nombre de usuario")
         SendMessage(txtUsuarioRegistro.Handle, EM_SETCUEBANNER, 0, "Ej: Admin")
+        consultas.establecerConexion()
+        If Not txtUsuarioLogin.Text.Equals("") Then
+            chbGuardarUsuario.Checked = True
+            txtContraseñaLogin.Select()
+            txtContraseñaLogin.Focus()
+        Else
+            txtUsuarioLogin.Select()
+            txtUsuarioLogin.Focus()
+        End If
+
     End Sub
 
 

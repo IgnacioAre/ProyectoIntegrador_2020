@@ -76,7 +76,7 @@ Partial Class Login
         Me.panelTitulo.Location = New System.Drawing.Point(0, 0)
         Me.panelTitulo.Name = "panelTitulo"
         Me.panelTitulo.Size = New System.Drawing.Size(402, 40)
-        Me.panelTitulo.TabIndex = 0
+        Me.panelTitulo.TabIndex = 10
         '
         'lblTitulo
         '
@@ -98,7 +98,7 @@ Partial Class Login
         Me.btnMinimizar.Location = New System.Drawing.Point(325, 3)
         Me.btnMinimizar.Name = "btnMinimizar"
         Me.btnMinimizar.Size = New System.Drawing.Size(34, 34)
-        Me.btnMinimizar.TabIndex = 1
+        Me.btnMinimizar.TabIndex = 21
         Me.btnMinimizar.Text = "_"
         Me.btnMinimizar.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnMinimizar.UseVisualStyleBackColor = True
@@ -116,7 +116,7 @@ Partial Class Login
         Me.btnCerrar.Location = New System.Drawing.Point(365, 3)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(35, 35)
-        Me.btnCerrar.TabIndex = 0
+        Me.btnCerrar.TabIndex = 20
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
         'PictureBox1
@@ -176,7 +176,7 @@ Partial Class Login
         Me.txtUsuarioLogin.MaxLength = 30
         Me.txtUsuarioLogin.Name = "txtUsuarioLogin"
         Me.txtUsuarioLogin.Size = New System.Drawing.Size(202, 27)
-        Me.txtUsuarioLogin.TabIndex = 0
+        Me.txtUsuarioLogin.TabIndex = 1
         '
         'Label1
         '
