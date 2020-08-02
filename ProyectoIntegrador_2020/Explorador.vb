@@ -75,10 +75,11 @@ Public Class Explorador
             activo = 0
         End If
 
-        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text & "', Deuda=" & txtDeuda.Text & ", Historial='" & txtHistorial.Text & "', Telefono=" & txtTel.Text & ", Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & " where idCliente=" & idCliente & ";")
+        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text & "', Deuda=" & txtDeuda.Text & ", Historial='" & txtHistorial.Text & "', Telefono='" & txtTel.Text & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & " where idCliente=" & idCliente & ";")
+
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False
-            mostrarMensaje("Base de datos actualizada!")
+            mostrarMensaje("Base de datos actualizada.")
         End If
 
         ActualizarTabla()
@@ -86,6 +87,9 @@ Public Class Explorador
 
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
         consultas.consultaHide("DELETE FROM Clientes where idCliente=" & idCliente & ";")
+        If consultas.resultado = 1 Then
+            mostrarMensaje("Base de datos actualizada.")
+        End If
         ActualizarTabla()
     End Sub
 

@@ -112,7 +112,7 @@ Partial Class Nuevo
         '
         Me.txtTelefonoCliente.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefonoCliente.Location = New System.Drawing.Point(80, 293)
-        Me.txtTelefonoCliente.MaxLength = 30
+        Me.txtTelefonoCliente.MaxLength = 15
         Me.txtTelefonoCliente.Name = "txtTelefonoCliente"
         Me.txtTelefonoCliente.Size = New System.Drawing.Size(215, 27)
         Me.txtTelefonoCliente.TabIndex = 9
@@ -131,7 +131,7 @@ Partial Class Nuevo
         '
         Me.txtDireccionCliente.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDireccionCliente.Location = New System.Drawing.Point(80, 184)
-        Me.txtDireccionCliente.MaxLength = 30
+        Me.txtDireccionCliente.MaxLength = 50
         Me.txtDireccionCliente.Name = "txtDireccionCliente"
         Me.txtDireccionCliente.Size = New System.Drawing.Size(215, 27)
         Me.txtDireccionCliente.TabIndex = 7
