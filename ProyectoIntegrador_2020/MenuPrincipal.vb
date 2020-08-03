@@ -5,7 +5,6 @@ Public Class MenuPrincipal
     Dim submenuClienteBool As Boolean = False
     Dim submenuProveedorBool As Boolean = False
     Dim submenuProductoBool As Boolean = False
-    Public cerrarMenuP As Boolean = False
     Public resultado As Byte
     Public resultadoTxt As String
 
@@ -24,7 +23,7 @@ Public Class MenuPrincipal
 
 
     Private Sub MenuPrincipal_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
-        If ConfirmacionMensaje.confirmacionResult = 1 Then
+        If resultado = 1 Then
             If formularioBool Then
                 formulario.Close()
                 formularioBool = False
@@ -32,18 +31,13 @@ Public Class MenuPrincipal
             End
         Else
             e.Cancel = True
-            cerrarMenuP = False
-            ConfirmacionMensaje.panelMensaje.Visible = False
         End If
     End Sub
 
 
     '----CIERRA EL FORUMULARIO DEL MENÚ (Y FINALIZA SU EJECUCIÓN)----'
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
-        cerrarMenuP = True
-        ConfirmacionMensaje.Show()
-        ConfirmacionMensaje.panelMensaje.Visible = True
-        ConfirmacionMensaje.confirmacion("                            ¿Desea Salir?")
+        resultado = ConfirmacionMensaje.confirmacion("                            ¿Desea Salir?")
     End Sub
 
     '----MINIMIZA EL FORUMULARIO DEL MENÚ----'

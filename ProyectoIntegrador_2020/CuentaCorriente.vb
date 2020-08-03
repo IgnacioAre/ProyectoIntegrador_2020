@@ -8,6 +8,8 @@ Public Class CuentaCorriente
     Dim deudaActual As Integer
     Dim historialActual As String
     Dim nombreCobrador As String
+    Dim resultadosEntrada As String
+
 
     '----INICIO DEL FORMULARIO----'
 
@@ -97,37 +99,25 @@ Public Class CuentaCorriente
             dineroResultado = deudaActual - Val(txtDinero.Text)
 
 
-            'If dineroResultado = 0 Then
-
-            '    ConfirmacionMensaje.Show()
-            '    ConfirmacionMensaje.PanelEntrada.Visible = True
-            '    ConfirmacionMensaje.lblMensajeEntrada.Text = "Ingrese el nombre del cobrador:"
-
-            '    If ConfirmacionMensaje.confirmacionResult = 1 Then
-            '        nombreCobrador = ConfirmacionMensaje.lblMensajeEntrada.Text
-            '        ConfirmacionMensaje.lblMensajeEntrada.Text = ""
-            '        ConfirmacionMensaje.PanelEntrada.Visible = False
-            '    End If
-
-            'End If
-
+            If dineroResultado = 0 Then
+                mostrarMensajeInput("Ingrese el nombre del cobrador:")
+            End If
 
             If txtDetalle.Text.Equals("") Then
                 If dineroResultado = 0 Then
+                    nombreCobrador = resultadosEntrada
                     consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: " & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
                 Else
                     consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
                 End If
             Else
                 If dineroResultado = 0 Then
+                    nombreCobrador = resultadosEntrada(1)
                     consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: " & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "  *" & txtDetalle.Text & "*" & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
                 Else
                     consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "  *" & txtDetalle.Text & "*" & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
                 End If
             End If
-
-
-
 
 
         End If
@@ -238,4 +228,9 @@ Public Class CuentaCorriente
             dgvClientes.Focus()
         End If
     End Sub
+
+    Private Sub mostrarMensajeInput(ByVal mensaje As String)
+        resultadosEntrada = ConfirmacionMensaje.entradaDatos(mensaje)
+    End Sub
+
 End Class

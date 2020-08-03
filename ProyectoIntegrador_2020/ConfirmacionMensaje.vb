@@ -4,21 +4,36 @@ Imports System.Runtime.InteropServices
 Public Class ConfirmacionMensaje
 
     Public confirmacionResult As Byte = 0
+    Public contenidoEntrada As String
 
-    Public Function confirmacion(ByVal mensaje As String)
-        lblMensaje.Text = mensaje
-        Return DialogResult
+
+    Function entradaDatos(ByVal mensaje As String)
+
+        lblMensajeEntrada.Text = mensaje
+        PanelEntrada.Visible = True
+        Me.ShowDialog()
+
+        Return contenidoEntrada
     End Function
+
+    Function confirmacion(ByVal mensaje As String)
+        lblMensaje.Text = mensaje
+        panelMensaje.Visible = True
+        Me.ShowDialog()
+
+        Return confirmacionResult
+    End Function
+
 
     Public Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         confirmacionResult = 1
-        Me.Hide()
-        If MenuPrincipal.cerrarMenuP Then MenuPrincipal.Close()
+        If Not txtEntrada.Text.Equals("") Then contenidoEntrada = txtEntrada.Text
+        Me.Dispose()
     End Sub
 
     Public Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
         confirmacionResult = 0
-        Me.Close()
+        Me.Dispose()
     End Sub
 
     '----MÉTODOS PARA MOVER EL FORMULARIO----'
