@@ -7,6 +7,7 @@ Public Class CuentaCorriente
     Dim dineroResultado As Integer
     Dim deudaActual As Integer
     Dim historialActual As String
+    Dim nombreCobrador As String
 
     '----INICIO DEL FORMULARIO----'
 
@@ -83,23 +84,63 @@ Public Class CuentaCorriente
             End If
 
 
-            If consultas.resultado = 1 Then
-                txtDinero.Text = ""
-                txtDetalle.Text = ""
-                gbDinero.Visible = False
-                consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
-                mostrarMensaje(consultas.valorReturn & vbCrLf & "El saldo actual es $" & dineroResultado)
-                actualizarTabla()
-
-            End If
-
             '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL HABER----'
 
         Else
 
+            consultas.consultaReturnHide("SELECT Deuda FROM Clientes WHERE idCliente=" & idCliente & ";")
+            deudaActual = Val(consultas.valorReturn)
+
+            consultas.consultaReturnHide("SELECT Historial FROM Clientes WHERE idCliente=" & idCliente & ";")
+            historialActual = consultas.valorReturn
+
+            dineroResultado = deudaActual - Val(txtDinero.Text)
+
+
+            'If dineroResultado = 0 Then
+
+            '    ConfirmacionMensaje.Show()
+            '    ConfirmacionMensaje.PanelEntrada.Visible = True
+            '    ConfirmacionMensaje.lblMensajeEntrada.Text = "Ingrese el nombre del cobrador:"
+
+            '    If ConfirmacionMensaje.confirmacionResult = 1 Then
+            '        nombreCobrador = ConfirmacionMensaje.lblMensajeEntrada.Text
+            '        ConfirmacionMensaje.lblMensajeEntrada.Text = ""
+            '        ConfirmacionMensaje.PanelEntrada.Visible = False
+            '    End If
+
+            'End If
+
+
+            If txtDetalle.Text.Equals("") Then
+                If dineroResultado = 0 Then
+                    consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: " & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
+                Else
+                    consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
+                End If
+            Else
+                If dineroResultado = 0 Then
+                    consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: " & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "  *" & txtDetalle.Text & "*" & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
+                Else
+                    consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "  *" & txtDetalle.Text & "*" & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
+                End If
+            End If
+
+
+
+
 
         End If
 
+        If consultas.resultado = 1 Then
+            txtDinero.Text = ""
+            txtDetalle.Text = ""
+            gbDinero.Visible = False
+            consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
+            mostrarMensaje(consultas.valorReturn & vbCrLf & "El saldo actual es $" & dineroResultado)
+            actualizarTabla()
+            txtBuscarClientes.Focus()
+        End If
 
     End Sub
 

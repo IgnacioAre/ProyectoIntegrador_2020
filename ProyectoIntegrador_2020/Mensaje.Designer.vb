@@ -42,7 +42,7 @@ Partial Class Mensaje
         Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.ForeColor = System.Drawing.Color.White
-        Me.btnAceptar.Location = New System.Drawing.Point(356, 122)
+        Me.btnAceptar.Location = New System.Drawing.Point(354, 120)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(84, 32)
         Me.btnAceptar.TabIndex = 0
@@ -73,6 +73,7 @@ Partial Class Mensaje
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.btnAceptar)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill

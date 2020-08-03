@@ -3,6 +3,7 @@ Imports System.Runtime.InteropServices
 
 Public Class ConfirmacionMensaje
 
+    Public confirmacionResult As Byte = 0
 
     Public Function confirmacion(ByVal mensaje As String)
         lblMensaje.Text = mensaje
@@ -10,13 +11,13 @@ Public Class ConfirmacionMensaje
     End Function
 
     Public Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
-        MenuPrincipal.confirmacionResult = 1
-        MenuPrincipal.Close()
-        Me.Close()
+        confirmacionResult = 1
+        Me.Hide()
+        If MenuPrincipal.cerrarMenuP Then MenuPrincipal.Close()
     End Sub
 
     Public Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
-        MenuPrincipal.confirmacionResult = 0
+        confirmacionResult = 0
         Me.Close()
     End Sub
 
@@ -40,4 +41,9 @@ Public Class ConfirmacionMensaje
         SendMessage(Me.Handle, &H112&, &HF012&, 0)
     End Sub
 
+    Private Sub txtEntrada_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtEntrada.KeyPress
+        If Not Char.IsLetter(e.KeyChar) And Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Not Char.IsWhiteSpace(e.KeyChar) And Asc(e.KeyChar) <> 46 Then
+            e.Handled = True
+        End If
+    End Sub
 End Class
