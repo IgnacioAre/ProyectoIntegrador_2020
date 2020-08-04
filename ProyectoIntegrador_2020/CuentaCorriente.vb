@@ -9,6 +9,7 @@ Public Class CuentaCorriente
     Dim historialActual As String
     Dim nombreCobrador As String
     Dim resultadosEntrada As String
+    Dim confirmacion As Byte
 
 
     '----INICIO DEL FORMULARIO----'
@@ -52,6 +53,10 @@ Public Class CuentaCorriente
     '----PERMITE VER O ESCONDER EL HISTORIAL DEL CLIENTE SELECCIONADO----'
 
     Private Sub btnVerHistorial_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles btnVerHistorial.LinkClicked
+        resetHistorial()
+    End Sub
+
+    Private Sub resetHistorial()
         If btnVerHistorial.Text.Equals("+ Historial") Then
             btnVerHistorial.Text = "- Historial"
             txtHistorial.Visible = True
@@ -59,13 +64,17 @@ Public Class CuentaCorriente
             btnVerHistorial.Text = "+ Historial"
             txtHistorial.Visible = False
         End If
+    End Sub
 
+
+    Private Sub btnActualizarDeuda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarDeuda.Click
+        actualizarDeuda()
     End Sub
 
 
     '----ACTUALIZA EL SALDO DEL CLIENTE SELECCIONADO----'
 
-    Private Sub btnActualizarDeuda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarDeuda.Click
+    Private Sub actualizarDeuda()
         Dim fechaActual = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
 
         '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL DEBE----'
@@ -105,15 +114,23 @@ Public Class CuentaCorriente
 
             If txtDetalle.Text.Equals("") Then
                 If dineroResultado = 0 Then
-                    nombreCobrador = resultadosEntrada
-                    consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: " & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
+                    If confirmacion = 1 Then
+                        nombreCobrador = resultadosEntrada
+                        consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: $" & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
+                    Else
+                        mostrarMensaje("Se canceló el cobro.")
+                    End If
                 Else
                     consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
                 End If
             Else
                 If dineroResultado = 0 Then
-                    nombreCobrador = resultadosEntrada(1)
-                    consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: " & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "  *" & txtDetalle.Text & "*" & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
+                    If confirmacion = 1 Then
+                        nombreCobrador = resultadosEntrada(1)
+                        consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: $" & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "  *" & txtDetalle.Text & "*" & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
+                    Else
+                        mostrarMensaje("Se canceló el cobro.")
+                    End If
                 Else
                     consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "  *" & txtDetalle.Text & "*" & "  #" & fechaActual & "#'" & " WHERE idCliente=" & idCliente & ";")
                 End If
@@ -123,13 +140,19 @@ Public Class CuentaCorriente
         End If
 
         If consultas.resultado = 1 Then
-            txtDinero.Text = ""
-            txtDetalle.Text = ""
-            gbDinero.Visible = False
-            consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
-            mostrarMensaje(consultas.valorReturn & vbCrLf & "El saldo actual es $" & dineroResultado)
-            actualizarTabla()
-            txtBuscarClientes.Focus()
+            If dineroResultado <> 0 Then
+                resetGBDinero()
+                consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
+                mostrarMensaje(consultas.valorReturn & vbCrLf & "El saldo actual es $" & dineroResultado)
+                actualizarTabla()
+                txtBuscarClientes.Focus()
+            Else
+                resetGBDinero()
+                consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
+                mostrarMensaje(consultas.valorReturn & vbCrLf & "Cuenta saldada exitosamente.")
+                actualizarTabla()
+                txtBuscarClientes.Focus()
+            End If
         End If
 
     End Sub
@@ -137,22 +160,17 @@ Public Class CuentaCorriente
     '----HACE VISIBLE LA SECCIÓN DE ACTUALIZAR SALDO----'
 
     Private Sub btnDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDebe.Click
+        resetGBDinero()
         gbDinero.Text = "Debe"
         gbDinero.Visible = True
         txtDinero.Focus()
     End Sub
 
     Private Sub btnHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHaber.Click
+        resetGBDinero()
         gbDinero.Text = "Haber"
         gbDinero.Visible = True
         txtDinero.Focus()
-    End Sub
-
-    '----MENSAJE PERSONALIZADO----'
-
-    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
-        Dim mensaje As New Mensaje(mensajeObtenido)
-        mensaje.Show()
     End Sub
 
 
@@ -188,6 +206,8 @@ Public Class CuentaCorriente
 
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         actualizarTabla()
+        resetGBDinero()
+        resetHistorial()
         txtBuscarClientes.Text = ""
         txtBuscarClientes.Focus()
     End Sub
@@ -204,7 +224,11 @@ Public Class CuentaCorriente
 
     Private Sub txtDinero_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDinero.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-            e.Handled = True
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                actualizarDeuda()
+            Else
+                e.Handled = True
+            End If
         End If
     End Sub
 
@@ -229,8 +253,30 @@ Public Class CuentaCorriente
         End If
     End Sub
 
+    '----MOSTRAR MENSAJE PERSONALIZADO----'
+
+    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
+        Dim mensaje As New Mensaje(mensajeObtenido)
+        mensaje.ShowDialog()
+    End Sub
+
     Private Sub mostrarMensajeInput(ByVal mensaje As String)
         resultadosEntrada = ConfirmacionMensaje.entradaDatos(mensaje)
+        confirmacion = ConfirmacionMensaje.confirmacionResult
+    End Sub
+
+    Private Sub btnCerrarGBDinero_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarGBDinero.Click
+        resetGBDinero()
+    End Sub
+
+    Private Sub resetGBDinero()
+        gbDinero.Visible = False
+        txtDinero.Text = ""
+        txtDetalle.Text = ""
+        If btnAgregarDetalle.Text.Equals("- Detalle") Then
+            btnAgregarDetalle.Text = "+ Detalle"
+            txtDetalle.Visible = False
+        End If
     End Sub
 
 End Class

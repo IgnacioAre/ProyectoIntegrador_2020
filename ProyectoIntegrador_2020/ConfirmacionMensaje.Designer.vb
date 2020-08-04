@@ -23,15 +23,15 @@ Partial Class ConfirmacionMensaje
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.OK_Button = New System.Windows.Forms.Button()
+        Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.panelTitulo = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.lblMensaje = New System.Windows.Forms.Label()
         Me.panelMensaje = New System.Windows.Forms.Panel()
         Me.PanelEntrada = New System.Windows.Forms.Panel()
-        Me.lblMensajeEntrada = New System.Windows.Forms.Label()
         Me.txtEntrada = New System.Windows.Forms.TextBox()
+        Me.lblMensajeEntrada = New System.Windows.Forms.Label()
         Me.panelContenedor = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.panelTitulo.SuspendLayout()
@@ -54,6 +54,22 @@ Partial Class ConfirmacionMensaje
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(146, 29)
         Me.TableLayoutPanel1.TabIndex = 0
         '
+        'OK_Button
+        '
+        Me.OK_Button.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.OK_Button.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.OK_Button.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.OK_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.OK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OK_Button.ForeColor = System.Drawing.Color.White
+        Me.OK_Button.Location = New System.Drawing.Point(3, 3)
+        Me.OK_Button.Name = "OK_Button"
+        Me.OK_Button.Size = New System.Drawing.Size(67, 23)
+        Me.OK_Button.TabIndex = 0
+        Me.OK_Button.Text = "Si"
+        Me.OK_Button.UseVisualStyleBackColor = False
+        '
         'Cancel_Button
         '
         Me.Cancel_Button.Anchor = System.Windows.Forms.AnchorStyles.None
@@ -70,22 +86,6 @@ Partial Class ConfirmacionMensaje
         Me.Cancel_Button.TabIndex = 1
         Me.Cancel_Button.Text = "No"
         Me.Cancel_Button.UseVisualStyleBackColor = False
-        '
-        'OK_Button
-        '
-        Me.OK_Button.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.OK_Button.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.OK_Button.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.OK_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.OK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.OK_Button.ForeColor = System.Drawing.Color.White
-        Me.OK_Button.Location = New System.Drawing.Point(3, 3)
-        Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(67, 23)
-        Me.OK_Button.TabIndex = 0
-        Me.OK_Button.Text = "Si"
-        Me.OK_Button.UseVisualStyleBackColor = False
         '
         'panelTitulo
         '
@@ -137,6 +137,14 @@ Partial Class ConfirmacionMensaje
         Me.PanelEntrada.TabIndex = 5
         Me.PanelEntrada.Visible = False
         '
+        'txtEntrada
+        '
+        Me.txtEntrada.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntrada.Location = New System.Drawing.Point(39, 59)
+        Me.txtEntrada.Name = "txtEntrada"
+        Me.txtEntrada.Size = New System.Drawing.Size(262, 26)
+        Me.txtEntrada.TabIndex = 0
+        '
         'lblMensajeEntrada
         '
         Me.lblMensajeEntrada.AutoSize = True
@@ -146,14 +154,6 @@ Partial Class ConfirmacionMensaje
         Me.lblMensajeEntrada.Size = New System.Drawing.Size(75, 21)
         Me.lblMensajeEntrada.TabIndex = 1
         Me.lblMensajeEntrada.Text = "Mensaje"
-        '
-        'txtEntrada
-        '
-        Me.txtEntrada.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEntrada.Location = New System.Drawing.Point(39, 59)
-        Me.txtEntrada.Name = "txtEntrada"
-        Me.txtEntrada.Size = New System.Drawing.Size(262, 26)
-        Me.txtEntrada.TabIndex = 2
         '
         'panelContenedor
         '

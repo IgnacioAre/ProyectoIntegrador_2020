@@ -4,12 +4,13 @@ Imports System.Runtime.InteropServices
 Public Class ConfirmacionMensaje
 
     Public confirmacionResult As Byte = 0
-    Public contenidoEntrada As String
+    Private contenidoEntrada As String
 
 
     Function entradaDatos(ByVal mensaje As String)
 
         lblMensajeEntrada.Text = mensaje
+        panelMensaje.Visible = False
         PanelEntrada.Visible = True
         Me.ShowDialog()
 
@@ -19,6 +20,7 @@ Public Class ConfirmacionMensaje
     Function confirmacion(ByVal mensaje As String)
         lblMensaje.Text = mensaje
         panelMensaje.Visible = True
+        PanelEntrada.Visible = False
         Me.ShowDialog()
 
         Return confirmacionResult
@@ -28,12 +30,13 @@ Public Class ConfirmacionMensaje
     Public Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         confirmacionResult = 1
         If Not txtEntrada.Text.Equals("") Then contenidoEntrada = txtEntrada.Text
-        Me.Dispose()
+        Me.Close()
     End Sub
 
     Public Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
         confirmacionResult = 0
-        Me.Dispose()
+        contenidoEntrada = ""
+        Me.Close()
     End Sub
 
     '----MÉTODOS PARA MOVER EL FORMULARIO----'
@@ -58,7 +61,18 @@ Public Class ConfirmacionMensaje
 
     Private Sub txtEntrada_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtEntrada.KeyPress
         If Not Char.IsLetter(e.KeyChar) And Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Not Char.IsWhiteSpace(e.KeyChar) And Asc(e.KeyChar) <> 46 Then
-            e.Handled = True
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                confirmacionResult = 1
+                If Not txtEntrada.Text.Equals("") Then contenidoEntrada = txtEntrada.Text
+                Me.Close()
+            Else
+                e.Handled = True
+            End If
         End If
+    End Sub
+
+    Private Sub ConfirmacionMensaje_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        txtEntrada.Select()
+        txtEntrada.Focus()
     End Sub
 End Class

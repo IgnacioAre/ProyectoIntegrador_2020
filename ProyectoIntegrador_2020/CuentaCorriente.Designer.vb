@@ -35,6 +35,7 @@ Partial Class CuentaCorriente
         Me.txtHistorial = New System.Windows.Forms.TextBox()
         Me.dgvClientes = New Guna.UI.WinForms.GunaDataGridView()
         Me.gbDinero = New System.Windows.Forms.GroupBox()
+        Me.btnCerrarGBDinero = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtDetalle = New System.Windows.Forms.TextBox()
         Me.btnAgregarDetalle = New System.Windows.Forms.LinkLabel()
@@ -115,6 +116,7 @@ Partial Class CuentaCorriente
         'btnCerrar
         '
         Me.btnCerrar.BackColor = System.Drawing.Color.DarkOrange
+        Me.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCerrar.Location = New System.Drawing.Point(2, 2)
@@ -205,6 +207,7 @@ Partial Class CuentaCorriente
         'gbDinero
         '
         Me.gbDinero.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gbDinero.Controls.Add(Me.btnCerrarGBDinero)
         Me.gbDinero.Controls.Add(Me.Label2)
         Me.gbDinero.Controls.Add(Me.txtDetalle)
         Me.gbDinero.Controls.Add(Me.btnAgregarDetalle)
@@ -221,6 +224,20 @@ Partial Class CuentaCorriente
         Me.gbDinero.TabStop = False
         Me.gbDinero.Text = "Debe"
         Me.gbDinero.Visible = False
+        '
+        'btnCerrarGBDinero
+        '
+        Me.btnCerrarGBDinero.BackColor = System.Drawing.Color.DarkOrange
+        Me.btnCerrarGBDinero.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCerrarGBDinero.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnCerrarGBDinero.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCerrarGBDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarGBDinero.Location = New System.Drawing.Point(318, 12)
+        Me.btnCerrarGBDinero.Name = "btnCerrarGBDinero"
+        Me.btnCerrarGBDinero.Size = New System.Drawing.Size(27, 23)
+        Me.btnCerrarGBDinero.TabIndex = 16
+        Me.btnCerrarGBDinero.Text = "X"
+        Me.btnCerrarGBDinero.UseVisualStyleBackColor = False
         '
         'Label2
         '
@@ -351,4 +368,5 @@ Partial Class CuentaCorriente
     Friend WithEvents txtDinero As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents pbActualizarTabla As System.Windows.Forms.PictureBox
+    Friend WithEvents btnCerrarGBDinero As System.Windows.Forms.Button
 End Class

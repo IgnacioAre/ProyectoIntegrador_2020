@@ -28,9 +28,9 @@ Public Class MenuPrincipal
                 formulario.Close()
                 formularioBool = False
             End If
-            End
         Else
             e.Cancel = True
+            resultado = 0
         End If
     End Sub
 
@@ -38,6 +38,9 @@ Public Class MenuPrincipal
     '----CIERRA EL FORUMULARIO DEL MENÚ (Y FINALIZA SU EJECUCIÓN)----'
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
         resultado = ConfirmacionMensaje.confirmacion("                            ¿Desea Salir?")
+        If resultado = 1 Then
+            Me.Close()
+        End If
     End Sub
 
     '----MINIMIZA EL FORUMULARIO DEL MENÚ----'
@@ -338,7 +341,7 @@ Public Class MenuPrincipal
 
     Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
         Dim mensaje As New Mensaje(mensajeObtenido)
-        mensaje.Show()
+        mensaje.ShowDialog()
     End Sub
 
     Private Sub btnInicio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInicio.Click

@@ -187,13 +187,6 @@ Public Class Login
         End If
     End Sub
 
-    '----MENSAJE PERSONALIZADO----'
-
-    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
-        Dim mensaje As New Mensaje(mensajeObtenido)
-        mensaje.Show()
-    End Sub
-
 
     '----SI LE MARCÓ PARA GUARDAR USUARIO, ENTONCES CREAMOS UN ARCHIVO TXT CON EL NOMBRE DE USUARIO.----'
 
@@ -370,6 +363,14 @@ Public Class Login
 
             consultas.resultado = 0
         End If
+    End Sub
+
+
+    '----MENSAJE PERSONALIZADO----'
+
+    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
+        Dim mensaje As New Mensaje(mensajeObtenido)
+        mensaje.ShowDialog()
     End Sub
 
     Private Sub pbMostrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbMostrar.Click
