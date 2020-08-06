@@ -193,14 +193,14 @@ Partial Class Explorador
         'mskFechaIngreso
         '
         Me.mskFechaIngreso.Enabled = False
-        Me.mskFechaIngreso.Location = New System.Drawing.Point(306, 68)
+        Me.mskFechaIngreso.Location = New System.Drawing.Point(306, 64)
         Me.mskFechaIngreso.Name = "mskFechaIngreso"
         Me.mskFechaIngreso.Size = New System.Drawing.Size(97, 27)
         Me.mskFechaIngreso.TabIndex = 12
         '
         'txtDireccion
         '
-        Me.txtDireccion.Location = New System.Drawing.Point(306, 178)
+        Me.txtDireccion.Location = New System.Drawing.Point(305, 178)
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(214, 27)
         Me.txtDireccion.TabIndex = 11

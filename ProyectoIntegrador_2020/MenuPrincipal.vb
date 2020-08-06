@@ -40,6 +40,7 @@ Public Class MenuPrincipal
         resultado = ConfirmacionMensaje.confirmacion("                            ¿Desea Salir?")
         If resultado = 1 Then
             Me.Close()
+            End
         End If
     End Sub
 
@@ -153,6 +154,7 @@ Public Class MenuPrincipal
 
             tmrOcultarSubMenu.Enabled = True
         End If
+        lblTituloVentana.Location = New Point(241, 6)
     End Sub
 
     Private Sub btnProveedores_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProveedores.Click
@@ -175,6 +177,8 @@ Public Class MenuPrincipal
 
             tmrOcultarSubMenu.Enabled = True
         End If
+
+        lblTituloVentana.Location = New Point(241, 6)
     End Sub
 
     Private Sub btnProductos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProductos.Click
@@ -197,6 +201,8 @@ Public Class MenuPrincipal
 
             tmrOcultarSubMenu.Enabled = True
         End If
+
+        lblTituloVentana.Location = New Point(241, 6)
     End Sub
 
     Private Sub tmrMostrarSubMenu_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarSubMenu.Tick
@@ -310,7 +316,7 @@ Public Class MenuPrincipal
         If formularioBool Then formulario.Close()
         formularioBool = False
         Login.Show()
-        Me.Hide()
+        Me.Dispose()
     End Sub
 
     Private Sub txtPrecioProductos_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPrecioProductos.KeyUp

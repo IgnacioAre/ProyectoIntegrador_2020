@@ -149,7 +149,7 @@ Public Class CuentaCorriente
             Else
                 resetGBDinero()
                 consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
-                mostrarMensaje(consultas.valorReturn & vbCrLf & "Cuenta saldada exitosamente.")
+                mostrarMensaje(consultas.valorReturn & vbCrLf & vbCrLf & "Cuenta saldada exitosamente.")
                 actualizarTabla()
                 txtBuscarClientes.Focus()
             End If
@@ -170,6 +170,7 @@ Public Class CuentaCorriente
         resetGBDinero()
         gbDinero.Text = "Haber"
         gbDinero.Visible = True
+        btnPagarTotal.Visible = True
         txtDinero.Focus()
     End Sub
 
@@ -177,6 +178,7 @@ Public Class CuentaCorriente
     '----OBTIENE EL ID DEL CLIENTE SELECCIONADO----'
 
     Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvClientes.SelectionChanged
+        resetGBDinero()
         If dgvClientes.SelectedCells.Count <> 0 Then
             idCliente = dgvClientes.SelectedCells(0).Value
         End If
@@ -279,4 +281,8 @@ Public Class CuentaCorriente
         End If
     End Sub
 
+    Private Sub btnPagarTotal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPagarTotal.Click
+        consultas.consultaReturnHide("SELECT deuda FROM Clientes where idCliente=" & idCliente & ";")
+        txtDinero.Text = consultas.valorReturn
+    End Sub
 End Class
