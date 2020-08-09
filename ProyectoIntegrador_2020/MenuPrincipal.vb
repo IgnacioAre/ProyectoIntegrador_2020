@@ -313,17 +313,26 @@ Public Class MenuPrincipal
     '----BOTÓN CERRAR SESIÓN----'
 
     Private Sub pbCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbCerrarSesion.Click
-        If formularioBool Then formulario.Close()
-        formularioBool = False
-        Login.Show()
-        Me.Dispose()
+        resultado = ConfirmacionMensaje.confirmacion("                   ¿Desea Cerrar Sesión?")
+        If resultado = 1 Then
+            Me.Hide()
+            Login.Show()
+        End If
     End Sub
 
     Private Sub txtPrecioProductos_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPrecioProductos.KeyUp
         Dim conectar = New Conexion
         dgvPreciosRapidos.DataSource = conectar.mostrarRapidoProductoEnTabla()
         dgvPreciosRapidos.Columns(1).Width = 60
+
+        If txtPrecioProductos.Text.Equals("") Then
+            dgvPreciosRapidos.Visible = False
+        Else
+            dgvPreciosRapidos.Visible = True
+        End If
+
     End Sub
+
 
     '----EVENTO BOTÓN CLIENTES----'
 

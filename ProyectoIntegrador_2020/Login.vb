@@ -34,8 +34,8 @@ Public Class Login
     '----CIERRA EL FORUMULARIO DEL MENÚ (FINALIZA SU EJECUCIÓN)----'
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
-        MenuPrincipal.Close()
-        Me.Close()
+       Me.Close()
+        End
     End Sub
 
     Private Sub btnMinimizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMinimizar.Click
