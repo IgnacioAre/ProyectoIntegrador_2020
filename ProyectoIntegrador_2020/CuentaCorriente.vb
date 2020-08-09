@@ -163,6 +163,7 @@ Public Class CuentaCorriente
         resetGBDinero()
         gbDinero.Text = "Debe"
         gbDinero.Visible = True
+        btnPagarTotal.Visible = False
         txtDinero.Focus()
     End Sub
 
@@ -182,11 +183,11 @@ Public Class CuentaCorriente
         If dgvClientes.SelectedCells.Count <> 0 Then
             idCliente = dgvClientes.SelectedCells(0).Value
         End If
-        If idCliente >= 0 Then
-            btnDebe.Enabled = True
-            btnHaber.Enabled = True
-            btnVerHistorial.Enabled = True
-        End If
+
+        btnDebe.Enabled = True
+        btnHaber.Enabled = True
+        btnVerHistorial.Enabled = True
+
         consultas.consultaReturnHide("SELECT Historial FROM Clientes WHERE idCliente=" & idCliente & ";")
         txtHistorial.Text = consultas.valorReturn
     End Sub

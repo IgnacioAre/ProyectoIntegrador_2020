@@ -23,9 +23,9 @@ Partial Class CuentaCorriente
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CuentaCorriente))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txtBuscarClientes = New System.Windows.Forms.TextBox()
         Me.btnDebe = New System.Windows.Forms.Button()
         Me.btnHaber = New System.Windows.Forms.Button()
@@ -35,6 +35,7 @@ Partial Class CuentaCorriente
         Me.txtHistorial = New System.Windows.Forms.TextBox()
         Me.dgvClientes = New Guna.UI.WinForms.GunaDataGridView()
         Me.gbDinero = New System.Windows.Forms.GroupBox()
+        Me.btnPagarTotal = New System.Windows.Forms.Button()
         Me.btnCerrarGBDinero = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtDetalle = New System.Windows.Forms.TextBox()
@@ -44,7 +45,6 @@ Partial Class CuentaCorriente
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtDinero = New System.Windows.Forms.TextBox()
         Me.pbActualizarTabla = New System.Windows.Forms.PictureBox()
-        Me.btnPagarTotal = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbDinero.SuspendLayout()
@@ -149,31 +149,31 @@ Partial Class CuentaCorriente
         Me.dgvClientes.AllowUserToDeleteRows = False
         Me.dgvClientes.AllowUserToResizeColumns = False
         Me.dgvClientes.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
         Me.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvClientes.BackgroundColor = System.Drawing.Color.DarkOrange
         Me.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvClientes.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvClientes.DefaultCellStyle = DataGridViewCellStyle12
         Me.dgvClientes.EnableHeadersVisualStyles = False
         Me.dgvClientes.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvClientes.Location = New System.Drawing.Point(89, 62)
@@ -227,6 +227,22 @@ Partial Class CuentaCorriente
         Me.gbDinero.TabStop = False
         Me.gbDinero.Text = "Debe"
         Me.gbDinero.Visible = False
+        '
+        'btnPagarTotal
+        '
+        Me.btnPagarTotal.BackColor = System.Drawing.Color.DarkOrange
+        Me.btnPagarTotal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnPagarTotal.FlatAppearance.BorderSize = 0
+        Me.btnPagarTotal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange
+        Me.btnPagarTotal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange
+        Me.btnPagarTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPagarTotal.Image = CType(resources.GetObject("btnPagarTotal.Image"), System.Drawing.Image)
+        Me.btnPagarTotal.Location = New System.Drawing.Point(187, 62)
+        Me.btnPagarTotal.Name = "btnPagarTotal"
+        Me.btnPagarTotal.Size = New System.Drawing.Size(49, 44)
+        Me.btnPagarTotal.TabIndex = 17
+        Me.btnPagarTotal.UseVisualStyleBackColor = False
+        Me.btnPagarTotal.Visible = False
         '
         'btnCerrarGBDinero
         '
@@ -312,6 +328,7 @@ Partial Class CuentaCorriente
         'txtDinero
         '
         Me.txtDinero.Location = New System.Drawing.Point(48, 72)
+        Me.txtDinero.MaxLength = 6
         Me.txtDinero.Name = "txtDinero"
         Me.txtDinero.Size = New System.Drawing.Size(133, 27)
         Me.txtDinero.TabIndex = 0
@@ -325,22 +342,6 @@ Partial Class CuentaCorriente
         Me.pbActualizarTabla.Size = New System.Drawing.Size(35, 35)
         Me.pbActualizarTabla.TabIndex = 23
         Me.pbActualizarTabla.TabStop = False
-        '
-        'btnPagarTotal
-        '
-        Me.btnPagarTotal.BackColor = System.Drawing.Color.DarkOrange
-        Me.btnPagarTotal.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnPagarTotal.FlatAppearance.BorderSize = 0
-        Me.btnPagarTotal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrange
-        Me.btnPagarTotal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOrange
-        Me.btnPagarTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPagarTotal.Image = CType(resources.GetObject("btnPagarTotal.Image"), System.Drawing.Image)
-        Me.btnPagarTotal.Location = New System.Drawing.Point(187, 62)
-        Me.btnPagarTotal.Name = "btnPagarTotal"
-        Me.btnPagarTotal.Size = New System.Drawing.Size(49, 44)
-        Me.btnPagarTotal.TabIndex = 17
-        Me.btnPagarTotal.UseVisualStyleBackColor = False
-        Me.btnPagarTotal.Visible = False
         '
         'CuentaCorriente
         '
