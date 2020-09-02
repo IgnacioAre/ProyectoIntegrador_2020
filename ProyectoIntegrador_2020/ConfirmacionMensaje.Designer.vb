@@ -23,8 +23,8 @@ Partial Class ConfirmacionMensaje
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.OK_Button = New System.Windows.Forms.Button()
-        Me.Cancel_Button = New System.Windows.Forms.Button()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
         Me.panelTitulo = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.lblMensaje = New System.Windows.Forms.Label()
@@ -45,8 +45,8 @@ Partial Class ConfirmacionMensaje
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.btnAceptar, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.btnCancelar, 1, 0)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(99, 103)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
@@ -54,38 +54,38 @@ Partial Class ConfirmacionMensaje
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(146, 29)
         Me.TableLayoutPanel1.TabIndex = 0
         '
-        'OK_Button
+        'btnAceptar
         '
-        Me.OK_Button.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.OK_Button.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.OK_Button.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.OK_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.OK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.OK_Button.ForeColor = System.Drawing.Color.White
-        Me.OK_Button.Location = New System.Drawing.Point(3, 3)
-        Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(67, 23)
-        Me.OK_Button.TabIndex = 0
-        Me.OK_Button.Text = "Si"
-        Me.OK_Button.UseVisualStyleBackColor = False
+        Me.btnAceptar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnAceptar.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAceptar.ForeColor = System.Drawing.Color.White
+        Me.btnAceptar.Location = New System.Drawing.Point(3, 3)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(67, 23)
+        Me.btnAceptar.TabIndex = 0
+        Me.btnAceptar.Text = "Si"
+        Me.btnAceptar.UseVisualStyleBackColor = False
         '
-        'Cancel_Button
+        'btnCancelar
         '
-        Me.Cancel_Button.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Cancel_Button.BackColor = System.Drawing.Color.Black
-        Me.Cancel_Button.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Cancel_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Cancel_Button.ForeColor = System.Drawing.Color.White
-        Me.Cancel_Button.Location = New System.Drawing.Point(76, 3)
-        Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(67, 23)
-        Me.Cancel_Button.TabIndex = 1
-        Me.Cancel_Button.Text = "No"
-        Me.Cancel_Button.UseVisualStyleBackColor = False
+        Me.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnCancelar.BackColor = System.Drawing.Color.Black
+        Me.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCancelar.ForeColor = System.Drawing.Color.White
+        Me.btnCancelar.Location = New System.Drawing.Point(76, 3)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(67, 23)
+        Me.btnCancelar.TabIndex = 1
+        Me.btnCancelar.Text = "No"
+        Me.btnCancelar.UseVisualStyleBackColor = False
         '
         'panelTitulo
         '
@@ -169,10 +169,10 @@ Partial Class ConfirmacionMensaje
         '
         'ConfirmacionMensaje
         '
-        Me.AcceptButton = Me.OK_Button
+        Me.AcceptButton = Me.btnAceptar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.Cancel_Button
+        Me.CancelButton = Me.btnCancelar
         Me.ClientSize = New System.Drawing.Size(356, 173)
         Me.Controls.Add(Me.panelContenedor)
         Me.Controls.Add(Me.panelTitulo)
@@ -196,8 +196,8 @@ Partial Class ConfirmacionMensaje
 
     End Sub
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents OK_Button As System.Windows.Forms.Button
-    Friend WithEvents Cancel_Button As System.Windows.Forms.Button
+    Friend WithEvents btnAceptar As System.Windows.Forms.Button
+    Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents panelTitulo As System.Windows.Forms.Panel
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents lblMensaje As System.Windows.Forms.Label

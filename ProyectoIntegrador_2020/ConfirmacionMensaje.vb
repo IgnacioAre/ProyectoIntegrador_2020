@@ -27,13 +27,13 @@ Public Class ConfirmacionMensaje
     End Function
 
 
-    Public Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
+    Public Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
         confirmacionResult = 1
         If Not txtEntrada.Text.Equals("") Then contenidoEntrada = txtEntrada.Text
         Me.Close()
     End Sub
 
-    Public Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
+    Public Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
         confirmacionResult = 0
         contenidoEntrada = ""
         Me.Close()

@@ -77,8 +77,6 @@ Public Class Conexion
     End Sub
 
 
-
-
     Private Function consultaReturnHideVariosValores(ByVal Sql As String) As String
         Try
             conexion.Open()
