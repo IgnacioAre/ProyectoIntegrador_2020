@@ -80,82 +80,90 @@ Public Class CuentaCorriente
     Private Sub actualizarDeuda()
         Dim fechaActual = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
 
-        '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL DEBE----'
+        If Not txtDinero.Text.Equals("") And Not txtDinero.Text.Equals("0") Then
+            '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL DEBE----'
 
-        If gbDinero.Text.Equals("Debe") Then
-            consultas.consultaReturnHide("SELECT Deuda FROM Clientes WHERE idCliente=" & idCliente & ";")
-            deudaActual = Val(consultas.valorReturn)
+            If gbDinero.Text.Equals("Debe") Then
+                consultas.consultaReturnHide("SELECT Deuda FROM Clientes WHERE idCliente=" & idCliente & ";")
+                deudaActual = Val(consultas.valorReturn)
 
-            consultas.consultaReturnHide("SELECT Historial FROM Clientes WHERE idCliente=" & idCliente & ";")
-            historialActual = consultas.valorReturn
+                consultas.consultaReturnHide("SELECT Historial FROM Clientes WHERE idCliente=" & idCliente & ";")
+                historialActual = consultas.valorReturn
 
-            dineroResultado = deudaActual + Val(txtDinero.Text)
+                dineroResultado = deudaActual + Val(txtDinero.Text)
 
-            If txtDetalle.Text.Equals("") Then
-                consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "+" & txtDinero.Text & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
+                If txtDetalle.Text.Equals("") Then
+                    consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "+" & txtDinero.Text & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
+                Else
+                    consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "+" & txtDinero.Text & "   """ & txtDetalle.Text & """" & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
+                End If
+
+
+                '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL HABER----'
+
             Else
-                consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "+" & txtDinero.Text & "   """ & txtDetalle.Text & """" & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
+
+                consultas.consultaReturnHide("SELECT Deuda FROM Clientes WHERE idCliente=" & idCliente & ";")
+                deudaActual = Val(consultas.valorReturn)
+
+                consultas.consultaReturnHide("SELECT Historial FROM Clientes WHERE idCliente=" & idCliente & ";")
+                historialActual = consultas.valorReturn
+
+                dineroResultado = deudaActual - Val(txtDinero.Text)
+
+                If dineroResultado = 0 Then
+                    ConfirmacionMensaje.btnAceptar.Text = "Aceptar"
+                    ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
+                    mostrarMensajeInput("Ingrese el nombre del cobrador:")
+                End If
+
+                If txtDetalle.Text.Equals("") Then
+                    If dineroResultado = 0 Then
+                        If confirmacion = 1 Then
+                            nombreCobrador = resultadosEntrada
+                            consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: $" & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
+                        Else
+                            mostrarMensaje("Se canceló el cobro.")
+                            consultas.resultado = 2
+                        End If
+                    Else
+                        consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
+                    End If
+                Else
+                    If dineroResultado = 0 Then
+                        If confirmacion = 1 Then
+                            nombreCobrador = resultadosEntrada(1)
+                            consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: $" & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "   """ & txtDetalle.Text & """" & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
+                        Else
+                            mostrarMensaje("Se canceló el cobro.")
+                            consultas.resultado = 2
+                        End If
+                    Else
+                        consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "   """ & txtDetalle.Text & """" & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
+                    End If
+                End If
+
+
             End If
 
-
-            '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL HABER----'
+            If consultas.resultado = 1 Then
+                If dineroResultado <> 0 Then
+                    resetGBDinero()
+                    consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
+                    mostrarMensaje(consultas.valorReturn & vbCrLf & "El saldo actual es $" & dineroResultado)
+                    actualizarTablaConId()
+                    txtBuscarClientes.Focus()
+                Else
+                    resetGBDinero()
+                    consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
+                    mostrarMensaje(consultas.valorReturn & vbCrLf & "Cuenta saldada exitosamente.")
+                    actualizarTablaConId()
+                    txtBuscarClientes.Focus()
+                End If
+            End If
 
         Else
-
-            consultas.consultaReturnHide("SELECT Deuda FROM Clientes WHERE idCliente=" & idCliente & ";")
-            deudaActual = Val(consultas.valorReturn)
-
-            consultas.consultaReturnHide("SELECT Historial FROM Clientes WHERE idCliente=" & idCliente & ";")
-            historialActual = consultas.valorReturn
-
-            dineroResultado = deudaActual - Val(txtDinero.Text)
-
-
-            If dineroResultado = 0 Then
-                mostrarMensajeInput("Ingrese el nombre del cobrador:")
-            End If
-
-            If txtDetalle.Text.Equals("") Then
-                If dineroResultado = 0 Then
-                    If confirmacion = 1 Then
-                        nombreCobrador = resultadosEntrada
-                        consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: $" & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
-                    Else
-                        mostrarMensaje("Se canceló el cobro.")
-                    End If
-                Else
-                    consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
-                End If
-            Else
-                If dineroResultado = 0 Then
-                    If confirmacion = 1 Then
-                        nombreCobrador = resultadosEntrada(1)
-                        consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: $" & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "   """ & txtDetalle.Text & """" & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
-                    Else
-                        mostrarMensaje("Se canceló el cobro.")
-                    End If
-                Else
-                    consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "   """ & txtDetalle.Text & """" & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
-                End If
-            End If
-
-
-        End If
-
-        If consultas.resultado = 1 Then
-            If dineroResultado <> 0 Then
-                resetGBDinero()
-                consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
-                mostrarMensaje(consultas.valorReturn & vbCrLf & "El saldo actual es $" & dineroResultado)
-                actualizarTablaConId()
-                txtBuscarClientes.Focus()
-            Else
-                resetGBDinero()
-                consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
-                mostrarMensaje(consultas.valorReturn & vbCrLf & "Cuenta saldada exitosamente.")
-                actualizarTablaConId()
-                txtBuscarClientes.Focus()
-            End If
+            mostrarMensaje("Error. Verifique el dinero ingresado.")
         End If
 
     End Sub

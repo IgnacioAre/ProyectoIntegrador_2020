@@ -30,12 +30,14 @@ Public Class ConfirmacionMensaje
     Public Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
         confirmacionResult = 1
         If Not txtEntrada.Text.Equals("") Then contenidoEntrada = txtEntrada.Text
+        txtEntrada.Text = ""
         Me.Close()
     End Sub
 
     Public Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
         confirmacionResult = 0
         contenidoEntrada = ""
+        txtEntrada.Text = ""
         Me.Close()
     End Sub
 
@@ -64,6 +66,7 @@ Public Class ConfirmacionMensaje
             If e.KeyChar = ChrW(Keys.Enter) Then
                 confirmacionResult = 1
                 If Not txtEntrada.Text.Equals("") Then contenidoEntrada = txtEntrada.Text
+                txtEntrada.Text = ""
                 Me.Close()
             Else
                 e.Handled = True

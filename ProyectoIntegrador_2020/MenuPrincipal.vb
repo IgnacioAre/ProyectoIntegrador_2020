@@ -37,7 +37,10 @@ Public Class MenuPrincipal
 
     '----CIERRA EL FORUMULARIO DEL MENÚ (Y FINALIZA SU EJECUCIÓN)----'
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        ConfirmacionMensaje.btnAceptar.Text = "Si"
+        ConfirmacionMensaje.btnCancelar.Text = "No"
         resultado = ConfirmacionMensaje.confirmacion("                            ¿Desea Salir?")
+        
         If resultado = 1 Then
             Me.Close()
             End
