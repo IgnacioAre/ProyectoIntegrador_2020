@@ -111,6 +111,12 @@ Public Class CuentaCorriente
 
                 dineroResultado = deudaActual - Val(txtDinero.Text)
 
+                Do While resultadosEntrada.Equals("")
+
+                Loop
+
+
+
                 If dineroResultado = 0 Then
                     ConfirmacionMensaje.btnAceptar.Text = "Aceptar"
                     ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
