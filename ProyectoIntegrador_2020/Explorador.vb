@@ -6,6 +6,7 @@ Public Class Explorador
     Dim idCliente As Integer
     Dim activo As Byte
     Dim permitido As Byte
+    Dim resultado As Byte
 
     '----INICIO DEL FORMULARIO----'
 
@@ -29,6 +30,8 @@ Public Class Explorador
     Private Sub btnNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click
         Nuevo.lblTitulo.Text = "Nuevo Cliente"
         Nuevo.ShowDialog()
+        Nuevo.txtNombreCliente.Select()
+        Nuevo.txtNombreCliente.Focus()
     End Sub
 
 
@@ -109,11 +112,16 @@ Public Class Explorador
     End Sub
 
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
-        consultas.consultaHide("DELETE FROM Clientes where idCliente=" & idCliente & ";")
-        If consultas.resultado = 1 Then
-            mostrarMensaje("Base de datos actualizada.")
+        resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea eliminar este cliente?")
+        If resultado = 1 Then
+            consultas.consultaHide("DELETE FROM Clientes where idCliente=" & idCliente & ";")
+            If consultas.resultado = 1 Then
+                mostrarMensaje("Base de datos actualizada.")
+            End If
+            ActualizarTabla()
+
         End If
-        ActualizarTabla()
+        
     End Sub
 
     Private Sub ActualizarTabla()
@@ -132,7 +140,6 @@ Public Class Explorador
 
     Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
         Dim mensaje As New Mensaje(mensajeObtenido)
-        mensaje.Show()
     End Sub
 
     '----CIERRA EL FORMULARIO DE MODIFICAR CLIENTE.----'

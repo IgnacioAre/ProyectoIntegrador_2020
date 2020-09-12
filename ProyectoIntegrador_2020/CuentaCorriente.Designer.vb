@@ -53,10 +53,10 @@ Partial Class CuentaCorriente
         '
         'txtBuscarClientes
         '
-        Me.txtBuscarClientes.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBuscarClientes.Location = New System.Drawing.Point(89, 26)
         Me.txtBuscarClientes.Name = "txtBuscarClientes"
-        Me.txtBuscarClientes.Size = New System.Drawing.Size(244, 27)
+        Me.txtBuscarClientes.Size = New System.Drawing.Size(244, 26)
         Me.txtBuscarClientes.TabIndex = 0
         '
         'btnDebe
@@ -96,10 +96,10 @@ Partial Class CuentaCorriente
         'btnVerHistorial
         '
         Me.btnVerHistorial.AutoSize = True
-        Me.btnVerHistorial.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVerHistorial.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVerHistorial.Location = New System.Drawing.Point(12, 272)
         Me.btnVerHistorial.Name = "btnVerHistorial"
-        Me.btnVerHistorial.Size = New System.Drawing.Size(82, 21)
+        Me.btnVerHistorial.Size = New System.Drawing.Size(79, 20)
         Me.btnVerHistorial.TabIndex = 13
         Me.btnVerHistorial.TabStop = True
         Me.btnVerHistorial.Text = "+ Historial"
@@ -133,7 +133,7 @@ Partial Class CuentaCorriente
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtHistorial.BackColor = System.Drawing.Color.White
         Me.txtHistorial.Cursor = System.Windows.Forms.Cursors.Default
-        Me.txtHistorial.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtHistorial.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtHistorial.Location = New System.Drawing.Point(16, 314)
         Me.txtHistorial.Multiline = True
         Me.txtHistorial.Name = "txtHistorial"
@@ -168,7 +168,7 @@ Partial Class CuentaCorriente
         Me.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
@@ -200,7 +200,7 @@ Partial Class CuentaCorriente
         Me.dgvClientes.ThemeStyle.ReadOnly = True
         Me.dgvClientes.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
         Me.dgvClientes.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvClientes.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvClientes.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvClientes.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
         Me.dgvClientes.ThemeStyle.RowsStyle.Height = 22
         Me.dgvClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
@@ -218,7 +218,7 @@ Partial Class CuentaCorriente
         Me.gbDinero.Controls.Add(Me.CheckBox1)
         Me.gbDinero.Controls.Add(Me.Label1)
         Me.gbDinero.Controls.Add(Me.txtDinero)
-        Me.gbDinero.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbDinero.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbDinero.ForeColor = System.Drawing.Color.Navy
         Me.gbDinero.Location = New System.Drawing.Point(522, 222)
         Me.gbDinero.Name = "gbDinero"
@@ -264,26 +264,26 @@ Partial Class CuentaCorriente
         Me.Label2.ForeColor = System.Drawing.Color.Green
         Me.Label2.Location = New System.Drawing.Point(28, 75)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(18, 19)
+        Me.Label2.Size = New System.Drawing.Size(19, 20)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "$"
         '
         'txtDetalle
         '
-        Me.txtDetalle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDetalle.Location = New System.Drawing.Point(32, 157)
         Me.txtDetalle.Name = "txtDetalle"
-        Me.txtDetalle.Size = New System.Drawing.Size(292, 27)
+        Me.txtDetalle.Size = New System.Drawing.Size(292, 26)
         Me.txtDetalle.TabIndex = 5
         Me.txtDetalle.Visible = False
         '
         'btnAgregarDetalle
         '
         Me.btnAgregarDetalle.AutoSize = True
-        Me.btnAgregarDetalle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregarDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregarDetalle.Location = New System.Drawing.Point(19, 122)
         Me.btnAgregarDetalle.Name = "btnAgregarDetalle"
-        Me.btnAgregarDetalle.Size = New System.Drawing.Size(79, 21)
+        Me.btnAgregarDetalle.Size = New System.Drawing.Size(72, 20)
         Me.btnAgregarDetalle.TabIndex = 4
         Me.btnAgregarDetalle.TabStop = True
         Me.btnAgregarDetalle.Text = "+ Detalle"
@@ -306,11 +306,11 @@ Partial Class CuentaCorriente
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CheckBox1.ForeColor = System.Drawing.Color.Blue
         Me.CheckBox1.Location = New System.Drawing.Point(32, 221)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(149, 20)
+        Me.CheckBox1.Size = New System.Drawing.Size(155, 20)
         Me.CheckBox1.TabIndex = 2
         Me.CheckBox1.Text = "Importante (Notas)"
         Me.CheckBox1.UseVisualStyleBackColor = True
@@ -321,16 +321,16 @@ Partial Class CuentaCorriente
         Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(19, 50)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 19)
+        Me.Label1.Size = New System.Drawing.Size(62, 20)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Dinero"
         '
         'txtDinero
         '
         Me.txtDinero.Location = New System.Drawing.Point(48, 72)
-        Me.txtDinero.MaxLength = 6
+        Me.txtDinero.MaxLength = 7
         Me.txtDinero.Name = "txtDinero"
-        Me.txtDinero.Size = New System.Drawing.Size(133, 27)
+        Me.txtDinero.Size = New System.Drawing.Size(133, 26)
         Me.txtDinero.TabIndex = 0
         '
         'pbActualizarTabla

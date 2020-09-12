@@ -111,10 +111,6 @@ Public Class CuentaCorriente
 
                 dineroResultado = deudaActual - Val(txtDinero.Text)
 
-                Do While resultadosEntrada.Equals("")
-
-                Loop
-
 
 
                 If dineroResultado = 0 Then

@@ -12,6 +12,7 @@ Public Class Mensaje
     Sub New(ByVal mensaje As String)
         InitializeComponent()
         lblMensaje.Text = mensaje
+        Me.ShowDialog()
     End Sub
 
     Private Sub Mensaje_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles MyBase.KeyPress
