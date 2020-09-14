@@ -112,12 +112,19 @@ Public Class CuentaCorriente
                 dineroResultado = deudaActual - Val(txtDinero.Text)
 
 
+                If confirmacion = 1 Then
 
-                If dineroResultado = 0 Then
-                    ConfirmacionMensaje.btnAceptar.Text = "Aceptar"
-                    ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
-                    mostrarMensajeInput("Ingrese el nombre del cobrador:")
                 End If
+
+                Do
+                    If dineroResultado = 0 Then
+                        ConfirmacionMensaje.btnAceptar.Text = "Aceptar"
+                        ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
+                        mostrarMensajeInput("Ingrese el nombre del cobrador:")
+                    End If
+                Loop While resultadosEntrada = ""
+
+                
 
                 If txtDetalle.Text.Equals("") Then
                     If dineroResultado = 0 Then
@@ -159,6 +166,7 @@ Public Class CuentaCorriente
                     resetGBDinero()
                     consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
                     mostrarMensaje(consultas.valorReturn & vbCrLf & "Cuenta saldada exitosamente.")
+                    consultas.consultaHide("UPDATE Clientes SET maxPermitidoBool= 1 WHERE idCliente=" & idCliente & ";")
                     actualizarTablaConId()
                     txtBuscarClientes.Focus()
                 End If
@@ -226,9 +234,10 @@ Public Class CuentaCorriente
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         actualizarTabla()
         resetGBDinero()
-        resetHistorial()
         txtBuscarClientes.Text = ""
         txtBuscarClientes.Focus()
+        btnVerHistorial.Text = "+ Historial"
+        txtHistorial.Visible = False
     End Sub
 
     '----MÉTODO QUE ACTUALIZA LA TABLA----'
@@ -297,7 +306,6 @@ Public Class CuentaCorriente
 
     Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
         Dim mensaje As New Mensaje(mensajeObtenido)
-        mensaje.ShowDialog()
     End Sub
 
     Private Sub mostrarMensajeInput(ByVal mensaje As String)

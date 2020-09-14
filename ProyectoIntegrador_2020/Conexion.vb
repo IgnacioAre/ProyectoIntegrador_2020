@@ -19,12 +19,13 @@ Public Class Conexion
         Try
             conexion.Open()
         Catch ex As Exception
-            MsgBox("Error al conectar a la base de datos. " & ex.Message)
+            mostrarMensaje("Error al conectar a la base de datos. " & ex.Message)
         Finally
             conexion.Dispose()
         End Try
     End Sub
 
+    'ESTOS METODOS NO SE PUEDEN ACCEDER DESDE OTRO FORMULARIO
 
     Private Sub consultaHideEstructura(ByVal Sql As String)
 
@@ -36,7 +37,7 @@ Public Class Conexion
             conexion.Close()
         Catch ex As Exception
             resultado = 0
-            MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
+            mostrarMensaje("Error al conectar con la base de datos ")
         Finally
             conexion.Close()
         End Try
@@ -50,7 +51,7 @@ Public Class Conexion
             valorReturn = ""
             valorReturn = comando.ExecuteScalar()
         Catch ex As Exception
-            MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
+            mostrarMensaje("Error al conectar con la base de datos ")
         Finally
             conexion.Close()
         End Try
@@ -83,7 +84,7 @@ Public Class Conexion
             comando = New MySqlCommand(Sql, conexion)
             dr = comando.ExecuteScalar
         Catch ex As Exception
-            MsgBox("Error al conectar con la base de datos " & ex.Message, vbOKOnly + vbDefaultButton2, "Error")
+            mostrarMensaje("Error al conectar con la base de datos " & ex.Message)
         Finally
             conexion.Close()
         End Try
@@ -125,14 +126,6 @@ Public Class Conexion
 
     End Function
 
-    '----MOSTRAR TODO DE LA TABLA PROVEEDORES EN UN DATATABLE----'
-    Public Function mostrarProveedoresEnTabla() As DataTable
-
-        consultaSQL = "SELECT * FROM proveedores"
-
-        Return insertarEnTabla(consultaSQL)
-
-    End Function
 
     '----BUSCAR CLIENTE POR NOMBRE----'
     Public Function mostrarClientesEnTabla(ByVal consulta As String) As DataTable
@@ -144,7 +137,6 @@ Public Class Conexion
 
     Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
         Dim mensaje As New Mensaje(mensajeObtenido)
-        mensaje.Show()
     End Sub
 
 End Class

@@ -30,8 +30,6 @@ Public Class Explorador
     Private Sub btnNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click
         Nuevo.lblTitulo.Text = "Nuevo Cliente"
         Nuevo.ShowDialog()
-        Nuevo.txtNombreCliente.Select()
-        Nuevo.txtNombreCliente.Focus()
     End Sub
 
 
@@ -135,6 +133,8 @@ Public Class Explorador
         txtBuscarClientes.Text = ""
         txtBuscarClientes.Focus()
     End Sub
+
+
 
     '----MENSAJE PERSONALIZADO----'
 

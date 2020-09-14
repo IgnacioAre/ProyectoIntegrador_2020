@@ -9,6 +9,8 @@ Public Class Nuevo
 
     Private Sub Nuevo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         consultas.establecerConexion()
+        txtNombreCliente.Select()
+        txtNombreCliente.Focus()
     End Sub
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
@@ -42,7 +44,6 @@ Public Class Nuevo
 
     Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
         Dim mensaje As New Mensaje(mensajeObtenido)
-        mensaje.Show()
     End Sub
 
     '----CAMBIAR FOCO EN LOS CAMPOS DE TEXTO----'
