@@ -49,24 +49,6 @@ Public Class CuentaCorriente
         MenuPrincipal.lblTituloVentana.Text = "Menú Principal"
     End Sub
 
-    '----PERMITE VER O ESCONDER EL HISTORIAL DEL CLIENTE SELECCIONADO----'
-
-    Private Sub btnVerHistorial_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
-        'resetHistorial()
-    End Sub
-
-    'Private Sub resetHistorial()
-    '    If btnVerHistorial.Text.Equals("+ Historial") Then
-    '        btnVerHistorial.Text = "- Historial"
-    '        txtHistorial.Visible = True
-    '    Else
-    '        btnVerHistorial.Text = "+ Historial"
-    '        txtHistorial.Visible = False
-    '    End If
-
-    'End Sub
-
-
     Private Sub btnActualizarDeuda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarDeuda.Click
         actualizarDeuda()
     End Sub
@@ -250,7 +232,7 @@ Public Class CuentaCorriente
 
 
     Sub ActualizarTablaRegistroCompra()
-        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT Saldo,Detalle,fechaCompra As Fecha,adeudoBool As Adeudo FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool=1 AND Clientes.idCliente=" & idCliente & ";")
+        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool=1 AND Clientes.idCliente=" & idCliente & ";")
     End Sub
 
 
@@ -340,7 +322,7 @@ Public Class CuentaCorriente
     End Sub
 
     Private Sub btnOcultarDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalle.Click
-        txtDetalle.Visible = True
+        txtDetalle.Visible = False
         txtDetalle.Text = ""
         btnVerDetalle.Visible = True
         btnOcultarDetalle.Visible = False

@@ -47,7 +47,11 @@ Public Class Explorador
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, fechaIngreso,Telefono As Teléfono, Direccion As Dirección, estadoBool As Activo, Historial, maxPermitidoBool As p FROM clientes WHERE Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente And Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
+        'PERQUEÑO ERROR AL BUSCAR
+        dgvClientes.Columns(6).Visible = False
+        dgvClientes.Columns(7).Width = 0
+
     End Sub
 
     '----MUESTRA EL FORMULARIO PARA MÓDIFICAR LOS DATOS DEL CLIENTE----'
@@ -78,8 +82,8 @@ Public Class Explorador
             Else
                 chbActivo.Checked = False
             End If
-            'txtHistorial.Text = row.Cells(6).Value.ToString
-            If row.Cells(7).Value.ToString.Equals("True") Then
+
+            If row.Cells(6).Value.ToString.Equals("True") Then
                 chbPermitido.Checked = True
             Else
                 chbPermitido.Checked = False
@@ -129,7 +133,7 @@ Public Class Explorador
     End Sub
 
     Sub ActualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p from clientes as c,compracliente as cc where c.idcliente = cc.idcliente group by(cc.idCliente);")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p FROM clientes as c,compracliente as cc where c.idcliente = cc.idcliente group by(cc.idCliente);")
 
         dgvClientes.Columns(6).Visible = False
         dgvClientes.Columns(7).Width = 0
@@ -142,7 +146,7 @@ Public Class Explorador
 
 
     Sub ActualizarTablaRegistroCompras()
-        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT Saldo,Detalle,fechaCompra As Fecha,adeudoBool As Adeudo FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente and Clientes.idCliente=" & txtID.Text & ";")
+        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente and Clientes.idCliente=" & txtID.Text & ";")
     End Sub
 
 
@@ -218,6 +222,5 @@ Public Class Explorador
             dgvClientes.Focus()
         End If
     End Sub
-
 
 End Class
