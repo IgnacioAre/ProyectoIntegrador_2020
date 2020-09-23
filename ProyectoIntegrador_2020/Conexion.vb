@@ -104,18 +104,6 @@ Public Class Conexion
         Return Me.tabla
     End Function
 
-    
-
-    '----MOSTRAR TODO DE LA TABLA PRODUCTO EN UN DATATABLE----'
-
-    Public Function mostrarProductosEnTabla() As DataTable
-
-        consultaSQL = "SELECT idProducto AS ID," & "nombre AS Nombre," & "cantidad AS Stock," & "precio AS Precio " & "FROM producto"
-
-        Return insertarEnTabla(consultaSQL)
-
-    End Function
-
 
     '----MOSTRAR NOMBRE Y PRECIO DE LA TABLA PRODUCTO EN UN DATATABLE----'
     Public Function mostrarRapidoProductoEnTabla() As DataTable
@@ -128,7 +116,7 @@ Public Class Conexion
 
 
     '----BUSCAR CLIENTE POR NOMBRE----'
-    Public Function mostrarClientesEnTabla(ByVal consulta As String) As DataTable
+    Public Function mostrarEnTabla(ByVal consulta As String) As DataTable
 
         Return insertarEnTabla(consulta)
     End Function

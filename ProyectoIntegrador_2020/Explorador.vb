@@ -13,6 +13,8 @@ Public Class Explorador
     Private Sub Explorador_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         consultas.establecerConexion()
         ActualizarTabla()
+        ActualizarTablaTelefono()
+        ActualizarTablaRegistroCompras()
         SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
     End Sub
 
@@ -45,7 +47,7 @@ Public Class Explorador
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, fechaIngreso,Telefono As Teléfono, Direccion As Dirección, estadoBool As Activo, Historial, maxPermitidoBool As p FROM clientes WHERE Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, fechaIngreso,Telefono As Teléfono, Direccion As Dirección, estadoBool As Activo, Historial, maxPermitidoBool As p FROM clientes WHERE Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
     End Sub
 
     '----MUESTRA EL FORMULARIO PARA MÓDIFICAR LOS DATOS DEL CLIENTE----'
@@ -69,20 +71,24 @@ Public Class Explorador
             txtNombre.Text = row.Cells(1).Value.ToString
             txtDeuda.Text = row.Cells(2).Value.ToString
             mskFechaIngreso.Text = row.Cells(3).Value.ToString
-            txtTel.Text = row.Cells(4).Value.ToString
-            txtDireccion.Text = row.Cells(5).Value.ToString
-            If row.Cells(6).Value.ToString.Equals("True") Then
+
+            txtDireccion.Text = row.Cells(4).Value.ToString
+            If row.Cells(5).Value.ToString.Equals("True") Then
                 chbActivo.Checked = True
             Else
                 chbActivo.Checked = False
             End If
-            txtHistorial.Text = row.Cells(7).Value.ToString
-            If row.Cells(8).Value.ToString.Equals("True") Then
+            'txtHistorial.Text = row.Cells(6).Value.ToString
+            If row.Cells(7).Value.ToString.Equals("True") Then
                 chbPermitido.Checked = True
             Else
                 chbPermitido.Checked = False
             End If
         End If
+
+        ActualizarTablaRegistroCompras()
+        ActualizarTablaTelefono()
+
     End Sub
 
 
@@ -99,7 +105,7 @@ Public Class Explorador
             permitido = 0
         End If
 
-        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text & "', Deuda=" & txtDeuda.Text & ", Historial='" & txtHistorial.Text & "', Telefono='" & txtTel.Text & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & ", maxPermitidoBool=" & permitido & " WHERE idCliente=" & idCliente & ";")
+        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & ", maxPermitidoBool=" & permitido & " WHERE idCliente=" & idCliente & ";")
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False
@@ -122,11 +128,25 @@ Public Class Explorador
         
     End Sub
 
-    Private Sub ActualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarClientesEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, fechaIngreso,Telefono As Teléfono, Direccion As Dirección, estadoBool As Activo, Historial, maxPermitidoBool As p FROM clientes;")
-        dgvClientes.Columns(7).Visible = False
-        dgvClientes.Columns(8).Width = 0
+    Sub ActualizarTabla()
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p from clientes as c,compracliente as cc where c.idcliente = cc.idcliente group by(cc.idCliente);")
+
+        dgvClientes.Columns(6).Visible = False
+        dgvClientes.Columns(7).Width = 0
     End Sub
+
+
+    Sub ActualizarTablaTelefono()
+        dgvTelefono.DataSource = consultas.mostrarEnTabla("SELECT numeroTel As Número FROM telefonoCliente,Clientes WHERE telefonoCliente.idCliente = Clientes.idCliente and Clientes.idCliente=" & txtID.Text & ";")
+    End Sub
+
+
+    Sub ActualizarTablaRegistroCompras()
+        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT Saldo,Detalle,fechaCompra As Fecha,adeudoBool As Adeudo FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente and Clientes.idCliente=" & txtID.Text & ";")
+    End Sub
+
+
+
 
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         ActualizarTabla()
@@ -154,37 +174,12 @@ Public Class Explorador
         If dgvClientes.Columns(e.ColumnIndex).Name = "p" Then
 
             If e.Value = "False" Then
-                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 6).Style.ForeColor = Color.Red
-                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 6).Style.SelectionForeColor = Color.Red
+                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 5).Style.ForeColor = Color.Red
+                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 5).Style.SelectionForeColor = Color.Red
             End If
         End If
     End Sub
 
-    '----SI SE CAMBIA EL SALDO ACTUAL, TAMBIEN DEBERÁ CAMBIAR EL HISTORIAL PARA QUE NO HAYA CONFUSIÓN ENTRE ESTOS (ES RECOMENDABLE HACERLO)----'
-
-    Private Sub txtDeuda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDeuda.TextChanged
-        If deudaActual <> Val(txtDeuda.Text) Then
-            btnActualizar.Enabled = False
-            txtHistorial.BackColor = Color.Coral
-        End If
-
-    End Sub
-
-    '----OBTIENE EL SALDO ACTUAL CUANDO LE DAS CLICK AL CAMPO----'
-
-    Dim deudaActual As Integer = 0
-
-    Private Sub txtDeuda_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles txtDeuda.MouseDown
-        deudaActual = Val(txtDeuda.Text)
-    End Sub
-
-
-    '----AL MODIFICAR EL CAMPO DEL HISTORIAL; YA SE PUEDE GUARDAR LOS CAMBIOS.----'
-
-    Private Sub txtHistorial_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtHistorial.TextChanged
-        txtHistorial.BackColor = Color.White
-        btnActualizar.Enabled = True
-    End Sub
 
     '----ADMITE SOLO NÚMEROS Y TECLA RETROCESO.----'
 
@@ -196,7 +191,7 @@ Public Class Explorador
 
     '----AL MODIFICAR EL CAMPO DEL HISTORIAL; YA SE PUEDE GUARDAR LOS CAMBIOS.----'
 
-    Private Sub txtTel_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTel.KeyPress
+    Private Sub txtTel_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
         End If
