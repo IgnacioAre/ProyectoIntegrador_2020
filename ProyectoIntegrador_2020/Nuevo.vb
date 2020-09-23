@@ -14,6 +14,7 @@ Public Class Nuevo
     End Sub
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        limpiarCampos()
         Me.Close()
     End Sub
 
@@ -47,13 +48,36 @@ Public Class Nuevo
                 Dim idClienteRegistro As Integer = Val(consultas.valorReturn)
 
                 consultas.consultaHide("INSERT INTO compraCliente (Saldo,fechaCompra,adeudoBool,idCliente) VALUES (0,NOW(),0," & idClienteRegistro & ");")
-                txtNombre.Text = ""
-                txtDireccion.Text = ""
-                txtTelefono1.Text = ""
+                
+                limpiarCampos()
                 Me.Hide()
             End If
         End If
     End Sub
+
+
+
+    Sub limpiarCampos()
+
+        txtNombre.Text = ""
+        txtDireccion.Text = ""
+        txtTelefono1.Text = ""
+        txtTelefono2.Text = ""
+        txtTelefono3.Text = ""
+        txtTelefono4.Text = ""
+        txtTelefono5.Text = ""
+
+        txtTelefono2.Visible = False
+        txtTelefono3.Visible = False
+        txtTelefono4.Visible = False
+        txtTelefono5.Visible = False
+
+        pbMasTel2.Visible = False
+        pbMasTel3.Visible = False
+        pbMasTel4.Visible = False
+    End Sub
+
+
 
     '----CONSULTAS PARA INGRESAR NÚMEROS DE TELÉFONO----'
 

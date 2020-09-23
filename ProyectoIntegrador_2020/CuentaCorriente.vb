@@ -18,7 +18,6 @@ Public Class CuentaCorriente
         txtBuscarClientes.Focus()
         btnDebe.Enabled = False
         btnHaber.Enabled = False
-        btnVerHistorial.Enabled = False
         consultas.establecerConexion()
         SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
         actualizarTabla()
@@ -41,7 +40,7 @@ Public Class CuentaCorriente
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, maxPermitidoBool As p FROM Clientes WHERE nombre LIKE '%" & txtBuscarClientes.Text & "%';")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente And Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
     End Sub
 
     Private Sub btnCerrar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
@@ -52,22 +51,20 @@ Public Class CuentaCorriente
 
     '----PERMITE VER O ESCONDER EL HISTORIAL DEL CLIENTE SELECCIONADO----'
 
-    Private Sub btnVerHistorial_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles btnVerHistorial.LinkClicked
-        resetHistorial()
+    Private Sub btnVerHistorial_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
+        'resetHistorial()
     End Sub
 
-    Private Sub resetHistorial()
-        If btnVerHistorial.Text.Equals("+ Historial") Then
-            btnVerHistorial.Text = "- Historial"
-            txtHistorial.Visible = True
-        Else
-            btnVerHistorial.Text = "+ Historial"
-            txtHistorial.Visible = False
-        End If
+    'Private Sub resetHistorial()
+    '    If btnVerHistorial.Text.Equals("+ Historial") Then
+    '        btnVerHistorial.Text = "- Historial"
+    '        txtHistorial.Visible = True
+    '    Else
+    '        btnVerHistorial.Text = "+ Historial"
+    '        txtHistorial.Visible = False
+    '    End If
 
-        txtHistorial.SelectionStart = txtHistorial.TextLength
-        txtHistorial.ScrollToCaret()
-    End Sub
+    'End Sub
 
 
     Private Sub btnActualizarDeuda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarDeuda.Click
@@ -124,7 +121,7 @@ Public Class CuentaCorriente
                     End If
                 Loop While resultadosEntrada = ""
 
-                
+
 
                 If txtDetalle.Text.Equals("") Then
                     If dineroResultado = 0 Then
@@ -207,54 +204,36 @@ Public Class CuentaCorriente
 
         btnDebe.Enabled = True
         btnHaber.Enabled = True
-        btnVerHistorial.Enabled = True
 
-        consultas.consultaReturnHide("SELECT Historial FROM Clientes WHERE idCliente=" & idCliente & ";")
-        txtHistorial.Text = consultas.valorReturn
-        txtHistorial.SelectionStart = txtHistorial.TextLength
-        txtHistorial.ScrollToCaret()
+        ActualizarTablaRegistroCompra()
     End Sub
 
 
     '----MUESTRA O ESCONDE CAMPO DE AGREGAR DETALLE----'
 
-    Private Sub btnAgregarDetalle_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles btnAgregarDetalle.LinkClicked
-        If btnAgregarDetalle.Text.Equals("+ Detalle") Then
-            btnAgregarDetalle.Text = "- Detalle"
-            txtDetalle.Visible = True
-            txtDetalle.Focus()
-        Else
-            btnAgregarDetalle.Text = "+ Detalle"
-            txtDetalle.Visible = False
-        End If
-    End Sub
-
-    '----ACTUAIZA LA TABLA AL DARLE CLICK AL BOTON----'
-
+    
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         actualizarTabla()
         resetGBDinero()
         txtBuscarClientes.Text = ""
         txtBuscarClientes.Focus()
-        btnVerHistorial.Text = "+ Historial"
-        txtHistorial.Visible = False
+        'btnVerHistorial.Text = "+ Historial"
+        'txtHistorial.Visible = False
     End Sub
 
     '----MÉTODO QUE ACTUALIZA LA TABLA----'
 
     Private Sub actualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, maxPermitidoBool As p FROM Clientes;")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente group by(cc.idCliente);")
         dgvClientes.Columns(3).Width = 0
     End Sub
+
 
     Private Sub actualizarTablaConId()
         Dim idTemp As Integer = idCliente
 
-        consultas.consultaReturnHide("SELECT Historial FROM Clientes WHERE idCliente=" & idCliente & ";")
-        txtHistorial.Text = consultas.valorReturn
+        actualizarTabla()
 
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Deuda As Saldo, maxPermitidoBool As p FROM Clientes;")
-        dgvClientes.Columns(3).Width = 0
         'SELECCIONA EN LA TABLA AL CLIENTE EN idTemp
         For i As Integer = 0 To dgvClientes.Rows.Count - 1
             If dgvClientes.Rows(i).Cells(0).Value = idTemp Then
@@ -267,6 +246,14 @@ Public Class CuentaCorriente
         Next
 
     End Sub
+
+
+
+    Sub ActualizarTablaRegistroCompra()
+        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT Saldo,Detalle,fechaCompra As Fecha,adeudoBool As Adeudo FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool=1 AND Clientes.idCliente=" & idCliente & ";")
+    End Sub
+
+
 
 
     '----MÉTODO QUE SOLO DEJA INGRESAR NÚMEROS Y TECLA RETROCESO----'
@@ -313,7 +300,7 @@ Public Class CuentaCorriente
         confirmacion = ConfirmacionMensaje.confirmacionResult
     End Sub
 
-    Private Sub btnCerrarGBDinero_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarGBDinero.Click
+    Private Sub btnCerrarGBDinero_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         resetGBDinero()
     End Sub
 
@@ -321,10 +308,6 @@ Public Class CuentaCorriente
         gbDinero.Visible = False
         txtDinero.Text = ""
         txtDetalle.Text = ""
-        If btnAgregarDetalle.Text.Equals("- Detalle") Then
-            btnAgregarDetalle.Text = "+ Detalle"
-            txtDetalle.Visible = False
-        End If
     End Sub
 
     Private Sub btnPagarTotal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPagarTotal.Click
@@ -332,4 +315,46 @@ Public Class CuentaCorriente
         txtDinero.Text = consultas.valorReturn
     End Sub
 
+
+    Private Sub btnVerRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerRegistro.Click
+        gbRegistroCompras.Visible = True
+        btnVerRegistro.Visible = False
+        btnOcultarRegistro.Visible = True
+    End Sub
+
+    Private Sub btnOcultarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarRegistro.Click
+        gbRegistroCompras.Visible = False
+        btnVerRegistro.Visible = True
+        btnOcultarRegistro.Visible = False
+    End Sub
+
+    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
+        resetGBDinero()
+    End Sub
+
+
+    Private Sub btnVerDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalle.Click
+        txtDetalle.Visible = True
+        btnVerDetalle.Visible = False
+        btnOcultarDetalle.Visible = True
+    End Sub
+
+    Private Sub btnOcultarDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalle.Click
+        txtDetalle.Visible = True
+        txtDetalle.Text = ""
+        btnVerDetalle.Visible = True
+        btnOcultarDetalle.Visible = False
+    End Sub
+
+    Private Sub txtDinero_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDinero.TextChanged
+
+    End Sub
+
+    Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub Label2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label2.Click
+
+    End Sub
 End Class
