@@ -101,7 +101,7 @@ Partial Class ConfirmacionMensaje
         'lblTitulo
         '
         Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(109, 18)
@@ -111,10 +111,10 @@ Partial Class ConfirmacionMensaje
         'lblMensaje
         '
         Me.lblMensaje.AutoSize = True
-        Me.lblMensaje.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensaje.Location = New System.Drawing.Point(3, 47)
+        Me.lblMensaje.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMensaje.Location = New System.Drawing.Point(3, 40)
         Me.lblMensaje.Name = "lblMensaje"
-        Me.lblMensaje.Size = New System.Drawing.Size(75, 21)
+        Me.lblMensaje.Size = New System.Drawing.Size(69, 20)
         Me.lblMensaje.TabIndex = 0
         Me.lblMensaje.Text = "Mensaje"
         '
@@ -139,19 +139,19 @@ Partial Class ConfirmacionMensaje
         '
         'txtEntrada
         '
-        Me.txtEntrada.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEntrada.Location = New System.Drawing.Point(39, 59)
         Me.txtEntrada.Name = "txtEntrada"
-        Me.txtEntrada.Size = New System.Drawing.Size(262, 26)
+        Me.txtEntrada.Size = New System.Drawing.Size(262, 24)
         Me.txtEntrada.TabIndex = 0
         '
         'lblMensajeEntrada
         '
         Me.lblMensajeEntrada.AutoSize = True
-        Me.lblMensajeEntrada.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMensajeEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMensajeEntrada.Location = New System.Drawing.Point(11, 14)
         Me.lblMensajeEntrada.Name = "lblMensajeEntrada"
-        Me.lblMensajeEntrada.Size = New System.Drawing.Size(75, 21)
+        Me.lblMensajeEntrada.Size = New System.Drawing.Size(69, 20)
         Me.lblMensajeEntrada.TabIndex = 1
         Me.lblMensajeEntrada.Text = "Mensaje"
         '

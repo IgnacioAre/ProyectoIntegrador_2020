@@ -24,9 +24,9 @@ Partial Class MenuPrincipal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuPrincipal))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelSuperior = New System.Windows.Forms.Panel()
         Me.lblTituloVentana = New System.Windows.Forms.Label()
         Me.btnAyuda = New System.Windows.Forms.Button()
@@ -66,6 +66,14 @@ Partial Class MenuPrincipal
         Me.tmrHoraFecha = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarSubMenu = New System.Windows.Forms.Timer(Me.components)
         Me.tmrOcultarSubMenu = New System.Windows.Forms.Timer(Me.components)
+        Me.panelAbout = New System.Windows.Forms.Panel()
+        Me.btnCerrarInfo = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.tmrMostrarAbout = New System.Windows.Forms.Timer(Me.components)
+        Me.tmrOcultarAbout = New System.Windows.Forms.Timer(Me.components)
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.panelSuperior.SuspendLayout()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelMenu.SuspendLayout()
@@ -79,6 +87,7 @@ Partial Class MenuPrincipal
         CType(Me.dgvPreciosRapidos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelAbout.SuspendLayout()
         Me.SuspendLayout()
         '
         'panelSuperior
@@ -97,11 +106,11 @@ Partial Class MenuPrincipal
         'lblTituloVentana
         '
         Me.lblTituloVentana.AutoSize = True
-        Me.lblTituloVentana.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTituloVentana.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTituloVentana.ForeColor = System.Drawing.Color.White
         Me.lblTituloVentana.Location = New System.Drawing.Point(241, 6)
         Me.lblTituloVentana.Name = "lblTituloVentana"
-        Me.lblTituloVentana.Size = New System.Drawing.Size(125, 19)
+        Me.lblTituloVentana.Size = New System.Drawing.Size(126, 20)
         Me.lblTituloVentana.TabIndex = 5
         Me.lblTituloVentana.Text = "Menú Principal"
         '
@@ -210,7 +219,7 @@ Partial Class MenuPrincipal
         Me.btnNotas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnNotas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnNotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNotas.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNotas.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNotas.ForeColor = System.Drawing.Color.White
         Me.btnNotas.Image = CType(resources.GetObject("btnNotas.Image"), System.Drawing.Image)
         Me.btnNotas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -243,7 +252,7 @@ Partial Class MenuPrincipal
         Me.btnActualizarProducto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnActualizarProducto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnActualizarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnActualizarProducto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActualizarProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnActualizarProducto.ForeColor = System.Drawing.Color.White
         Me.btnActualizarProducto.Image = CType(resources.GetObject("btnActualizarProducto.Image"), System.Drawing.Image)
         Me.btnActualizarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -264,7 +273,7 @@ Partial Class MenuPrincipal
         Me.btnListadoProducto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnListadoProducto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnListadoProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnListadoProducto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnListadoProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnListadoProducto.ForeColor = System.Drawing.Color.White
         Me.btnListadoProducto.Image = CType(resources.GetObject("btnListadoProducto.Image"), System.Drawing.Image)
         Me.btnListadoProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -285,7 +294,7 @@ Partial Class MenuPrincipal
         Me.btnProductos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnProductos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnProductos.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnProductos.ForeColor = System.Drawing.Color.White
         Me.btnProductos.Image = CType(resources.GetObject("btnProductos.Image"), System.Drawing.Image)
         Me.btnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -317,7 +326,7 @@ Partial Class MenuPrincipal
         Me.btnGestionarProveedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnGestionarProveedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnGestionarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGestionarProveedor.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGestionarProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnGestionarProveedor.ForeColor = System.Drawing.Color.White
         Me.btnGestionarProveedor.Image = CType(resources.GetObject("btnGestionarProveedor.Image"), System.Drawing.Image)
         Me.btnGestionarProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -338,7 +347,7 @@ Partial Class MenuPrincipal
         Me.btnNuevoProveedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnNuevoProveedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnNuevoProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNuevoProveedor.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevoProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNuevoProveedor.ForeColor = System.Drawing.Color.White
         Me.btnNuevoProveedor.Image = CType(resources.GetObject("btnNuevoProveedor.Image"), System.Drawing.Image)
         Me.btnNuevoProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -359,7 +368,7 @@ Partial Class MenuPrincipal
         Me.btnProveedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnProveedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnProveedores.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnProveedores.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnProveedores.ForeColor = System.Drawing.Color.White
         Me.btnProveedores.Image = CType(resources.GetObject("btnProveedores.Image"), System.Drawing.Image)
         Me.btnProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -391,7 +400,7 @@ Partial Class MenuPrincipal
         Me.btnGestionarCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnGestionarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnGestionarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGestionarCliente.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGestionarCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnGestionarCliente.ForeColor = System.Drawing.Color.White
         Me.btnGestionarCliente.Image = CType(resources.GetObject("btnGestionarCliente.Image"), System.Drawing.Image)
         Me.btnGestionarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -412,7 +421,7 @@ Partial Class MenuPrincipal
         Me.btnExploradorClientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnExploradorClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnExploradorClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnExploradorClientes.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExploradorClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExploradorClientes.ForeColor = System.Drawing.Color.White
         Me.btnExploradorClientes.Image = CType(resources.GetObject("btnExploradorClientes.Image"), System.Drawing.Image)
         Me.btnExploradorClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -433,7 +442,7 @@ Partial Class MenuPrincipal
         Me.btnClientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnClientes.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClientes.ForeColor = System.Drawing.Color.White
         Me.btnClientes.Image = CType(resources.GetObject("btnClientes.Image"), System.Drawing.Image)
         Me.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -453,7 +462,7 @@ Partial Class MenuPrincipal
         Me.btnInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnInicio.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnInicio.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnInicio.ForeColor = System.Drawing.Color.White
         Me.btnInicio.Image = CType(resources.GetObject("btnInicio.Image"), System.Drawing.Image)
         Me.btnInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -501,6 +510,7 @@ Partial Class MenuPrincipal
         'PanelContenedor
         '
         Me.PanelContenedor.BackColor = System.Drawing.Color.White
+        Me.PanelContenedor.Controls.Add(Me.panelAbout)
         Me.PanelContenedor.Controls.Add(Me.dgvPreciosRapidos)
         Me.PanelContenedor.Controls.Add(Me.Label2)
         Me.PanelContenedor.Controls.Add(Me.txtPrecioProductos)
@@ -521,30 +531,30 @@ Partial Class MenuPrincipal
         Me.dgvPreciosRapidos.AllowUserToDeleteRows = False
         Me.dgvPreciosRapidos.AllowUserToResizeColumns = False
         Me.dgvPreciosRapidos.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvPreciosRapidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvPreciosRapidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.dgvPreciosRapidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvPreciosRapidos.BackgroundColor = System.Drawing.Color.White
         Me.dgvPreciosRapidos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvPreciosRapidos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvPreciosRapidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPreciosRapidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvPreciosRapidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.dgvPreciosRapidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPreciosRapidos.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPreciosRapidos.DefaultCellStyle = DataGridViewCellStyle9
         Me.dgvPreciosRapidos.EnableHeadersVisualStyles = False
         Me.dgvPreciosRapidos.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvPreciosRapidos.Location = New System.Drawing.Point(38, 102)
@@ -580,29 +590,29 @@ Partial Class MenuPrincipal
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(14, 34)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(243, 25)
+        Me.Label2.Size = New System.Drawing.Size(249, 25)
         Me.Label2.TabIndex = 10
         Me.Label2.Text = "¿Qué precio necesita?"
         '
         'txtPrecioProductos
         '
-        Me.txtPrecioProductos.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrecioProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPrecioProductos.Location = New System.Drawing.Point(38, 69)
         Me.txtPrecioProductos.Name = "txtPrecioProductos"
-        Me.txtPrecioProductos.Size = New System.Drawing.Size(190, 27)
+        Me.txtPrecioProductos.Size = New System.Drawing.Size(190, 26)
         Me.txtPrecioProductos.TabIndex = 9
         '
         'lblFecha
         '
         Me.lblFecha.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblFecha.AutoSize = True
-        Me.lblFecha.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFecha.Location = New System.Drawing.Point(697, 42)
         Me.lblFecha.Name = "lblFecha"
-        Me.lblFecha.Size = New System.Drawing.Size(96, 21)
+        Me.lblFecha.Size = New System.Drawing.Size(89, 20)
         Me.lblFecha.TabIndex = 8
         Me.lblFecha.Text = "30/06/2020"
         '
@@ -610,10 +620,10 @@ Partial Class MenuPrincipal
         '
         Me.lblHora.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblHora.AutoSize = True
-        Me.lblHora.Font = New System.Drawing.Font("Century Gothic", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHora.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblHora.Location = New System.Drawing.Point(668, 6)
         Me.lblHora.Name = "lblHora"
-        Me.lblHora.Size = New System.Drawing.Size(125, 36)
+        Me.lblHora.Size = New System.Drawing.Size(127, 33)
         Me.lblHora.TabIndex = 7
         Me.lblHora.Text = "19:44:23"
         '
@@ -621,10 +631,10 @@ Partial Class MenuPrincipal
         '
         Me.lblBienvenida.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.lblBienvenida.AutoSize = True
-        Me.lblBienvenida.Font = New System.Drawing.Font("Century Gothic", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBienvenida.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBienvenida.Location = New System.Drawing.Point(262, 202)
         Me.lblBienvenida.Name = "lblBienvenida"
-        Me.lblBienvenida.Size = New System.Drawing.Size(0, 36)
+        Me.lblBienvenida.Size = New System.Drawing.Size(0, 33)
         Me.lblBienvenida.TabIndex = 4
         '
         'imgCofre
@@ -663,6 +673,88 @@ Partial Class MenuPrincipal
         '
         Me.tmrOcultarSubMenu.Interval = 20
         '
+        'panelAbout
+        '
+        Me.panelAbout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panelAbout.BackColor = System.Drawing.Color.LightGray
+        Me.panelAbout.Controls.Add(Me.Label5)
+        Me.panelAbout.Controls.Add(Me.Label4)
+        Me.panelAbout.Controls.Add(Me.Label3)
+        Me.panelAbout.Controls.Add(Me.Label1)
+        Me.panelAbout.Controls.Add(Me.btnCerrarInfo)
+        Me.panelAbout.Location = New System.Drawing.Point(253, 0)
+        Me.panelAbout.Name = "panelAbout"
+        Me.panelAbout.Size = New System.Drawing.Size(549, 704)
+        Me.panelAbout.TabIndex = 13
+        '
+        'btnCerrarInfo
+        '
+        Me.btnCerrarInfo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCerrarInfo.BackColor = System.Drawing.Color.Black
+        Me.btnCerrarInfo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnCerrarInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnCerrarInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnCerrarInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCerrarInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarInfo.ForeColor = System.Drawing.Color.White
+        Me.btnCerrarInfo.Location = New System.Drawing.Point(15, 6)
+        Me.btnCerrarInfo.Name = "btnCerrarInfo"
+        Me.btnCerrarInfo.Size = New System.Drawing.Size(28, 27)
+        Me.btnCerrarInfo.TabIndex = 18
+        Me.btnCerrarInfo.Text = "X"
+        Me.btnCerrarInfo.UseVisualStyleBackColor = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(203, 13)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(105, 25)
+        Me.Label1.TabIndex = 19
+        Me.Label1.Text = "About us"
+        '
+        'tmrMostrarAbout
+        '
+        Me.tmrMostrarAbout.Interval = 1
+        '
+        'tmrOcultarAbout
+        '
+        Me.tmrOcultarAbout.Interval = 1
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(16, 42)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(478, 240)
+        Me.Label3.TabIndex = 20
+        Me.Label3.Text = resources.GetString("Label3.Text")
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(163, 308)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(216, 25)
+        Me.Label4.TabIndex = 21
+        Me.Label4.Text = "Acerca de nosotros"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(11, 333)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(509, 264)
+        Me.Label5.TabIndex = 22
+        Me.Label5.Text = resources.GetString("Label5.Text")
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -692,6 +784,8 @@ Partial Class MenuPrincipal
         CType(Me.dgvPreciosRapidos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelAbout.ResumeLayout(False)
+        Me.panelAbout.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -734,5 +828,13 @@ Partial Class MenuPrincipal
     Friend WithEvents tmrOcultarSubMenu As System.Windows.Forms.Timer
     Friend WithEvents dgvPreciosRapidos As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents lblTituloVentana As System.Windows.Forms.Label
+    Friend WithEvents panelAbout As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents btnCerrarInfo As System.Windows.Forms.Button
+    Friend WithEvents tmrMostrarAbout As System.Windows.Forms.Timer
+    Friend WithEvents tmrOcultarAbout As System.Windows.Forms.Timer
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 
 End Class

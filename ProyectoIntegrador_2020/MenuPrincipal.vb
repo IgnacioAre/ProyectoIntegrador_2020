@@ -19,6 +19,7 @@ Public Class MenuPrincipal
     Private Sub Menu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
         SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
+        panelAbout.Width = 0
     End Sub
 
 
@@ -384,4 +385,68 @@ Public Class MenuPrincipal
         lblTituloVentana.Text = "Listado de Productos y Stock"
     End Sub
 
+    Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub tmrMostrarAbout_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarAbout.Tick
+        If Me.panelAbout.Width >= 549 Then
+            Me.tmrMostrarAbout.Enabled = False
+        Else
+            Me.panelAbout.Width = panelAbout.Width + 10
+        End If
+    End Sub
+
+    Private Sub tmrOcultarAbout_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrOcultarAbout.Tick
+        If Me.panelAbout.Width <= 0 Then
+            Me.tmrOcultarAbout.Enabled = False
+        Else
+            Me.panelAbout.Width = panelAbout.Width - 10
+        End If
+    End Sub
+
+    Private Sub btnAyuda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAyuda.Click
+
+        If formularioBool Then
+            ConfirmacionMensaje.btnAceptar.Text = "Si"
+            ConfirmacionMensaje.btnCancelar.Text = "No"
+            resultado = ConfirmacionMensaje.confirmacion("   ¿Desea cerrar esta página para" & vbCrLf & "   abrir el menú de ayuda?")
+
+            If resultado = 1 Then
+                formulario.Close()
+                lblTituloVentana.Text = "Menú Principal"
+
+                If panelAbout.Width = 0 Then
+                    tmrMostrarAbout.Enabled = True
+                Else
+                    tmrOcultarAbout.Enabled = True
+                End If
+            End If
+        Else
+            If panelAbout.Width = 0 Then
+                tmrMostrarAbout.Enabled = True
+            Else
+                tmrOcultarAbout.Enabled = True
+            End If
+        End If
+
+    End Sub
+
+    Private Sub Label3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label3.Click
+
+    End Sub
+
+    Private Sub Label4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label4.Click
+
+    End Sub
+
+    Private Sub Label5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label5.Click
+
+    End Sub
+
+    Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarInfo.Click
+        If Not panelAbout.Width = 0 Then
+            tmrOcultarAbout.Enabled = True
+        End If
+    End Sub
 End Class

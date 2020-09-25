@@ -673,6 +673,33 @@
   <metadata name="tmrMostrarMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>248, 8</value>
   </metadata>
+  <data name="Label5.Text" xml:space="preserve">
+    <value>Equipo de trabajo:
+Ignacio Arévalo 
+Santiago Chúa 
+Brayan Simoes 
+
+“Escuela‌ ‌Superior‌ ‌Catalina‌ ‌Harriague‌ ‌de‌ ‌Castaños‌”
+
+Este apartado es para dar agradecimientos a “El Cofre” por 
+confiar en nosotros para crear su software 
+de gestión, y a todo el plantel de profesores por
+la ayuda otorgada en el transcurso de este año.  
+</value>
+  </data>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Work team:
+Ignacio Arévalo 
+Santiago Chúa 
+Brayan Simoes 
+
+“Escuela‌ ‌Superior‌ ‌Catalina‌ ‌Harriague‌ ‌de‌ ‌Castaños‌”
+
+This section is to thank "El Cofre" for trusting us to create
+its management software, and  the staff of teachers for 
+the help given in this year.
+</value>
+  </data>
   <data name="imgCofre.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAYcAAAEnCAIAAADNYBjHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -8190,6 +8217,12 @@
   </metadata>
   <metadata name="tmrOcultarSubMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>688, 8</value>
+  </metadata>
+  <metadata name="tmrMostrarAbout.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>850, 8</value>
+  </metadata>
+  <metadata name="tmrOcultarAbout.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>998, 8</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>31</value>
