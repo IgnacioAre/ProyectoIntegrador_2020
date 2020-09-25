@@ -47,8 +47,7 @@ Public Class Explorador
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente And Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
-        'PERQUEÑO ERROR AL BUSCAR
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente And Nombre LIKE '%" & txtBuscarClientes.Text & "%' group by(cc.idCliente);")
         dgvClientes.Columns(6).Visible = False
         dgvClientes.Columns(7).Width = 0
 

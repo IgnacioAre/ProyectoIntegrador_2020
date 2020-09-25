@@ -40,7 +40,8 @@ Public Class CuentaCorriente
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente And Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente And Nombre LIKE '%" & txtBuscarClientes.Text & "%'  group by(cc.idCliente);")
+        dgvClientes.Columns(3).Width = 0
     End Sub
 
     Private Sub btnCerrar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
