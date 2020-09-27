@@ -155,7 +155,7 @@ Partial Class Login
         Me.txtContraseñaLogin.Location = New System.Drawing.Point(83, 268)
         Me.txtContraseñaLogin.Name = "txtContraseñaLogin"
         Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 27)
-        Me.txtContraseñaLogin.TabIndex = 0
+        Me.txtContraseñaLogin.TabIndex = 2
         '
         'Label2
         '

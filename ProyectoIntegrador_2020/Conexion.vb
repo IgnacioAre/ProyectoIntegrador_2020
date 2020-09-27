@@ -96,6 +96,7 @@ Public Class Conexion
             adaptador = New MySqlDataAdapter(consulta, Me.conexion)
             Me.tabla = New DataTable
             adaptador.Fill(tabla)
+            resultado = 1
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally

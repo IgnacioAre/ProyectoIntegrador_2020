@@ -20,6 +20,9 @@ Public Class MenuPrincipal
         My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
         SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
         panelAbout.Width = 0
+        If Me.ShowInTaskbar Then
+
+        End If
     End Sub
 
 
@@ -319,8 +322,8 @@ Public Class MenuPrincipal
     Private Sub pbCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbCerrarSesion.Click
         resultado = ConfirmacionMensaje.confirmacion("                   ¿Desea Cerrar Sesión?")
         If resultado = 1 Then
-            Me.Hide()
             Login.Show()
+            Me.Close()
         End If
     End Sub
 
@@ -449,4 +452,6 @@ Public Class MenuPrincipal
             tmrOcultarAbout.Enabled = True
         End If
     End Sub
+
+
 End Class

@@ -7,6 +7,8 @@ Public Class Explorador
     Dim activo As Byte
     Dim permitido As Byte
     Dim resultado As Byte
+    Dim resultadosTxt As String
+    Dim idCompra As String
 
     '----INICIO DEL FORMULARIO----'
 
@@ -132,20 +134,48 @@ Public Class Explorador
     End Sub
 
     Sub ActualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p FROM clientes as c,compracliente as cc where c.idcliente = cc.idcliente group by(cc.idCliente);")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p FROM clientes as c,compracliente as cc WHERE c.idcliente = cc.idcliente and adeudoBool = 1 group by(cc.idCliente);")
+        If consultas.resultado = 1 Then
+            dgvClientes.Columns(6).Visible = False
+            dgvClientes.Columns(7).Width = 0
+        End If
+        
+    End Sub
 
-        dgvClientes.Columns(6).Visible = False
-        dgvClientes.Columns(7).Width = 0
+    Private Sub actualizarTablaConId()
+        Dim idTemp As Integer = idCliente
+
+        actualizarTabla()
+
+        'SELECCIONA EN LA TABLA AL CLIENTE EN idTemp
+        For i As Integer = 0 To dgvClientes.Rows.Count - 1
+            If dgvClientes.Rows(i).Cells(0).Value = idTemp Then
+
+                dgvClientes.CurrentCell = dgvClientes.Item(0, i)
+
+                dgvClientes.Rows(i).Selected = True
+                Exit For
+            End If
+        Next
+
+        ActualizarTablaRegistroCompras()
+        ActualizarTablaTelefono()
+
     End Sub
 
 
     Sub ActualizarTablaTelefono()
-        dgvTelefono.DataSource = consultas.mostrarEnTabla("SELECT numeroTel As Número FROM telefonoCliente,Clientes WHERE telefonoCliente.idCliente = Clientes.idCliente and Clientes.idCliente=" & txtID.Text & ";")
+        dgvTelefono.DataSource = consultas.mostrarEnTabla("SELECT idTelefono,numeroTel As Número FROM telefonoCliente,Clientes WHERE telefonoCliente.idCliente = Clientes.idCliente and Clientes.idCliente=" & txtID.Text & ";")
+        dgvTelefono.Columns(0).Visible = False
     End Sub
 
 
     Sub ActualizarTablaRegistroCompras()
-        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente and Clientes.idCliente=" & txtID.Text & ";")
+        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idCompra,Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool = 1 AND Clientes.idCliente=" & txtID.Text & ";")
+        dgvRegistroCompras.Columns(0).Visible = False
+        If dgvRegistroCompras.Columns(0).ToString.Equals("") Then
+            idCompra = ""
+        End If
     End Sub
 
 
@@ -222,4 +252,40 @@ Public Class Explorador
         End If
     End Sub
 
+    
+    Private Sub btnAgregarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarTel.Click
+        resultadosTxt = ConfirmacionMensaje.entradaDatos("Nuevo número telfónico:")
+
+        consultas.consultaHide("INSERT INTO telefonoCliente (numeroTel, idCliente) VALUES ('" & resultadosTxt & "'," & idCliente & ");")
+        ActualizarTablaTelefono()
+    End Sub
+
+
+    Private Sub btnEliminarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminarTel.Click
+        Dim idTel As String
+        idTel = dgvTelefono.CurrentRow.Cells(0).Value.ToString
+
+        consultas.consultaHide("DELETE FROM telefonoCliente where idTelefono=" & idTel & ";")
+        ActualizarTablaTelefono()
+    End Sub
+
+
+    Private Sub btnEliminarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminarRegistro.Click
+
+        resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea eliminar este registro?")
+        If resultado = 1 Then
+
+            idCompra = dgvRegistroCompras.CurrentRow.Cells(0).Value.ToString
+
+            consultas.consultaHide("DELETE FROM compraCliente where idCompra=" & idCompra & ";")
+            ActualizarTablaRegistroCompras()
+
+            If idCompra = "" Then
+                ActualizarTabla()
+            Else
+                actualizarTablaConId()
+            End If
+        End If
+        
+    End Sub
 End Class
