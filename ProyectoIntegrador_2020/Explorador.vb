@@ -61,6 +61,11 @@ Public Class Explorador
     '----MÉTODO PARA OBTENER EL ID Y LOS DEMÁS DATOS DE LA TABLA CLIENTES Y LOS PONE EN LOS CAMPOS DEL FORMULARIO MODIFICAR CLIENTE----'
 
     Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvClientes.SelectionChanged
+        ActualizarInformacionCliente()
+    End Sub
+
+
+    Sub ActualizarInformacionCliente()
         Dim row As DataGridViewRow = dgvClientes.CurrentRow
 
         If dgvClientes.SelectedCells.Count <> 0 Then
@@ -89,8 +94,8 @@ Public Class Explorador
 
         ActualizarTablaRegistroCompras()
         ActualizarTablaTelefono()
-
     End Sub
+
 
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
@@ -152,7 +157,7 @@ Public Class Explorador
             End If
         Next
 
-
+        ActualizarInformacionCliente()
     End Sub
 
 
