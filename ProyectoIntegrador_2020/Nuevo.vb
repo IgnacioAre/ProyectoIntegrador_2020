@@ -47,7 +47,7 @@ Public Class Nuevo
                 consultas.consultaReturnHide("SELECT MAX(idCliente) FROM Clientes;")
                 Dim idClienteRegistro As Integer = Val(consultas.valorReturn)
 
-                consultas.consultaHide("INSERT INTO compraCliente (Saldo,fechaCompra,adeudoBool,idCliente) VALUES (0,NOW(),0," & idClienteRegistro & ");")
+                consultas.consultaHide("INSERT INTO ventaCliente (Saldo,fechaCompra,adeudoBool,idCliente) VALUES (0,NOW(),0," & idClienteRegistro & ");")
                 
                 limpiarCampos()
                 Me.Hide()

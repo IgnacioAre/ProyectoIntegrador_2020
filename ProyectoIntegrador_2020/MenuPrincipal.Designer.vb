@@ -535,9 +535,9 @@ Partial Class MenuPrincipal
         Me.panelAbout.Controls.Add(Me.Label3)
         Me.panelAbout.Controls.Add(Me.Label1)
         Me.panelAbout.Controls.Add(Me.btnCerrarInfo)
-        Me.panelAbout.Location = New System.Drawing.Point(253, 0)
+        Me.panelAbout.Location = New System.Drawing.Point(792, 0)
         Me.panelAbout.Name = "panelAbout"
-        Me.panelAbout.Size = New System.Drawing.Size(549, 704)
+        Me.panelAbout.Size = New System.Drawing.Size(10, 704)
         Me.panelAbout.TabIndex = 13
         '
         'Label5
@@ -592,7 +592,7 @@ Partial Class MenuPrincipal
         Me.btnCerrarInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCerrarInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarInfo.ForeColor = System.Drawing.Color.White
-        Me.btnCerrarInfo.Location = New System.Drawing.Point(15, 6)
+        Me.btnCerrarInfo.Location = New System.Drawing.Point(-524, 6)
         Me.btnCerrarInfo.Name = "btnCerrarInfo"
         Me.btnCerrarInfo.Size = New System.Drawing.Size(28, 27)
         Me.btnCerrarInfo.TabIndex = 18

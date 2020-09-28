@@ -14,6 +14,7 @@ Public Class Explorador
 
     Private Sub Explorador_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         consultas.establecerConexion()
+        panelEditarRegistro.Width = 0
         ActualizarTabla()
         ActualizarTablaTelefono()
         ActualizarTablaRegistroCompras()
@@ -22,11 +23,6 @@ Public Class Explorador
 
     '----CIERRE DEL FORMULARIO----'
 
-    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
-        MenuPrincipal.formularioBool = False
-        Me.Close()
-        MenuPrincipal.lblTituloVentana.Text = "Menú Principal"
-    End Sub
 
 
     '----MOSTRAR FORMULARIO "NUEVO" EN EL MENÚ PRINCIPAL----'
@@ -134,18 +130,16 @@ Public Class Explorador
     End Sub
 
     Sub ActualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p FROM clientes as c,compracliente as cc WHERE c.idcliente = cc.idcliente and adeudoBool = 1 group by(cc.idCliente);")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM clientes as c,compracliente as cc WHERE c.idcliente = cc.idcliente group by(cc.idCliente);")
         If consultas.resultado = 1 Then
-            dgvClientes.Columns(6).Visible = False
-            dgvClientes.Columns(7).Width = 0
+            dgvClientes.Columns(6).Width = 0
         End If
         
     End Sub
 
     Private Sub actualizarTablaConId()
         Dim idTemp As Integer = idCliente
-
-        actualizarTabla()
+        ActualizarTabla()
 
         'SELECCIONA EN LA TABLA AL CLIENTE EN idTemp
         For i As Integer = 0 To dgvClientes.Rows.Count - 1
@@ -158,8 +152,6 @@ Public Class Explorador
             End If
         Next
 
-        ActualizarTablaRegistroCompras()
-        ActualizarTablaTelefono()
 
     End Sub
 
@@ -171,11 +163,8 @@ Public Class Explorador
 
 
     Sub ActualizarTablaRegistroCompras()
-        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idCompra,Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool = 1 AND Clientes.idCliente=" & txtID.Text & ";")
-        dgvRegistroCompras.Columns(0).Visible = False
-        If dgvRegistroCompras.Columns(0).ToString.Equals("") Then
-            idCompra = ""
-        End If
+        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool = 1 AND Clientes.idCliente=" & txtID.Text & ";")
+        dgvRegistroVentas.Columns(0).Visible = False
     End Sub
 
 
@@ -207,8 +196,8 @@ Public Class Explorador
         If dgvClientes.Columns(e.ColumnIndex).Name = "p" Then
 
             If e.Value = "False" Then
-                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 5).Style.ForeColor = Color.Red
-                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 5).Style.SelectionForeColor = Color.Red
+                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 4).Style.ForeColor = Color.Red
+                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 4).Style.SelectionForeColor = Color.Red
             End If
         End If
     End Sub
@@ -252,7 +241,7 @@ Public Class Explorador
         End If
     End Sub
 
-    
+
     Private Sub btnAgregarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarTel.Click
         resultadosTxt = ConfirmacionMensaje.entradaDatos("Nuevo número telfónico:")
 
@@ -275,17 +264,68 @@ Public Class Explorador
         resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea eliminar este registro?")
         If resultado = 1 Then
 
-            idCompra = dgvRegistroCompras.CurrentRow.Cells(0).Value.ToString
+            idCompra = dgvRegistroVentas.CurrentRow.Cells(0).Value.ToString
 
-            consultas.consultaHide("DELETE FROM compraCliente where idCompra=" & idCompra & ";")
+            consultas.consultaHide("UPDATE FROM compraCliente set adeudoBool=0 where idCompra=" & idCompra & ";")
             ActualizarTablaRegistroCompras()
 
-            If idCompra = "" Then
-                ActualizarTabla()
-            Else
-                actualizarTablaConId()
-            End If
+            actualizarTablaConId()
+        End If
+
+    End Sub
+
+    Private Sub btnEditarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarTel.Click
+
+        Dim idTel As String
+        Dim num As String
+        idTel = dgvTelefono.CurrentRow.Cells(0).Value.ToString
+        num = dgvTelefono.CurrentRow.Cells(1).Value.ToString
+
+        ConfirmacionMensaje.txtEntrada.Text = num
+        resultadosTxt = ConfirmacionMensaje.entradaDatos("Modificar número telfónico:")
+
+        If ConfirmacionMensaje.confirmacionResult = 1 Then
+            consultas.consultaHide("UPDATE telefonoCliente set numeroTel='" & resultadosTxt & "' where idTelefono=" & idTel & ";")
+            ActualizarTablaTelefono()
         End If
         
+    End Sub
+
+    Private Sub btnEditarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarRegistro.Click
+        idCompra = dgvRegistroVentas.CurrentRow.Cells(0).Value.ToString
+        txtSaldoRegistro.Text = dgvRegistroVentas.CurrentRow.Cells(1).Value.ToString
+        txtDetalleRegistro.Text = dgvRegistroVentas.CurrentRow.Cells(2).Value.ToString
+
+        tmrMostrarEditarRegistro.Enabled = True
+    End Sub
+
+
+    Private Sub tmrMostrarEditarRegistro_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrOcultarEditarRegistro.Tick
+        If panelEditarRegistro.Width <= 0 Then
+            tmrOcultarEditarRegistro.Enabled = False
+        Else
+            panelEditarRegistro.Width = panelEditarRegistro.Width - 10
+
+        End If
+    End Sub
+
+    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
+        tmrOcultarEditarRegistro.Enabled = True
+    End Sub
+
+    Private Sub tmrMostrarEditarRegistro_Tick_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarEditarRegistro.Tick
+        If panelEditarRegistro.Width >= 349 Then
+            tmrMostrarEditarRegistro.Enabled = False
+        Else
+            panelEditarRegistro.Width = panelEditarRegistro.Width + 10
+        End If
+    End Sub
+
+    Private Sub btnGuardarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarRegistro.Click
+        If txtSaldoRegistro.Text <> "" Then
+            consultas.consultaHide("UPDATE compraCliente set saldo = " & txtSaldoRegistro.Text & ", detalle = '" & txtDetalleRegistro.Text & "' where idCompra=" & idCompra & ";")
+            actualizarTablaConId()
+            tmrOcultarEditarRegistro.Enabled = True
+        End If
     End Sub
 End Class
