@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.InteropServices
 
-Public Class Explorador
+Public Class ExploradorClientes
 
     Dim consultas As Conexion = New Conexion
     Dim idCliente As Integer
@@ -119,27 +119,29 @@ Public Class Explorador
         End If
 
         ActualizarTabla()
+        chkNoActivos.Checked = False
     End Sub
 
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
         resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea eliminar este cliente?")
         If resultado = 1 Then
-            consultas.consultaHide("DELETE FROM Clientes where idCliente=" & idCliente & ";")
+            consultas.consultaHide("UPDATE Clientes set estadoBool = 0 where idCliente=" & idCliente & ";")
             If consultas.resultado = 1 Then
                 mostrarMensaje("Base de datos actualizada.")
             End If
             ActualizarTabla()
 
         End If
-        
+
     End Sub
 
     Sub ActualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM clientes as c,compracliente as cc WHERE c.idcliente = cc.idcliente group by(cc.idCliente);")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM clientes as c,compracliente as cc WHERE c.idcliente = cc.idcliente AND estadoBool=1 group by(cc.idCliente);")
         If consultas.resultado = 1 Then
+            dgvClientes.Columns(5).Visible = False
             dgvClientes.Columns(6).Width = 0
         End If
-        
+
     End Sub
 
     Private Sub actualizarTablaConId()
@@ -293,7 +295,7 @@ Public Class Explorador
             consultas.consultaHide("UPDATE telefonoCliente set numeroTel='" & resultadosTxt & "' where idTelefono=" & idTel & ";")
             ActualizarTablaTelefono()
         End If
-        
+
     End Sub
 
     Private Sub btnEditarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarRegistro.Click
@@ -331,6 +333,20 @@ Public Class Explorador
             consultas.consultaHide("UPDATE compraCliente set saldo = " & txtSaldoRegistro.Text & ", detalle = '" & txtDetalleRegistro.Text & "' where idCompra=" & idCompra & ";")
             actualizarTablaConId()
             tmrOcultarEditarRegistro.Enabled = True
+        End If
+    End Sub
+
+
+    Private Sub chkNoActivos_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkNoActivos.CheckedChanged
+        If chkNoActivos.Checked Then
+
+            dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM clientes as c,compracliente as cc WHERE c.idcliente = cc.idcliente AND estadoBool=0 group by(cc.idCliente);")
+            If consultas.resultado = 1 Then
+                dgvClientes.Columns(5).Visible = False
+                dgvClientes.Columns(6).Width = 0
+            End If
+        Else
+            ActualizarTabla()
         End If
     End Sub
 End Class

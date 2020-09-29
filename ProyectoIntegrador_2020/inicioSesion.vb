@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.IO
-Public Class Login
+Public Class inicioSesion
 
     Dim consultas As Conexion = New Conexion
     Dim ruta As String = "./usuario/"
@@ -34,7 +34,7 @@ Public Class Login
     '----CIERRA EL FORUMULARIO DEL MENÚ (FINALIZA SU EJECUCIÓN)----'
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
-       Me.Close()
+        Me.Close()
         End
     End Sub
 
@@ -97,7 +97,7 @@ Public Class Login
         txtClaveAdminRegistro.Text = ""
         panelLogin.Visible = True
         panelRegistro.Visible = False
-        lblTitulo.Text = "Login  |  El Cofre"
+        lblTitulo.Text = "Iniciar Sesión  |  El Cofre"
         txtUsuarioLogin.Focus()
     End Sub
 
@@ -383,4 +383,5 @@ Public Class Login
         pbMostrar.Visible = True
         txtContraseñaLogin.UseSystemPasswordChar = True
     End Sub
+
 End Class

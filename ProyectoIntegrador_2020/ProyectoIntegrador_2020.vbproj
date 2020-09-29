@@ -103,10 +103,22 @@
     <Compile Include="ConfirmacionMensaje.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.vb">
-      <DependentUpon>Login.vb</DependentUpon>
+    <Compile Include="ExploradorProveedores.Designer.vb">
+      <DependentUpon>ExploradorProveedores.vb</DependentUpon>
     </Compile>
-    <Compile Include="Login.vb">
+    <Compile Include="ExploradorProveedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionarProveedores.Designer.vb">
+      <DependentUpon>GestionarProveedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarProveedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="inicioSesion.Designer.vb">
+      <DependentUpon>inicioSesion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="inicioSesion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mensaje.Designer.vb">
@@ -122,10 +134,10 @@
       <DependentUpon>MenuPrincipal.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Explorador.Designer.vb">
-      <DependentUpon>Explorador.vb</DependentUpon>
+    <Compile Include="ExploradorClientes.Designer.vb">
+      <DependentUpon>ExploradorClientes.vb</DependentUpon>
     </Compile>
-    <Compile Include="Explorador.vb">
+    <Compile Include="ExploradorClientes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -161,12 +173,6 @@
     <Compile Include="Productos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Proveedores.Designer.vb">
-      <DependentUpon>Proveedores.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Proveedores.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="CuentaCorriente.Designer.vb">
       <DependentUpon>CuentaCorriente.vb</DependentUpon>
     </Compile>
@@ -178,8 +184,14 @@
     <EmbeddedResource Include="ConfirmacionMensaje.resx">
       <DependentUpon>ConfirmacionMensaje.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.vb</DependentUpon>
+    <EmbeddedResource Include="ExploradorProveedores.resx">
+      <DependentUpon>ExploradorProveedores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionarProveedores.resx">
+      <DependentUpon>GestionarProveedores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="inicioSesion.resx">
+      <DependentUpon>inicioSesion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mensaje.resx">
       <DependentUpon>Mensaje.vb</DependentUpon>
@@ -187,8 +199,8 @@
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Explorador.resx">
-      <DependentUpon>Explorador.vb</DependentUpon>
+    <EmbeddedResource Include="ExploradorClientes.resx">
+      <DependentUpon>ExploradorClientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

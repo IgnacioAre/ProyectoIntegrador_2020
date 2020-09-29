@@ -322,7 +322,7 @@ Public Class MenuPrincipal
     Private Sub pbCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbCerrarSesion.Click
         resultado = ConfirmacionMensaje.confirmacion("                   ¿Desea Cerrar Sesión?")
         If resultado = 1 Then
-            Login.Show()
+            inicioSesion.Show()
             Me.Close()
         End If
     End Sub
@@ -345,14 +345,16 @@ Public Class MenuPrincipal
 
     Private Sub btnExploradorClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExploradorClientes.Click
         '----MOSTRAR FORMULARIO "Explorador" EN EL MENÚ PRINCIPAL----'
+        tmrOcultarAbout.Enabled = True
         lblTituloVentana.Text = "Explorador de Clientes"
         If formularioBool = True Then formulario.Close()
-        openFromOnPanel(Of Explorador)()
+        openFromOnPanel(Of ExploradorClientes)()
         formularioBool = True
     End Sub
 
     Private Sub btnGestionarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarCliente.Click
         '----MOSTRAR FORMULARIO "CLIENTES" EN EL MENÚ PRINCIPAL----'
+        tmrOcultarAbout.Enabled = True
         lblTituloVentana.Text = "Cuenta Corriente de Clientes"
         If formularioBool = True Then formulario.Close()
         openFromOnPanel(Of CuentaCorriente)()
@@ -368,24 +370,33 @@ Public Class MenuPrincipal
 
     Private Sub btnInicio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInicio.Click
         If formularioBool Then formulario.Close()
+        formularioBool = False
         lblTituloVentana.Text = "Menú Principal"
+        tmrOcultarAbout.Enabled = True
     End Sub
 
     Private Sub btnNuevoProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoProveedor.Click
         lblTituloVentana.Text = "Explorador de Proveedores"
+        If formularioBool = True Then formulario.Close()
+        openFromOnPanel(Of ExploradorProveedores)()
+        formularioBool = True
+        tmrOcultarAbout.Enabled = True
     End Sub
 
     Private Sub btnGestionarProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarProveedor.Click
         lblTituloVentana.Text = "Cuanta Corriente de Proveedores"
+        tmrOcultarAbout.Enabled = True
     End Sub
 
     
     Private Sub btnActualizarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarProducto.Click
         lblTituloVentana.Text = "Actualizar Productos"
+        tmrOcultarAbout.Enabled = True
     End Sub
 
     Private Sub btnListadoProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnListadoProducto.Click
         lblTituloVentana.Text = "Listado de Productos y Stock"
+        tmrOcultarAbout.Enabled = True
     End Sub
 
     Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
@@ -394,9 +405,9 @@ Public Class MenuPrincipal
 
     Private Sub tmrMostrarAbout_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarAbout.Tick
         If Me.panelAbout.Width >= 549 Then
-            Me.tmrMostrarAbout.Enabled = False
+            tmrMostrarAbout.Enabled = False
         Else
-            Me.panelAbout.Width = panelAbout.Width + 10
+            panelAbout.Width = panelAbout.Width + 10
         End If
     End Sub
 
@@ -417,6 +428,7 @@ Public Class MenuPrincipal
 
             If resultado = 1 Then
                 formulario.Close()
+                formularioBool = False
                 lblTituloVentana.Text = "Menú Principal"
 
                 If panelAbout.Width = 0 Then
@@ -435,17 +447,6 @@ Public Class MenuPrincipal
 
     End Sub
 
-    Private Sub Label3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label3.Click
-
-    End Sub
-
-    Private Sub Label4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label4.Click
-
-    End Sub
-
-    Private Sub Label5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label5.Click
-
-    End Sub
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarInfo.Click
         If Not panelAbout.Width = 0 Then
@@ -454,4 +455,8 @@ Public Class MenuPrincipal
     End Sub
 
 
+    Private Sub btnNotas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNotas.Click
+        lblTituloVentana.Text = "Notas"
+        tmrOcultarAbout.Enabled = True
+    End Sub
 End Class

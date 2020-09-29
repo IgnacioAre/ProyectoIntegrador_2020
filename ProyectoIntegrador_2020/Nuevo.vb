@@ -124,30 +124,6 @@ Public Class Nuevo
         End If
     End Sub
 
-    Private Sub txtTelefonoCliente_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono1.KeyPress
-        If e.KeyChar = ChrW(Keys.Enter) Then
-            e.Handled = True
-
-            Dim fechaActual = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
-            If txtNombre.Text.Equals("") Then
-                mostrarMensaje("El nombre del cliente no puede estar vacío.")
-            Else
-                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Deuda, Historial, fechaIngreso, Direccion, estadoBool, idAdmin) VALUES ('" & txtNombre.Text & "', 0," & "'Usuario Creado " & fechaActual & "', NOW(),'" & txtDireccion.Text & "', 1," & idIngresoAdmin & ");")
-                If Not txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Deuda, Historial, fechaIngreso, Telefono, estadoBool, idAdmin) VALUES ('" & txtNombre.Text & "', 0," & "'Usuario Creado " & fechaActual & "', NOW(),'" & txtTelefono1.Text & "', 1," & idIngresoAdmin & ");")
-                If Not txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Deuda, Historial, fechaIngreso, Telefono, Direccion, estadoBool, idAdmin) VALUES ('" & txtNombre.Text & "', 0," & "'Usuario Creado " & fechaActual & "', NOW(),'" & txtTelefono1.Text & "', '" & txtDireccion.Text & "', 1," & idIngresoAdmin & ");")
-                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Deuda, Historial, fechaIngreso, estadoBool, idAdmin) VALUES ('" & txtNombre.Text & "', 0," & "'Usuario Creado " & fechaActual & "', NOW()," & " 1, " & idIngresoAdmin & ");")
-
-                If consultas.resultado = 1 Then
-                    mostrarMensaje("Cliente creado correctamente!")
-                    txtNombre.Text = ""
-                    txtDireccion.Text = ""
-                    txtTelefono1.Text = ""
-                    Me.Hide()
-                End If
-            End If
-
-        End If
-    End Sub
 
 
     '----MÉTODOS PARA MOVER EL FORMULARIO----'

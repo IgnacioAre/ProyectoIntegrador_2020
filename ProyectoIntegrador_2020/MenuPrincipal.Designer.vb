@@ -335,7 +335,7 @@ Partial Class MenuPrincipal
         Me.btnGestionarProveedor.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
         Me.btnGestionarProveedor.Size = New System.Drawing.Size(230, 54)
         Me.btnGestionarProveedor.TabIndex = 5
-        Me.btnGestionarProveedor.Text = " Cuenta" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "   Corriente"
+        Me.btnGestionarProveedor.Text = "  Gestionar" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Proveedores"
         Me.btnGestionarProveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnGestionarProveedor.UseVisualStyleBackColor = False
         '
@@ -529,15 +529,15 @@ Partial Class MenuPrincipal
         '
         Me.panelAbout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.panelAbout.BackColor = System.Drawing.Color.LightGray
+        Me.panelAbout.BackColor = System.Drawing.Color.OrangeRed
         Me.panelAbout.Controls.Add(Me.Label5)
         Me.panelAbout.Controls.Add(Me.Label4)
         Me.panelAbout.Controls.Add(Me.Label3)
         Me.panelAbout.Controls.Add(Me.Label1)
         Me.panelAbout.Controls.Add(Me.btnCerrarInfo)
-        Me.panelAbout.Location = New System.Drawing.Point(792, 0)
+        Me.panelAbout.Location = New System.Drawing.Point(256, 0)
         Me.panelAbout.Name = "panelAbout"
-        Me.panelAbout.Size = New System.Drawing.Size(10, 704)
+        Me.panelAbout.Size = New System.Drawing.Size(546, 704)
         Me.panelAbout.TabIndex = 13
         '
         'Label5
@@ -555,6 +555,7 @@ Partial Class MenuPrincipal
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.White
         Me.Label4.Location = New System.Drawing.Point(163, 308)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(216, 25)
@@ -576,6 +577,7 @@ Partial Class MenuPrincipal
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(203, 13)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(105, 25)
@@ -592,7 +594,7 @@ Partial Class MenuPrincipal
         Me.btnCerrarInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCerrarInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarInfo.ForeColor = System.Drawing.Color.White
-        Me.btnCerrarInfo.Location = New System.Drawing.Point(-524, 6)
+        Me.btnCerrarInfo.Location = New System.Drawing.Point(12, 6)
         Me.btnCerrarInfo.Name = "btnCerrarInfo"
         Me.btnCerrarInfo.Size = New System.Drawing.Size(28, 27)
         Me.btnCerrarInfo.TabIndex = 18
