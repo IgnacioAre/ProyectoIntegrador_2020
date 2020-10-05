@@ -3,8 +3,8 @@ Imports System.Runtime.InteropServices
 
 Public Class ConfirmacionMensaje
 
-    Public confirmacionResult As Byte = 0
-    Private contenidoEntrada As String
+    Public resultado As Byte = 0
+    Public resultadoTxt As String
 
 
     Function entradaDatos(ByVal mensaje As String)
@@ -14,7 +14,7 @@ Public Class ConfirmacionMensaje
         PanelEntrada.Visible = True
         Me.ShowDialog()
 
-        Return contenidoEntrada
+        Return resultadoTxt
     End Function
 
     Function confirmacion(ByVal mensaje As String)
@@ -23,20 +23,20 @@ Public Class ConfirmacionMensaje
         PanelEntrada.Visible = False
         Me.ShowDialog()
 
-        Return confirmacionResult
+        Return resultado
     End Function
 
 
     Public Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
-        confirmacionResult = 1
-        If Not txtEntrada.Text.Equals("") Then contenidoEntrada = txtEntrada.Text
+        resultado = 1
+        If Not txtEntrada.Text.Equals("") Then resultadoTxt = txtEntrada.Text
         txtEntrada.Text = ""
         Me.Close()
     End Sub
 
     Public Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
-        confirmacionResult = 0
-        contenidoEntrada = ""
+        resultado = 0
+        resultadoTxt = ""
         txtEntrada.Text = ""
         Me.Close()
     End Sub
@@ -64,8 +64,8 @@ Public Class ConfirmacionMensaje
     Private Sub txtEntrada_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtEntrada.KeyPress
         If Not Char.IsLetter(e.KeyChar) And Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Not Char.IsWhiteSpace(e.KeyChar) And Asc(e.KeyChar) <> 46 Then
             If e.KeyChar = ChrW(Keys.Enter) Then
-                confirmacionResult = 1
-                If Not txtEntrada.Text.Equals("") Then contenidoEntrada = txtEntrada.Text
+                resultado = 1
+                If Not txtEntrada.Text.Equals("") Then resultadoTxt = txtEntrada.Text
                 txtEntrada.Text = ""
                 Me.Close()
             Else

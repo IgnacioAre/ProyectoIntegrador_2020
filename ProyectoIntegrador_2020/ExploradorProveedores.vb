@@ -135,10 +135,7 @@ Public Class ExploradorProveedores
     End Sub
 
     Sub ActualizarTabla()
-        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT p.idProveedor As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM proveedores as p,ventaproveedor as vp WHERE p.idproveedor = vp.idventa group by(vp.idVenta);")
-        If consultas.resultado = 1 Then
-            dgvProveedores.Columns(6).Width = 0
-        End If
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores;")
 
     End Sub
 
@@ -289,7 +286,7 @@ Public Class ExploradorProveedores
         ConfirmacionMensaje.txtEntrada.Text = num
         resultadosTxt = ConfirmacionMensaje.entradaDatos("Modificar número telfónico:")
 
-        If ConfirmacionMensaje.confirmacionResult = 1 Then
+        If ConfirmacionMensaje.resultado = 1 Then
             consultas.consultaHide("UPDATE telefonoCliente set numeroTel='" & resultadosTxt & "' where idTelefono=" & idTel & ";")
             ActualizarTablaTelefono()
         End If

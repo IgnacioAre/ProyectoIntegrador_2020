@@ -68,22 +68,6 @@ Public Class MenuPrincipal
         End If
     End Sub
 
-    '----MÉTODOS PARA MOVER EL FORMULARIO----'
-
-    <DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
-    Private Shared Sub ReleaseCapture()
-    End Sub
-
-    <DllImport("user32.DLL", EntryPoint:="SendMessage")>
-    Private Shared Sub SendMessage(ByVal hWnd As System.IntPtr, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer)
-    End Sub
-
-    Private Sub panelSuperior_MouseMove(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles panelSuperior.MouseMove
-        If moverMenuBool Then
-            ReleaseCapture()
-            SendMessage(Me.Handle, &H112&, &HF012&, 0)
-        End If
-    End Sub
 
     '----PLACEHOLDERS----'
 

@@ -27,6 +27,14 @@ Partial Class Nuevo
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtTelefono5 = New System.Windows.Forms.TextBox()
+        Me.pbMasTel4 = New System.Windows.Forms.PictureBox()
+        Me.txtTelefono4 = New System.Windows.Forms.TextBox()
+        Me.pbMasTel3 = New System.Windows.Forms.PictureBox()
+        Me.txtTelefono3 = New System.Windows.Forms.TextBox()
+        Me.pbMasTel2 = New System.Windows.Forms.PictureBox()
+        Me.txtTelefono2 = New System.Windows.Forms.TextBox()
+        Me.pbMasTel1 = New System.Windows.Forms.PictureBox()
         Me.btnRegistrarCliente = New System.Windows.Forms.Button()
         Me.txtTelefono1 = New System.Windows.Forms.TextBox()
         Me.lblTelefono = New System.Windows.Forms.Label()
@@ -34,20 +42,12 @@ Partial Class Nuevo
         Me.lblDireccion = New System.Windows.Forms.Label()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.lblNombre = New System.Windows.Forms.Label()
-        Me.pbMasTel1 = New System.Windows.Forms.PictureBox()
-        Me.txtTelefono2 = New System.Windows.Forms.TextBox()
-        Me.txtTelefono3 = New System.Windows.Forms.TextBox()
-        Me.txtTelefono4 = New System.Windows.Forms.TextBox()
-        Me.txtTelefono5 = New System.Windows.Forms.TextBox()
-        Me.pbMasTel2 = New System.Windows.Forms.PictureBox()
-        Me.pbMasTel3 = New System.Windows.Forms.PictureBox()
-        Me.pbMasTel4 = New System.Windows.Forms.PictureBox()
         Me.panelTitulo.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        CType(Me.pbMasTel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pbMasTel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pbMasTel3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbMasTel4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbMasTel3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbMasTel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbMasTel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelTitulo
@@ -111,6 +111,93 @@ Partial Class Nuevo
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(639, 386)
         Me.Panel1.TabIndex = 2
+        '
+        'txtTelefono5
+        '
+        Me.txtTelefono5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono5.Location = New System.Drawing.Point(371, 270)
+        Me.txtTelefono5.MaxLength = 15
+        Me.txtTelefono5.Name = "txtTelefono5"
+        Me.txtTelefono5.Size = New System.Drawing.Size(215, 27)
+        Me.txtTelefono5.TabIndex = 18
+        Me.txtTelefono5.Visible = False
+        '
+        'pbMasTel4
+        '
+        Me.pbMasTel4.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbMasTel4.Image = CType(resources.GetObject("pbMasTel4.Image"), System.Drawing.Image)
+        Me.pbMasTel4.Location = New System.Drawing.Point(602, 221)
+        Me.pbMasTel4.Name = "pbMasTel4"
+        Me.pbMasTel4.Size = New System.Drawing.Size(25, 27)
+        Me.pbMasTel4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbMasTel4.TabIndex = 17
+        Me.pbMasTel4.TabStop = False
+        Me.pbMasTel4.Visible = False
+        '
+        'txtTelefono4
+        '
+        Me.txtTelefono4.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono4.Location = New System.Drawing.Point(371, 221)
+        Me.txtTelefono4.MaxLength = 15
+        Me.txtTelefono4.Name = "txtTelefono4"
+        Me.txtTelefono4.Size = New System.Drawing.Size(215, 27)
+        Me.txtTelefono4.TabIndex = 16
+        Me.txtTelefono4.Visible = False
+        '
+        'pbMasTel3
+        '
+        Me.pbMasTel3.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbMasTel3.Image = CType(resources.GetObject("pbMasTel3.Image"), System.Drawing.Image)
+        Me.pbMasTel3.Location = New System.Drawing.Point(602, 174)
+        Me.pbMasTel3.Name = "pbMasTel3"
+        Me.pbMasTel3.Size = New System.Drawing.Size(25, 27)
+        Me.pbMasTel3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbMasTel3.TabIndex = 15
+        Me.pbMasTel3.TabStop = False
+        Me.pbMasTel3.Visible = False
+        '
+        'txtTelefono3
+        '
+        Me.txtTelefono3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono3.Location = New System.Drawing.Point(371, 174)
+        Me.txtTelefono3.MaxLength = 15
+        Me.txtTelefono3.Name = "txtTelefono3"
+        Me.txtTelefono3.Size = New System.Drawing.Size(215, 27)
+        Me.txtTelefono3.TabIndex = 14
+        Me.txtTelefono3.Visible = False
+        '
+        'pbMasTel2
+        '
+        Me.pbMasTel2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbMasTel2.Image = CType(resources.GetObject("pbMasTel2.Image"), System.Drawing.Image)
+        Me.pbMasTel2.Location = New System.Drawing.Point(602, 126)
+        Me.pbMasTel2.Name = "pbMasTel2"
+        Me.pbMasTel2.Size = New System.Drawing.Size(25, 27)
+        Me.pbMasTel2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbMasTel2.TabIndex = 13
+        Me.pbMasTel2.TabStop = False
+        Me.pbMasTel2.Visible = False
+        '
+        'txtTelefono2
+        '
+        Me.txtTelefono2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono2.Location = New System.Drawing.Point(371, 126)
+        Me.txtTelefono2.MaxLength = 15
+        Me.txtTelefono2.Name = "txtTelefono2"
+        Me.txtTelefono2.Size = New System.Drawing.Size(215, 27)
+        Me.txtTelefono2.TabIndex = 12
+        Me.txtTelefono2.Visible = False
+        '
+        'pbMasTel1
+        '
+        Me.pbMasTel1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbMasTel1.Image = CType(resources.GetObject("pbMasTel1.Image"), System.Drawing.Image)
+        Me.pbMasTel1.Location = New System.Drawing.Point(602, 76)
+        Me.pbMasTel1.Name = "pbMasTel1"
+        Me.pbMasTel1.Size = New System.Drawing.Size(25, 27)
+        Me.pbMasTel1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbMasTel1.TabIndex = 11
+        Me.pbMasTel1.TabStop = False
         '
         'btnRegistrarCliente
         '
@@ -185,93 +272,6 @@ Partial Class Nuevo
         Me.lblNombre.TabIndex = 4
         Me.lblNombre.Text = "Nombre completo"
         '
-        'pbMasTel1
-        '
-        Me.pbMasTel1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbMasTel1.Image = CType(resources.GetObject("pbMasTel1.Image"), System.Drawing.Image)
-        Me.pbMasTel1.Location = New System.Drawing.Point(602, 76)
-        Me.pbMasTel1.Name = "pbMasTel1"
-        Me.pbMasTel1.Size = New System.Drawing.Size(25, 27)
-        Me.pbMasTel1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbMasTel1.TabIndex = 11
-        Me.pbMasTel1.TabStop = False
-        '
-        'txtTelefono2
-        '
-        Me.txtTelefono2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTelefono2.Location = New System.Drawing.Point(371, 126)
-        Me.txtTelefono2.MaxLength = 15
-        Me.txtTelefono2.Name = "txtTelefono2"
-        Me.txtTelefono2.Size = New System.Drawing.Size(215, 27)
-        Me.txtTelefono2.TabIndex = 12
-        Me.txtTelefono2.Visible = False
-        '
-        'txtTelefono3
-        '
-        Me.txtTelefono3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTelefono3.Location = New System.Drawing.Point(371, 174)
-        Me.txtTelefono3.MaxLength = 15
-        Me.txtTelefono3.Name = "txtTelefono3"
-        Me.txtTelefono3.Size = New System.Drawing.Size(215, 27)
-        Me.txtTelefono3.TabIndex = 14
-        Me.txtTelefono3.Visible = False
-        '
-        'txtTelefono4
-        '
-        Me.txtTelefono4.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTelefono4.Location = New System.Drawing.Point(371, 221)
-        Me.txtTelefono4.MaxLength = 15
-        Me.txtTelefono4.Name = "txtTelefono4"
-        Me.txtTelefono4.Size = New System.Drawing.Size(215, 27)
-        Me.txtTelefono4.TabIndex = 16
-        Me.txtTelefono4.Visible = False
-        '
-        'txtTelefono5
-        '
-        Me.txtTelefono5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTelefono5.Location = New System.Drawing.Point(371, 270)
-        Me.txtTelefono5.MaxLength = 15
-        Me.txtTelefono5.Name = "txtTelefono5"
-        Me.txtTelefono5.Size = New System.Drawing.Size(215, 27)
-        Me.txtTelefono5.TabIndex = 18
-        Me.txtTelefono5.Visible = False
-        '
-        'pbMasTel2
-        '
-        Me.pbMasTel2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbMasTel2.Image = CType(resources.GetObject("pbMasTel2.Image"), System.Drawing.Image)
-        Me.pbMasTel2.Location = New System.Drawing.Point(602, 126)
-        Me.pbMasTel2.Name = "pbMasTel2"
-        Me.pbMasTel2.Size = New System.Drawing.Size(25, 27)
-        Me.pbMasTel2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbMasTel2.TabIndex = 13
-        Me.pbMasTel2.TabStop = False
-        Me.pbMasTel2.Visible = False
-        '
-        'pbMasTel3
-        '
-        Me.pbMasTel3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbMasTel3.Image = CType(resources.GetObject("pbMasTel3.Image"), System.Drawing.Image)
-        Me.pbMasTel3.Location = New System.Drawing.Point(602, 174)
-        Me.pbMasTel3.Name = "pbMasTel3"
-        Me.pbMasTel3.Size = New System.Drawing.Size(25, 27)
-        Me.pbMasTel3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbMasTel3.TabIndex = 15
-        Me.pbMasTel3.TabStop = False
-        Me.pbMasTel3.Visible = False
-        '
-        'pbMasTel4
-        '
-        Me.pbMasTel4.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbMasTel4.Image = CType(resources.GetObject("pbMasTel4.Image"), System.Drawing.Image)
-        Me.pbMasTel4.Location = New System.Drawing.Point(602, 221)
-        Me.pbMasTel4.Name = "pbMasTel4"
-        Me.pbMasTel4.Size = New System.Drawing.Size(25, 27)
-        Me.pbMasTel4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbMasTel4.TabIndex = 17
-        Me.pbMasTel4.TabStop = False
-        Me.pbMasTel4.Visible = False
-        '
         'Nuevo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -288,10 +288,10 @@ Partial Class Nuevo
         Me.panelTitulo.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.pbMasTel1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pbMasTel2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pbMasTel3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbMasTel4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbMasTel3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbMasTel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbMasTel1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

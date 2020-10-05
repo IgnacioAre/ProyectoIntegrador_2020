@@ -3,11 +3,8 @@
 Public Class CuentaCorriente
 
     Dim consultas As Conexion = New Conexion
-    Dim idCliente As Byte
-    Dim dineroResultado As Integer
-    Dim deudaActual As Integer
-    Dim historialActual As String
-    Dim nombreCobrador As String
+    Dim idCliente As Integer
+    Dim idCompra As Integer
     Dim resultadosEntrada As String
     Dim confirmacion As Byte
 
@@ -58,87 +55,33 @@ Public Class CuentaCorriente
     Private Sub actualizarDeuda()
         Dim fechaActual = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
 
-        consultas.consultaReturnHide("SELECT SUM(saldo) FROM compraCliente as cc,Clientes as c where c.idCliente = cc.idCliente and c.idCliente=" & idCliente & ";")
-        Dim Total As Integer = consultas.valorReturn
-
-        If Not txtDinero.Text.Equals("") And Not txtDinero.Text.Equals("0") Then
+        If Not txtDineroDebe.Text.Equals("") And Not txtDineroDebe.Text.Equals("0") Then
 
             '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL DEBE----'
 
-            If gbDinero.Text.Equals("Debe") Then
 
-                If txtDetalle.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO compraCliente(Saldo,fechaCompra,adeudoBool,idCliente) Values(" & txtDinero.Text & ",now(),1," & idCliente & ");")
-                Else
-                    consultas.consultaHide("INSERT INTO compraCliente(Saldo,Detalle,fechaCompra,adeudoBool,idCliente) Values(" & txtDinero.Text & ",'" & txtDetalle.Text & "'" & ",now(),1," & idCliente & ");")
-                End If
-
-                actualizarTablaConId()
-                ActualizarTablaRegistroCompra()
-
-
-                '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL HABER----'
-
+            If txtDetalleDebe.Text.Equals("") Then
+                consultas.consultaHide("INSERT INTO compraCliente(Saldo,fechaCompra,adeudoBool,idCliente) Values(" & txtDineroDebe.Text & ",now(),1," & idCliente & ");")
             Else
-
-
-                Do
-                    If txtDinero.Text.Equals(Total) Then
-                        ConfirmacionMensaje.btnAceptar.Text = "Aceptar"
-                        ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
-                        mostrarMensajeInput("Ingrese el nombre del cobrador:")
-                    End If
-                Loop While resultadosEntrada = ""
-
-
-
-                If txtDetalle.Text.Equals("") Then
-                    If txtDinero.Text.Equals(Total) Then
-                        If confirmacion = 1 Then
-                            nombreCobrador = resultadosEntrada
-                            consultas.consultaHide("INSERT compraCliente ()")
-                        Else
-                            mostrarMensaje("Se canceló el cobro.")
-                            consultas.resultado = 2
-                        End If
-                    Else
-                        consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
-                    End If
-                Else
-                    If dineroResultado = 0 Then
-                        If confirmacion = 1 Then
-                            nombreCobrador = resultadosEntrada(1)
-                            consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "Saldo cobrado: $" & txtDinero.Text & vbCrLf & "El saldo fue cobrado por " & nombreCobrador & "   """ & txtDetalle.Text & """" & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
-                        Else
-                            mostrarMensaje("Se canceló el cobro.")
-                            consultas.resultado = 2
-                        End If
-                    Else
-                        consultas.consultaHide("UPDATE Clientes SET Deuda=" & dineroResultado & ", Historial='" & historialActual & vbCrLf & "-" & txtDinero.Text & "   """ & txtDetalle.Text & """" & "  Fecha: " & fechaActual & "'" & " WHERE idCliente=" & idCliente & ";")
-                    End If
-                End If
-
-
+                consultas.consultaHide("INSERT INTO compraCliente(Saldo,Detalle,fechaCompra,adeudoBool,idCliente) Values(" & txtDineroDebe.Text & ",'" & txtDetalleDebe.Text & "'" & ",now(),1," & idCliente & ");")
             End If
 
-            If consultas.resultado = 1 Then
 
-                If txtDinero.Text.Equals(total) Then
-                    resetGBDinero()
-                    consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
-                    mostrarMensaje(consultas.valorReturn & vbCrLf & "El saldo actual es $" & dineroResultado)
-                    actualizarTablaConId()
-                    txtBuscarClientes.Focus()
-                Else
-                    resetGBDinero()
-                    consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
-                    mostrarMensaje(consultas.valorReturn & vbCrLf & "Cuenta saldada exitosamente.")
-                    consultas.consultaHide("UPDATE Clientes SET maxPermitidoBool= 1 WHERE idCliente=" & idCliente & ";")
-                    actualizarTablaConId()
-                    txtBuscarClientes.Focus()
-                End If
-            End If
+        End If
 
+        If consultas.resultado = 1 Then
+
+            consultas.consultaReturnHide("SELECT Nombre FROM Clientes WHERE idCliente=" & idCliente & ";")
+            Dim nombre As String = consultas.valorReturn
+            consultas.consultaReturnHide("SELECT SUM(Saldo) FROM compraCliente WHERE idCliente=" & idCliente & ";")
+            Dim dinero As String = consultas.valorReturn
+            resetGBDinero()
+
+            mostrarMensaje(nombre & vbCrLf & "El saldo actual es $" & dinero)
+            actualizarTablaConId()
+            ActualizarTablaRegistroVenta()
+
+            txtBuscarClientes.Focus()
         Else
             mostrarMensaje("Error. Verifique el dinero ingresado.")
         End If
@@ -149,18 +92,19 @@ Public Class CuentaCorriente
 
     Private Sub btnDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDebe.Click
         resetGBDinero()
-        gbDinero.Text = "Debe"
-        gbDinero.Visible = True
-        btnPagarTotal.Visible = False
-        txtDinero.Focus()
+        gbDebe.Visible = True
+        gbHaber.Visible = False
+        txtDineroDebe.Focus()
     End Sub
 
     Private Sub btnHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHaber.Click
-        resetGBDinero()
-        gbDinero.Text = "Haber"
-        gbDinero.Visible = True
-        btnPagarTotal.Visible = True
-        txtDinero.Focus()
+        gbRegistroCompras.Visible = True
+        btnVerRegistro.Visible = False
+        btnOcultarRegistro.Visible = True
+        dgvRegistroVentas.Focus()
+
+        gbHaber.Visible = True
+        gbDebe.Visible = False
     End Sub
 
 
@@ -168,6 +112,7 @@ Public Class CuentaCorriente
 
     Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvClientes.SelectionChanged
         resetGBDinero()
+        txtDineroHaber.Text = ""
         If dgvClientes.SelectedCells.Count <> 0 Then
             idCliente = dgvClientes.SelectedCells(0).Value
         End If
@@ -175,13 +120,13 @@ Public Class CuentaCorriente
         btnDebe.Enabled = True
         btnHaber.Enabled = True
 
-        ActualizarTablaRegistroCompra()
+        ActualizarTablaRegistroVenta()
     End Sub
 
 
     '----MUESTRA O ESCONDE CAMPO DE AGREGAR DETALLE----'
 
-    
+
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         actualizarTabla()
         resetGBDinero()
@@ -192,7 +137,7 @@ Public Class CuentaCorriente
     '----MÉTODO QUE ACTUALIZA LA TABLA----'
 
     Private Sub actualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente group by(cc.idCliente);")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente AND adeudoBool=1 group by(cc.idCliente);")
         dgvClientes.Columns(3).Width = 0
     End Sub
 
@@ -217,8 +162,9 @@ Public Class CuentaCorriente
 
 
 
-    Sub ActualizarTablaRegistroCompra()
-        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool=1 AND Clientes.idCliente=" & idCliente & ";")
+    Sub ActualizarTablaRegistroVenta()
+        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool=1 AND Saldo > 0 AND Clientes.idCliente=" & idCliente & ";")
+        dgvRegistroVentas.Columns(0).Visible = False
     End Sub
 
 
@@ -226,7 +172,7 @@ Public Class CuentaCorriente
 
     '----MÉTODO QUE SOLO DEJA INGRESAR NÚMEROS Y TECLA RETROCESO----'
 
-    Private Sub txtDinero_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDinero.KeyPress
+    Private Sub txtDinero_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroDebe.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             If e.KeyChar = ChrW(Keys.Enter) Then
                 actualizarDeuda()
@@ -263,25 +209,21 @@ Public Class CuentaCorriente
         Dim mensaje As New Mensaje(mensajeObtenido)
     End Sub
 
-    Private Sub mostrarMensajeInput(ByVal mensaje As String)
-        resultadosEntrada = ConfirmacionMensaje.entradaDatos(mensaje)
-        confirmacion = ConfirmacionMensaje.confirmacionResult
-    End Sub
 
     Private Sub btnCerrarGBDinero_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         resetGBDinero()
     End Sub
 
     Private Sub resetGBDinero()
-        gbDinero.Visible = False
-        txtDinero.Text = ""
-        txtDetalle.Text = ""
-        txtDetalle.Visible = False
+        gbDebe.Visible = False
+        txtDineroDebe.Text = ""
+        txtDetalleDebe.Text = ""
+        txtDetalleDebe.Visible = False
     End Sub
 
-    Private Sub btnPagarTotal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPagarTotal.Click
+    Private Sub btnPagarTotal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         consultas.consultaReturnHide("SELECT SUM(saldo) FROM compraCliente as cc,Clientes as c where c.idCliente = cc.idCliente and c.idCliente=" & idCliente & ";")
-        txtDinero.Text = consultas.valorReturn
+        txtDineroDebe.Text = consultas.valorReturn
     End Sub
 
 
@@ -302,22 +244,21 @@ Public Class CuentaCorriente
     End Sub
 
 
-    Private Sub btnVerDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalle.Click
-        txtDetalle.Visible = True
-        txtDetalle.Text = ""
-        btnVerDetalle.Visible = False
-        btnOcultarDetalle.Visible = True
-        txtDetalle.Focus()
+    Private Sub btnVerDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalleDebe.Click
+        txtDetalleDebe.Visible = True
+        txtDetalleDebe.Text = ""
+        btnVerDetalleDebe.Visible = False
+        btnOcultarDetalleDebe.Visible = True
+        txtDetalleDebe.Focus()
     End Sub
 
-    Private Sub btnOcultarDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalle.Click
-        txtDetalle.Visible = False
-        txtDetalle.Text = ""
-        btnVerDetalle.Visible = True
-        btnOcultarDetalle.Visible = False
+    Private Sub btnOcultarDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalleDebe.Click
+        txtDetalleDebe.Visible = False
+        btnVerDetalleDebe.Visible = True
+        btnOcultarDetalleDebe.Visible = False
     End Sub
 
-    Private Sub txtDetalle_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDetalle.KeyPress
+    Private Sub txtDetalle_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDetalleDebe.KeyPress
 
     End Sub
 
@@ -329,5 +270,100 @@ Public Class CuentaCorriente
         MenuPrincipal.formularioBool = False
         Me.Close()
         MenuPrincipal.lblTituloVentana.Text = "Menú Principal"
+    End Sub
+
+
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        gbHaber.Visible = False
+    End Sub
+
+    Private Sub dgvRegistroCompras_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvRegistroVentas.SelectionChanged
+        Dim row As DataGridViewRow = dgvRegistroVentas.CurrentRow
+        btnEliminarTodoRegistro.Enabled = False
+        btnOcultarDetalleHaber.Visible = False
+        btnVerDetalleHaber.Visible = False
+        txtDetalleHaber.Visible = False
+
+        If dgvRegistroVentas.SelectedCells.Count <> 0 Then
+            idCompra = dgvRegistroVentas.SelectedCells(0).Value
+
+            txtDineroHaber.Text = row.Cells(1).Value.ToString
+        End If
+
+        If txtDineroHaber.Text.Equals("") Then
+            btnPagarTodo.Enabled = False
+            btnEliminarRegistro.Enabled = False
+        Else
+            btnPagarTodo.Enabled = True
+            btnEliminarRegistro.Enabled = True
+        End If
+
+    End Sub
+
+    Private Sub btnEliminarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminarRegistro.Click
+        If Not txtDineroHaber.Text.Equals("") Then
+            consultas.consultaReturnHide("SELECT COUNT(idCompra) from compraCliente where adeudoBool=1 AND idCliente=" & idCliente & ";")
+            If consultas.valorReturn = "1" Then
+                consultas.consultaHide("UPDATE compraCliente set adeudoBool=0 where idCompra=" & idCompra & ";")
+                consultas.consultaHide("UPDATE compraCliente set adeudoBool=1 where Saldo=0 AND idCliente=" & idCliente & ";")
+            Else
+                consultas.consultaHide("UPDATE compraCliente set adeudoBool=0 where idCompra=" & idCompra & ";")
+            End If
+            txtDineroHaber.Text = ""
+            ActualizarTablaRegistroVenta()
+            actualizarTablaConId()
+        End If
+    End Sub
+
+    Private Sub btnEliminarTodoRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminarTodoRegistro.Click
+        confirmacion = ConfirmacionMensaje.confirmacion("             ¿Seguro que desea eliminar" & vbCrLf & "              todo el registro de ventas?")
+        If confirmacion = 1 Then
+
+            Do
+                ConfirmacionMensaje.btnAceptar.Text = "Aceptar"
+                ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
+                ConfirmacionMensaje.entradaDatos("Ingrese el nombre del cobrador:")
+                resultadosEntrada = ConfirmacionMensaje.resultadoTxt
+            Loop While resultadosEntrada = ""
+
+            idCompra = dgvRegistroVentas.CurrentRow.Cells(0).Value.ToString
+
+            consultas.consultaHide("UPDATE compraCliente set adeudoBool=0 where idCliente=" & idCliente & ";")
+            consultas.consultaHide("UPDATE compraCliente set adeudoBool=1 where Saldo=0 AND idCliente=" & idCliente & ";")
+            If txtDetalleHaber.Text.Equals("") Then
+                consultas.consultaHide("INSERT INTO compraCliente (Saldo,Cobrador,fechaCompra,adeudoBool,idCliente) VALUES (" & txtDineroHaber.Text & ",'" & resultadosEntrada & "',NOW(),2," & idCliente & ");")
+            Else
+                consultas.consultaHide("INSERT INTO compraCliente (Saldo,Detalle,Cobrador,fechaCompra,adeudoBool,idCliente) VALUES (" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "','" & resultadosEntrada & "',NOW(),2," & idCliente & ");")
+            End If
+            ActualizarTablaRegistroVenta()
+            actualizarTablaConId()
+            txtBuscarClientes.Focus()
+        End If
+    End Sub
+
+    Private Sub btnPagarTodo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPagarTodo.Click
+        btnEliminarTodoRegistro.Enabled = True
+        btnOcultarDetalleHaber.Visible = True
+        btnVerDetalleHaber.Visible = True
+        txtDetalleHaber.Visible = True
+
+        consultas.consultaReturnHide("SELECT SUM(Saldo) FROM compraCliente where idCliente=" & idCliente & ";")
+        txtDineroHaber.Text = consultas.valorReturn
+    End Sub
+
+
+
+    Private Sub btnOcultarDetalleHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalleHaber.Click
+        txtDetalleHaber.Visible = False
+        btnVerDetalleHaber.Visible = True
+        btnOcultarDetalleHaber.Visible = False
+    End Sub
+
+    Private Sub btnVerDetalleHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalleHaber.Click
+        txtDetalleHaber.Visible = True
+        txtDetalleHaber.Text = ""
+        btnVerDetalleHaber.Visible = False
+        btnOcultarDetalleHaber.Visible = True
+        txtDetalleHaber.Focus()
     End Sub
 End Class

@@ -21,8 +21,6 @@ Public Class ExploradorClientes
         SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
     End Sub
 
-    '----CIERRE DEL FORMULARIO----'
-
 
 
     '----MOSTRAR FORMULARIO "NUEVO" EN EL MENÚ PRINCIPAL----'
@@ -45,9 +43,9 @@ Public Class ExploradorClientes
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente And Nombre LIKE '%" & txtBuscarClientes.Text & "%' group by(cc.idCliente);")
-        dgvClientes.Columns(6).Visible = False
-        dgvClientes.Columns(7).Width = 0
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente AND estadoBool=1 AND Nombre LIKE '%" & txtBuscarClientes.Text & "%' group by(cc.idCliente);")
+        dgvClientes.Columns(5).Visible = False
+        dgvClientes.Columns(6).Width = 0
 
     End Sub
 
@@ -115,20 +113,17 @@ Public Class ExploradorClientes
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False
-            mostrarMensaje("Base de datos actualizada.")
         End If
 
-        ActualizarTabla()
+        actualizarTablaConId()
         chkNoActivos.Checked = False
     End Sub
 
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
-        resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea eliminar este cliente?")
+        resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea quitar este cliente?")
         If resultado = 1 Then
             consultas.consultaHide("UPDATE Clientes set estadoBool = 0 where idCliente=" & idCliente & ";")
-            If consultas.resultado = 1 Then
-                mostrarMensaje("Base de datos actualizada.")
-            End If
+            
             ActualizarTabla()
 
         End If
@@ -136,7 +131,7 @@ Public Class ExploradorClientes
     End Sub
 
     Sub ActualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM clientes as c,compracliente as cc WHERE c.idcliente = cc.idcliente AND estadoBool=1 group by(cc.idCliente);")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM clientes as c,compracliente as cc WHERE c.idcliente = cc.idcliente AND estadoBool=1 and adeudoBool=1 group by(cc.idCliente);")
         If consultas.resultado = 1 Then
             dgvClientes.Columns(5).Visible = False
             dgvClientes.Columns(6).Width = 0
@@ -170,7 +165,7 @@ Public Class ExploradorClientes
 
 
     Sub ActualizarTablaRegistroCompras()
-        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool = 1 AND Clientes.idCliente=" & txtID.Text & ";")
+        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool = 1 AND Saldo > 0 AND Clientes.idCliente=" & txtID.Text & ";")
         dgvRegistroVentas.Columns(0).Visible = False
     End Sub
 
@@ -266,20 +261,7 @@ Public Class ExploradorClientes
     End Sub
 
 
-    Private Sub btnEliminarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminarRegistro.Click
 
-        resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea eliminar este registro?")
-        If resultado = 1 Then
-
-            idCompra = dgvRegistroVentas.CurrentRow.Cells(0).Value.ToString
-
-            consultas.consultaHide("UPDATE FROM compraCliente set adeudoBool=0 where idCompra=" & idCompra & ";")
-            ActualizarTablaRegistroCompras()
-
-            actualizarTablaConId()
-        End If
-
-    End Sub
 
     Private Sub btnEditarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarTel.Click
 
@@ -291,7 +273,7 @@ Public Class ExploradorClientes
         ConfirmacionMensaje.txtEntrada.Text = num
         resultadosTxt = ConfirmacionMensaje.entradaDatos("Modificar número telfónico:")
 
-        If ConfirmacionMensaje.confirmacionResult = 1 Then
+        If ConfirmacionMensaje.resultado = 1 Then
             consultas.consultaHide("UPDATE telefonoCliente set numeroTel='" & resultadosTxt & "' where idTelefono=" & idTel & ";")
             ActualizarTablaTelefono()
         End If

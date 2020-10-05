@@ -38,7 +38,7 @@ Public Class Nuevo
                 InsertarTelClientes()
             End If
 
-            If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW()," & " 1, 1);")
+            If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),1, 1);")
 
 
             If consultas.resultado = 1 Then
@@ -47,10 +47,10 @@ Public Class Nuevo
                 consultas.consultaReturnHide("SELECT MAX(idCliente) FROM Clientes;")
                 Dim idClienteRegistro As Integer = Val(consultas.valorReturn)
 
-                consultas.consultaHide("INSERT INTO ventaCliente (Saldo,fechaCompra,adeudoBool,idCliente) VALUES (0,NOW(),0," & idClienteRegistro & ");")
+                consultas.consultaHide("INSERT INTO compraCliente (Saldo,fechaCompra,adeudoBool,idCliente) VALUES (0,NOW(),0," & idClienteRegistro & ");")
                 
                 limpiarCampos()
-                Me.Hide()
+                Me.Close()
             End If
         End If
     End Sub
@@ -163,5 +163,37 @@ Public Class Nuevo
 
     Private Sub pbMasTel4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbMasTel4.Click
         txtTelefono5.Visible = True
+    End Sub
+
+
+
+    Private Sub txtTelefono1_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono1.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtTelefono2_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono2.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtTelefono3_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono3.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtTelefono4_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono4.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtTelefono5_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono5.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+        End If
     End Sub
 End Class
