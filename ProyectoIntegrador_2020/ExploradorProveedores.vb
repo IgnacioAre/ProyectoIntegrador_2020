@@ -3,9 +3,8 @@
 Public Class ExploradorProveedores
 
     Dim consultas As Conexion = New Conexion
-    Dim idCliente As Integer
+    Dim idProveedor As Integer
     Dim activo As Byte
-    Dim permitido As Byte
     Dim resultado As Byte
     Dim resultadosTxt As String
     Dim idCompra As String
@@ -16,8 +15,6 @@ Public Class ExploradorProveedores
         consultas.establecerConexion()
         panelEditarRegistro.Width = 0
         ActualizarTabla()
-        ActualizarTablaTelefono()
-        ActualizarTablaRegistroCompras()
         SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
     End Sub
 
@@ -28,7 +25,7 @@ Public Class ExploradorProveedores
     '----MOSTRAR FORMULARIO "NUEVO" EN EL MENÚ PRINCIPAL----'
 
     Private Sub btnNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click
-        Nuevo.lblTitulo.Text = "Nuevo Cliente"
+        Nuevo.lblTitulo.Text = "Nuevo Proveedor"
         Nuevo.ShowDialog()
     End Sub
 
@@ -45,9 +42,15 @@ Public Class ExploradorProveedores
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo, Detalle,maxPermitidoBool As p FROM Clientes As c,compraCliente As cc WHERE c.idCliente = cc.idCliente And Nombre LIKE '%" & txtBuscarClientes.Text & "%' group by(cc.idCliente);")
-        dgvProveedores.Columns(6).Visible = False
-        dgvProveedores.Columns(7).Width = 0
+
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT p.idProveedor As ID, Nombre,SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores as p,ventaProveedor as vp where p.idProveedor = vp.idProveedor AND estadoBool=1 And Nombre LIKE '%" & txtBuscarClientes.Text & "%' group by(vp.idProveedor);")
+
+        consultas.consultaReturnHide("Select count(idProveedor) from Proveedores;")
+        Dim cantProv As Integer = Val(consultas.valorReturn)
+
+        If cantProv > 0 Then
+            dgvProveedores.Columns(5).Visible = False
+        End If
 
     End Sub
 
@@ -55,23 +58,25 @@ Public Class ExploradorProveedores
 
     Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
         gpInformacion.Visible = True
+        ActualizarTablaRegistroVentas()
+        ActualizarTablaTelefono()
     End Sub
 
 
     '----MÉTODO PARA OBTENER EL ID Y LOS DEMÁS DATOS DE LA TABLA CLIENTES Y LOS PONE EN LOS CAMPOS DEL FORMULARIO MODIFICAR CLIENTE----'
 
     Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvProveedores.SelectionChanged
-        ActualizarInformacionCliente()
+        ActualizarInformacionProveedor()
     End Sub
 
 
-    Sub ActualizarInformacionCliente()
+    Sub ActualizarInformacionProveedor()
         Dim row As DataGridViewRow = dgvProveedores.CurrentRow
 
         If dgvProveedores.SelectedCells.Count <> 0 Then
             btnModificar.Enabled = True
             btnEliminar.Enabled = True
-            idCliente = dgvProveedores.SelectedCells(0).Value
+            idProveedor = dgvProveedores.SelectedCells(0).Value
 
             txtID.Text = row.Cells(0).Value.ToString
             txtNombre.Text = row.Cells(1).Value.ToString
@@ -84,15 +89,9 @@ Public Class ExploradorProveedores
             Else
                 chbActivo.Checked = False
             End If
-
-            If row.Cells(6).Value.ToString.Equals("True") Then
-                chbPermitido.Checked = True
-            Else
-                chbPermitido.Checked = False
-            End If
         End If
 
-        ActualizarTablaRegistroCompras()
+        ActualizarTablaRegistroVentas()
         ActualizarTablaTelefono()
     End Sub
 
@@ -105,17 +104,10 @@ Public Class ExploradorProveedores
             activo = 0
         End If
 
-        If chbPermitido.Checked Then
-            permitido = 1
-        Else
-            permitido = 0
-        End If
-
-        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & ", maxPermitidoBool=" & permitido & " WHERE idCliente=" & idCliente & ";")
+        consultas.consultaHide("UPDATE Proveedores SET Nombre= '" & txtNombre.Text & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & " WHERE idProveedor=" & idProveedor & ";")
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False
-            mostrarMensaje("Base de datos actualizada.")
         End If
 
         ActualizarTabla()
@@ -124,7 +116,7 @@ Public Class ExploradorProveedores
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
         resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea eliminar este cliente?")
         If resultado = 1 Then
-            consultas.consultaHide("DELETE FROM Clientes where idCliente=" & idCliente & ";")
+            consultas.consultaHide("DELETE FROM Clientes where idCliente=" & idProveedor & ";")
             If consultas.resultado = 1 Then
                 mostrarMensaje("Base de datos actualizada.")
             End If
@@ -135,15 +127,21 @@ Public Class ExploradorProveedores
     End Sub
 
     Sub ActualizarTabla()
-        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores;")
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT p.idProveedor As ID, Nombre,SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores as p,ventaProveedor as vp where p.idProveedor = vp.idProveedor AND adeudoBool=1 AND estadoBool=1 group by(vp.idProveedor);")
 
+        consultas.consultaReturnHide("Select count(idProveedor) from Proveedores;")
+        Dim cantProv As Integer = Val(consultas.valorReturn)
+
+        If cantProv > 0 Then
+            dgvProveedores.Columns(5).Visible = False
+        End If
     End Sub
 
     Private Sub actualizarTablaConId()
-        Dim idTemp As Integer = idCliente
+        Dim idTemp As Integer = idProveedor
         ActualizarTabla()
 
-        'SELECCIONA EN LA TABLA AL CLIENTE EN idTemp
+        'SELECCIONA EN LA TABLA AL PROVEEDOR EN idTemp
         For i As Integer = 0 To dgvProveedores.Rows.Count - 1
             If dgvProveedores.Rows(i).Cells(0).Value = idTemp Then
 
@@ -154,25 +152,36 @@ Public Class ExploradorProveedores
             End If
         Next
 
-        ActualizarInformacionCliente()
+        ActualizarInformacionProveedor()
     End Sub
 
 
     Sub ActualizarTablaTelefono()
-        dgvTelefono.DataSource = consultas.mostrarEnTabla("SELECT idTelefono,numeroTel As Número FROM telefonoProveedor as tp,Proveedores as p WHERE tp.idTelefono = p.idProveedor and p.idProveedor=" & txtID.Text & ";")
-        dgvTelefono.Columns(0).Visible = False
+        dgvTelefono.DataSource = consultas.mostrarEnTabla("SELECT idTelefono,numeroTel As Número FROM telefonoProveedor as tp,Proveedores as p WHERE tp.idProveedor = p.idProveedor and p.idProveedor=" & txtID.Text & ";")
+
+        consultas.consultaReturnHide("Select count(idTelefono) from telefonoProveedor;")
+        Dim cantTel As Integer = Val(consultas.valorReturn)
+        If cantTel > 0 Then
+            dgvTelefono.Columns(0).Visible = False
+        End If
     End Sub
 
 
-    Sub ActualizarTablaRegistroCompras()
-        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,Saldo,Detalle,fechaCompra As Fecha FROM ventaProveedor vp,Proveedores as p WHERE vp.idVenta = p.idProveedor AND adeudoBool = 1 AND p.idProveedor=" & txtID.Text & ";")
-        dgvRegistroVentas.Columns(0).Visible = False
+    Sub ActualizarTablaRegistroVentas()
+        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,Saldo,Detalle As Comentario,fechaCompra As Fecha FROM ventaProveedor As vp,Proveedores As p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND estadoBool = 1 AND Saldo > 0 AND p.idProveedor=" & txtID.Text & ";")
+
+        consultas.consultaReturnHide("Select count(idVenta) from ventaProveedor;")
+        Dim cantVenta As Integer = Val(consultas.valorReturn)
+        If cantVenta > 0 Then
+            dgvRegistroCompras.Columns(0).Visible = False
+        End If
+
     End Sub
 
 
 
 
-    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
+    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ActualizarTabla()
         txtBuscarClientes.Text = ""
         txtBuscarClientes.Focus()
@@ -247,7 +256,7 @@ Public Class ExploradorProveedores
     Private Sub btnAgregarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarTel.Click
         resultadosTxt = ConfirmacionMensaje.entradaDatos("Nuevo número telfónico:")
 
-        consultas.consultaHide("INSERT INTO telefonoCliente (numeroTel, idCliente) VALUES ('" & resultadosTxt & "'," & idCliente & ");")
+        consultas.consultaHide("INSERT INTO telefonoProveedor (numeroTel, idProveedor) VALUES ('" & resultadosTxt & "'," & idProveedor & ");")
         ActualizarTablaTelefono()
     End Sub
 
@@ -261,15 +270,15 @@ Public Class ExploradorProveedores
     End Sub
 
 
-    Private Sub btnEliminarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminarRegistro.Click
+    Private Sub btnEliminarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea eliminar este registro?")
         If resultado = 1 Then
 
-            idCompra = dgvRegistroVentas.CurrentRow.Cells(0).Value.ToString
+            idCompra = dgvRegistroCompras.CurrentRow.Cells(0).Value.ToString
 
             consultas.consultaHide("UPDATE FROM compraCliente set adeudoBool=0 where idCompra=" & idCompra & ";")
-            ActualizarTablaRegistroCompras()
+            ActualizarTablaRegistroVentas()
 
             actualizarTablaConId()
         End If
@@ -294,9 +303,9 @@ Public Class ExploradorProveedores
     End Sub
 
     Private Sub btnEditarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarRegistro.Click
-        idCompra = dgvRegistroVentas.CurrentRow.Cells(0).Value.ToString
-        txtSaldoRegistro.Text = dgvRegistroVentas.CurrentRow.Cells(1).Value.ToString
-        txtDetalleRegistro.Text = dgvRegistroVentas.CurrentRow.Cells(2).Value.ToString
+        idCompra = dgvRegistroCompras.CurrentRow.Cells(0).Value.ToString
+        txtSaldoRegistro.Text = dgvRegistroCompras.CurrentRow.Cells(1).Value.ToString
+        txtDetalleRegistro.Text = dgvRegistroCompras.CurrentRow.Cells(2).Value.ToString
 
         tmrMostrarEditarRegistro.Enabled = True
     End Sub
@@ -329,5 +338,19 @@ Public Class ExploradorProveedores
             actualizarTablaConId()
             tmrOcultarEditarRegistro.Enabled = True
         End If
+    End Sub
+
+    Private Sub chkNoActivos_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkNoActivos.CheckedChanged
+        If chkNoActivos.Checked Then
+            dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT p.idProveedor As ID, Nombre,SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores as p,ventaProveedor as vp where p.idProveedor = vp.idProveedor AND estadoBool=0 group by(vp.idProveedor);")
+        Else
+            ActualizarTabla()
+        End If
+    End Sub
+
+    Private Sub pbActualizarTabla_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
+        ActualizarTabla()
+        txtBuscarClientes.Text = ""
+        txtBuscarClientes.Focus()
     End Sub
 End Class

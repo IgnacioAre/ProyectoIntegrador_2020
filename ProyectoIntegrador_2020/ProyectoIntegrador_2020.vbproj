@@ -96,6 +96,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="compraProveedor.vb" />
     <Compile Include="Conexion.vb" />
     <Compile Include="ConfirmacionMensaje.Designer.vb">
       <DependentUpon>ConfirmacionMensaje.vb</DependentUpon>
@@ -103,16 +104,22 @@
     <Compile Include="ConfirmacionMensaje.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CuentaCorrienteProveedor.Designer.vb">
+      <DependentUpon>CuentaCorrienteProveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CuentaCorrienteProveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebeProveedor.Designer.vb">
+      <DependentUpon>DebeProveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DebeProveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ExploradorProveedores.Designer.vb">
       <DependentUpon>ExploradorProveedores.vb</DependentUpon>
     </Compile>
     <Compile Include="ExploradorProveedores.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GestionarProveedores.Designer.vb">
-      <DependentUpon>GestionarProveedores.vb</DependentUpon>
-    </Compile>
-    <Compile Include="GestionarProveedores.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="inicioSesion.Designer.vb">
@@ -184,11 +191,14 @@
     <EmbeddedResource Include="ConfirmacionMensaje.resx">
       <DependentUpon>ConfirmacionMensaje.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CuentaCorrienteProveedor.resx">
+      <DependentUpon>CuentaCorrienteProveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DebeProveedor.resx">
+      <DependentUpon>DebeProveedor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExploradorProveedores.resx">
       <DependentUpon>ExploradorProveedores.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GestionarProveedores.resx">
-      <DependentUpon>GestionarProveedores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="inicioSesion.resx">
       <DependentUpon>inicioSesion.vb</DependentUpon>

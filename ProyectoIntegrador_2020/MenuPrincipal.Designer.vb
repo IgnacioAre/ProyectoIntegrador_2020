@@ -335,7 +335,7 @@ Partial Class MenuPrincipal
         Me.btnGestionarProveedor.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
         Me.btnGestionarProveedor.Size = New System.Drawing.Size(230, 54)
         Me.btnGestionarProveedor.TabIndex = 5
-        Me.btnGestionarProveedor.Text = "  Gestionar" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Proveedores"
+        Me.btnGestionarProveedor.Text = " Cuenta" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  Corriente"
         Me.btnGestionarProveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnGestionarProveedor.UseVisualStyleBackColor = False
         '

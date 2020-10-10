@@ -369,6 +369,9 @@ Public Class MenuPrincipal
 
     Private Sub btnGestionarProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarProveedor.Click
         lblTituloVentana.Text = "Cuanta Corriente de Proveedores"
+        If formularioBool = True Then formulario.Close()
+        openFromOnPanel(Of CuentaCorrienteProveedor)()
+        formularioBool = True
         tmrOcultarAbout.Enabled = True
     End Sub
 

@@ -144,7 +144,8 @@ Partial Class ExploradorClientes
         Me.pbActualizarTabla.Image = CType(resources.GetObject("pbActualizarTabla.Image"), System.Drawing.Image)
         Me.pbActualizarTabla.Location = New System.Drawing.Point(12, 100)
         Me.pbActualizarTabla.Name = "pbActualizarTabla"
-        Me.pbActualizarTabla.Size = New System.Drawing.Size(35, 35)
+        Me.pbActualizarTabla.Size = New System.Drawing.Size(32, 32)
+        Me.pbActualizarTabla.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.pbActualizarTabla.TabIndex = 22
         Me.pbActualizarTabla.TabStop = False
         '
@@ -245,9 +246,9 @@ Partial Class ExploradorClientes
         Me.Label7.ForeColor = System.Drawing.Color.Black
         Me.Label7.Location = New System.Drawing.Point(42, 121)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(74, 22)
+        Me.Label7.Size = New System.Drawing.Size(119, 22)
         Me.Label7.TabIndex = 7
-        Me.Label7.Text = "Detalle"
+        Me.Label7.Text = "Comentario"
         '
         'txtSaldoRegistro
         '
@@ -556,9 +557,9 @@ Partial Class ExploradorClientes
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(32, 158)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(52, 17)
+        Me.Label3.Size = New System.Drawing.Size(44, 17)
         Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Deuda"
+        Me.Label3.Text = "Saldo"
         '
         'txtNombre
         '
@@ -601,7 +602,8 @@ Partial Class ExploradorClientes
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(46, 23)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(41, 36)
+        Me.PictureBox1.Size = New System.Drawing.Size(32, 32)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox1.TabIndex = 20
         Me.PictureBox1.TabStop = False
         '
@@ -684,7 +686,7 @@ Partial Class ExploradorClientes
         DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
         Me.dgvClientes.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvClientes.BackgroundColor = System.Drawing.Color.Chartreuse
+        Me.dgvClientes.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
@@ -721,7 +723,7 @@ Partial Class ExploradorClientes
         Me.dgvClientes.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
         Me.dgvClientes.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
         Me.dgvClientes.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.dgvClientes.ThemeStyle.BackColor = System.Drawing.Color.Chartreuse
+        Me.dgvClientes.ThemeStyle.BackColor = System.Drawing.Color.Gainsboro
         Me.dgvClientes.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvClientes.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
         Me.dgvClientes.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None

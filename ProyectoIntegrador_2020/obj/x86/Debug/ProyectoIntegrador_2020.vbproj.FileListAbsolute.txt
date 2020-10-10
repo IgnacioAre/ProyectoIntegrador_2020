@@ -83,7 +83,8 @@ C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegr
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Nuevo.resources
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbproj.GenerateResource.Cache
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.About.resources
-C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.GestionarProveedores.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.inicioSesion.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.ExploradorClientes.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.ExploradorProveedores.resources
+C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.CuentaCorrienteProveedor.resources
+C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.DebeProveedor.resources

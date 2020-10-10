@@ -37,7 +37,7 @@ Public Class Conexion
             conexion.Close()
         Catch ex As Exception
             resultado = 0
-            mostrarMensaje("Error al conectar con la base de datos ")
+            mostrarMensaje("Error al conectar con la base de datos " & ex.Message)
         Finally
             conexion.Close()
         End Try
@@ -51,7 +51,7 @@ Public Class Conexion
             valorReturn = ""
             valorReturn = comando.ExecuteScalar()
         Catch ex As Exception
-            mostrarMensaje("Error al conectar con la base de datos ")
+            mostrarMensaje("Error al conectar con la base de datos " & ex.Message)
         Finally
             conexion.Close()
         End Try
@@ -98,7 +98,7 @@ Public Class Conexion
             adaptador.Fill(tabla)
             resultado = 1
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            MsgBox("Error al conectar con la base de datos " & ex.Message)
         Finally
             conexion.Close()
         End Try

@@ -21,38 +21,105 @@ Public Class Nuevo
     '----REGISTRO A UN NUEVO CLIENTE----'
 
     Private Sub btnRegistrarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrarCliente.Click
+        
+        Registrar()
+
+    End Sub
+
+
+    Sub Registrar()
+
         Dim fechaActual = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
 
-        If txtNombre.Text.Equals("") Then
-            mostrarMensaje("El nombre del cliente no puede estar vacío.")
+        If Me.lblTitulo.Text.Equals("Nuevo Cliente") Then
+
+
+            'AGREGAMOS CLIENTES
+
+
+            If txtNombre.Text.Equals("") Then
+                mostrarMensaje("El nombre del cliente no puede estar vacío.")
+
+
+
+
+            Else
+                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),'" & txtDireccion.Text & "', 1, 1);")
+
+                If Not txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then
+                    consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),1, 1);")
+                    InsertarTelClientes()
+                End If
+
+                If Not txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then
+                    consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),'" & txtDireccion.Text & "', 1, 1);")
+                    InsertarTelClientes()
+                End If
+
+                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),1, 1);")
+
+
+
+
+
+                If consultas.resultado = 1 Then
+                    mostrarMensaje("Cliente " & txtNombre.Text & " registrado correctamente!")
+
+                    consultas.consultaReturnHide("SELECT MAX(idCliente) FROM Clientes;")
+                    Dim idClienteRegistro As Integer = Val(consultas.valorReturn)
+
+                    consultas.consultaHide("INSERT INTO compraCliente (Saldo,fechaCompra,adeudoBool,idCliente) VALUES (0,NOW(),0," & idClienteRegistro & ");")
+
+                    limpiarCampos()
+                    Me.Close()
+                End If
+            End If
+
+
         Else
-            If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),'" & txtDireccion.Text & "', 1, 1);")
 
-            If Not txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then
-                consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(), 1, 1);")
-                InsertarTelClientes()
+            'AGREGAMOS PROVEEDORES
+
+            If txtNombre.Text.Equals("") Then
+                mostrarMensaje("El nombre del proveedor no puede estar vacío.")
+            Else
+
+
+
+                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "','" & txtDireccion.Text & "', NOW(), 1);")
+
+                If Not txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then
+                    consultas.consultaHide("INSERT INTO Proveedores (Nombre, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', NOW(), 1);")
+                    InsertarTelProveedores()
+                End If
+
+                If Not txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then
+                    consultas.consultaHide("INSERT INTO Proveedores (Nombre, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "','" & txtDireccion.Text & "', NOW(), 1);")
+                    InsertarTelProveedores()
+                End If
+
+                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', NOW(),1);")
+
+
+
+
+
+                If consultas.resultado = 1 Then
+                    mostrarMensaje("Proveedor " & txtNombre.Text & " registrado correctamente!")
+
+                    consultas.consultaReturnHide("SELECT MAX(idProveedor) FROM Proveedores;")
+                    Dim idProveedorRegistro As Integer = Val(consultas.valorReturn)
+
+                    consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Stock,fechaCompra,adeudoBool,idProveedor) VALUES (0,0,NOW(),0," & idProveedorRegistro & ");")
+
+                    limpiarCampos()
+                    Me.Close()
+                End If
+
             End If
 
-            If Not txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then
-                consultas.consultaHide("INSERT INTO Clientes (Nombre, Direccion, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "','" & txtDireccion.Text & "', NOW(), 1, 1);")
-                InsertarTelClientes()
-            End If
-
-            If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),1, 1);")
-
-
-            If consultas.resultado = 1 Then
-                mostrarMensaje("Cliente registrado correctamente!")
-
-                consultas.consultaReturnHide("SELECT MAX(idCliente) FROM Clientes;")
-                Dim idClienteRegistro As Integer = Val(consultas.valorReturn)
-
-                consultas.consultaHide("INSERT INTO compraCliente (Saldo,fechaCompra,adeudoBool,idCliente) VALUES (0,NOW(),0," & idClienteRegistro & ");")
-                
-                limpiarCampos()
-                Me.Close()
-            End If
         End If
+
     End Sub
 
 
@@ -71,15 +138,46 @@ Public Class Nuevo
         txtTelefono3.Visible = False
         txtTelefono4.Visible = False
         txtTelefono5.Visible = False
+        txtTelefono1.ReadOnly = False
+        txtTelefono2.ReadOnly = False
+        txtTelefono3.ReadOnly = False
+        txtTelefono4.ReadOnly = False
 
-        pbMasTel2.Visible = False
-        pbMasTel3.Visible = False
-        pbMasTel4.Visible = False
+        btnMasTel1.Visible = True
+        btnMasTel2.Visible = False
+        btnMasTel3.Visible = False
+        btnMasTel4.Visible = False
+
+        btnMenosTel1.Visible = False
+        btnMenosTel2.Visible = False
+        btnMenosTel3.Visible = False
+        btnMenosTel4.Visible = False
     End Sub
 
 
 
     '----CONSULTAS PARA INGRESAR NÚMEROS DE TELÉFONO----'
+
+    Private Sub InsertarTelProveedores()
+
+        consultas.consultaReturnHide("SELECT MAX(idProveedor) FROM Proveedores;")
+        Dim idProveedorRegistro As Integer = Val(consultas.valorReturn)
+
+        consultas.consultaHide("INSERT INTO telefonoProveedor (numeroTel, idProveedor) VALUES ('" & txtTelefono1.Text & "'," & idProveedorRegistro & ");")
+        If Not txtTelefono2.Text.Equals("") Then
+            consultas.consultaHide("INSERT INTO telefonoProveedor (numeroTel, idProveedor) VALUES ('" & txtTelefono2.Text & "'," & idProveedorRegistro & ");")
+        End If
+        If Not txtTelefono3.Text.Equals("") Then
+            consultas.consultaHide("INSERT INTO telefonoProveedor (numeroTel, idProveedor) VALUES ('" & txtTelefono3.Text & "'," & idProveedorRegistro & ");")
+        End If
+        If Not txtTelefono4.Text.Equals("") Then
+            consultas.consultaHide("INSERT INTO telefonoProveedor (numeroTel, idProveedor) VALUES ('" & txtTelefono4.Text & "'," & idProveedorRegistro & ");")
+        End If
+        If Not txtTelefono5.Text.Equals("") Then
+            consultas.consultaHide("INSERT INTO telefonoProveedor (numeroTel, idProveedor) VALUES ('" & txtTelefono5.Text & "'," & idProveedorRegistro & ");")
+        End If
+    End Sub
+
 
     Private Sub InsertarTelClientes()
 
@@ -146,23 +244,55 @@ Public Class Nuevo
         SendMessage(Me.Handle, &H112&, &HF012&, 0)
     End Sub
 
-    Private Sub pbMasTel1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbMasTel1.Click
-        txtTelefono2.Visible = True
-        pbMasTel2.Visible = True
+    Private Sub pbMasTel1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMasTel1.Click
+        If Not txtTelefono1.Text = "" Then
+            txtTelefono1.ReadOnly = True
+            txtTelefono2.Visible = True
+            txtTelefono2.Focus()
+            btnMasTel1.Visible = False
+            btnMenosTel1.Visible = True
+            btnMasTel2.Visible = True
+        Else
+            txtTelefono1.BackColor = Color.Red
+        End If
     End Sub
 
-    Private Sub pbMasTel2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbMasTel2.Click
-        txtTelefono3.Visible = True
-        pbMasTel3.Visible = True
+    Private Sub pbMasTel2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMasTel2.Click
+        If Not txtTelefono2.Text = "" Then
+            txtTelefono2.ReadOnly = True
+            txtTelefono3.Visible = True
+            txtTelefono3.Focus()
+            btnMasTel2.Visible = False
+            btnMenosTel2.Visible = True
+            btnMasTel3.Visible = True
+        Else
+            txtTelefono2.BackColor = Color.Red
+        End If
     End Sub
 
-    Private Sub pbMasTel3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbMasTel3.Click
-        txtTelefono4.Visible = True
-        pbMasTel4.Visible = True
+    Private Sub pbMasTel3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMasTel3.Click
+        If Not txtTelefono3.Text = "" Then
+            txtTelefono3.ReadOnly = True
+            txtTelefono4.Visible = True
+            txtTelefono4.Focus()
+            btnMasTel3.Visible = False
+            btnMenosTel3.Visible = True
+            btnMasTel4.Visible = True
+        Else
+            txtTelefono3.BackColor = Color.Red
+        End If
     End Sub
 
-    Private Sub pbMasTel4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbMasTel4.Click
-        txtTelefono5.Visible = True
+    Private Sub pbMasTel4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMasTel4.Click
+        If Not txtTelefono4.Text = "" Then
+            txtTelefono4.ReadOnly = True
+            txtTelefono5.Visible = True
+            txtTelefono5.Focus()
+            btnMasTel4.Visible = False
+            btnMenosTel4.Visible = True
+        Else
+            txtTelefono4.BackColor = Color.Red
+        End If
     End Sub
 
 
@@ -195,5 +325,97 @@ Public Class Nuevo
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub btnMenosTel1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenosTel1.Click
+        txtTelefono1.ReadOnly = True
+        txtTelefono2.ReadOnly = False
+        txtTelefono3.ReadOnly = False
+        txtTelefono4.ReadOnly = False
+        txtTelefono2.Visible = False
+        txtTelefono2.Text = ""
+        btnMasTel1.Visible = True
+        btnMenosTel1.Visible = False
+        btnMasTel2.Visible = False
+
+        txtTelefono3.Text = ""
+        txtTelefono3.Visible = False
+        btnMasTel2.Visible = False
+        btnMenosTel2.Visible = False
+        btnMasTel3.Visible = True
+
+        txtTelefono4.Text = ""
+        txtTelefono4.Visible = False
+        btnMasTel3.Visible = False
+        btnMenosTel3.Visible = False
+        btnMasTel4.Visible = False
+
+        txtTelefono5.Text = ""
+        txtTelefono5.Visible = False
+        btnMasTel4.Visible = False
+        btnMenosTel4.Visible = False
+    End Sub
+
+    Private Sub btnMenosTel2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenosTel2.Click
+        txtTelefono2.ReadOnly = False
+        txtTelefono3.ReadOnly = False
+        txtTelefono4.ReadOnly = False
+        txtTelefono3.Visible = False
+        txtTelefono3.Text = ""
+        btnMasTel2.Visible = True
+        btnMenosTel2.Visible = False
+        btnMasTel3.Visible = False
+
+        txtTelefono4.Text = ""
+        txtTelefono4.Visible = False
+        btnMasTel3.Visible = False
+        btnMenosTel3.Visible = False
+        btnMasTel4.Visible = False
+
+        txtTelefono5.Text = ""
+        txtTelefono5.Visible = False
+        btnMasTel4.Visible = False
+        btnMenosTel4.Visible = False
+    End Sub
+
+    Private Sub btnMenosTel3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenosTel3.Click
+        txtTelefono3.ReadOnly = False
+        txtTelefono4.ReadOnly = False
+        txtTelefono4.Visible = False
+        txtTelefono4.Text = ""
+        btnMasTel3.Visible = True
+        btnMenosTel3.Visible = False
+        btnMasTel4.Visible = False
+
+
+        txtTelefono5.Text = ""
+        txtTelefono5.Visible = False
+        btnMasTel4.Visible = False
+        btnMenosTel4.Visible = False
+    End Sub
+
+    Private Sub btnMenosTel4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenosTel4.Click
+        txtTelefono4.ReadOnly = False
+        txtTelefono5.Visible = False
+        txtTelefono5.Text = ""
+        btnMasTel4.Visible = True
+        btnMenosTel4.Visible = False
+    End Sub
+
+
+    Private Sub txtTelefono1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTelefono1.TextChanged
+        txtTelefono1.BackColor = Color.White
+    End Sub
+
+    Private Sub txtTelefono2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTelefono2.TextChanged
+        txtTelefono2.BackColor = Color.White
+    End Sub
+
+    Private Sub txtTelefono3_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTelefono3.TextChanged
+        txtTelefono3.BackColor = Color.White
+    End Sub
+
+    Private Sub txtTelefono4_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTelefono4.TextChanged
+        txtTelefono4.BackColor = Color.White
     End Sub
 End Class

@@ -131,8 +131,12 @@ Public Class ExploradorClientes
     End Sub
 
     Sub ActualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM clientes as c,compracliente as cc WHERE c.idcliente = cc.idcliente AND estadoBool=1 and adeudoBool=1 group by(cc.idCliente);")
-        If consultas.resultado = 1 Then
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT c.idCliente As ID, Nombre, SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM clientes as c,compracliente as cc WHERE c.idcliente = cc.idcliente AND estadoBool=1 group by(cc.idCliente);")
+
+        consultas.consultaReturnHide("Select count(idCliente) from Clientes;")
+        Dim cantClientes As Integer = Val(consultas.valorReturn)
+
+        If cantClientes > 0 Then
             dgvClientes.Columns(5).Visible = False
             dgvClientes.Columns(6).Width = 0
         End If
@@ -160,13 +164,24 @@ Public Class ExploradorClientes
 
     Sub ActualizarTablaTelefono()
         dgvTelefono.DataSource = consultas.mostrarEnTabla("SELECT idTelefono,numeroTel As Número FROM telefonoCliente,Clientes WHERE telefonoCliente.idCliente = Clientes.idCliente and Clientes.idCliente=" & txtID.Text & ";")
-        dgvTelefono.Columns(0).Visible = False
+
+        consultas.consultaReturnHide("Select count(idTelefono) from telefonoCliente;")
+        Dim cantTel As Integer = Val(consultas.valorReturn)
+        If cantTel > 0 Then
+            dgvTelefono.Columns(0).Visible = False
+        End If
+
     End Sub
 
 
     Sub ActualizarTablaRegistroCompras()
-        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,Saldo,Detalle,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool = 1 AND Saldo > 0 AND Clientes.idCliente=" & txtID.Text & ";")
-        dgvRegistroVentas.Columns(0).Visible = False
+        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,Saldo,Detalle as Comentario,fechaCompra As Fecha FROM compraCliente,Clientes WHERE compraCliente.idCliente = Clientes.idCliente AND adeudoBool = 1 AND Saldo > 0 AND Clientes.idCliente=" & txtID.Text & ";")
+
+        consultas.consultaReturnHide("Select count(idCompra) from compraCliente;")
+        Dim cantCompra As Integer = Val(consultas.valorReturn)
+        If cantCompra > 0 Then
+            dgvRegistroVentas.Columns(0).Visible = False
+        End If
     End Sub
 
 
