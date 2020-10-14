@@ -2,8 +2,8 @@
 
 Public Class CuentaCorrienteProveedor
 
-    Dim consultas As Conexion = New Conexion
-    Dim idProveedor As Integer
+    Public consultas As Conexion = New Conexion
+    Public idProveedor As Integer
     Dim nombreProveedor As String
     Dim idCompra As Integer
     Dim resultadosEntrada As String
@@ -34,7 +34,7 @@ Public Class CuentaCorrienteProveedor
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT p.idProveedor As ID, Nombre,SUM(Saldo) As Saldo FROM Proveedores as p,ventaProveedor as vp where p.idProveedor = vp.idProveedor AND estadoBool=1 And Nombre LIKE '%" & txtBuscarClientes.Text & "%' group by(vp.idProveedor);")
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo FROM Proveedores where estadoBool=1 And Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
     End Sub
 
     Private Sub btnCerrar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -64,15 +64,16 @@ Public Class CuentaCorrienteProveedor
 
     '----OBTIENE EL ID DEL CLIENTE SELECCIONADO----'
 
-    Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvClientes.SelectionChanged
+    Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvProveedores.SelectionChanged
         txtDineroHaber.Text = ""
-        If dgvClientes.SelectedCells.Count <> 0 Then
-            idProveedor = dgvClientes.SelectedCells(0).Value
-            nombreProveedor = dgvClientes.SelectedCells(1).Value
+        If dgvProveedores.SelectedCells.Count <> 0 Then
+            idProveedor = dgvProveedores.SelectedCells(0).Value
+            nombreProveedor = dgvProveedores.SelectedCells(1).Value
         End If
 
         btnDebe.Enabled = True
         btnHaber.Enabled = True
+        btnVerRegistro.Enabled = True
 
         chkRegistroCompleto.Checked = False
         ActualizarTablaRegistroVenta()
@@ -84,29 +85,30 @@ Public Class CuentaCorrienteProveedor
 
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         actualizarTabla()
+        ActualizarTablaRegistroVenta()
         txtBuscarClientes.Text = ""
         txtBuscarClientes.Focus()
     End Sub
 
     '----MÉTODO QUE ACTUALIZA LA TABLA----'
 
-    Private Sub actualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT p.idProveedor As ID, Nombre,SUM(Saldo) As Saldo FROM Proveedores as p,ventaProveedor as vp where p.idProveedor = vp.idProveedor AND adeudoBool=1 AND estadoBool=1 group by(vp.idProveedor);")
+    Public Sub actualizarTabla()
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo FROM Proveedores where estadoBool=1;")
     End Sub
 
 
-    Private Sub actualizarTablaConId()
+    Public Sub actualizarTablaConId()
         Dim idTemp As Integer = idProveedor
 
         actualizarTabla()
 
         'SELECCIONA EN LA TABLA AL CLIENTE EN idTemp
-        For i As Integer = 0 To dgvClientes.Rows.Count - 1
-            If dgvClientes.Rows(i).Cells(0).Value = idTemp Then
+        For i As Integer = 0 To dgvProveedores.Rows.Count - 1
+            If dgvProveedores.Rows(i).Cells(0).Value = idTemp Then
 
-                dgvClientes.CurrentCell = dgvClientes.Item(0, i)
+                dgvProveedores.CurrentCell = dgvProveedores.Item(0, i)
 
-                dgvClientes.Rows(i).Selected = True
+                dgvProveedores.Rows(i).Selected = True
                 Exit For
             End If
         Next
@@ -115,15 +117,10 @@ Public Class CuentaCorrienteProveedor
 
 
 
-    Sub ActualizarTablaRegistroVenta()
-        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,Saldo, pr.nombre as Nombre,stock as Cantidad,Detalle as Comentario,fechaCompra As Fecha FROM ventaProveedor as vp,Proveedores as p,Productos as pr WHERE vp.idProveedor = p.idProveedor and vp.idProducto = pr.idProducto AND adeudoBool=1 AND Saldo > 0 AND p.idProveedor=" & idProveedor & ";")
+    Public Sub ActualizarTablaRegistroVenta()
+        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo, pr.nombre as Nombre,vp.stock as Cantidad,Detalle as Comentario,fechaCompra As Fecha FROM ventaProveedor as vp,Proveedores as p,Productos as pr WHERE vp.idProveedor = p.idProveedor and vp.idProducto = pr.idProducto AND adeudoBool=1 AND p.idProveedor=" & idProveedor & ";")
 
-        consultas.consultaReturnHide("Select count(idVenta) from ventaProveedor;")
-        Dim cantCompra As Integer = Val(consultas.valorReturn)
-
-        If cantCompra > 0 Then
-            dgvRegistroVentas.Columns(0).Visible = False
-        End If
+        dgvRegistroVentas.Columns(0).Visible = False
 
     End Sub
 
@@ -131,12 +128,12 @@ Public Class CuentaCorrienteProveedor
 
     '----MÉTODO QUE PINTA DE ROJO LOS SALDOS QUE NO SEAN PERMITIDOS POR EL ADMINISTRADOR----'
 
-    Private Sub dgvClientes_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvClientes.CellFormatting
-        If dgvClientes.Columns(e.ColumnIndex).Name = "p" Then
+    Private Sub dgvClientes_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvProveedores.CellFormatting
+        If dgvProveedores.Columns(e.ColumnIndex).Name = "p" Then
 
             If e.Value = "False" Then
-                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 1).Style.ForeColor = Color.Red
-                dgvClientes.Rows(e.RowIndex).Cells(e.ColumnIndex - 1).Style.SelectionForeColor = Color.Red
+                dgvProveedores.Rows(e.RowIndex).Cells(e.ColumnIndex - 1).Style.ForeColor = Color.Red
+                dgvProveedores.Rows(e.RowIndex).Cells(e.ColumnIndex - 1).Style.SelectionForeColor = Color.Red
             End If
 
         End If
@@ -146,7 +143,7 @@ Public Class CuentaCorrienteProveedor
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
 
-            dgvClientes.Focus()
+            dgvProveedores.Focus()
         End If
     End Sub
 
@@ -199,9 +196,20 @@ Public Class CuentaCorrienteProveedor
         If Not txtDineroHaber.Text.Equals("") Then
             MsgBox(idCompra)
             consultas.consultaHide("UPDATE ventaProveedor set adeudoBool=0 where Saldo>0 AND idVenta=" & idCompra & ";")
-            txtDineroHaber.Text = ""
-            ActualizarTablaRegistroVenta()
-            actualizarTablaConId()
+
+            If consultas.resultado = 1 Then
+                'ACTUALIZO LA DEUDA EN EL PROVEEDOR
+
+                consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
+                Dim saldoActual As Integer = Val(consultas.valorReturn)
+
+                consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idProveedor=" & idProveedor & ";")
+
+                txtDineroHaber.Text = ""
+                ActualizarTablaRegistroVenta()
+                actualizarTablaConId()
+            End If
+            
         End If
     End Sub
 
@@ -219,14 +227,25 @@ Public Class CuentaCorrienteProveedor
             idCompra = dgvRegistroVentas.CurrentRow.Cells(0).Value.ToString
 
             consultas.consultaHide("UPDATE ventaProveedor set adeudoBool=0 where Saldo>0 AND adeudoBool <> 2 AND idProveedor=" & idProveedor & ";")
-            If txtDetalleHaber.Text.Equals("") Then
-                consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Stock,Cobrador,fechaCompra,adeudoBool,idProveedor) VALUES (" & txtDineroHaber.Text & ",0,'" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
-            Else
-                consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Detalle,Stock,Cobrador,fechaCompra,adeudoBool,idProveedor) VALUES (" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "',0,'" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
+
+            If consultas.resultado = 1 Then
+                'ACTUALIZO LA DEUDA EN EL PROVEEDOR
+
+                consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
+                Dim saldoActual As Integer = Val(consultas.valorReturn)
+
+                consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idProveedor=" & idProveedor & ";")
+                If txtDetalleHaber.Text.Equals("") Then
+                    consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Stock,Cobrador,fechaCompra,adeudoBool,idProveedor) VALUES (" & txtDineroHaber.Text & ",0,'" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
+                Else
+                    consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Detalle,Stock,Cobrador,fechaCompra,adeudoBool,idProveedor) VALUES (" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "',0,'" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
+                End If
+                ActualizarTablaRegistroVenta()
+                actualizarTablaConId()
+                txtBuscarClientes.Focus()
+                
             End If
-            ActualizarTablaRegistroVenta()
-            actualizarTablaConId()
-            txtBuscarClientes.Focus()
+            
         End If
     End Sub
 
@@ -282,8 +301,11 @@ Public Class CuentaCorrienteProveedor
 
     Private Sub chkRegistroCompleto_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkRegistroCompleto.CheckedChanged
         If chkRegistroCompleto.Checked Then
+            gbHaber.Visible = False
+            btnHaber.Enabled = False
+            chkCobros.Checked = False
             'Aqui podrá ver el registro completo pero sin los cobros realizados.
-            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,Saldo, pr.nombre as Nombre,stock as Cantidad,Detalle as Comentario,fechaCompra As Fecha FROM ventaProveedor as vp,Proveedores as p,Productos as pr WHERE vp.idProveedor = p.idProveedor and vp.idProducto = pr.idProducto AND Saldo > 0 AND p.idProveedor=" & idProveedor & ";")
+            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo, pr.nombre as Nombre,vp.stock as Cantidad,Detalle as Comentario,fechaCompra As Fecha FROM ventaProveedor as vp,Proveedores as p,Productos as pr WHERE vp.idProveedor = p.idProveedor and vp.idProducto = pr.idProducto AND p.idProveedor=" & idProveedor & ";")
 
             consultas.consultaReturnHide("Select count(idVenta) from ventaProveedor;")
             Dim cantCompra As Integer = Val(consultas.valorReturn)
@@ -292,8 +314,9 @@ Public Class CuentaCorrienteProveedor
                 dgvRegistroVentas.Columns(0).Visible = False
             End If
         Else
+            btnHaber.Enabled = True
             'Aqui solo podrá ver los registros que estén sin cobrar.
-            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,Saldo, pr.nombre as Nombre,stock as Cantidad,Detalle as Comentario,fechaCompra As Fecha FROM ventaProveedor as vp,Proveedores as p,Productos as pr WHERE vp.idProveedor = p.idProveedor and vp.idProducto = pr.idProducto AND adeudoBool=1 AND Saldo > 0 AND p.idProveedor=" & idProveedor & ";")
+            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo, pr.nombre as Nombre,vp.stock as Cantidad,Detalle as Comentario,fechaCompra As Fecha FROM ventaProveedor as vp,Proveedores as p,Productos as pr WHERE vp.idProveedor = p.idProveedor and vp.idProducto = pr.idProducto AND adeudoBool=1 AND p.idProveedor=" & idProveedor & ";")
 
             consultas.consultaReturnHide("Select count(idVenta) from ventaProveedor;")
             Dim cantCompra As Integer = Val(consultas.valorReturn)
@@ -306,10 +329,14 @@ Public Class CuentaCorrienteProveedor
 
     Private Sub chkCobros_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCobros.CheckedChanged
         If chkCobros.Checked Then
-            'Solo verá los cobros realizados
+
             gbHaber.Visible = False
             btnHaber.Enabled = False
-            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,Saldo,Cobrador,Detalle as Comentario,fechaCompra As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=2 AND Saldo > 0 AND p.idProveedor=" & idProveedor & ";")
+            chkRegistroCompleto.Checked = False
+
+            'Solo verá los cobros realizados
+
+            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Cobrador,Detalle as Comentario,fechaCompra As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=2 AND p.idProveedor=" & idProveedor & ";")
 
             consultas.consultaReturnHide("Select count(idVenta) from ventaProveedor;")
             Dim cantCompra As Integer = Val(consultas.valorReturn)
@@ -320,8 +347,9 @@ Public Class CuentaCorrienteProveedor
 
         Else
             'Aqui solo podrá ver los registros que estén sin cobrar.
-            btnHaber.Enabled = False
-            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,Saldo, pr.nombre as Nombre,stock as Cantidad,Detalle as Comentario,fechaCompra As Fecha FROM ventaProveedor as vp,Proveedores as p,Productos as pr WHERE vp.idProveedor = p.idProveedor and vp.idProducto = pr.idProducto AND adeudoBool=1 AND Saldo > 0 AND p.idProveedor=" & idProveedor & ";")
+            btnHaber.Enabled = True
+
+            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo, pr.nombre as Nombre,vp.stock as Cantidad,Detalle as Comentario,fechaCompra As Fecha FROM ventaProveedor as vp,Proveedores as p,Productos as pr WHERE vp.idProveedor = p.idProveedor and vp.idProducto = pr.idProducto AND adeudoBool=1 AND p.idProveedor=" & idProveedor & ";")
 
             consultas.consultaReturnHide("Select count(idVenta) from ventaProveedor;")
             Dim cantCompra As Integer = Val(consultas.valorReturn)
@@ -331,5 +359,9 @@ Public Class CuentaCorrienteProveedor
             End If
 
         End If
+    End Sub
+
+    Private Sub btnCerrarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarHaber.Click
+        gbHaber.Visible = False
     End Sub
 End Class

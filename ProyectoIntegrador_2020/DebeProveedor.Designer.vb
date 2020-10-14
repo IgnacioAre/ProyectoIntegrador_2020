@@ -128,7 +128,7 @@ Partial Class DebeProveedor
         Me.txtComentario.Multiline = True
         Me.txtComentario.Name = "txtComentario"
         Me.txtComentario.Size = New System.Drawing.Size(239, 97)
-        Me.txtComentario.TabIndex = 2
+        Me.txtComentario.TabIndex = 3
         '
         'Label2
         '
@@ -292,7 +292,7 @@ Partial Class DebeProveedor
         Me.txtCantidad.MaxLength = 13
         Me.txtCantidad.Name = "txtCantidad"
         Me.txtCantidad.Size = New System.Drawing.Size(96, 26)
-        Me.txtCantidad.TabIndex = 43
+        Me.txtCantidad.TabIndex = 2
         '
         'Label6
         '

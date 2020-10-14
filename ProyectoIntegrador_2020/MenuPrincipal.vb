@@ -391,16 +391,20 @@ Public Class MenuPrincipal
     End Sub
 
     Private Sub tmrMostrarAbout_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarAbout.Tick
+        btnAyuda.Enabled = False
         If Me.panelAbout.Width >= 549 Then
             tmrMostrarAbout.Enabled = False
+            btnAyuda.Enabled = True
         Else
             panelAbout.Width = panelAbout.Width + 10
         End If
     End Sub
 
     Private Sub tmrOcultarAbout_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrOcultarAbout.Tick
+        btnAyuda.Enabled = False
         If Me.panelAbout.Width <= 0 Then
             Me.tmrOcultarAbout.Enabled = False
+            btnAyuda.Enabled = True
         Else
             Me.panelAbout.Width = panelAbout.Width - 10
         End If
@@ -411,7 +415,7 @@ Public Class MenuPrincipal
         If formularioBool Then
             ConfirmacionMensaje.btnAceptar.Text = "Si"
             ConfirmacionMensaje.btnCancelar.Text = "No"
-            resultado = ConfirmacionMensaje.confirmacion("   ¿Desea cerrar esta página para" & vbCrLf & "   abrir el menú de ayuda?")
+            resultado = ConfirmacionMensaje.confirmacion("   ¿Desea cerrar este formulario para" & vbCrLf & "   abrir el menú de ayuda?")
 
             If resultado = 1 Then
                 formulario.Close()
@@ -444,6 +448,9 @@ Public Class MenuPrincipal
 
     Private Sub btnNotas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNotas.Click
         lblTituloVentana.Text = "Notas"
+        If formularioBool = True Then formulario.Close()
+        openFromOnPanel(Of Notas)()
+        formularioBool = True
         tmrOcultarAbout.Enabled = True
     End Sub
 End Class

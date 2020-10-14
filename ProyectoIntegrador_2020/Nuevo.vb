@@ -20,12 +20,11 @@ Public Class Nuevo
 
     '----REGISTRO A UN NUEVO CLIENTE----'
 
-    Private Sub btnRegistrarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrarCliente.Click
-        
+
+    Public Sub btnRegistrarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrarCliente.Click
+
         Registrar()
-
     End Sub
-
 
     Sub Registrar()
 
@@ -44,19 +43,19 @@ Public Class Nuevo
 
 
             Else
-                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),'" & txtDireccion.Text & "', 1, 1);")
+                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),'" & txtDireccion.Text & "', 1, 1);")
 
                 If Not txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),1, 1);")
+                    consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),1, 1);")
                     InsertarTelClientes()
                 End If
 
                 If Not txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),'" & txtDireccion.Text & "', 1, 1);")
+                    consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),'" & txtDireccion.Text & "', 1, 1);")
                     InsertarTelClientes()
                 End If
 
-                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', NOW(),1, 1);")
+                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),1, 1);")
 
 
 
@@ -64,11 +63,6 @@ Public Class Nuevo
 
                 If consultas.resultado = 1 Then
                     mostrarMensaje("Cliente " & txtNombre.Text & " registrado correctamente!")
-
-                    consultas.consultaReturnHide("SELECT MAX(idCliente) FROM Clientes;")
-                    Dim idClienteRegistro As Integer = Val(consultas.valorReturn)
-
-                    consultas.consultaHide("INSERT INTO compraCliente (Saldo,fechaCompra,adeudoBool,idCliente) VALUES (0,NOW(),0," & idClienteRegistro & ");")
 
                     limpiarCampos()
                     Me.Close()
@@ -86,19 +80,19 @@ Public Class Nuevo
 
 
 
-                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "','" & txtDireccion.Text & "', NOW(), 1);")
+                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', 0,'" & txtDireccion.Text & "', NOW(), 1);")
 
                 If Not txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO Proveedores (Nombre, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', NOW(), 1);")
+                    consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(), 1);")
                     InsertarTelProveedores()
                 End If
 
                 If Not txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO Proveedores (Nombre, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "','" & txtDireccion.Text & "', NOW(), 1);")
+                    consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', 0,'" & txtDireccion.Text & "', NOW(), 1);")
                     InsertarTelProveedores()
                 End If
 
-                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', NOW(),1);")
+                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),1);")
 
 
 
@@ -106,11 +100,6 @@ Public Class Nuevo
 
                 If consultas.resultado = 1 Then
                     mostrarMensaje("Proveedor " & txtNombre.Text & " registrado correctamente!")
-
-                    consultas.consultaReturnHide("SELECT MAX(idProveedor) FROM Proveedores;")
-                    Dim idProveedorRegistro As Integer = Val(consultas.valorReturn)
-
-                    consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Stock,fechaCompra,adeudoBool,idProveedor) VALUES (0,0,NOW(),0," & idProveedorRegistro & ");")
 
                     limpiarCampos()
                     Me.Close()

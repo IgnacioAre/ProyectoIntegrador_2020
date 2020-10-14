@@ -671,6 +671,8 @@ Partial Class ExploradorProveedores
         Me.dgvProveedores.AllowUserToResizeRows = False
         DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
         Me.dgvProveedores.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        Me.dgvProveedores.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvProveedores.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dgvProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None

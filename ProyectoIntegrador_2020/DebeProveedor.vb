@@ -17,6 +17,7 @@
     End Sub
 
     Sub vaciarCampos()
+        contadorCompra = 0
         txtImporte.Text = ""
         txtCodigoProducto.Text = ""
         txtCantidad.Text = ""
@@ -49,7 +50,22 @@
 
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
-        Me.Close()
+        
+        If nuevaCompra.Count > 0 Then
+            ConfirmacionMensaje.btnAceptar.Text = "Si"
+            ConfirmacionMensaje.btnCancelar.Text = "No"
+            Dim resultado As Byte = ConfirmacionMensaje.confirmacion("   Si cierra este formulario perderá los productos" & vbCrLf & "   ya registrados.")
+            If resultado = 1 Then
+                vaciarCampos()
+                nuevaCompra.Clear()
+                Me.Close()
+            End If
+        Else
+            vaciarCampos()
+            nuevaCompra.Clear()
+            Me.Close()
+        End If
+
     End Sub
 
 
@@ -70,6 +86,7 @@
         For Each item As compraProveedor In nuevaCompra
             If item.FuncionContador = contadorCompra Then
                 txtImporte.Text = item.FuncionSaldo
+                txtCantidad.Text = item.FuncionStock
                 txtCodigoProducto.Text = item.FuncionIdProducto
                 txtComentario.Text = item.FuncionDetalle
             End If
@@ -124,11 +141,18 @@
 
 
     Private Sub btnFinalizarCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFinalizarCompra.Click
+        FinalizarCompra()
+    End Sub
+
+
+    Sub FinalizarCompra()
         Dim Saldo As Integer
         Dim Detalle As String
-        Dim Stock As Integer
+        Dim Cantidad As Integer
         Dim ideProveedor As Integer
         Dim ideProducto As Long
+        Dim stockActual As Integer
+        Dim saldoActual As Integer
 
         If Not txtImporte.Text.Equals("") And Not txtCodigoProducto.Text.Equals("") Then
             insertarCompra()
@@ -138,14 +162,36 @@
         For Each item As compraProveedor In nuevaCompra
             Saldo = item.FuncionSaldo
             Detalle = item.FuncionDetalle
-            Stock = item.FuncionStock
+            Cantidad = item.FuncionStock
             ideProveedor = item.FuncionIdProveedor
             ideProducto = item.FuncionIdProducto
+
             If Saldo <> 0 And ideProducto <> 0 And Detalle <> "" Then
-                consulta.consultaHide("INSERT INTO ventaProveedor(Saldo,Detalle,Stock,fechaCompra,adeudoBool,idProveedor,idProducto) Values(" & Saldo & ",'" & Detalle & "'," & Stock & ",NOW(),1," & ideProveedor & "," & ideProducto & ")")
+                consulta.consultaHide("INSERT INTO ventaProveedor(Saldo,Detalle,Stock,fechaCompra,adeudoBool,idProveedor,idProducto) Values(" & Saldo & ",'" & Detalle & "'," & Cantidad & ",NOW(),1," & ideProveedor & "," & ideProducto & ")")
+
+                'ACTUALIZA EL STOCK DE PRODUCTOS
+                consulta.consultaReturnHide("SELECT Stock FROM Productos WHERE idProducto=" & ideProducto & ";")
+                stockActual = consulta.valorReturn
+                consulta.consultaHide("UPDATE Productos set Stock=" & (stockActual + Cantidad) & " where idProducto=" & ideProducto & ";")
+
+                consulta.consultaReturnHide("SELECT Saldo FROM Proveedores WHERE idProveedor=" & ideProveedor & ";")
+                saldoActual = consulta.valorReturn
+                consulta.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual + Val(txtImporte.Text)) & " where idProveedor=" & ideProveedor & ";")
+
+
             End If
+
             If Saldo <> 0 And ideProducto <> 0 And Detalle = "" Then
-                consulta.consultaHide("INSERT INTO ventaProveedor(Saldo,Stock,fechaCompra,adeudoBool,idProveedor,idProducto) Values(" & Saldo & "," & Stock & ",NOW(),1," & ideProveedor & "," & ideProducto & ")")
+                consulta.consultaHide("INSERT INTO ventaProveedor(Saldo,Stock,fechaCompra,adeudoBool,idProveedor,idProducto) Values(" & Saldo & "," & Cantidad & ",NOW(),1," & ideProveedor & "," & ideProducto & ")")
+
+                'ACTUALIZA EL STOCK DE PRODUCTOS
+                consulta.consultaReturnHide("SELECT Stock FROM Productos WHERE idProducto=" & ideProducto & ";")
+                stockActual = consulta.valorReturn
+                consulta.consultaHide("UPDATE Productos set Stock=" & (stockActual + Cantidad) & " where idProducto=" & ideProducto & ";")
+
+                consulta.consultaReturnHide("SELECT Saldo FROM Proveedores WHERE idProveedor=" & ideProveedor & ";")
+                saldoActual = consulta.valorReturn
+                consulta.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual + Val(txtImporte.Text)) & " where idProveedor=" & ideProveedor & ";")
             End If
 
             If consulta.resultado = 1 Then
@@ -162,5 +208,7 @@
         If txtCodigoProducto.TextLength = 13 Then
             txtCantidad.Focus()
         End If
+
     End Sub
+
 End Class

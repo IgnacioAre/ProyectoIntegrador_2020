@@ -221,6 +221,9 @@
     <EmbeddedResource Include="CuentaCorriente.resx">
       <DependentUpon>CuentaCorriente.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Notas.resx">
+      <DependentUpon>Notas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Nuevo.resx">
       <DependentUpon>Nuevo.vb</DependentUpon>
     </EmbeddedResource>

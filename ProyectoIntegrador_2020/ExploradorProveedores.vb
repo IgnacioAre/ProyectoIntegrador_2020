@@ -8,6 +8,8 @@ Public Class ExploradorProveedores
     Dim resultado As Byte
     Dim resultadosTxt As String
     Dim idCompra As String
+    Dim saldoActual As Integer
+    Dim registroSaldo As Integer
 
     '----INICIO DEL FORMULARIO----'
 
@@ -43,7 +45,7 @@ Public Class ExploradorProveedores
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
 
-        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT p.idProveedor As ID, Nombre,SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores as p,ventaProveedor as vp where p.idProveedor = vp.idProveedor AND estadoBool=1 And Nombre LIKE '%" & txtBuscarClientes.Text & "%' group by(vp.idProveedor);")
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=1 And Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
 
         consultas.consultaReturnHide("Select count(idProveedor) from Proveedores;")
         Dim cantProv As Integer = Val(consultas.valorReturn)
@@ -126,18 +128,15 @@ Public Class ExploradorProveedores
 
     End Sub
 
-    Sub ActualizarTabla()
-        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT p.idProveedor As ID, Nombre,SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores as p,ventaProveedor as vp where p.idProveedor = vp.idProveedor AND adeudoBool=1 AND estadoBool=1 group by(vp.idProveedor);")
+    Public Sub ActualizarTabla()
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=1;")
 
-        consultas.consultaReturnHide("Select count(idProveedor) from Proveedores;")
-        Dim cantProv As Integer = Val(consultas.valorReturn)
-
-        If cantProv > 0 Then
-            dgvProveedores.Columns(5).Visible = False
-        End If
+        dgvProveedores.Columns(5).Visible = False
     End Sub
 
-    Private Sub actualizarTablaConId()
+
+
+    Public Sub actualizarTablaConId()
         Dim idTemp As Integer = idProveedor
         ActualizarTabla()
 
@@ -159,22 +158,15 @@ Public Class ExploradorProveedores
     Sub ActualizarTablaTelefono()
         dgvTelefono.DataSource = consultas.mostrarEnTabla("SELECT idTelefono,numeroTel As Número FROM telefonoProveedor as tp,Proveedores as p WHERE tp.idProveedor = p.idProveedor and p.idProveedor=" & txtID.Text & ";")
 
-        consultas.consultaReturnHide("Select count(idTelefono) from telefonoProveedor;")
-        Dim cantTel As Integer = Val(consultas.valorReturn)
-        If cantTel > 0 Then
-            dgvTelefono.Columns(0).Visible = False
-        End If
+        dgvTelefono.Columns(0).Visible = False
+
     End Sub
 
 
-    Sub ActualizarTablaRegistroVentas()
-        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,Saldo,Detalle As Comentario,fechaCompra As Fecha FROM ventaProveedor As vp,Proveedores As p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND estadoBool = 1 AND Saldo > 0 AND p.idProveedor=" & txtID.Text & ";")
+    Public Sub ActualizarTablaRegistroVentas()
+        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle As Comentario,fechaCompra As Fecha FROM ventaProveedor As vp,Proveedores As p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND p.idProveedor=" & txtID.Text & ";")
 
-        consultas.consultaReturnHide("Select count(idVenta) from ventaProveedor;")
-        Dim cantVenta As Integer = Val(consultas.valorReturn)
-        If cantVenta > 0 Then
-            dgvRegistroCompras.Columns(0).Visible = False
-        End If
+        dgvRegistroCompras.Columns(0).Visible = False
 
     End Sub
 
@@ -303,11 +295,18 @@ Public Class ExploradorProveedores
     End Sub
 
     Private Sub btnEditarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarRegistro.Click
-        idCompra = dgvRegistroCompras.CurrentRow.Cells(0).Value.ToString
-        txtSaldoRegistro.Text = dgvRegistroCompras.CurrentRow.Cells(1).Value.ToString
-        txtDetalleRegistro.Text = dgvRegistroCompras.CurrentRow.Cells(2).Value.ToString
+        If dgvRegistroCompras.SelectedCells.Count <> 0 Then
+            btnEditarRegistro.Enabled = True
+            idCompra = dgvRegistroCompras.CurrentRow.Cells(0).Value.ToString
+            txtSaldoRegistro.Text = dgvRegistroCompras.CurrentRow.Cells(1).Value.ToString
+            txtDetalleRegistro.Text = dgvRegistroCompras.CurrentRow.Cells(2).Value.ToString
 
-        tmrMostrarEditarRegistro.Enabled = True
+            restadorSaldoExplorador()
+
+            tmrMostrarEditarRegistro.Enabled = True
+        Else
+            btnEditarRegistro.Enabled = False
+        End If
     End Sub
 
 
@@ -321,8 +320,34 @@ Public Class ExploradorProveedores
     End Sub
 
     Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
+        restadorSaldoExplorador()
+
         tmrOcultarEditarRegistro.Enabled = True
     End Sub
+
+
+    Sub restadorSaldoExplorador()
+
+        'ACTUALIZO LA DEUDA EN EL PROVEEDOR
+
+        consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
+        saldoActual = Val(consultas.valorReturn)
+        registroSaldo = Val(txtSaldoRegistro.Text)
+    End Sub
+
+
+    Sub sumarSaldoExplorador()
+        'ACTUALIZO LA DEUDA EN EL PROVEEDOR
+        consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - registroSaldo) & " where idProveedor=" & idProveedor & ";")
+
+        consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
+        saldoActual = Val(consultas.valorReturn)
+
+        consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual + Val(txtSaldoRegistro.Text)) & " where idProveedor=" & idProveedor & ";")
+
+    End Sub
+
+
 
     Private Sub tmrMostrarEditarRegistro_Tick_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarEditarRegistro.Tick
         If panelEditarRegistro.Width >= 349 Then
@@ -333,10 +358,15 @@ Public Class ExploradorProveedores
     End Sub
 
     Private Sub btnGuardarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarRegistro.Click
-        If txtSaldoRegistro.Text <> "" Then
-            consultas.consultaHide("UPDATE compraCliente set saldo = " & txtSaldoRegistro.Text & ", detalle = '" & txtDetalleRegistro.Text & "' where idCompra=" & idCompra & ";")
+        If Not txtSaldoRegistro.Text.Equals("") And Not txtSaldoRegistro.Text.Equals("0") Then
+            consultas.consultaHide("UPDATE ventaProveedor set saldo = " & txtSaldoRegistro.Text & ", detalle = '" & txtDetalleRegistro.Text & "' where idVenta=" & idCompra & ";")
+
+            sumarSaldoExplorador()
+
             actualizarTablaConId()
             tmrOcultarEditarRegistro.Enabled = True
+        Else
+            mostrarMensaje("El saldo debe ser mayor a $0")
         End If
     End Sub
 
@@ -353,4 +383,5 @@ Public Class ExploradorProveedores
         txtBuscarClientes.Text = ""
         txtBuscarClientes.Focus()
     End Sub
+
 End Class
