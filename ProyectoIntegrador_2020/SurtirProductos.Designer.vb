@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DebeProveedor
+Partial Class SurtirProductos
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,8 +22,7 @@ Partial Class DebeProveedor
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DebeProveedor))
-        Me.lblNombreProv = New System.Windows.Forms.Label()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SurtirProductos))
         Me.panelTitulo = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
@@ -53,17 +52,6 @@ Partial Class DebeProveedor
         CType(Me.btnSiguienteCompra, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'lblNombreProv
-        '
-        Me.lblNombreProv.AutoSize = True
-        Me.lblNombreProv.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNombreProv.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.lblNombreProv.Location = New System.Drawing.Point(12, 60)
-        Me.lblNombreProv.Name = "lblNombreProv"
-        Me.lblNombreProv.Size = New System.Drawing.Size(185, 19)
-        Me.lblNombreProv.TabIndex = 0
-        Me.lblNombreProv.Text = "Nombre del Proveedor"
-        '
         'panelTitulo
         '
         Me.panelTitulo.BackColor = System.Drawing.Color.Black
@@ -82,9 +70,9 @@ Partial Class DebeProveedor
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
         Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(121, 18)
+        Me.lblTitulo.Size = New System.Drawing.Size(153, 18)
         Me.lblTitulo.TabIndex = 2
-        Me.lblTitulo.Text = "Nueva Compra"
+        Me.lblTitulo.Text = "Surtiendo Productos"
         '
         'btnCerrar
         '
@@ -170,9 +158,9 @@ Partial Class DebeProveedor
         Me.btnOtraCompra.ForeColor = System.Drawing.Color.White
         Me.btnOtraCompra.Location = New System.Drawing.Point(16, 560)
         Me.btnOtraCompra.Name = "btnOtraCompra"
-        Me.btnOtraCompra.Size = New System.Drawing.Size(121, 44)
+        Me.btnOtraCompra.Size = New System.Drawing.Size(132, 44)
         Me.btnOtraCompra.TabIndex = 12
-        Me.btnOtraCompra.Text = "Otra Compra"
+        Me.btnOtraCompra.Text = "Otro Producto"
         Me.btnOtraCompra.UseVisualStyleBackColor = False
         '
         'Label3
@@ -266,7 +254,7 @@ Partial Class DebeProveedor
         Me.btnSiguienteCompra.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnSiguienteCompra.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSiguienteCompra.Image = CType(resources.GetObject("btnSiguienteCompra.Image"), System.Drawing.Image)
-        Me.btnSiguienteCompra.Location = New System.Drawing.Point(105, 522)
+        Me.btnSiguienteCompra.Location = New System.Drawing.Point(116, 522)
         Me.btnSiguienteCompra.Name = "btnSiguienteCompra"
         Me.btnSiguienteCompra.Size = New System.Drawing.Size(32, 32)
         Me.btnSiguienteCompra.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -279,7 +267,7 @@ Partial Class DebeProveedor
         Me.lblNumProducto.AutoSize = True
         Me.lblNumProducto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNumProducto.ForeColor = System.Drawing.Color.Maroon
-        Me.lblNumProducto.Location = New System.Drawing.Point(254, 60)
+        Me.lblNumProducto.Location = New System.Drawing.Point(11, 58)
         Me.lblNumProducto.Name = "lblNumProducto"
         Me.lblNumProducto.Size = New System.Drawing.Size(104, 19)
         Me.lblNumProducto.TabIndex = 42
@@ -305,7 +293,7 @@ Partial Class DebeProveedor
         Me.Label6.TabIndex = 44
         Me.Label6.Text = "Cantidad"
         '
-        'DebeProveedor
+        'SurtirProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -328,9 +316,8 @@ Partial Class DebeProveedor
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtImporte)
         Me.Controls.Add(Me.panelTitulo)
-        Me.Controls.Add(Me.lblNombreProv)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "DebeProveedor"
+        Me.Name = "SurtirProductos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Nueva Compra"
         Me.panelTitulo.ResumeLayout(False)
@@ -345,7 +332,6 @@ Partial Class DebeProveedor
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents lblNombreProv As System.Windows.Forms.Label
     Friend WithEvents panelTitulo As System.Windows.Forms.Panel
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents btnCerrar As System.Windows.Forms.Button

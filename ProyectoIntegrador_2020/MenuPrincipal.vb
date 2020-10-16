@@ -17,12 +17,9 @@ Public Class MenuPrincipal
     '----INICIO DEL FORMULARIO----'
 
     Private Sub Menu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        panelAbout.Width = 0
         My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
         SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
-        panelAbout.Width = 0
-        If Me.ShowInTaskbar Then
-
-        End If
     End Sub
 
 
@@ -61,7 +58,7 @@ Public Class MenuPrincipal
     '----TIEMPO QUE SE EJECUTA EL GIF DEL COFRE----'
 
     Private Sub tmrGif_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrGif.Tick
-        If tmrGif.Interval = 5600 Then
+        If tmrGif.Interval = 5550 Then
             gifCofre.Visible = False
             imgCofre.Visible = True
             tmrGif.Stop()
@@ -369,16 +366,19 @@ Public Class MenuPrincipal
 
     Private Sub btnGestionarProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarProveedor.Click
         lblTituloVentana.Text = "Cuanta Corriente de Proveedores"
+        tmrOcultarAbout.Enabled = True
         If formularioBool = True Then formulario.Close()
         openFromOnPanel(Of CuentaCorrienteProveedor)()
         formularioBool = True
-        tmrOcultarAbout.Enabled = True
     End Sub
 
     
     Private Sub btnActualizarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarProducto.Click
         lblTituloVentana.Text = "Actualizar Productos"
         tmrOcultarAbout.Enabled = True
+        If formularioBool = True Then formulario.Close()
+        openFromOnPanel(Of GestionarProductos)()
+        formularioBool = True
     End Sub
 
     Private Sub btnListadoProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnListadoProducto.Click
@@ -453,4 +453,6 @@ Public Class MenuPrincipal
         formularioBool = True
         tmrOcultarAbout.Enabled = True
     End Sub
+
+
 End Class

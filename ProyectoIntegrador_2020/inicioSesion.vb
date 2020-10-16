@@ -125,6 +125,8 @@ Public Class inicioSesion
                 End If
                 consultas.consultaReturnHide("Select idAdmin from Admin where Usuario='" & txtUsuarioLogin.Text & "';")
                 Nuevo.idIngresoAdmin = Val(consultas.valorReturn)
+                CuentaCorriente.idAdmin = Val(consultas.valorReturn)
+                CuentaCorrienteProveedor.idAdmin = Val(consultas.valorReturn)
                 MenuPrincipal.Show()
                 Me.Close()
             Else

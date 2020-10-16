@@ -7,7 +7,8 @@ Public Class CuentaCorriente
     Dim idCompra As Integer
     Dim resultadosEntrada As String
     Dim confirmacion As Byte
-
+    Dim saldo As Integer
+    Public idAdmin As Integer
 
     '----INICIO DEL FORMULARIO----'
 
@@ -51,10 +52,6 @@ Public Class CuentaCorriente
         If cantClientes > 0 Then
             dgvClientes.Columns(3).Width = 0
         End If
-    End Sub
-
-    Private Sub btnCerrar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
     End Sub
 
     Private Sub btnActualizarDeuda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarDeuda.Click
@@ -117,23 +114,19 @@ Public Class CuentaCorriente
     End Sub
 
     Private Sub btnHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHaber.Click
-        gbRegistroCompras.Visible = True
-        btnVerRegistro.Visible = False
-        btnOcultarRegistro.Visible = True
-        dgvRegistroVentas.Focus()
-
         gbHaber.Visible = True
         gbDebe.Visible = False
+        btnPagarTodoRegistro.Enabled = True
+        txtDineroHaber.Focus()
     End Sub
 
 
     '----OBTIENE EL ID DEL CLIENTE SELECCIONADO----'
 
     Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvClientes.SelectionChanged
-        limpiarDebe()
-        txtDineroHaber.Text = ""
         If dgvClientes.SelectedCells.Count <> 0 Then
             idCliente = dgvClientes.SelectedCells(0).Value
+            saldo = dgvClientes.SelectedCells(2).Value
         End If
 
         btnDebe.Enabled = True
@@ -150,6 +143,7 @@ Public Class CuentaCorriente
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         actualizarTabla()
         limpiarDebe()
+        limpiarHaber()
         txtBuscarClientes.Text = ""
         txtBuscarClientes.Focus()
     End Sub
@@ -199,10 +193,10 @@ Public Class CuentaCorriente
 
     Private Sub txtDinero_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroDebe.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
             If e.KeyChar = ChrW(Keys.Enter) Then
                 actualizarDeuda()
-            Else
-                e.Handled = True
             End If
         End If
     End Sub
@@ -237,13 +231,6 @@ Public Class CuentaCorriente
 
     Private Sub btnCerrarGBDinero_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         limpiarDebe()
-    End Sub
-
-    Private Sub limpiarDebe()
-        gbDebe.Visible = False
-        txtDineroDebe.Text = ""
-        txtDetalleDebe.Text = ""
-        txtDetalleDebe.Visible = False
     End Sub
 
     Private Sub btnPagarTotal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -288,7 +275,7 @@ Public Class CuentaCorriente
     End Sub
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarInfo.Click
-        limpiarDebe()
+        gbDebe.Visible = False
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
@@ -303,11 +290,20 @@ Public Class CuentaCorriente
     End Sub
 
 
+
+    Private Sub limpiarDebe()
+        gbDebe.Visible = False
+        txtDineroDebe.Text = ""
+        txtDetalleDebe.Text = ""
+        btnOcultarDetalleDebe.Visible = False
+        btnVerDetalleDebe.Visible = True
+        txtDetalleDebe.Visible = False
+    End Sub
+
     Sub limpiarHaber()
         gbHaber.Visible = False
-        btnEliminarTodoRegistro.Enabled = False
         btnOcultarDetalleHaber.Visible = False
-        btnVerDetalleHaber.Visible = False
+        btnVerDetalleHaber.Visible = True
         txtDetalleHaber.Visible = False
         txtDetalleHaber.Text = ""
     End Sub
@@ -315,37 +311,17 @@ Public Class CuentaCorriente
 
     Private Sub dgvRegistroVentas_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvRegistroVentas.SelectionChanged
         Dim row As DataGridViewRow = dgvRegistroVentas.CurrentRow
-        btnEliminarTodoRegistro.Enabled = False
-        btnOcultarDetalleHaber.Visible = False
-        btnVerDetalleHaber.Visible = False
+
         txtDetalleHaber.Visible = False
 
         If dgvRegistroVentas.SelectedCells.Count <> 0 Then
             idCompra = dgvRegistroVentas.SelectedCells(0).Value
-
-            txtDineroHaber.Text = row.Cells(1).Value.ToString
-
-        End If
-
-        If txtDineroHaber.Text.Equals("") Then
-            btnPagarTodo.Enabled = False
-            btnEliminarRegistro.Enabled = False
-        Else
-            btnPagarTodo.Enabled = True
-            btnEliminarRegistro.Enabled = True
-        End If
-
-        consultas.consultaReturnHide("SELECT COUNT(idCompra) from compraCliente where adeudoBool=1 and idCliente=" & idCliente & ";")
-
-        If consultas.valorReturn = "1" Then
-            btnEliminarRegistro.Enabled = False
         End If
 
     End Sub
 
-    Private Sub btnEliminarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminarRegistro.Click
+    Private Sub btnEliminarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Not txtDineroHaber.Text.Equals("") Then
-            consultas.consultaHide("UPDATE compraCliente set adeudoBool=0 where idCompra=" & idCompra & ";")
 
             'ACTUALIZO LA DEUDA EN EL CLIENTE
 
@@ -361,9 +337,17 @@ Public Class CuentaCorriente
         End If
     End Sub
 
-    Private Sub btnEliminarTodoRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminarTodoRegistro.Click
-        confirmacion = ConfirmacionMensaje.confirmacion("             ¿Seguro que desea eliminar" & vbCrLf & "              todo el registro de ventas?")
+    Private Sub btnEliminarTodoRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPagarTodoRegistro.Click
+        confirmacion = ConfirmacionMensaje.confirmacion("             ¿Seguro que desea cobrar" & vbCrLf & "              todo el saldo?")
         If confirmacion = 1 Then
+
+
+            consultas.consultaReturnHide("SELECT SUM(Saldo) FROM compraCliente where adeudoBool=1 AND idCliente=" & idCliente & ";")
+            If Not consultas.valorReturn = "0" Then
+                txtDineroHaber.Text = consultas.valorReturn
+            End If
+
+
 
             Do
                 ConfirmacionMensaje.btnAceptar.Text = "Aceptar"
@@ -372,7 +356,6 @@ Public Class CuentaCorriente
                 resultadosEntrada = ConfirmacionMensaje.resultadoTxt
             Loop While resultadosEntrada = ""
 
-            idCompra = dgvRegistroVentas.CurrentRow.Cells(0).Value.ToString
 
             consultas.consultaHide("UPDATE compraCliente set adeudoBool=0 where adeudoBool != 2 AND idCliente=" & idCliente & ";")
             If consultas.resultado = 1 Then
@@ -386,36 +369,25 @@ Public Class CuentaCorriente
 
 
                 If txtDetalleHaber.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO compraCliente (Saldo,Cobrador,fechaCompra,adeudoBool,idCliente) VALUES (" & txtDineroHaber.Text & ",'" & resultadosEntrada & "',NOW(),2," & idCliente & ");")
+                    consultas.consultaHide("INSERT INTO compraCliente (Saldo,Cobrador,fechaCompra,adeudoBool,idCliente) VALUES (-" & txtDineroHaber.Text & ",'" & resultadosEntrada & "',NOW(),2," & idCliente & ");")
                 Else
-                    consultas.consultaHide("INSERT INTO compraCliente (Saldo,Detalle,Cobrador,fechaCompra,adeudoBool,idCliente) VALUES (" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "','" & resultadosEntrada & "',NOW(),2," & idCliente & ");")
+                    consultas.consultaHide("INSERT INTO compraCliente (Saldo,Detalle,Cobrador,fechaCompra,adeudoBool,idCliente) VALUES (-" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "','" & resultadosEntrada & "',NOW(),2," & idCliente & ");")
                 End If
                 ActualizarTablaRegistroVenta()
                 actualizarTablaConId()
                 txtBuscarClientes.Focus()
-
+                limpiarHaber()
             End If
-            
+
         End If
     End Sub
 
-    Private Sub btnPagarTodo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPagarTodo.Click
+    Private Sub btnPagarTodo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
 
         consultas.consultaReturnHide("SELECT SUM(Saldo) FROM compraCliente where adeudoBool=1 AND idCliente=" & idCliente & ";")
-        If consultas.valorReturn = "0" Then
-
-            btnEliminarTodoRegistro.Enabled = False
-            btnOcultarDetalleHaber.Visible = False
-            btnVerDetalleHaber.Visible = False
-            txtDetalleHaber.Visible = False
-        Else
-
+        If Not consultas.valorReturn = "0" Then
             txtDineroHaber.Text = consultas.valorReturn
-            btnEliminarTodoRegistro.Enabled = True
-            btnOcultarDetalleHaber.Visible = True
-            btnVerDetalleHaber.Visible = True
-            txtDetalleHaber.Visible = True
         End If
 
     End Sub
@@ -436,4 +408,109 @@ Public Class CuentaCorriente
         txtDetalleHaber.Focus()
     End Sub
 
+    Private Sub btnCobrarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDescontarHaber.Click
+        pagarDeuda()
+
+    End Sub
+
+
+    Sub pagarDeuda()
+        If Not txtDineroHaber.Text.Equals("") And Not txtDineroHaber.Text.Equals("0") Then
+
+            If txtDetalleHaber.Text.Equals("") Then
+                consultas.consultaHide("INSERT INTO compraCliente(Saldo,fechaCompra,adeudoBool,idCliente) Values(-" & txtDineroHaber.Text & ",now(),1," & idCliente & ");")
+            Else
+                consultas.consultaHide("INSERT INTO compraCliente(Saldo,Detalle,fechaCompra,adeudoBool,idCliente) Values(-" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "'" & ",now(),1," & idCliente & ");")
+            End If
+
+            'ACTUALIZO LA DEUDA EN EL CLIENTE
+
+            consultas.consultaReturnHide("SELECT Saldo from Clientes where idCliente=" & idCliente & ";")
+            Dim saldoActual As Integer = Val(consultas.valorReturn)
+
+            consultas.consultaHide("UPDATE Cientes set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idCliente=" & idCliente & ";")
+
+            txtDineroHaber.Text = ""
+            ActualizarTablaRegistroVenta()
+            actualizarTablaConId()
+            txtDineroHaber.Focus()
+
+        End If
+    End Sub
+
+
+    Private Sub chkRegistroCompleto_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkRegistroCompleto.CheckedChanged
+        If chkRegistroCompleto.Checked Then
+            gbHaber.Visible = False
+            btnHaber.Enabled = False
+            chkCobros.Checked = False
+            'Aqui podrá ver el registro completo pero sin los cobros realizados.
+            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND c.idCliente=" & idCliente & ";")
+
+            dgvRegistroVentas.Columns(0).Visible = False
+
+
+        Else
+            btnHaber.Enabled = True
+            'Aqui solo podrá ver los registros que estén sin cobrar.
+            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool=1 AND c.idCliente=" & idCliente & ";")
+
+            dgvRegistroVentas.Columns(0).Visible = False
+        End If
+    End Sub
+
+    Private Sub chkCobros_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCobros.CheckedChanged
+        If chkCobros.Checked Then
+
+            gbHaber.Visible = False
+            btnHaber.Enabled = False
+            chkRegistroCompleto.Checked = False
+
+            'Solo verá los cobros realizados
+
+            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,Cobrador,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool=2 AND c.idCliente=" & idCliente & ";")
+
+            dgvRegistroVentas.Columns(0).Visible = False
+
+        Else
+            'Aqui solo podrá ver los registros que estén sin cobrar.
+            btnHaber.Enabled = True
+
+            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool=1 AND c.idCliente=" & idCliente & ";")
+
+            dgvRegistroVentas.Columns(0).Visible = False
+
+        End If
+    End Sub
+
+    Private Sub dgvRegistroVentas_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvRegistroVentas.CellFormatting
+        If dgvRegistroVentas.Columns(e.ColumnIndex).Name = "Saldo" Then
+
+            Dim valor As Integer = Val(e.Value)
+
+            If valor < 0 Then
+                dgvRegistroVentas.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.Red
+                dgvRegistroVentas.Rows(e.RowIndex).DefaultCellStyle.SelectionBackColor = Color.IndianRed
+            End If
+
+        End If
+    End Sub
+
+    Private Sub txtDineroHaber_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroHaber.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                pagarDeuda()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtDineroHaber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDineroHaber.TextChanged
+        If saldo = Val(txtDineroHaber.Text) Then
+            btnDescontarHaber.Enabled = False
+        Else
+            btnDescontarHaber.Enabled = True
+        End If
+    End Sub
 End Class

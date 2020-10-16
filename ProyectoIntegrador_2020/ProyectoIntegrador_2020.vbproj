@@ -110,10 +110,10 @@
     <Compile Include="CuentaCorrienteProveedor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DebeProveedor.Designer.vb">
-      <DependentUpon>DebeProveedor.vb</DependentUpon>
+    <Compile Include="SurtirProductos.Designer.vb">
+      <DependentUpon>SurtirProductos.vb</DependentUpon>
     </Compile>
-    <Compile Include="DebeProveedor.vb">
+    <Compile Include="SurtirProductos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ExploradorProveedores.Designer.vb">
@@ -174,10 +174,10 @@
     <Compile Include="Nuevo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Productos.Designer.vb">
-      <DependentUpon>Productos.vb</DependentUpon>
+    <Compile Include="GestionarProductos.Designer.vb">
+      <DependentUpon>GestionarProductos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Productos.vb">
+    <Compile Include="GestionarProductos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CuentaCorriente.Designer.vb">
@@ -194,8 +194,8 @@
     <EmbeddedResource Include="CuentaCorrienteProveedor.resx">
       <DependentUpon>CuentaCorrienteProveedor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DebeProveedor.resx">
-      <DependentUpon>DebeProveedor.vb</DependentUpon>
+    <EmbeddedResource Include="SurtirProductos.resx">
+      <DependentUpon>SurtirProductos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExploradorProveedores.resx">
       <DependentUpon>ExploradorProveedores.vb</DependentUpon>
@@ -226,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Nuevo.resx">
       <DependentUpon>Nuevo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionarProductos.resx">
+      <DependentUpon>GestionarProductos.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

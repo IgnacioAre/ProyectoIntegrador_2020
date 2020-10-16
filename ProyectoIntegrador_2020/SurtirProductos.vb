@@ -1,4 +1,4 @@
-﻿Public Class DebeProveedor
+﻿Public Class SurtirProductos
 
     Public idProveedor As Integer = 0
     Dim consulta As Conexion = New Conexion()
@@ -12,7 +12,7 @@
     Dim nuevaCompra As List(Of compraProveedor) = New List(Of compraProveedor)
 
     Private Sub DebeProveedor_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        lblNumProducto.Text = "Producto N° " & (contadorCompra + 1)
+        TituloContador()
         btnVolverCompra.Visible = False
     End Sub
 
@@ -24,7 +24,7 @@
         txtComentario.Text = ""
     End Sub
 
-    
+
     Private Sub btnOtraCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOtraCompra.Click
         If btnVolverCompra.Visible = False Then
             btnVolverCompra.Visible = True
@@ -45,12 +45,12 @@
             contadorCompra += 1
             ultimoCont = contadorCompra
         End If
-        lblNumProducto.Text = "Producto N° " & (contadorCompra + 1)
+        TituloContador()
     End Sub
 
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
-        
+
         If nuevaCompra.Count > 0 Then
             ConfirmacionMensaje.btnAceptar.Text = "Si"
             ConfirmacionMensaje.btnCancelar.Text = "No"
@@ -82,7 +82,7 @@
 
         btnOtraCompra.Enabled = False
         contadorCompra -= 1
-        lblNumProducto.Text = "Producto N° " & (contadorCompra + 1)
+        TituloContador()
         For Each item As compraProveedor In nuevaCompra
             If item.FuncionContador = contadorCompra Then
                 txtImporte.Text = item.FuncionSaldo
@@ -118,7 +118,7 @@
             End If
         Next
         contadorCompra += 1
-        lblNumProducto.Text = "Producto N° " & (contadorCompra + 1)
+        TituloContador()
         If contadorCompra > 0 Then
             btnVolverCompra.Visible = True
         End If
@@ -136,7 +136,7 @@
             btnSiguienteCompra.Visible = False
             backBool = False
         End If
-        
+
     End Sub
 
 
@@ -210,5 +210,13 @@
         End If
 
     End Sub
+
+
+
+    Sub TituloContador()
+
+        lblNumProducto.Text = "Producto N° " & (contadorCompra + 1) & " de " & ultimoCont
+    End Sub
+
 
 End Class

@@ -164,9 +164,9 @@ Public Class ExploradorProveedores
 
 
     Public Sub ActualizarTablaRegistroVentas()
-        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle As Comentario,fechaCompra As Fecha FROM ventaProveedor As vp,Proveedores As p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND p.idProveedor=" & txtID.Text & ";")
+        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND p.idProveedor=" & idProveedor & ";")
 
-        dgvRegistroCompras.Columns(0).Visible = False
+        dgvRegistroVentas.Columns(0).Visible = False
 
     End Sub
 
@@ -267,7 +267,7 @@ Public Class ExploradorProveedores
         resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea eliminar este registro?")
         If resultado = 1 Then
 
-            idCompra = dgvRegistroCompras.CurrentRow.Cells(0).Value.ToString
+            idCompra = dgvRegistroVentas.CurrentRow.Cells(0).Value.ToString
 
             consultas.consultaHide("UPDATE FROM compraCliente set adeudoBool=0 where idCompra=" & idCompra & ";")
             ActualizarTablaRegistroVentas()
@@ -295,11 +295,11 @@ Public Class ExploradorProveedores
     End Sub
 
     Private Sub btnEditarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarRegistro.Click
-        If dgvRegistroCompras.SelectedCells.Count <> 0 Then
+        If dgvRegistroVentas.SelectedCells.Count <> 0 Then
             btnEditarRegistro.Enabled = True
-            idCompra = dgvRegistroCompras.CurrentRow.Cells(0).Value.ToString
-            txtSaldoRegistro.Text = dgvRegistroCompras.CurrentRow.Cells(1).Value.ToString
-            txtDetalleRegistro.Text = dgvRegistroCompras.CurrentRow.Cells(2).Value.ToString
+            idCompra = dgvRegistroVentas.CurrentRow.Cells(0).Value.ToString
+            txtSaldoRegistro.Text = dgvRegistroVentas.CurrentRow.Cells(1).Value.ToString
+            txtDetalleRegistro.Text = dgvRegistroVentas.CurrentRow.Cells(2).Value.ToString
 
             restadorSaldoExplorador()
 
