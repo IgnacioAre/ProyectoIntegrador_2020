@@ -96,7 +96,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="compraProveedor.vb" />
+    <Compile Include="Surtido.vb" />
     <Compile Include="Conexion.vb" />
     <Compile Include="ConfirmacionMensaje.Designer.vb">
       <DependentUpon>ConfirmacionMensaje.vb</DependentUpon>

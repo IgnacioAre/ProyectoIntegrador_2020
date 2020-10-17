@@ -1,6 +1,5 @@
 ﻿Public Class SurtirProductos
 
-    Public idProveedor As Integer = 0
     Dim consulta As Conexion = New Conexion()
 
     'Este contador sirve como índice para ver el número de compra ya ingresado.
@@ -9,7 +8,7 @@
     Dim backBool As Boolean = False
 
     'En este arraylist almaceno los productos que seran ingresados al finalizar la compra
-    Dim nuevaCompra As List(Of compraProveedor) = New List(Of compraProveedor)
+    Dim nuevaCompra As List(Of Surtido) = New List(Of Surtido)
 
     Private Sub DebeProveedor_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         TituloContador()
@@ -18,10 +17,13 @@
 
     Sub vaciarCampos()
         contadorCompra = 0
-        txtImporte.Text = ""
+        ultimoCont = 0
+        txtImporteCosto.Text = ""
+        txtGanancia.Text = ""
         txtCodigoProducto.Text = ""
         txtCantidad.Text = ""
-        txtComentario.Text = ""
+        lblNombre.Text = ""
+        lblNombre.Visible = False
     End Sub
 
 
@@ -35,16 +37,17 @@
 
 
     Sub insertarCompra()
-        If Not txtImporte.Text.Equals("") And Not txtCodigoProducto.Text.Equals("") And Not txtComentario.Text.Equals("") Then
-            nuevaCompra.Add(New compraProveedor(contadorCompra, txtImporte.Text, txtCantidad.Text, txtComentario.Text, txtCodigoProducto.Text, idProveedor))
+
+        Dim precioCosto As Integer = (Val(txtImporteCosto.Text) / Val(txtCantidad.Text))
+        Dim precioVenta As Integer = (precioCosto + ((Val(txtGanancia.Text) * precioCosto) / 100))
+
+
+        If Not txtImporteCosto.Text.Equals("") And Not txtCodigoProducto.Text.Equals("") Then
+            nuevaCompra.Add(New Surtido(contadorCompra, txtCodigoProducto.Text, txtImporteCosto.Text, precioVenta, precioCosto, txtCantidad.Text, lblNombre.Text, txtGanancia.Text))
             contadorCompra += 1
             ultimoCont = contadorCompra
         End If
-        If Not txtImporte.Text.Equals("") And Not txtCodigoProducto.Text.Equals("") And txtComentario.Text.Equals("") Then
-            nuevaCompra.Add(New compraProveedor(contadorCompra, txtImporte.Text, txtCantidad.Text, txtCodigoProducto.Text, idProveedor))
-            contadorCompra += 1
-            ultimoCont = contadorCompra
-        End If
+        
         TituloContador()
     End Sub
 
@@ -72,7 +75,7 @@
     Private Sub btnVolverCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVolverCompra.Click
         If backBool = False Then
             insertarCompra()
-            If Not txtImporte.Equals("") And Not txtCodigoProducto.Text.Equals("") Then
+            If Not txtImporteCosto.Equals("") And Not txtCodigoProducto.Text.Equals("") Then
                 contadorCompra -= 1
             End If
             backBool = True
@@ -83,12 +86,13 @@
         btnOtraCompra.Enabled = False
         contadorCompra -= 1
         TituloContador()
-        For Each item As compraProveedor In nuevaCompra
+        For Each item As Surtido In nuevaCompra
             If item.FuncionContador = contadorCompra Then
-                txtImporte.Text = item.FuncionSaldo
-                txtCantidad.Text = item.FuncionStock
                 txtCodigoProducto.Text = item.FuncionIdProducto
-                txtComentario.Text = item.FuncionDetalle
+                txtImporteCosto.Text = item.FuncionCostoTotal
+                lblNombre.Text = item.FuncionNombre
+                txtCantidad.Text = item.FuncionStock
+                txtGanancia.Text = item.FuncionPorcentaje
             End If
         Next
         btnSiguienteCompra.Visible = True
@@ -97,7 +101,7 @@
         End If
     End Sub
 
-    Private Sub txtImporte_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtImporte.KeyPress
+    Private Sub txtImporte_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtImporteCosto.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
         End If
@@ -110,11 +114,13 @@
     End Sub
 
     Private Sub btnSiguienteCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSiguienteCompra.Click
-        For Each item As compraProveedor In nuevaCompra
+        For Each item As Surtido In nuevaCompra
             If item.FuncionContador = contadorCompra Then
-                item.FuncionSaldo = txtImporte.Text
-                item.FuncionIdProducto = txtCodigoProducto.Text
-                item.FuncionDetalle = txtComentario.Text
+                txtCodigoProducto.Text = item.FuncionIdProducto
+                txtImporteCosto.Text = item.FuncionCostoTotal
+                lblNombre.Text = item.FuncionNombre
+                txtCantidad.Text = item.FuncionStock
+                txtGanancia.Text = item.FuncionPorcentaje
             End If
         Next
         contadorCompra += 1
@@ -123,11 +129,13 @@
             btnVolverCompra.Visible = True
         End If
         vaciarCampos()
-        For Each item As compraProveedor In nuevaCompra
+        For Each item As Surtido In nuevaCompra
             If item.FuncionContador = contadorCompra Then
-                txtImporte.Text = item.FuncionSaldo
                 txtCodigoProducto.Text = item.FuncionIdProducto
-                txtComentario.Text = item.FuncionDetalle
+                txtImporteCosto.Text = item.FuncionCostoTotal
+                lblNombre.Text = item.FuncionNombre
+                txtCantidad.Text = item.FuncionStock
+                txtGanancia.Text = item.FuncionPorcentaje
             End If
         Next
 
@@ -140,64 +148,51 @@
     End Sub
 
 
-    Private Sub btnFinalizarCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFinalizarCompra.Click
+    Private Sub btnFinalizarCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFinalizarSurtido.Click
         FinalizarCompra()
     End Sub
 
 
     Sub FinalizarCompra()
-        Dim Saldo As Integer
-        Dim Detalle As String
-        Dim Cantidad As Integer
-        Dim ideProveedor As Integer
         Dim ideProducto As Long
-        Dim stockActual As Integer
-        Dim saldoActual As Integer
+        Dim precioVenta As Integer
+        Dim precioCosto As Integer
+        Dim costoTotal As Integer
+        Dim Porcentaje As Integer
+        Dim Cantidad As Integer
 
-        If Not txtImporte.Text.Equals("") And Not txtCodigoProducto.Text.Equals("") Then
+        Dim stockActual As Integer
+
+        If Not txtImporteCosto.Text.Equals("") And Not txtCodigoProducto.Text.Equals("") Then
             insertarCompra()
         End If
 
 
-        For Each item As compraProveedor In nuevaCompra
-            Saldo = item.FuncionSaldo
-            Detalle = item.FuncionDetalle
+        For Each item As Surtido In nuevaCompra
+
+            precioCosto = item.FuncionCosto
+            precioVenta = item.FuncionVenta
+            Porcentaje = item.FuncionPorcentaje
             Cantidad = item.FuncionStock
-            ideProveedor = item.FuncionIdProveedor
             ideProducto = item.FuncionIdProducto
+            costoTotal = item.FuncionCostoTotal
 
-            If Saldo <> 0 And ideProducto <> 0 And Detalle <> "" Then
-                consulta.consultaHide("INSERT INTO ventaProveedor(Saldo,Detalle,Stock,fechaCompra,adeudoBool,idProveedor,idProducto) Values(" & Saldo & ",'" & Detalle & "'," & Cantidad & ",NOW(),1," & ideProveedor & "," & ideProducto & ")")
+
+            If Not txtImporteCosto.Text.Equals("0") And ideProducto <> 0 Then
+                consulta.consultaHide("INSERT INTO surtidoProductos(precioCosto,precioVenta,precioTotal,porcentajeGanancia,Cantidad,fechaSurtido,idProducto) Values(" & precioCosto & "," & precioVenta & "," & costoTotal & "," & Porcentaje & "," & Cantidad & ",NOW()," & ideProducto & ");")
+
 
                 'ACTUALIZA EL STOCK DE PRODUCTOS
                 consulta.consultaReturnHide("SELECT Stock FROM Productos WHERE idProducto=" & ideProducto & ";")
                 stockActual = consulta.valorReturn
-                consulta.consultaHide("UPDATE Productos set Stock=" & (stockActual + Cantidad) & " where idProducto=" & ideProducto & ";")
+                consulta.consultaHide("UPDATE Productos set Stock=" & (stockActual + Cantidad) & ", precioCosto=" & precioCosto & ", precioVenta=" & precioVenta & " where idProducto=" & ideProducto & ";")
 
-                consulta.consultaReturnHide("SELECT Saldo FROM Proveedores WHERE idProveedor=" & ideProveedor & ";")
-                saldoActual = consulta.valorReturn
-                consulta.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual + Val(txtImporte.Text)) & " where idProveedor=" & ideProveedor & ";")
-
-
-            End If
-
-            If Saldo <> 0 And ideProducto <> 0 And Detalle = "" Then
-                consulta.consultaHide("INSERT INTO ventaProveedor(Saldo,Stock,fechaCompra,adeudoBool,idProveedor,idProducto) Values(" & Saldo & "," & Cantidad & ",NOW(),1," & ideProveedor & "," & ideProducto & ")")
-
-                'ACTUALIZA EL STOCK DE PRODUCTOS
-                consulta.consultaReturnHide("SELECT Stock FROM Productos WHERE idProducto=" & ideProducto & ";")
-                stockActual = consulta.valorReturn
-                consulta.consultaHide("UPDATE Productos set Stock=" & (stockActual + Cantidad) & " where idProducto=" & ideProducto & ";")
-
-                consulta.consultaReturnHide("SELECT Saldo FROM Proveedores WHERE idProveedor=" & ideProveedor & ";")
-                saldoActual = consulta.valorReturn
-                consulta.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual + Val(txtImporte.Text)) & " where idProveedor=" & ideProveedor & ";")
             End If
 
             If consulta.resultado = 1 Then
+                vaciarCampos()
                 Me.Close()
             End If
-
         Next
 
         nuevaCompra.Clear()
@@ -206,7 +201,13 @@
 
     Private Sub txtCodigoProducto_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCodigoProducto.TextChanged
         If txtCodigoProducto.TextLength = 13 Then
+            consulta.consultaReturnHide("SELECT Nombre FROM productos where idProducto=" & txtCodigoProducto.Text & ";")
+            lblNombre.Text = consulta.valorReturn
+            lblNombre.Visible = True
             txtCantidad.Focus()
+        Else
+            lblNombre.Text = ""
+            lblNombre.Visible = False
         End If
 
     End Sub
@@ -215,8 +216,19 @@
 
     Sub TituloContador()
 
-        lblNumProducto.Text = "Producto N° " & (contadorCompra + 1) & " de " & ultimoCont
+        lblNumProducto.Text = "Producto N° " & (contadorCompra + 1) & " de " & (ultimoCont + 1)
     End Sub
 
+    Private Sub txtCantidad_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCantidad.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TextBox1_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtGanancia.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+        End If
+    End Sub
 
 End Class

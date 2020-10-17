@@ -8,22 +8,18 @@ Public Class CuentaCorrienteProveedor
     Dim idCompra As Integer
     Dim resultadosEntrada As String
     Dim confirmacion As Byte
-    Public idAdmin As Byte
 
 
     '----INICIO DEL FORMULARIO----'
 
     Private Sub Pruebas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         txtBuscarClientes.Focus()
-        Panel1.SendToBack()
         btnDebe.Enabled = False
         btnHaber.Enabled = False
         consultas.establecerConexion()
         SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
-        MsgBox(idAdmin)
         actualizarTabla()
     End Sub
-
 
     '----PLACEHOLDERS----'
 
@@ -371,6 +367,7 @@ Public Class CuentaCorrienteProveedor
             ActualizarTablaRegistroVenta()
             actualizarTablaConId()
             txtDineroHaber.Focus()
+            limpiarHaber()
 
         End If
     End Sub

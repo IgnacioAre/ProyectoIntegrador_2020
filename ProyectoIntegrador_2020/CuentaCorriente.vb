@@ -8,7 +8,6 @@ Public Class CuentaCorriente
     Dim resultadosEntrada As String
     Dim confirmacion As Byte
     Dim saldo As Integer
-    Public idAdmin As Integer
 
     '----INICIO DEL FORMULARIO----'
 
@@ -97,6 +96,7 @@ Public Class CuentaCorriente
             ActualizarTablaRegistroVenta()
             limpiarDebe()
             txtBuscarClientes.Focus()
+            limpiarDebe()
 
         Else
             mostrarMensaje("Error. Verifique el dinero ingresado.")
@@ -410,7 +410,7 @@ Public Class CuentaCorriente
 
     Private Sub btnCobrarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDescontarHaber.Click
         pagarDeuda()
-
+        limpiarHaber()
     End Sub
 
 
@@ -428,7 +428,7 @@ Public Class CuentaCorriente
             consultas.consultaReturnHide("SELECT Saldo from Clientes where idCliente=" & idCliente & ";")
             Dim saldoActual As Integer = Val(consultas.valorReturn)
 
-            consultas.consultaHide("UPDATE Cientes set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idCliente=" & idCliente & ";")
+            consultas.consultaHide("UPDATE Clientes set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idCliente=" & idCliente & ";")
 
             txtDineroHaber.Text = ""
             ActualizarTablaRegistroVenta()

@@ -359,6 +359,12 @@ Public Class ExploradorClientes
     End Sub
 
     Private Sub btnGuardarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarRegistro.Click
+        modificarRegistro()
+    End Sub
+
+
+
+    Sub modificarRegistro()
         If Not txtSaldoRegistro.Text.Equals("") And Not txtSaldoRegistro.Text.Equals("0") Then
             consultas.consultaHide("UPDATE compraCliente set saldo = " & txtSaldoRegistro.Text & ", detalle = '" & txtDetalleRegistro.Text & "' where idCompra=" & idCompra & ";")
 
@@ -370,6 +376,7 @@ Public Class ExploradorClientes
             mostrarMensaje("El saldo debe ser mayor a $0")
         End If
     End Sub
+
 
 
     Private Sub chkNoActivos_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkNoActivos.CheckedChanged
@@ -390,4 +397,17 @@ Public Class ExploradorClientes
     End Sub
 
 
+    Private Sub txtSaldoRegistro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSaldoRegistro.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                modificarRegistro()
+            End If
+        End If
+    End Sub
+
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
 End Class
