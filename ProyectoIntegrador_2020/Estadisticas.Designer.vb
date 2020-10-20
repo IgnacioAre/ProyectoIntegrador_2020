@@ -22,92 +22,171 @@ Partial Class Estadisticas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Estadisticas))
-        Me.chatGrafica = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Me.chartGrafica = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        CType(Me.chatGrafica, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.rbBarras = New System.Windows.Forms.RadioButton()
+        Me.barHorizontal = New System.Windows.Forms.TrackBar()
+        Me.barVertical = New System.Windows.Forms.TrackBar()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        CType(Me.chartGrafica, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.barHorizontal, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.barVertical, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
-        'chatGrafica
+        'chartGrafica
         '
-        Me.chatGrafica.BackColor = System.Drawing.Color.LightGray
-        ChartArea1.Area3DStyle.Enable3D = True
-        ChartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
-        ChartArea1.BackColor = System.Drawing.Color.White
-        ChartArea1.Name = "ChartArea1"
-        Me.chatGrafica.ChartAreas.Add(ChartArea1)
-        Me.chatGrafica.Dock = System.Windows.Forms.DockStyle.Top
-        Legend1.Name = "Legend1"
-        Me.chatGrafica.Legends.Add(Legend1)
-        Me.chatGrafica.Location = New System.Drawing.Point(0, 0)
-        Me.chatGrafica.Name = "chatGrafica"
-        Me.chatGrafica.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.chatGrafica.Series.Add(Series1)
-        Me.chatGrafica.Size = New System.Drawing.Size(700, 351)
-        Me.chatGrafica.TabIndex = 0
-        Me.chatGrafica.Text = "Chart1"
+        Me.chartGrafica.BackColor = System.Drawing.Color.LightGray
+        ChartArea2.Area3DStyle.Enable3D = True
+        ChartArea2.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
+        ChartArea2.BackColor = System.Drawing.Color.White
+        ChartArea2.Name = "ChartArea1"
+        Me.chartGrafica.ChartAreas.Add(ChartArea2)
+        Me.chartGrafica.Dock = System.Windows.Forms.DockStyle.Fill
+        Legend2.Name = "Legend1"
+        Me.chartGrafica.Legends.Add(Legend2)
+        Me.chartGrafica.Location = New System.Drawing.Point(0, 0)
+        Me.chartGrafica.Name = "chartGrafica"
+        Me.chartGrafica.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.chartGrafica.Series.Add(Series2)
+        Me.chartGrafica.Size = New System.Drawing.Size(599, 355)
+        Me.chartGrafica.TabIndex = 0
+        Me.chartGrafica.Text = "Chart1"
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.PictureBox2)
-        Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 349)
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.Controls.Add(Me.RadioButton2)
+        Me.Panel1.Controls.Add(Me.RadioButton1)
+        Me.Panel1.Controls.Add(Me.rbBarras)
+        Me.Panel1.Controls.Add(Me.barHorizontal)
+        Me.Panel1.Location = New System.Drawing.Point(0, 355)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(700, 100)
+        Me.Panel1.Size = New System.Drawing.Size(700, 94)
         Me.Panel1.TabIndex = 1
         '
-        'PictureBox2
+        'RadioButton2
         '
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(303, 38)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(24, 24)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox2.TabIndex = 3
-        Me.PictureBox2.TabStop = False
+        Me.RadioButton2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(577, 62)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(96, 17)
+        Me.RadioButton2.TabIndex = 8
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "Gráfica circular"
+        Me.RadioButton2.UseVisualStyleBackColor = True
         '
-        'PictureBox1
+        'RadioButton1
         '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(373, 38)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(24, 24)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
+        Me.RadioButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(577, 14)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(122, 17)
+        Me.RadioButton1.TabIndex = 7
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "Gráfica en columnas"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'rbBarras
+        '
+        Me.rbBarras.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.rbBarras.AutoSize = True
+        Me.rbBarras.Location = New System.Drawing.Point(577, 37)
+        Me.rbBarras.Name = "rbBarras"
+        Me.rbBarras.Size = New System.Drawing.Size(106, 17)
+        Me.rbBarras.TabIndex = 6
+        Me.rbBarras.TabStop = True
+        Me.rbBarras.Text = "Gráfica en barras"
+        Me.rbBarras.UseVisualStyleBackColor = True
+        '
+        'barHorizontal
+        '
+        Me.barHorizontal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.barHorizontal.Location = New System.Drawing.Point(101, 34)
+        Me.barHorizontal.Maximum = 180
+        Me.barHorizontal.Name = "barHorizontal"
+        Me.barHorizontal.Size = New System.Drawing.Size(438, 45)
+        Me.barHorizontal.TabIndex = 4
+        Me.barHorizontal.TickStyle = System.Windows.Forms.TickStyle.TopLeft
+        '
+        'barVertical
+        '
+        Me.barVertical.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.barVertical.Location = New System.Drawing.Point(35, 12)
+        Me.barVertical.Maximum = 90
+        Me.barVertical.Name = "barVertical"
+        Me.barVertical.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.barVertical.Size = New System.Drawing.Size(45, 337)
+        Me.barVertical.TabIndex = 5
+        '
+        'Panel2
+        '
+        Me.Panel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel2.Controls.Add(Me.chartGrafica)
+        Me.Panel2.Location = New System.Drawing.Point(101, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(599, 355)
+        Me.Panel2.TabIndex = 2
+        '
+        'Panel3
+        '
+        Me.Panel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Panel3.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel3.Controls.Add(Me.barVertical)
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(109, 355)
+        Me.Panel3.TabIndex = 3
         '
         'Estadisticas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(700, 449)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.chatGrafica)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Estadisticas"
         Me.Text = "Estadisticas"
-        CType(Me.chatGrafica, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chartGrafica, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.barHorizontal, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.barVertical, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents chatGrafica As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents chartGrafica As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents barVertical As System.Windows.Forms.TrackBar
+    Friend WithEvents barHorizontal As System.Windows.Forms.TrackBar
+    Friend WithEvents rbBarras As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+    Friend WithEvents Panel3 As System.Windows.Forms.Panel
 End Class
