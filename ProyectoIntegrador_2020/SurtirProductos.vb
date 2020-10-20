@@ -38,14 +38,14 @@
 
     Sub insertarCompra()
 
-        Dim precioCosto As Integer = (Val(txtImporteCosto.Text) / Val(txtCantidad.Text))
-        Dim precioVenta As Integer = (precioCosto + ((Val(txtGanancia.Text) * precioCosto) / 100))
-
-
-        If Not txtImporteCosto.Text.Equals("") And Not txtCodigoProducto.Text.Equals("") Then
+        If Not txtImporteCosto.Text.Equals("0") And txtCodigoProducto.Text.Count = 13 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
+            Dim precioCosto As Integer = (Val(txtImporteCosto.Text) / Val(txtCantidad.Text))
+            Dim precioVenta As Integer = (precioCosto + ((Val(txtGanancia.Text) * precioCosto) / 100))
             nuevaCompra.Add(New Surtido(contadorCompra, txtCodigoProducto.Text, txtImporteCosto.Text, precioVenta, precioCosto, txtCantidad.Text, lblNombre.Text, txtGanancia.Text))
             contadorCompra += 1
             ultimoCont = contadorCompra
+        Else
+            mostrarMensaje("Debe rellenar todos los campos.")
         End If
         
         TituloContador()
@@ -178,7 +178,7 @@
             costoTotal = item.FuncionCostoTotal
 
 
-            If Not txtImporteCosto.Text.Equals("0") And ideProducto <> 0 Then
+            If Not txtImporteCosto.Text.Equals("0") And txtCodigoProducto.Text.Count = 13 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
                 consulta.consultaHide("INSERT INTO surtidoProductos(precioCosto,precioVenta,precioTotal,porcentajeGanancia,Cantidad,fechaSurtido,idProducto) Values(" & precioCosto & "," & precioVenta & "," & costoTotal & "," & Porcentaje & "," & Cantidad & ",NOW()," & ideProducto & ");")
 
 
@@ -191,6 +191,7 @@
 
             If consulta.resultado = 1 Then
                 vaciarCampos()
+                GestionarProductos.ActualizarTablaProductos()
                 Me.Close()
             End If
         Next
@@ -204,7 +205,7 @@
             consulta.consultaReturnHide("SELECT Nombre FROM productos where idProducto=" & txtCodigoProducto.Text & ";")
             lblNombre.Text = consulta.valorReturn
             lblNombre.Visible = True
-            txtCantidad.Focus()
+            txtImporteCosto.Focus()
         Else
             lblNombre.Text = ""
             lblNombre.Visible = False
@@ -229,6 +230,13 @@
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
         End If
+    End Sub
+
+
+    '----MENSAJE PERSONALIZADO----'
+
+    Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
+        Dim mensaje As New Mensaje(mensajeObtenido)
     End Sub
 
 End Class

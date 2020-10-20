@@ -97,7 +97,7 @@ Partial Class SurtirProductos
         Me.txtImporteCosto.Location = New System.Drawing.Point(78, 275)
         Me.txtImporteCosto.Name = "txtImporteCosto"
         Me.txtImporteCosto.Size = New System.Drawing.Size(119, 26)
-        Me.txtImporteCosto.TabIndex = 0
+        Me.txtImporteCosto.TabIndex = 1
         '
         'Label1
         '
@@ -195,7 +195,7 @@ Partial Class SurtirProductos
         Me.txtCodigoProducto.MaxLength = 13
         Me.txtCodigoProducto.Name = "txtCodigoProducto"
         Me.txtCodigoProducto.Size = New System.Drawing.Size(208, 26)
-        Me.txtCodigoProducto.TabIndex = 1
+        Me.txtCodigoProducto.TabIndex = 0
         '
         'lblNombre
         '
@@ -281,7 +281,7 @@ Partial Class SurtirProductos
         Me.txtGanancia.MaxLength = 13
         Me.txtGanancia.Name = "txtGanancia"
         Me.txtGanancia.Size = New System.Drawing.Size(62, 26)
-        Me.txtGanancia.TabIndex = 45
+        Me.txtGanancia.TabIndex = 3
         '
         'Label7
         '

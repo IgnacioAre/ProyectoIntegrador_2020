@@ -122,6 +122,24 @@ Public Class Conexion
         Return insertarEnTabla(consulta)
     End Function
 
+
+    '----CONSULTA PARA LA GRÁFICA----'
+
+    Public Function consultarGrafica(ByVal sql As String) As DataSet
+        Dim ds As New DataSet
+
+        Try
+            Dim reader As New MySqlDataAdapter(sql, Me.conexion)
+            reader.Fill(ds, "Historial")
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return ds
+    End Function
+
+
+
     '----MENSAJE PERSONALIZADO----'
 
     Private Sub mostrarMensaje(ByVal mensajeObtenido As String)

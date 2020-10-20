@@ -114,6 +114,7 @@ Public Class CuentaCorriente
     End Sub
 
     Private Sub btnHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHaber.Click
+        limpiarHaber()
         gbHaber.Visible = True
         gbDebe.Visible = False
         btnPagarTodoRegistro.Enabled = True
@@ -180,7 +181,7 @@ Public Class CuentaCorriente
 
 
     Sub ActualizarTablaRegistroVenta()
-        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool=1 AND c.idCliente=" & idCliente & ";")
+        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool=1 AND c.idCliente=" & idCliente & " order by(idCompra) desc;")
 
         dgvRegistroVentas.Columns(0).Visible = False
 

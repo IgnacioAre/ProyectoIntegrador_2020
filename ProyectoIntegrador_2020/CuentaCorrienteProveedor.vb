@@ -47,16 +47,18 @@ Public Class CuentaCorrienteProveedor
 
     Private Sub btnDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDebe.Click
         limpiarDebe()
-        gbDebe.Visible = True
-        gbHaber.Visible = False
-        txtDineroDebe.Focus()
+        gbHaber.Visible = True
+        gbDebe.Visible = False
+        txtDineroHaber.Focus()
     End Sub
 
     Private Sub btnHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHaber.Click
-        gbHaber.Visible = True
-        btnVerDetalleHaber.Visible = True
+        limpiarHaber()
+        gbDebe.Visible = True
+        gbHaber.Visible = False
+        btnVerDetalleDebe.Visible = True
         btnPagarTodoRegistro.Enabled = True
-        txtDineroHaber.Focus()
+        txtDineroDebe.Focus()
 
     End Sub
 
@@ -117,7 +119,7 @@ Public Class CuentaCorrienteProveedor
 
 
     Public Sub ActualizarTablaRegistroVenta()
-        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle as Comentario,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND p.idProveedor=" & idProveedor & ";")
+        dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle as Comentario,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND p.idProveedor=" & idProveedor & " order by(idVenta) desc;")
 
         dgvRegistroCompras.Columns(0).Visible = False
 
@@ -125,20 +127,20 @@ Public Class CuentaCorrienteProveedor
 
 
     Private Sub limpiarDebe()
-        gbDebe.Visible = False
-        txtDineroDebe.Text = ""
-        txtDetalleDebe.Text = ""
-        btnOcultarDetalleDebe.Visible = False
-        btnVerDetalleDebe.Visible = True
-        txtDetalleDebe.Visible = False
-    End Sub
-
-    Sub limpiarHaber()
         gbHaber.Visible = False
+        txtDineroHaber.Text = ""
+        txtDetalleHaber.Text = ""
         btnOcultarDetalleHaber.Visible = False
         btnVerDetalleHaber.Visible = True
         txtDetalleHaber.Visible = False
-        txtDetalleHaber.Text = ""
+    End Sub
+
+    Sub limpiarHaber()
+        gbDebe.Visible = False
+        btnOcultarDetalleDebe.Visible = False
+        btnVerDetalleDebe.Visible = True
+        txtDetalleDebe.Visible = False
+        txtDetalleDebe.Text = ""
     End Sub
 
 
@@ -195,7 +197,7 @@ Public Class CuentaCorrienteProveedor
     End Sub
 
     Private Sub btnEliminarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not txtDineroHaber.Text.Equals("") Then
+        If Not txtDineroDebe.Text.Equals("") Then
             MsgBox(idCompra)
             consultas.consultaHide("UPDATE ventaProveedor set adeudoBool=0 where Saldo>0 AND idVenta=" & idCompra & ";")
 
@@ -205,9 +207,9 @@ Public Class CuentaCorrienteProveedor
                 consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
                 Dim saldoActual As Integer = Val(consultas.valorReturn)
 
-                consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idProveedor=" & idProveedor & ";")
+                consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroDebe.Text)) & " where idProveedor=" & idProveedor & ";")
 
-                txtDineroHaber.Text = ""
+                txtDineroDebe.Text = ""
                 ActualizarTablaRegistroVenta()
                 actualizarTablaConId()
             End If
@@ -223,7 +225,7 @@ Public Class CuentaCorrienteProveedor
             consultas.consultaReturnHide("SELECT SUM(Saldo) FROM ventaProveedor where adeudoBool=1 AND idProveedor=" & idProveedor & ";")
             If Not consultas.valorReturn = "0" Then
 
-                txtDineroHaber.Text = consultas.valorReturn
+                txtDineroDebe.Text = consultas.valorReturn
 
             End If
 
@@ -245,11 +247,11 @@ Public Class CuentaCorrienteProveedor
                 consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
                 Dim saldoActual As Integer = Val(consultas.valorReturn)
 
-                consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idProveedor=" & idProveedor & ";")
-                If txtDetalleHaber.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Cobrador,fechaVenta,adeudoBool,idProveedor) VALUES (-" & txtDineroHaber.Text & ",'" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
+                consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroDebe.Text)) & " where idProveedor=" & idProveedor & ";")
+                If txtDetalleDebe.Text.Equals("") Then
+                    consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Cobrador,fechaVenta,adeudoBool,idProveedor) VALUES (-" & txtDineroDebe.Text & ",'" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
                 Else
-                    consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Detalle,Cobrador,fechaVenta,adeudoBool,idProveedor) VALUES (-" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "','" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
+                    consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Detalle,Cobrador,fechaVenta,adeudoBool,idProveedor) VALUES (-" & txtDineroDebe.Text & ",'" & txtDetalleDebe.Text & "','" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
                 End If
                 ActualizarTablaRegistroVenta()
                 actualizarTablaConId()
@@ -261,18 +263,18 @@ Public Class CuentaCorrienteProveedor
     End Sub
 
 
-    Private Sub btnOcultarDetalleHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalleHaber.Click
-        txtDetalleHaber.Visible = False
-        btnVerDetalleHaber.Visible = True
-        btnOcultarDetalleHaber.Visible = False
+    Private Sub btnOcultarDetalleHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalleDebe.Click
+        txtDetalleDebe.Visible = False
+        btnVerDetalleDebe.Visible = True
+        btnOcultarDetalleDebe.Visible = False
     End Sub
 
-    Private Sub btnVerDetalleHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalleHaber.Click
-        txtDetalleHaber.Visible = True
-        txtDetalleHaber.Text = ""
-        btnVerDetalleHaber.Visible = False
-        btnOcultarDetalleHaber.Visible = True
-        txtDetalleHaber.Focus()
+    Private Sub btnVerDetalleHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalleDebe.Click
+        txtDetalleDebe.Visible = True
+        txtDetalleDebe.Text = ""
+        btnVerDetalleDebe.Visible = False
+        btnOcultarDetalleDebe.Visible = True
+        txtDetalleDebe.Focus()
     End Sub
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
@@ -281,7 +283,7 @@ Public Class CuentaCorrienteProveedor
         MenuPrincipal.lblTituloVentana.Text = "Menú Principal"
     End Sub
 
-    Private Sub txtDineroHaber_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroHaber.KeyPress
+    Private Sub txtDineroHaber_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroDebe.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
 
@@ -294,7 +296,7 @@ Public Class CuentaCorrienteProveedor
 
     Private Sub chkRegistroCompleto_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkRegistroCompleto.CheckedChanged
         If chkRegistroCompleto.Checked Then
-            gbHaber.Visible = False
+            gbDebe.Visible = False
             btnHaber.Enabled = False
             chkCobros.Checked = False
             'Aqui podrá ver el registro completo pero sin los cobros realizados.
@@ -315,7 +317,7 @@ Public Class CuentaCorrienteProveedor
     Private Sub chkCobros_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCobros.CheckedChanged
         If chkCobros.Checked Then
 
-            gbHaber.Visible = False
+            gbDebe.Visible = False
             btnHaber.Enabled = False
             chkRegistroCompleto.Checked = False
 
@@ -337,7 +339,7 @@ Public Class CuentaCorrienteProveedor
     End Sub
 
     Private Sub btnCerrarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarHaber.Click
-        gbHaber.Visible = False
+        gbDebe.Visible = False
     End Sub
 
 
@@ -348,12 +350,12 @@ Public Class CuentaCorrienteProveedor
 
 
     Sub pagarDeuda()
-        If Not txtDineroHaber.Text.Equals("") And Not txtDineroHaber.Text.Equals("0") Then
+        If Not txtDineroDebe.Text.Equals("") And Not txtDineroDebe.Text.Equals("0") Then
 
-            If txtDetalleHaber.Text.Equals("") Then
-                consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,fechaVenta,adeudoBool,idProveedor) Values(-" & txtDineroHaber.Text & ",now(),1," & idProveedor & ");")
+            If txtDetalleDebe.Text.Equals("") Then
+                consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,fechaVenta,adeudoBool,idProveedor) Values(-" & txtDineroDebe.Text & ",now(),1," & idProveedor & ");")
             Else
-                consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,Detalle,fechaVenta,adeudoBool,idProveedor) Values(-" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "'" & ",now(),1," & idProveedor & ");")
+                consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,Detalle,fechaVenta,adeudoBool,idProveedor) Values(-" & txtDineroDebe.Text & ",'" & txtDetalleDebe.Text & "'" & ",now(),1," & idProveedor & ");")
             End If
 
             'ACTUALIZO LA DEUDA EN EL CLIENTE
@@ -361,12 +363,12 @@ Public Class CuentaCorrienteProveedor
             consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
             Dim saldoActual As Integer = Val(consultas.valorReturn)
 
-            consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idProveedor=" & idProveedor & ";")
+            consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroDebe.Text)) & " where idProveedor=" & idProveedor & ";")
 
-            txtDineroHaber.Text = ""
+            txtDineroDebe.Text = ""
             ActualizarTablaRegistroVenta()
             actualizarTablaConId()
-            txtDineroHaber.Focus()
+            txtDineroDebe.Focus()
             limpiarHaber()
 
         End If
@@ -382,15 +384,15 @@ Public Class CuentaCorrienteProveedor
     Private Sub actualizarSaldo()
         Dim fechaActual = DateTime.Now.ToString("dd/MM/yyyy HH:mm")
 
-        If Not txtDineroDebe.Text.Equals("") And Not txtDineroDebe.Text.Equals("0") Then
+        If Not txtDineroHaber.Text.Equals("") And Not txtDineroHaber.Text.Equals("0") Then
 
             '----FUNCION AL PRESIONAR "GUARDAR" EN LA SECCIÓN DEL DEBE----'
 
 
-            If txtDetalleDebe.Text.Equals("") Then
-                consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,fechaVenta,adeudoBool,idProveedor) Values(" & txtDineroDebe.Text & ",now(),1," & idProveedor & ");")
+            If txtDetalleHaber.Text.Equals("") Then
+                consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,fechaVenta,adeudoBool,idProveedor) Values(" & txtDineroHaber.Text & ",now(),1," & idProveedor & ");")
             Else
-                consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,Detalle,fechaVenta,adeudoBool,idProveedor) Values(" & txtDineroDebe.Text & ",'" & txtDetalleDebe.Text & "'" & ",now(),1," & idProveedor & ");")
+                consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,Detalle,fechaVenta,adeudoBool,idProveedor) Values(" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "'" & ",now(),1," & idProveedor & ");")
             End If
 
 
@@ -409,7 +411,7 @@ Public Class CuentaCorrienteProveedor
             consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
             Dim saldoActual As Integer = Val(consultas.valorReturn)
 
-            consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual + Val(txtDineroDebe.Text)) & " where idProveedor=" & idProveedor & ";")
+            consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual + Val(txtDineroHaber.Text)) & " where idProveedor=" & idProveedor & ";")
 
             actualizarTablaConId()
             ActualizarTablaRegistroVenta()
@@ -422,22 +424,22 @@ Public Class CuentaCorrienteProveedor
 
     End Sub
 
-    Private Sub btnVerDetalleDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalleDebe.Click
-        txtDetalleDebe.Visible = True
-        txtDetalleDebe.Text = ""
-        btnVerDetalleDebe.Visible = False
-        btnOcultarDetalleDebe.Visible = True
-        txtDetalleDebe.Focus()
+    Private Sub btnVerDetalleDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalleHaber.Click
+        txtDetalleHaber.Visible = True
+        txtDetalleHaber.Text = ""
+        btnVerDetalleHaber.Visible = False
+        btnOcultarDetalleHaber.Visible = True
+        txtDetalleHaber.Focus()
     End Sub
 
-    Private Sub btnOcultarDetalleDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalleDebe.Click
-        txtDetalleDebe.Visible = False
-        btnVerDetalleDebe.Visible = True
-        btnOcultarDetalleDebe.Visible = False
+    Private Sub btnOcultarDetalleDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalleHaber.Click
+        txtDetalleHaber.Visible = False
+        btnVerDetalleHaber.Visible = True
+        btnOcultarDetalleHaber.Visible = False
     End Sub
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarInfo.Click
-        gbDebe.Visible = False
+        gbHaber.Visible = False
     End Sub
 
 
@@ -455,7 +457,7 @@ Public Class CuentaCorrienteProveedor
         End If
     End Sub
 
-    Private Sub txtDineroDebe_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroDebe.KeyPress
+    Private Sub txtDineroDebe_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroHaber.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
 

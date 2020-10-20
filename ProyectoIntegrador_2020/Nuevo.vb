@@ -22,7 +22,6 @@ Public Class Nuevo
 
 
     Public Sub btnRegistrarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrarCliente.Click
-
         Registrar()
     End Sub
 
@@ -38,7 +37,6 @@ Public Class Nuevo
 
             If txtNombre.Text.Equals("") Then
                 mostrarMensaje("El nombre del cliente no puede estar vacío.")
-
 
 
 
@@ -328,22 +326,26 @@ Public Class Nuevo
         btnMenosTel1.Visible = False
         btnMasTel2.Visible = False
 
-        txtTelefono3.Text = ""
-        txtTelefono3.Visible = False
-        btnMasTel2.Visible = False
-        btnMenosTel2.Visible = False
-        btnMasTel3.Visible = True
+        If Not txtTelefono3.Text.Equals("") Then
 
-        txtTelefono4.Text = ""
-        txtTelefono4.Visible = False
-        btnMasTel3.Visible = False
-        btnMenosTel3.Visible = False
-        btnMasTel4.Visible = False
+            txtTelefono3.Text = ""
+            txtTelefono3.Visible = False
+            btnMasTel2.Visible = False
+            btnMenosTel2.Visible = False
+            btnMasTel3.Visible = True
 
-        txtTelefono5.Text = ""
-        txtTelefono5.Visible = False
-        btnMasTel4.Visible = False
-        btnMenosTel4.Visible = False
+            txtTelefono4.Text = ""
+            txtTelefono4.Visible = False
+            btnMasTel3.Visible = False
+            btnMenosTel3.Visible = False
+            btnMasTel4.Visible = False
+
+            txtTelefono5.Text = ""
+            txtTelefono5.Visible = False
+            btnMasTel4.Visible = False
+            btnMenosTel4.Visible = False
+        End If
+        
     End Sub
 
     Private Sub btnMenosTel2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenosTel2.Click

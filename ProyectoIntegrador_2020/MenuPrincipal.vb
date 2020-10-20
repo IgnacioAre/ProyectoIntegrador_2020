@@ -455,4 +455,11 @@ Public Class MenuPrincipal
     End Sub
 
 
+    Private Sub btnEstadistica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEstadistica.Click
+        lblTituloVentana.Text = "Estadísticas"
+        If formularioBool = True Then formulario.Close()
+        openFromOnPanel(Of Estadisticas)()
+        formularioBool = True
+        tmrOcultarAbout.Enabled = True
+    End Sub
 End Class

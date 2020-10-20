@@ -178,7 +178,7 @@ Public Class ExploradorClientes
 
 
     Sub ActualizarTablaRegistroCompras()
-        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle as Comentario,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool = 1 AND c.idCliente=" & idCliente & ";")
+        dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle as Comentario,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool = 1 AND c.idCliente=" & idCliente & " order by(idCompra) desc;")
 
         dgvRegistroVentas.Columns(0).Visible = False
     End Sub
