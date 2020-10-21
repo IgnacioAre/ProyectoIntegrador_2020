@@ -207,7 +207,7 @@ Public Class MenuPrincipal
                 submenuProveedores.Height = submenuProveedores.Height + 10
             End If
         ElseIf submenuProductoBool Then
-            If submenuProductos.Height >= 102 Then
+            If submenuProductos.Height >= 52 Then
                 tmrMostrarSubMenu.Enabled = False
             Else
                 submenuProductos.Height = submenuProductos.Height + 10
@@ -381,7 +381,7 @@ Public Class MenuPrincipal
         formularioBool = True
     End Sub
 
-    Private Sub btnListadoProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnListadoProducto.Click
+    Private Sub btnListadoProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         lblTituloVentana.Text = "Listado de Productos y Stock"
         tmrOcultarAbout.Enabled = True
     End Sub

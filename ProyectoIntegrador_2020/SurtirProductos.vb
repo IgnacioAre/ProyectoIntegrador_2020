@@ -191,7 +191,6 @@
 
             If consulta.resultado = 1 Then
                 vaciarCampos()
-                GestionarProductos.ActualizarTablaProductos()
                 Me.Close()
             End If
         Next
@@ -204,6 +203,10 @@
         If txtCodigoProducto.TextLength = 13 Then
             consulta.consultaReturnHide("SELECT Nombre FROM productos where idProducto=" & txtCodigoProducto.Text & ";")
             lblNombre.Text = consulta.valorReturn
+
+            consulta.consultaReturnHide("SELECT porcentajeGanancia FROM surtidoProductos where idProducto=" & txtCodigoProducto.Text & " order by(idSurtido) desc limit 1;")
+            txtGanancia.Text = consulta.valorReturn
+
             lblNombre.Visible = True
             txtImporteCosto.Focus()
         Else

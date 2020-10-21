@@ -250,10 +250,13 @@ Public Class ExploradorClientes
     End Sub
 
     Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
-        If e.KeyChar = ChrW(Keys.Enter) Then
+        If Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
             e.Handled = True
 
-            dgvClientes.Focus()
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                e.Handled = False
+                dgvClientes.Focus()
+            End If
         End If
     End Sub
 
@@ -410,4 +413,5 @@ Public Class ExploradorClientes
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
+
 End Class

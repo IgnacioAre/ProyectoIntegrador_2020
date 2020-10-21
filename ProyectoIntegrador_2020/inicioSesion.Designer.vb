@@ -447,7 +447,7 @@ Partial Class inicioSesion
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "CREAR USUARIO ADMIN"
         '
-        'Login
+        'inicioSesion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -459,7 +459,7 @@ Partial Class inicioSesion
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimizeBox = False
-        Me.Name = "Login"
+        Me.Name = "inicioSesion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         Me.panelTitulo.ResumeLayout(False)

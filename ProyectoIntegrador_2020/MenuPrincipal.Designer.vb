@@ -24,9 +24,9 @@ Partial Class MenuPrincipal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuPrincipal))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelSuperior = New System.Windows.Forms.Panel()
         Me.lblTituloVentana = New System.Windows.Forms.Label()
         Me.btnAyuda = New System.Windows.Forms.Button()
@@ -40,7 +40,6 @@ Partial Class MenuPrincipal
         Me.btnNotas = New System.Windows.Forms.Button()
         Me.submenuProductos = New System.Windows.Forms.Panel()
         Me.btnActualizarProducto = New System.Windows.Forms.Button()
-        Me.btnListadoProducto = New System.Windows.Forms.Button()
         Me.btnProductos = New System.Windows.Forms.Button()
         Me.submenuProveedores = New System.Windows.Forms.Panel()
         Me.btnGestionarProveedor = New System.Windows.Forms.Button()
@@ -238,7 +237,7 @@ Partial Class MenuPrincipal
         Me.btnNotas.ForeColor = System.Drawing.Color.White
         Me.btnNotas.Image = CType(resources.GetObject("btnNotas.Image"), System.Drawing.Image)
         Me.btnNotas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnNotas.Location = New System.Drawing.Point(0, 549)
+        Me.btnNotas.Location = New System.Drawing.Point(0, 496)
         Me.btnNotas.Name = "btnNotas"
         Me.btnNotas.Padding = New System.Windows.Forms.Padding(3, 0, 0, 0)
         Me.btnNotas.Size = New System.Drawing.Size(216, 54)
@@ -251,11 +250,10 @@ Partial Class MenuPrincipal
         '
         Me.submenuProductos.BackColor = System.Drawing.Color.White
         Me.submenuProductos.Controls.Add(Me.btnActualizarProducto)
-        Me.submenuProductos.Controls.Add(Me.btnListadoProducto)
         Me.submenuProductos.Dock = System.Windows.Forms.DockStyle.Top
         Me.submenuProductos.Location = New System.Drawing.Point(0, 438)
         Me.submenuProductos.Name = "submenuProductos"
-        Me.submenuProductos.Size = New System.Drawing.Size(216, 111)
+        Me.submenuProductos.Size = New System.Drawing.Size(216, 58)
         Me.submenuProductos.TabIndex = 25
         Me.submenuProductos.Visible = False
         '
@@ -274,32 +272,11 @@ Partial Class MenuPrincipal
         Me.btnActualizarProducto.Location = New System.Drawing.Point(3, 0)
         Me.btnActualizarProducto.Name = "btnActualizarProducto"
         Me.btnActualizarProducto.Padding = New System.Windows.Forms.Padding(28, 0, 0, 0)
-        Me.btnActualizarProducto.Size = New System.Drawing.Size(230, 54)
+        Me.btnActualizarProducto.Size = New System.Drawing.Size(230, 58)
         Me.btnActualizarProducto.TabIndex = 5
         Me.btnActualizarProducto.Text = " Gestionar"
         Me.btnActualizarProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnActualizarProducto.UseVisualStyleBackColor = False
-        '
-        'btnListadoProducto
-        '
-        Me.btnListadoProducto.BackColor = System.Drawing.Color.Black
-        Me.btnListadoProducto.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnListadoProducto.FlatAppearance.BorderSize = 0
-        Me.btnListadoProducto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnListadoProducto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnListadoProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnListadoProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnListadoProducto.ForeColor = System.Drawing.Color.White
-        Me.btnListadoProducto.Image = CType(resources.GetObject("btnListadoProducto.Image"), System.Drawing.Image)
-        Me.btnListadoProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnListadoProducto.Location = New System.Drawing.Point(3, 54)
-        Me.btnListadoProducto.Name = "btnListadoProducto"
-        Me.btnListadoProducto.Padding = New System.Windows.Forms.Padding(28, 0, 0, 0)
-        Me.btnListadoProducto.Size = New System.Drawing.Size(230, 54)
-        Me.btnListadoProducto.TabIndex = 4
-        Me.btnListadoProducto.Text = " Listado"
-        Me.btnListadoProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnListadoProducto.UseVisualStyleBackColor = False
         '
         'btnProductos
         '
@@ -561,7 +538,7 @@ Partial Class MenuPrincipal
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(11, 333)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(509, 264)
+        Me.Label5.Size = New System.Drawing.Size(509, 240)
         Me.Label5.TabIndex = 22
         Me.Label5.Text = resources.GetString("Label5.Text")
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -583,7 +560,7 @@ Partial Class MenuPrincipal
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(16, 42)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(478, 240)
+        Me.Label3.Size = New System.Drawing.Size(478, 216)
         Me.Label3.TabIndex = 20
         Me.Label3.Text = resources.GetString("Label3.Text")
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -622,30 +599,30 @@ Partial Class MenuPrincipal
         Me.dgvPreciosRapidos.AllowUserToDeleteRows = False
         Me.dgvPreciosRapidos.AllowUserToResizeColumns = False
         Me.dgvPreciosRapidos.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvPreciosRapidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvPreciosRapidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
         Me.dgvPreciosRapidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvPreciosRapidos.BackgroundColor = System.Drawing.Color.White
         Me.dgvPreciosRapidos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvPreciosRapidos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvPreciosRapidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPreciosRapidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvPreciosRapidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
         Me.dgvPreciosRapidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPreciosRapidos.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(117, Byte), Integer), CType(CType(119, Byte), Integer))
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPreciosRapidos.DefaultCellStyle = DataGridViewCellStyle18
         Me.dgvPreciosRapidos.EnableHeadersVisualStyles = False
         Me.dgvPreciosRapidos.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvPreciosRapidos.Location = New System.Drawing.Point(38, 102)
@@ -838,7 +815,6 @@ Partial Class MenuPrincipal
     Friend WithEvents btnNotas As System.Windows.Forms.Button
     Friend WithEvents submenuProductos As System.Windows.Forms.Panel
     Friend WithEvents btnActualizarProducto As System.Windows.Forms.Button
-    Friend WithEvents btnListadoProducto As System.Windows.Forms.Button
     Friend WithEvents btnProductos As System.Windows.Forms.Button
     Friend WithEvents submenuProveedores As System.Windows.Forms.Panel
     Friend WithEvents btnGestionarProveedor As System.Windows.Forms.Button

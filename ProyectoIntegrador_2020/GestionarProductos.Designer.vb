@@ -22,36 +22,27 @@ Partial Class GestionarProductos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GestionarProductos))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.dgvProductos = New Guna.UI.WinForms.GunaDataGridView()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.txtBuscarProductos = New System.Windows.Forms.TextBox()
         Me.gpInformacion = New System.Windows.Forms.GroupBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.chbExiste = New System.Windows.Forms.CheckBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.cbxMedida = New System.Windows.Forms.ComboBox()
+        Me.txtCantidadUnidad = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtStock = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnCerrarInfo = New System.Windows.Forms.Button()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.panelEditarRegistro = New System.Windows.Forms.Panel()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.btnGuardarRegistro = New System.Windows.Forms.Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.txtDetalleRegistro = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtSaldoRegistro = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.btnEditarRegistro = New System.Windows.Forms.PictureBox()
-        Me.dgvRegistroSurtido = New Guna.UI.WinForms.GunaDataGridView()
         Me.btnActualizar = New System.Windows.Forms.Button()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -62,18 +53,39 @@ Partial Class GestionarProductos
         Me.btnSurtir = New System.Windows.Forms.Button()
         Me.pbActualizarTabla = New System.Windows.Forms.PictureBox()
         Me.txtBuscarCodigo = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.btnEliminar = New System.Windows.Forms.Button()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.txtMinimoStock = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnAjustarMinimoStock = New System.Windows.Forms.PictureBox()
+        Me.dgvRegistroSurtido = New Guna.UI.WinForms.GunaDataGridView()
+        Me.btnEditarRegistro = New System.Windows.Forms.PictureBox()
+        Me.panelEditarRegistro = New System.Windows.Forms.Panel()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtCantidad = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.btnGuardarRegistro = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.txtPorcentaje = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtPrecioCosto = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.gpRegistro = New System.Windows.Forms.GroupBox()
+        Me.btnOcultarRegistro = New System.Windows.Forms.Button()
+        Me.btnVerRegistro = New System.Windows.Forms.Button()
+        Me.tmrOcultarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
+        Me.tmrMostrarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpInformacion.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnAjustarMinimoStock, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvRegistroSurtido, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnEditarRegistro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelEditarRegistro.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btnEditarRegistro, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvRegistroSurtido, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gpRegistro.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnCerrar
@@ -98,8 +110,8 @@ Partial Class GestionarProductos
         Me.dgvProductos.AllowUserToDeleteRows = False
         Me.dgvProductos.AllowUserToResizeColumns = False
         Me.dgvProductos.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvProductos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle43.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvProductos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle43
         Me.dgvProductos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
@@ -107,24 +119,24 @@ Partial Class GestionarProductos
         Me.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle44.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle44.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle44.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
+        DataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle44
         Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle45.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle45.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle45.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle45.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle45
         Me.dgvProductos.EnableHeadersVisualStyles = False
         Me.dgvProductos.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvProductos.Location = New System.Drawing.Point(99, 69)
@@ -176,35 +188,66 @@ Partial Class GestionarProductos
         '
         'gpInformacion
         '
+        Me.gpInformacion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.gpInformacion.Controls.Add(Me.chbExiste)
         Me.gpInformacion.Controls.Add(Me.Label10)
-        Me.gpInformacion.Controls.Add(Me.ComboBox1)
-        Me.gpInformacion.Controls.Add(Me.TextBox2)
+        Me.gpInformacion.Controls.Add(Me.cbxMedida)
+        Me.gpInformacion.Controls.Add(Me.txtCantidadUnidad)
         Me.gpInformacion.Controls.Add(Me.Label6)
-        Me.gpInformacion.Controls.Add(Me.TextBox1)
+        Me.gpInformacion.Controls.Add(Me.txtStock)
         Me.gpInformacion.Controls.Add(Me.Label4)
         Me.gpInformacion.Controls.Add(Me.btnCerrarInfo)
-        Me.gpInformacion.Controls.Add(Me.GroupBox2)
         Me.gpInformacion.Controls.Add(Me.btnActualizar)
         Me.gpInformacion.Controls.Add(Me.txtNombre)
         Me.gpInformacion.Controls.Add(Me.Label2)
         Me.gpInformacion.Controls.Add(Me.txtID)
         Me.gpInformacion.Controls.Add(Me.Label1)
         Me.gpInformacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gpInformacion.Location = New System.Drawing.Point(36, 355)
+        Me.gpInformacion.ForeColor = System.Drawing.Color.White
+        Me.gpInformacion.Location = New System.Drawing.Point(36, 411)
         Me.gpInformacion.Name = "gpInformacion"
-        Me.gpInformacion.Size = New System.Drawing.Size(730, 421)
+        Me.gpInformacion.Size = New System.Drawing.Size(316, 365)
         Me.gpInformacion.TabIndex = 37
         Me.gpInformacion.TabStop = False
         Me.gpInformacion.Text = "Información del Producto"
         Me.gpInformacion.Visible = False
         '
-        'TextBox2
+        'chbExiste
         '
-        Me.TextBox2.Enabled = False
-        Me.TextBox2.Location = New System.Drawing.Point(51, 244)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(85, 27)
-        Me.TextBox2.TabIndex = 30
+        Me.chbExiste.AutoSize = True
+        Me.chbExiste.Location = New System.Drawing.Point(182, 187)
+        Me.chbExiste.Name = "chbExiste"
+        Me.chbExiste.Size = New System.Drawing.Size(125, 25)
+        Me.chbExiste.TabIndex = 32
+        Me.chbExiste.Text = "Prod. Activo"
+        Me.chbExiste.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(148, 224)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(57, 17)
+        Me.Label10.TabIndex = 31
+        Me.Label10.Text = "Medida"
+        '
+        'cbxMedida
+        '
+        Me.cbxMedida.FormattingEnabled = True
+        Me.cbxMedida.Items.AddRange(New Object() {"Gramos", "Kilogramos", "Litros", "Mililitros"})
+        Me.cbxMedida.Location = New System.Drawing.Point(167, 244)
+        Me.cbxMedida.Name = "cbxMedida"
+        Me.cbxMedida.Size = New System.Drawing.Size(121, 29)
+        Me.cbxMedida.TabIndex = 21
+        '
+        'txtCantidadUnidad
+        '
+        Me.txtCantidadUnidad.Location = New System.Drawing.Point(51, 244)
+        Me.txtCantidadUnidad.MaxLength = 5
+        Me.txtCantidadUnidad.Name = "txtCantidadUnidad"
+        Me.txtCantidadUnidad.Size = New System.Drawing.Size(85, 27)
+        Me.txtCantidadUnidad.TabIndex = 30
         '
         'Label6
         '
@@ -216,13 +259,13 @@ Partial Class GestionarProductos
         Me.Label6.TabIndex = 29
         Me.Label6.Text = "Cantidad"
         '
-        'TextBox1
+        'txtStock
         '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(51, 185)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(112, 27)
-        Me.TextBox1.TabIndex = 28
+        Me.txtStock.Location = New System.Drawing.Point(51, 185)
+        Me.txtStock.MaxLength = 4
+        Me.txtStock.Name = "txtStock"
+        Me.txtStock.Size = New System.Drawing.Size(112, 27)
+        Me.txtStock.TabIndex = 28
         '
         'Label4
         '
@@ -244,213 +287,16 @@ Partial Class GestionarProductos
         Me.btnCerrarInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCerrarInfo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarInfo.ForeColor = System.Drawing.Color.White
-        Me.btnCerrarInfo.Location = New System.Drawing.Point(696, 17)
+        Me.btnCerrarInfo.Location = New System.Drawing.Point(282, 17)
         Me.btnCerrarInfo.Name = "btnCerrarInfo"
         Me.btnCerrarInfo.Size = New System.Drawing.Size(28, 27)
         Me.btnCerrarInfo.TabIndex = 17
         Me.btnCerrarInfo.Text = "X"
         Me.btnCerrarInfo.UseVisualStyleBackColor = False
         '
-        'GroupBox2
-        '
-        Me.GroupBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox2.Controls.Add(Me.panelEditarRegistro)
-        Me.GroupBox2.Controls.Add(Me.btnEditarRegistro)
-        Me.GroupBox2.Controls.Add(Me.dgvRegistroSurtido)
-        Me.GroupBox2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(348, 55)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(363, 351)
-        Me.GroupBox2.TabIndex = 26
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Registro de Surtido"
-        '
-        'panelEditarRegistro
-        '
-        Me.panelEditarRegistro.BackColor = System.Drawing.Color.Gainsboro
-        Me.panelEditarRegistro.Controls.Add(Me.Label9)
-        Me.panelEditarRegistro.Controls.Add(Me.TextBox3)
-        Me.panelEditarRegistro.Controls.Add(Me.Label8)
-        Me.panelEditarRegistro.Controls.Add(Me.btnGuardarRegistro)
-        Me.panelEditarRegistro.Controls.Add(Me.PictureBox2)
-        Me.panelEditarRegistro.Controls.Add(Me.txtDetalleRegistro)
-        Me.panelEditarRegistro.Controls.Add(Me.Label7)
-        Me.panelEditarRegistro.Controls.Add(Me.txtSaldoRegistro)
-        Me.panelEditarRegistro.Controls.Add(Me.Label5)
-        Me.panelEditarRegistro.Location = New System.Drawing.Point(10, 40)
-        Me.panelEditarRegistro.Name = "panelEditarRegistro"
-        Me.panelEditarRegistro.Size = New System.Drawing.Size(338, 272)
-        Me.panelEditarRegistro.TabIndex = 29
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(273, 65)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(25, 22)
-        Me.Label9.TabIndex = 20
-        Me.Label9.Text = "%"
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Location = New System.Drawing.Point(31, 160)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(84, 27)
-        Me.TextBox3.TabIndex = 19
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(27, 125)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(99, 22)
-        Me.Label8.TabIndex = 18
-        Me.Label8.Text = "Cantidad"
-        '
-        'btnGuardarRegistro
-        '
-        Me.btnGuardarRegistro.BackColor = System.Drawing.Color.Transparent
-        Me.btnGuardarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnGuardarRegistro.FlatAppearance.BorderColor = System.Drawing.Color.White
-        Me.btnGuardarRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnGuardarRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime
-        Me.btnGuardarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGuardarRegistro.Image = CType(resources.GetObject("btnGuardarRegistro.Image"), System.Drawing.Image)
-        Me.btnGuardarRegistro.Location = New System.Drawing.Point(283, 221)
-        Me.btnGuardarRegistro.Name = "btnGuardarRegistro"
-        Me.btnGuardarRegistro.Size = New System.Drawing.Size(43, 48)
-        Me.btnGuardarRegistro.TabIndex = 17
-        Me.btnGuardarRegistro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnGuardarRegistro.UseVisualStyleBackColor = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(15, 225)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(43, 31)
-        Me.PictureBox2.TabIndex = 9
-        Me.PictureBox2.TabStop = False
-        '
-        'txtDetalleRegistro
-        '
-        Me.txtDetalleRegistro.Location = New System.Drawing.Point(201, 65)
-        Me.txtDetalleRegistro.Name = "txtDetalleRegistro"
-        Me.txtDetalleRegistro.Size = New System.Drawing.Size(65, 27)
-        Me.txtDetalleRegistro.TabIndex = 8
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(180, 30)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(110, 22)
-        Me.Label7.TabIndex = 7
-        Me.Label7.Text = "Porcentaje"
-        '
-        'txtSaldoRegistro
-        '
-        Me.txtSaldoRegistro.Location = New System.Drawing.Point(31, 63)
-        Me.txtSaldoRegistro.Name = "txtSaldoRegistro"
-        Me.txtSaldoRegistro.Size = New System.Drawing.Size(84, 27)
-        Me.txtSaldoRegistro.TabIndex = 6
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(27, 28)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(124, 22)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "Precio Costo"
-        '
-        'btnEditarRegistro
-        '
-        Me.btnEditarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnEditarRegistro.Image = CType(resources.GetObject("btnEditarRegistro.Image"), System.Drawing.Image)
-        Me.btnEditarRegistro.Location = New System.Drawing.Point(10, 318)
-        Me.btnEditarRegistro.Name = "btnEditarRegistro"
-        Me.btnEditarRegistro.Size = New System.Drawing.Size(28, 27)
-        Me.btnEditarRegistro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.btnEditarRegistro.TabIndex = 27
-        Me.btnEditarRegistro.TabStop = False
-        '
-        'dgvRegistroSurtido
-        '
-        Me.dgvRegistroSurtido.AllowUserToAddRows = False
-        Me.dgvRegistroSurtido.AllowUserToDeleteRows = False
-        Me.dgvRegistroSurtido.AllowUserToResizeColumns = False
-        Me.dgvRegistroSurtido.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvRegistroSurtido.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.dgvRegistroSurtido.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dgvRegistroSurtido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvRegistroSurtido.BackgroundColor = System.Drawing.Color.Khaki
-        Me.dgvRegistroSurtido.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgvRegistroSurtido.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvRegistroSurtido.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvRegistroSurtido.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
-        Me.dgvRegistroSurtido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvRegistroSurtido.DefaultCellStyle = DataGridViewCellStyle6
-        Me.dgvRegistroSurtido.EnableHeadersVisualStyles = False
-        Me.dgvRegistroSurtido.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.dgvRegistroSurtido.Location = New System.Drawing.Point(10, 40)
-        Me.dgvRegistroSurtido.Name = "dgvRegistroSurtido"
-        Me.dgvRegistroSurtido.ReadOnly = True
-        Me.dgvRegistroSurtido.RowHeadersVisible = False
-        Me.dgvRegistroSurtido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvRegistroSurtido.Size = New System.Drawing.Size(338, 272)
-        Me.dgvRegistroSurtido.TabIndex = 24
-        Me.dgvRegistroSurtido.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
-        Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.dgvRegistroSurtido.ThemeStyle.BackColor = System.Drawing.Color.Khaki
-        Me.dgvRegistroSurtido.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.Height = 23
-        Me.dgvRegistroSurtido.ThemeStyle.ReadOnly = True
-        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
-        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.Height = 22
-        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
-        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
         'btnActualizar
         '
+        Me.btnActualizar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnActualizar.BackColor = System.Drawing.Color.SpringGreen
         Me.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnActualizar.FlatAppearance.BorderColor = System.Drawing.Color.White
@@ -458,7 +304,7 @@ Partial Class GestionarProductos
         Me.btnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime
         Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnActualizar.Image = CType(resources.GetObject("btnActualizar.Image"), System.Drawing.Image)
-        Me.btnActualizar.Location = New System.Drawing.Point(77, 353)
+        Me.btnActualizar.Location = New System.Drawing.Point(83, 298)
         Me.btnActualizar.Name = "btnActualizar"
         Me.btnActualizar.Size = New System.Drawing.Size(139, 48)
         Me.btnActualizar.TabIndex = 16
@@ -469,6 +315,7 @@ Partial Class GestionarProductos
         'txtNombre
         '
         Me.txtNombre.Location = New System.Drawing.Point(48, 118)
+        Me.txtNombre.MaxLength = 30
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(214, 27)
         Me.txtNombre.TabIndex = 3
@@ -582,25 +429,6 @@ Partial Class GestionarProductos
         Me.txtBuscarCodigo.Size = New System.Drawing.Size(244, 26)
         Me.txtBuscarCodigo.TabIndex = 40
         '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Litros", "Mililitros", "Kilogramos", "Gramos"})
-        Me.ComboBox1.Location = New System.Drawing.Point(167, 244)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 29)
-        Me.ComboBox1.TabIndex = 21
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(148, 224)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(57, 17)
-        Me.Label10.TabIndex = 31
-        Me.Label10.Text = "Medida"
-        '
         'btnEliminar
         '
         Me.btnEliminar.BackColor = System.Drawing.Color.Crimson
@@ -622,12 +450,313 @@ Partial Class GestionarProductos
         Me.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnEliminar.UseVisualStyleBackColor = False
         '
+        'PictureBox3
+        '
+        Me.PictureBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
+        Me.PictureBox3.Location = New System.Drawing.Point(526, 17)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(41, 36)
+        Me.PictureBox3.TabIndex = 42
+        Me.PictureBox3.TabStop = False
+        '
+        'txtMinimoStock
+        '
+        Me.txtMinimoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtMinimoStock.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMinimoStock.Location = New System.Drawing.Point(869, 91)
+        Me.txtMinimoStock.MaxLength = 3
+        Me.txtMinimoStock.Name = "txtMinimoStock"
+        Me.txtMinimoStock.Size = New System.Drawing.Size(55, 26)
+        Me.txtMinimoStock.TabIndex = 44
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(854, 62)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(116, 21)
+        Me.Label3.TabIndex = 43
+        Me.Label3.Text = "Stock mínimio"
+        '
+        'btnAjustarMinimoStock
+        '
+        Me.btnAjustarMinimoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAjustarMinimoStock.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAjustarMinimoStock.Image = CType(resources.GetObject("btnAjustarMinimoStock.Image"), System.Drawing.Image)
+        Me.btnAjustarMinimoStock.Location = New System.Drawing.Point(937, 91)
+        Me.btnAjustarMinimoStock.Name = "btnAjustarMinimoStock"
+        Me.btnAjustarMinimoStock.Size = New System.Drawing.Size(24, 24)
+        Me.btnAjustarMinimoStock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.btnAjustarMinimoStock.TabIndex = 45
+        Me.btnAjustarMinimoStock.TabStop = False
+        '
+        'dgvRegistroSurtido
+        '
+        Me.dgvRegistroSurtido.AllowUserToAddRows = False
+        Me.dgvRegistroSurtido.AllowUserToDeleteRows = False
+        Me.dgvRegistroSurtido.AllowUserToResizeColumns = False
+        Me.dgvRegistroSurtido.AllowUserToResizeRows = False
+        DataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvRegistroSurtido.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle46
+        Me.dgvRegistroSurtido.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgvRegistroSurtido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvRegistroSurtido.BackgroundColor = System.Drawing.Color.Khaki
+        Me.dgvRegistroSurtido.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvRegistroSurtido.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgvRegistroSurtido.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle47.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle47.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle47.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        DataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvRegistroSurtido.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle47
+        Me.dgvRegistroSurtido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle48.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle48.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle48.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvRegistroSurtido.DefaultCellStyle = DataGridViewCellStyle48
+        Me.dgvRegistroSurtido.EnableHeadersVisualStyles = False
+        Me.dgvRegistroSurtido.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.dgvRegistroSurtido.Location = New System.Drawing.Point(10, 27)
+        Me.dgvRegistroSurtido.Name = "dgvRegistroSurtido"
+        Me.dgvRegistroSurtido.ReadOnly = True
+        Me.dgvRegistroSurtido.RowHeadersVisible = False
+        Me.dgvRegistroSurtido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvRegistroSurtido.Size = New System.Drawing.Size(587, 248)
+        Me.dgvRegistroSurtido.TabIndex = 24
+        Me.dgvRegistroSurtido.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
+        Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.dgvRegistroSurtido.ThemeStyle.BackColor = System.Drawing.Color.Khaki
+        Me.dgvRegistroSurtido.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.Height = 23
+        Me.dgvRegistroSurtido.ThemeStyle.ReadOnly = True
+        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
+        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.Height = 22
+        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
+        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        '
+        'btnEditarRegistro
+        '
+        Me.btnEditarRegistro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnEditarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEditarRegistro.Image = CType(resources.GetObject("btnEditarRegistro.Image"), System.Drawing.Image)
+        Me.btnEditarRegistro.Location = New System.Drawing.Point(10, 281)
+        Me.btnEditarRegistro.Name = "btnEditarRegistro"
+        Me.btnEditarRegistro.Size = New System.Drawing.Size(28, 27)
+        Me.btnEditarRegistro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.btnEditarRegistro.TabIndex = 27
+        Me.btnEditarRegistro.TabStop = False
+        '
+        'panelEditarRegistro
+        '
+        Me.panelEditarRegistro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.panelEditarRegistro.BackColor = System.Drawing.Color.Gainsboro
+        Me.panelEditarRegistro.Controls.Add(Me.Label9)
+        Me.panelEditarRegistro.Controls.Add(Me.txtCantidad)
+        Me.panelEditarRegistro.Controls.Add(Me.Label8)
+        Me.panelEditarRegistro.Controls.Add(Me.btnGuardarRegistro)
+        Me.panelEditarRegistro.Controls.Add(Me.PictureBox2)
+        Me.panelEditarRegistro.Controls.Add(Me.txtPorcentaje)
+        Me.panelEditarRegistro.Controls.Add(Me.Label7)
+        Me.panelEditarRegistro.Controls.Add(Me.txtPrecioCosto)
+        Me.panelEditarRegistro.Controls.Add(Me.Label5)
+        Me.panelEditarRegistro.Location = New System.Drawing.Point(10, 27)
+        Me.panelEditarRegistro.Name = "panelEditarRegistro"
+        Me.panelEditarRegistro.Size = New System.Drawing.Size(338, 248)
+        Me.panelEditarRegistro.TabIndex = 29
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.Black
+        Me.Label9.Location = New System.Drawing.Point(273, 65)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(25, 22)
+        Me.Label9.TabIndex = 20
+        Me.Label9.Text = "%"
+        '
+        'txtCantidad
+        '
+        Me.txtCantidad.Location = New System.Drawing.Point(31, 160)
+        Me.txtCantidad.Name = "txtCantidad"
+        Me.txtCantidad.Size = New System.Drawing.Size(84, 27)
+        Me.txtCantidad.TabIndex = 19
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.Black
+        Me.Label8.Location = New System.Drawing.Point(27, 125)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(99, 22)
+        Me.Label8.TabIndex = 18
+        Me.Label8.Text = "Cantidad"
+        '
+        'btnGuardarRegistro
+        '
+        Me.btnGuardarRegistro.BackColor = System.Drawing.Color.Transparent
+        Me.btnGuardarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnGuardarRegistro.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.btnGuardarRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnGuardarRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime
+        Me.btnGuardarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGuardarRegistro.Image = CType(resources.GetObject("btnGuardarRegistro.Image"), System.Drawing.Image)
+        Me.btnGuardarRegistro.Location = New System.Drawing.Point(277, 193)
+        Me.btnGuardarRegistro.Name = "btnGuardarRegistro"
+        Me.btnGuardarRegistro.Size = New System.Drawing.Size(43, 48)
+        Me.btnGuardarRegistro.TabIndex = 17
+        Me.btnGuardarRegistro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnGuardarRegistro.UseVisualStyleBackColor = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(9, 204)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(43, 31)
+        Me.PictureBox2.TabIndex = 9
+        Me.PictureBox2.TabStop = False
+        '
+        'txtPorcentaje
+        '
+        Me.txtPorcentaje.Location = New System.Drawing.Point(201, 65)
+        Me.txtPorcentaje.MaxLength = 2
+        Me.txtPorcentaje.Name = "txtPorcentaje"
+        Me.txtPorcentaje.Size = New System.Drawing.Size(65, 27)
+        Me.txtPorcentaje.TabIndex = 8
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.Black
+        Me.Label7.Location = New System.Drawing.Point(180, 30)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(110, 22)
+        Me.Label7.TabIndex = 7
+        Me.Label7.Text = "Porcentaje"
+        '
+        'txtPrecioCosto
+        '
+        Me.txtPrecioCosto.Location = New System.Drawing.Point(31, 63)
+        Me.txtPrecioCosto.Name = "txtPrecioCosto"
+        Me.txtPrecioCosto.Size = New System.Drawing.Size(84, 27)
+        Me.txtPrecioCosto.TabIndex = 6
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Black
+        Me.Label5.Location = New System.Drawing.Point(27, 28)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(124, 22)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Precio Costo"
+        '
+        'gpRegistro
+        '
+        Me.gpRegistro.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gpRegistro.Controls.Add(Me.panelEditarRegistro)
+        Me.gpRegistro.Controls.Add(Me.btnEditarRegistro)
+        Me.gpRegistro.Controls.Add(Me.dgvRegistroSurtido)
+        Me.gpRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gpRegistro.ForeColor = System.Drawing.Color.White
+        Me.gpRegistro.Location = New System.Drawing.Point(358, 462)
+        Me.gpRegistro.Name = "gpRegistro"
+        Me.gpRegistro.Size = New System.Drawing.Size(612, 314)
+        Me.gpRegistro.TabIndex = 26
+        Me.gpRegistro.TabStop = False
+        Me.gpRegistro.Text = "Registro de Surtido"
+        Me.gpRegistro.Visible = False
+        '
+        'btnOcultarRegistro
+        '
+        Me.btnOcultarRegistro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnOcultarRegistro.BackColor = System.Drawing.Color.Crimson
+        Me.btnOcultarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnOcultarRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnOcultarRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnOcultarRegistro.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOcultarRegistro.ForeColor = System.Drawing.Color.White
+        Me.btnOcultarRegistro.Image = CType(resources.GetObject("btnOcultarRegistro.Image"), System.Drawing.Image)
+        Me.btnOcultarRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnOcultarRegistro.Location = New System.Drawing.Point(803, 408)
+        Me.btnOcultarRegistro.Name = "btnOcultarRegistro"
+        Me.btnOcultarRegistro.Size = New System.Drawing.Size(167, 47)
+        Me.btnOcultarRegistro.TabIndex = 47
+        Me.btnOcultarRegistro.Text = "  Ocultar Registro"
+        Me.btnOcultarRegistro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnOcultarRegistro.UseVisualStyleBackColor = False
+        Me.btnOcultarRegistro.Visible = False
+        '
+        'btnVerRegistro
+        '
+        Me.btnVerRegistro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnVerRegistro.BackColor = System.Drawing.Color.Teal
+        Me.btnVerRegistro.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnVerRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnVerRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnVerRegistro.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVerRegistro.ForeColor = System.Drawing.Color.White
+        Me.btnVerRegistro.Image = CType(resources.GetObject("btnVerRegistro.Image"), System.Drawing.Image)
+        Me.btnVerRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnVerRegistro.Location = New System.Drawing.Point(803, 408)
+        Me.btnVerRegistro.Name = "btnVerRegistro"
+        Me.btnVerRegistro.Size = New System.Drawing.Size(132, 47)
+        Me.btnVerRegistro.TabIndex = 46
+        Me.btnVerRegistro.Text = "  Ver Registro"
+        Me.btnVerRegistro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnVerRegistro.UseVisualStyleBackColor = False
+        '
+        'tmrOcultarEditarRegistro
+        '
+        Me.tmrOcultarEditarRegistro.Interval = 1
+        '
+        'tmrMostrarEditarRegistro
+        '
+        Me.tmrMostrarEditarRegistro.Interval = 1
+        '
         'GestionarProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.DodgerBlue
+        Me.BackColor = System.Drawing.Color.Indigo
         Me.ClientSize = New System.Drawing.Size(994, 788)
+        Me.Controls.Add(Me.btnOcultarRegistro)
+        Me.Controls.Add(Me.btnVerRegistro)
+        Me.Controls.Add(Me.btnAjustarMinimoStock)
+        Me.Controls.Add(Me.txtMinimoStock)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.btnEliminar)
         Me.Controls.Add(Me.txtBuscarCodigo)
         Me.Controls.Add(Me.pbActualizarTabla)
@@ -635,6 +764,7 @@ Partial Class GestionarProductos
         Me.Controls.Add(Me.gpInformacion)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnNuevo)
+        Me.Controls.Add(Me.gpRegistro)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.txtBuscarProductos)
         Me.Controls.Add(Me.dgvProductos)
@@ -646,13 +776,15 @@ Partial Class GestionarProductos
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpInformacion.ResumeLayout(False)
         Me.gpInformacion.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
+        CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnAjustarMinimoStock, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvRegistroSurtido, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnEditarRegistro, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelEditarRegistro.ResumeLayout(False)
         Me.panelEditarRegistro.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnEditarRegistro, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvRegistroSurtido, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gpRegistro.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -662,16 +794,6 @@ Partial Class GestionarProductos
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents txtBuscarProductos As System.Windows.Forms.TextBox
     Friend WithEvents gpInformacion As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents panelEditarRegistro As System.Windows.Forms.Panel
-    Friend WithEvents btnGuardarRegistro As System.Windows.Forms.Button
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents txtDetalleRegistro As System.Windows.Forms.TextBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents txtSaldoRegistro As System.Windows.Forms.TextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents btnEditarRegistro As System.Windows.Forms.PictureBox
-    Friend WithEvents dgvRegistroSurtido As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents btnCerrarInfo As System.Windows.Forms.Button
     Friend WithEvents btnActualizar As System.Windows.Forms.Button
     Friend WithEvents txtNombre As System.Windows.Forms.TextBox
@@ -680,17 +802,36 @@ Partial Class GestionarProductos
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnModificar As System.Windows.Forms.Button
     Friend WithEvents btnNuevo As System.Windows.Forms.Button
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtCantidadUnidad As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtStock As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents btnSurtir As System.Windows.Forms.Button
-    Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents pbActualizarTabla As System.Windows.Forms.PictureBox
     Friend WithEvents txtBuscarCodigo As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents cbxMedida As System.Windows.Forms.ComboBox
     Friend WithEvents btnEliminar As System.Windows.Forms.Button
+    Friend WithEvents chbExiste As System.Windows.Forms.CheckBox
+    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
+    Friend WithEvents txtMinimoStock As System.Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents btnAjustarMinimoStock As System.Windows.Forms.PictureBox
+    Friend WithEvents dgvRegistroSurtido As Guna.UI.WinForms.GunaDataGridView
+    Friend WithEvents btnEditarRegistro As System.Windows.Forms.PictureBox
+    Friend WithEvents panelEditarRegistro As System.Windows.Forms.Panel
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents txtCantidad As System.Windows.Forms.TextBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents btnGuardarRegistro As System.Windows.Forms.Button
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents txtPorcentaje As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents txtPrecioCosto As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents gpRegistro As System.Windows.Forms.GroupBox
+    Friend WithEvents btnOcultarRegistro As System.Windows.Forms.Button
+    Friend WithEvents btnVerRegistro As System.Windows.Forms.Button
+    Friend WithEvents tmrOcultarEditarRegistro As System.Windows.Forms.Timer
+    Friend WithEvents tmrMostrarEditarRegistro As System.Windows.Forms.Timer
 End Class

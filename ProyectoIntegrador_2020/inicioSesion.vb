@@ -76,9 +76,13 @@ Public Class inicioSesion
     '----CAMBIAR FOCO A LA CONTRASEÑA----'
 
     Private Sub txtUsuario_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtUsuarioLogin.KeyPress
-        If e.KeyChar = ChrW(Keys.Enter) Then
+        If Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
             e.Handled = True
-            txtContraseñaLogin.Focus()
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                e.Handled = False
+                txtContraseñaRegistro.Focus()
+            End If
         End If
     End Sub
 
@@ -114,6 +118,12 @@ Public Class inicioSesion
     '----ENTRA AL MENÚ PRINCIPAL (VALIDACIÓN EN LOGIN)----'
 
     Private Sub btnEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEntrar.Click
+        Entrar()
+    End Sub
+
+
+    Sub Entrar()
+
         Try
             consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
 
@@ -136,6 +146,7 @@ Public Class inicioSesion
         End Try
 
     End Sub
+
 
 
     '----CREAR UN USUARIO ADMINISTRADOR----'
@@ -298,32 +309,21 @@ Public Class inicioSesion
     End Sub
 
     Private Sub txtContraseñaLogin_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtContraseñaLogin.KeyPress
-        If e.KeyChar = ChrW(Keys.Enter) Then
+
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
             e.Handled = True
 
-            Try
-                consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
-
-                If Not consultas.valorReturn = "" Then
-                    If chbGuardarUsuario.Checked Then
-                        guardarUsuarioTxt(txtUsuarioLogin.Text.ToUpper)
-                    Else
-                        guardarUsuarioTxt("")
-                    End If
-                    consultas.consultaReturnHide("Select idAdmin from Admin where Usuario='" & txtUsuarioLogin.Text & "';")
-                    Nuevo.idIngresoAdmin = Val(consultas.valorReturn)
-                    MenuPrincipal.Show()
-                    Me.Close()
-                Else
-                    mostrarMensaje("No se encuentra un usuario con esos datos." & vbCrLf & "Intentelo nuevamente.")
-                End If
-
-            Catch ex As Exception
-                mostrarMensaje("Error: " & ex.Message)
-            End Try
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                Entrar()
+            End If
 
         End If
+
+
     End Sub
+
+
+
 
     Private Sub txtClaveAdminRegistro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtClaveAdminRegistro.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
@@ -384,4 +384,14 @@ Public Class inicioSesion
         txtContraseñaLogin.UseSystemPasswordChar = True
     End Sub
 
+    Private Sub txtUsuarioRegistro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtUsuarioRegistro.KeyPress
+        If Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
+            e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                e.Handled = False
+                txtContraseñaRegistro.Focus()
+            End If
+        End If
+    End Sub
 End Class

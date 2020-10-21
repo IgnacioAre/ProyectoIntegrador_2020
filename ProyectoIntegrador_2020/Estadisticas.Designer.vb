@@ -22,13 +22,13 @@ Partial Class Estadisticas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.chartGrafica = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.rbCircular = New System.Windows.Forms.RadioButton()
+        Me.rbColumnas = New System.Windows.Forms.RadioButton()
         Me.rbBarras = New System.Windows.Forms.RadioButton()
         Me.barHorizontal = New System.Windows.Forms.TrackBar()
         Me.barVertical = New System.Windows.Forms.TrackBar()
@@ -44,22 +44,22 @@ Partial Class Estadisticas
         '
         'chartGrafica
         '
-        Me.chartGrafica.BackColor = System.Drawing.Color.LightGray
-        ChartArea2.Area3DStyle.Enable3D = True
-        ChartArea2.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
-        ChartArea2.BackColor = System.Drawing.Color.White
-        ChartArea2.Name = "ChartArea1"
-        Me.chartGrafica.ChartAreas.Add(ChartArea2)
+        Me.chartGrafica.BackColor = System.Drawing.SystemColors.InactiveCaption
+        ChartArea1.Area3DStyle.Enable3D = True
+        ChartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
+        ChartArea1.BackColor = System.Drawing.Color.White
+        ChartArea1.Name = "ChartArea1"
+        Me.chartGrafica.ChartAreas.Add(ChartArea1)
         Me.chartGrafica.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend2.Name = "Legend1"
-        Me.chartGrafica.Legends.Add(Legend2)
+        Legend1.Name = "Legend1"
+        Me.chartGrafica.Legends.Add(Legend1)
         Me.chartGrafica.Location = New System.Drawing.Point(0, 0)
         Me.chartGrafica.Name = "chartGrafica"
         Me.chartGrafica.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.chartGrafica.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.chartGrafica.Series.Add(Series1)
         Me.chartGrafica.Size = New System.Drawing.Size(599, 355)
         Me.chartGrafica.TabIndex = 0
         Me.chartGrafica.Text = "Chart1"
@@ -69,8 +69,8 @@ Partial Class Estadisticas
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Panel1.Controls.Add(Me.RadioButton2)
-        Me.Panel1.Controls.Add(Me.RadioButton1)
+        Me.Panel1.Controls.Add(Me.rbCircular)
+        Me.Panel1.Controls.Add(Me.rbColumnas)
         Me.Panel1.Controls.Add(Me.rbBarras)
         Me.Panel1.Controls.Add(Me.barHorizontal)
         Me.Panel1.Location = New System.Drawing.Point(0, 355)
@@ -78,29 +78,29 @@ Partial Class Estadisticas
         Me.Panel1.Size = New System.Drawing.Size(700, 94)
         Me.Panel1.TabIndex = 1
         '
-        'RadioButton2
+        'rbCircular
         '
-        Me.RadioButton2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(577, 62)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(96, 17)
-        Me.RadioButton2.TabIndex = 8
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "Gráfica circular"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.rbCircular.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.rbCircular.AutoSize = True
+        Me.rbCircular.Location = New System.Drawing.Point(577, 62)
+        Me.rbCircular.Name = "rbCircular"
+        Me.rbCircular.Size = New System.Drawing.Size(96, 17)
+        Me.rbCircular.TabIndex = 8
+        Me.rbCircular.TabStop = True
+        Me.rbCircular.Text = "Gráfica circular"
+        Me.rbCircular.UseVisualStyleBackColor = True
         '
-        'RadioButton1
+        'rbColumnas
         '
-        Me.RadioButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(577, 14)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(122, 17)
-        Me.RadioButton1.TabIndex = 7
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Gráfica en columnas"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.rbColumnas.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.rbColumnas.AutoSize = True
+        Me.rbColumnas.Location = New System.Drawing.Point(577, 14)
+        Me.rbColumnas.Name = "rbColumnas"
+        Me.rbColumnas.Size = New System.Drawing.Size(122, 17)
+        Me.rbColumnas.TabIndex = 7
+        Me.rbColumnas.TabStop = True
+        Me.rbColumnas.Text = "Gráfica en columnas"
+        Me.rbColumnas.UseVisualStyleBackColor = True
         '
         'rbBarras
         '
@@ -186,7 +186,7 @@ Partial Class Estadisticas
     Friend WithEvents barVertical As System.Windows.Forms.TrackBar
     Friend WithEvents barHorizontal As System.Windows.Forms.TrackBar
     Friend WithEvents rbBarras As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+    Friend WithEvents rbCircular As System.Windows.Forms.RadioButton
+    Friend WithEvents rbColumnas As System.Windows.Forms.RadioButton
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
 End Class
