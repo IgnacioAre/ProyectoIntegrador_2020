@@ -462,4 +462,12 @@ Public Class MenuPrincipal
         formularioBool = True
         tmrOcultarAbout.Enabled = True
     End Sub
+
+    Private Sub PanelContenedor_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles PanelContenedor.Paint
+
+    End Sub
+
+    Private Sub txtPrecioProductos_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPrecioProductos.TextChanged
+
+    End Sub
 End Class
