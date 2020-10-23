@@ -78,6 +78,11 @@ Public Class ExploradorProveedores
         If dgvProveedores.SelectedCells.Count <> 0 Then
             btnModificar.Enabled = True
             btnEliminar.Enabled = True
+
+            If panelEditarRegistro.Width >= 349 Then
+                tmrOcultarEditarRegistro.Enabled = True
+            End If
+
             idProveedor = dgvProveedores.SelectedCells(0).Value
 
             txtID.Text = row.Cells(0).Value.ToString
@@ -320,8 +325,6 @@ Public Class ExploradorProveedores
     End Sub
 
     Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
-        restadorSaldoExplorador()
-
         tmrOcultarEditarRegistro.Enabled = True
     End Sub
 

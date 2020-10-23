@@ -48,13 +48,8 @@ Public Class ExploradorClientes
 
         dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
 
-        consultas.consultaReturnHide("Select count(idCliente) from Clientes;")
-        Dim cantClientes As Integer = Val(consultas.valorReturn)
-
-        If cantClientes > 0 Then
-            dgvClientes.Columns(5).Visible = False
-            dgvClientes.Columns(6).Width = 0
-        End If
+        dgvClientes.Columns(5).Visible = False
+        dgvClientes.Columns(6).Width = 0
 
     End Sub
 
@@ -78,6 +73,11 @@ Public Class ExploradorClientes
         If dgvClientes.SelectedCells.Count <> 0 Then
             btnModificar.Enabled = True
             btnEliminar.Enabled = True
+
+            If panelEditarRegistro.Width >= 349 Then
+                tmrOcultarEditarRegistro.Enabled = True
+            End If
+
             idCliente = dgvClientes.SelectedCells(0).Value
 
             txtID.Text = row.Cells(0).Value.ToString
@@ -314,7 +314,6 @@ Public Class ExploradorClientes
 
 
     Sub restarSaldoExplorador()
-        'ACTUALIZO LA DEUDA EN EL PROVEEDOR
 
         consultas.consultaReturnHide("SELECT Saldo from Clientes where idCliente=" & idCliente & ";")
         saldoActual = Val(consultas.valorReturn)
@@ -347,9 +346,6 @@ Public Class ExploradorClientes
     End Sub
 
     Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
-
-        restarSaldoExplorador()
-
         tmrOcultarEditarRegistro.Enabled = True
     End Sub
 

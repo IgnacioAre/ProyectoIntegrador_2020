@@ -5,6 +5,9 @@ Public Class GestionarProductos
     Dim consulta As Conexion = New Conexion()
 
     Dim idProducto As Long
+    Dim idSurtido As Integer
+    Dim stockAux As Integer
+    Dim cantidadAux As Integer
 
     Private Sub GestionarProductos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         SendMessage(txtBuscarProductos.Handle, EM_SETCUEBANNER, 0, "Ingrese el nombre")
@@ -28,7 +31,10 @@ Public Class GestionarProductos
     End Sub
 
     Private Sub btnSurtir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSurtir.Click
-        SurtirProductos.ShowDialog()
+        Dim surtir As SurtirProductos = New SurtirProductos()
+        surtir.soloNuevoBool = False
+        surtir.txtCodigoProducto.Focus()
+        surtir.ShowDialog()
     End Sub
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
@@ -41,6 +47,9 @@ Public Class GestionarProductos
         If dgvProductos.SelectedCells.Count <> 0 Then
             btnModificar.Enabled = True
             btnEliminar.Enabled = True
+            If panelEditarRegistro.Width >= 349 Then
+                tmrOcultarEditarRegistro.Enabled = True
+            End If
             idProducto = dgvProductos.SelectedCells(0).Value
 
             txtID.Text = row.Cells(0).Value.ToString
@@ -72,7 +81,6 @@ Public Class GestionarProductos
 
     Public Sub ActualizarTablaProductos()
         dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e, minimoStock as m FROM Productos where existenteBool = 1 order by(nombre) asc;")
-        dgvProductos.Columns(0).Width = 1
         dgvProductos.Columns(7).Visible = False
         dgvProductos.Columns(8).Width = 0
 
@@ -112,23 +120,23 @@ Public Class GestionarProductos
 
     Private Sub txtBuscarProductos_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarProductos.TextChanged
         dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e FROM Productos where existenteBool = 1 and nombre LIKE '%" & txtBuscarProductos.Text & "%' order by(nombre) asc;")
-        dgvProductos.Columns(0).Visible = False
         dgvProductos.Columns(7).Width = 0
         txtBuscarCodigo.Text = ""
     End Sub
 
     Private Sub txtBuscarProductos_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarProductos.KeyPress
-        If Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
+        If Not e.KeyChar = ChrW(Keys.Space) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
             e.Handled = True
 
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                dgvProductos.Focus()
+            End If
+
         End If
-
-
     End Sub
 
     Private Sub txtBuscarCodigo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigo.TextChanged
         dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e FROM Productos where existenteBool = 1 and idProducto LIKE '%" & txtBuscarCodigo.Text & "%' order by(nombre) asc;")
-        dgvProductos.Columns(0).Visible = False
         dgvProductos.Columns(7).Width = 0
         txtBuscarProductos.Text = ""
     End Sub
@@ -160,10 +168,15 @@ Public Class GestionarProductos
     Private Sub btnEditarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarRegistro.Click
         If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
             btnEditarRegistro.Enabled = True
-            idProducto = dgvRegistroSurtido.CurrentRow.Cells(0).Value.ToString
+            idSurtido = dgvRegistroSurtido.CurrentRow.Cells(0).Value.ToString
             txtPrecioCosto.Text = dgvRegistroSurtido.CurrentRow.Cells(1).Value.ToString
             txtCantidad.Text = dgvRegistroSurtido.CurrentRow.Cells(3).Value.ToString
             txtPorcentaje.Text = dgvRegistroSurtido.CurrentRow.Cells(4).Value.ToString
+
+            consulta.consultaReturnHide("SELECT Stock from productos where idProducto=" & idProducto & ";")
+            stockAux = Val(consulta.valorReturn)
+            cantidadAux = Val(txtCantidad.Text)
+
 
             tmrMostrarEditarRegistro.Enabled = True
         Else
@@ -234,12 +247,9 @@ Public Class GestionarProductos
         tmrOcultarEditarRegistro.Enabled = True
     End Sub
 
-    Private Sub dgvRegistroSurtido_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvRegistroSurtido.SelectionChanged
-
-    End Sub
 
     Private Sub txtNombre_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNombre.KeyPress
-        If Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
+        If Not e.KeyChar = ChrW(Keys.Space) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
             e.Handled = True
 
         End If
@@ -273,5 +283,46 @@ Public Class GestionarProductos
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub btnGuardarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarRegistro.Click
+        If Val(txtPrecioCosto.Text) > 0 And Val(txtCantidad.Text) > 0 And Val(txtPorcentaje.Text) > 0 Then
+
+            Dim precioCosto As Integer = Val(txtPrecioCosto.Text)
+            Dim precioVenta As Integer = (precioCosto + ((Val(txtPorcentaje.Text) * precioCosto) / 100))
+
+            consulta.consultaHide("UPDATE surtidoProductos set precioCosto=" & precioCosto & ", precioVenta=" & precioVenta & ", Cantidad=" & txtCantidad.Text & ", porcentajeGanancia=" & txtPorcentaje.Text & " where idSurtido=" & idSurtido & ";")
+
+            'Primero restamos la cantidad anterior.
+            stockAux = stockAux - cantidadAux
+            consulta.consultaHide("UPDATE Productos set Stock=" & stockAux & " where idProducto=" & idProducto & ";")
+
+            stockAux = stockAux + Val(txtCantidad.Text)
+            'Agregamos los demás datos y ahora sumamos la cantidad actual.
+            consulta.consultaHide("UPDATE Productos set precioCosto=" & precioCosto & ", precioVenta =" & precioVenta & ", Stock=" & stockAux & " where idProducto=" & idProducto & ";")
+
+            actualizarTablaConId()
+            tmrOcultarEditarRegistro.Enabled = True
+        Else
+            mostrarMensaje("Los campos no pueden estar vacios o valer 0.")
+        End If
+    End Sub
+
+    Private Sub txtBuscarCodigo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarCodigo.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                dgvProductos.Focus()
+            End If
+        End If
+    End Sub
+
+
+    Private Sub btnNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click
+        Dim nuevo As SurtirProductos = New SurtirProductos()
+
+        nuevo.soloNuevoBool = True
+        nuevo.ShowDialog()
     End Sub
 End Class
