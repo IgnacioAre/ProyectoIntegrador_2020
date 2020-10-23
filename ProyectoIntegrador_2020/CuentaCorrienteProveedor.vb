@@ -76,7 +76,6 @@ Public Class CuentaCorrienteProveedor
         btnVerRegistro.Enabled = True
 
         chkRegistroCompleto.Checked = False
-        chkCobros.Checked = False
         ActualizarTablaRegistroVenta()
     End Sub
 
@@ -159,9 +158,17 @@ Public Class CuentaCorrienteProveedor
 
     Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
-            e.Handled = True
-
             dgvProveedores.Focus()
+        Else
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
         End If
     End Sub
 
@@ -284,13 +291,20 @@ Public Class CuentaCorrienteProveedor
     End Sub
 
     Private Sub txtDineroHaber_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroDebe.KeyPress
+
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
 
             If e.KeyChar = ChrW(Keys.Enter) Then
-                pagarDeuda()
+                If txtDineroDebe.Text.Equals("") Then
+                    e.Handled = True
+                    mostrarMensaje("El saldo no puede estar vacio.")
+                Else
+                    pagarDeuda()
+                End If
             End If
         End If
+
     End Sub
 
 
@@ -298,9 +312,8 @@ Public Class CuentaCorrienteProveedor
         If chkRegistroCompleto.Checked Then
             gbDebe.Visible = False
             btnHaber.Enabled = False
-            chkCobros.Checked = False
             'Aqui podrá ver el registro completo pero sin los cobros realizados.
-            dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND p.idProveedor=" & idProveedor & ";")
+            dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle,Cobrador,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND p.idProveedor=" & idProveedor & ";")
 
             dgvRegistroCompras.Columns(0).Visible = False
 
@@ -314,29 +327,6 @@ Public Class CuentaCorrienteProveedor
         End If
     End Sub
 
-    Private Sub chkCobros_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCobros.CheckedChanged
-        If chkCobros.Checked Then
-
-            gbDebe.Visible = False
-            btnHaber.Enabled = False
-            chkRegistroCompleto.Checked = False
-
-            'Solo verá los cobros realizados
-
-            dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle,Cobrador,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=2 AND p.idProveedor=" & idProveedor & ";")
-
-            dgvRegistroCompras.Columns(0).Visible = False
-
-        Else
-            'Aqui solo podrá ver los registros que estén sin cobrar.
-            btnHaber.Enabled = True
-
-            dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND p.idProveedor=" & idProveedor & ";")
-
-            dgvRegistroCompras.Columns(0).Visible = False
-
-        End If
-    End Sub
 
     Private Sub btnCerrarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarHaber.Click
         gbDebe.Visible = False
@@ -350,7 +340,7 @@ Public Class CuentaCorrienteProveedor
 
 
     Sub pagarDeuda()
-        If Not txtDineroDebe.Text.Equals("") And Not txtDineroDebe.Text.Equals("0") Then
+        If Val(txtDineroDebe.Text) > 0 Then
 
             If txtDetalleDebe.Text.Equals("") Then
                 consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,fechaVenta,adeudoBool,idProveedor) Values(-" & txtDineroDebe.Text & ",now(),1," & idProveedor & ");")
@@ -458,13 +448,20 @@ Public Class CuentaCorrienteProveedor
     End Sub
 
     Private Sub txtDineroDebe_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroHaber.KeyPress
+
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
 
             If e.KeyChar = ChrW(Keys.Enter) Then
-                actualizarSaldo()
+                If txtDineroDebe.Text.Equals("") Then
+                    e.Handled = True
+                    mostrarMensaje("El saldo no puede estar vacio.")
+                Else
+                    actualizarSaldo()
+                End If
             End If
         End If
+
     End Sub
 
 

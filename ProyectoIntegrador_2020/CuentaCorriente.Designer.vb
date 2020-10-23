@@ -47,7 +47,6 @@ Partial Class CuentaCorriente
         Me.pbActualizarTabla = New System.Windows.Forms.PictureBox()
         Me.dgvRegistroVentas = New Guna.UI.WinForms.GunaDataGridView()
         Me.gbRegistroCompras = New System.Windows.Forms.GroupBox()
-        Me.chkCobros = New System.Windows.Forms.CheckBox()
         Me.chkRegistroCompleto = New System.Windows.Forms.CheckBox()
         Me.btnVerRegistro = New System.Windows.Forms.Button()
         Me.btnOcultarRegistro = New System.Windows.Forms.Button()
@@ -410,7 +409,6 @@ Partial Class CuentaCorriente
         '
         Me.gbRegistroCompras.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gbRegistroCompras.Controls.Add(Me.chkCobros)
         Me.gbRegistroCompras.Controls.Add(Me.chkRegistroCompleto)
         Me.gbRegistroCompras.Controls.Add(Me.dgvRegistroVentas)
         Me.gbRegistroCompras.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -422,22 +420,11 @@ Partial Class CuentaCorriente
         Me.gbRegistroCompras.Text = "Registro de Compras"
         Me.gbRegistroCompras.Visible = False
         '
-        'chkCobros
-        '
-        Me.chkCobros.AutoSize = True
-        Me.chkCobros.ForeColor = System.Drawing.Color.Navy
-        Me.chkCobros.Location = New System.Drawing.Point(14, 46)
-        Me.chkCobros.Name = "chkCobros"
-        Me.chkCobros.Size = New System.Drawing.Size(132, 26)
-        Me.chkCobros.TabIndex = 37
-        Me.chkCobros.Text = "Ver Cobros"
-        Me.chkCobros.UseVisualStyleBackColor = True
-        '
         'chkRegistroCompleto
         '
         Me.chkRegistroCompleto.AutoSize = True
         Me.chkRegistroCompleto.ForeColor = System.Drawing.Color.Navy
-        Me.chkRegistroCompleto.Location = New System.Drawing.Point(269, 46)
+        Me.chkRegistroCompleto.Location = New System.Drawing.Point(14, 46)
         Me.chkRegistroCompleto.Name = "chkRegistroCompleto"
         Me.chkRegistroCompleto.Size = New System.Drawing.Size(235, 26)
         Me.chkRegistroCompleto.TabIndex = 36
@@ -727,6 +714,5 @@ Partial Class CuentaCorriente
     Friend WithEvents btnOcultarDetalleHaber As System.Windows.Forms.Button
     Friend WithEvents txtDetalleHaber As System.Windows.Forms.TextBox
     Friend WithEvents btnDescontarHaber As System.Windows.Forms.Button
-    Friend WithEvents chkCobros As System.Windows.Forms.CheckBox
     Friend WithEvents chkRegistroCompleto As System.Windows.Forms.CheckBox
 End Class

@@ -77,7 +77,8 @@ Public Class ExploradorProveedores
 
         If dgvProveedores.SelectedCells.Count <> 0 Then
             btnModificar.Enabled = True
-            btnEliminar.Enabled = True
+            btnNoActivo.Enabled = True
+            btnActivo.Enabled = True
 
             If panelEditarRegistro.Width >= 349 Then
                 tmrOcultarEditarRegistro.Enabled = True
@@ -91,11 +92,7 @@ Public Class ExploradorProveedores
             mskFechaIngreso.Text = row.Cells(3).Value.ToString
 
             txtDireccion.Text = row.Cells(4).Value.ToString
-            If row.Cells(5).Value.ToString.Equals("True") Then
-                chbActivo.Checked = True
-            Else
-                chbActivo.Checked = False
-            End If
+            
         End If
 
         ActualizarTablaRegistroVentas()
@@ -105,13 +102,8 @@ Public Class ExploradorProveedores
 
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
-        If chbActivo.Checked Then
-            activo = 1
-        Else
-            activo = 0
-        End If
 
-        consultas.consultaHide("UPDATE Proveedores SET Nombre= '" & txtNombre.Text & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & " WHERE idProveedor=" & idProveedor & ";")
+        consultas.consultaHide("UPDATE Proveedores SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & " WHERE idProveedor=" & idProveedor & ";")
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False
@@ -120,13 +112,11 @@ Public Class ExploradorProveedores
         ActualizarTabla()
     End Sub
 
-    Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
-        resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea eliminar este cliente?")
+    Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNoActivo.Click
+        resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea quitar este proveedor?")
         If resultado = 1 Then
-            consultas.consultaHide("DELETE FROM Clientes where idCliente=" & idProveedor & ";")
-            If consultas.resultado = 1 Then
-                mostrarMensaje("Base de datos actualizada.")
-            End If
+            consultas.consultaHide("UPDATE Proveedores set estadoBool=0 where idProveedor=" & idProveedor & ";")
+
             ActualizarTabla()
 
         End If
@@ -134,8 +124,7 @@ Public Class ExploradorProveedores
     End Sub
 
     Public Sub ActualizarTabla()
-        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=1;")
-
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=1 order by(nombre);")
         dgvProveedores.Columns(5).Visible = False
     End Sub
 
@@ -243,9 +232,17 @@ Public Class ExploradorProveedores
 
     Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
-            e.Handled = True
-
             dgvProveedores.Focus()
+        Else
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
         End If
     End Sub
 
@@ -382,14 +379,21 @@ Public Class ExploradorProveedores
 
     Private Sub chkNoActivos_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkNoActivos.CheckedChanged
         If chkNoActivos.Checked Then
-            dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT p.idProveedor As ID, Nombre,SUM(Saldo) As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores as p,ventaProveedor as vp where p.idProveedor = vp.idProveedor AND estadoBool=0 group by(vp.idProveedor);")
+            dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=0 order by(nombre);")
+            dgvProveedores.Columns(5).Visible = False
+
+            btnNoActivo.Visible = False
+            btnActivo.Visible = True
         Else
             ActualizarTabla()
+            btnNoActivo.Visible = True
+            btnActivo.Visible = False
         End If
     End Sub
 
     Private Sub pbActualizarTabla_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         ActualizarTabla()
+        chkNoActivos.Checked = False
         txtBuscarClientes.Text = ""
         txtBuscarClientes.Focus()
     End Sub
@@ -407,4 +411,11 @@ Public Class ExploradorProveedores
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
+
+    Private Sub btnActivo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActivo.Click
+        consultas.consultaHide("UPDATE Proveedores set estadoBool=1 where idProveedor=" & idProveedor & ";")
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=0 order by(nombre);")
+        dgvProveedores.Columns(5).Visible = False
+    End Sub
+
 End Class

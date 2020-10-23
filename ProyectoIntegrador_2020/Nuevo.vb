@@ -44,16 +44,16 @@ Public Class Nuevo
                 If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),'" & txtDireccion.Text & "', 1, 1);")
 
                 If Not txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),1, 1);")
+                    consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0, NOW(),1, 1);")
                     InsertarTelClientes()
                 End If
 
                 If Not txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),'" & txtDireccion.Text & "', 1, 1);")
+                    consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0, NOW(),'" & txtDireccion.Text.ToUpper & "', 1, 1);")
                     InsertarTelClientes()
                 End If
 
-                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),1, 1);")
+                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0, NOW(),1, 1);")
 
 
 
@@ -81,16 +81,16 @@ Public Class Nuevo
                 If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', 0,'" & txtDireccion.Text & "', NOW(), 1);")
 
                 If Not txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(), 1);")
+                    consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0, NOW(), 1);")
                     InsertarTelProveedores()
                 End If
 
                 If Not txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', 0,'" & txtDireccion.Text & "', NOW(), 1);")
+                    consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0,'" & txtDireccion.Text.ToUpper & "', NOW(), 1);")
                     InsertarTelProveedores()
                 End If
 
-                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),1);")
+                If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0, NOW(),1);")
 
 
 
@@ -410,4 +410,5 @@ Public Class Nuevo
     Private Sub txtTelefono4_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTelefono4.TextChanged
         txtTelefono4.BackColor = Color.White
     End Sub
+
 End Class

@@ -8,6 +8,7 @@ Public Class GestionarProductos
     Dim idSurtido As Integer
     Dim stockAux As Integer
     Dim cantidadAux As Integer
+    Dim resultado As Byte
 
     Private Sub GestionarProductos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         SendMessage(txtBuscarProductos.Handle, EM_SETCUEBANNER, 0, "Ingrese el nombre")
@@ -47,6 +48,7 @@ Public Class GestionarProductos
         If dgvProductos.SelectedCells.Count <> 0 Then
             btnModificar.Enabled = True
             btnEliminar.Enabled = True
+            btnAgregarProd.Enabled = True
             If panelEditarRegistro.Width >= 349 Then
                 tmrOcultarEditarRegistro.Enabled = True
             End If
@@ -56,12 +58,6 @@ Public Class GestionarProductos
             txtNombre.Text = row.Cells(1).Value.ToString
             txtCantidadUnidad.Text = row.Cells(2).Value.ToString
             txtStock.Text = row.Cells(6).Value.ToString
-
-            If row.Cells(7).Value.ToString.Equals("True") Then
-                chbExiste.Checked = True
-            Else
-                chbExiste.Checked = False
-            End If
 
             cbxMedida.SelectedItem = row.Cells(3).Value.ToString
 
@@ -125,14 +121,21 @@ Public Class GestionarProductos
     End Sub
 
     Private Sub txtBuscarProductos_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarProductos.KeyPress
-        If Not e.KeyChar = ChrW(Keys.Space) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
-            e.Handled = True
 
-            If e.KeyChar = ChrW(Keys.Enter) Then
-                dgvProductos.Focus()
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            dgvProductos.Focus()
+        Else
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
             End If
-
         End If
+
     End Sub
 
     Private Sub txtBuscarCodigo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigo.TextChanged
@@ -151,11 +154,8 @@ Public Class GestionarProductos
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
         If Not txtNombre.Text.Equals("") And Not txtStock.Text.Equals("") And Not txtCantidadUnidad.Text.Equals("") Then
-            If chbExiste.Checked Then
-                consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem & "' ,existenteBool=1 where idProducto=" & idProducto & ";")
-            Else
-                consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem & "' ,existenteBool=0 where idProducto=" & idProducto & ";")
-            End If
+            
+            consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem & "' where idProducto=" & idProducto & ";")
 
             actualizarTablaConId()
             gpInformacion.Visible = False
@@ -249,9 +249,14 @@ Public Class GestionarProductos
 
 
     Private Sub txtNombre_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNombre.KeyPress
-        If Not e.KeyChar = ChrW(Keys.Space) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
+        If Char.IsLetter(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+            e.Handled = False
+        Else
             e.Handled = True
-
         End If
     End Sub
 
@@ -323,6 +328,44 @@ Public Class GestionarProductos
         Dim nuevo As SurtirProductos = New SurtirProductos()
 
         nuevo.soloNuevoBool = True
+        nuevo.txtCodigo.Focus()
         nuevo.ShowDialog()
+    End Sub
+
+    Private Sub chkNoActivos_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
+    Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
+        resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea quitar este producto?")
+        If resultado = 1 Then
+            consulta.consultaHide("UPDATE Productos set existenteBool = 0 where idProducto=" & idProducto & ";")
+
+            ActualizarTablaProductos()
+
+        End If
+    End Sub
+
+
+    Private Sub chbProdNoActivos_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chbProdNoActivos.CheckedChanged
+        If chbProdNoActivos.Checked Then
+            dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e, minimoStock as m FROM Productos where existenteBool = 0 order by(nombre) asc;")
+            dgvProductos.Columns(7).Visible = False
+            dgvProductos.Columns(8).Width = 0
+            btnEliminar.Visible = False
+            btnAgregarProd.Visible = True
+        Else
+            ActualizarTablaProductos()
+            btnEliminar.Visible = True
+            btnAgregarProd.Visible = False
+        End If
+    End Sub
+
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarProd.Click
+        consulta.consultaHide("UPDATE Productos set existenteBool = 1 where idProducto=" & idProducto & ";")
+        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e, minimoStock as m FROM Productos where existenteBool = 0 order by(nombre) asc;")
+        dgvProductos.Columns(7).Visible = False
+        dgvProductos.Columns(8).Width = 0
     End Sub
 End Class

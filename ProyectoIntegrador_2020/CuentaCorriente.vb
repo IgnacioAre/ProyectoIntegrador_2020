@@ -193,13 +193,18 @@ Public Class CuentaCorriente
     '----MÉTODO QUE SOLO DEJA INGRESAR NÚMEROS Y TECLA RETROCESO----'
 
     Private Sub txtDinero_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroDebe.KeyPress
-        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-            e.Handled = True
+            If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+                e.Handled = True
 
-            If e.KeyChar = ChrW(Keys.Enter) Then
-                actualizarDeuda()
+                If e.KeyChar = ChrW(Keys.Enter) Then
+                If txtDineroDebe.Text.Equals("") Then
+                    e.Handled = True
+                    mostrarMensaje("El saldo no puede estar vacio.")
+                Else
+                    actualizarDeuda()
+                End If
+                End If
             End If
-        End If
     End Sub
 
     '----MÉTODO QUE PINTA DE ROJO LOS SALDOS QUE NO SEAN PERMITIDOS POR EL ADMINISTRADOR----'
@@ -216,16 +221,19 @@ Public Class CuentaCorriente
     End Sub
 
     Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
-        If Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
-            e.Handled = True
-
-            If e.KeyChar = ChrW(Keys.Enter) Then
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            dgvClientes.Focus()
+        Else
+            If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
-                dgvClientes.Focus()
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
             End If
         End If
-
-        
     End Sub
 
     '----MOSTRAR MENSAJE PERSONALIZADO----'
@@ -449,45 +457,19 @@ Public Class CuentaCorriente
         If chkRegistroCompleto.Checked Then
             gbHaber.Visible = False
             btnHaber.Enabled = False
-            chkCobros.Checked = False
             'Aqui podrá ver el registro completo pero sin los cobros realizados.
-            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND c.idCliente=" & idCliente & ";")
-
+            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,Cobrador,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND c.idCliente=" & idCliente & " order by(idCompra) desc;")
             dgvRegistroVentas.Columns(0).Visible = False
 
 
         Else
             btnHaber.Enabled = True
             'Aqui solo podrá ver los registros que estén sin cobrar.
-            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool=1 AND c.idCliente=" & idCliente & ";")
-
+            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool=1 AND c.idCliente=" & idCliente & " order by(idCompra) desc;")
             dgvRegistroVentas.Columns(0).Visible = False
         End If
     End Sub
 
-    Private Sub chkCobros_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCobros.CheckedChanged
-        If chkCobros.Checked Then
-
-            gbHaber.Visible = False
-            btnHaber.Enabled = False
-            chkRegistroCompleto.Checked = False
-
-            'Solo verá los cobros realizados
-
-            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,Cobrador,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool=2 AND c.idCliente=" & idCliente & ";")
-
-            dgvRegistroVentas.Columns(0).Visible = False
-
-        Else
-            'Aqui solo podrá ver los registros que estén sin cobrar.
-            btnHaber.Enabled = True
-
-            dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool=1 AND c.idCliente=" & idCliente & ";")
-
-            dgvRegistroVentas.Columns(0).Visible = False
-
-        End If
-    End Sub
 
     Private Sub dgvRegistroVentas_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvRegistroVentas.CellFormatting
         If dgvRegistroVentas.Columns(e.ColumnIndex).Name = "Saldo" Then
@@ -507,7 +489,12 @@ Public Class CuentaCorriente
             e.Handled = True
 
             If e.KeyChar = ChrW(Keys.Enter) Then
-                pagarDeuda()
+                If txtDineroDebe.Text.Equals("") Then
+                    e.Handled = True
+                    mostrarMensaje("El saldo no puede estar vacio.")
+                Else
+                    pagarDeuda()
+                End If
             End If
         End If
     End Sub

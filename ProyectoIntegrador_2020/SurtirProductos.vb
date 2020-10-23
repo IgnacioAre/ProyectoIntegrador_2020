@@ -434,9 +434,15 @@ Public Class SurtirProductos
     End Sub
 
     Private Sub txtNombre_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNombre.KeyPress
-        If Not e.KeyChar = ChrW(Keys.Space) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
+        'MÉTODO PARA SOLO INTRODUCIR LETRAS,BORRAR Y ESPACIO.
+        If Char.IsLetter(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+            e.Handled = False
+        Else
             e.Handled = True
-
         End If
     End Sub
 
@@ -481,23 +487,31 @@ Public Class SurtirProductos
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoProd.Click
         If soloNuevoBool Then
-            consulta.consultaReturnHide("SELECT idProducto FROM Productos WHERE idProducto=" & txtCodigo.Text & ";")
+            If txtCodigo.Text.Count >= 2 And Val(txtCantidadUnidad.Text) > 0 And Not txtNombre.Text.Equals("") And cbxMedida.SelectedItem <> "" Then
 
-            If Not consulta.valorReturn = "" Then
-                mostrarMensaje("Ya existe un producto registrado con ese código." & vbCrLf & "No olvide fijarse si el producto se encuentra inactivo.")
+                consulta.consultaReturnHide("SELECT idProducto FROM Productos WHERE idProducto=" & txtCodigo.Text & ";")
+
+                If Not consulta.valorReturn = "" Then
+                    mostrarMensaje("Ya existe un producto registrado con ese código." & vbCrLf & "No olvide fijarse si el producto se encuentra inactivo.")
+
+                Else
+                    consulta.consultaReturnHide("SELECT minimoStock from productos limit 1;")
+                    Dim limiteStock As Integer = Val(consulta.valorReturn)
+
+                    consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
+
+                    If consulta.resultado = 1 Then
+                        Me.Close()
+                    Else
+                        mostrarMensaje("Ocurrió un error al ingresar el producto.")
+                    End If
+                End If
 
             Else
-                consulta.consultaReturnHide("SELECT minimoStock from productos limit 1;")
-                Dim limiteStock As Integer = Val(consulta.valorReturn)
+                mostrarMensaje("Asegurese de que todos los campos esten completos.")
 
-                consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text & "'," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
-
-                If consulta.resultado = 1 Then
-                    Me.Close()
-                Else
-                    mostrarMensaje("Ocurrió un error al ingresar el producto.")
-                End If
             End If
+            
 
         Else
             tmrOcultarAgregar.Enabled = True
@@ -510,6 +524,12 @@ Public Class SurtirProductos
     Private Sub txtCodigo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCodigo.TextChanged
         If txtCodigo.TextLength = 13 Then
             txtNombre.Focus()
+        End If
+    End Sub
+
+    Private Sub txtCantidadUnidad_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCantidadUnidad.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 Then
+            e.Handled = True
         End If
     End Sub
 End Class

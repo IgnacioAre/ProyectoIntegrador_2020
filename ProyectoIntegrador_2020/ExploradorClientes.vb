@@ -72,7 +72,8 @@ Public Class ExploradorClientes
 
         If dgvClientes.SelectedCells.Count <> 0 Then
             btnModificar.Enabled = True
-            btnEliminar.Enabled = True
+            btnNoActivo.Enabled = True
+            btnActivo.Enabled = True
 
             If panelEditarRegistro.Width >= 349 Then
                 tmrOcultarEditarRegistro.Enabled = True
@@ -86,11 +87,7 @@ Public Class ExploradorClientes
             mskFechaIngreso.Text = row.Cells(3).Value.ToString
 
             txtDireccion.Text = row.Cells(4).Value.ToString
-            If row.Cells(5).Value.ToString.Equals("True") Then
-                chbActivo.Checked = True
-            Else
-                chbActivo.Checked = False
-            End If
+
 
             If row.Cells(6).Value.ToString.Equals("True") Then
                 chbPermitido.Checked = True
@@ -106,11 +103,6 @@ Public Class ExploradorClientes
 
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
-        If chbActivo.Checked Then
-            activo = 1
-        Else
-            activo = 0
-        End If
 
         If chbPermitido.Checked Then
             permitido = 1
@@ -118,7 +110,7 @@ Public Class ExploradorClientes
             permitido = 0
         End If
 
-        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & ", maxPermitidoBool=" & permitido & " WHERE idCliente=" & idCliente & ";")
+        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & ", maxPermitidoBool=" & permitido & " WHERE idCliente=" & idCliente & ";")
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False
@@ -128,11 +120,11 @@ Public Class ExploradorClientes
         chkNoActivos.Checked = False
     End Sub
 
-    Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
+    Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNoActivo.Click
         resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea quitar este cliente?")
         If resultado = 1 Then
             consultas.consultaHide("UPDATE Clientes set estadoBool = 0 where idCliente=" & idCliente & ";")
-            
+
             ActualizarTabla()
 
         End If
@@ -172,7 +164,7 @@ Public Class ExploradorClientes
     Sub ActualizarTablaTelefono()
         dgvTelefono.DataSource = consultas.mostrarEnTabla("SELECT idTelefono,numeroTel As Número FROM telefonoCliente,Clientes WHERE telefonoCliente.idCliente = Clientes.idCliente and Clientes.idCliente=" & idCliente & ";")
 
-       dgvTelefono.Columns(0).Visible = False
+        dgvTelefono.Columns(0).Visible = False
 
     End Sub
 
@@ -188,6 +180,7 @@ Public Class ExploradorClientes
 
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         ActualizarTabla()
+        chkNoActivos.Checked = False
         txtBuscarClientes.Text = ""
         txtBuscarClientes.Focus()
     End Sub
@@ -250,12 +243,17 @@ Public Class ExploradorClientes
     End Sub
 
     Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
-        If Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
-            e.Handled = True
-
-            If e.KeyChar = ChrW(Keys.Enter) Then
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            dgvClientes.Focus()
+        Else
+            If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
-                dgvClientes.Focus()
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
             End If
         End If
     End Sub
@@ -381,17 +379,16 @@ Public Class ExploradorClientes
     Private Sub chkNoActivos_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkNoActivos.CheckedChanged
         If chkNoActivos.Checked Then
 
-            dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=0")
+            dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=0 order by(Nombre);")
+            dgvClientes.Columns(5).Visible = False
+            dgvClientes.Columns(6).Width = 0
 
-            consultas.consultaReturnHide("Select count(idCliente) from Clientes;")
-            Dim cantClientes As Integer = Val(consultas.valorReturn)
-
-            If cantClientes > 0 Then
-                dgvClientes.Columns(5).Visible = False
-                dgvClientes.Columns(6).Width = 0
-            End If
+            btnNoActivo.Visible = False
+            btnActivo.Visible = True
         Else
             ActualizarTabla()
+            btnNoActivo.Visible = True
+            btnActivo.Visible = False
         End If
     End Sub
 
@@ -410,4 +407,10 @@ Public Class ExploradorClientes
         Me.Close()
     End Sub
 
+    Private Sub btnActivo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActivo.Click
+        consultas.consultaHide("UPDATE Clientes set estadoBool = 1 where idCliente=" & idCliente & ";")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=0 order by(Nombre);")
+        dgvClientes.Columns(5).Visible = False
+        dgvClientes.Columns(6).Width = 0
+    End Sub
 End Class
