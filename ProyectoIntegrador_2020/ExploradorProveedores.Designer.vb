@@ -164,6 +164,7 @@ Partial Class ExploradorProveedores
         'btnEliminarTel
         '
         Me.btnEliminarTel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEliminarTel.Enabled = False
         Me.btnEliminarTel.Image = CType(resources.GetObject("btnEliminarTel.Image"), System.Drawing.Image)
         Me.btnEliminarTel.Location = New System.Drawing.Point(107, 134)
         Me.btnEliminarTel.Name = "btnEliminarTel"
@@ -175,6 +176,7 @@ Partial Class ExploradorProveedores
         'btnEditarTel
         '
         Me.btnEditarTel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEditarTel.Enabled = False
         Me.btnEditarTel.Image = CType(resources.GetObject("btnEditarTel.Image"), System.Drawing.Image)
         Me.btnEditarTel.Location = New System.Drawing.Point(57, 134)
         Me.btnEditarTel.Name = "btnEditarTel"
@@ -262,6 +264,7 @@ Partial Class ExploradorProveedores
         '
         Me.btnCerrar.BackColor = System.Drawing.Color.Black
         Me.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.Lime
+        Me.btnCerrar.FlatAppearance.BorderSize = 0
         Me.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat

@@ -412,4 +412,17 @@ Public Class ExploradorClientes
         dgvClientes.Columns(5).Visible = False
         dgvClientes.Columns(6).Width = 0
     End Sub
+
+    Private Sub dgvTelefono_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvTelefono.SelectionChanged
+        Dim row As DataGridViewRow = dgvTelefono.CurrentRow
+
+        If dgvTelefono.SelectedCells.Count <> 0 Then
+            btnEliminarTel.Enabled = True
+            btnEditarTel.Enabled = True
+        Else
+            btnEliminarTel.Enabled = False
+            btnEditarTel.Enabled = False
+        End If
+
+    End Sub
 End Class

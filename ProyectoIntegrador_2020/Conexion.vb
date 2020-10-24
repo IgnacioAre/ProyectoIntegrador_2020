@@ -109,7 +109,7 @@ Public Class Conexion
     '----MOSTRAR NOMBRE Y PRECIO DE LA TABLA PRODUCTO EN UN DATATABLE----'
     Public Function mostrarRapidoProductoEnTabla() As DataTable
 
-        consultaSQL = "SELECT nombre AS Nombre," & " CONCAT_WS(' ',cantidadUnidad,unidad) as Medida, precioVenta AS Venta " & "FROM productos where nombre like '%" & MenuPrincipal.txtPrecioProductos.Text & "%'"
+        consultaSQL = "SELECT nombre AS Nombre," & " CONCAT_WS(' ',cantidadUnidad,unidad) as Medida, precioVenta AS 'Precio Venta' " & "FROM productos where nombre like '%" & MenuPrincipal.txtPrecioProductos.Text & "%'"
 
         Return insertarEnTabla(consultaSQL)
 

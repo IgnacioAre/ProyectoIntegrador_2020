@@ -10,7 +10,7 @@ Public Class MenuPrincipal
 
 
     '----FORMULARIO QUE SE VA A MOSTRAR ENCIMA DEL FORMULARIO PRINCIPAL----'
-    Private formulario As Form
+    Public formulario As Form
     Public formularioBool As Boolean = False
 
 
@@ -218,7 +218,7 @@ Public Class MenuPrincipal
 
     '----MÉTODO PARA MOSTRAR FORMULARIOS EN UN PANEL----'
 
-    Private Sub openFromOnPanel(Of FormH As {Form, New})()
+    Public Sub openFromOnPanel(Of FormH As {Form, New})()
         Formulario = PanelContenedor.Controls.OfType(Of FormH)().FirstOrDefault()
         If Formulario Is Nothing Then
             Formulario = New FormH()
@@ -260,7 +260,7 @@ Public Class MenuPrincipal
 
     '----PONER BOOLEANOS DE SUBMENUS EN FALSO----'
 
-    Private Sub submenuFalse()
+    Public Sub submenuFalse()
         submenuClienteBool = False
         submenuProveedorBool = False
         submenuProductoBool = False
@@ -285,7 +285,7 @@ Public Class MenuPrincipal
     Private Sub txtPrecioProductos_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPrecioProductos.KeyUp
         Dim conectar = New Conexion
         dgvPreciosRapidos.DataSource = conectar.mostrarRapidoProductoEnTabla()
-        dgvPreciosRapidos.Columns(1).Width = 60
+        dgvPreciosRapidos.Columns(2).Width = 100
 
         If txtPrecioProductos.Text.Equals("") Then
             dgvPreciosRapidos.Visible = False
