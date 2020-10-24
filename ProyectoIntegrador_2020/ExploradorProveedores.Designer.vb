@@ -24,17 +24,22 @@ Partial Class ExploradorProveedores
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ExploradorProveedores))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelClientes = New System.Windows.Forms.Panel()
         Me.btnActivo = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnAgregarTel = New System.Windows.Forms.PictureBox()
+        Me.btnEliminarTel = New System.Windows.Forms.PictureBox()
+        Me.btnEditarTel = New System.Windows.Forms.PictureBox()
+        Me.dgvTelefono = New Guna.UI.WinForms.GunaDataGridView()
         Me.chkNoActivos = New System.Windows.Forms.CheckBox()
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.pbActualizarTabla = New System.Windows.Forms.PictureBox()
@@ -49,11 +54,6 @@ Partial Class ExploradorProveedores
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnEditarRegistro = New System.Windows.Forms.PictureBox()
         Me.dgvRegistroVentas = New Guna.UI.WinForms.GunaDataGridView()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnAgregarTel = New System.Windows.Forms.PictureBox()
-        Me.btnEliminarTel = New System.Windows.Forms.PictureBox()
-        Me.btnEditarTel = New System.Windows.Forms.PictureBox()
-        Me.dgvTelefono = New Guna.UI.WinForms.GunaDataGridView()
         Me.btnCerrarInfo = New System.Windows.Forms.Button()
         Me.btnActualizar = New System.Windows.Forms.Button()
         Me.mskFechaIngreso = New System.Windows.Forms.MaskedTextBox()
@@ -75,6 +75,11 @@ Partial Class ExploradorProveedores
         Me.tmrOcultarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
         Me.panelClientes.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.btnAgregarTel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnEliminarTel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btnEditarTel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvTelefono, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpInformacion.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -82,11 +87,6 @@ Partial Class ExploradorProveedores
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnEditarRegistro, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
-        CType(Me.btnAgregarTel, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btnEliminarTel, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btnEditarTel, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvTelefono, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -135,12 +135,124 @@ Partial Class ExploradorProveedores
         Me.btnActivo.UseVisualStyleBackColor = False
         Me.btnActivo.Visible = False
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.btnAgregarTel)
+        Me.GroupBox1.Controls.Add(Me.btnEliminarTel)
+        Me.GroupBox1.Controls.Add(Me.btnEditarTel)
+        Me.GroupBox1.Controls.Add(Me.dgvTelefono)
+        Me.GroupBox1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(745, 209)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(240, 178)
+        Me.GroupBox1.TabIndex = 25
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Teléfonos"
+        '
+        'btnAgregarTel
+        '
+        Me.btnAgregarTel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAgregarTel.Image = CType(resources.GetObject("btnAgregarTel.Image"), System.Drawing.Image)
+        Me.btnAgregarTel.Location = New System.Drawing.Point(153, 134)
+        Me.btnAgregarTel.Name = "btnAgregarTel"
+        Me.btnAgregarTel.Size = New System.Drawing.Size(28, 27)
+        Me.btnAgregarTel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.btnAgregarTel.TabIndex = 28
+        Me.btnAgregarTel.TabStop = False
+        '
+        'btnEliminarTel
+        '
+        Me.btnEliminarTel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEliminarTel.Image = CType(resources.GetObject("btnEliminarTel.Image"), System.Drawing.Image)
+        Me.btnEliminarTel.Location = New System.Drawing.Point(107, 134)
+        Me.btnEliminarTel.Name = "btnEliminarTel"
+        Me.btnEliminarTel.Size = New System.Drawing.Size(28, 27)
+        Me.btnEliminarTel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.btnEliminarTel.TabIndex = 27
+        Me.btnEliminarTel.TabStop = False
+        '
+        'btnEditarTel
+        '
+        Me.btnEditarTel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEditarTel.Image = CType(resources.GetObject("btnEditarTel.Image"), System.Drawing.Image)
+        Me.btnEditarTel.Location = New System.Drawing.Point(57, 134)
+        Me.btnEditarTel.Name = "btnEditarTel"
+        Me.btnEditarTel.Size = New System.Drawing.Size(28, 27)
+        Me.btnEditarTel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.btnEditarTel.TabIndex = 26
+        Me.btnEditarTel.TabStop = False
+        '
+        'dgvTelefono
+        '
+        Me.dgvTelefono.AllowUserToAddRows = False
+        Me.dgvTelefono.AllowUserToDeleteRows = False
+        Me.dgvTelefono.AllowUserToResizeColumns = False
+        Me.dgvTelefono.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvTelefono.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvTelefono.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvTelefono.BackgroundColor = System.Drawing.Color.Khaki
+        Me.dgvTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvTelefono.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgvTelefono.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvTelefono.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvTelefono.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvTelefono.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvTelefono.EnableHeadersVisualStyles = False
+        Me.dgvTelefono.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.dgvTelefono.Location = New System.Drawing.Point(17, 26)
+        Me.dgvTelefono.Name = "dgvTelefono"
+        Me.dgvTelefono.ReadOnly = True
+        Me.dgvTelefono.RowHeadersVisible = False
+        Me.dgvTelefono.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvTelefono.Size = New System.Drawing.Size(211, 102)
+        Me.dgvTelefono.TabIndex = 23
+        Me.dgvTelefono.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
+        Me.dgvTelefono.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvTelefono.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.dgvTelefono.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.dgvTelefono.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.dgvTelefono.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.dgvTelefono.ThemeStyle.BackColor = System.Drawing.Color.Khaki
+        Me.dgvTelefono.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
+        Me.dgvTelefono.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        Me.dgvTelefono.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.dgvTelefono.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvTelefono.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.dgvTelefono.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvTelefono.ThemeStyle.HeaderStyle.Height = 23
+        Me.dgvTelefono.ThemeStyle.ReadOnly = True
+        Me.dgvTelefono.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.dgvTelefono.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.dgvTelefono.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvTelefono.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
+        Me.dgvTelefono.ThemeStyle.RowsStyle.Height = 22
+        Me.dgvTelefono.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
+        Me.dgvTelefono.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        '
         'chkNoActivos
         '
         Me.chkNoActivos.AutoSize = True
-        Me.chkNoActivos.Location = New System.Drawing.Point(345, 40)
+        Me.chkNoActivos.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkNoActivos.Location = New System.Drawing.Point(775, 34)
         Me.chkNoActivos.Name = "chkNoActivos"
-        Me.chkNoActivos.Size = New System.Drawing.Size(138, 17)
+        Me.chkNoActivos.Size = New System.Drawing.Size(210, 25)
         Me.chkNoActivos.TabIndex = 25
         Me.chkNoActivos.Text = "Proveedores no activos"
         Me.chkNoActivos.UseVisualStyleBackColor = True
@@ -173,8 +285,6 @@ Partial Class ExploradorProveedores
         '
         'gpInformacion
         '
-        Me.gpInformacion.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gpInformacion.Controls.Add(Me.GroupBox2)
         Me.gpInformacion.Controls.Add(Me.btnCerrarInfo)
         Me.gpInformacion.Controls.Add(Me.btnActualizar)
@@ -191,7 +301,7 @@ Partial Class ExploradorProveedores
         Me.gpInformacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gpInformacion.Location = New System.Drawing.Point(60, 296)
         Me.gpInformacion.Name = "gpInformacion"
-        Me.gpInformacion.Size = New System.Drawing.Size(679, 421)
+        Me.gpInformacion.Size = New System.Drawing.Size(667, 421)
         Me.gpInformacion.TabIndex = 21
         Me.gpInformacion.TabStop = False
         Me.gpInformacion.Text = "Información del Cliente"
@@ -361,116 +471,6 @@ Partial Class ExploradorProveedores
         Me.dgvRegistroVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
         Me.dgvRegistroVentas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox1.Controls.Add(Me.btnAgregarTel)
-        Me.GroupBox1.Controls.Add(Me.btnEliminarTel)
-        Me.GroupBox1.Controls.Add(Me.btnEditarTel)
-        Me.GroupBox1.Controls.Add(Me.dgvTelefono)
-        Me.GroupBox1.Location = New System.Drawing.Point(745, 209)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(240, 178)
-        Me.GroupBox1.TabIndex = 25
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Teléfonos"
-        '
-        'btnAgregarTel
-        '
-        Me.btnAgregarTel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnAgregarTel.Image = CType(resources.GetObject("btnAgregarTel.Image"), System.Drawing.Image)
-        Me.btnAgregarTel.Location = New System.Drawing.Point(153, 134)
-        Me.btnAgregarTel.Name = "btnAgregarTel"
-        Me.btnAgregarTel.Size = New System.Drawing.Size(28, 27)
-        Me.btnAgregarTel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.btnAgregarTel.TabIndex = 28
-        Me.btnAgregarTel.TabStop = False
-        '
-        'btnEliminarTel
-        '
-        Me.btnEliminarTel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnEliminarTel.Image = CType(resources.GetObject("btnEliminarTel.Image"), System.Drawing.Image)
-        Me.btnEliminarTel.Location = New System.Drawing.Point(107, 134)
-        Me.btnEliminarTel.Name = "btnEliminarTel"
-        Me.btnEliminarTel.Size = New System.Drawing.Size(28, 27)
-        Me.btnEliminarTel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.btnEliminarTel.TabIndex = 27
-        Me.btnEliminarTel.TabStop = False
-        '
-        'btnEditarTel
-        '
-        Me.btnEditarTel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnEditarTel.Image = CType(resources.GetObject("btnEditarTel.Image"), System.Drawing.Image)
-        Me.btnEditarTel.Location = New System.Drawing.Point(57, 134)
-        Me.btnEditarTel.Name = "btnEditarTel"
-        Me.btnEditarTel.Size = New System.Drawing.Size(28, 27)
-        Me.btnEditarTel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.btnEditarTel.TabIndex = 26
-        Me.btnEditarTel.TabStop = False
-        '
-        'dgvTelefono
-        '
-        Me.dgvTelefono.AllowUserToAddRows = False
-        Me.dgvTelefono.AllowUserToDeleteRows = False
-        Me.dgvTelefono.AllowUserToResizeColumns = False
-        Me.dgvTelefono.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvTelefono.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgvTelefono.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvTelefono.BackgroundColor = System.Drawing.Color.Khaki
-        Me.dgvTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgvTelefono.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvTelefono.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvTelefono.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.dgvTelefono.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvTelefono.DefaultCellStyle = DataGridViewCellStyle3
-        Me.dgvTelefono.EnableHeadersVisualStyles = False
-        Me.dgvTelefono.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.dgvTelefono.Location = New System.Drawing.Point(17, 26)
-        Me.dgvTelefono.Name = "dgvTelefono"
-        Me.dgvTelefono.ReadOnly = True
-        Me.dgvTelefono.RowHeadersVisible = False
-        Me.dgvTelefono.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvTelefono.Size = New System.Drawing.Size(211, 102)
-        Me.dgvTelefono.TabIndex = 23
-        Me.dgvTelefono.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
-        Me.dgvTelefono.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvTelefono.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.dgvTelefono.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.dgvTelefono.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.dgvTelefono.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.dgvTelefono.ThemeStyle.BackColor = System.Drawing.Color.Khaki
-        Me.dgvTelefono.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.dgvTelefono.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        Me.dgvTelefono.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dgvTelefono.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvTelefono.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.dgvTelefono.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvTelefono.ThemeStyle.HeaderStyle.Height = 23
-        Me.dgvTelefono.ThemeStyle.ReadOnly = True
-        Me.dgvTelefono.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        Me.dgvTelefono.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvTelefono.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvTelefono.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
-        Me.dgvTelefono.ThemeStyle.RowsStyle.Height = 22
-        Me.dgvTelefono.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
-        Me.dgvTelefono.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
         'btnCerrarInfo
         '
         Me.btnCerrarInfo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -481,7 +481,7 @@ Partial Class ExploradorProveedores
         Me.btnCerrarInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCerrarInfo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarInfo.ForeColor = System.Drawing.Color.White
-        Me.btnCerrarInfo.Location = New System.Drawing.Point(645, 17)
+        Me.btnCerrarInfo.Location = New System.Drawing.Point(633, 17)
         Me.btnCerrarInfo.Name = "btnCerrarInfo"
         Me.btnCerrarInfo.Size = New System.Drawing.Size(28, 27)
         Me.btnCerrarInfo.TabIndex = 17
@@ -757,6 +757,11 @@ Partial Class ExploradorProveedores
         Me.Text = "ModificarCuenta"
         Me.panelClientes.ResumeLayout(False)
         Me.panelClientes.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        CType(Me.btnAgregarTel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnEliminarTel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btnEditarTel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvTelefono, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpInformacion.ResumeLayout(False)
         Me.gpInformacion.PerformLayout()
@@ -766,11 +771,6 @@ Partial Class ExploradorProveedores
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnEditarRegistro, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        CType(Me.btnAgregarTel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnEliminarTel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnEditarTel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvTelefono, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvProveedores, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

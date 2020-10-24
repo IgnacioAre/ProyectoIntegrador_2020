@@ -17,7 +17,7 @@ Public Class ExploradorProveedores
         consultas.establecerConexion()
         panelEditarRegistro.Width = 0
         ActualizarTabla()
-        SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
+        SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por nombre")
     End Sub
 
     '----CIERRE DEL FORMULARIO----'

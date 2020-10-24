@@ -85,7 +85,7 @@ Partial Class inicioSesion
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
         Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(210, 19)
+        Me.lblTitulo.Size = New System.Drawing.Size(187, 18)
         Me.lblTitulo.TabIndex = 2
         Me.lblTitulo.Text = "Iniciar Sesión  |  El Cofre"
         '
@@ -155,7 +155,7 @@ Partial Class inicioSesion
         Me.txtContraseñaLogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtContraseñaLogin.Location = New System.Drawing.Point(83, 268)
         Me.txtContraseñaLogin.Name = "txtContraseñaLogin"
-        Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 29)
+        Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 27)
         Me.txtContraseñaLogin.TabIndex = 2
         '
         'Label2
@@ -166,7 +166,7 @@ Partial Class inicioSesion
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(64, 230)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(130, 25)
+        Me.Label2.Size = New System.Drawing.Size(117, 23)
         Me.Label2.TabIndex = 10
         Me.Label2.Text = "Contraseña"
         '
@@ -178,7 +178,7 @@ Partial Class inicioSesion
         Me.txtUsuarioLogin.Location = New System.Drawing.Point(83, 160)
         Me.txtUsuarioLogin.MaxLength = 30
         Me.txtUsuarioLogin.Name = "txtUsuarioLogin"
-        Me.txtUsuarioLogin.Size = New System.Drawing.Size(202, 29)
+        Me.txtUsuarioLogin.Size = New System.Drawing.Size(202, 27)
         Me.txtUsuarioLogin.TabIndex = 1
         '
         'Label1
@@ -190,7 +190,7 @@ Partial Class inicioSesion
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(64, 122)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(87, 25)
+        Me.Label1.Size = New System.Drawing.Size(78, 23)
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Usuario"
         '
@@ -214,7 +214,7 @@ Partial Class inicioSesion
         Me.linkCrearUsuario.LinkColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.linkCrearUsuario.Location = New System.Drawing.Point(36, 470)
         Me.linkCrearUsuario.Name = "linkCrearUsuario"
-        Me.linkCrearUsuario.Size = New System.Drawing.Size(109, 20)
+        Me.linkCrearUsuario.Size = New System.Drawing.Size(94, 17)
         Me.linkCrearUsuario.TabIndex = 15
         Me.linkCrearUsuario.TabStop = True
         Me.linkCrearUsuario.Text = "Crear Usuario"
@@ -227,7 +227,7 @@ Partial Class inicioSesion
         Me.lblCheckUsuario.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.lblCheckUsuario.Location = New System.Drawing.Point(104, 321)
         Me.lblCheckUsuario.Name = "lblCheckUsuario"
-        Me.lblCheckUsuario.Size = New System.Drawing.Size(134, 20)
+        Me.lblCheckUsuario.Size = New System.Drawing.Size(117, 17)
         Me.lblCheckUsuario.TabIndex = 17
         Me.lblCheckUsuario.Text = "Recordar usuario"
         '
@@ -318,7 +318,7 @@ Partial Class inicioSesion
         Me.lblAceptable2.ForeColor = System.Drawing.Color.Red
         Me.lblAceptable2.Location = New System.Drawing.Point(304, 324)
         Me.lblAceptable2.Name = "lblAceptable2"
-        Me.lblAceptable2.Size = New System.Drawing.Size(28, 27)
+        Me.lblAceptable2.Size = New System.Drawing.Size(24, 23)
         Me.lblAceptable2.TabIndex = 12
         Me.lblAceptable2.Tag = ""
         Me.lblAceptable2.Text = "X"
@@ -331,7 +331,7 @@ Partial Class inicioSesion
         Me.lblAceptable1.ForeColor = System.Drawing.Color.Red
         Me.lblAceptable1.Location = New System.Drawing.Point(304, 235)
         Me.lblAceptable1.Name = "lblAceptable1"
-        Me.lblAceptable1.Size = New System.Drawing.Size(28, 27)
+        Me.lblAceptable1.Size = New System.Drawing.Size(24, 23)
         Me.lblAceptable1.TabIndex = 11
         Me.lblAceptable1.Tag = ""
         Me.lblAceptable1.Text = "X"
@@ -372,7 +372,7 @@ Partial Class inicioSesion
         Me.txtClaveAdminRegistro.MaxLength = 30
         Me.txtClaveAdminRegistro.Name = "txtClaveAdminRegistro"
         Me.txtClaveAdminRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtClaveAdminRegistro.Size = New System.Drawing.Size(215, 29)
+        Me.txtClaveAdminRegistro.Size = New System.Drawing.Size(215, 27)
         Me.txtClaveAdminRegistro.TabIndex = 8
         '
         'Label8
@@ -382,7 +382,7 @@ Partial Class inicioSesion
         Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label8.Location = New System.Drawing.Point(34, 364)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(177, 25)
+        Me.Label8.Size = New System.Drawing.Size(161, 23)
         Me.Label8.TabIndex = 7
         Me.Label8.Text = "Clave de admin"
         '
@@ -394,7 +394,7 @@ Partial Class inicioSesion
         Me.txtRepContraseñaRegistro.MaxLength = 30
         Me.txtRepContraseñaRegistro.Name = "txtRepContraseñaRegistro"
         Me.txtRepContraseñaRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtRepContraseñaRegistro.Size = New System.Drawing.Size(215, 29)
+        Me.txtRepContraseñaRegistro.Size = New System.Drawing.Size(215, 27)
         Me.txtRepContraseñaRegistro.TabIndex = 6
         '
         'Label7
@@ -404,7 +404,7 @@ Partial Class inicioSesion
         Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label7.Location = New System.Drawing.Point(34, 280)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(203, 25)
+        Me.Label7.Size = New System.Drawing.Size(184, 23)
         Me.Label7.TabIndex = 5
         Me.Label7.Text = "Repetir contraseña"
         '
@@ -416,7 +416,7 @@ Partial Class inicioSesion
         Me.txtContraseñaRegistro.MaxLength = 30
         Me.txtContraseñaRegistro.Name = "txtContraseñaRegistro"
         Me.txtContraseñaRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtContraseñaRegistro.Size = New System.Drawing.Size(215, 29)
+        Me.txtContraseñaRegistro.Size = New System.Drawing.Size(215, 27)
         Me.txtContraseñaRegistro.TabIndex = 4
         '
         'Label6
@@ -426,7 +426,7 @@ Partial Class inicioSesion
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label6.Location = New System.Drawing.Point(34, 190)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(130, 25)
+        Me.Label6.Size = New System.Drawing.Size(117, 23)
         Me.Label6.TabIndex = 3
         Me.Label6.Text = "Contraseña"
         '
@@ -437,7 +437,7 @@ Partial Class inicioSesion
         Me.txtUsuarioRegistro.Location = New System.Drawing.Point(83, 143)
         Me.txtUsuarioRegistro.MaxLength = 30
         Me.txtUsuarioRegistro.Name = "txtUsuarioRegistro"
-        Me.txtUsuarioRegistro.Size = New System.Drawing.Size(215, 29)
+        Me.txtUsuarioRegistro.Size = New System.Drawing.Size(215, 27)
         Me.txtUsuarioRegistro.TabIndex = 2
         '
         'Label5
@@ -447,7 +447,7 @@ Partial Class inicioSesion
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label5.Location = New System.Drawing.Point(34, 99)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(208, 25)
+        Me.Label5.Size = New System.Drawing.Size(186, 23)
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Nombre de usuario"
         '
@@ -458,7 +458,7 @@ Partial Class inicioSesion
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label4.Location = New System.Drawing.Point(33, 17)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(354, 37)
+        Me.Label4.Size = New System.Drawing.Size(326, 32)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "CREAR USUARIO ADMIN"
         '

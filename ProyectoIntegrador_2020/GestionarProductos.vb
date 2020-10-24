@@ -6,6 +6,7 @@ Public Class GestionarProductos
 
     Dim idProducto As Long
     Dim idSurtido As Integer
+    Dim minimoStock As Integer
     Dim stockAux As Integer
     Dim cantidadAux As Integer
     Dim resultado As Byte
@@ -14,6 +15,7 @@ Public Class GestionarProductos
         SendMessage(txtBuscarProductos.Handle, EM_SETCUEBANNER, 0, "Ingrese el nombre")
         SendMessage(txtBuscarCodigo.Handle, EM_SETCUEBANNER, 0, "Ingrese el código")
         panelEditarRegistro.Width = 0
+        ActualizarMinimoStock()
     End Sub
 
 
@@ -49,6 +51,7 @@ Public Class GestionarProductos
             btnModificar.Enabled = True
             btnEliminar.Enabled = True
             btnAgregarProd.Enabled = True
+
             If panelEditarRegistro.Width >= 349 Then
                 tmrOcultarEditarRegistro.Enabled = True
             End If
@@ -68,17 +71,15 @@ Public Class GestionarProductos
     End Sub
 
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
+        txtNombre.Text = ""
         ActualizarTablaProductos()
         ActualizarTablaProductos()
-
     End Sub
 
     'ACTUALIZA LA TABLA DE PRODUCTOS
 
     Public Sub ActualizarTablaProductos()
-        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e, minimoStock as m FROM Productos where existenteBool = 1 order by(nombre) asc;")
-        dgvProductos.Columns(7).Visible = False
-        dgvProductos.Columns(8).Width = 0
+        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
 
     End Sub
 
@@ -113,6 +114,13 @@ Public Class GestionarProductos
 
 
     Dim buscarBool As Boolean = False
+
+
+    Sub ActualizarMinimoStock()
+        consulta.consultaReturnHide("SELECT minimoStock from Productos limit 1;")
+        minimoStock = Val(consulta.valorReturn)
+    End Sub
+
 
     Private Sub txtBuscarProductos_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarProductos.TextChanged
         dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e FROM Productos where existenteBool = 1 and nombre LIKE '%" & txtBuscarProductos.Text & "%' order by(nombre) asc;")
@@ -191,8 +199,14 @@ Public Class GestionarProductos
 
 
     Sub ajustarMinimoStock()
-        consulta.consultaHide("UPDATE Productos SET minimoStock=" & txtMinimoStock.Text & ";")
-        txtMinimoStock.Text = ""
+        If Not txtMinimoStock.Text.Equals("") Then
+            consulta.consultaHide("UPDATE Productos SET minimoStock=" & txtMinimoStock.Text & ";")
+            txtMinimoStock.Text = ""
+            ActualizarMinimoStock()
+            ActualizarTablaProductos()
+        Else
+            txtMinimoStock.BackColor = Color.Red
+        End If
     End Sub
 
     Private Sub txtMinimoStock_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtMinimoStock.KeyPress
@@ -367,5 +381,34 @@ Public Class GestionarProductos
         dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e, minimoStock as m FROM Productos where existenteBool = 0 order by(nombre) asc;")
         dgvProductos.Columns(7).Visible = False
         dgvProductos.Columns(8).Width = 0
+    End Sub
+
+    Private Sub txtMinimoStock_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMinimoStock.TextChanged
+        If txtMinimoStock.BackColor = Color.Red Then
+            txtMinimoStock.BackColor = Color.White
+        End If
+    End Sub
+
+    Private Sub dgvProductos_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvProductos.CellFormatting
+        If dgvProductos.Columns(e.ColumnIndex).Name = "Stock" Then
+
+            Dim valor As Integer = e.Value
+
+            If valor <= minimoStock Then
+                dgvProductos.Rows(e.RowIndex).Cells(e.ColumnIndex).Style.ForeColor = Color.Red
+                dgvProductos.Rows(e.RowIndex).Cells(e.ColumnIndex).Style.SelectionForeColor = Color.Red
+            End If
+        End If
+    End Sub
+
+    Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox4.Click
+        ActualizarTablaProductos()
+        If txtBuscarProductos.Visible Then
+            txtBuscarCodigo.Visible = True
+            txtBuscarProductos.Visible = False
+        Else
+            txtBuscarProductos.Visible = True
+            txtBuscarCodigo.Visible = False
+        End If
     End Sub
 End Class

@@ -16,6 +16,7 @@ Public Class SurtirProductos
 
     Private Sub SurtitProductos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         panelSurtido.SendToBack()
+        SendMessage(txtBuscarProductos.Handle, EM_SETCUEBANNER, 0, "Ingrese el nombre")
 
         If soloNuevoBool Then
             soloNuevo()
@@ -29,6 +30,15 @@ Public Class SurtirProductos
         panelBuscar.Width = 0
 
     End Sub
+
+    '----PLACEHOLDERS----'
+
+    Private Const EM_SETCUEBANNER As Integer = &H1501
+
+    <DllImport("user32.dll", CharSet:=CharSet.Auto)>
+    Private Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As Integer,
+    <MarshalAs(UnmanagedType.LPWStr)> ByVal lParam As String) As Int32
+    End Function
 
 
     Sub vaciarCampos()
@@ -47,7 +57,7 @@ Public Class SurtirProductos
 
 
     Private Sub btnOtraCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOtraCompra.Click
-        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count = 13 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
+        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
             If btnVolverCompra.Visible = False Then
                 btnVolverCompra.Visible = True
             End If
@@ -61,7 +71,7 @@ Public Class SurtirProductos
 
     Sub insertarCompra()
 
-        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count = 13 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
+        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
             Dim precioCosto As Integer = (Val(txtImporteCosto.Text) / Val(txtCantidad.Text))
             Dim precioVenta As Integer = (precioCosto + ((Val(txtGanancia.Text) * precioCosto) / 100))
             nuevaCompra.Add(New Surtido(contadorCompra, txtCodigoProducto.Text, txtImporteCosto.Text, precioVenta, precioCosto, txtCantidad.Text, lblNombre.Text, txtGanancia.Text))
@@ -98,7 +108,7 @@ Public Class SurtirProductos
 
     Private Sub btnVolverCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVolverCompra.Click
 
-        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count = 13 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
+        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
             For Each item As Surtido In nuevaCompra
                 If item.FuncionContador = contadorCompra Then
                     item.FuncionIdProducto = txtCodigoProducto.Text
@@ -177,7 +187,7 @@ Public Class SurtirProductos
 
     Private Sub btnSiguienteCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSiguienteCompra.Click
 
-        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count = 13 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
+        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
             For Each item As Surtido In nuevaCompra
                 If item.FuncionContador = contadorCompra Then
                     item.FuncionIdProducto = txtCodigoProducto.Text
@@ -222,7 +232,7 @@ Public Class SurtirProductos
 
 
     Private Sub btnFinalizarCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFinalizarSurtido.Click
-        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count = 13 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
+        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
             FinalizarCompra()
         Else
             mostrarMensaje("Debe rellenar todos los campos.")
@@ -291,7 +301,7 @@ Public Class SurtirProductos
     End Sub
 
     Private Sub txtCodigoProducto_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCodigoProducto.TextChanged
-        If txtCodigoProducto.TextLength = 13 Then
+        If txtCodigoProducto.TextLength >= 2 Then
             consulta.consultaReturnHide("SELECT Nombre FROM productos where idProducto=" & txtCodigoProducto.Text & ";")
             lblNombre.Text = consulta.valorReturn
             consulta.consultaReturnHide("SELECT cantidadUnidad FROM productos where idProducto=" & txtCodigoProducto.Text & ";")
@@ -304,7 +314,9 @@ Public Class SurtirProductos
             txtGanancia.Text = consulta.valorReturn
 
             lblNombre.Visible = True
-            txtImporteCosto.Focus()
+            If txtCodigoProducto.TextLength = 13 Then
+                txtImporteCosto.Focus()
+            End If
         Else
             lblNombre.Text = ""
             lblNombre.Visible = False
@@ -364,12 +376,6 @@ Public Class SurtirProductos
 
     Private Sub txtBuscarProductos_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarProductos.TextChanged
         dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, Stock FROM Productos where existenteBool = 1 and nombre LIKE '%" & txtBuscarProductos.Text & "%' order by(nombre) asc;")
-        txtBuscarCodigo.Text = ""
-    End Sub
-
-    Private Sub txtBuscarCodigo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigo.TextChanged
-        dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, Stock FROM Productos where existenteBool = 1 and idProducto LIKE '%" & txtBuscarCodigo.Text & "%' order by(nombre) asc;")
-        txtBuscarProductos.Text = ""
     End Sub
 
     Private Sub tmrOcultarBuscar_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrOcultarBuscar.Tick
@@ -446,7 +452,7 @@ Public Class SurtirProductos
         End If
     End Sub
 
-    Private Sub txtBuscarCodigo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarCodigo.KeyPress
+    Private Sub txtBuscarCodigo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
 
@@ -473,6 +479,7 @@ Public Class SurtirProductos
     End Sub
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarAgregar.Click
+        panelSurtido.Visible = True
         tmrOcultarAgregar.Enabled = True
     End Sub
 

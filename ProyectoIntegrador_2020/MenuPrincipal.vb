@@ -82,6 +82,7 @@ Public Class MenuPrincipal
             tmrOcultarMenu.Enabled = True
             imgLogo.Width = 249
             lblTituloVentana.Location = New Point(64, 6)
+            tmrIzquierdaEstadistica.Enabled = True
             If submenuClienteBool Then
                 submenuClienteBool = False
                 tmrOcultarSubMenu.Enabled = True
@@ -97,6 +98,7 @@ Public Class MenuPrincipal
             tmrMostrarMenu.Enabled = True
             imgLogo.Width = 291
             lblTituloVentana.Location = New Point(241, 6)
+            tmrDerechaEstadistica.Enabled = True
         End If
     End Sub
 
@@ -170,27 +172,13 @@ Public Class MenuPrincipal
     End Sub
 
     Private Sub btnProductos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProductos.Click
-        If Not submenuProductoBool Then
-            submenuProductos.Height = 1
-            submenuProductos.Visible = True
-
-            If Me.panelMenu.Width < 236 Then
-                tmrMostrarMenu.Enabled = True
-                imgLogo.Width = 291
-            End If
-
-            submenuFalse()
-            submenuProductoBool = True
-
-            tmrOcultarSubMenu.Enabled = True
-            tmrMostrarSubMenu.Enabled = True
-        Else
-            submenuProductoBool = False
-
-            tmrOcultarSubMenu.Enabled = True
-        End If
-
-        lblTituloVentana.Location = New Point(241, 6)
+        lblTituloVentana.Text = "Actualizar Productos"
+        submenuFalse()
+        tmrOcultarSubMenu.Enabled = True
+        tmrOcultarAbout.Enabled = True
+        If formularioBool = True Then formulario.Close()
+        openFromOnPanel(Of GestionarProductos)()
+        formularioBool = True
     End Sub
 
     Private Sub tmrMostrarSubMenu_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarSubMenu.Tick
@@ -205,12 +193,6 @@ Public Class MenuPrincipal
                 tmrMostrarSubMenu.Enabled = False
             Else
                 submenuProveedores.Height = submenuProveedores.Height + 10
-            End If
-        ElseIf submenuProductoBool Then
-            If submenuProductos.Height >= 52 Then
-                tmrMostrarSubMenu.Enabled = False
-            Else
-                submenuProductos.Height = submenuProductos.Height + 10
             End If
         End If
     End Sub
@@ -229,13 +211,6 @@ Public Class MenuPrincipal
                 submenuProveedores.Visible = False
             Else
                 submenuProveedores.Height = submenuProveedores.Height - 10
-            End If
-        ElseIf submenuProductos.Visible And Not submenuProductoBool Then
-            If submenuProductos.Height <= 1 Then
-                tmrOcultarSubMenu.Enabled = False
-                submenuProductos.Visible = False
-            Else
-                submenuProductos.Height = submenuProductos.Height - 10
             End If
         End If
     End Sub
@@ -281,7 +256,6 @@ Public Class MenuPrincipal
     Private Sub ocultarSubMenus()
         submenuClientes.Visible = False
         submenuProveedores.Visible = False
-        submenuProductos.Visible = False
     End Sub
 
     '----PONER BOOLEANOS DE SUBMENUS EN FALSO----'
@@ -373,7 +347,7 @@ Public Class MenuPrincipal
     End Sub
 
     
-    Private Sub btnActualizarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarProducto.Click
+    Private Sub btnActualizarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         lblTituloVentana.Text = "Actualizar Productos"
         tmrOcultarAbout.Enabled = True
         If formularioBool = True Then formulario.Close()
@@ -448,6 +422,8 @@ Public Class MenuPrincipal
 
     Private Sub btnNotas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNotas.Click
         lblTituloVentana.Text = "Notas"
+        submenuFalse()
+        tmrOcultarSubMenu.Enabled = True
         If formularioBool = True Then formulario.Close()
         openFromOnPanel(Of Notas)()
         formularioBool = True
@@ -463,11 +439,38 @@ Public Class MenuPrincipal
         tmrOcultarAbout.Enabled = True
     End Sub
 
-    Private Sub PanelContenedor_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles PanelContenedor.Paint
 
+    Private Sub tmrIzquierdaEstadistica_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrIzquierdaEstadistica.Tick
+        Dim x As Integer = btnEstadistica.Location.X
+        Dim y As Integer = btnEstadistica.Location.Y
+
+        If x <= 10 Then
+            If y <= 589 Then
+                tmrIzquierdaEstadistica.Enabled = False
+            Else
+                y -= 10
+                btnEstadistica.Location = New Point(x, y)
+            End If
+        Else
+            x -= 10
+            btnEstadistica.Location = New Point(x, y)
+        End If
     End Sub
 
-    Private Sub txtPrecioProductos_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPrecioProductos.TextChanged
+    Private Sub tmrDerechaEstadistica_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrDerechaEstadistica.Tick
+        Dim x As Integer = btnEstadistica.Location.X
+        Dim y As Integer = btnEstadistica.Location.Y
 
+        If y >= 676 Then
+            If x >= 169 Then
+                tmrDerechaEstadistica.Enabled = False
+            Else
+                x += 10
+                btnEstadistica.Location = New Point(x, y)
+            End If
+        Else
+            y += 10
+            btnEstadistica.Location = New Point(x, y)
+        End If
     End Sub
 End Class

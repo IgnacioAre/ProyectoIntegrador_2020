@@ -17,7 +17,7 @@ Public Class CuentaCorrienteProveedor
         btnDebe.Enabled = False
         btnHaber.Enabled = False
         consultas.establecerConexion()
-        SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
+        SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por nombre")
         actualizarTabla()
     End Sub
 
