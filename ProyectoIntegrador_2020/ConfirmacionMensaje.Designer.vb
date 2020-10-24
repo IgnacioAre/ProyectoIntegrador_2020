@@ -57,7 +57,7 @@ Partial Class ConfirmacionMensaje
         'btnAceptar
         '
         Me.btnAceptar.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnAceptar.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnAceptar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
@@ -73,7 +73,7 @@ Partial Class ConfirmacionMensaje
         'btnCancelar
         '
         Me.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnCancelar.BackColor = System.Drawing.Color.Black
+        Me.btnCancelar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
@@ -89,7 +89,7 @@ Partial Class ConfirmacionMensaje
         '
         'panelTitulo
         '
-        Me.panelTitulo.BackColor = System.Drawing.Color.Black
+        Me.panelTitulo.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.panelTitulo.Controls.Add(Me.lblTitulo)
         Me.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelTitulo.ForeColor = System.Drawing.Color.White
@@ -120,6 +120,7 @@ Partial Class ConfirmacionMensaje
         '
         'panelMensaje
         '
+        Me.panelMensaje.BackColor = System.Drawing.Color.White
         Me.panelMensaje.Controls.Add(Me.lblMensaje)
         Me.panelMensaje.Location = New System.Drawing.Point(0, 0)
         Me.panelMensaje.Name = "panelMensaje"
@@ -157,6 +158,7 @@ Partial Class ConfirmacionMensaje
         '
         'panelContenedor
         '
+        Me.panelContenedor.BackColor = System.Drawing.Color.White
         Me.panelContenedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panelContenedor.Controls.Add(Me.TableLayoutPanel1)
         Me.panelContenedor.Controls.Add(Me.panelMensaje)

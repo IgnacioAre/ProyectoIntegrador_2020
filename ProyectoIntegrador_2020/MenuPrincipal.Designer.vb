@@ -24,9 +24,9 @@ Partial Class MenuPrincipal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuPrincipal))
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelSuperior = New System.Windows.Forms.Panel()
         Me.lblTituloVentana = New System.Windows.Forms.Label()
         Me.btnAyuda = New System.Windows.Forms.Button()
@@ -72,8 +72,6 @@ Partial Class MenuPrincipal
         Me.tmrOcultarSubMenu = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarAbout = New System.Windows.Forms.Timer(Me.components)
         Me.tmrOcultarAbout = New System.Windows.Forms.Timer(Me.components)
-        Me.tmrIzquierdaEstadistica = New System.Windows.Forms.Timer(Me.components)
-        Me.tmrDerechaEstadistica = New System.Windows.Forms.Timer(Me.components)
         Me.panelSuperior.SuspendLayout()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelMenu.SuspendLayout()
@@ -197,10 +195,10 @@ Partial Class MenuPrincipal
         '
         'btnEstadistica
         '
-        Me.btnEstadistica.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnEstadistica.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnEstadistica.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnEstadistica.Image = CType(resources.GetObject("btnEstadistica.Image"), System.Drawing.Image)
-        Me.btnEstadistica.Location = New System.Drawing.Point(169, 656)
+        Me.btnEstadistica.Location = New System.Drawing.Point(184, 654)
         Me.btnEstadistica.Name = "btnEstadistica"
         Me.btnEstadistica.Size = New System.Drawing.Size(50, 50)
         Me.btnEstadistica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -441,10 +439,10 @@ Partial Class MenuPrincipal
         '
         'pbCerrarSesion
         '
-        Me.pbCerrarSesion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.pbCerrarSesion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pbCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbCerrarSesion.Image = CType(resources.GetObject("pbCerrarSesion.Image"), System.Drawing.Image)
-        Me.pbCerrarSesion.Location = New System.Drawing.Point(12, 660)
+        Me.pbCerrarSesion.Location = New System.Drawing.Point(6, 660)
         Me.pbCerrarSesion.Name = "pbCerrarSesion"
         Me.pbCerrarSesion.Size = New System.Drawing.Size(36, 35)
         Me.pbCerrarSesion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -572,30 +570,30 @@ Partial Class MenuPrincipal
         Me.dgvPreciosRapidos.AllowUserToDeleteRows = False
         Me.dgvPreciosRapidos.AllowUserToResizeColumns = False
         Me.dgvPreciosRapidos.AllowUserToResizeRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.dgvPreciosRapidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.dgvPreciosRapidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
         Me.dgvPreciosRapidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvPreciosRapidos.BackgroundColor = System.Drawing.Color.White
         Me.dgvPreciosRapidos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvPreciosRapidos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvPreciosRapidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPreciosRapidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        DataGridViewCellStyle26.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        DataGridViewCellStyle26.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvPreciosRapidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle26
         Me.dgvPreciosRapidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPreciosRapidos.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
+        DataGridViewCellStyle27.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle27.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPreciosRapidos.DefaultCellStyle = DataGridViewCellStyle27
         Me.dgvPreciosRapidos.EnableHeadersVisualStyles = False
         Me.dgvPreciosRapidos.GridColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.dgvPreciosRapidos.Location = New System.Drawing.Point(38, 97)
@@ -726,14 +724,6 @@ Partial Class MenuPrincipal
         '
         Me.tmrOcultarAbout.Interval = 1
         '
-        'tmrIzquierdaEstadistica
-        '
-        Me.tmrIzquierdaEstadistica.Interval = 1
-        '
-        'tmrDerechaEstadistica
-        '
-        Me.tmrDerechaEstadistica.Interval = 1
-        '
         'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -814,7 +804,5 @@ Partial Class MenuPrincipal
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents btnEstadistica As System.Windows.Forms.PictureBox
-    Friend WithEvents tmrIzquierdaEstadistica As System.Windows.Forms.Timer
-    Friend WithEvents tmrDerechaEstadistica As System.Windows.Forms.Timer
 
 End Class

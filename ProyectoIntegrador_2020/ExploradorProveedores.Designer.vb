@@ -94,7 +94,7 @@ Partial Class ExploradorProveedores
         'panelClientes
         '
         Me.panelClientes.AutoScroll = True
-        Me.panelClientes.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.panelClientes.BackColor = System.Drawing.Color.CadetBlue
         Me.panelClientes.Controls.Add(Me.btnActivo)
         Me.panelClientes.Controls.Add(Me.GroupBox1)
         Me.panelClientes.Controls.Add(Me.chkNoActivos)
@@ -122,7 +122,7 @@ Partial Class ExploradorProveedores
         Me.btnActivo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnActivo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnActivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnActivo.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnActivo.ForeColor = System.Drawing.Color.White
         Me.btnActivo.Image = CType(resources.GetObject("btnActivo.Image"), System.Drawing.Image)
         Me.btnActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -142,7 +142,7 @@ Partial Class ExploradorProveedores
         Me.GroupBox1.Controls.Add(Me.btnEliminarTel)
         Me.GroupBox1.Controls.Add(Me.btnEditarTel)
         Me.GroupBox1.Controls.Add(Me.dgvTelefono)
-        Me.GroupBox1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(745, 209)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(240, 178)
@@ -198,7 +198,7 @@ Partial Class ExploradorProveedores
         Me.dgvTelefono.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
@@ -208,7 +208,7 @@ Partial Class ExploradorProveedores
         Me.dgvTelefono.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
@@ -233,14 +233,14 @@ Partial Class ExploradorProveedores
         Me.dgvTelefono.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvTelefono.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
         Me.dgvTelefono.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dgvTelefono.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvTelefono.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvTelefono.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
         Me.dgvTelefono.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvTelefono.ThemeStyle.HeaderStyle.Height = 23
         Me.dgvTelefono.ThemeStyle.ReadOnly = True
         Me.dgvTelefono.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
         Me.dgvTelefono.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvTelefono.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvTelefono.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvTelefono.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
         Me.dgvTelefono.ThemeStyle.RowsStyle.Height = 22
         Me.dgvTelefono.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
@@ -249,10 +249,10 @@ Partial Class ExploradorProveedores
         'chkNoActivos
         '
         Me.chkNoActivos.AutoSize = True
-        Me.chkNoActivos.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkNoActivos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkNoActivos.Location = New System.Drawing.Point(775, 34)
         Me.chkNoActivos.Name = "chkNoActivos"
-        Me.chkNoActivos.Size = New System.Drawing.Size(210, 25)
+        Me.chkNoActivos.Size = New System.Drawing.Size(192, 24)
         Me.chkNoActivos.TabIndex = 25
         Me.chkNoActivos.Text = "Proveedores no activos"
         Me.chkNoActivos.UseVisualStyleBackColor = True
@@ -264,7 +264,7 @@ Partial Class ExploradorProveedores
         Me.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrar.ForeColor = System.Drawing.Color.White
         Me.btnCerrar.Location = New System.Drawing.Point(3, 3)
         Me.btnCerrar.Name = "btnCerrar"
@@ -298,7 +298,7 @@ Partial Class ExploradorProveedores
         Me.gpInformacion.Controls.Add(Me.Label2)
         Me.gpInformacion.Controls.Add(Me.txtID)
         Me.gpInformacion.Controls.Add(Me.Label1)
-        Me.gpInformacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gpInformacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gpInformacion.Location = New System.Drawing.Point(60, 296)
         Me.gpInformacion.Name = "gpInformacion"
         Me.gpInformacion.Size = New System.Drawing.Size(667, 421)
@@ -363,17 +363,17 @@ Partial Class ExploradorProveedores
         '
         Me.txtDetalleRegistro.Location = New System.Drawing.Point(65, 160)
         Me.txtDetalleRegistro.Name = "txtDetalleRegistro"
-        Me.txtDetalleRegistro.Size = New System.Drawing.Size(261, 27)
+        Me.txtDetalleRegistro.Size = New System.Drawing.Size(261, 26)
         Me.txtDetalleRegistro.TabIndex = 8
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
         Me.Label7.Location = New System.Drawing.Point(42, 121)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(74, 22)
+        Me.Label7.Size = New System.Drawing.Size(67, 24)
         Me.Label7.TabIndex = 7
         Me.Label7.Text = "Detalle"
         '
@@ -381,17 +381,17 @@ Partial Class ExploradorProveedores
         '
         Me.txtSaldoRegistro.Location = New System.Drawing.Point(65, 68)
         Me.txtSaldoRegistro.Name = "txtSaldoRegistro"
-        Me.txtSaldoRegistro.Size = New System.Drawing.Size(148, 27)
+        Me.txtSaldoRegistro.Size = New System.Drawing.Size(148, 26)
         Me.txtSaldoRegistro.TabIndex = 6
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
         Me.Label5.Location = New System.Drawing.Point(42, 29)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(60, 22)
+        Me.Label5.Size = New System.Drawing.Size(58, 24)
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Saldo"
         '
@@ -423,7 +423,7 @@ Partial Class ExploradorProveedores
         Me.dgvRegistroVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle5.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
@@ -433,7 +433,7 @@ Partial Class ExploradorProveedores
         Me.dgvRegistroVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
@@ -458,14 +458,14 @@ Partial Class ExploradorProveedores
         Me.dgvRegistroVentas.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvRegistroVentas.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
         Me.dgvRegistroVentas.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dgvRegistroVentas.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvRegistroVentas.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvRegistroVentas.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
         Me.dgvRegistroVentas.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvRegistroVentas.ThemeStyle.HeaderStyle.Height = 23
         Me.dgvRegistroVentas.ThemeStyle.ReadOnly = True
         Me.dgvRegistroVentas.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
         Me.dgvRegistroVentas.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvRegistroVentas.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvRegistroVentas.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvRegistroVentas.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
         Me.dgvRegistroVentas.ThemeStyle.RowsStyle.Height = 22
         Me.dgvRegistroVentas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
@@ -479,7 +479,7 @@ Partial Class ExploradorProveedores
         Me.btnCerrarInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnCerrarInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnCerrarInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrarInfo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarInfo.ForeColor = System.Drawing.Color.White
         Me.btnCerrarInfo.Location = New System.Drawing.Point(633, 17)
         Me.btnCerrarInfo.Name = "btnCerrarInfo"
@@ -510,33 +510,33 @@ Partial Class ExploradorProveedores
         Me.mskFechaIngreso.Enabled = False
         Me.mskFechaIngreso.Location = New System.Drawing.Point(56, 238)
         Me.mskFechaIngreso.Name = "mskFechaIngreso"
-        Me.mskFechaIngreso.Size = New System.Drawing.Size(94, 27)
+        Me.mskFechaIngreso.Size = New System.Drawing.Size(94, 26)
         Me.mskFechaIngreso.TabIndex = 12
         '
         'txtDireccion
         '
         Me.txtDireccion.Location = New System.Drawing.Point(56, 292)
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(214, 27)
+        Me.txtDireccion.Size = New System.Drawing.Size(214, 26)
         Me.txtDireccion.TabIndex = 11
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(41, 272)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(69, 17)
+        Me.Label4.Size = New System.Drawing.Size(65, 16)
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "Dirección"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(40, 218)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(118, 17)
+        Me.Label6.Size = New System.Drawing.Size(113, 16)
         Me.Label6.TabIndex = 6
         Me.Label6.Text = "Fecha de Ingreso"
         '
@@ -545,16 +545,16 @@ Partial Class ExploradorProveedores
         Me.txtDeuda.Enabled = False
         Me.txtDeuda.Location = New System.Drawing.Point(48, 178)
         Me.txtDeuda.Name = "txtDeuda"
-        Me.txtDeuda.Size = New System.Drawing.Size(214, 27)
+        Me.txtDeuda.Size = New System.Drawing.Size(214, 26)
         Me.txtDeuda.TabIndex = 5
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(32, 158)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(44, 17)
+        Me.Label3.Size = New System.Drawing.Size(44, 16)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Saldo"
         '
@@ -562,16 +562,16 @@ Partial Class ExploradorProveedores
         '
         Me.txtNombre.Location = New System.Drawing.Point(48, 118)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(214, 27)
+        Me.txtNombre.Size = New System.Drawing.Size(214, 26)
         Me.txtNombre.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(32, 98)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(61, 17)
+        Me.Label2.Size = New System.Drawing.Size(57, 16)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Nombre"
         '
@@ -581,16 +581,16 @@ Partial Class ExploradorProveedores
         Me.txtID.Location = New System.Drawing.Point(48, 64)
         Me.txtID.Name = "txtID"
         Me.txtID.ReadOnly = True
-        Me.txtID.Size = New System.Drawing.Size(214, 27)
+        Me.txtID.Size = New System.Drawing.Size(214, 26)
         Me.txtID.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(32, 44)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(21, 17)
+        Me.Label1.Size = New System.Drawing.Size(21, 16)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "ID"
         '
@@ -605,10 +605,10 @@ Partial Class ExploradorProveedores
         '
         'txtBuscarClientes
         '
-        Me.txtBuscarClientes.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBuscarClientes.Location = New System.Drawing.Point(93, 32)
         Me.txtBuscarClientes.Name = "txtBuscarClientes"
-        Me.txtBuscarClientes.Size = New System.Drawing.Size(237, 27)
+        Me.txtBuscarClientes.Size = New System.Drawing.Size(237, 26)
         Me.txtBuscarClientes.TabIndex = 0
         '
         'btnNoActivo
@@ -620,7 +620,7 @@ Partial Class ExploradorProveedores
         Me.btnNoActivo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnNoActivo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnNoActivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNoActivo.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNoActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNoActivo.ForeColor = System.Drawing.Color.White
         Me.btnNoActivo.Image = CType(resources.GetObject("btnNoActivo.Image"), System.Drawing.Image)
         Me.btnNoActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -641,7 +641,7 @@ Partial Class ExploradorProveedores
         Me.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnModificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
         Me.btnModificar.Image = CType(resources.GetObject("btnModificar.Image"), System.Drawing.Image)
         Me.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -661,7 +661,7 @@ Partial Class ExploradorProveedores
         Me.btnNuevo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNuevo.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNuevo.ForeColor = System.Drawing.Color.White
         Me.btnNuevo.Image = CType(resources.GetObject("btnNuevo.Image"), System.Drawing.Image)
         Me.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -700,7 +700,7 @@ Partial Class ExploradorProveedores
         Me.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Silver
         DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
@@ -732,7 +732,7 @@ Partial Class ExploradorProveedores
         Me.dgvProveedores.ThemeStyle.ReadOnly = True
         Me.dgvProveedores.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
         Me.dgvProveedores.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvProveedores.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvProveedores.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvProveedores.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
         Me.dgvProveedores.ThemeStyle.RowsStyle.Height = 22
         Me.dgvProveedores.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver

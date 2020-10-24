@@ -60,7 +60,7 @@ Partial Class Nuevo
         '
         'panelTitulo
         '
-        Me.panelTitulo.BackColor = System.Drawing.Color.Black
+        Me.panelTitulo.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.panelTitulo.Controls.Add(Me.lblTitulo)
         Me.panelTitulo.Controls.Add(Me.btnCerrar)
         Me.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top
@@ -72,7 +72,7 @@ Partial Class Nuevo
         'lblTitulo
         '
         Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
         Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
         Me.lblTitulo.Name = "lblTitulo"
@@ -98,7 +98,7 @@ Partial Class Nuevo
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Orange
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.Panel1.Controls.Add(Me.btnMenosTel4)
         Me.Panel1.Controls.Add(Me.btnMenosTel3)
         Me.Panel1.Controls.Add(Me.btnMenosTel2)
@@ -174,11 +174,11 @@ Partial Class Nuevo
         '
         'txtTelefono5
         '
-        Me.txtTelefono5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono5.Location = New System.Drawing.Point(371, 270)
         Me.txtTelefono5.MaxLength = 15
         Me.txtTelefono5.Name = "txtTelefono5"
-        Me.txtTelefono5.Size = New System.Drawing.Size(215, 27)
+        Me.txtTelefono5.Size = New System.Drawing.Size(215, 26)
         Me.txtTelefono5.TabIndex = 18
         Me.txtTelefono5.Visible = False
         '
@@ -196,11 +196,11 @@ Partial Class Nuevo
         '
         'txtTelefono4
         '
-        Me.txtTelefono4.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono4.Location = New System.Drawing.Point(371, 221)
         Me.txtTelefono4.MaxLength = 15
         Me.txtTelefono4.Name = "txtTelefono4"
-        Me.txtTelefono4.Size = New System.Drawing.Size(215, 27)
+        Me.txtTelefono4.Size = New System.Drawing.Size(215, 26)
         Me.txtTelefono4.TabIndex = 16
         Me.txtTelefono4.Visible = False
         '
@@ -218,11 +218,11 @@ Partial Class Nuevo
         '
         'txtTelefono3
         '
-        Me.txtTelefono3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono3.Location = New System.Drawing.Point(371, 174)
         Me.txtTelefono3.MaxLength = 15
         Me.txtTelefono3.Name = "txtTelefono3"
-        Me.txtTelefono3.Size = New System.Drawing.Size(215, 27)
+        Me.txtTelefono3.Size = New System.Drawing.Size(215, 26)
         Me.txtTelefono3.TabIndex = 14
         Me.txtTelefono3.Visible = False
         '
@@ -240,11 +240,11 @@ Partial Class Nuevo
         '
         'txtTelefono2
         '
-        Me.txtTelefono2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono2.Location = New System.Drawing.Point(371, 126)
         Me.txtTelefono2.MaxLength = 15
         Me.txtTelefono2.Name = "txtTelefono2"
-        Me.txtTelefono2.Size = New System.Drawing.Size(215, 27)
+        Me.txtTelefono2.Size = New System.Drawing.Size(215, 26)
         Me.txtTelefono2.TabIndex = 12
         Me.txtTelefono2.Visible = False
         '
@@ -261,7 +261,7 @@ Partial Class Nuevo
         '
         'btnRegistrarCliente
         '
-        Me.btnRegistrarCliente.BackColor = System.Drawing.Color.Black
+        Me.btnRegistrarCliente.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.btnRegistrarCliente.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnRegistrarCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnRegistrarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
@@ -278,60 +278,60 @@ Partial Class Nuevo
         'txtTelefono1
         '
         Me.txtTelefono1.BackColor = System.Drawing.Color.White
-        Me.txtTelefono1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefono1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono1.Location = New System.Drawing.Point(371, 76)
         Me.txtTelefono1.MaxLength = 15
         Me.txtTelefono1.Name = "txtTelefono1"
-        Me.txtTelefono1.Size = New System.Drawing.Size(215, 27)
+        Me.txtTelefono1.Size = New System.Drawing.Size(215, 26)
         Me.txtTelefono1.TabIndex = 9
         '
         'lblTelefono
         '
         Me.lblTelefono.AutoSize = True
-        Me.lblTelefono.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTelefono.Location = New System.Drawing.Point(329, 32)
         Me.lblTelefono.Name = "lblTelefono"
-        Me.lblTelefono.Size = New System.Drawing.Size(95, 23)
+        Me.lblTelefono.Size = New System.Drawing.Size(93, 24)
         Me.lblTelefono.TabIndex = 8
-        Me.lblTelefono.Text = "Teléfono*"
+        Me.lblTelefono.Text = "Teléfono"
         '
         'txtDireccion
         '
-        Me.txtDireccion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDireccion.Location = New System.Drawing.Point(64, 184)
         Me.txtDireccion.MaxLength = 50
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(215, 27)
+        Me.txtDireccion.Size = New System.Drawing.Size(215, 26)
         Me.txtDireccion.TabIndex = 7
         '
         'lblDireccion
         '
         Me.lblDireccion.AutoSize = True
-        Me.lblDireccion.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDireccion.Location = New System.Drawing.Point(15, 140)
         Me.lblDireccion.Name = "lblDireccion"
-        Me.lblDireccion.Size = New System.Drawing.Size(106, 23)
+        Me.lblDireccion.Size = New System.Drawing.Size(99, 24)
         Me.lblDireccion.TabIndex = 6
-        Me.lblDireccion.Text = "Dirección*"
+        Me.lblDireccion.Text = "Dirección"
         '
         'txtNombre
         '
-        Me.txtNombre.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(64, 76)
         Me.txtNombre.MaxLength = 30
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(215, 27)
+        Me.txtNombre.Size = New System.Drawing.Size(215, 26)
         Me.txtNombre.TabIndex = 5
         '
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.Location = New System.Drawing.Point(15, 32)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(180, 23)
+        Me.lblNombre.Size = New System.Drawing.Size(185, 24)
         Me.lblNombre.TabIndex = 4
-        Me.lblNombre.Text = "Nombre completo"
+        Me.lblNombre.Text = "Nombre completo*"
         '
         'Nuevo
         '

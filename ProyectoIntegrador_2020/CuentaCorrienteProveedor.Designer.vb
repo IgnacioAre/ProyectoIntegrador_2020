@@ -23,15 +23,14 @@ Partial Class CuentaCorrienteProveedor
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CuentaCorrienteProveedor))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txtBuscarClientes = New System.Windows.Forms.TextBox()
         Me.btnDebe = New System.Windows.Forms.Button()
-        Me.btnHaber = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.dgvProveedores = New Guna.UI.WinForms.GunaDataGridView()
         Me.pbActualizarTabla = New System.Windows.Forms.PictureBox()
@@ -62,6 +61,7 @@ Partial Class CuentaCorrienteProveedor
         Me.chbHaber = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtDineroHaber = New System.Windows.Forms.TextBox()
+        Me.btnHaber = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,12 +82,12 @@ Partial Class CuentaCorrienteProveedor
         'btnDebe
         '
         Me.btnDebe.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDebe.BackColor = System.Drawing.Color.MistyRose
+        Me.btnDebe.BackColor = System.Drawing.Color.FromArgb(CType(CType(230, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.btnDebe.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnDebe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnDebe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnDebe.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDebe.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDebe.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDebe.ForeColor = System.Drawing.Color.Black
         Me.btnDebe.Location = New System.Drawing.Point(793, 62)
         Me.btnDebe.Name = "btnDebe"
@@ -95,23 +95,6 @@ Partial Class CuentaCorrienteProveedor
         Me.btnDebe.TabIndex = 11
         Me.btnDebe.Text = "Haber"
         Me.btnDebe.UseVisualStyleBackColor = False
-        '
-        'btnHaber
-        '
-        Me.btnHaber.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnHaber.BackColor = System.Drawing.Color.LightGreen
-        Me.btnHaber.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnHaber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHaber.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnHaber.ForeColor = System.Drawing.Color.Black
-        Me.btnHaber.Location = New System.Drawing.Point(793, 125)
-        Me.btnHaber.Name = "btnHaber"
-        Me.btnHaber.Size = New System.Drawing.Size(157, 44)
-        Me.btnHaber.TabIndex = 12
-        Me.btnHaber.Text = "Debe"
-        Me.btnHaber.UseVisualStyleBackColor = False
         '
         'PictureBox1
         '
@@ -128,8 +111,8 @@ Partial Class CuentaCorrienteProveedor
         Me.dgvProveedores.AllowUserToDeleteRows = False
         Me.dgvProveedores.AllowUserToResizeColumns = False
         Me.dgvProveedores.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvProveedores.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvProveedores.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.dgvProveedores.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
@@ -137,24 +120,24 @@ Partial Class CuentaCorrienteProveedor
         Me.dgvProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvProveedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvProveedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvProveedores.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvProveedores.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProveedores.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProveedores.DefaultCellStyle = DataGridViewCellStyle9
         Me.dgvProveedores.EnableHeadersVisualStyles = False
         Me.dgvProveedores.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvProveedores.Location = New System.Drawing.Point(89, 62)
@@ -203,8 +186,8 @@ Partial Class CuentaCorrienteProveedor
         Me.dgvRegistroCompras.AllowUserToDeleteRows = False
         Me.dgvRegistroCompras.AllowUserToResizeColumns = False
         Me.dgvRegistroCompras.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvRegistroCompras.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvRegistroCompras.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
         Me.dgvRegistroCompras.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvRegistroCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
@@ -212,24 +195,24 @@ Partial Class CuentaCorrienteProveedor
         Me.dgvRegistroCompras.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvRegistroCompras.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvRegistroCompras.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvRegistroCompras.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle11.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvRegistroCompras.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dgvRegistroCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvRegistroCompras.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvRegistroCompras.DefaultCellStyle = DataGridViewCellStyle12
         Me.dgvRegistroCompras.EnableHeadersVisualStyles = False
         Me.dgvRegistroCompras.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvRegistroCompras.Location = New System.Drawing.Point(14, 68)
@@ -249,14 +232,14 @@ Partial Class CuentaCorrienteProveedor
         Me.dgvRegistroCompras.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvRegistroCompras.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
         Me.dgvRegistroCompras.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dgvRegistroCompras.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Century Gothic", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvRegistroCompras.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvRegistroCompras.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
         Me.dgvRegistroCompras.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvRegistroCompras.ThemeStyle.HeaderStyle.Height = 23
         Me.dgvRegistroCompras.ThemeStyle.ReadOnly = True
         Me.dgvRegistroCompras.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
         Me.dgvRegistroCompras.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvRegistroCompras.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvRegistroCompras.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvRegistroCompras.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
         Me.dgvRegistroCompras.ThemeStyle.RowsStyle.Height = 22
         Me.dgvRegistroCompras.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
@@ -268,7 +251,7 @@ Partial Class CuentaCorrienteProveedor
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbRegistroCompras.Controls.Add(Me.chkRegistroCompleto)
         Me.gbRegistroCompras.Controls.Add(Me.dgvRegistroCompras)
-        Me.gbRegistroCompras.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbRegistroCompras.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbRegistroCompras.ForeColor = System.Drawing.Color.White
         Me.gbRegistroCompras.Location = New System.Drawing.Point(27, 339)
         Me.gbRegistroCompras.Name = "gbRegistroCompras"
@@ -284,7 +267,7 @@ Partial Class CuentaCorrienteProveedor
         Me.chkRegistroCompleto.ForeColor = System.Drawing.Color.Navy
         Me.chkRegistroCompleto.Location = New System.Drawing.Point(14, 36)
         Me.chkRegistroCompleto.Name = "chkRegistroCompleto"
-        Me.chkRegistroCompleto.Size = New System.Drawing.Size(235, 26)
+        Me.chkRegistroCompleto.Size = New System.Drawing.Size(219, 28)
         Me.chkRegistroCompleto.TabIndex = 34
         Me.chkRegistroCompleto.Text = "Ver Registro Completo"
         Me.chkRegistroCompleto.UseVisualStyleBackColor = True
@@ -296,7 +279,7 @@ Partial Class CuentaCorrienteProveedor
         Me.btnVerRegistro.Enabled = False
         Me.btnVerRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnVerRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnVerRegistro.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVerRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVerRegistro.ForeColor = System.Drawing.Color.White
         Me.btnVerRegistro.Image = CType(resources.GetObject("btnVerRegistro.Image"), System.Drawing.Image)
         Me.btnVerRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -310,11 +293,11 @@ Partial Class CuentaCorrienteProveedor
         '
         'btnOcultarRegistro
         '
-        Me.btnOcultarRegistro.BackColor = System.Drawing.Color.Teal
+        Me.btnOcultarRegistro.BackColor = System.Drawing.Color.FromArgb(CType(CType(230, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.btnOcultarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnOcultarRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnOcultarRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnOcultarRegistro.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOcultarRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOcultarRegistro.ForeColor = System.Drawing.Color.White
         Me.btnOcultarRegistro.Image = CType(resources.GetObject("btnOcultarRegistro.Image"), System.Drawing.Image)
         Me.btnOcultarRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -329,12 +312,12 @@ Partial Class CuentaCorrienteProveedor
         '
         'btnCerrar
         '
-        Me.btnCerrar.BackColor = System.Drawing.Color.Black
+        Me.btnCerrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrar.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrar.ForeColor = System.Drawing.Color.White
         Me.btnCerrar.Location = New System.Drawing.Point(6, 7)
         Me.btnCerrar.Name = "btnCerrar"
@@ -351,7 +334,7 @@ Partial Class CuentaCorrienteProveedor
         Me.btnPagarTodoRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnPagarTodoRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnPagarTodoRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPagarTodoRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPagarTodoRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPagarTodoRegistro.ForeColor = System.Drawing.Color.White
         Me.btnPagarTodoRegistro.Image = CType(resources.GetObject("btnPagarTodoRegistro.Image"), System.Drawing.Image)
         Me.btnPagarTodoRegistro.Location = New System.Drawing.Point(240, 222)
@@ -375,11 +358,11 @@ Partial Class CuentaCorrienteProveedor
         Me.gbDebe.Controls.Add(Me.Label4)
         Me.gbDebe.Controls.Add(Me.txtDineroDebe)
         Me.gbDebe.Controls.Add(Me.btnPagarTodoRegistro)
-        Me.gbDebe.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbDebe.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbDebe.ForeColor = System.Drawing.Color.DarkRed
-        Me.gbDebe.Location = New System.Drawing.Point(599, 447)
+        Me.gbDebe.Location = New System.Drawing.Point(599, 457)
         Me.gbDebe.Name = "gbDebe"
-        Me.gbDebe.Size = New System.Drawing.Size(388, 291)
+        Me.gbDebe.Size = New System.Drawing.Size(388, 281)
         Me.gbDebe.TabIndex = 33
         Me.gbDebe.TabStop = False
         Me.gbDebe.Text = "Debe"
@@ -392,7 +375,7 @@ Partial Class CuentaCorrienteProveedor
         Me.btnDescontarHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnDescontarHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnDescontarHaber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDescontarHaber.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDescontarHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDescontarHaber.ForeColor = System.Drawing.Color.White
         Me.btnDescontarHaber.Location = New System.Drawing.Point(240, 65)
         Me.btnDescontarHaber.Name = "btnDescontarHaber"
@@ -403,17 +386,17 @@ Partial Class CuentaCorrienteProveedor
         '
         'btnVerDetalleDebe
         '
-        Me.btnVerDetalleDebe.BackColor = System.Drawing.Color.DarkSlateBlue
+        Me.btnVerDetalleDebe.BackColor = System.Drawing.Color.Teal
         Me.btnVerDetalleDebe.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnVerDetalleDebe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnVerDetalleDebe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnVerDetalleDebe.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVerDetalleDebe.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVerDetalleDebe.ForeColor = System.Drawing.Color.White
         Me.btnVerDetalleDebe.Image = CType(resources.GetObject("btnVerDetalleDebe.Image"), System.Drawing.Image)
         Me.btnVerDetalleDebe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnVerDetalleDebe.Location = New System.Drawing.Point(39, 126)
         Me.btnVerDetalleDebe.Name = "btnVerDetalleDebe"
-        Me.btnVerDetalleDebe.Size = New System.Drawing.Size(133, 47)
+        Me.btnVerDetalleDebe.Size = New System.Drawing.Size(134, 47)
         Me.btnVerDetalleDebe.TabIndex = 40
         Me.btnVerDetalleDebe.Text = " Comentario"
         Me.btnVerDetalleDebe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -422,11 +405,11 @@ Partial Class CuentaCorrienteProveedor
         '
         'btnOcultarDetalleDebe
         '
-        Me.btnOcultarDetalleDebe.BackColor = System.Drawing.Color.Crimson
+        Me.btnOcultarDetalleDebe.BackColor = System.Drawing.Color.FromArgb(CType(CType(230, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.btnOcultarDetalleDebe.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnOcultarDetalleDebe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnOcultarDetalleDebe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnOcultarDetalleDebe.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOcultarDetalleDebe.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOcultarDetalleDebe.ForeColor = System.Drawing.Color.White
         Me.btnOcultarDetalleDebe.Image = CType(resources.GetObject("btnOcultarDetalleDebe.Image"), System.Drawing.Image)
         Me.btnOcultarDetalleDebe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -463,12 +446,12 @@ Partial Class CuentaCorrienteProveedor
         'btnCerrarHaber
         '
         Me.btnCerrarHaber.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCerrarHaber.BackColor = System.Drawing.Color.Black
+        Me.btnCerrarHaber.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.btnCerrarHaber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnCerrarHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnCerrarHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnCerrarHaber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrarHaber.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarHaber.ForeColor = System.Drawing.Color.White
         Me.btnCerrarHaber.Location = New System.Drawing.Point(353, 16)
         Me.btnCerrarHaber.Name = "btnCerrarHaber"
@@ -483,7 +466,7 @@ Partial Class CuentaCorrienteProveedor
         Me.Label3.ForeColor = System.Drawing.Color.LawnGreen
         Me.Label3.Location = New System.Drawing.Point(19, 80)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(19, 21)
+        Me.Label3.Size = New System.Drawing.Size(18, 20)
         Me.Label3.TabIndex = 35
         Me.Label3.Text = "$"
         '
@@ -493,7 +476,7 @@ Partial Class CuentaCorrienteProveedor
         Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(10, 51)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(53, 21)
+        Me.Label4.Size = New System.Drawing.Size(50, 20)
         Me.Label4.TabIndex = 34
         Me.Label4.Text = "Saldo"
         '
@@ -502,7 +485,7 @@ Partial Class CuentaCorrienteProveedor
         Me.txtDineroDebe.Location = New System.Drawing.Point(39, 77)
         Me.txtDineroDebe.MaxLength = 7
         Me.txtDineroDebe.Name = "txtDineroDebe"
-        Me.txtDineroDebe.Size = New System.Drawing.Size(133, 27)
+        Me.txtDineroDebe.Size = New System.Drawing.Size(133, 26)
         Me.txtDineroDebe.TabIndex = 33
         '
         'gbHaber
@@ -517,7 +500,7 @@ Partial Class CuentaCorrienteProveedor
         Me.gbHaber.Controls.Add(Me.chbHaber)
         Me.gbHaber.Controls.Add(Me.Label1)
         Me.gbHaber.Controls.Add(Me.txtDineroHaber)
-        Me.gbHaber.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbHaber.ForeColor = System.Drawing.Color.DarkGreen
         Me.gbHaber.Location = New System.Drawing.Point(653, 268)
         Me.gbHaber.Name = "gbHaber"
@@ -530,12 +513,12 @@ Partial Class CuentaCorrienteProveedor
         'btnCerrarInfo
         '
         Me.btnCerrarInfo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCerrarInfo.BackColor = System.Drawing.Color.Black
+        Me.btnCerrarInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.btnCerrarInfo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnCerrarInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnCerrarInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnCerrarInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrarInfo.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarInfo.ForeColor = System.Drawing.Color.White
         Me.btnCerrarInfo.Location = New System.Drawing.Point(311, 16)
         Me.btnCerrarInfo.Name = "btnCerrarInfo"
@@ -546,11 +529,11 @@ Partial Class CuentaCorrienteProveedor
         '
         'btnVerDetalleHaber
         '
-        Me.btnVerDetalleHaber.BackColor = System.Drawing.Color.DarkSlateBlue
+        Me.btnVerDetalleHaber.BackColor = System.Drawing.Color.Teal
         Me.btnVerDetalleHaber.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnVerDetalleHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnVerDetalleHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnVerDetalleHaber.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVerDetalleHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVerDetalleHaber.ForeColor = System.Drawing.Color.White
         Me.btnVerDetalleHaber.Image = CType(resources.GetObject("btnVerDetalleHaber.Image"), System.Drawing.Image)
         Me.btnVerDetalleHaber.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -564,11 +547,11 @@ Partial Class CuentaCorrienteProveedor
         '
         'btnOcultarDetalleHaber
         '
-        Me.btnOcultarDetalleHaber.BackColor = System.Drawing.Color.Crimson
+        Me.btnOcultarDetalleHaber.BackColor = System.Drawing.Color.FromArgb(CType(CType(230, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(70, Byte), Integer))
         Me.btnOcultarDetalleHaber.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnOcultarDetalleHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnOcultarDetalleHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnOcultarDetalleHaber.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOcultarDetalleHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOcultarDetalleHaber.ForeColor = System.Drawing.Color.White
         Me.btnOcultarDetalleHaber.Image = CType(resources.GetObject("btnOcultarDetalleHaber.Image"), System.Drawing.Image)
         Me.btnOcultarDetalleHaber.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -587,7 +570,7 @@ Partial Class CuentaCorrienteProveedor
         Me.Label2.ForeColor = System.Drawing.Color.LawnGreen
         Me.Label2.Location = New System.Drawing.Point(26, 62)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(19, 21)
+        Me.Label2.Size = New System.Drawing.Size(18, 20)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "$"
         '
@@ -602,12 +585,12 @@ Partial Class CuentaCorrienteProveedor
         '
         'btnActualizarDeuda
         '
-        Me.btnActualizarDeuda.BackColor = System.Drawing.Color.Black
+        Me.btnActualizarDeuda.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.btnActualizarDeuda.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnActualizarDeuda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnActualizarDeuda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnActualizarDeuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnActualizarDeuda.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActualizarDeuda.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnActualizarDeuda.ForeColor = System.Drawing.Color.White
         Me.btnActualizarDeuda.Location = New System.Drawing.Point(245, 210)
         Me.btnActualizarDeuda.Name = "btnActualizarDeuda"
@@ -634,7 +617,7 @@ Partial Class CuentaCorrienteProveedor
         Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(17, 37)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(60, 21)
+        Me.Label1.Size = New System.Drawing.Size(56, 20)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Dinero"
         '
@@ -643,8 +626,25 @@ Partial Class CuentaCorrienteProveedor
         Me.txtDineroHaber.Location = New System.Drawing.Point(46, 59)
         Me.txtDineroHaber.MaxLength = 7
         Me.txtDineroHaber.Name = "txtDineroHaber"
-        Me.txtDineroHaber.Size = New System.Drawing.Size(133, 27)
+        Me.txtDineroHaber.Size = New System.Drawing.Size(133, 26)
         Me.txtDineroHaber.TabIndex = 0
+        '
+        'btnHaber
+        '
+        Me.btnHaber.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnHaber.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(187, Byte), Integer))
+        Me.btnHaber.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnHaber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnHaber.ForeColor = System.Drawing.Color.Black
+        Me.btnHaber.Location = New System.Drawing.Point(793, 125)
+        Me.btnHaber.Name = "btnHaber"
+        Me.btnHaber.Size = New System.Drawing.Size(157, 44)
+        Me.btnHaber.TabIndex = 12
+        Me.btnHaber.Text = "Debe"
+        Me.btnHaber.UseVisualStyleBackColor = False
         '
         'CuentaCorrienteProveedor
         '
@@ -683,7 +683,6 @@ Partial Class CuentaCorrienteProveedor
     End Sub
     Friend WithEvents txtBuscarClientes As System.Windows.Forms.TextBox
     Friend WithEvents btnDebe As System.Windows.Forms.Button
-    Friend WithEvents btnHaber As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents pbActualizarTabla As System.Windows.Forms.PictureBox
     Friend WithEvents gbRegistroCompras As System.Windows.Forms.GroupBox
@@ -714,4 +713,5 @@ Partial Class CuentaCorrienteProveedor
     Friend WithEvents chbHaber As System.Windows.Forms.CheckBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtDineroHaber As System.Windows.Forms.TextBox
+    Friend WithEvents btnHaber As System.Windows.Forms.Button
 End Class

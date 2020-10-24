@@ -36,7 +36,7 @@ Partial Class Mensaje
         'btnAceptar
         '
         Me.btnAceptar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAceptar.BackColor = System.Drawing.Color.Black
+        Me.btnAceptar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
@@ -51,7 +51,7 @@ Partial Class Mensaje
         '
         'panelTitulo
         '
-        Me.panelTitulo.BackColor = System.Drawing.Color.Black
+        Me.panelTitulo.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.panelTitulo.Controls.Add(Me.lblTitulo)
         Me.panelTitulo.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelTitulo.ForeColor = System.Drawing.Color.White
@@ -63,7 +63,7 @@ Partial Class Mensaje
         'lblTitulo
         '
         Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(71, 18)
@@ -72,7 +72,7 @@ Partial Class Mensaje
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.btnAceptar)
@@ -85,6 +85,7 @@ Partial Class Mensaje
         'Panel2
         '
         Me.Panel2.AutoScroll = True
+        Me.Panel2.BackColor = System.Drawing.Color.White
         Me.Panel2.Controls.Add(Me.lblMensaje)
         Me.Panel2.Location = New System.Drawing.Point(0, 15)
         Me.Panel2.Name = "Panel2"
@@ -94,10 +95,10 @@ Partial Class Mensaje
         'lblMensaje
         '
         Me.lblMensaje.AutoSize = True
-        Me.lblMensaje.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMensaje.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMensaje.Location = New System.Drawing.Point(12, 26)
         Me.lblMensaje.Name = "lblMensaje"
-        Me.lblMensaje.Size = New System.Drawing.Size(0, 21)
+        Me.lblMensaje.Size = New System.Drawing.Size(0, 20)
         Me.lblMensaje.TabIndex = 0
         '
         'Mensaje

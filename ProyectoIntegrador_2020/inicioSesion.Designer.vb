@@ -81,11 +81,11 @@ Partial Class inicioSesion
         'lblTitulo
         '
         Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
         Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(187, 18)
+        Me.lblTitulo.Size = New System.Drawing.Size(198, 18)
         Me.lblTitulo.TabIndex = 2
         Me.lblTitulo.Text = "Iniciar Sesión  |  El Cofre"
         '
@@ -139,7 +139,7 @@ Partial Class inicioSesion
         Me.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnEntrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEntrar.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEntrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEntrar.ForeColor = System.Drawing.Color.White
         Me.btnEntrar.Location = New System.Drawing.Point(83, 364)
         Me.btnEntrar.Name = "btnEntrar"
@@ -151,34 +151,34 @@ Partial Class inicioSesion
         'txtContraseñaLogin
         '
         Me.txtContraseñaLogin.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.txtContraseñaLogin.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContraseñaLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContraseñaLogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtContraseñaLogin.Location = New System.Drawing.Point(83, 268)
         Me.txtContraseñaLogin.Name = "txtContraseñaLogin"
-        Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 27)
+        Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 26)
         Me.txtContraseñaLogin.TabIndex = 2
         '
         'Label2
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(64, 230)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(117, 23)
+        Me.Label2.Size = New System.Drawing.Size(116, 24)
         Me.Label2.TabIndex = 10
         Me.Label2.Text = "Contraseña"
         '
         'txtUsuarioLogin
         '
         Me.txtUsuarioLogin.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.txtUsuarioLogin.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsuarioLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsuarioLogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtUsuarioLogin.Location = New System.Drawing.Point(83, 160)
         Me.txtUsuarioLogin.MaxLength = 30
         Me.txtUsuarioLogin.Name = "txtUsuarioLogin"
-        Me.txtUsuarioLogin.Size = New System.Drawing.Size(202, 27)
+        Me.txtUsuarioLogin.Size = New System.Drawing.Size(202, 26)
         Me.txtUsuarioLogin.TabIndex = 1
         '
         'Label1
@@ -186,11 +186,11 @@ Partial Class inicioSesion
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(64, 122)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(78, 23)
+        Me.Label1.Size = New System.Drawing.Size(81, 24)
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Usuario"
         '
@@ -209,12 +209,12 @@ Partial Class inicioSesion
         Me.linkCrearUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.linkCrearUsuario.AutoSize = True
         Me.linkCrearUsuario.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.linkCrearUsuario.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.linkCrearUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.linkCrearUsuario.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.linkCrearUsuario.LinkColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.linkCrearUsuario.Location = New System.Drawing.Point(36, 470)
         Me.linkCrearUsuario.Name = "linkCrearUsuario"
-        Me.linkCrearUsuario.Size = New System.Drawing.Size(94, 17)
+        Me.linkCrearUsuario.Size = New System.Drawing.Size(91, 16)
         Me.linkCrearUsuario.TabIndex = 15
         Me.linkCrearUsuario.TabStop = True
         Me.linkCrearUsuario.Text = "Crear Usuario"
@@ -223,11 +223,11 @@ Partial Class inicioSesion
         '
         Me.lblCheckUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.lblCheckUsuario.AutoSize = True
-        Me.lblCheckUsuario.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCheckUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCheckUsuario.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.lblCheckUsuario.Location = New System.Drawing.Point(104, 321)
         Me.lblCheckUsuario.Name = "lblCheckUsuario"
-        Me.lblCheckUsuario.Size = New System.Drawing.Size(117, 17)
+        Me.lblCheckUsuario.Size = New System.Drawing.Size(112, 16)
         Me.lblCheckUsuario.TabIndex = 17
         Me.lblCheckUsuario.Text = "Recordar usuario"
         '
@@ -314,11 +314,11 @@ Partial Class inicioSesion
         'lblAceptable2
         '
         Me.lblAceptable2.AutoSize = True
-        Me.lblAceptable2.Font = New System.Drawing.Font("Century Gothic", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAceptable2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAceptable2.ForeColor = System.Drawing.Color.Red
         Me.lblAceptable2.Location = New System.Drawing.Point(304, 324)
         Me.lblAceptable2.Name = "lblAceptable2"
-        Me.lblAceptable2.Size = New System.Drawing.Size(24, 23)
+        Me.lblAceptable2.Size = New System.Drawing.Size(27, 25)
         Me.lblAceptable2.TabIndex = 12
         Me.lblAceptable2.Tag = ""
         Me.lblAceptable2.Text = "X"
@@ -327,11 +327,11 @@ Partial Class inicioSesion
         'lblAceptable1
         '
         Me.lblAceptable1.AutoSize = True
-        Me.lblAceptable1.Font = New System.Drawing.Font("Century Gothic", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAceptable1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAceptable1.ForeColor = System.Drawing.Color.Red
         Me.lblAceptable1.Location = New System.Drawing.Point(304, 235)
         Me.lblAceptable1.Name = "lblAceptable1"
-        Me.lblAceptable1.Size = New System.Drawing.Size(24, 23)
+        Me.lblAceptable1.Size = New System.Drawing.Size(27, 25)
         Me.lblAceptable1.TabIndex = 11
         Me.lblAceptable1.Tag = ""
         Me.lblAceptable1.Text = "X"
@@ -366,99 +366,99 @@ Partial Class inicioSesion
         '
         'txtClaveAdminRegistro
         '
-        Me.txtClaveAdminRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClaveAdminRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClaveAdminRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtClaveAdminRegistro.Location = New System.Drawing.Point(83, 408)
         Me.txtClaveAdminRegistro.MaxLength = 30
         Me.txtClaveAdminRegistro.Name = "txtClaveAdminRegistro"
         Me.txtClaveAdminRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtClaveAdminRegistro.Size = New System.Drawing.Size(215, 27)
+        Me.txtClaveAdminRegistro.Size = New System.Drawing.Size(215, 26)
         Me.txtClaveAdminRegistro.TabIndex = 8
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label8.Location = New System.Drawing.Point(34, 364)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(161, 23)
+        Me.Label8.Size = New System.Drawing.Size(155, 24)
         Me.Label8.TabIndex = 7
         Me.Label8.Text = "Clave de admin"
         '
         'txtRepContraseñaRegistro
         '
-        Me.txtRepContraseñaRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtRepContraseñaRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRepContraseñaRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtRepContraseñaRegistro.Location = New System.Drawing.Point(83, 324)
         Me.txtRepContraseñaRegistro.MaxLength = 30
         Me.txtRepContraseñaRegistro.Name = "txtRepContraseñaRegistro"
         Me.txtRepContraseñaRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtRepContraseñaRegistro.Size = New System.Drawing.Size(215, 27)
+        Me.txtRepContraseñaRegistro.Size = New System.Drawing.Size(215, 26)
         Me.txtRepContraseñaRegistro.TabIndex = 6
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label7.Location = New System.Drawing.Point(34, 280)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(184, 23)
+        Me.Label7.Size = New System.Drawing.Size(186, 24)
         Me.Label7.TabIndex = 5
         Me.Label7.Text = "Repetir contraseña"
         '
         'txtContraseñaRegistro
         '
-        Me.txtContraseñaRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContraseñaRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContraseñaRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtContraseñaRegistro.Location = New System.Drawing.Point(83, 234)
         Me.txtContraseñaRegistro.MaxLength = 30
         Me.txtContraseñaRegistro.Name = "txtContraseñaRegistro"
         Me.txtContraseñaRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtContraseñaRegistro.Size = New System.Drawing.Size(215, 27)
+        Me.txtContraseñaRegistro.Size = New System.Drawing.Size(215, 26)
         Me.txtContraseñaRegistro.TabIndex = 4
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label6.Location = New System.Drawing.Point(34, 190)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(117, 23)
+        Me.Label6.Size = New System.Drawing.Size(116, 24)
         Me.Label6.TabIndex = 3
         Me.Label6.Text = "Contraseña"
         '
         'txtUsuarioRegistro
         '
-        Me.txtUsuarioRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsuarioRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsuarioRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtUsuarioRegistro.Location = New System.Drawing.Point(83, 143)
         Me.txtUsuarioRegistro.MaxLength = 30
         Me.txtUsuarioRegistro.Name = "txtUsuarioRegistro"
-        Me.txtUsuarioRegistro.Size = New System.Drawing.Size(215, 27)
+        Me.txtUsuarioRegistro.Size = New System.Drawing.Size(215, 26)
         Me.txtUsuarioRegistro.TabIndex = 2
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label5.Location = New System.Drawing.Point(34, 99)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(186, 23)
+        Me.Label5.Size = New System.Drawing.Size(190, 24)
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Nombre de usuario"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Label4.Location = New System.Drawing.Point(33, 17)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(326, 32)
+        Me.Label4.Size = New System.Drawing.Size(356, 31)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "CREAR USUARIO ADMIN"
         '

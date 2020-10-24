@@ -82,7 +82,7 @@ Public Class MenuPrincipal
             tmrOcultarMenu.Enabled = True
             imgLogo.Width = 249
             lblTituloVentana.Location = New Point(64, 6)
-            tmrIzquierdaEstadistica.Enabled = True
+
             If submenuClienteBool Then
                 submenuClienteBool = False
                 tmrOcultarSubMenu.Enabled = True
@@ -98,7 +98,7 @@ Public Class MenuPrincipal
             tmrMostrarMenu.Enabled = True
             imgLogo.Width = 291
             lblTituloVentana.Location = New Point(241, 6)
-            tmrDerechaEstadistica.Enabled = True
+
         End If
     End Sub
 
@@ -440,37 +440,7 @@ Public Class MenuPrincipal
     End Sub
 
 
-    Private Sub tmrIzquierdaEstadistica_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrIzquierdaEstadistica.Tick
-        Dim x As Integer = btnEstadistica.Location.X
-        Dim y As Integer = btnEstadistica.Location.Y
 
-        If x <= 10 Then
-            If y <= 589 Then
-                tmrIzquierdaEstadistica.Enabled = False
-            Else
-                y -= 10
-                btnEstadistica.Location = New Point(x, y)
-            End If
-        Else
-            x -= 10
-            btnEstadistica.Location = New Point(x, y)
-        End If
-    End Sub
 
-    Private Sub tmrDerechaEstadistica_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrDerechaEstadistica.Tick
-        Dim x As Integer = btnEstadistica.Location.X
-        Dim y As Integer = btnEstadistica.Location.Y
 
-        If y >= 676 Then
-            If x >= 169 Then
-                tmrDerechaEstadistica.Enabled = False
-            Else
-                x += 10
-                btnEstadistica.Location = New Point(x, y)
-            End If
-        Else
-            y += 10
-            btnEstadistica.Location = New Point(x, y)
-        End If
-    End Sub
 End Class

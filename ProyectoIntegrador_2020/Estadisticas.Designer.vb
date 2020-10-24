@@ -22,9 +22,9 @@ Partial Class Estadisticas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.chartGrafica = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.rbCircular = New System.Windows.Forms.RadioButton()
@@ -45,21 +45,21 @@ Partial Class Estadisticas
         'chartGrafica
         '
         Me.chartGrafica.BackColor = System.Drawing.SystemColors.InactiveCaption
-        ChartArea1.Area3DStyle.Enable3D = True
-        ChartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
-        ChartArea1.BackColor = System.Drawing.Color.White
-        ChartArea1.Name = "ChartArea1"
-        Me.chartGrafica.ChartAreas.Add(ChartArea1)
+        ChartArea2.Area3DStyle.Enable3D = True
+        ChartArea2.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
+        ChartArea2.BackColor = System.Drawing.Color.White
+        ChartArea2.Name = "ChartArea1"
+        Me.chartGrafica.ChartAreas.Add(ChartArea2)
         Me.chartGrafica.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend1.Name = "Legend1"
-        Me.chartGrafica.Legends.Add(Legend1)
+        Legend2.Name = "Legend1"
+        Me.chartGrafica.Legends.Add(Legend2)
         Me.chartGrafica.Location = New System.Drawing.Point(0, 0)
         Me.chartGrafica.Name = "chartGrafica"
         Me.chartGrafica.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.chartGrafica.Series.Add(Series1)
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.chartGrafica.Series.Add(Series2)
         Me.chartGrafica.Size = New System.Drawing.Size(599, 355)
         Me.chartGrafica.TabIndex = 0
         Me.chartGrafica.Text = "Chart1"
@@ -68,7 +68,7 @@ Partial Class Estadisticas
         '
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.Panel1.Controls.Add(Me.rbCircular)
         Me.Panel1.Controls.Add(Me.rbColumnas)
         Me.Panel1.Controls.Add(Me.rbBarras)
@@ -82,9 +82,11 @@ Partial Class Estadisticas
         '
         Me.rbCircular.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.rbCircular.AutoSize = True
-        Me.rbCircular.Location = New System.Drawing.Point(577, 62)
+        Me.rbCircular.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbCircular.ForeColor = System.Drawing.Color.White
+        Me.rbCircular.Location = New System.Drawing.Point(561, 62)
         Me.rbCircular.Name = "rbCircular"
-        Me.rbCircular.Size = New System.Drawing.Size(96, 17)
+        Me.rbCircular.Size = New System.Drawing.Size(112, 17)
         Me.rbCircular.TabIndex = 8
         Me.rbCircular.TabStop = True
         Me.rbCircular.Text = "Gráfica circular"
@@ -94,9 +96,11 @@ Partial Class Estadisticas
         '
         Me.rbColumnas.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.rbColumnas.AutoSize = True
-        Me.rbColumnas.Location = New System.Drawing.Point(577, 14)
+        Me.rbColumnas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbColumnas.ForeColor = System.Drawing.Color.White
+        Me.rbColumnas.Location = New System.Drawing.Point(558, 14)
         Me.rbColumnas.Name = "rbColumnas"
-        Me.rbColumnas.Size = New System.Drawing.Size(122, 17)
+        Me.rbColumnas.Size = New System.Drawing.Size(141, 17)
         Me.rbColumnas.TabIndex = 7
         Me.rbColumnas.TabStop = True
         Me.rbColumnas.Text = "Gráfica en columnas"
@@ -106,9 +110,11 @@ Partial Class Estadisticas
         '
         Me.rbBarras.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.rbBarras.AutoSize = True
-        Me.rbBarras.Location = New System.Drawing.Point(577, 37)
+        Me.rbBarras.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbBarras.ForeColor = System.Drawing.Color.White
+        Me.rbBarras.Location = New System.Drawing.Point(560, 37)
         Me.rbBarras.Name = "rbBarras"
-        Me.rbBarras.Size = New System.Drawing.Size(106, 17)
+        Me.rbBarras.Size = New System.Drawing.Size(123, 17)
         Me.rbBarras.TabIndex = 6
         Me.rbBarras.TabStop = True
         Me.rbBarras.Text = "Gráfica en barras"
@@ -151,7 +157,7 @@ Partial Class Estadisticas
         '
         Me.Panel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Panel3.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.Panel3.Controls.Add(Me.barVertical)
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
