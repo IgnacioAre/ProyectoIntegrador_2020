@@ -139,7 +139,7 @@ Partial Class GestionarProductos
         Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvProductos.EnableHeadersVisualStyles = False
         Me.dgvProductos.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.dgvProductos.Location = New System.Drawing.Point(12, 69)
+        Me.dgvProductos.Location = New System.Drawing.Point(12, 105)
         Me.dgvProductos.Name = "dgvProductos"
         Me.dgvProductos.ReadOnly = True
         Me.dgvProductos.RowHeadersVisible = False
@@ -172,7 +172,7 @@ Partial Class GestionarProductos
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(100, 18)
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 54)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(41, 36)
         Me.PictureBox1.TabIndex = 34
@@ -181,7 +181,7 @@ Partial Class GestionarProductos
         'txtBuscarProductos
         '
         Me.txtBuscarProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarProductos.Location = New System.Drawing.Point(147, 27)
+        Me.txtBuscarProductos.Location = New System.Drawing.Point(59, 63)
         Me.txtBuscarProductos.Name = "txtBuscarProductos"
         Me.txtBuscarProductos.Size = New System.Drawing.Size(244, 26)
         Me.txtBuscarProductos.TabIndex = 33
@@ -200,11 +200,11 @@ Partial Class GestionarProductos
         Me.gpInformacion.Controls.Add(Me.Label2)
         Me.gpInformacion.Controls.Add(Me.txtID)
         Me.gpInformacion.Controls.Add(Me.Label1)
-        Me.gpInformacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gpInformacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gpInformacion.ForeColor = System.Drawing.Color.White
-        Me.gpInformacion.Location = New System.Drawing.Point(36, 411)
+        Me.gpInformacion.Location = New System.Drawing.Point(36, 421)
         Me.gpInformacion.Name = "gpInformacion"
-        Me.gpInformacion.Size = New System.Drawing.Size(316, 365)
+        Me.gpInformacion.Size = New System.Drawing.Size(316, 355)
         Me.gpInformacion.TabIndex = 37
         Me.gpInformacion.TabStop = False
         Me.gpInformacion.Text = "Información del Producto"
@@ -214,7 +214,7 @@ Partial Class GestionarProductos
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(67, 224)
+        Me.Label10.Location = New System.Drawing.Point(61, 214)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(54, 16)
         Me.Label10.TabIndex = 31
@@ -223,33 +223,33 @@ Partial Class GestionarProductos
         'cbxMedida
         '
         Me.cbxMedida.FormattingEnabled = True
-        Me.cbxMedida.Items.AddRange(New Object() {"Kilogramos", "Gramos", "Litros", "Mililitros"})
-        Me.cbxMedida.Location = New System.Drawing.Point(101, 244)
+        Me.cbxMedida.Items.AddRange(New Object() {"Unidades", "Kilogramos", "Gramos", "Litros", "Mililitros"})
+        Me.cbxMedida.Location = New System.Drawing.Point(95, 234)
         Me.cbxMedida.Name = "cbxMedida"
-        Me.cbxMedida.Size = New System.Drawing.Size(121, 28)
+        Me.cbxMedida.Size = New System.Drawing.Size(121, 29)
         Me.cbxMedida.TabIndex = 21
         '
         'txtCantidadUnidad
         '
-        Me.txtCantidadUnidad.Location = New System.Drawing.Point(51, 244)
+        Me.txtCantidadUnidad.Location = New System.Drawing.Point(45, 234)
         Me.txtCantidadUnidad.MaxLength = 5
         Me.txtCantidadUnidad.Name = "txtCantidadUnidad"
-        Me.txtCantidadUnidad.Size = New System.Drawing.Size(39, 26)
+        Me.txtCantidadUnidad.Size = New System.Drawing.Size(39, 27)
         Me.txtCantidadUnidad.TabIndex = 30
         '
         'txtStock
         '
-        Me.txtStock.Location = New System.Drawing.Point(51, 185)
+        Me.txtStock.Location = New System.Drawing.Point(45, 175)
         Me.txtStock.MaxLength = 4
         Me.txtStock.Name = "txtStock"
-        Me.txtStock.Size = New System.Drawing.Size(112, 26)
+        Me.txtStock.Size = New System.Drawing.Size(112, 27)
         Me.txtStock.TabIndex = 28
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(35, 165)
+        Me.Label4.Location = New System.Drawing.Point(29, 155)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(42, 16)
         Me.Label4.TabIndex = 27
@@ -282,7 +282,7 @@ Partial Class GestionarProductos
         Me.btnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime
         Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnActualizar.Image = CType(resources.GetObject("btnActualizar.Image"), System.Drawing.Image)
-        Me.btnActualizar.Location = New System.Drawing.Point(83, 298)
+        Me.btnActualizar.Location = New System.Drawing.Point(77, 288)
         Me.btnActualizar.Name = "btnActualizar"
         Me.btnActualizar.Size = New System.Drawing.Size(139, 48)
         Me.btnActualizar.TabIndex = 16
@@ -292,17 +292,17 @@ Partial Class GestionarProductos
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(48, 118)
+        Me.txtNombre.Location = New System.Drawing.Point(42, 108)
         Me.txtNombre.MaxLength = 30
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(214, 26)
+        Me.txtNombre.Size = New System.Drawing.Size(214, 27)
         Me.txtNombre.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(32, 98)
+        Me.Label2.Location = New System.Drawing.Point(26, 88)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(57, 16)
         Me.Label2.TabIndex = 2
@@ -311,17 +311,17 @@ Partial Class GestionarProductos
         'txtID
         '
         Me.txtID.Enabled = False
-        Me.txtID.Location = New System.Drawing.Point(48, 64)
+        Me.txtID.Location = New System.Drawing.Point(42, 54)
         Me.txtID.Name = "txtID"
         Me.txtID.ReadOnly = True
-        Me.txtID.Size = New System.Drawing.Size(214, 26)
+        Me.txtID.Size = New System.Drawing.Size(214, 27)
         Me.txtID.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(32, 44)
+        Me.Label1.Location = New System.Drawing.Point(26, 34)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(52, 16)
         Me.Label1.TabIndex = 0
@@ -336,11 +336,11 @@ Partial Class GestionarProductos
         Me.btnModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnModificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnModificar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.Color.White
         Me.btnModificar.Image = CType(resources.GetObject("btnModificar.Image"), System.Drawing.Image)
         Me.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnModificar.Location = New System.Drawing.Point(178, 268)
+        Me.btnModificar.Location = New System.Drawing.Point(178, 304)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(150, 54)
         Me.btnModificar.TabIndex = 36
@@ -356,11 +356,11 @@ Partial Class GestionarProductos
         Me.btnNuevo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevo.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNuevo.ForeColor = System.Drawing.Color.White
         Me.btnNuevo.Image = CType(resources.GetObject("btnNuevo.Image"), System.Drawing.Image)
         Me.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnNuevo.Location = New System.Drawing.Point(10, 268)
+        Me.btnNuevo.Location = New System.Drawing.Point(10, 304)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Size = New System.Drawing.Size(150, 54)
         Me.btnNuevo.TabIndex = 35
@@ -377,11 +377,11 @@ Partial Class GestionarProductos
         Me.btnSurtir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnSurtir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnSurtir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSurtir.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSurtir.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSurtir.ForeColor = System.Drawing.Color.White
         Me.btnSurtir.Image = CType(resources.GetObject("btnSurtir.Image"), System.Drawing.Image)
         Me.btnSurtir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSurtir.Location = New System.Drawing.Point(720, 268)
+        Me.btnSurtir.Location = New System.Drawing.Point(720, 304)
         Me.btnSurtir.Name = "btnSurtir"
         Me.btnSurtir.Size = New System.Drawing.Size(113, 54)
         Me.btnSurtir.TabIndex = 38
@@ -394,7 +394,7 @@ Partial Class GestionarProductos
         Me.pbActualizarTabla.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pbActualizarTabla.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbActualizarTabla.Image = CType(resources.GetObject("pbActualizarTabla.Image"), System.Drawing.Image)
-        Me.pbActualizarTabla.Location = New System.Drawing.Point(858, 214)
+        Me.pbActualizarTabla.Location = New System.Drawing.Point(858, 250)
         Me.pbActualizarTabla.Name = "pbActualizarTabla"
         Me.pbActualizarTabla.Size = New System.Drawing.Size(35, 35)
         Me.pbActualizarTabla.TabIndex = 39
@@ -403,7 +403,7 @@ Partial Class GestionarProductos
         'txtBuscarCodigo
         '
         Me.txtBuscarCodigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarCodigo.Location = New System.Drawing.Point(147, 28)
+        Me.txtBuscarCodigo.Location = New System.Drawing.Point(59, 64)
         Me.txtBuscarCodigo.MaxLength = 13
         Me.txtBuscarCodigo.Name = "txtBuscarCodigo"
         Me.txtBuscarCodigo.Size = New System.Drawing.Size(244, 26)
@@ -423,7 +423,7 @@ Partial Class GestionarProductos
         Me.btnEliminar.ForeColor = System.Drawing.Color.White
         Me.btnEliminar.Image = CType(resources.GetObject("btnEliminar.Image"), System.Drawing.Image)
         Me.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEliminar.Location = New System.Drawing.Point(344, 268)
+        Me.btnEliminar.Location = New System.Drawing.Point(344, 304)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(150, 54)
         Me.btnEliminar.TabIndex = 41
@@ -435,7 +435,7 @@ Partial Class GestionarProductos
         '
         Me.txtMinimoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtMinimoStock.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMinimoStock.Location = New System.Drawing.Point(869, 91)
+        Me.txtMinimoStock.Location = New System.Drawing.Point(869, 127)
         Me.txtMinimoStock.MaxLength = 3
         Me.txtMinimoStock.Name = "txtMinimoStock"
         Me.txtMinimoStock.Size = New System.Drawing.Size(55, 26)
@@ -445,11 +445,11 @@ Partial Class GestionarProductos
         '
         Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(854, 62)
+        Me.Label3.Location = New System.Drawing.Point(854, 98)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(107, 20)
+        Me.Label3.Size = New System.Drawing.Size(116, 21)
         Me.Label3.TabIndex = 43
         Me.Label3.Text = "Stock mínimio"
         '
@@ -458,7 +458,7 @@ Partial Class GestionarProductos
         Me.btnAjustarMinimoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAjustarMinimoStock.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAjustarMinimoStock.Image = CType(resources.GetObject("btnAjustarMinimoStock.Image"), System.Drawing.Image)
-        Me.btnAjustarMinimoStock.Location = New System.Drawing.Point(937, 91)
+        Me.btnAjustarMinimoStock.Location = New System.Drawing.Point(937, 127)
         Me.btnAjustarMinimoStock.Name = "btnAjustarMinimoStock"
         Me.btnAjustarMinimoStock.Size = New System.Drawing.Size(24, 24)
         Me.btnAjustarMinimoStock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -473,7 +473,7 @@ Partial Class GestionarProductos
         Me.dgvRegistroSurtido.AllowUserToResizeRows = False
         DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
         Me.dgvRegistroSurtido.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.dgvRegistroSurtido.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.dgvRegistroSurtido.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvRegistroSurtido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvRegistroSurtido.BackgroundColor = System.Drawing.Color.Khaki
@@ -482,7 +482,7 @@ Partial Class GestionarProductos
         Me.dgvRegistroSurtido.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle5.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
@@ -492,7 +492,7 @@ Partial Class GestionarProductos
         Me.dgvRegistroSurtido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
@@ -505,7 +505,7 @@ Partial Class GestionarProductos
         Me.dgvRegistroSurtido.ReadOnly = True
         Me.dgvRegistroSurtido.RowHeadersVisible = False
         Me.dgvRegistroSurtido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvRegistroSurtido.Size = New System.Drawing.Size(587, 248)
+        Me.dgvRegistroSurtido.Size = New System.Drawing.Size(587, 218)
         Me.dgvRegistroSurtido.TabIndex = 24
         Me.dgvRegistroSurtido.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
         Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
@@ -517,14 +517,14 @@ Partial Class GestionarProductos
         Me.dgvRegistroSurtido.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
         Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
         Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvRegistroSurtido.ThemeStyle.HeaderStyle.Height = 23
         Me.dgvRegistroSurtido.ThemeStyle.ReadOnly = True
         Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
         Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White
         Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.Height = 22
         Me.dgvRegistroSurtido.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
@@ -532,10 +532,9 @@ Partial Class GestionarProductos
         '
         'btnEditarRegistro
         '
-        Me.btnEditarRegistro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnEditarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnEditarRegistro.Image = CType(resources.GetObject("btnEditarRegistro.Image"), System.Drawing.Image)
-        Me.btnEditarRegistro.Location = New System.Drawing.Point(10, 281)
+        Me.btnEditarRegistro.Location = New System.Drawing.Point(10, 251)
         Me.btnEditarRegistro.Name = "btnEditarRegistro"
         Me.btnEditarRegistro.Size = New System.Drawing.Size(28, 27)
         Me.btnEditarRegistro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -544,7 +543,6 @@ Partial Class GestionarProductos
         '
         'panelEditarRegistro
         '
-        Me.panelEditarRegistro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.panelEditarRegistro.BackColor = System.Drawing.Color.Gainsboro
         Me.panelEditarRegistro.Controls.Add(Me.Label9)
         Me.panelEditarRegistro.Controls.Add(Me.txtCantidad)
@@ -557,7 +555,7 @@ Partial Class GestionarProductos
         Me.panelEditarRegistro.Controls.Add(Me.Label5)
         Me.panelEditarRegistro.Location = New System.Drawing.Point(10, 27)
         Me.panelEditarRegistro.Name = "panelEditarRegistro"
-        Me.panelEditarRegistro.Size = New System.Drawing.Size(338, 248)
+        Me.panelEditarRegistro.Size = New System.Drawing.Size(338, 218)
         Me.panelEditarRegistro.TabIndex = 29
         '
         'Label9
@@ -573,9 +571,9 @@ Partial Class GestionarProductos
         '
         'txtCantidad
         '
-        Me.txtCantidad.Location = New System.Drawing.Point(31, 160)
+        Me.txtCantidad.Location = New System.Drawing.Point(31, 141)
         Me.txtCantidad.Name = "txtCantidad"
-        Me.txtCantidad.Size = New System.Drawing.Size(84, 26)
+        Me.txtCantidad.Size = New System.Drawing.Size(84, 27)
         Me.txtCantidad.TabIndex = 19
         '
         'Label8
@@ -583,7 +581,7 @@ Partial Class GestionarProductos
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(27, 125)
+        Me.Label8.Location = New System.Drawing.Point(27, 106)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(84, 24)
         Me.Label8.TabIndex = 18
@@ -598,7 +596,7 @@ Partial Class GestionarProductos
         Me.btnGuardarRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime
         Me.btnGuardarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnGuardarRegistro.Image = CType(resources.GetObject("btnGuardarRegistro.Image"), System.Drawing.Image)
-        Me.btnGuardarRegistro.Location = New System.Drawing.Point(277, 193)
+        Me.btnGuardarRegistro.Location = New System.Drawing.Point(277, 166)
         Me.btnGuardarRegistro.Name = "btnGuardarRegistro"
         Me.btnGuardarRegistro.Size = New System.Drawing.Size(43, 48)
         Me.btnGuardarRegistro.TabIndex = 17
@@ -609,7 +607,7 @@ Partial Class GestionarProductos
         '
         Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(9, 204)
+        Me.PictureBox2.Location = New System.Drawing.Point(9, 177)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(43, 31)
         Me.PictureBox2.TabIndex = 9
@@ -620,7 +618,7 @@ Partial Class GestionarProductos
         Me.txtPorcentaje.Location = New System.Drawing.Point(201, 65)
         Me.txtPorcentaje.MaxLength = 2
         Me.txtPorcentaje.Name = "txtPorcentaje"
-        Me.txtPorcentaje.Size = New System.Drawing.Size(65, 26)
+        Me.txtPorcentaje.Size = New System.Drawing.Size(65, 27)
         Me.txtPorcentaje.TabIndex = 8
         '
         'Label7
@@ -638,7 +636,7 @@ Partial Class GestionarProductos
         '
         Me.txtPrecioCosto.Location = New System.Drawing.Point(31, 63)
         Me.txtPrecioCosto.Name = "txtPrecioCosto"
-        Me.txtPrecioCosto.Size = New System.Drawing.Size(84, 26)
+        Me.txtPrecioCosto.Size = New System.Drawing.Size(84, 27)
         Me.txtPrecioCosto.TabIndex = 6
         '
         'Label5
@@ -659,11 +657,11 @@ Partial Class GestionarProductos
         Me.gpRegistro.Controls.Add(Me.panelEditarRegistro)
         Me.gpRegistro.Controls.Add(Me.btnEditarRegistro)
         Me.gpRegistro.Controls.Add(Me.dgvRegistroSurtido)
-        Me.gpRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gpRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gpRegistro.ForeColor = System.Drawing.Color.White
-        Me.gpRegistro.Location = New System.Drawing.Point(358, 462)
+        Me.gpRegistro.Location = New System.Drawing.Point(358, 491)
         Me.gpRegistro.Name = "gpRegistro"
-        Me.gpRegistro.Size = New System.Drawing.Size(612, 314)
+        Me.gpRegistro.Size = New System.Drawing.Size(612, 285)
         Me.gpRegistro.TabIndex = 26
         Me.gpRegistro.TabStop = False
         Me.gpRegistro.Text = "Registro de Surtido"
@@ -676,11 +674,11 @@ Partial Class GestionarProductos
         Me.btnOcultarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnOcultarRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnOcultarRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnOcultarRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOcultarRegistro.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOcultarRegistro.ForeColor = System.Drawing.Color.White
         Me.btnOcultarRegistro.Image = CType(resources.GetObject("btnOcultarRegistro.Image"), System.Drawing.Image)
         Me.btnOcultarRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnOcultarRegistro.Location = New System.Drawing.Point(803, 408)
+        Me.btnOcultarRegistro.Location = New System.Drawing.Point(803, 449)
         Me.btnOcultarRegistro.Name = "btnOcultarRegistro"
         Me.btnOcultarRegistro.Size = New System.Drawing.Size(167, 47)
         Me.btnOcultarRegistro.TabIndex = 47
@@ -696,11 +694,11 @@ Partial Class GestionarProductos
         Me.btnVerRegistro.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnVerRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnVerRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnVerRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVerRegistro.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVerRegistro.ForeColor = System.Drawing.Color.White
         Me.btnVerRegistro.Image = CType(resources.GetObject("btnVerRegistro.Image"), System.Drawing.Image)
         Me.btnVerRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVerRegistro.Location = New System.Drawing.Point(803, 408)
+        Me.btnVerRegistro.Location = New System.Drawing.Point(803, 449)
         Me.btnVerRegistro.Name = "btnVerRegistro"
         Me.btnVerRegistro.Size = New System.Drawing.Size(132, 47)
         Me.btnVerRegistro.TabIndex = 46
@@ -720,11 +718,11 @@ Partial Class GestionarProductos
         '
         Me.chbProdNoActivos.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chbProdNoActivos.AutoSize = True
-        Me.chbProdNoActivos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chbProdNoActivos.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chbProdNoActivos.ForeColor = System.Drawing.Color.White
-        Me.chbProdNoActivos.Location = New System.Drawing.Point(658, 27)
+        Me.chbProdNoActivos.Location = New System.Drawing.Point(645, 65)
         Me.chbProdNoActivos.Name = "chbProdNoActivos"
-        Me.chbProdNoActivos.Size = New System.Drawing.Size(175, 24)
+        Me.chbProdNoActivos.Size = New System.Drawing.Size(192, 25)
         Me.chbProdNoActivos.TabIndex = 48
         Me.chbProdNoActivos.Text = "Productos no activos"
         Me.chbProdNoActivos.UseVisualStyleBackColor = True
@@ -738,11 +736,11 @@ Partial Class GestionarProductos
         Me.btnAgregarProd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnAgregarProd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnAgregarProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAgregarProd.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAgregarProd.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAgregarProd.ForeColor = System.Drawing.Color.White
         Me.btnAgregarProd.Image = CType(resources.GetObject("btnAgregarProd.Image"), System.Drawing.Image)
         Me.btnAgregarProd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAgregarProd.Location = New System.Drawing.Point(344, 268)
+        Me.btnAgregarProd.Location = New System.Drawing.Point(344, 304)
         Me.btnAgregarProd.Name = "btnAgregarProd"
         Me.btnAgregarProd.Size = New System.Drawing.Size(150, 54)
         Me.btnAgregarProd.TabIndex = 49
@@ -755,7 +753,7 @@ Partial Class GestionarProductos
         '
         Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(408, 19)
+        Me.PictureBox4.Location = New System.Drawing.Point(320, 55)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(32, 32)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize

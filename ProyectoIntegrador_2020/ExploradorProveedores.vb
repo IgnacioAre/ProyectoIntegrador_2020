@@ -4,7 +4,6 @@ Public Class ExploradorProveedores
 
     Dim consultas As Conexion = New Conexion
     Dim idProveedor As Integer
-    Dim activo As Byte
     Dim resultado As Byte
     Dim resultadosTxt As String
     Dim idCompra As String
@@ -103,7 +102,7 @@ Public Class ExploradorProveedores
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
 
-        consultas.consultaHide("UPDATE Proveedores SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & " WHERE idProveedor=" & idProveedor & ";")
+        consultas.consultaHide("UPDATE Proveedores SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text.ToUpper & "' WHERE idProveedor=" & idProveedor & ";")
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False

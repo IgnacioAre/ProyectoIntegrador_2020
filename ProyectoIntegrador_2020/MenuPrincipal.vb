@@ -300,20 +300,20 @@ Public Class MenuPrincipal
 
     Private Sub btnExploradorClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExploradorClientes.Click
         '----MOSTRAR FORMULARIO "Explorador" EN EL MENÚ PRINCIPAL----'
-        tmrOcultarAbout.Enabled = True
         lblTituloVentana.Text = "Explorador de Clientes"
         If formularioBool = True Then formulario.Close()
         openFromOnPanel(Of ExploradorClientes)()
         formularioBool = True
+        tmrOcultarAbout.Enabled = True
     End Sub
 
-    Private Sub btnGestionarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarCliente.Click
-        '----MOSTRAR FORMULARIO "CLIENTES" EN EL MENÚ PRINCIPAL----'
-        tmrOcultarAbout.Enabled = True
+    Private Sub btnGestionarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCuentaCorrienteClientes.Click
+        '----MOSTRAR FORMULARIO "Cuenta Corriente" EN EL MENÚ PRINCIPAL----'
         lblTituloVentana.Text = "Cuenta Corriente de Clientes"
         If formularioBool = True Then formulario.Close()
         openFromOnPanel(Of CuentaCorriente)()
         formularioBool = True
+        tmrOcultarAbout.Enabled = True
     End Sub
 
     '----MOSTRAR MENSAJE PERSONALIZADO----'
@@ -340,29 +340,21 @@ Public Class MenuPrincipal
 
     Private Sub btnGestionarProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarProveedor.Click
         lblTituloVentana.Text = "Cuanta Corriente de Proveedores"
-        tmrOcultarAbout.Enabled = True
         If formularioBool = True Then formulario.Close()
         openFromOnPanel(Of CuentaCorrienteProveedor)()
         formularioBool = True
+        tmrOcultarAbout.Enabled = True
     End Sub
 
     
     Private Sub btnActualizarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         lblTituloVentana.Text = "Actualizar Productos"
-        tmrOcultarAbout.Enabled = True
         If formularioBool = True Then formulario.Close()
         openFromOnPanel(Of GestionarProductos)()
         formularioBool = True
-    End Sub
-
-    Private Sub btnListadoProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        lblTituloVentana.Text = "Listado de Productos y Stock"
         tmrOcultarAbout.Enabled = True
     End Sub
 
-    Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
-
-    End Sub
 
     Private Sub tmrMostrarAbout_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarAbout.Tick
         btnAyuda.Enabled = False

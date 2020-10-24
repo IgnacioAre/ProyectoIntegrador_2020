@@ -4,7 +4,6 @@ Public Class ExploradorClientes
 
     Dim consultas As Conexion = New Conexion
     Dim idCliente As Integer
-    Dim activo As Byte
     Dim permitido As Byte
     Dim resultado As Byte
     Dim resultadosTxt As String
@@ -110,7 +109,7 @@ Public Class ExploradorClientes
             permitido = 0
         End If
 
-        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text & "', estadoBool=" & activo & ", maxPermitidoBool=" & permitido & " WHERE idCliente=" & idCliente & ";")
+        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text.ToUpper & "', maxPermitidoBool=" & permitido & " WHERE idCliente=" & idCliente & ";")
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False

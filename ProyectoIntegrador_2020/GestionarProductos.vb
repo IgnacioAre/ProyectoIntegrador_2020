@@ -80,7 +80,7 @@ Public Class GestionarProductos
     'ACTUALIZA LA TABLA DE PRODUCTOS
 
     Public Sub ActualizarTablaProductos()
-        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
+        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
 
     End Sub
 
@@ -124,7 +124,7 @@ Public Class GestionarProductos
 
 
     Private Sub txtBuscarProductos_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarProductos.TextChanged
-        dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e FROM Productos where existenteBool = 1 and nombre LIKE '%" & txtBuscarProductos.Text & "%' order by(nombre) asc;")
+        dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e FROM Productos where existenteBool = 1 and nombre LIKE '%" & txtBuscarProductos.Text & "%' order by(nombre) asc;")
         dgvProductos.Columns(7).Width = 0
         txtBuscarCodigo.Text = ""
     End Sub
@@ -148,7 +148,7 @@ Public Class GestionarProductos
     End Sub
 
     Private Sub txtBuscarCodigo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigo.TextChanged
-        dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e FROM Productos where existenteBool = 1 and idProducto LIKE '%" & txtBuscarCodigo.Text & "%' order by(nombre) asc;")
+        dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e FROM Productos where existenteBool = 1 and idProducto LIKE '%" & txtBuscarCodigo.Text & "%' order by(nombre) asc;")
         dgvProductos.Columns(7).Width = 0
         txtBuscarProductos.Text = ""
     End Sub
@@ -164,7 +164,7 @@ Public Class GestionarProductos
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
         If Not txtNombre.Text.Equals("") And Not txtStock.Text.Equals("") And Not txtCantidadUnidad.Text.Equals("") Then
             
-            consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem & "' where idProducto=" & idProducto & ";")
+            consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem.ToString.ToUpper & "' where idProducto=" & idProducto & ";")
 
             actualizarTablaConId()
             gpInformacion.Visible = False
@@ -343,6 +343,7 @@ Public Class GestionarProductos
         Dim nuevo As SurtirProductos = New SurtirProductos()
 
         nuevo.soloNuevoBool = True
+        nuevo.txtCodigo.Select()
         nuevo.txtCodigo.Focus()
         nuevo.ShowDialog()
     End Sub
@@ -364,7 +365,7 @@ Public Class GestionarProductos
 
     Private Sub chbProdNoActivos_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chbProdNoActivos.CheckedChanged
         If chbProdNoActivos.Checked Then
-            dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e, minimoStock as m FROM Productos where existenteBool = 0 order by(nombre) asc;")
+            dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e, minimoStock as m FROM Productos where existenteBool = 0 order by(nombre) asc;")
             dgvProductos.Columns(7).Visible = False
             dgvProductos.Columns(8).Width = 0
             btnEliminar.Visible = False
@@ -379,7 +380,7 @@ Public Class GestionarProductos
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarProd.Click
         consulta.consultaHide("UPDATE Productos set existenteBool = 1 where idProducto=" & idProducto & ";")
-        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, cantidadUnidad as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e, minimoStock as m FROM Productos where existenteBool = 0 order by(nombre) asc;")
+        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e, minimoStock as m FROM Productos where existenteBool = 0 order by(nombre) asc;")
         dgvProductos.Columns(7).Visible = False
         dgvProductos.Columns(8).Width = 0
     End Sub

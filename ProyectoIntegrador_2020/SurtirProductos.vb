@@ -52,7 +52,9 @@ Public Class SurtirProductos
 
 
     Sub ActualizarTablaProd()
-        dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
+        dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, CONCAT_WS(' ',cantidadUnidad,unidad) as Medida,Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
+        dgvProductos.Columns(0).Width = 70
+        dgvProductos.Columns(3).Width = 70
     End Sub
 
 
@@ -232,8 +234,32 @@ Public Class SurtirProductos
 
 
     Private Sub btnFinalizarCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFinalizarSurtido.Click
+        Dim resultado As Byte
         If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
-            FinalizarCompra()
+
+            consulta.consultaReturnHide("SELECT idProducto FROM Productos WHERE idProducto = " & txtCodigoProducto.Text & ";")
+
+            If consulta.valorReturn = "" Then
+
+                resultado = ConfirmacionMensaje.confirmacion("   No existe un producto con ese código." & vbCrLf & "   ¿Desea crear uno?")
+                If resultado = 1 Then
+
+                    panelSurtido.Visible = False
+                    txtNombre.Focus()
+                    txtCodigo.Text = txtCodigoProducto.Text
+                    tmrMostrarAgregar.Enabled = True
+
+                Else
+                    txtCodigoProducto.Text = ""
+                    txtImporteCosto.Text = ""
+                    txtCantidad.Text = ""
+                    txtGanancia.Text = ""
+                    txtCodigoProducto.Focus()
+                End If
+
+            Else
+                FinalizarCompra()
+            End If
         Else
             mostrarMensaje("Debe rellenar todos los campos.")
         End If
@@ -304,7 +330,7 @@ Public Class SurtirProductos
         If txtCodigoProducto.TextLength >= 2 Then
             consulta.consultaReturnHide("SELECT Nombre FROM productos where idProducto=" & txtCodigoProducto.Text & ";")
             lblNombre.Text = consulta.valorReturn
-            consulta.consultaReturnHide("SELECT cantidadUnidad FROM productos where idProducto=" & txtCodigoProducto.Text & ";")
+            consulta.consultaReturnHide("SELECT REPLACE(cantidadUnidad,',','.') FROM productos where idProducto=" & txtCodigoProducto.Text & ";")
             lblNombre.Text = lblNombre.Text & " " & consulta.valorReturn
             consulta.consultaReturnHide("SELECT unidad FROM productos where idProducto=" & txtCodigoProducto.Text & ";")
             lblNombre.Text = lblNombre.Text & " " & consulta.valorReturn
@@ -393,7 +419,8 @@ Public Class SurtirProductos
         tmrMostrarBuscar.Enabled = True
     End Sub
 
-    Private Sub PictureBox5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox5.Click
+    Private Sub PictureBox5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVolverBusqueda.Click
+        panelSurtido.Visible = True
         tmrOcultarBuscar.Enabled = True
     End Sub
 
@@ -475,6 +502,7 @@ Public Class SurtirProductos
 
     Private Sub btnAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregar.Click
         panelSurtido.Visible = False
+        txtCodigo.Focus()
         tmrMostrarAgregar.Enabled = True
     End Sub
 
@@ -492,38 +520,46 @@ Public Class SurtirProductos
     End Sub
 
 
+    Sub insertarProducto()
+        consulta.consultaReturnHide("SELECT idProducto FROM Productos WHERE idProducto=" & txtCodigo.Text & ";")
+
+        If Not consulta.valorReturn = "" Then
+            mostrarMensaje("Ya existe un producto registrado con ese código." & vbCrLf & "No olvide fijarse si el producto se encuentra inactivo.")
+
+        Else
+            consulta.consultaReturnHide("SELECT minimoStock from productos limit 1;")
+            Dim limiteStock As Integer = Val(consulta.valorReturn)
+
+            consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString.ToUpper & "',0,1," & limiteStock & ");")
+        End If
+    End Sub
+
+
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoProd.Click
         If soloNuevoBool Then
             If txtCodigo.Text.Count >= 2 And Val(txtCantidadUnidad.Text) > 0 And Not txtNombre.Text.Equals("") And cbxMedida.SelectedItem <> "" Then
 
-                consulta.consultaReturnHide("SELECT idProducto FROM Productos WHERE idProducto=" & txtCodigo.Text & ";")
-
-                If Not consulta.valorReturn = "" Then
-                    mostrarMensaje("Ya existe un producto registrado con ese código." & vbCrLf & "No olvide fijarse si el producto se encuentra inactivo.")
-
-                Else
-                    consulta.consultaReturnHide("SELECT minimoStock from productos limit 1;")
-                    Dim limiteStock As Integer = Val(consulta.valorReturn)
-
-                    consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
+                insertarProducto()
 
                     If consulta.resultado = 1 Then
+                        
+                        soloNuevoBool = False
                         Me.Close()
                     Else
                         mostrarMensaje("Ocurrió un error al ingresar el producto.")
                     End If
-                End If
-
             Else
                 mostrarMensaje("Asegurese de que todos los campos esten completos.")
 
             End If
-            
+
 
         Else
+            insertarProducto()
+
             tmrOcultarAgregar.Enabled = True
             txtCodigoProducto.Text = txtCodigo.Text
-            lblNombre.Text = txtNombre.Text & " " & txtCantidadUnidad.Text & " " & cbxMedida.SelectedItem.ToString
+            lblNombre.Text = txtNombre.Text.ToUpper & " " & txtCantidadUnidad.Text & " " & cbxMedida.SelectedItem.ToString
         End If
         panelSurtido.Visible = True
     End Sub
