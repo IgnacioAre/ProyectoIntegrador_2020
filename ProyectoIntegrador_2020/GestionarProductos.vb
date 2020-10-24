@@ -36,6 +36,7 @@ Public Class GestionarProductos
     Private Sub btnSurtir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSurtir.Click
         Dim surtir As SurtirProductos = New SurtirProductos()
         surtir.soloNuevoBool = False
+        surtir.txtCodigoProducto.Select()
         surtir.txtCodigoProducto.Focus()
         surtir.ShowDialog()
     End Sub
