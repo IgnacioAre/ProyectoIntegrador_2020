@@ -48,12 +48,12 @@ Partial Class CuentaCorrienteProveedor
         Me.btnOcultarDetalleDebe = New System.Windows.Forms.Button()
         Me.txtDetalleDebe = New System.Windows.Forms.TextBox()
         Me.chbDebe = New System.Windows.Forms.CheckBox()
-        Me.btnCerrarHaber = New System.Windows.Forms.Button()
+        Me.btnCerrarDebe = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtDineroDebe = New System.Windows.Forms.TextBox()
         Me.gbHaber = New System.Windows.Forms.GroupBox()
-        Me.btnCerrarInfo = New System.Windows.Forms.Button()
+        Me.btnCerrarHaber = New System.Windows.Forms.Button()
         Me.btnVerDetalleHaber = New System.Windows.Forms.Button()
         Me.btnOcultarDetalleHaber = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -357,7 +357,7 @@ Partial Class CuentaCorrienteProveedor
         Me.gbDebe.Controls.Add(Me.btnOcultarDetalleDebe)
         Me.gbDebe.Controls.Add(Me.txtDetalleDebe)
         Me.gbDebe.Controls.Add(Me.chbDebe)
-        Me.gbDebe.Controls.Add(Me.btnCerrarHaber)
+        Me.gbDebe.Controls.Add(Me.btnCerrarDebe)
         Me.gbDebe.Controls.Add(Me.Label3)
         Me.gbDebe.Controls.Add(Me.Label4)
         Me.gbDebe.Controls.Add(Me.txtDineroDebe)
@@ -447,23 +447,23 @@ Partial Class CuentaCorrienteProveedor
         Me.chbDebe.Text = "Importante (Notas)"
         Me.chbDebe.UseVisualStyleBackColor = True
         '
-        'btnCerrarHaber
+        'btnCerrarDebe
         '
-        Me.btnCerrarHaber.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCerrarHaber.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.btnCerrarHaber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnCerrarHaber.FlatAppearance.BorderSize = 0
-        Me.btnCerrarHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnCerrarHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnCerrarHaber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrarHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrarHaber.ForeColor = System.Drawing.Color.White
-        Me.btnCerrarHaber.Location = New System.Drawing.Point(353, 16)
-        Me.btnCerrarHaber.Name = "btnCerrarHaber"
-        Me.btnCerrarHaber.Size = New System.Drawing.Size(28, 27)
-        Me.btnCerrarHaber.TabIndex = 36
-        Me.btnCerrarHaber.Text = "X"
-        Me.btnCerrarHaber.UseVisualStyleBackColor = False
+        Me.btnCerrarDebe.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCerrarDebe.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.btnCerrarDebe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnCerrarDebe.FlatAppearance.BorderSize = 0
+        Me.btnCerrarDebe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnCerrarDebe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnCerrarDebe.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCerrarDebe.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarDebe.ForeColor = System.Drawing.Color.White
+        Me.btnCerrarDebe.Location = New System.Drawing.Point(353, 16)
+        Me.btnCerrarDebe.Name = "btnCerrarDebe"
+        Me.btnCerrarDebe.Size = New System.Drawing.Size(28, 27)
+        Me.btnCerrarDebe.TabIndex = 36
+        Me.btnCerrarDebe.Text = "X"
+        Me.btnCerrarDebe.UseVisualStyleBackColor = False
         '
         'Label3
         '
@@ -488,7 +488,7 @@ Partial Class CuentaCorrienteProveedor
         'txtDineroDebe
         '
         Me.txtDineroDebe.Location = New System.Drawing.Point(39, 77)
-        Me.txtDineroDebe.MaxLength = 7
+        Me.txtDineroDebe.MaxLength = 10
         Me.txtDineroDebe.Name = "txtDineroDebe"
         Me.txtDineroDebe.Size = New System.Drawing.Size(133, 26)
         Me.txtDineroDebe.TabIndex = 33
@@ -496,7 +496,7 @@ Partial Class CuentaCorrienteProveedor
         'gbHaber
         '
         Me.gbHaber.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gbHaber.Controls.Add(Me.btnCerrarInfo)
+        Me.gbHaber.Controls.Add(Me.btnCerrarHaber)
         Me.gbHaber.Controls.Add(Me.btnVerDetalleHaber)
         Me.gbHaber.Controls.Add(Me.btnOcultarDetalleHaber)
         Me.gbHaber.Controls.Add(Me.Label2)
@@ -515,23 +515,23 @@ Partial Class CuentaCorrienteProveedor
         Me.gbHaber.Text = "Haber"
         Me.gbHaber.Visible = False
         '
-        'btnCerrarInfo
+        'btnCerrarHaber
         '
-        Me.btnCerrarInfo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCerrarInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.btnCerrarInfo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnCerrarInfo.FlatAppearance.BorderSize = 0
-        Me.btnCerrarInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnCerrarInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnCerrarInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrarInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrarInfo.ForeColor = System.Drawing.Color.White
-        Me.btnCerrarInfo.Location = New System.Drawing.Point(311, 16)
-        Me.btnCerrarInfo.Name = "btnCerrarInfo"
-        Me.btnCerrarInfo.Size = New System.Drawing.Size(28, 27)
-        Me.btnCerrarInfo.TabIndex = 29
-        Me.btnCerrarInfo.Text = "X"
-        Me.btnCerrarInfo.UseVisualStyleBackColor = False
+        Me.btnCerrarHaber.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCerrarHaber.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.btnCerrarHaber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnCerrarHaber.FlatAppearance.BorderSize = 0
+        Me.btnCerrarHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnCerrarHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnCerrarHaber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCerrarHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarHaber.ForeColor = System.Drawing.Color.White
+        Me.btnCerrarHaber.Location = New System.Drawing.Point(311, 16)
+        Me.btnCerrarHaber.Name = "btnCerrarHaber"
+        Me.btnCerrarHaber.Size = New System.Drawing.Size(28, 27)
+        Me.btnCerrarHaber.TabIndex = 29
+        Me.btnCerrarHaber.Text = "X"
+        Me.btnCerrarHaber.UseVisualStyleBackColor = False
         '
         'btnVerDetalleHaber
         '
@@ -630,7 +630,7 @@ Partial Class CuentaCorrienteProveedor
         'txtDineroHaber
         '
         Me.txtDineroHaber.Location = New System.Drawing.Point(46, 59)
-        Me.txtDineroHaber.MaxLength = 7
+        Me.txtDineroHaber.MaxLength = 10
         Me.txtDineroHaber.Name = "txtDineroHaber"
         Me.txtDineroHaber.Size = New System.Drawing.Size(133, 26)
         Me.txtDineroHaber.TabIndex = 0
@@ -700,7 +700,7 @@ Partial Class CuentaCorrienteProveedor
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtDineroDebe As System.Windows.Forms.TextBox
-    Friend WithEvents btnCerrarHaber As System.Windows.Forms.Button
+    Friend WithEvents btnCerrarDebe As System.Windows.Forms.Button
     Friend WithEvents chbDebe As System.Windows.Forms.CheckBox
     Friend WithEvents btnVerDetalleDebe As System.Windows.Forms.Button
     Friend WithEvents btnOcultarDetalleDebe As System.Windows.Forms.Button
@@ -710,7 +710,7 @@ Partial Class CuentaCorrienteProveedor
     Public WithEvents dgvRegistroCompras As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents btnDescontarHaber As System.Windows.Forms.Button
     Friend WithEvents gbHaber As System.Windows.Forms.GroupBox
-    Friend WithEvents btnCerrarInfo As System.Windows.Forms.Button
+    Friend WithEvents btnCerrarHaber As System.Windows.Forms.Button
     Friend WithEvents btnVerDetalleHaber As System.Windows.Forms.Button
     Friend WithEvents btnOcultarDetalleHaber As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label

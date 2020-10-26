@@ -330,7 +330,8 @@ Public Class CuentaCorrienteProveedor
     End Sub
 
 
-    Private Sub btnCerrarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarHaber.Click
+    Private Sub btnCerrarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarDebe.Click
+        limpiarHaber()
         gbDebe.Visible = False
     End Sub
 
@@ -430,7 +431,8 @@ Public Class CuentaCorrienteProveedor
         btnOcultarDetalleHaber.Visible = False
     End Sub
 
-    Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarInfo.Click
+    Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarHaber.Click
+        limpiarHaber()
         gbHaber.Visible = False
     End Sub
 

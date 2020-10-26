@@ -382,8 +382,9 @@ Public Class ExploradorProveedores
     Private Sub pbActualizarTabla_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         ActualizarTabla()
         chkNoActivos.Checked = False
-        txtBuscarClientes.Text = ""
-        txtBuscarClientes.Focus()
+        txtBuscarNombreProv.Text = ""
+        txtBuscarCodigoProv.Text = ""
+        txtBuscarNombreProv.Focus()
     End Sub
 
     Private Sub txtSaldoRegistro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSaldoRegistro.KeyPress

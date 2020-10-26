@@ -60,12 +60,36 @@ Public Class SurtirProductos
 
 
     Private Sub btnOtraCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOtraCompra.Click
+        Dim resultado As Byte
         If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
             If btnVolverCompra.Visible = False Then
                 btnVolverCompra.Visible = True
             End If
-            insertarCompra()
-            txtCodigoProducto.Focus()
+
+            consulta.consultaReturnHide("SELECT idProducto FROM Productos WHERE idProducto = " & txtCodigoProducto.Text & ";")
+
+            If consulta.valorReturn = "" Then
+
+                resultado = ConfirmacionMensaje.confirmacion("   No existe un producto con ese código." & vbCrLf & "   ¿Desea crear uno?")
+                If resultado = 1 Then
+
+                    txtNombre.Focus()
+                    txtCodigo.Text = txtCodigoProducto.Text
+                    tmrMostrarAgregar.Enabled = True
+
+                Else
+                    txtCodigoProducto.Text = ""
+                    txtImporteCosto.Text = ""
+                    txtCantidad.Text = ""
+                    txtGanancia.Text = ""
+                    txtCodigoProducto.Focus()
+                End If
+
+            Else
+                insertarCompra()
+                txtCodigoProducto.Focus()
+            End If
+            
         Else
             mostrarMensaje("Debe rellenar todos los campos.")
         End If
@@ -415,7 +439,6 @@ Public Class SurtirProductos
 
 
     Private Sub btnBuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscar.Click
-        panelSurtido.Visible = False
         tmrMostrarBuscar.Enabled = True
     End Sub
 
@@ -433,7 +456,7 @@ Public Class SurtirProductos
     End Sub
 
     Private Sub tmrMostrarAgregar_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarAgregar.Tick
-        If panelAgregar.Height >= 433 Then
+        If panelAgregar.Height >= 477 Then
             tmrMostrarAgregar.Enabled = False
         Else
             panelAgregar.Height = panelAgregar.Height + 10
@@ -501,13 +524,11 @@ Public Class SurtirProductos
     End Sub
 
     Private Sub btnAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregar.Click
-        panelSurtido.Visible = False
         txtCodigo.Focus()
         tmrMostrarAgregar.Enabled = True
     End Sub
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarAgregar.Click
-        panelSurtido.Visible = True
         limpiarPanelAgregar()
         tmrOcultarAgregar.Enabled = True
     End Sub
@@ -516,7 +537,7 @@ Public Class SurtirProductos
 
     Sub soloNuevo()
         lblTitulo.Text = "Nuevo Producto"
-        panelAgregar.Height = 433
+        panelAgregar.Height = 477
         btnCerrarAgregar.Visible = False
     End Sub
 
@@ -531,10 +552,19 @@ Public Class SurtirProductos
             consulta.consultaReturnHide("SELECT minimoStock from productos limit 1;")
             Dim limiteStock As Integer = Val(consulta.valorReturn)
 
-            Dim precioCosto = Val(txtCostoIngreso.Text)
-            Dim precioVenta As Integer = (precioCosto + ((Val(txtGananciaIngreso.Text) * precioCosto) / 100))
+            If Not txtCostoIngreso.Text.Equals("") Then
+                Dim precioCosto = Val(txtCostoIngreso.Text)
+                Dim precioVenta As Integer = (precioCosto + ((Val(txtGananciaIngreso.Text) * precioCosto) / 100))
 
-            consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCostoIngreso.Text & "," & precioVenta & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString.ToUpper & "',0,1," & limiteStock & ");")
+                consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCostoIngreso.Text & "," & precioVenta & "," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString.ToUpper & "',0,1," & limiteStock & ");")
+            End If
+
+            If Not txtVentaIngreso.Text.Equals("") Then
+                Dim precioCosto As Integer = (Val(txtVentaIngreso.Text) / ((Val(txtGananciaIngreso.Text) / 100) + 1))
+
+                consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & precioCosto & "," & txtVentaIngreso.Text & "," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString.ToUpper & "',0,1," & limiteStock & ");")
+            End If
+
         End If
     End Sub
 
@@ -545,24 +575,33 @@ Public Class SurtirProductos
         txtCantidadUnidad.Text = "1"
         cbxMedida.SelectedIndex = 0
         txtCostoIngreso.Text = ""
+        txtVentaIngreso.Text = ""
         txtGananciaIngreso.Text = ""
+        lblCosto.Enabled = True
+        lblVenta.Enabled = False
+        txtCostoIngreso.Enabled = True
+        txtVentaIngreso.Enabled = True
     End Sub
 
 
     Private Sub btnNuevoProd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoProd.Click
         If soloNuevoBool Then
-            If txtCodigo.Text.Count >= 2 And Val(txtCantidadUnidad.Text) > 0 And Not txtNombre.Text.Equals("") And cbxMedida.SelectedItem <> "" Then
+            If txtCodigo.Text.Count >= 2 And Val(txtCantidadUnidad.Text) > 0 And Not txtNombre.Text.Equals("") And cbxMedida.SelectedItem <> "" And Not txtGananciaIngreso.Text.Equals("") Then
+                If Not txtVentaIngreso.Text.Equals("") Or Not txtCostoIngreso.Text.Equals("") Then
+                    insertarProducto()
 
-                insertarProducto()
+                    If consulta.resultado = 1 Then
 
-                If consulta.resultado = 1 Then
-
-                    soloNuevoBool = False
-                    tmrOcultarAgregar.Enabled = True
-                    Me.Close()
+                        soloNuevoBool = False
+                        tmrOcultarAgregar.Enabled = True
+                        Me.Close()
+                    Else
+                        mostrarMensaje("Ocurrió un error al ingresar el producto.")
+                    End If
                 Else
-                    mostrarMensaje("Ocurrió un error al ingresar el producto.")
+                    mostrarMensaje("No olvide colocar el precio de costo o de venta.")
                 End If
+                
             Else
                 mostrarMensaje("Asegurese de que todos los campos esten completos.")
 
@@ -594,5 +633,32 @@ Public Class SurtirProductos
 
     Private Sub txtCantidadUnidad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCantidadUnidad.Click
         txtCantidadUnidad.SelectAll()
+    End Sub
+
+
+    Private Sub txtCostoIngreso_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCostoIngreso.TextChanged
+        If txtCostoIngreso.Text.Equals("") Then
+            txtVentaIngreso.Enabled = True
+            lblVenta.Enabled = True
+            lblAyudaCampos.Visible = False
+        Else
+            lblAyudaCampos.Visible = True
+            lblAyudaCampos.Text = "El campo de ventas se calculará automaticamente."
+            txtVentaIngreso.Enabled = False
+            lblVenta.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtVentaIngreso_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtVentaIngreso.TextChanged
+        If txtVentaIngreso.Text.Equals("") Then
+            lblAyudaCampos.Visible = False
+            txtCostoIngreso.Enabled = True
+            lblCosto.Enabled = True
+        Else
+            lblAyudaCampos.Visible = True
+            lblAyudaCampos.Text = "El campo de costo se calculará automaticamente."
+            txtCostoIngreso.Enabled = False
+            lblCosto.Enabled = False
+        End If
     End Sub
 End Class
