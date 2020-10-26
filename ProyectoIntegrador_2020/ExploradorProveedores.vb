@@ -16,7 +16,8 @@ Public Class ExploradorProveedores
         consultas.establecerConexion()
         panelEditarRegistro.Width = 0
         ActualizarTabla()
-        SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por nombre")
+        SendMessage(txtBuscarNombreProv.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por nombre")
+        SendMessage(txtBuscarCodigoProv.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por código")
     End Sub
 
     '----CIERRE DEL FORMULARIO----'
@@ -40,20 +41,6 @@ Public Class ExploradorProveedores
     <MarshalAs(UnmanagedType.LPWStr)> ByVal lParam As String) As Int32
     End Function
 
-    '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
-
-    Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-
-        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=1 And Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
-
-        consultas.consultaReturnHide("Select count(idProveedor) from Proveedores;")
-        Dim cantProv As Integer = Val(consultas.valorReturn)
-
-        If cantProv > 0 Then
-            dgvProveedores.Columns(5).Visible = False
-        End If
-
-    End Sub
 
     '----MUESTRA EL FORMULARIO PARA MÓDIFICAR LOS DATOS DEL CLIENTE----'
 
@@ -168,8 +155,10 @@ Public Class ExploradorProveedores
 
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ActualizarTabla()
-        txtBuscarClientes.Text = ""
-        txtBuscarClientes.Focus()
+        chkNoActivos.Checked = False
+        txtBuscarNombreProv.Text = ""
+        txtBuscarCodigoProv.Text = ""
+        txtBuscarNombreProv.Focus()
     End Sub
 
 
@@ -229,7 +218,7 @@ Public Class ExploradorProveedores
         End If
     End Sub
 
-    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
+    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If e.KeyChar = ChrW(Keys.Enter) Then
             dgvProveedores.Focus()
         Else
@@ -426,6 +415,55 @@ Public Class ExploradorProveedores
         Else
             btnEliminarTel.Enabled = False
             btnEditarTel.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtBuscarProductos_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarNombreProv.TextChanged
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=1 And Nombre LIKE '%" & txtBuscarNombreProv.Text & "%';")
+        dgvProveedores.Columns(5).Visible = False
+
+    End Sub
+
+    Private Sub txtBuscarCodigo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigoProv.TextChanged
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=1 And Nombre LIKE '%" & txtBuscarCodigoProv.Text & "%';")
+        dgvProveedores.Columns(5).Visible = False
+
+    End Sub
+
+    Private Sub txtBuscarCodigoProv_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarCodigoProv.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                dgvProveedores.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtBuscarNombreProv_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarNombreProv.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            dgvProveedores.Focus()
+        Else
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox4.Click
+        ActualizarTabla()
+        If txtBuscarNombreProv.Visible Then
+            txtBuscarCodigoProv.Visible = True
+            txtBuscarNombreProv.Visible = False
+        Else
+            txtBuscarNombreProv.Visible = True
+            txtBuscarCodigoProv.Visible = False
         End If
     End Sub
 End Class

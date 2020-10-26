@@ -61,9 +61,9 @@ Public Class GestionarProductos
             txtID.Text = row.Cells(0).Value.ToString
             txtNombre.Text = row.Cells(1).Value.ToString
             txtCantidadUnidad.Text = row.Cells(2).Value.ToString
+            cbxMedida.SelectedItem = row.Cells(3).Value.ToString
             txtStock.Text = row.Cells(6).Value.ToString
 
-            cbxMedida.SelectedItem = row.Cells(3).Value.ToString
 
             ActualizarTablaRegistro()
 
@@ -162,11 +162,11 @@ Public Class GestionarProductos
     End Sub
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
-        If Not txtNombre.Text.Equals("") And Not txtStock.Text.Equals("") And Not txtCantidadUnidad.Text.Equals("") Then
-            
+        If Not txtNombre.Text.Equals("") And Not txtStock.Text.Equals("") And Not txtCantidadUnidad.Text.Equals("") And Not cbxMedida.SelectedItem.ToString.Equals("") Then
+
             consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem.ToString.ToUpper & "' where idProducto=" & idProducto & ";")
 
-            actualizarTablaConId()
+            ActualizarTablaProductos()
             gpInformacion.Visible = False
         Else
             mostrarMensaje("Debe rellenar los campos vacios.")

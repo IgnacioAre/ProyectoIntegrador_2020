@@ -23,7 +23,6 @@ Partial Class ExploradorClientes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ExploradorClientes))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -33,6 +32,7 @@ Partial Class ExploradorClientes
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ExploradorClientes))
         Me.panelClientes = New System.Windows.Forms.Panel()
         Me.btnActivo = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -68,13 +68,15 @@ Partial Class ExploradorClientes
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.txtBuscarClientes = New System.Windows.Forms.TextBox()
         Me.btnNoActivo = New System.Windows.Forms.Button()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnNuevo = New System.Windows.Forms.Button()
         Me.dgvClientes = New Guna.UI.WinForms.GunaDataGridView()
         Me.tmrOcultarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.txtBuscarCodigoCli = New System.Windows.Forms.TextBox()
+        Me.txtBuscarNombreCli = New System.Windows.Forms.TextBox()
         Me.panelClientes.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.btnAgregarTel, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -90,12 +92,16 @@ Partial Class ExploradorClientes
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelClientes
         '
         Me.panelClientes.AutoScroll = True
         Me.panelClientes.BackColor = System.Drawing.Color.FromArgb(CType(CType(197, Byte), Integer), CType(CType(216, Byte), Integer), CType(CType(209, Byte), Integer))
+        Me.panelClientes.Controls.Add(Me.PictureBox4)
+        Me.panelClientes.Controls.Add(Me.txtBuscarCodigoCli)
+        Me.panelClientes.Controls.Add(Me.txtBuscarNombreCli)
         Me.panelClientes.Controls.Add(Me.btnActivo)
         Me.panelClientes.Controls.Add(Me.GroupBox1)
         Me.panelClientes.Controls.Add(Me.chkNoActivos)
@@ -103,7 +109,6 @@ Partial Class ExploradorClientes
         Me.panelClientes.Controls.Add(Me.pbActualizarTabla)
         Me.panelClientes.Controls.Add(Me.gpInformacion)
         Me.panelClientes.Controls.Add(Me.PictureBox1)
-        Me.panelClientes.Controls.Add(Me.txtBuscarClientes)
         Me.panelClientes.Controls.Add(Me.btnNoActivo)
         Me.panelClientes.Controls.Add(Me.btnModificar)
         Me.panelClientes.Controls.Add(Me.btnNuevo)
@@ -622,14 +627,6 @@ Partial Class ExploradorClientes
         Me.PictureBox1.TabIndex = 20
         Me.PictureBox1.TabStop = False
         '
-        'txtBuscarClientes
-        '
-        Me.txtBuscarClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarClientes.Location = New System.Drawing.Point(93, 32)
-        Me.txtBuscarClientes.Name = "txtBuscarClientes"
-        Me.txtBuscarClientes.Size = New System.Drawing.Size(237, 26)
-        Me.txtBuscarClientes.TabIndex = 0
-        '
         'btnNoActivo
         '
         Me.btnNoActivo.BackColor = System.Drawing.Color.Black
@@ -765,6 +762,35 @@ Partial Class ExploradorClientes
         '
         Me.tmrMostrarEditarRegistro.Interval = 1
         '
+        'PictureBox4
+        '
+        Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
+        Me.PictureBox4.Location = New System.Drawing.Point(354, 24)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(32, 32)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox4.TabIndex = 56
+        Me.PictureBox4.TabStop = False
+        '
+        'txtBuscarCodigoCli
+        '
+        Me.txtBuscarCodigoCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarCodigoCli.Location = New System.Drawing.Point(93, 33)
+        Me.txtBuscarCodigoCli.MaxLength = 13
+        Me.txtBuscarCodigoCli.Name = "txtBuscarCodigoCli"
+        Me.txtBuscarCodigoCli.Size = New System.Drawing.Size(244, 26)
+        Me.txtBuscarCodigoCli.TabIndex = 55
+        Me.txtBuscarCodigoCli.Visible = False
+        '
+        'txtBuscarNombreCli
+        '
+        Me.txtBuscarNombreCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarNombreCli.Location = New System.Drawing.Point(93, 32)
+        Me.txtBuscarNombreCli.Name = "txtBuscarNombreCli"
+        Me.txtBuscarNombreCli.Size = New System.Drawing.Size(244, 26)
+        Me.txtBuscarNombreCli.TabIndex = 54
+        '
         'ExploradorClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -792,6 +818,7 @@ Partial Class ExploradorClientes
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -800,7 +827,6 @@ Partial Class ExploradorClientes
     Friend WithEvents btnNuevo As System.Windows.Forms.Button
     Friend WithEvents btnNoActivo As System.Windows.Forms.Button
     Friend WithEvents btnModificar As System.Windows.Forms.Button
-    Friend WithEvents txtBuscarClientes As System.Windows.Forms.TextBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents gpInformacion As System.Windows.Forms.GroupBox
     Friend WithEvents btnActualizar As System.Windows.Forms.Button
@@ -837,4 +863,7 @@ Partial Class ExploradorClientes
     Friend WithEvents tmrMostrarEditarRegistro As System.Windows.Forms.Timer
     Friend WithEvents chkNoActivos As System.Windows.Forms.CheckBox
     Friend WithEvents btnActivo As System.Windows.Forms.Button
+    Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
+    Friend WithEvents txtBuscarCodigoCli As System.Windows.Forms.TextBox
+    Friend WithEvents txtBuscarNombreCli As System.Windows.Forms.TextBox
 End Class

@@ -34,6 +34,9 @@ Partial Class ExploradorProveedores
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelClientes = New System.Windows.Forms.Panel()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.txtBuscarCodigoProv = New System.Windows.Forms.TextBox()
+        Me.txtBuscarNombreProv = New System.Windows.Forms.TextBox()
         Me.btnActivo = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnAgregarTel = New System.Windows.Forms.PictureBox()
@@ -67,7 +70,6 @@ Partial Class ExploradorProveedores
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.txtBuscarClientes = New System.Windows.Forms.TextBox()
         Me.btnNoActivo = New System.Windows.Forms.Button()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnNuevo = New System.Windows.Forms.Button()
@@ -75,6 +77,7 @@ Partial Class ExploradorProveedores
         Me.tmrOcultarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
         Me.panelClientes.SuspendLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.btnAgregarTel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnEliminarTel, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,6 +98,9 @@ Partial Class ExploradorProveedores
         '
         Me.panelClientes.AutoScroll = True
         Me.panelClientes.BackColor = System.Drawing.Color.CadetBlue
+        Me.panelClientes.Controls.Add(Me.PictureBox4)
+        Me.panelClientes.Controls.Add(Me.txtBuscarCodigoProv)
+        Me.panelClientes.Controls.Add(Me.txtBuscarNombreProv)
         Me.panelClientes.Controls.Add(Me.btnActivo)
         Me.panelClientes.Controls.Add(Me.GroupBox1)
         Me.panelClientes.Controls.Add(Me.chkNoActivos)
@@ -102,7 +108,6 @@ Partial Class ExploradorProveedores
         Me.panelClientes.Controls.Add(Me.pbActualizarTabla)
         Me.panelClientes.Controls.Add(Me.gpInformacion)
         Me.panelClientes.Controls.Add(Me.PictureBox1)
-        Me.panelClientes.Controls.Add(Me.txtBuscarClientes)
         Me.panelClientes.Controls.Add(Me.btnNoActivo)
         Me.panelClientes.Controls.Add(Me.btnModificar)
         Me.panelClientes.Controls.Add(Me.btnNuevo)
@@ -112,6 +117,35 @@ Partial Class ExploradorProveedores
         Me.panelClientes.Name = "panelClientes"
         Me.panelClientes.Size = New System.Drawing.Size(1010, 750)
         Me.panelClientes.TabIndex = 0
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
+        Me.PictureBox4.Location = New System.Drawing.Point(354, 23)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(32, 32)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox4.TabIndex = 53
+        Me.PictureBox4.TabStop = False
+        '
+        'txtBuscarCodigoProv
+        '
+        Me.txtBuscarCodigoProv.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarCodigoProv.Location = New System.Drawing.Point(93, 32)
+        Me.txtBuscarCodigoProv.MaxLength = 13
+        Me.txtBuscarCodigoProv.Name = "txtBuscarCodigoProv"
+        Me.txtBuscarCodigoProv.Size = New System.Drawing.Size(244, 26)
+        Me.txtBuscarCodigoProv.TabIndex = 52
+        Me.txtBuscarCodigoProv.Visible = False
+        '
+        'txtBuscarNombreProv
+        '
+        Me.txtBuscarNombreProv.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarNombreProv.Location = New System.Drawing.Point(93, 31)
+        Me.txtBuscarNombreProv.Name = "txtBuscarNombreProv"
+        Me.txtBuscarNombreProv.Size = New System.Drawing.Size(244, 26)
+        Me.txtBuscarNombreProv.TabIndex = 51
         '
         'btnActivo
         '
@@ -607,14 +641,6 @@ Partial Class ExploradorProveedores
         Me.PictureBox1.TabIndex = 20
         Me.PictureBox1.TabStop = False
         '
-        'txtBuscarClientes
-        '
-        Me.txtBuscarClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarClientes.Location = New System.Drawing.Point(93, 32)
-        Me.txtBuscarClientes.Name = "txtBuscarClientes"
-        Me.txtBuscarClientes.Size = New System.Drawing.Size(237, 26)
-        Me.txtBuscarClientes.TabIndex = 0
-        '
         'btnNoActivo
         '
         Me.btnNoActivo.BackColor = System.Drawing.Color.Black
@@ -761,6 +787,7 @@ Partial Class ExploradorProveedores
         Me.Text = "ModificarCuenta"
         Me.panelClientes.ResumeLayout(False)
         Me.panelClientes.PerformLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.btnAgregarTel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnEliminarTel, System.ComponentModel.ISupportInitialize).EndInit()
@@ -785,7 +812,6 @@ Partial Class ExploradorProveedores
     Friend WithEvents btnNuevo As System.Windows.Forms.Button
     Friend WithEvents btnNoActivo As System.Windows.Forms.Button
     Friend WithEvents btnModificar As System.Windows.Forms.Button
-    Friend WithEvents txtBuscarClientes As System.Windows.Forms.TextBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents gpInformacion As System.Windows.Forms.GroupBox
     Friend WithEvents btnActualizar As System.Windows.Forms.Button
@@ -821,4 +847,7 @@ Partial Class ExploradorProveedores
     Friend WithEvents tmrMostrarEditarRegistro As System.Windows.Forms.Timer
     Friend WithEvents chkNoActivos As System.Windows.Forms.CheckBox
     Friend WithEvents btnActivo As System.Windows.Forms.Button
+    Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
+    Friend WithEvents txtBuscarCodigoProv As System.Windows.Forms.TextBox
+    Friend WithEvents txtBuscarNombreProv As System.Windows.Forms.TextBox
 End Class

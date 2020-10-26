@@ -16,7 +16,8 @@ Public Class ExploradorClientes
     Private Sub Explorador_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         consultas.establecerConexion()
         panelEditarRegistro.Width = 0
-        SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
+        SendMessage(txtBuscarNombreCli.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
+        SendMessage(txtBuscarCodigoCli.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por código")
     End Sub
 
     Private Sub ExploradorClientes_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
@@ -41,16 +42,6 @@ Public Class ExploradorClientes
     <MarshalAs(UnmanagedType.LPWStr)> ByVal lParam As String) As Int32
     End Function
 
-    '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
-
-    Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
-
-        dgvClientes.Columns(5).Visible = False
-        dgvClientes.Columns(6).Width = 0
-
-    End Sub
 
     '----MUESTRA EL FORMULARIO PARA MÓDIFICAR LOS DATOS DEL CLIENTE----'
 
@@ -180,8 +171,9 @@ Public Class ExploradorClientes
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         ActualizarTabla()
         chkNoActivos.Checked = False
-        txtBuscarClientes.Text = ""
-        txtBuscarClientes.Focus()
+        txtBuscarNombreCli.Text = ""
+        txtBuscarCodigoCli.Text = ""
+        txtBuscarNombreCli.Focus()
     End Sub
 
 
@@ -241,7 +233,7 @@ Public Class ExploradorClientes
         End If
     End Sub
 
-    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
+    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If e.KeyChar = ChrW(Keys.Enter) Then
             dgvClientes.Focus()
         Else
@@ -424,5 +416,54 @@ Public Class ExploradorClientes
             btnEditarTel.Enabled = False
         End If
 
+    End Sub
+
+    Private Sub txtBuscarNombreCli_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarNombreCli.TextChanged
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarNombreCli.Text & "%';")
+        dgvClientes.Columns(5).Visible = False
+        dgvClientes.Columns(6).Width = 0
+    End Sub
+
+    Private Sub txtBuscarNombreCli_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarNombreCli.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            dgvClientes.Focus()
+        Else
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub txtBuscarCodigoCli_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigoCli.TextChanged
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarCodigoCli.Text & "%';")
+        dgvClientes.Columns(5).Visible = False
+        dgvClientes.Columns(6).Width = 0
+    End Sub
+
+    Private Sub txtBuscarCodigoCli_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarCodigoCli.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                dgvClientes.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox4.Click
+        ActualizarTabla()
+        If txtBuscarNombreCli.Visible Then
+            txtBuscarCodigoCli.Visible = True
+            txtBuscarNombreCli.Visible = False
+        Else
+            txtBuscarNombreCli.Visible = True
+            txtBuscarCodigoCli.Visible = False
+        End If
     End Sub
 End Class

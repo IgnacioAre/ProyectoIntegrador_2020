@@ -78,7 +78,7 @@ Public Class MenuPrincipal
     '----DESLPEGAR Y CONTRAER MENÚ LATERAL----'
 
     Private Sub moverMenuLateral()
-        If Me.panelMenu.Width = 236 Then
+        If Me.panelMenu.Width = 210 Then
             tmrOcultarMenu.Enabled = True
             imgLogo.Width = 249
             lblTituloVentana.Location = New Point(64, 6)
@@ -107,7 +107,7 @@ Public Class MenuPrincipal
     End Sub
 
     Private Sub tmrMostrarMenu_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrMostrarMenu.Tick
-        If Me.panelMenu.Width >= 236 Then
+        If Me.panelMenu.Width >= 210 Then
             Me.tmrMostrarMenu.Enabled = False
         Else
             Me.panelMenu.Width = panelMenu.Width + 10

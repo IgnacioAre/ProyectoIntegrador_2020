@@ -18,6 +18,7 @@ Public Class SurtirProductos
         panelSurtido.SendToBack()
         SendMessage(txtBuscarProductos.Handle, EM_SETCUEBANNER, 0, "Ingrese el nombre")
 
+        cbxMedida.SelectedIndex = 0
         If soloNuevoBool Then
             soloNuevo()
         Else
@@ -244,7 +245,6 @@ Public Class SurtirProductos
                 resultado = ConfirmacionMensaje.confirmacion("   No existe un producto con ese código." & vbCrLf & "   ¿Desea crear uno?")
                 If resultado = 1 Then
 
-                    panelSurtido.Visible = False
                     txtNombre.Focus()
                     txtCodigo.Text = txtCodigoProducto.Text
                     tmrMostrarAgregar.Enabled = True
@@ -441,7 +441,7 @@ Public Class SurtirProductos
     End Sub
 
     Private Sub tmrOcultarAgregar_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrOcultarAgregar.Tick
-        If panelBuscar.Height <= 0 Then
+        If panelAgregar.Height <= 0 Then
             tmrOcultarAgregar.Enabled = False
             panelSurtido.Visible = True
         Else
@@ -508,6 +508,7 @@ Public Class SurtirProductos
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarAgregar.Click
         panelSurtido.Visible = True
+        limpiarPanelAgregar()
         tmrOcultarAgregar.Enabled = True
     End Sub
 
@@ -530,24 +531,38 @@ Public Class SurtirProductos
             consulta.consultaReturnHide("SELECT minimoStock from productos limit 1;")
             Dim limiteStock As Integer = Val(consulta.valorReturn)
 
-            consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString.ToUpper & "',0,1," & limiteStock & ");")
+            Dim precioCosto = Val(txtCostoIngreso.Text)
+            Dim precioVenta As Integer = (precioCosto + ((Val(txtGananciaIngreso.Text) * precioCosto) / 100))
+
+            consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCostoIngreso.Text & "," & precioVenta & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString.ToUpper & "',0,1," & limiteStock & ");")
         End If
     End Sub
 
 
-    Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoProd.Click
+    Sub limpiarPanelAgregar()
+        txtCodigo.Text = ""
+        txtNombre.Text = ""
+        txtCantidadUnidad.Text = "1"
+        cbxMedida.SelectedIndex = 0
+        txtCostoIngreso.Text = ""
+        txtGananciaIngreso.Text = ""
+    End Sub
+
+
+    Private Sub btnNuevoProd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoProd.Click
         If soloNuevoBool Then
             If txtCodigo.Text.Count >= 2 And Val(txtCantidadUnidad.Text) > 0 And Not txtNombre.Text.Equals("") And cbxMedida.SelectedItem <> "" Then
 
                 insertarProducto()
 
-                    If consulta.resultado = 1 Then
-                        
-                        soloNuevoBool = False
-                        Me.Close()
-                    Else
-                        mostrarMensaje("Ocurrió un error al ingresar el producto.")
-                    End If
+                If consulta.resultado = 1 Then
+
+                    soloNuevoBool = False
+                    tmrOcultarAgregar.Enabled = True
+                    Me.Close()
+                Else
+                    mostrarMensaje("Ocurrió un error al ingresar el producto.")
+                End If
             Else
                 mostrarMensaje("Asegurese de que todos los campos esten completos.")
 
@@ -562,6 +577,7 @@ Public Class SurtirProductos
             lblNombre.Text = txtNombre.Text.ToUpper & " " & txtCantidadUnidad.Text & " " & cbxMedida.SelectedItem.ToString
         End If
         panelSurtido.Visible = True
+        limpiarPanelAgregar()
     End Sub
 
     Private Sub txtCodigo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCodigo.TextChanged
@@ -574,5 +590,9 @@ Public Class SurtirProductos
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub txtCantidadUnidad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCantidadUnidad.Click
+        txtCantidadUnidad.SelectAll()
     End Sub
 End Class

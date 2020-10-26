@@ -15,6 +15,7 @@ Public Class inicioSesion
         txtContraseñaLogin.UseSystemPasswordChar = True
         Me.ToolTip1.SetToolTip(lblAceptable1, "La contraseña debe contenter al menos 8 caracteres.")
         Me.ToolTip2.SetToolTip(lblAceptable2, "Las contraseñas deben coincidir.")
+        Me.ttpAdmin.SetToolTip(txtClaveAdminRegistro, "Consulte la clave con el creador del software.")
         leerUsuarioTxt()
         SendMessage(txtUsuarioLogin.Handle, EM_SETCUEBANNER, 0, "Nombre de usuario")
         SendMessage(txtUsuarioRegistro.Handle, EM_SETCUEBANNER, 0, "Ej: Admin")

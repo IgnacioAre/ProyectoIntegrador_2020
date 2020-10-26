@@ -224,10 +224,10 @@ Partial Class GestionarProductos
         'cbxMedida
         '
         Me.cbxMedida.FormattingEnabled = True
-        Me.cbxMedida.Items.AddRange(New Object() {"Unidades", "Kilogramos", "Gramos", "Litros", "Mililitros"})
+        Me.cbxMedida.Items.AddRange(New Object() {"UNIDADES", "KILOGRAMOS", "GRAMOS", "LITROS", "MILILITROS"})
         Me.cbxMedida.Location = New System.Drawing.Point(95, 234)
         Me.cbxMedida.Name = "cbxMedida"
-        Me.cbxMedida.Size = New System.Drawing.Size(121, 29)
+        Me.cbxMedida.Size = New System.Drawing.Size(145, 29)
         Me.cbxMedida.TabIndex = 21
         '
         'txtCantidadUnidad

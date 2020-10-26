@@ -17,9 +17,15 @@
         consulta.consultaReturnHide("SELECT MONTH(NOW()) as Mes;")
         mesAnterior = Val(consulta.valorReturn) - 1
 
+        consulta.consultaReturnHide("SELECT CONCAT_WS('/',day(now()),month(NOW()) - 1,year(now()));")
+        Dim mesAnteriorTxt As String = consulta.valorReturn
+        consulta.consultaReturnHide("SELECT CONCAT_WS('/',day(now()),month(NOW()),year(now()));")
+        Dim mesActualTxt As String = consulta.valorReturn
+
+        lblEstadisticasMes.Text = "Estadísticas desde el mes " & mesAnteriorTxt & " al " & mesActualTxt
 
         'RESOLVER CONSULTA POR FECHA Y HACER JOIN CON NOMBRE DE CLIENTE
-        ds = consulta.consultarGrafica("SELECT Nombre, SUM(cc.saldo) as Saldo from compraCliente as cc,Clientes as c where cc.idCliente = c.idCliente AND MONTH(fechaCompra) BETWEEN " & mesAnterior & " AND (Select MONTH(NOW())) group by cc.idCliente limit 15;")
+        ds = consulta.consultarGrafica("SELECT Nombre, cc.saldo as Saldo from compraCliente as cc,Clientes as c where cc.saldo > 0 and cc.idCliente = c.idCliente AND MONTH(fechaCompra) BETWEEN " & mesAnterior & " AND (Select MONTH(NOW())) group by cc.idCliente order by(SUM(cc.saldo)) desc limit 15;")
 
         chartGrafica.Size = New Size(600, 200)
         chartGrafica.Series.Clear()

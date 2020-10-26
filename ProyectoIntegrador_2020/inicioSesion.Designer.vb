@@ -57,6 +57,7 @@ Partial Class inicioSesion
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ttpAdmin = New System.Windows.Forms.ToolTip(Me.components)
         Me.panelTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelLogin.SuspendLayout()
@@ -523,4 +524,5 @@ Partial Class inicioSesion
     Friend WithEvents ToolTip2 As System.Windows.Forms.ToolTip
     Friend WithEvents pbEsconder As System.Windows.Forms.PictureBox
     Friend WithEvents pbMostrar As System.Windows.Forms.PictureBox
+    Friend WithEvents ttpAdmin As System.Windows.Forms.ToolTip
 End Class
