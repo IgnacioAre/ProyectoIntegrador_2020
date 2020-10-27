@@ -45,8 +45,9 @@ Public Class GestionarProductos
         Me.Close()
     End Sub
 
-    Private Sub dgvProveedores_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvProductos.SelectionChanged
+    Private Sub dgvProductos_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvProductos.SelectionChanged
         Dim row As DataGridViewRow = dgvProductos.CurrentRow
+        Dim rowSurtido As DataGridViewRow = dgvProductos.CurrentRow
 
         If dgvProductos.SelectedCells.Count <> 0 Then
             btnModificar.Enabled = True
@@ -62,28 +63,34 @@ Public Class GestionarProductos
             txtNombre.Text = row.Cells(1).Value.ToString
             txtCantidadUnidad.Text = row.Cells(2).Value.ToString
             cbxMedida.SelectedItem = row.Cells(3).Value.ToString
-
-            Dim rowSurtido As DataGridViewRow = dgvProductos.CurrentRow
-
-            If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
-                panelPreciosMod.Visible = False
-
-                txtCostoMod.Text = row.Cells(4).Value.ToString
-                txtVentaMod.Text = row.Cells(5).Value.ToString
-                txtGananciaMod.Text = row.Cells(6).Value.ToString
-            Else
-                panelPreciosMod.Visible = True
-            End If
-
-            
             txtStock.Text = row.Cells(7).Value.ToString
 
 
             ActualizarTablaRegistro()
 
+            If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
+                panelPreciosMod.Visible = False
+
+
+                If dgvProductos.SelectedCells.Count <> 0 Then
+                    txtCostoMod.Text = row.Cells(4).Value.ToString
+                    txtVentaMod.Text = row.Cells(5).Value.ToString
+                    txtGananciaMod.Text = row.Cells(6).Value.ToString
+                End If
+                
+            Else
+                panelPreciosMod.Visible = True
+            End If
+
         Else
 
+            btnModificar.Enabled = False
+            btnEliminar.Enabled = False
+            btnAgregarProd.Enabled = False
+
         End If
+
+        
 
     End Sub
 
@@ -171,6 +178,17 @@ Public Class GestionarProductos
 
     Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
         gpInformacion.Visible = True
+        ActualizarTablaRegistro()
+
+        Dim rowSurtido As DataGridViewRow = dgvProductos.CurrentRow
+        
+        If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
+            panelPreciosMod.Visible = False
+
+        Else
+            panelPreciosMod.Visible = True
+        End If
+        
     End Sub
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarInfo.Click

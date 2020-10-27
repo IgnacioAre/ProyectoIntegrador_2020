@@ -379,12 +379,14 @@ Public Class inicioSesion
     Private Sub pbMostrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbMostrar.Click
         pbEsconder.Visible = True
         pbMostrar.Visible = False
+        panelOjo.BackColor = Color.LightGray
         txtContraseñaLogin.UseSystemPasswordChar = False
     End Sub
 
     Private Sub pbEsconder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbEsconder.Click
         pbEsconder.Visible = False
         pbMostrar.Visible = True
+        panelOjo.BackColor = Color.White
         txtContraseñaLogin.UseSystemPasswordChar = True
     End Sub
 

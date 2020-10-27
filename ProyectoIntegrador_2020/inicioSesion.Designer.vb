@@ -58,6 +58,7 @@ Partial Class inicioSesion
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ttpAdmin = New System.Windows.Forms.ToolTip(Me.components)
+        Me.panelOjo = New System.Windows.Forms.Panel()
         Me.panelTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelLogin.SuspendLayout()
@@ -65,6 +66,7 @@ Partial Class inicioSesion
         CType(Me.pbMostrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelRegistro.SuspendLayout()
         CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelOjo.SuspendLayout()
         Me.SuspendLayout()
         '
         'panelTitulo
@@ -137,6 +139,7 @@ Partial Class inicioSesion
         Me.btnEntrar.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btnEntrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEntrar.FlatAppearance.BorderSize = 3
         Me.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.btnEntrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -152,11 +155,13 @@ Partial Class inicioSesion
         'txtContraseñaLogin
         '
         Me.txtContraseñaLogin.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.txtContraseñaLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContraseñaLogin.BackColor = System.Drawing.Color.White
+        Me.txtContraseñaLogin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtContraseñaLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContraseñaLogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtContraseñaLogin.Location = New System.Drawing.Point(83, 268)
         Me.txtContraseñaLogin.Name = "txtContraseñaLogin"
-        Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 26)
+        Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 24)
         Me.txtContraseñaLogin.TabIndex = 2
         '
         'Label2
@@ -174,12 +179,14 @@ Partial Class inicioSesion
         'txtUsuarioLogin
         '
         Me.txtUsuarioLogin.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.txtUsuarioLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsuarioLogin.BackColor = System.Drawing.Color.White
+        Me.txtUsuarioLogin.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtUsuarioLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsuarioLogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtUsuarioLogin.Location = New System.Drawing.Point(83, 160)
         Me.txtUsuarioLogin.MaxLength = 30
         Me.txtUsuarioLogin.Name = "txtUsuarioLogin"
-        Me.txtUsuarioLogin.Size = New System.Drawing.Size(202, 26)
+        Me.txtUsuarioLogin.Size = New System.Drawing.Size(233, 24)
         Me.txtUsuarioLogin.TabIndex = 1
         '
         'Label1
@@ -237,7 +244,9 @@ Partial Class inicioSesion
         Me.chbGuardarUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.chbGuardarUsuario.AutoSize = True
         Me.chbGuardarUsuario.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.chbGuardarUsuario.Location = New System.Drawing.Point(83, 321)
+        Me.chbGuardarUsuario.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.chbGuardarUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chbGuardarUsuario.Location = New System.Drawing.Point(82, 322)
         Me.chbGuardarUsuario.Name = "chbGuardarUsuario"
         Me.chbGuardarUsuario.Size = New System.Drawing.Size(15, 14)
         Me.chbGuardarUsuario.TabIndex = 18
@@ -247,8 +256,7 @@ Partial Class inicioSesion
         '
         Me.panelLogin.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.panelLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panelLogin.Controls.Add(Me.pbEsconder)
-        Me.panelLogin.Controls.Add(Me.pbMostrar)
+        Me.panelLogin.Controls.Add(Me.panelOjo)
         Me.panelLogin.Controls.Add(Me.PictureBox1)
         Me.panelLogin.Controls.Add(Me.chbGuardarUsuario)
         Me.panelLogin.Controls.Add(Me.Label1)
@@ -269,7 +277,7 @@ Partial Class inicioSesion
         '
         Me.pbEsconder.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbEsconder.Image = CType(resources.GetObject("pbEsconder.Image"), System.Drawing.Image)
-        Me.pbEsconder.Location = New System.Drawing.Point(305, 268)
+        Me.pbEsconder.Location = New System.Drawing.Point(4, -3)
         Me.pbEsconder.Name = "pbEsconder"
         Me.pbEsconder.Size = New System.Drawing.Size(27, 27)
         Me.pbEsconder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -281,7 +289,7 @@ Partial Class inicioSesion
         '
         Me.pbMostrar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbMostrar.Image = CType(resources.GetObject("pbMostrar.Image"), System.Drawing.Image)
-        Me.pbMostrar.Location = New System.Drawing.Point(305, 268)
+        Me.pbMostrar.Location = New System.Drawing.Point(4, -3)
         Me.pbMostrar.Name = "pbMostrar"
         Me.pbMostrar.Size = New System.Drawing.Size(27, 27)
         Me.pbMostrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -305,10 +313,9 @@ Partial Class inicioSesion
         Me.panelRegistro.Controls.Add(Me.txtUsuarioRegistro)
         Me.panelRegistro.Controls.Add(Me.Label5)
         Me.panelRegistro.Controls.Add(Me.Label4)
-        Me.panelRegistro.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelRegistro.Location = New System.Drawing.Point(0, 40)
         Me.panelRegistro.Name = "panelRegistro"
-        Me.panelRegistro.Size = New System.Drawing.Size(402, 513)
+        Me.panelRegistro.Size = New System.Drawing.Size(402, 120)
         Me.panelRegistro.TabIndex = 19
         Me.panelRegistro.Visible = False
         '
@@ -463,6 +470,16 @@ Partial Class inicioSesion
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "CREAR USUARIO ADMIN"
         '
+        'panelOjo
+        '
+        Me.panelOjo.BackColor = System.Drawing.Color.White
+        Me.panelOjo.Controls.Add(Me.pbEsconder)
+        Me.panelOjo.Controls.Add(Me.pbMostrar)
+        Me.panelOjo.Location = New System.Drawing.Point(285, 268)
+        Me.panelOjo.Name = "panelOjo"
+        Me.panelOjo.Size = New System.Drawing.Size(34, 24)
+        Me.panelOjo.TabIndex = 21
+        '
         'inicioSesion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -488,6 +505,7 @@ Partial Class inicioSesion
         Me.panelRegistro.ResumeLayout(False)
         Me.panelRegistro.PerformLayout()
         CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelOjo.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -525,4 +543,5 @@ Partial Class inicioSesion
     Friend WithEvents pbEsconder As System.Windows.Forms.PictureBox
     Friend WithEvents pbMostrar As System.Windows.Forms.PictureBox
     Friend WithEvents ttpAdmin As System.Windows.Forms.ToolTip
+    Friend WithEvents panelOjo As System.Windows.Forms.Panel
 End Class

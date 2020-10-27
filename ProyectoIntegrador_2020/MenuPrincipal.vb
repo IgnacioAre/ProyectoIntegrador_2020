@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Public Class MenuPrincipal
 
+    Dim consulta As Conexion = New Conexion
     Dim moverMenuBool As Boolean = False
     Dim submenuClienteBool As Boolean = False
     Dim submenuProveedorBool As Boolean = False
@@ -20,6 +21,7 @@ Public Class MenuPrincipal
         panelAbout.Width = 0
         My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
         SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
+        panelAvisoStock.SendToBack()
     End Sub
 
 
@@ -431,6 +433,10 @@ Public Class MenuPrincipal
         tmrOcultarAbout.Enabled = True
     End Sub
 
+
+    Sub ActualizarPanelMinimoStock()
+
+    End Sub
 
 
 
