@@ -130,14 +130,15 @@ Public Class CuentaCorrienteProveedor
     Private Sub limpiarDebe()
         gbHaber.Visible = False
         txtDineroHaber.Text = ""
-        txtDetalleHaber.Text = ""
         btnOcultarDetalleHaber.Visible = False
         btnVerDetalleHaber.Visible = True
+        txtDetalleHaber.Text = ""
         txtDetalleHaber.Visible = False
     End Sub
 
     Sub limpiarHaber()
         gbDebe.Visible = False
+        txtDineroHaber.Text = ""
         btnOcultarDetalleDebe.Visible = False
         btnVerDetalleDebe.Visible = True
         txtDetalleDebe.Visible = False
@@ -265,7 +266,7 @@ Public Class CuentaCorrienteProveedor
                 ActualizarTablaRegistroVenta()
                 actualizarTablaConId()
                 txtBuscarClientes.Focus()
-
+                limpiarHaber()
             End If
 
         End If

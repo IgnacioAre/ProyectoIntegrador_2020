@@ -62,10 +62,26 @@ Public Class GestionarProductos
             txtNombre.Text = row.Cells(1).Value.ToString
             txtCantidadUnidad.Text = row.Cells(2).Value.ToString
             cbxMedida.SelectedItem = row.Cells(3).Value.ToString
-            txtStock.Text = row.Cells(6).Value.ToString
+
+            Dim rowSurtido As DataGridViewRow = dgvProductos.CurrentRow
+
+            If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
+                panelPreciosMod.Visible = False
+
+                txtCostoMod.Text = row.Cells(4).Value.ToString
+                txtVentaMod.Text = row.Cells(5).Value.ToString
+                txtGananciaMod.Text = row.Cells(6).Value.ToString
+            Else
+                panelPreciosMod.Visible = True
+            End If
+
+            
+            txtStock.Text = row.Cells(7).Value.ToString
 
 
             ActualizarTablaRegistro()
+
+        Else
 
         End If
 
@@ -80,8 +96,8 @@ Public Class GestionarProductos
     'ACTUALIZA LA TABLA DE PRODUCTOS
 
     Public Sub ActualizarTablaProductos()
-        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
-
+        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta,ganancia as '%', Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
+        dgvProductos.Columns(6).Width = 60
     End Sub
 
 
@@ -220,17 +236,7 @@ Public Class GestionarProductos
         End If
     End Sub
 
-    Private Sub btnVerRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerRegistro.Click
-        gpRegistro.Visible = True
-        btnVerRegistro.Visible = False
-        btnOcultarRegistro.Visible = True
-    End Sub
 
-    Private Sub btnOcultarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarRegistro.Click
-        gpRegistro.Visible = False
-        btnVerRegistro.Visible = True
-        btnOcultarRegistro.Visible = False
-    End Sub
 
 
     '----MENSAJE PERSONALIZADO----'

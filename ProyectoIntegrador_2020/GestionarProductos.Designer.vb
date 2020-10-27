@@ -35,6 +35,14 @@ Partial Class GestionarProductos
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.txtBuscarProductos = New System.Windows.Forms.TextBox()
         Me.gpInformacion = New System.Windows.Forms.GroupBox()
+        Me.lblAyudaCampos = New System.Windows.Forms.Label()
+        Me.txtVentaMod = New System.Windows.Forms.TextBox()
+        Me.lblVenta = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.txtGananciaMod = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txtCostoMod = New System.Windows.Forms.TextBox()
+        Me.lblCosto = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.cbxMedida = New System.Windows.Forms.ComboBox()
         Me.txtCantidadUnidad = New System.Windows.Forms.TextBox()
@@ -68,13 +76,12 @@ Partial Class GestionarProductos
         Me.txtPrecioCosto = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.gpRegistro = New System.Windows.Forms.GroupBox()
-        Me.btnOcultarRegistro = New System.Windows.Forms.Button()
-        Me.btnVerRegistro = New System.Windows.Forms.Button()
         Me.tmrOcultarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
         Me.chbProdNoActivos = New System.Windows.Forms.CheckBox()
         Me.btnAgregarProd = New System.Windows.Forms.Button()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.panelPreciosMod = New System.Windows.Forms.Panel()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpInformacion.SuspendLayout()
@@ -86,6 +93,7 @@ Partial Class GestionarProductos
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpRegistro.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelPreciosMod.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnCerrar
@@ -190,6 +198,8 @@ Partial Class GestionarProductos
         'gpInformacion
         '
         Me.gpInformacion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.gpInformacion.Controls.Add(Me.panelPreciosMod)
+        Me.gpInformacion.Controls.Add(Me.lblAyudaCampos)
         Me.gpInformacion.Controls.Add(Me.Label10)
         Me.gpInformacion.Controls.Add(Me.cbxMedida)
         Me.gpInformacion.Controls.Add(Me.txtCantidadUnidad)
@@ -201,21 +211,104 @@ Partial Class GestionarProductos
         Me.gpInformacion.Controls.Add(Me.Label2)
         Me.gpInformacion.Controls.Add(Me.txtID)
         Me.gpInformacion.Controls.Add(Me.Label1)
+        Me.gpInformacion.Controls.Add(Me.gpRegistro)
         Me.gpInformacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gpInformacion.ForeColor = System.Drawing.Color.White
-        Me.gpInformacion.Location = New System.Drawing.Point(36, 421)
+        Me.gpInformacion.Location = New System.Drawing.Point(12, 432)
         Me.gpInformacion.Name = "gpInformacion"
-        Me.gpInformacion.Size = New System.Drawing.Size(316, 355)
+        Me.gpInformacion.Size = New System.Drawing.Size(970, 344)
         Me.gpInformacion.TabIndex = 37
         Me.gpInformacion.TabStop = False
         Me.gpInformacion.Text = "Información del Producto"
         Me.gpInformacion.Visible = False
         '
+        'lblAyudaCampos
+        '
+        Me.lblAyudaCampos.AutoSize = True
+        Me.lblAyudaCampos.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAyudaCampos.ForeColor = System.Drawing.Color.White
+        Me.lblAyudaCampos.Location = New System.Drawing.Point(48, 338)
+        Me.lblAyudaCampos.Name = "lblAyudaCampos"
+        Me.lblAyudaCampos.Size = New System.Drawing.Size(0, 17)
+        Me.lblAyudaCampos.TabIndex = 60
+        Me.lblAyudaCampos.Visible = False
+        '
+        'txtVentaMod
+        '
+        Me.txtVentaMod.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVentaMod.Location = New System.Drawing.Point(176, 46)
+        Me.txtVentaMod.MaxLength = 4
+        Me.txtVentaMod.Name = "txtVentaMod"
+        Me.txtVentaMod.Size = New System.Drawing.Size(69, 26)
+        Me.txtVentaMod.TabIndex = 59
+        '
+        'lblVenta
+        '
+        Me.lblVenta.AutoSize = True
+        Me.lblVenta.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVenta.ForeColor = System.Drawing.Color.White
+        Me.lblVenta.Location = New System.Drawing.Point(135, 17)
+        Me.lblVenta.Name = "lblVenta"
+        Me.lblVenta.Size = New System.Drawing.Size(110, 21)
+        Me.lblVenta.TabIndex = 58
+        Me.lblVenta.Text = "Precio Venta"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.White
+        Me.Label13.Location = New System.Drawing.Point(285, 49)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(23, 20)
+        Me.Label13.TabIndex = 57
+        Me.Label13.Text = "%"
+        '
+        'txtGananciaMod
+        '
+        Me.txtGananciaMod.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtGananciaMod.Location = New System.Drawing.Point(310, 46)
+        Me.txtGananciaMod.MaxLength = 2
+        Me.txtGananciaMod.Name = "txtGananciaMod"
+        Me.txtGananciaMod.Size = New System.Drawing.Size(45, 26)
+        Me.txtGananciaMod.TabIndex = 56
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.Color.White
+        Me.Label12.Location = New System.Drawing.Point(271, 17)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(90, 21)
+        Me.Label12.TabIndex = 55
+        Me.Label12.Text = "Ganancia"
+        '
+        'txtCostoMod
+        '
+        Me.txtCostoMod.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCostoMod.Location = New System.Drawing.Point(45, 46)
+        Me.txtCostoMod.MaxLength = 4
+        Me.txtCostoMod.Name = "txtCostoMod"
+        Me.txtCostoMod.Size = New System.Drawing.Size(69, 26)
+        Me.txtCostoMod.TabIndex = 54
+        '
+        'lblCosto
+        '
+        Me.lblCosto.AutoSize = True
+        Me.lblCosto.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCosto.ForeColor = System.Drawing.Color.White
+        Me.lblCosto.Location = New System.Drawing.Point(4, 17)
+        Me.lblCosto.Name = "lblCosto"
+        Me.lblCosto.Size = New System.Drawing.Size(107, 21)
+        Me.lblCosto.TabIndex = 53
+        Me.lblCosto.Text = "Precio Costo"
+        '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(61, 214)
+        Me.Label10.Location = New System.Drawing.Point(178, 143)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(54, 16)
         Me.Label10.TabIndex = 31
@@ -225,14 +318,14 @@ Partial Class GestionarProductos
         '
         Me.cbxMedida.FormattingEnabled = True
         Me.cbxMedida.Items.AddRange(New Object() {"UNIDADES", "KILOGRAMOS", "GRAMOS", "LITROS", "MILILITROS"})
-        Me.cbxMedida.Location = New System.Drawing.Point(95, 234)
+        Me.cbxMedida.Location = New System.Drawing.Point(212, 163)
         Me.cbxMedida.Name = "cbxMedida"
         Me.cbxMedida.Size = New System.Drawing.Size(145, 29)
         Me.cbxMedida.TabIndex = 21
         '
         'txtCantidadUnidad
         '
-        Me.txtCantidadUnidad.Location = New System.Drawing.Point(45, 234)
+        Me.txtCantidadUnidad.Location = New System.Drawing.Point(162, 163)
         Me.txtCantidadUnidad.MaxLength = 5
         Me.txtCantidadUnidad.Name = "txtCantidadUnidad"
         Me.txtCantidadUnidad.Size = New System.Drawing.Size(39, 27)
@@ -240,7 +333,7 @@ Partial Class GestionarProductos
         '
         'txtStock
         '
-        Me.txtStock.Location = New System.Drawing.Point(45, 175)
+        Me.txtStock.Location = New System.Drawing.Point(45, 163)
         Me.txtStock.MaxLength = 4
         Me.txtStock.Name = "txtStock"
         Me.txtStock.Size = New System.Drawing.Size(86, 27)
@@ -250,7 +343,7 @@ Partial Class GestionarProductos
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(29, 155)
+        Me.Label4.Location = New System.Drawing.Point(29, 143)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(42, 16)
         Me.Label4.TabIndex = 27
@@ -267,7 +360,7 @@ Partial Class GestionarProductos
         Me.btnCerrarInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCerrarInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarInfo.ForeColor = System.Drawing.Color.White
-        Me.btnCerrarInfo.Location = New System.Drawing.Point(282, 17)
+        Me.btnCerrarInfo.Location = New System.Drawing.Point(936, 17)
         Me.btnCerrarInfo.Name = "btnCerrarInfo"
         Me.btnCerrarInfo.Size = New System.Drawing.Size(28, 27)
         Me.btnCerrarInfo.TabIndex = 17
@@ -284,7 +377,7 @@ Partial Class GestionarProductos
         Me.btnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime
         Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnActualizar.Image = CType(resources.GetObject("btnActualizar.Image"), System.Drawing.Image)
-        Me.btnActualizar.Location = New System.Drawing.Point(77, 288)
+        Me.btnActualizar.Location = New System.Drawing.Point(117, 286)
         Me.btnActualizar.Name = "btnActualizar"
         Me.btnActualizar.Size = New System.Drawing.Size(139, 48)
         Me.btnActualizar.TabIndex = 16
@@ -297,7 +390,7 @@ Partial Class GestionarProductos
         Me.txtNombre.Location = New System.Drawing.Point(42, 108)
         Me.txtNombre.MaxLength = 30
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(214, 27)
+        Me.txtNombre.Size = New System.Drawing.Size(268, 27)
         Me.txtNombre.TabIndex = 3
         '
         'Label2
@@ -316,7 +409,7 @@ Partial Class GestionarProductos
         Me.txtID.Location = New System.Drawing.Point(42, 54)
         Me.txtID.Name = "txtID"
         Me.txtID.ReadOnly = True
-        Me.txtID.Size = New System.Drawing.Size(214, 27)
+        Me.txtID.Size = New System.Drawing.Size(274, 27)
         Me.txtID.TabIndex = 1
         '
         'Label1
@@ -507,7 +600,7 @@ Partial Class GestionarProductos
         Me.dgvRegistroSurtido.ReadOnly = True
         Me.dgvRegistroSurtido.RowHeadersVisible = False
         Me.dgvRegistroSurtido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvRegistroSurtido.Size = New System.Drawing.Size(587, 218)
+        Me.dgvRegistroSurtido.Size = New System.Drawing.Size(545, 218)
         Me.dgvRegistroSurtido.TabIndex = 24
         Me.dgvRegistroSurtido.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
         Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
@@ -661,52 +754,12 @@ Partial Class GestionarProductos
         Me.gpRegistro.Controls.Add(Me.dgvRegistroSurtido)
         Me.gpRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gpRegistro.ForeColor = System.Drawing.Color.White
-        Me.gpRegistro.Location = New System.Drawing.Point(358, 491)
+        Me.gpRegistro.Location = New System.Drawing.Point(388, 50)
         Me.gpRegistro.Name = "gpRegistro"
-        Me.gpRegistro.Size = New System.Drawing.Size(612, 285)
+        Me.gpRegistro.Size = New System.Drawing.Size(570, 288)
         Me.gpRegistro.TabIndex = 26
         Me.gpRegistro.TabStop = False
         Me.gpRegistro.Text = "Registro de Surtido"
-        Me.gpRegistro.Visible = False
-        '
-        'btnOcultarRegistro
-        '
-        Me.btnOcultarRegistro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnOcultarRegistro.BackColor = System.Drawing.Color.FromArgb(CType(CType(230, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.btnOcultarRegistro.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnOcultarRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnOcultarRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnOcultarRegistro.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnOcultarRegistro.ForeColor = System.Drawing.Color.White
-        Me.btnOcultarRegistro.Image = CType(resources.GetObject("btnOcultarRegistro.Image"), System.Drawing.Image)
-        Me.btnOcultarRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnOcultarRegistro.Location = New System.Drawing.Point(803, 449)
-        Me.btnOcultarRegistro.Name = "btnOcultarRegistro"
-        Me.btnOcultarRegistro.Size = New System.Drawing.Size(167, 47)
-        Me.btnOcultarRegistro.TabIndex = 47
-        Me.btnOcultarRegistro.Text = "  Ocultar Registro"
-        Me.btnOcultarRegistro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnOcultarRegistro.UseVisualStyleBackColor = False
-        Me.btnOcultarRegistro.Visible = False
-        '
-        'btnVerRegistro
-        '
-        Me.btnVerRegistro.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnVerRegistro.BackColor = System.Drawing.Color.Teal
-        Me.btnVerRegistro.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnVerRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnVerRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnVerRegistro.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVerRegistro.ForeColor = System.Drawing.Color.White
-        Me.btnVerRegistro.Image = CType(resources.GetObject("btnVerRegistro.Image"), System.Drawing.Image)
-        Me.btnVerRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVerRegistro.Location = New System.Drawing.Point(803, 449)
-        Me.btnVerRegistro.Name = "btnVerRegistro"
-        Me.btnVerRegistro.Size = New System.Drawing.Size(132, 47)
-        Me.btnVerRegistro.TabIndex = 46
-        Me.btnVerRegistro.Text = "  Ver Registro"
-        Me.btnVerRegistro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnVerRegistro.UseVisualStyleBackColor = False
         '
         'tmrOcultarEditarRegistro
         '
@@ -762,6 +815,20 @@ Partial Class GestionarProductos
         Me.PictureBox4.TabIndex = 50
         Me.PictureBox4.TabStop = False
         '
+        'panelPreciosMod
+        '
+        Me.panelPreciosMod.Controls.Add(Me.txtGananciaMod)
+        Me.panelPreciosMod.Controls.Add(Me.lblCosto)
+        Me.panelPreciosMod.Controls.Add(Me.txtVentaMod)
+        Me.panelPreciosMod.Controls.Add(Me.txtCostoMod)
+        Me.panelPreciosMod.Controls.Add(Me.lblVenta)
+        Me.panelPreciosMod.Controls.Add(Me.Label12)
+        Me.panelPreciosMod.Controls.Add(Me.Label13)
+        Me.panelPreciosMod.Location = New System.Drawing.Point(6, 192)
+        Me.panelPreciosMod.Name = "panelPreciosMod"
+        Me.panelPreciosMod.Size = New System.Drawing.Size(364, 82)
+        Me.panelPreciosMod.TabIndex = 61
+        '
         'GestionarProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -771,8 +838,6 @@ Partial Class GestionarProductos
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.btnAgregarProd)
         Me.Controls.Add(Me.chbProdNoActivos)
-        Me.Controls.Add(Me.btnOcultarRegistro)
-        Me.Controls.Add(Me.btnVerRegistro)
         Me.Controls.Add(Me.btnAjustarMinimoStock)
         Me.Controls.Add(Me.txtMinimoStock)
         Me.Controls.Add(Me.Label3)
@@ -783,7 +848,6 @@ Partial Class GestionarProductos
         Me.Controls.Add(Me.gpInformacion)
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnNuevo)
-        Me.Controls.Add(Me.gpRegistro)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.txtBuscarProductos)
         Me.Controls.Add(Me.dgvProductos)
@@ -804,6 +868,8 @@ Partial Class GestionarProductos
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpRegistro.ResumeLayout(False)
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelPreciosMod.ResumeLayout(False)
+        Me.panelPreciosMod.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -846,11 +912,18 @@ Partial Class GestionarProductos
     Friend WithEvents txtPrecioCosto As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents gpRegistro As System.Windows.Forms.GroupBox
-    Friend WithEvents btnOcultarRegistro As System.Windows.Forms.Button
-    Friend WithEvents btnVerRegistro As System.Windows.Forms.Button
     Friend WithEvents tmrOcultarEditarRegistro As System.Windows.Forms.Timer
     Friend WithEvents tmrMostrarEditarRegistro As System.Windows.Forms.Timer
     Friend WithEvents chbProdNoActivos As System.Windows.Forms.CheckBox
     Friend WithEvents btnAgregarProd As System.Windows.Forms.Button
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
+    Friend WithEvents lblAyudaCampos As System.Windows.Forms.Label
+    Friend WithEvents txtVentaMod As System.Windows.Forms.TextBox
+    Friend WithEvents lblVenta As System.Windows.Forms.Label
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents txtGananciaMod As System.Windows.Forms.TextBox
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents txtCostoMod As System.Windows.Forms.TextBox
+    Friend WithEvents lblCosto As System.Windows.Forms.Label
+    Friend WithEvents panelPreciosMod As System.Windows.Forms.Panel
 End Class

@@ -24,9 +24,9 @@ Partial Class SurtirProductos
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SurtirProductos))
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelTitulo = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
@@ -54,6 +54,7 @@ Partial Class SurtirProductos
         Me.tmrMostrarAgregar = New System.Windows.Forms.Timer(Me.components)
         Me.tmrOcultarAgregar = New System.Windows.Forms.Timer(Me.components)
         Me.panelAgregar = New System.Windows.Forms.Panel()
+        Me.lblAyudaCampos = New System.Windows.Forms.Label()
         Me.txtVentaIngreso = New System.Windows.Forms.TextBox()
         Me.lblVenta = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -78,7 +79,6 @@ Partial Class SurtirProductos
         Me.btnAnotarBusqueda = New System.Windows.Forms.Button()
         Me.panelBuscar = New System.Windows.Forms.Panel()
         Me.panelSurtido = New System.Windows.Forms.Panel()
-        Me.lblAyudaCampos = New System.Windows.Forms.Label()
         Me.panelTitulo.SuspendLayout()
         CType(Me.btnBuscar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAgregar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -160,7 +160,7 @@ Partial Class SurtirProductos
         Me.btnFinalizarSurtido.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnFinalizarSurtido.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFinalizarSurtido.ForeColor = System.Drawing.Color.White
-        Me.btnFinalizarSurtido.Location = New System.Drawing.Point(204, 427)
+        Me.btnFinalizarSurtido.Location = New System.Drawing.Point(204, 424)
         Me.btnFinalizarSurtido.Name = "btnFinalizarSurtido"
         Me.btnFinalizarSurtido.Size = New System.Drawing.Size(169, 44)
         Me.btnFinalizarSurtido.TabIndex = 11
@@ -177,7 +177,7 @@ Partial Class SurtirProductos
         Me.btnOtraCompra.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnOtraCompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOtraCompra.ForeColor = System.Drawing.Color.White
-        Me.btnOtraCompra.Location = New System.Drawing.Point(19, 427)
+        Me.btnOtraCompra.Location = New System.Drawing.Point(19, 424)
         Me.btnOtraCompra.Name = "btnOtraCompra"
         Me.btnOtraCompra.Size = New System.Drawing.Size(132, 44)
         Me.btnOtraCompra.TabIndex = 12
@@ -263,7 +263,7 @@ Partial Class SurtirProductos
         Me.btnVolverCompra.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnVolverCompra.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnVolverCompra.Image = CType(resources.GetObject("btnVolverCompra.Image"), System.Drawing.Image)
-        Me.btnVolverCompra.Location = New System.Drawing.Point(19, 389)
+        Me.btnVolverCompra.Location = New System.Drawing.Point(19, 386)
         Me.btnVolverCompra.Name = "btnVolverCompra"
         Me.btnVolverCompra.Size = New System.Drawing.Size(32, 32)
         Me.btnVolverCompra.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -275,7 +275,7 @@ Partial Class SurtirProductos
         Me.btnSiguienteCompra.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnSiguienteCompra.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSiguienteCompra.Image = CType(resources.GetObject("btnSiguienteCompra.Image"), System.Drawing.Image)
-        Me.btnSiguienteCompra.Location = New System.Drawing.Point(119, 389)
+        Me.btnSiguienteCompra.Location = New System.Drawing.Point(119, 386)
         Me.btnSiguienteCompra.Name = "btnSiguienteCompra"
         Me.btnSiguienteCompra.Size = New System.Drawing.Size(32, 32)
         Me.btnSiguienteCompra.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -388,6 +388,17 @@ Partial Class SurtirProductos
         Me.panelAgregar.Name = "panelAgregar"
         Me.panelAgregar.Size = New System.Drawing.Size(384, 477)
         Me.panelAgregar.TabIndex = 51
+        '
+        'lblAyudaCampos
+        '
+        Me.lblAyudaCampos.AutoSize = True
+        Me.lblAyudaCampos.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAyudaCampos.ForeColor = System.Drawing.Color.White
+        Me.lblAyudaCampos.Location = New System.Drawing.Point(55, 361)
+        Me.lblAyudaCampos.Name = "lblAyudaCampos"
+        Me.lblAyudaCampos.Size = New System.Drawing.Size(0, 17)
+        Me.lblAyudaCampos.TabIndex = 52
+        Me.lblAyudaCampos.Visible = False
         '
         'txtVentaIngreso
         '
@@ -585,31 +596,31 @@ Partial Class SurtirProductos
         Me.dgvProductos.AllowUserToDeleteRows = False
         Me.dgvProductos.AllowUserToResizeColumns = False
         Me.dgvProductos.AllowUserToResizeRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvProductos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvProductos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvProductos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle14.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvProductos.EnableHeadersVisualStyles = False
         Me.dgvProductos.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvProductos.Location = New System.Drawing.Point(16, 69)
@@ -726,19 +737,8 @@ Partial Class SurtirProductos
         Me.panelSurtido.Controls.Add(Me.btnVolverCompra)
         Me.panelSurtido.Location = New System.Drawing.Point(0, 40)
         Me.panelSurtido.Name = "panelSurtido"
-        Me.panelSurtido.Size = New System.Drawing.Size(384, 477)
+        Me.panelSurtido.Size = New System.Drawing.Size(384, 474)
         Me.panelSurtido.TabIndex = 52
-        '
-        'lblAyudaCampos
-        '
-        Me.lblAyudaCampos.AutoSize = True
-        Me.lblAyudaCampos.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAyudaCampos.ForeColor = System.Drawing.Color.White
-        Me.lblAyudaCampos.Location = New System.Drawing.Point(55, 361)
-        Me.lblAyudaCampos.Name = "lblAyudaCampos"
-        Me.lblAyudaCampos.Size = New System.Drawing.Size(0, 17)
-        Me.lblAyudaCampos.TabIndex = 52
-        Me.lblAyudaCampos.Visible = False
         '
         'SurtirProductos
         '

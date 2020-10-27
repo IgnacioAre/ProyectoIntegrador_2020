@@ -321,14 +321,15 @@ Public Class CuentaCorriente
     Private Sub limpiarDebe()
         gbDebe.Visible = False
         txtDineroDebe.Text = ""
-        txtDetalleDebe.Text = ""
         btnOcultarDetalleDebe.Visible = False
         btnVerDetalleDebe.Visible = True
+        txtDetalleDebe.Text = ""
         txtDetalleDebe.Visible = False
     End Sub
 
     Sub limpiarHaber()
         gbHaber.Visible = False
+        txtDineroHaber.Text = ""
         btnOcultarDetalleHaber.Visible = False
         btnVerDetalleHaber.Visible = True
         txtDetalleHaber.Visible = False
