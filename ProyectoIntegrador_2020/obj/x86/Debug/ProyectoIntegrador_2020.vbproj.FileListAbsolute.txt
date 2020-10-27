@@ -84,7 +84,6 @@ C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegr
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.ExploradorClientes.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.ExploradorProveedores.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.CuentaCorrienteProveedor.resources
-C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Notas.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.GestionarProductos.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.SurtirProductos.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Estadisticas.resources
@@ -119,3 +118,4 @@ C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegr
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.ExploradorClientes.resources
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Notas.resources
 C:\Users\santi\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.GestionarProductos.resources
+C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Notas.resources

@@ -7,7 +7,7 @@ Public Class CuentaCorriente
     Dim idCompra As Integer
     Dim resultadosEntrada As String
     Dim confirmacion As Byte
-    Dim saldo As Integer
+    Dim saldo As Long
 
     '----INICIO DEL FORMULARIO----'
 
@@ -88,7 +88,7 @@ Public Class CuentaCorriente
             'ACTUALIZO LA DEUDA EN EL CLIENTE
 
             consultas.consultaReturnHide("SELECT Saldo from Clientes where idCliente=" & idCliente & ";")
-            Dim saldoActual As Integer = Val(consultas.valorReturn)
+            Dim saldoActual As Long = Val(consultas.valorReturn)
 
             consultas.consultaHide("UPDATE Clientes set Saldo=" & (saldoActual + Val(txtDineroDebe.Text)) & " where idCliente=" & idCliente & ";")
 
@@ -365,7 +365,7 @@ Public Class CuentaCorriente
     End Sub
 
     Private Sub btnEliminarTodoRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPagarTodoRegistro.Click
-        confirmacion = ConfirmacionMensaje.confirmacion("             ¿Seguro que desea cobrar" & vbCrLf & "              todo el saldo?")
+        confirmacion = ConfirmacionMensaje.confirmacion("            ¿Seguro que desea cobrar" & vbCrLf & "             todo el saldo?")
         If confirmacion = 1 Then
 
 
@@ -384,13 +384,13 @@ Public Class CuentaCorriente
             Loop While resultadosEntrada = ""
 
 
-            consultas.consultaHide("UPDATE compraCliente set adeudoBool=0 where adeudoBool != 2 AND idCliente=" & idCliente & ";")
+            consultas.consultaHide("UPDATE compraCliente set adeudoBool=0 where adeudoBool <> 2 AND idCliente=" & idCliente & ";")
             If consultas.resultado = 1 Then
 
                 'ACTUALIZO LA DEUDA EN EL CLIENTE
 
                 consultas.consultaReturnHide("SELECT Saldo from Clientes where idCliente=" & idCliente & ";")
-                Dim saldoActual As Integer = Val(consultas.valorReturn)
+                Dim saldoActual As Long = Val(consultas.valorReturn)
 
                 consultas.consultaHide("UPDATE Clientes set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idCliente=" & idCliente & ";")
 
@@ -487,7 +487,7 @@ Public Class CuentaCorriente
     Private Sub dgvRegistroVentas_CellFormatting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles dgvRegistroVentas.CellFormatting
         If dgvRegistroVentas.Columns(e.ColumnIndex).Name = "Saldo" Then
 
-            Dim valor As Integer = Val(e.Value)
+            Dim valor As Long = Val(e.Value)
 
             If valor < 0 Then
                 dgvRegistroVentas.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.Red

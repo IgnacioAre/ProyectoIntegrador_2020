@@ -23,6 +23,7 @@ Partial Class ExploradorClientes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ExploradorClientes))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -32,8 +33,10 @@ Partial Class ExploradorClientes
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ExploradorClientes))
         Me.panelClientes = New System.Windows.Forms.Panel()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.txtBuscarCodigoCli = New System.Windows.Forms.TextBox()
+        Me.txtBuscarNombreCli = New System.Windows.Forms.TextBox()
         Me.btnActivo = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnAgregarTel = New System.Windows.Forms.PictureBox()
@@ -74,10 +77,8 @@ Partial Class ExploradorClientes
         Me.dgvClientes = New Guna.UI.WinForms.GunaDataGridView()
         Me.tmrOcultarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarEditarRegistro = New System.Windows.Forms.Timer(Me.components)
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.txtBuscarCodigoCli = New System.Windows.Forms.TextBox()
-        Me.txtBuscarNombreCli = New System.Windows.Forms.TextBox()
         Me.panelClientes.SuspendLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.btnAgregarTel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnEliminarTel, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,7 +93,6 @@ Partial Class ExploradorClientes
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelClientes
@@ -118,6 +118,35 @@ Partial Class ExploradorClientes
         Me.panelClientes.Name = "panelClientes"
         Me.panelClientes.Size = New System.Drawing.Size(1010, 750)
         Me.panelClientes.TabIndex = 0
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
+        Me.PictureBox4.Location = New System.Drawing.Point(354, 24)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(32, 32)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox4.TabIndex = 56
+        Me.PictureBox4.TabStop = False
+        '
+        'txtBuscarCodigoCli
+        '
+        Me.txtBuscarCodigoCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarCodigoCli.Location = New System.Drawing.Point(93, 33)
+        Me.txtBuscarCodigoCli.MaxLength = 13
+        Me.txtBuscarCodigoCli.Name = "txtBuscarCodigoCli"
+        Me.txtBuscarCodigoCli.Size = New System.Drawing.Size(244, 26)
+        Me.txtBuscarCodigoCli.TabIndex = 55
+        Me.txtBuscarCodigoCli.Visible = False
+        '
+        'txtBuscarNombreCli
+        '
+        Me.txtBuscarNombreCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarNombreCli.Location = New System.Drawing.Point(93, 32)
+        Me.txtBuscarNombreCli.Name = "txtBuscarNombreCli"
+        Me.txtBuscarNombreCli.Size = New System.Drawing.Size(244, 26)
+        Me.txtBuscarNombreCli.TabIndex = 54
         '
         'btnActivo
         '
@@ -762,35 +791,6 @@ Partial Class ExploradorClientes
         '
         Me.tmrMostrarEditarRegistro.Interval = 1
         '
-        'PictureBox4
-        '
-        Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(354, 24)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(32, 32)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox4.TabIndex = 56
-        Me.PictureBox4.TabStop = False
-        '
-        'txtBuscarCodigoCli
-        '
-        Me.txtBuscarCodigoCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarCodigoCli.Location = New System.Drawing.Point(93, 33)
-        Me.txtBuscarCodigoCli.MaxLength = 13
-        Me.txtBuscarCodigoCli.Name = "txtBuscarCodigoCli"
-        Me.txtBuscarCodigoCli.Size = New System.Drawing.Size(244, 26)
-        Me.txtBuscarCodigoCli.TabIndex = 55
-        Me.txtBuscarCodigoCli.Visible = False
-        '
-        'txtBuscarNombreCli
-        '
-        Me.txtBuscarNombreCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarNombreCli.Location = New System.Drawing.Point(93, 32)
-        Me.txtBuscarNombreCli.Name = "txtBuscarNombreCli"
-        Me.txtBuscarNombreCli.Size = New System.Drawing.Size(244, 26)
-        Me.txtBuscarNombreCli.TabIndex = 54
-        '
         'ExploradorClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -802,6 +802,7 @@ Partial Class ExploradorClientes
         Me.Text = "ModificarCuenta"
         Me.panelClientes.ResumeLayout(False)
         Me.panelClientes.PerformLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.btnAgregarTel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnEliminarTel, System.ComponentModel.ISupportInitialize).EndInit()
@@ -818,7 +819,6 @@ Partial Class ExploradorClientes
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

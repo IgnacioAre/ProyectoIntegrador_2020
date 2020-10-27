@@ -22,19 +22,20 @@ Partial Class Estadisticas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.chartGrafica = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.rbCircular = New System.Windows.Forms.RadioButton()
         Me.rbColumnas = New System.Windows.Forms.RadioButton()
         Me.rbBarras = New System.Windows.Forms.RadioButton()
         Me.barHorizontal = New System.Windows.Forms.TrackBar()
         Me.barVertical = New System.Windows.Forms.TrackBar()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.lblEstadisticasMes = New System.Windows.Forms.Label()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         CType(Me.chartGrafica, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.barHorizontal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,21 +48,21 @@ Partial Class Estadisticas
         '
         Me.chartGrafica.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.chartGrafica.BackSecondaryColor = System.Drawing.SystemColors.InactiveCaption
-        ChartArea3.Area3DStyle.Enable3D = True
-        ChartArea3.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
-        ChartArea3.BackColor = System.Drawing.SystemColors.InactiveCaption
-        ChartArea3.Name = "ChartArea1"
-        Me.chartGrafica.ChartAreas.Add(ChartArea3)
+        ChartArea1.Area3DStyle.Enable3D = True
+        ChartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
+        ChartArea1.BackColor = System.Drawing.SystemColors.InactiveCaption
+        ChartArea1.Name = "ChartArea1"
+        Me.chartGrafica.ChartAreas.Add(ChartArea1)
         Me.chartGrafica.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend3.Name = "Legend1"
-        Me.chartGrafica.Legends.Add(Legend3)
+        Legend1.Name = "Legend1"
+        Me.chartGrafica.Legends.Add(Legend1)
         Me.chartGrafica.Location = New System.Drawing.Point(0, 0)
         Me.chartGrafica.Name = "chartGrafica"
         Me.chartGrafica.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry
-        Series3.ChartArea = "ChartArea1"
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Me.chartGrafica.Series.Add(Series3)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.chartGrafica.Series.Add(Series1)
         Me.chartGrafica.Size = New System.Drawing.Size(599, 355)
         Me.chartGrafica.TabIndex = 0
         '
@@ -70,6 +71,7 @@ Partial Class Estadisticas
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.rbCircular)
         Me.Panel1.Controls.Add(Me.rbColumnas)
         Me.Panel1.Controls.Add(Me.rbBarras)
@@ -78,6 +80,15 @@ Partial Class Estadisticas
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(700, 94)
         Me.Panel1.TabIndex = 1
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(12, 14)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 9
+        Me.Button1.Text = "cambiar"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'rbCircular
         '
@@ -155,17 +166,6 @@ Partial Class Estadisticas
         Me.Panel2.Size = New System.Drawing.Size(599, 355)
         Me.Panel2.TabIndex = 2
         '
-        'Panel3
-        '
-        Me.Panel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.Panel3.Controls.Add(Me.barVertical)
-        Me.Panel3.Location = New System.Drawing.Point(0, 0)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(109, 355)
-        Me.Panel3.TabIndex = 3
-        '
         'lblEstadisticasMes
         '
         Me.lblEstadisticasMes.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -179,6 +179,17 @@ Partial Class Estadisticas
         Me.lblEstadisticasMes.Size = New System.Drawing.Size(402, 21)
         Me.lblEstadisticasMes.TabIndex = 1
         Me.lblEstadisticasMes.Text = "Estadísticas desde el mes 0000/00/00 al 0000/00/00"
+        '
+        'Panel3
+        '
+        Me.Panel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.Panel3.Controls.Add(Me.barVertical)
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(109, 355)
+        Me.Panel3.TabIndex = 3
         '
         'Estadisticas
         '
@@ -213,4 +224,5 @@ Partial Class Estadisticas
     Friend WithEvents rbColumnas As System.Windows.Forms.RadioButton
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents lblEstadisticasMes As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

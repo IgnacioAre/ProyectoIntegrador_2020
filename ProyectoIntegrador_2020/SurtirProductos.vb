@@ -565,6 +565,10 @@ Public Class SurtirProductos
                 consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & precioCosto & "," & txtVentaIngreso.Text & "," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString.ToUpper & "',0,1," & limiteStock & ");")
             End If
 
+            If txtCostoIngreso.Text.Equals("") And txtVentaIngreso.Text.Equals("") And txtGananciaIngreso.Text.Equals("") Then
+                consulta.consultaHide("INSERT INTO Productos (idProducto, nombre,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString.ToUpper & "',0,1," & limiteStock & ");")
+            End If
+
         End If
     End Sub
 
@@ -578,7 +582,7 @@ Public Class SurtirProductos
         txtVentaIngreso.Text = ""
         txtGananciaIngreso.Text = ""
         lblCosto.Enabled = True
-        lblVenta.Enabled = False
+        lblVenta.Enabled = True
         txtCostoIngreso.Enabled = True
         txtVentaIngreso.Enabled = True
     End Sub
@@ -586,7 +590,7 @@ Public Class SurtirProductos
 
     Private Sub btnNuevoProd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoProd.Click
         If soloNuevoBool Then
-            If txtCodigo.Text.Count >= 2 And Val(txtCantidadUnidad.Text) > 0 And Not txtNombre.Text.Equals("") And cbxMedida.SelectedItem <> "" And Not txtGananciaIngreso.Text.Equals("") Then
+            If txtCodigo.Text.Count >= 2 And Val(txtCantidadUnidad.Text) > 0 And Not txtNombre.Text.Equals("") And cbxMedida.SelectedItem <> "" Then
                 If Not txtVentaIngreso.Text.Equals("") Or Not txtCostoIngreso.Text.Equals("") Then
                     insertarProducto()
 
@@ -601,7 +605,7 @@ Public Class SurtirProductos
                 Else
                     mostrarMensaje("No olvide colocar el precio de costo o de venta.")
                 End If
-                
+
             Else
                 mostrarMensaje("Asegurese de que todos los campos esten completos.")
 

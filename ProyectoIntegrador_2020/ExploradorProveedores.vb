@@ -20,8 +20,6 @@ Public Class ExploradorProveedores
         SendMessage(txtBuscarCodigoProv.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por código")
     End Sub
 
-    '----CIERRE DEL FORMULARIO----'
-
 
 
     '----MOSTRAR FORMULARIO "NUEVO" EN EL MENÚ PRINCIPAL----'

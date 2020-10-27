@@ -134,8 +134,11 @@ Public Class inicioSesion
                 Else
                     guardarUsuarioTxt("")
                 End If
-                consultas.consultaReturnHide("Select idAdmin from Admin where Usuario='" & txtUsuarioLogin.Text & "';")
-                Nuevo.idIngresoAdmin = Val(consultas.valorReturn)
+
+                consultas.consultaReturnHide("Select idAdmin from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
+                Dim idadmin As Byte = Val(consultas.valorReturn)
+                consultas.consultaHide("update notas set idadmin = " & idadmin & " where idnota = 1;")
+
                 MenuPrincipal.Show()
                 Me.Close()
             Else
@@ -394,5 +397,9 @@ Public Class inicioSesion
                 txtContraseñaRegistro.Focus()
             End If
         End If
+    End Sub
+
+    Private Sub panelRegistro_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles panelRegistro.Paint
+
     End Sub
 End Class

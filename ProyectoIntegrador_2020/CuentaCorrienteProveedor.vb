@@ -254,7 +254,7 @@ Public Class CuentaCorrienteProveedor
                 'ACTUALIZO LA DEUDA EN EL PROVEEDOR
 
                 consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
-                Dim saldoActual As Integer = Val(consultas.valorReturn)
+                Dim saldoActual As Long = Val(consultas.valorReturn)
 
                 consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroDebe.Text)) & " where idProveedor=" & idProveedor & ";")
                 If txtDetalleDebe.Text.Equals("") Then
@@ -402,7 +402,7 @@ Public Class CuentaCorrienteProveedor
             'ACTUALIZO LA DEUDA EN EL CLIENTE
 
             consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
-            Dim saldoActual As Integer = Val(consultas.valorReturn)
+            Dim saldoActual As Long = Val(consultas.valorReturn)
 
             consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual + Val(txtDineroHaber.Text)) & " where idProveedor=" & idProveedor & ";")
 
