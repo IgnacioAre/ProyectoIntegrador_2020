@@ -156,7 +156,40 @@ Public Class inicioSesion
     '----CREAR UN USUARIO ADMINISTRADOR----'
 
     Private Sub btnRegistrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRegistrar.Click
-        crearUsuarioAdmin()
+        If txtClaveAdminRegistro.Text.Equals(claveAdmin) Then
+            If Not txtUsuarioRegistro.Text.Equals("") And Not txtContraseñaRegistro.Text.Equals("") And Not txtRepContraseñaRegistro.Text.Equals("") Then
+                If Not txtContraseñaRegistro.Text.Equals(txtRepContraseñaRegistro.Text) Then
+                    mostrarMensaje("Las contraseñas no coinciden." & vbCrLf & "Intente nuevamente.")
+                Else
+
+                    consultas.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
+                    If Not consultas.valorReturn = "" Then
+                        mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
+                    Else
+
+                        consultas.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
+                        If consultas.resultado = 1 Then
+                            mostrarMensaje("Usuario creado exitosamente!")
+                            txtUsuarioRegistro.Text = ""
+                            txtContraseñaRegistro.Text = ""
+                            txtRepContraseñaRegistro.Text = ""
+                            txtClaveAdminRegistro.Text = ""
+                            panelRegistro.Hide()
+                            panelLogin.Show()
+                        Else
+                            mostrarMensaje("Error al intentar crear usuario.")
+                        End If
+                    End If
+                End If
+            Else
+                mostrarMensaje("Error. Debe completar todos los campos vacios.")
+
+            End If
+        Else
+            mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
+        End If
+
+        consultas.resultado = 0
     End Sub
 
     '----LE DA EL CECK AL CLICKEAR LA ETIQUETA----'
@@ -297,66 +330,42 @@ Public Class inicioSesion
 
 
     Private Sub txtClaveAdminRegistro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtClaveAdminRegistro.KeyPress
-
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
-            crearUsuarioAdmin()
-        Else
-            If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-                e.Handled = True
-
-                If Char.IsLetter(e.KeyChar) Then
-                    e.Handled = False
-                ElseIf Char.IsControl(e.KeyChar) Then
-                    e.Handled = False
-                ElseIf Char.IsSeparator(e.KeyChar) Then
-                    e.Handled = False
-                Else
-                    e.Handled = True
-                End If
-
-            End If
-        End If
-        
-    End Sub
-
-
-
-    Sub crearUsuarioAdmin()
-        If txtClaveAdminRegistro.Text.Equals(claveAdmin) Then
-            If Not txtUsuarioRegistro.Text.Equals("") And Not txtContraseñaRegistro.Text.Equals("") And Not txtRepContraseñaRegistro.Text.Equals("") Then
-                If Not txtContraseñaRegistro.Text.Equals(txtRepContraseñaRegistro.Text) Then
-                    mostrarMensaje("Las contraseñas no coinciden." & vbCrLf & "Intente nuevamente.")
-                Else
-
-                    consultas.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
-                    If Not consultas.valorReturn = "" Then
-                        mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
+            If txtClaveAdminRegistro.Text.Equals(claveAdmin) Then
+                If Not txtUsuarioRegistro.Text.Equals("") And Not txtContraseñaRegistro.Text.Equals("") And Not txtRepContraseñaRegistro.Text.Equals("") Then
+                    If Not txtContraseñaRegistro.Text.Equals(txtRepContraseñaRegistro.Text) Then
+                        mostrarMensaje("Las contraseñas no coinciden." & vbCrLf & "Intente nuevamente.")
                     Else
 
-                        consultas.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
-                        If consultas.resultado = 1 Then
-                            mostrarMensaje("Usuario creado exitosamente!")
-                            txtUsuarioLogin.Text = txtUsuarioRegistro.Text
-                            txtUsuarioRegistro.Text = ""
-                            txtContraseñaRegistro.Text = ""
-                            txtRepContraseñaRegistro.Text = ""
-                            txtClaveAdminRegistro.Text = ""
-                            panelRegistro.Hide()
-                            txtContraseñaLogin.Select()
-                            txtContraseñaLogin.Focus()
-                            panelLogin.Show()
+                        consultas.consultaReturnHide("Select usuario from admin where usuario= '" & txtUsuarioRegistro.Text.ToUpper & "'")
+                        If Not consultas.valorReturn = "" Then
+                            mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
                         Else
-                            mostrarMensaje("Error al intentar crear usuario.")
+
+                            consultas.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
+                            If consultas.resultado = 1 Then
+                                mostrarMensaje("Usuario creado exitosamente!")
+                                txtUsuarioRegistro.Text = ""
+                                txtContraseñaRegistro.Text = ""
+                                txtRepContraseñaRegistro.Text = ""
+                                txtClaveAdminRegistro.Text = ""
+                                panelRegistro.Hide()
+                                panelLogin.Show()
+                            Else
+                                mostrarMensaje("Error al intentar crear usuario.")
+                            End If
                         End If
                     End If
+                Else
+                    mostrarMensaje("Error. Debe completar todos los campos vacios.")
+
                 End If
             Else
-                mostrarMensaje("Error. Debe completar todos los campos vacios.")
-
+                mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
             End If
-        Else
-            mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
+
+            consultas.resultado = 0
         End If
     End Sub
 
@@ -382,54 +391,17 @@ Public Class inicioSesion
     End Sub
 
     Private Sub txtUsuarioRegistro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtUsuarioRegistro.KeyPress
-        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+        If Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
             e.Handled = True
 
-            If Char.IsLetter(e.KeyChar) Then
+            If e.KeyChar = ChrW(Keys.Enter) Then
                 e.Handled = False
-            ElseIf Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            ElseIf Char.IsSeparator(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
+                txtContraseñaRegistro.Focus()
             End If
-
         End If
     End Sub
 
+    Private Sub panelRegistro_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles panelRegistro.Paint
 
-    Private Sub txtContraseñaRegistro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtContraseñaRegistro.KeyPress
-        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-            e.Handled = True
-
-            If Char.IsLetter(e.KeyChar) Then
-                e.Handled = False
-            ElseIf Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            ElseIf Char.IsSeparator(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-
-        End If
-    End Sub
-
-    Private Sub txtRepContraseñaRegistro_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtRepContraseñaRegistro.KeyPress
-        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-            e.Handled = True
-
-            If Char.IsLetter(e.KeyChar) Then
-                e.Handled = False
-            ElseIf Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            ElseIf Char.IsSeparator(e.KeyChar) Then
-                e.Handled = False
-            Else
-                e.Handled = True
-            End If
-
-        End If
     End Sub
 End Class

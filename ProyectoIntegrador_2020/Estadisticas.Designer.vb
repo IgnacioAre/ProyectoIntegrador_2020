@@ -22,9 +22,9 @@ Partial Class Estadisticas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.chartGrafica = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -48,21 +48,21 @@ Partial Class Estadisticas
         '
         Me.chartGrafica.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.chartGrafica.BackSecondaryColor = System.Drawing.SystemColors.InactiveCaption
-        ChartArea2.Area3DStyle.Enable3D = True
-        ChartArea2.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
-        ChartArea2.BackColor = System.Drawing.SystemColors.InactiveCaption
-        ChartArea2.Name = "ChartArea1"
-        Me.chartGrafica.ChartAreas.Add(ChartArea2)
+        ChartArea1.Area3DStyle.Enable3D = True
+        ChartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic
+        ChartArea1.BackColor = System.Drawing.SystemColors.InactiveCaption
+        ChartArea1.Name = "ChartArea1"
+        Me.chartGrafica.ChartAreas.Add(ChartArea1)
         Me.chartGrafica.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend2.Name = "Legend1"
-        Me.chartGrafica.Legends.Add(Legend2)
+        Legend1.Name = "Legend1"
+        Me.chartGrafica.Legends.Add(Legend1)
         Me.chartGrafica.Location = New System.Drawing.Point(0, 0)
         Me.chartGrafica.Name = "chartGrafica"
         Me.chartGrafica.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.chartGrafica.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.chartGrafica.Series.Add(Series1)
         Me.chartGrafica.Size = New System.Drawing.Size(599, 355)
         Me.chartGrafica.TabIndex = 0
         '
@@ -83,17 +83,12 @@ Partial Class Estadisticas
         '
         'Button1
         '
-        Me.Button1.BackColor = System.Drawing.Color.SteelBlue
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(3, 6)
+        Me.Button1.Location = New System.Drawing.Point(12, 14)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(97, 25)
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 9
-        Me.Button1.Text = "Ver Saldo"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.Button1.Text = "cambiar"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'rbCircular
         '

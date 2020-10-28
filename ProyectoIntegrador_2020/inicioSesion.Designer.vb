@@ -39,7 +39,6 @@ Partial Class inicioSesion
         Me.lblCheckUsuario = New System.Windows.Forms.Label()
         Me.chbGuardarUsuario = New System.Windows.Forms.CheckBox()
         Me.panelLogin = New System.Windows.Forms.Panel()
-        Me.panelOjo = New System.Windows.Forms.Panel()
         Me.pbEsconder = New System.Windows.Forms.PictureBox()
         Me.pbMostrar = New System.Windows.Forms.PictureBox()
         Me.panelRegistro = New System.Windows.Forms.Panel()
@@ -59,14 +58,15 @@ Partial Class inicioSesion
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ttpAdmin = New System.Windows.Forms.ToolTip(Me.components)
+        Me.panelOjo = New System.Windows.Forms.Panel()
         Me.panelTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelLogin.SuspendLayout()
-        Me.panelOjo.SuspendLayout()
         CType(Me.pbEsconder, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbMostrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelRegistro.SuspendLayout()
         CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelOjo.SuspendLayout()
         Me.SuspendLayout()
         '
         'panelTitulo
@@ -181,12 +181,12 @@ Partial Class inicioSesion
         Me.txtUsuarioLogin.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.txtUsuarioLogin.BackColor = System.Drawing.Color.White
         Me.txtUsuarioLogin.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtUsuarioLogin.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsuarioLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsuarioLogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtUsuarioLogin.Location = New System.Drawing.Point(83, 160)
         Me.txtUsuarioLogin.MaxLength = 30
         Me.txtUsuarioLogin.Name = "txtUsuarioLogin"
-        Me.txtUsuarioLogin.Size = New System.Drawing.Size(233, 26)
+        Me.txtUsuarioLogin.Size = New System.Drawing.Size(233, 24)
         Me.txtUsuarioLogin.TabIndex = 1
         '
         'Label1
@@ -273,16 +273,6 @@ Partial Class inicioSesion
         Me.panelLogin.Size = New System.Drawing.Size(402, 513)
         Me.panelLogin.TabIndex = 19
         '
-        'panelOjo
-        '
-        Me.panelOjo.BackColor = System.Drawing.Color.White
-        Me.panelOjo.Controls.Add(Me.pbEsconder)
-        Me.panelOjo.Controls.Add(Me.pbMostrar)
-        Me.panelOjo.Location = New System.Drawing.Point(285, 268)
-        Me.panelOjo.Name = "panelOjo"
-        Me.panelOjo.Size = New System.Drawing.Size(34, 24)
-        Me.panelOjo.TabIndex = 21
-        '
         'pbEsconder
         '
         Me.pbEsconder.Cursor = System.Windows.Forms.Cursors.Hand
@@ -325,7 +315,7 @@ Partial Class inicioSesion
         Me.panelRegistro.Controls.Add(Me.Label4)
         Me.panelRegistro.Location = New System.Drawing.Point(0, 40)
         Me.panelRegistro.Name = "panelRegistro"
-        Me.panelRegistro.Size = New System.Drawing.Size(402, 513)
+        Me.panelRegistro.Size = New System.Drawing.Size(402, 120)
         Me.panelRegistro.TabIndex = 19
         Me.panelRegistro.Visible = False
         '
@@ -450,12 +440,12 @@ Partial Class inicioSesion
         '
         'txtUsuarioRegistro
         '
-        Me.txtUsuarioRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsuarioRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsuarioRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.txtUsuarioRegistro.Location = New System.Drawing.Point(83, 143)
         Me.txtUsuarioRegistro.MaxLength = 30
         Me.txtUsuarioRegistro.Name = "txtUsuarioRegistro"
-        Me.txtUsuarioRegistro.Size = New System.Drawing.Size(215, 27)
+        Me.txtUsuarioRegistro.Size = New System.Drawing.Size(215, 26)
         Me.txtUsuarioRegistro.TabIndex = 2
         '
         'Label5
@@ -480,6 +470,16 @@ Partial Class inicioSesion
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "CREAR USUARIO ADMIN"
         '
+        'panelOjo
+        '
+        Me.panelOjo.BackColor = System.Drawing.Color.White
+        Me.panelOjo.Controls.Add(Me.pbEsconder)
+        Me.panelOjo.Controls.Add(Me.pbMostrar)
+        Me.panelOjo.Location = New System.Drawing.Point(285, 268)
+        Me.panelOjo.Name = "panelOjo"
+        Me.panelOjo.Size = New System.Drawing.Size(34, 24)
+        Me.panelOjo.TabIndex = 21
+        '
         'inicioSesion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -500,12 +500,12 @@ Partial Class inicioSesion
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelLogin.ResumeLayout(False)
         Me.panelLogin.PerformLayout()
-        Me.panelOjo.ResumeLayout(False)
         CType(Me.pbEsconder, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbMostrar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelRegistro.ResumeLayout(False)
         Me.panelRegistro.PerformLayout()
         CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelOjo.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

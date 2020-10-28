@@ -70,14 +70,16 @@ Public Class GestionarProductos
 
             If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
                 panelPreciosMod.Visible = False
-                
-            Else
-                panelPreciosMod.Visible = True
+
+
                 If dgvProductos.SelectedCells.Count <> 0 Then
                     txtCostoMod.Text = row.Cells(4).Value.ToString
                     txtVentaMod.Text = row.Cells(5).Value.ToString
                     txtGananciaMod.Text = row.Cells(6).Value.ToString
                 End If
+                
+            Else
+                panelPreciosMod.Visible = True
             End If
 
         Else
@@ -196,36 +198,14 @@ Public Class GestionarProductos
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
         If Not txtNombre.Text.Equals("") And Not txtStock.Text.Equals("") And Not txtCantidadUnidad.Text.Equals("") And Not cbxMedida.SelectedItem.ToString.Equals("") Then
 
-            If Val(txtGananciaMod.Text) >= 1 Then
-                If Not txtCostoMod.Text.Equals("") And Not txtVentaMod.Text.Equals("") Then
-                    txtVentaMod.Text = ""
-                Else
-                    If txtCostoMod.Text.Equals("") And txtVentaMod.Text.Equals("") And Not (txtGananciaMod.Text) >= 1 Then
-                        consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem.ToString & "' where idProducto=" & idProducto & ";")
-                    Else
-                        If Not txtCostoMod.Text.Equals("") Then
-                            Dim precioCosto = Val(txtCostoMod.Text)
-                            Dim precioVenta As Integer = (precioCosto + ((Val(txtGananciaMod.Text) * precioCosto) / 100))
-                            consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem.ToString & "', precioCosto=" & precioCosto & ", precioVenta=" & precioVenta & ", ganancia=" & txtGananciaMod.Text & " where idProducto=" & idProducto & ";")
-                        Else
-                            If Not txtVentaMod.Text.Equals("") Then
-                                Dim precioCosto As Integer = (Val(txtVentaMod.Text) / ((Val(txtGananciaMod.Text) / 100) + 1))
-                                consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem.ToString & "', precioCosto=" & precioCosto & ", precioVenta=" & txtVentaMod.Text & ", ganancia=" & txtGananciaMod.Text & " where idProducto=" & idProducto & ";")
-                            Else
-                                mostrarMensaje("El precio de costo o de venta está vacio" & vbCrLf & "y no es posible hacer el cálculo.")
-                            End If
-                        End If
+            consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem.ToString.ToUpper & "' where idProducto=" & idProducto & ";")
 
-                    End If
-                End If
-            Else
-                mostrarMensaje("El porcentaje de ganancia tiene que ser mayor a 1")
-            End If
-            
+            ActualizarTablaProductos()
+            gpInformacion.Visible = False
         Else
             mostrarMensaje("Debe rellenar los campos vacios.")
         End If
-        
+
     End Sub
 
     Private Sub btnEditarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarRegistro.Click
@@ -456,43 +436,5 @@ Public Class GestionarProductos
             txtBuscarProductos.Visible = True
             txtBuscarCodigo.Visible = False
         End If
-    End Sub
-
-    Private Sub txtCostoMod_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCostoMod.TextChanged
-        If txtCostoMod.Text.Equals("") Then
-            txtVentaMod.Enabled = True
-            lblVenta.Enabled = True
-            lblAyudaCampos.Visible = False
-        Else
-            lblAyudaCampos.Visible = True
-            lblAyudaCampos.Text = "El campo de ventas se calculará automaticamente."
-            txtVentaMod.Enabled = False
-            lblVenta.Enabled = False
-        End If
-    End Sub
-
-    Private Sub txtVentaMod_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtVentaMod.TextChanged
-        If txtVentaMod.Text.Equals("") Then
-            lblAyudaCampos.Visible = False
-            txtCostoMod.Enabled = True
-            lblCosto.Enabled = True
-        Else
-            lblAyudaCampos.Visible = True
-            lblAyudaCampos.Text = "El campo de costo se calculará automaticamente."
-            txtCostoMod.Enabled = False
-            lblCosto.Enabled = False
-        End If
-    End Sub
-
-    Private Sub rbCosto_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbCosto.CheckedChanged
-        txtCostoMod.Enabled = True
-        txtVentaMod.Text = ""
-        txtVentaMod.Enabled = False
-    End Sub
-
-    Private Sub rbVenta_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbVenta.CheckedChanged
-        txtVentaMod.Enabled = True
-        txtCostoMod.Text = ""
-        txtCostoMod.Enabled = False
     End Sub
 End Class
