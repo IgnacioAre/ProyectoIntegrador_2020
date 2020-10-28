@@ -24,9 +24,9 @@ Partial Class MenuPrincipal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuPrincipal))
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelSuperior = New System.Windows.Forms.Panel()
         Me.lblTituloVentana = New System.Windows.Forms.Label()
         Me.btnAyuda = New System.Windows.Forms.Button()
@@ -53,6 +53,9 @@ Partial Class MenuPrincipal
         Me.tmrOcultarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.tmrMostrarMenu = New System.Windows.Forms.Timer(Me.components)
         Me.PanelContenedor = New System.Windows.Forms.Panel()
+        Me.panelAvisoStock = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblAvisoStock = New System.Windows.Forms.Label()
         Me.panelAbout = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -73,9 +76,6 @@ Partial Class MenuPrincipal
         Me.tmrMostrarAbout = New System.Windows.Forms.Timer(Me.components)
         Me.tmrOcultarAbout = New System.Windows.Forms.Timer(Me.components)
         Me.tmrConsultaStock = New System.Windows.Forms.Timer(Me.components)
-        Me.lblAvisoStock = New System.Windows.Forms.Label()
-        Me.panelAvisoStock = New System.Windows.Forms.Panel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.panelSuperior.SuspendLayout()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelMenu.SuspendLayout()
@@ -86,12 +86,12 @@ Partial Class MenuPrincipal
         CType(Me.pbCerrarSesion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelContenedor.SuspendLayout()
+        Me.panelAvisoStock.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelAbout.SuspendLayout()
         CType(Me.dgvPreciosRapidos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.panelAvisoStock.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelSuperior
@@ -495,6 +495,40 @@ Partial Class MenuPrincipal
         Me.PanelContenedor.Size = New System.Drawing.Size(828, 707)
         Me.PanelContenedor.TabIndex = 3
         '
+        'panelAvisoStock
+        '
+        Me.panelAvisoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panelAvisoStock.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.panelAvisoStock.Controls.Add(Me.PictureBox1)
+        Me.panelAvisoStock.Controls.Add(Me.lblAvisoStock)
+        Me.panelAvisoStock.Location = New System.Drawing.Point(333, 607)
+        Me.panelAvisoStock.Name = "panelAvisoStock"
+        Me.panelAvisoStock.Size = New System.Drawing.Size(495, 100)
+        Me.panelAvisoStock.TabIndex = 35
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(456, 3)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(32, 32)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox1.TabIndex = 35
+        Me.PictureBox1.TabStop = False
+        '
+        'lblAvisoStock
+        '
+        Me.lblAvisoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblAvisoStock.AutoSize = True
+        Me.lblAvisoStock.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.lblAvisoStock.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAvisoStock.ForeColor = System.Drawing.Color.White
+        Me.lblAvisoStock.Location = New System.Drawing.Point(36, 40)
+        Me.lblAvisoStock.Name = "lblAvisoStock"
+        Me.lblAvisoStock.Size = New System.Drawing.Size(421, 24)
+        Me.lblAvisoStock.TabIndex = 34
+        Me.lblAvisoStock.Text = "Tienes 2 productos por debajo del stock."
+        '
         'panelAbout
         '
         Me.panelAbout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -577,30 +611,30 @@ Partial Class MenuPrincipal
         Me.dgvPreciosRapidos.AllowUserToDeleteRows = False
         Me.dgvPreciosRapidos.AllowUserToResizeColumns = False
         Me.dgvPreciosRapidos.AllowUserToResizeRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
-        Me.dgvPreciosRapidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
+        Me.dgvPreciosRapidos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvPreciosRapidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvPreciosRapidos.BackgroundColor = System.Drawing.Color.White
         Me.dgvPreciosRapidos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvPreciosRapidos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvPreciosRapidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPreciosRapidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.5!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvPreciosRapidos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvPreciosRapidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPreciosRapidos.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(197, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPreciosRapidos.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvPreciosRapidos.EnableHeadersVisualStyles = False
         Me.dgvPreciosRapidos.GridColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.dgvPreciosRapidos.Location = New System.Drawing.Point(38, 97)
@@ -736,40 +770,6 @@ Partial Class MenuPrincipal
         '
         Me.tmrConsultaStock.Interval = 3000
         '
-        'lblAvisoStock
-        '
-        Me.lblAvisoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblAvisoStock.AutoSize = True
-        Me.lblAvisoStock.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.lblAvisoStock.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAvisoStock.ForeColor = System.Drawing.Color.White
-        Me.lblAvisoStock.Location = New System.Drawing.Point(36, 40)
-        Me.lblAvisoStock.Name = "lblAvisoStock"
-        Me.lblAvisoStock.Size = New System.Drawing.Size(421, 24)
-        Me.lblAvisoStock.TabIndex = 34
-        Me.lblAvisoStock.Text = "Tienes 2 productos por debajo del stock."
-        '
-        'panelAvisoStock
-        '
-        Me.panelAvisoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.panelAvisoStock.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.panelAvisoStock.Controls.Add(Me.PictureBox1)
-        Me.panelAvisoStock.Controls.Add(Me.lblAvisoStock)
-        Me.panelAvisoStock.Location = New System.Drawing.Point(333, 607)
-        Me.panelAvisoStock.Name = "panelAvisoStock"
-        Me.panelAvisoStock.Size = New System.Drawing.Size(495, 100)
-        Me.panelAvisoStock.TabIndex = 35
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(456, 3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(32, 32)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox1.TabIndex = 35
-        Me.PictureBox1.TabStop = False
-        '
         'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -797,14 +797,14 @@ Partial Class MenuPrincipal
         CType(Me.btnMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelContenedor.ResumeLayout(False)
         Me.PanelContenedor.PerformLayout()
+        Me.panelAvisoStock.ResumeLayout(False)
+        Me.panelAvisoStock.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelAbout.ResumeLayout(False)
         Me.panelAbout.PerformLayout()
         CType(Me.dgvPreciosRapidos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgCofre, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gifCofre, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.panelAvisoStock.ResumeLayout(False)
-        Me.panelAvisoStock.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
