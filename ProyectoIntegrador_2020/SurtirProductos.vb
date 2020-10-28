@@ -669,4 +669,10 @@ Public Class SurtirProductos
             lblCosto.Enabled = False
         End If
     End Sub
+
+    Private Sub txtVentaIngreso_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtVentaIngreso.KeyPress, txtGananciaIngreso.KeyPress, txtCostoIngreso.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+        End If
+    End Sub
 End Class

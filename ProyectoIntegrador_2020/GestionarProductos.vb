@@ -219,13 +219,17 @@ Public Class GestionarProductos
                     End If
                 End If
             Else
-                mostrarMensaje("El porcentaje de ganancia tiene que ser mayor a 1")
+                If txtCostoMod.Text.Equals("") And txtVentaMod.Text.Equals("") Then
+                    consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem.ToString & "' where idProducto=" & idProducto & ";")
+                Else
+                    mostrarMensaje("El porcentaje de ganancia tiene que ser mayor a 1")
+                End If
             End If
-            
+
         Else
             mostrarMensaje("Debe rellenar los campos vacios.")
         End If
-        
+
     End Sub
 
     Private Sub btnEditarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarRegistro.Click
@@ -495,4 +499,6 @@ Public Class GestionarProductos
         txtCostoMod.Text = ""
         txtCostoMod.Enabled = False
     End Sub
+
+
 End Class

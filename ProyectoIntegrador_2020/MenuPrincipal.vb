@@ -9,6 +9,8 @@ Public Class MenuPrincipal
     Public resultado As Byte
     Public resultadoTxt As String
 
+    Dim yPanelAviso As Integer
+    Dim YfijaPanelAviso As Integer
 
     '----FORMULARIO QUE SE VA A MOSTRAR ENCIMA DEL FORMULARIO PRINCIPAL----'
     Public formulario As Form
@@ -22,6 +24,8 @@ Public Class MenuPrincipal
         My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
         SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
         panelAvisoStock.SendToBack()
+        ActualizarPanelMinimoStock()
+        YfijaPanelAviso = panelAvisoStock.Location.Y
     End Sub
 
 
@@ -326,6 +330,8 @@ Public Class MenuPrincipal
     End Sub
 
     Private Sub btnInicio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInicio.Click
+        ActualizarPanelMinimoStock()
+        panelAvisoStock.Location = New Point(panelAvisoStock.Location.X, YfijaPanelAviso)
         If formularioBool Then formulario.Close()
         formularioBool = False
         lblTituloVentana.Text = "Menú Principal"
@@ -435,10 +441,31 @@ Public Class MenuPrincipal
 
 
     Sub ActualizarPanelMinimoStock()
+        consulta.consultaReturnHide("select count(idProducto) from productos where stock <= minimoStock and existenteBool = 1;")
+        If Val(consulta.valorReturn) = 0 Then
+            panelAvisoStock.Visible = False
+        Else
+            panelAvisoStock.Visible = True
+            lblAvisoStock.Text = "Tienes " & consulta.valorReturn & " productos con el minimo de stock"
+        End If
 
     End Sub
 
 
+    Private Sub tmrOcultarAviso_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrOcultarAviso.Tick
+        If yPanelAviso >= (YfijaPanelAviso + 101) Then
+            tmrOcultarAviso.Enabled = False
 
+        Else
 
+            yPanelAviso += 3
+            panelAvisoStock.Location = New Point(panelAvisoStock.Location.X, yPanelAviso)
+        End If
+    End Sub
+
+    Private Sub btnOcultarAviso_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarAviso.Click
+        yPanelAviso = panelAvisoStock.Location.Y
+        YfijaPanelAviso = panelAvisoStock.Location.Y
+        tmrOcultarAviso.Enabled = True
+    End Sub
 End Class

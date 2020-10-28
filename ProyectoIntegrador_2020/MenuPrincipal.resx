@@ -615,7 +615,7 @@
   <metadata name="tmrMostrarMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>248, 8</value>
   </metadata>
-  <data name="PictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnOcultarAviso.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7pAAAO6QEOM0IcAAAAB3RJ
@@ -626,6 +626,31 @@
         FOInOYPDjUJ4kTO49FUIr3IGl2eVYahyiCByBkPehggqZzBsXhn+KnrBuF8yuGOv+wEDnb+Es3x98zIY
         /jlEKDkDSX2I0HIGsmqIf8kZCCcQ36lypca2/V/oL3jebtt2GYlEGiDEE+iDE79uI44sAAAAAElFTkSu
         QmCC
+</value>
+  </data>
+  <data name="Label5.Text" xml:space="preserve">
+    <value>Equipo de trabajo:
+Ignacio Arévalo 
+Santiago Chúa 
+
+“Escuela‌ ‌Superior‌ ‌Catalina‌ ‌Harriague‌ ‌de‌ ‌Castaños‌”
+
+Este apartado es para dar agradecimientos a “El Cofre” por 
+confiar en nosotros para crear su software 
+de gestión, y a todo el plantel de profesores por
+la ayuda otorgada en el transcurso de este año.  
+</value>
+  </data>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Work team:
+Ignacio Arévalo 
+Santiago Chúa 
+
+“Escuela‌ ‌Superior‌ ‌Catalina‌ ‌Harriague‌ ‌de‌ ‌Castaños‌”
+
+This section is to thank "El Cofre" for trusting us to create
+its management software, and  the staff of teachers for 
+the help given in this year.
 </value>
   </data>
   <data name="imgCofre.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -8137,31 +8162,6 @@
         ey0oWVngRpEra97MubPnz4LEHmJARWEgADs=
 </value>
   </data>
-  <data name="Label5.Text" xml:space="preserve">
-    <value>Equipo de trabajo:
-Ignacio Arévalo 
-Santiago Chúa 
-
-“Escuela‌ ‌Superior‌ ‌Catalina‌ ‌Harriague‌ ‌de‌ ‌Castaños‌”
-
-Este apartado es para dar agradecimientos a “El Cofre” por 
-confiar en nosotros para crear su software 
-de gestión, y a todo el plantel de profesores por
-la ayuda otorgada en el transcurso de este año.  
-</value>
-  </data>
-  <data name="Label3.Text" xml:space="preserve">
-    <value>Work team:
-Ignacio Arévalo 
-Santiago Chúa 
-
-“Escuela‌ ‌Superior‌ ‌Catalina‌ ‌Harriague‌ ‌de‌ ‌Castaños‌”
-
-This section is to thank "El Cofre" for trusting us to create
-its management software, and  the staff of teachers for 
-the help given in this year.
-</value>
-  </data>
   <metadata name="tmrHoraFecha.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>393, 8</value>
   </metadata>
@@ -8177,7 +8177,7 @@ the help given in this year.
   <metadata name="tmrOcultarAbout.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>998, 8</value>
   </metadata>
-  <metadata name="tmrConsultaStock.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="tmrOcultarAviso.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 47</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
