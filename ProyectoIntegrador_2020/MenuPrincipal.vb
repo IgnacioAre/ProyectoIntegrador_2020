@@ -446,7 +446,7 @@ Public Class MenuPrincipal
             panelAvisoStock.Visible = False
         Else
             panelAvisoStock.Visible = True
-            lblAvisoStock.Text = "Tienes " & consulta.valorReturn & " productos con el minimo de stock"
+            lblAvisoStock.Text = "Tienes " & consulta.valorReturn & " productos por debajo del limite de stock."
         End If
 
     End Sub

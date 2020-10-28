@@ -38,7 +38,6 @@ Partial Class GestionarProductos
         Me.panelPreciosMod = New System.Windows.Forms.Panel()
         Me.rbVenta = New System.Windows.Forms.RadioButton()
         Me.rbCosto = New System.Windows.Forms.RadioButton()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.txtGananciaMod = New System.Windows.Forms.TextBox()
         Me.lblCosto = New System.Windows.Forms.Label()
         Me.txtVentaMod = New System.Windows.Forms.TextBox()
@@ -195,7 +194,7 @@ Partial Class GestionarProductos
         Me.txtBuscarProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBuscarProductos.Location = New System.Drawing.Point(59, 63)
         Me.txtBuscarProductos.Name = "txtBuscarProductos"
-        Me.txtBuscarProductos.Size = New System.Drawing.Size(244, 27)
+        Me.txtBuscarProductos.Size = New System.Drawing.Size(244, 26)
         Me.txtBuscarProductos.TabIndex = 33
         '
         'gpInformacion
@@ -204,7 +203,6 @@ Partial Class GestionarProductos
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gpInformacion.Controls.Add(Me.panelPreciosMod)
-        Me.gpInformacion.Controls.Add(Me.lblAyudaCampos)
         Me.gpInformacion.Controls.Add(Me.Label10)
         Me.gpInformacion.Controls.Add(Me.cbxMedida)
         Me.gpInformacion.Controls.Add(Me.txtCantidadUnidad)
@@ -230,8 +228,8 @@ Partial Class GestionarProductos
         'panelPreciosMod
         '
         Me.panelPreciosMod.Controls.Add(Me.rbVenta)
+        Me.panelPreciosMod.Controls.Add(Me.lblAyudaCampos)
         Me.panelPreciosMod.Controls.Add(Me.rbCosto)
-        Me.panelPreciosMod.Controls.Add(Me.Label6)
         Me.panelPreciosMod.Controls.Add(Me.txtGananciaMod)
         Me.panelPreciosMod.Controls.Add(Me.lblCosto)
         Me.panelPreciosMod.Controls.Add(Me.txtVentaMod)
@@ -241,7 +239,7 @@ Partial Class GestionarProductos
         Me.panelPreciosMod.Controls.Add(Me.Label13)
         Me.panelPreciosMod.Location = New System.Drawing.Point(6, 196)
         Me.panelPreciosMod.Name = "panelPreciosMod"
-        Me.panelPreciosMod.Size = New System.Drawing.Size(364, 88)
+        Me.panelPreciosMod.Size = New System.Drawing.Size(364, 93)
         Me.panelPreciosMod.TabIndex = 61
         '
         'rbVenta
@@ -264,25 +262,13 @@ Partial Class GestionarProductos
         Me.rbCosto.TabStop = True
         Me.rbCosto.UseVisualStyleBackColor = True
         '
-        'Label6
-        '
-        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(32, 68)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(0, 20)
-        Me.Label6.TabIndex = 60
-        Me.Label6.Visible = False
-        '
         'txtGananciaMod
         '
         Me.txtGananciaMod.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtGananciaMod.Location = New System.Drawing.Point(310, 33)
         Me.txtGananciaMod.MaxLength = 2
         Me.txtGananciaMod.Name = "txtGananciaMod"
-        Me.txtGananciaMod.Size = New System.Drawing.Size(45, 27)
+        Me.txtGananciaMod.Size = New System.Drawing.Size(45, 26)
         Me.txtGananciaMod.TabIndex = 56
         '
         'lblCosto
@@ -292,7 +278,7 @@ Partial Class GestionarProductos
         Me.lblCosto.ForeColor = System.Drawing.Color.White
         Me.lblCosto.Location = New System.Drawing.Point(4, 4)
         Me.lblCosto.Name = "lblCosto"
-        Me.lblCosto.Size = New System.Drawing.Size(123, 21)
+        Me.lblCosto.Size = New System.Drawing.Size(107, 21)
         Me.lblCosto.TabIndex = 53
         Me.lblCosto.Text = "Precio Costo"
         '
@@ -302,7 +288,7 @@ Partial Class GestionarProductos
         Me.txtVentaMod.Location = New System.Drawing.Point(176, 33)
         Me.txtVentaMod.MaxLength = 4
         Me.txtVentaMod.Name = "txtVentaMod"
-        Me.txtVentaMod.Size = New System.Drawing.Size(69, 27)
+        Me.txtVentaMod.Size = New System.Drawing.Size(69, 26)
         Me.txtVentaMod.TabIndex = 59
         '
         'txtCostoMod
@@ -311,7 +297,7 @@ Partial Class GestionarProductos
         Me.txtCostoMod.Location = New System.Drawing.Point(45, 33)
         Me.txtCostoMod.MaxLength = 4
         Me.txtCostoMod.Name = "txtCostoMod"
-        Me.txtCostoMod.Size = New System.Drawing.Size(69, 27)
+        Me.txtCostoMod.Size = New System.Drawing.Size(69, 26)
         Me.txtCostoMod.TabIndex = 54
         '
         'lblVenta
@@ -321,7 +307,7 @@ Partial Class GestionarProductos
         Me.lblVenta.ForeColor = System.Drawing.Color.White
         Me.lblVenta.Location = New System.Drawing.Point(135, 4)
         Me.lblVenta.Name = "lblVenta"
-        Me.lblVenta.Size = New System.Drawing.Size(127, 21)
+        Me.lblVenta.Size = New System.Drawing.Size(110, 21)
         Me.lblVenta.TabIndex = 58
         Me.lblVenta.Text = "Precio Venta"
         '
@@ -332,7 +318,7 @@ Partial Class GestionarProductos
         Me.Label12.ForeColor = System.Drawing.Color.White
         Me.Label12.Location = New System.Drawing.Point(271, 4)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(99, 21)
+        Me.Label12.Size = New System.Drawing.Size(90, 21)
         Me.Label12.TabIndex = 55
         Me.Label12.Text = "Ganancia"
         '
@@ -343,7 +329,7 @@ Partial Class GestionarProductos
         Me.Label13.ForeColor = System.Drawing.Color.White
         Me.Label13.Location = New System.Drawing.Point(285, 36)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(26, 22)
+        Me.Label13.Size = New System.Drawing.Size(23, 20)
         Me.Label13.TabIndex = 57
         Me.Label13.Text = "%"
         '
@@ -352,9 +338,9 @@ Partial Class GestionarProductos
         Me.lblAyudaCampos.AutoSize = True
         Me.lblAyudaCampos.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAyudaCampos.ForeColor = System.Drawing.Color.White
-        Me.lblAyudaCampos.Location = New System.Drawing.Point(48, 338)
+        Me.lblAyudaCampos.Location = New System.Drawing.Point(28, 69)
         Me.lblAyudaCampos.Name = "lblAyudaCampos"
-        Me.lblAyudaCampos.Size = New System.Drawing.Size(0, 20)
+        Me.lblAyudaCampos.Size = New System.Drawing.Size(0, 17)
         Me.lblAyudaCampos.TabIndex = 60
         Me.lblAyudaCampos.Visible = False
         '
@@ -364,7 +350,7 @@ Partial Class GestionarProductos
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.Location = New System.Drawing.Point(178, 143)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(56, 18)
+        Me.Label10.Size = New System.Drawing.Size(54, 16)
         Me.Label10.TabIndex = 31
         Me.Label10.Text = "Medida"
         '
@@ -382,7 +368,7 @@ Partial Class GestionarProductos
         Me.txtCantidadUnidad.Location = New System.Drawing.Point(162, 163)
         Me.txtCantidadUnidad.MaxLength = 5
         Me.txtCantidadUnidad.Name = "txtCantidadUnidad"
-        Me.txtCantidadUnidad.Size = New System.Drawing.Size(39, 29)
+        Me.txtCantidadUnidad.Size = New System.Drawing.Size(39, 27)
         Me.txtCantidadUnidad.TabIndex = 30
         '
         'txtStock
@@ -390,7 +376,7 @@ Partial Class GestionarProductos
         Me.txtStock.Location = New System.Drawing.Point(45, 163)
         Me.txtStock.MaxLength = 4
         Me.txtStock.Name = "txtStock"
-        Me.txtStock.Size = New System.Drawing.Size(86, 29)
+        Me.txtStock.Size = New System.Drawing.Size(86, 27)
         Me.txtStock.TabIndex = 28
         '
         'Label4
@@ -399,7 +385,7 @@ Partial Class GestionarProductos
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(29, 143)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(47, 18)
+        Me.Label4.Size = New System.Drawing.Size(42, 16)
         Me.Label4.TabIndex = 27
         Me.Label4.Text = "Stock"
         '
@@ -445,7 +431,7 @@ Partial Class GestionarProductos
         Me.txtNombre.Location = New System.Drawing.Point(42, 108)
         Me.txtNombre.MaxLength = 30
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(268, 29)
+        Me.txtNombre.Size = New System.Drawing.Size(268, 27)
         Me.txtNombre.TabIndex = 3
         '
         'Label2
@@ -454,7 +440,7 @@ Partial Class GestionarProductos
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(26, 88)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(62, 18)
+        Me.Label2.Size = New System.Drawing.Size(57, 16)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Nombre"
         '
@@ -464,7 +450,7 @@ Partial Class GestionarProductos
         Me.txtID.Location = New System.Drawing.Point(42, 54)
         Me.txtID.Name = "txtID"
         Me.txtID.ReadOnly = True
-        Me.txtID.Size = New System.Drawing.Size(274, 29)
+        Me.txtID.Size = New System.Drawing.Size(274, 27)
         Me.txtID.TabIndex = 1
         '
         'Label1
@@ -473,7 +459,7 @@ Partial Class GestionarProductos
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(26, 34)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 18)
+        Me.Label1.Size = New System.Drawing.Size(52, 16)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Código"
         '
@@ -486,9 +472,9 @@ Partial Class GestionarProductos
         Me.gpRegistro.Controls.Add(Me.dgvRegistroSurtido)
         Me.gpRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gpRegistro.ForeColor = System.Drawing.Color.White
-        Me.gpRegistro.Location = New System.Drawing.Point(388, 34)
+        Me.gpRegistro.Location = New System.Drawing.Point(389, 54)
         Me.gpRegistro.Name = "gpRegistro"
-        Me.gpRegistro.Size = New System.Drawing.Size(570, 286)
+        Me.gpRegistro.Size = New System.Drawing.Size(551, 286)
         Me.gpRegistro.TabIndex = 26
         Me.gpRegistro.TabStop = False
         Me.gpRegistro.Text = "Registro de Surtido"
@@ -517,7 +503,7 @@ Partial Class GestionarProductos
         Me.Label9.ForeColor = System.Drawing.Color.Black
         Me.Label9.Location = New System.Drawing.Point(273, 65)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(31, 25)
+        Me.Label9.Size = New System.Drawing.Size(25, 24)
         Me.Label9.TabIndex = 20
         Me.Label9.Text = "%"
         '
@@ -525,7 +511,7 @@ Partial Class GestionarProductos
         '
         Me.txtCantidad.Location = New System.Drawing.Point(31, 141)
         Me.txtCantidad.Name = "txtCantidad"
-        Me.txtCantidad.Size = New System.Drawing.Size(84, 29)
+        Me.txtCantidad.Size = New System.Drawing.Size(84, 27)
         Me.txtCantidad.TabIndex = 19
         '
         'Label8
@@ -535,7 +521,7 @@ Partial Class GestionarProductos
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(27, 106)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(98, 25)
+        Me.Label8.Size = New System.Drawing.Size(84, 24)
         Me.Label8.TabIndex = 18
         Me.Label8.Text = "Cantidad"
         '
@@ -570,7 +556,7 @@ Partial Class GestionarProductos
         Me.txtPorcentaje.Location = New System.Drawing.Point(201, 65)
         Me.txtPorcentaje.MaxLength = 2
         Me.txtPorcentaje.Name = "txtPorcentaje"
-        Me.txtPorcentaje.Size = New System.Drawing.Size(65, 29)
+        Me.txtPorcentaje.Size = New System.Drawing.Size(65, 27)
         Me.txtPorcentaje.TabIndex = 8
         '
         'Label7
@@ -580,7 +566,7 @@ Partial Class GestionarProductos
         Me.Label7.ForeColor = System.Drawing.Color.Black
         Me.Label7.Location = New System.Drawing.Point(180, 30)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(115, 25)
+        Me.Label7.Size = New System.Drawing.Size(100, 24)
         Me.Label7.TabIndex = 7
         Me.Label7.Text = "Porcentaje"
         '
@@ -588,7 +574,7 @@ Partial Class GestionarProductos
         '
         Me.txtPrecioCosto.Location = New System.Drawing.Point(31, 63)
         Me.txtPrecioCosto.Name = "txtPrecioCosto"
-        Me.txtPrecioCosto.Size = New System.Drawing.Size(84, 29)
+        Me.txtPrecioCosto.Size = New System.Drawing.Size(84, 27)
         Me.txtPrecioCosto.TabIndex = 6
         '
         'Label5
@@ -598,7 +584,7 @@ Partial Class GestionarProductos
         Me.Label5.ForeColor = System.Drawing.Color.Black
         Me.Label5.Location = New System.Drawing.Point(27, 28)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(135, 25)
+        Me.Label5.Size = New System.Drawing.Size(117, 24)
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Precio Costo"
         '
@@ -653,7 +639,7 @@ Partial Class GestionarProductos
         Me.dgvRegistroSurtido.ReadOnly = True
         Me.dgvRegistroSurtido.RowHeadersVisible = False
         Me.dgvRegistroSurtido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvRegistroSurtido.Size = New System.Drawing.Size(545, 218)
+        Me.dgvRegistroSurtido.Size = New System.Drawing.Size(535, 218)
         Me.dgvRegistroSurtido.TabIndex = 24
         Me.dgvRegistroSurtido.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
         Me.dgvRegistroSurtido.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
@@ -757,7 +743,7 @@ Partial Class GestionarProductos
         Me.txtBuscarCodigo.Location = New System.Drawing.Point(59, 64)
         Me.txtBuscarCodigo.MaxLength = 13
         Me.txtBuscarCodigo.Name = "txtBuscarCodigo"
-        Me.txtBuscarCodigo.Size = New System.Drawing.Size(244, 27)
+        Me.txtBuscarCodigo.Size = New System.Drawing.Size(244, 26)
         Me.txtBuscarCodigo.TabIndex = 40
         Me.txtBuscarCodigo.Visible = False
         '
@@ -789,7 +775,7 @@ Partial Class GestionarProductos
         Me.txtMinimoStock.Location = New System.Drawing.Point(869, 127)
         Me.txtMinimoStock.MaxLength = 3
         Me.txtMinimoStock.Name = "txtMinimoStock"
-        Me.txtMinimoStock.Size = New System.Drawing.Size(55, 27)
+        Me.txtMinimoStock.Size = New System.Drawing.Size(55, 26)
         Me.txtMinimoStock.TabIndex = 44
         '
         'Label3
@@ -800,7 +786,7 @@ Partial Class GestionarProductos
         Me.Label3.ForeColor = System.Drawing.Color.White
         Me.Label3.Location = New System.Drawing.Point(854, 98)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(130, 21)
+        Me.Label3.Size = New System.Drawing.Size(116, 21)
         Me.Label3.TabIndex = 43
         Me.Label3.Text = "Stock mínimio"
         '
@@ -830,9 +816,9 @@ Partial Class GestionarProductos
         Me.chbProdNoActivos.AutoSize = True
         Me.chbProdNoActivos.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chbProdNoActivos.ForeColor = System.Drawing.Color.White
-        Me.chbProdNoActivos.Location = New System.Drawing.Point(622, 65)
+        Me.chbProdNoActivos.Location = New System.Drawing.Point(645, 65)
         Me.chbProdNoActivos.Name = "chbProdNoActivos"
-        Me.chbProdNoActivos.Size = New System.Drawing.Size(215, 25)
+        Me.chbProdNoActivos.Size = New System.Drawing.Size(192, 25)
         Me.chbProdNoActivos.TabIndex = 48
         Me.chbProdNoActivos.Text = "Productos no activos"
         Me.chbProdNoActivos.UseVisualStyleBackColor = True
@@ -967,7 +953,6 @@ Partial Class GestionarProductos
     Friend WithEvents txtCostoMod As System.Windows.Forms.TextBox
     Friend WithEvents lblCosto As System.Windows.Forms.Label
     Friend WithEvents panelPreciosMod As System.Windows.Forms.Panel
-    Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents rbVenta As System.Windows.Forms.RadioButton
     Friend WithEvents rbCosto As System.Windows.Forms.RadioButton
 End Class

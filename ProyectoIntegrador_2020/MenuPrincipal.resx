@@ -628,31 +628,6 @@
         QmCC
 </value>
   </data>
-  <data name="Label5.Text" xml:space="preserve">
-    <value>Equipo de trabajo:
-Ignacio Arévalo 
-Santiago Chúa 
-
-“Escuela‌ ‌Superior‌ ‌Catalina‌ ‌Harriague‌ ‌de‌ ‌Castaños‌”
-
-Este apartado es para dar agradecimientos a “El Cofre” por 
-confiar en nosotros para crear su software 
-de gestión, y a todo el plantel de profesores por
-la ayuda otorgada en el transcurso de este año.  
-</value>
-  </data>
-  <data name="Label3.Text" xml:space="preserve">
-    <value>Work team:
-Ignacio Arévalo 
-Santiago Chúa 
-
-“Escuela‌ ‌Superior‌ ‌Catalina‌ ‌Harriague‌ ‌de‌ ‌Castaños‌”
-
-This section is to thank "El Cofre" for trusting us to create
-its management software, and  the staff of teachers for 
-the help given in this year.
-</value>
-  </data>
   <data name="imgCofre.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAYcAAAEnCAIAAADNYBjHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -8160,6 +8135,31 @@ the help given in this year.
         IzHFIpbIDSGJKWPKjLntz0BzkCgeanJnpk9G9f5J0vnzUhBCASOF7Mlq4x93GYsmNbRyEAR3njalkoSz
         qMiQf9INwkeoozyvgjqixZUP4qOaaD3/VImrFi0oZx8J/XIbl1G/lFX73hrkUmENsl0FD/J0t2LXGnAV
         ey0oWVngRpEra97MubPnz4LEHmJARWEgADs=
+</value>
+  </data>
+  <data name="Label5.Text" xml:space="preserve">
+    <value>Equipo de trabajo:
+Ignacio Arévalo 
+Santiago Chúa 
+
+“Escuela‌ ‌Superior‌ ‌Catalina‌ ‌Harriague‌ ‌de‌ ‌Castaños‌”
+
+Este apartado es para dar agradecimientos a “El Cofre” por 
+confiar en nosotros para crear su software 
+de gestión, y a todo el plantel de profesores por
+la ayuda otorgada en el transcurso de este año.  
+</value>
+  </data>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Work team:
+Ignacio Arévalo 
+Santiago Chúa 
+
+“Escuela‌ ‌Superior‌ ‌Catalina‌ ‌Harriague‌ ‌de‌ ‌Castaños‌”
+
+This section is to thank "El Cofre" for trusting us to create
+its management software, and  the staff of teachers for 
+the help given in this year.
 </value>
   </data>
   <metadata name="tmrHoraFecha.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

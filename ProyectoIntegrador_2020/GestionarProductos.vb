@@ -15,6 +15,7 @@ Public Class GestionarProductos
         SendMessage(txtBuscarProductos.Handle, EM_SETCUEBANNER, 0, "Ingrese el nombre")
         SendMessage(txtBuscarCodigo.Handle, EM_SETCUEBANNER, 0, "Ingrese el código")
         panelEditarRegistro.Width = 0
+        ActualizarTablaProductos()
         ActualizarMinimoStock()
     End Sub
 
@@ -95,14 +96,13 @@ Public Class GestionarProductos
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         txtNombre.Text = ""
         ActualizarTablaProductos()
-        ActualizarTablaProductos()
     End Sub
 
     'ACTUALIZA LA TABLA DE PRODUCTOS
 
     Public Sub ActualizarTablaProductos()
         dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta,ganancia as '%', Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
-        dgvProductos.Columns(6).Width = 60
+        dgvProductos.Columns(6).Width = 50
     End Sub
 
 
@@ -133,9 +133,6 @@ Public Class GestionarProductos
         dgvRegistroSurtido.DataSource = consulta.mostrarEnTabla("SELECT idSurtido, sp.precioCosto as Costo, sp.precioVenta as Venta, Cantidad, porcentajeGanancia as Porcentaje, fechaSurtido as Fecha from surtidoProductos as sp,Productos as p where sp.idProducto = p.idProducto and  p.idProducto=" & idProducto & " order by(idSurtido) desc;")
         dgvRegistroSurtido.Columns(0).Visible = False
     End Sub
-
-
-    Dim buscarBool As Boolean = False
 
 
     Sub ActualizarMinimoStock()
@@ -219,8 +216,17 @@ Public Class GestionarProductos
                     End If
                 End If
             Else
-                If txtCostoMod.Text.Equals("") And txtVentaMod.Text.Equals("") Then
-                    consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem.ToString & "' where idProducto=" & idProducto & ";")
+                If txtCostoMod.Text.Equals("") Or txtVentaMod.Text.Equals("") Then
+                    Dim rowSurtido As DataGridViewRow = dgvProductos.CurrentRow
+
+                    If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
+                        consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem.ToString & "' where idProducto=" & idProducto & ";")
+                    Else
+                        consulta.consultaHide("UPDATE Productos SET Nombre='" & txtNombre.Text.ToUpper & "', Stock=" & txtStock.Text & ", cantidadUnidad=" & txtCantidadUnidad.Text & ", unidad='" & cbxMedida.SelectedItem.ToString & "', precioCosto=0, precioVenta=0, ganancia=" & txtGananciaMod.Text & " where idProducto=" & idProducto & ";")
+                    End If
+
+
+
                 Else
                     mostrarMensaje("El porcentaje de ganancia tiene que ser mayor a 1")
                 End If
@@ -228,6 +234,11 @@ Public Class GestionarProductos
 
         Else
             mostrarMensaje("Debe rellenar los campos vacios.")
+        End If
+
+        If consulta.resultado = 1 Then
+            gpInformacion.Visible = False
+            actualizarTablaConId()
         End If
 
     End Sub
@@ -467,6 +478,8 @@ Public Class GestionarProductos
             txtVentaMod.Enabled = True
             lblVenta.Enabled = True
             lblAyudaCampos.Visible = False
+        ElseIf Not txtVentaMod.Text.Equals("") And Not txtCostoMod.Text.Equals("") Then
+            lblAyudaCampos.Visible = False
         Else
             lblAyudaCampos.Visible = True
             lblAyudaCampos.Text = "El campo de ventas se calculará automaticamente."
@@ -480,6 +493,8 @@ Public Class GestionarProductos
             lblAyudaCampos.Visible = False
             txtCostoMod.Enabled = True
             lblCosto.Enabled = True
+        ElseIf Not txtVentaMod.Text.Equals("") And Not txtCostoMod.Text.Equals("") Then
+            lblAyudaCampos.Visible = False
         Else
             lblAyudaCampos.Visible = True
             lblAyudaCampos.Text = "El campo de costo se calculará automaticamente."
