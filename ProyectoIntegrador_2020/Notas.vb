@@ -147,8 +147,4 @@ Public Class Notas
             txtNota.ScrollBars = False
         End If
     End Sub
-
-    Private Sub RadioButton1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton1.CheckedChanged
-
-    End Sub
 End Class
