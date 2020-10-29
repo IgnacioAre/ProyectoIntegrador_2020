@@ -108,10 +108,15 @@ Public Class GestionarProductos
     'ACTUALIZA LA TABLA DE PRODUCTOS
 
     Public Sub ActualizarTablaProductos()
-        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta,ganancia as '%', Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
-        dgvProductos.Columns(6).Width = 50
-
-        chbProdNoActivos.Checked = False
+        If chbProdNoActivos.Checked Then
+            dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta,ganancia as '%', Stock FROM Productos where existenteBool = 0 order by(nombre) asc;")
+            dgvProductos.Columns(6).Width = 50
+            dgvProductos.Columns(7).Width = 80
+        Else
+            dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta,ganancia as '%', Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
+            dgvProductos.Columns(6).Width = 50
+            dgvProductos.Columns(7).Width = 80
+        End If
     End Sub
 
 
@@ -448,9 +453,9 @@ Public Class GestionarProductos
 
     Private Sub chbProdNoActivos_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chbProdNoActivos.CheckedChanged
         If chbProdNoActivos.Checked Then
-            dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e, minimoStock as m FROM Productos where existenteBool = 0 order by(nombre) asc;")
-            dgvProductos.Columns(7).Visible = False
-            dgvProductos.Columns(8).Width = 0
+            dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta,ganancia as '%', Stock FROM Productos where existenteBool = 0 order by(nombre) asc;")
+            dgvProductos.Columns(6).Width = 50
+            dgvProductos.Columns(7).Width = 80
             btnEliminar.Visible = False
             btnAgregarProd.Visible = True
         Else
@@ -504,6 +509,15 @@ Public Class GestionarProductos
             lblAyudaCampos.Visible = False
         ElseIf Not txtVentaMod.Text.Equals("") And Not txtCostoMod.Text.Equals("") Then
             lblAyudaCampos.Visible = False
+            lblCosto.Enabled = False
+            lblVenta.Enabled = False
+            txtCostoMod.Enabled = False
+            txtVentaMod.Enabled = False
+        ElseIf txtVentaMod.Text.Equals("") And txtCostoMod.Text.Equals("") Then
+            lblCosto.Enabled = True
+            lblVenta.Enabled = True
+            txtCostoMod.Enabled = True
+            txtVentaMod.Enabled = True
         Else
             lblAyudaCampos.Visible = True
             lblAyudaCampos.Text = "El campo de ventas se calculará automaticamente."
@@ -519,6 +533,15 @@ Public Class GestionarProductos
             lblCosto.Enabled = True
         ElseIf Not txtVentaMod.Text.Equals("") And Not txtCostoMod.Text.Equals("") Then
             lblAyudaCampos.Visible = False
+            lblCosto.Enabled = False
+            lblVenta.Enabled = False
+            txtCostoMod.Enabled = False
+            txtVentaMod.Enabled = False
+        ElseIf txtVentaMod.Text.Equals("") And txtCostoMod.Text.Equals("") Then
+            lblCosto.Enabled = True
+            lblVenta.Enabled = True
+            txtCostoMod.Enabled = True
+            txtVentaMod.Enabled = True
         Else
             lblAyudaCampos.Visible = True
             lblAyudaCampos.Text = "El campo de costo se calculará automaticamente."
