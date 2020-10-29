@@ -47,6 +47,11 @@ Public Class GestionarProductos
     End Sub
 
     Private Sub dgvProductos_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvProductos.SelectionChanged
+        actualizarPanelMod()
+    End Sub
+
+
+    Sub actualizarPanelMod()
         Dim row As DataGridViewRow = dgvProductos.CurrentRow
         Dim rowSurtido As DataGridViewRow = dgvProductos.CurrentRow
 
@@ -71,7 +76,9 @@ Public Class GestionarProductos
 
             If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
                 panelPreciosMod.Visible = False
-                
+                txtCostoMod.Text = ""
+                txtVentaMod.Text = ""
+                txtGananciaMod.Text = ""
             Else
                 panelPreciosMod.Visible = True
                 If dgvProductos.SelectedCells.Count <> 0 Then
@@ -89,9 +96,9 @@ Public Class GestionarProductos
 
         End If
 
-        
-
     End Sub
+
+
 
     Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
         txtNombre.Text = ""
@@ -103,6 +110,8 @@ Public Class GestionarProductos
     Public Sub ActualizarTablaProductos()
         dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta,ganancia as '%', Stock FROM Productos where existenteBool = 1 order by(nombre) asc;")
         dgvProductos.Columns(6).Width = 50
+
+        chbProdNoActivos.Checked = False
     End Sub
 
 
@@ -124,6 +133,7 @@ Public Class GestionarProductos
         Next
 
         ActualizarTablaRegistro()
+        actualizarPanelMod()
 
     End Sub
 
@@ -179,7 +189,9 @@ Public Class GestionarProductos
         
         If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
             panelPreciosMod.Visible = False
-
+            txtCostoMod.Text = ""
+            txtVentaMod.Text = ""
+            txtGananciaMod.Text = ""
         Else
             panelPreciosMod.Visible = True
         End If
@@ -188,7 +200,18 @@ Public Class GestionarProductos
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarInfo.Click
         gpInformacion.Visible = False
+        limpiarPreciosMod()
     End Sub
+
+
+    Sub limpiarPreciosMod()
+        rbCosto.Checked = False
+        rbVenta.Checked = False
+        txtCostoMod.Text = ""
+        txtVentaMod.Text = ""
+        txtGananciaMod.Text = ""
+    End Sub
+
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
         If Not txtNombre.Text.Equals("") And Not txtStock.Text.Equals("") And Not txtCantidadUnidad.Text.Equals("") And Not cbxMedida.SelectedItem.ToString.Equals("") Then
@@ -238,6 +261,7 @@ Public Class GestionarProductos
 
         If consulta.resultado = 1 Then
             gpInformacion.Visible = False
+            limpiarPreciosMod()
             actualizarTablaConId()
         End If
 
@@ -516,4 +540,13 @@ Public Class GestionarProductos
     End Sub
 
 
+    Private Sub txtCostoMod_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtVentaMod.KeyPress, txtGananciaMod.KeyPress, txtCostoMod.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                ajustarMinimoStock()
+            End If
+        End If
+    End Sub
 End Class

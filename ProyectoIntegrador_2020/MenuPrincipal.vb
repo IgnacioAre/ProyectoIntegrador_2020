@@ -21,10 +21,10 @@ Public Class MenuPrincipal
 
     Private Sub Menu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         panelAbout.Width = 0
+        ActualizarPanelMinimoStock()
         My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
         SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
         panelAvisoStock.SendToBack()
-        ActualizarPanelMinimoStock()
         YfijaPanelAviso = panelAvisoStock.Location.Y
     End Sub
 
@@ -442,11 +442,36 @@ Public Class MenuPrincipal
 
     Sub ActualizarPanelMinimoStock()
         consulta.consultaReturnHide("select count(idProducto) from productos where stock <= minimoStock and existenteBool = 1;")
-        If Val(consulta.valorReturn) = 0 Then
+        Dim numCount As Integer = Val(consulta.valorReturn)
+        If numCount = 0 Then
             panelAvisoStock.Visible = False
         Else
+            
+
+            Dim Amarillo As Integer = 5
+            Dim Naranja As Integer = 10
+            Dim Rojo As Integer = 20
+
+            If numCount > Naranja And numCount <= Rojo Then
+                panelAvisoStock.BackColor = Color.Crimson
+                lblAvisoStock.BackColor = Color.Crimson
+                lblAvisoStock.ForeColor = Color.White
+            End If
+            If numCount > Amarillo And numCount <= Naranja Then
+                btnOcultarAvisoNegro.Visible = True
+                panelAvisoStock.BackColor = Color.DarkOrange
+                lblAvisoStock.BackColor = Color.DarkOrange
+                lblAvisoStock.ForeColor = Color.White
+            End If
+
+            If numCount <= Amarillo Then
+                panelAvisoStock.BackColor = Color.Yellow
+                lblAvisoStock.BackColor = Color.Yellow
+                lblAvisoStock.ForeColor = Color.Black
+            End If
+
             panelAvisoStock.Visible = True
-            lblAvisoStock.Text = "Tienes " & consulta.valorReturn & " productos por debajo del limite de stock."
+            lblAvisoStock.Text = "Tienes " & numCount & " productos por debajo del limite de stock."
         End If
 
     End Sub
@@ -463,7 +488,7 @@ Public Class MenuPrincipal
         End If
     End Sub
 
-    Private Sub btnOcultarAviso_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarAviso.Click
+    Private Sub btnOcultarAvisoNegro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarAvisoNegro.Click
         yPanelAviso = panelAvisoStock.Location.Y
         YfijaPanelAviso = panelAvisoStock.Location.Y
         tmrOcultarAviso.Enabled = True
