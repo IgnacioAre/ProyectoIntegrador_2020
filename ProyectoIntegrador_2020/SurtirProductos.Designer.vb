@@ -24,9 +24,9 @@ Partial Class SurtirProductos
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SurtirProductos))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelTitulo = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
@@ -111,7 +111,7 @@ Partial Class SurtirProductos
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
         Me.lblTitulo.Location = New System.Drawing.Point(12, 9)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(180, 20)
+        Me.lblTitulo.Size = New System.Drawing.Size(163, 18)
         Me.lblTitulo.TabIndex = 2
         Me.lblTitulo.Text = "Surtiendo Productos"
         '
@@ -136,7 +136,7 @@ Partial Class SurtirProductos
         Me.txtImporteCosto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtImporteCosto.Location = New System.Drawing.Point(81, 241)
         Me.txtImporteCosto.Name = "txtImporteCosto"
-        Me.txtImporteCosto.Size = New System.Drawing.Size(119, 27)
+        Me.txtImporteCosto.Size = New System.Drawing.Size(119, 26)
         Me.txtImporteCosto.TabIndex = 1
         '
         'Label1
@@ -146,7 +146,7 @@ Partial Class SurtirProductos
         Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(50, 209)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(80, 21)
+        Me.Label1.Size = New System.Drawing.Size(73, 21)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Importe"
         '
@@ -191,7 +191,7 @@ Partial Class SurtirProductos
         Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(31, 87)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(195, 21)
+        Me.Label3.Size = New System.Drawing.Size(172, 21)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "Código del Producto"
         '
@@ -224,7 +224,7 @@ Partial Class SurtirProductos
         Me.Label4.ForeColor = System.Drawing.Color.Green
         Me.Label4.Location = New System.Drawing.Point(59, 244)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(20, 22)
+        Me.Label4.Size = New System.Drawing.Size(18, 20)
         Me.Label4.TabIndex = 36
         Me.Label4.Text = "$"
         '
@@ -234,7 +234,7 @@ Partial Class SurtirProductos
         Me.txtCodigoProducto.Location = New System.Drawing.Point(67, 115)
         Me.txtCodigoProducto.MaxLength = 13
         Me.txtCodigoProducto.Name = "txtCodigoProducto"
-        Me.txtCodigoProducto.Size = New System.Drawing.Size(208, 27)
+        Me.txtCodigoProducto.Size = New System.Drawing.Size(208, 26)
         Me.txtCodigoProducto.TabIndex = 0
         '
         'lblNombre
@@ -244,7 +244,7 @@ Partial Class SurtirProductos
         Me.lblNombre.ForeColor = System.Drawing.Color.Red
         Me.lblNombre.Location = New System.Drawing.Point(2, 13)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(201, 21)
+        Me.lblNombre.Size = New System.Drawing.Size(179, 21)
         Me.lblNombre.TabIndex = 38
         Me.lblNombre.Text = "Nombre del producto"
         Me.lblNombre.Visible = False
@@ -290,7 +290,7 @@ Partial Class SurtirProductos
         Me.lblNumProducto.ForeColor = System.Drawing.Color.Maroon
         Me.lblNumProducto.Location = New System.Drawing.Point(14, 24)
         Me.lblNumProducto.Name = "lblNumProducto"
-        Me.lblNumProducto.Size = New System.Drawing.Size(124, 22)
+        Me.lblNumProducto.Size = New System.Drawing.Size(109, 20)
         Me.lblNumProducto.TabIndex = 42
         Me.lblNumProducto.Text = "Producto N° "
         '
@@ -300,7 +300,7 @@ Partial Class SurtirProductos
         Me.txtCantidad.Location = New System.Drawing.Point(81, 300)
         Me.txtCantidad.MaxLength = 13
         Me.txtCantidad.Name = "txtCantidad"
-        Me.txtCantidad.Size = New System.Drawing.Size(119, 27)
+        Me.txtCantidad.Size = New System.Drawing.Size(119, 26)
         Me.txtCantidad.TabIndex = 2
         '
         'Label6
@@ -310,7 +310,7 @@ Partial Class SurtirProductos
         Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(50, 272)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(94, 21)
+        Me.Label6.Size = New System.Drawing.Size(87, 21)
         Me.Label6.TabIndex = 44
         Me.Label6.Text = "Cantidad"
         '
@@ -320,7 +320,7 @@ Partial Class SurtirProductos
         Me.txtGanancia.Location = New System.Drawing.Point(291, 281)
         Me.txtGanancia.MaxLength = 13
         Me.txtGanancia.Name = "txtGanancia"
-        Me.txtGanancia.Size = New System.Drawing.Size(62, 27)
+        Me.txtGanancia.Size = New System.Drawing.Size(62, 26)
         Me.txtGanancia.TabIndex = 3
         '
         'Label7
@@ -330,7 +330,7 @@ Partial Class SurtirProductos
         Me.Label7.ForeColor = System.Drawing.Color.Black
         Me.Label7.Location = New System.Drawing.Point(243, 252)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(99, 21)
+        Me.Label7.Size = New System.Drawing.Size(90, 21)
         Me.Label7.TabIndex = 46
         Me.Label7.Text = "Ganancia"
         '
@@ -341,7 +341,7 @@ Partial Class SurtirProductos
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(264, 284)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(26, 22)
+        Me.Label8.Size = New System.Drawing.Size(23, 20)
         Me.Label8.TabIndex = 47
         Me.Label8.Text = "%"
         '
@@ -394,9 +394,9 @@ Partial Class SurtirProductos
         Me.lblAyudaCampos.AutoSize = True
         Me.lblAyudaCampos.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAyudaCampos.ForeColor = System.Drawing.Color.White
-        Me.lblAyudaCampos.Location = New System.Drawing.Point(47, 367)
+        Me.lblAyudaCampos.Location = New System.Drawing.Point(35, 367)
         Me.lblAyudaCampos.Name = "lblAyudaCampos"
-        Me.lblAyudaCampos.Size = New System.Drawing.Size(0, 20)
+        Me.lblAyudaCampos.Size = New System.Drawing.Size(0, 17)
         Me.lblAyudaCampos.TabIndex = 52
         Me.lblAyudaCampos.Visible = False
         '
@@ -406,7 +406,7 @@ Partial Class SurtirProductos
         Me.txtVentaIngreso.Location = New System.Drawing.Point(185, 316)
         Me.txtVentaIngreso.MaxLength = 4
         Me.txtVentaIngreso.Name = "txtVentaIngreso"
-        Me.txtVentaIngreso.Size = New System.Drawing.Size(69, 27)
+        Me.txtVentaIngreso.Size = New System.Drawing.Size(69, 26)
         Me.txtVentaIngreso.TabIndex = 51
         '
         'lblVenta
@@ -416,7 +416,7 @@ Partial Class SurtirProductos
         Me.lblVenta.ForeColor = System.Drawing.Color.White
         Me.lblVenta.Location = New System.Drawing.Point(144, 287)
         Me.lblVenta.Name = "lblVenta"
-        Me.lblVenta.Size = New System.Drawing.Size(127, 21)
+        Me.lblVenta.Size = New System.Drawing.Size(110, 21)
         Me.lblVenta.TabIndex = 50
         Me.lblVenta.Text = "Precio Venta"
         '
@@ -427,7 +427,7 @@ Partial Class SurtirProductos
         Me.Label13.ForeColor = System.Drawing.Color.White
         Me.Label13.Location = New System.Drawing.Point(294, 319)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(26, 22)
+        Me.Label13.Size = New System.Drawing.Size(23, 20)
         Me.Label13.TabIndex = 48
         Me.Label13.Text = "%"
         '
@@ -437,7 +437,7 @@ Partial Class SurtirProductos
         Me.txtGananciaIngreso.Location = New System.Drawing.Point(319, 316)
         Me.txtGananciaIngreso.MaxLength = 2
         Me.txtGananciaIngreso.Name = "txtGananciaIngreso"
-        Me.txtGananciaIngreso.Size = New System.Drawing.Size(45, 27)
+        Me.txtGananciaIngreso.Size = New System.Drawing.Size(45, 26)
         Me.txtGananciaIngreso.TabIndex = 45
         '
         'Label12
@@ -447,7 +447,7 @@ Partial Class SurtirProductos
         Me.Label12.ForeColor = System.Drawing.Color.White
         Me.Label12.Location = New System.Drawing.Point(280, 287)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(99, 21)
+        Me.Label12.Size = New System.Drawing.Size(90, 21)
         Me.Label12.TabIndex = 44
         Me.Label12.Text = "Ganancia"
         '
@@ -457,7 +457,7 @@ Partial Class SurtirProductos
         Me.txtCostoIngreso.Location = New System.Drawing.Point(54, 316)
         Me.txtCostoIngreso.MaxLength = 4
         Me.txtCostoIngreso.Name = "txtCostoIngreso"
-        Me.txtCostoIngreso.Size = New System.Drawing.Size(69, 27)
+        Me.txtCostoIngreso.Size = New System.Drawing.Size(69, 26)
         Me.txtCostoIngreso.TabIndex = 43
         '
         'lblCosto
@@ -467,7 +467,7 @@ Partial Class SurtirProductos
         Me.lblCosto.ForeColor = System.Drawing.Color.White
         Me.lblCosto.Location = New System.Drawing.Point(13, 287)
         Me.lblCosto.Name = "lblCosto"
-        Me.lblCosto.Size = New System.Drawing.Size(123, 21)
+        Me.lblCosto.Size = New System.Drawing.Size(107, 21)
         Me.lblCosto.TabIndex = 42
         Me.lblCosto.Text = "Precio Costo"
         '
@@ -478,7 +478,7 @@ Partial Class SurtirProductos
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(104, 245)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(76, 20)
+        Me.Label2.Size = New System.Drawing.Size(69, 17)
         Me.Label2.TabIndex = 41
         Me.Label2.Text = "Ej: 2 Litros"
         '
@@ -508,7 +508,7 @@ Partial Class SurtirProductos
         Me.Label10.ForeColor = System.Drawing.Color.White
         Me.Label10.Location = New System.Drawing.Point(73, 172)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(104, 27)
+        Me.Label10.Size = New System.Drawing.Size(85, 23)
         Me.Label10.TabIndex = 39
         Me.Label10.Text = "Medida"
         '
@@ -519,7 +519,7 @@ Partial Class SurtirProductos
         Me.cbxMedida.Items.AddRange(New Object() {"UNIDADES", "KILOGRAMOS", "GRAMOS", "LITROS", "MILILITROS"})
         Me.cbxMedida.Location = New System.Drawing.Point(154, 203)
         Me.cbxMedida.Name = "cbxMedida"
-        Me.cbxMedida.Size = New System.Drawing.Size(121, 30)
+        Me.cbxMedida.Size = New System.Drawing.Size(140, 28)
         Me.cbxMedida.TabIndex = 36
         '
         'txtCantidadUnidad
@@ -528,7 +528,7 @@ Partial Class SurtirProductos
         Me.txtCantidadUnidad.Location = New System.Drawing.Point(102, 203)
         Me.txtCantidadUnidad.MaxLength = 5
         Me.txtCantidadUnidad.Name = "txtCantidadUnidad"
-        Me.txtCantidadUnidad.Size = New System.Drawing.Size(42, 27)
+        Me.txtCantidadUnidad.Size = New System.Drawing.Size(42, 26)
         Me.txtCantidadUnidad.TabIndex = 38
         Me.txtCantidadUnidad.Text = "1"
         '
@@ -538,7 +538,7 @@ Partial Class SurtirProductos
         Me.txtNombre.Location = New System.Drawing.Point(95, 130)
         Me.txtNombre.MaxLength = 100
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(214, 27)
+        Me.txtNombre.Size = New System.Drawing.Size(214, 26)
         Me.txtNombre.TabIndex = 35
         '
         'Label5
@@ -548,7 +548,7 @@ Partial Class SurtirProductos
         Me.Label5.ForeColor = System.Drawing.Color.White
         Me.Label5.Location = New System.Drawing.Point(69, 100)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(104, 27)
+        Me.Label5.Size = New System.Drawing.Size(90, 23)
         Me.Label5.TabIndex = 34
         Me.Label5.Text = "Nombre"
         '
@@ -558,7 +558,7 @@ Partial Class SurtirProductos
         Me.txtCodigo.Location = New System.Drawing.Point(99, 61)
         Me.txtCodigo.MaxLength = 13
         Me.txtCodigo.Name = "txtCodigo"
-        Me.txtCodigo.Size = New System.Drawing.Size(214, 27)
+        Me.txtCodigo.Size = New System.Drawing.Size(214, 26)
         Me.txtCodigo.TabIndex = 33
         '
         'Label9
@@ -568,7 +568,7 @@ Partial Class SurtirProductos
         Me.Label9.ForeColor = System.Drawing.Color.White
         Me.Label9.Location = New System.Drawing.Point(73, 31)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(98, 27)
+        Me.Label9.Size = New System.Drawing.Size(82, 23)
         Me.Label9.TabIndex = 32
         Me.Label9.Text = "Código"
         '
@@ -596,31 +596,31 @@ Partial Class SurtirProductos
         Me.dgvProductos.AllowUserToDeleteRows = False
         Me.dgvProductos.AllowUserToResizeColumns = False
         Me.dgvProductos.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.dgvProductos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.dgvProductos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvProductos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dgvProductos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(18, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(18, 0, 0, 0)
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(41, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvProductos.EnableHeadersVisualStyles = False
         Me.dgvProductos.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
         Me.dgvProductos.Location = New System.Drawing.Point(16, 69)
@@ -658,7 +658,7 @@ Partial Class SurtirProductos
         Me.txtBuscarProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBuscarProductos.Location = New System.Drawing.Point(78, 18)
         Me.txtBuscarProductos.Name = "txtBuscarProductos"
-        Me.txtBuscarProductos.Size = New System.Drawing.Size(244, 27)
+        Me.txtBuscarProductos.Size = New System.Drawing.Size(244, 26)
         Me.txtBuscarProductos.TabIndex = 35
         '
         'PictureBox3

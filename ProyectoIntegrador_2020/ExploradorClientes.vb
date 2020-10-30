@@ -441,7 +441,7 @@ Public Class ExploradorClientes
     End Sub
 
     Private Sub txtBuscarCodigoCli_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigoCli.TextChanged
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarCodigoCli.Text & "%';")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND idCliente LIKE '%" & txtBuscarCodigoCli.Text & "%';")
         dgvClientes.Columns(5).Visible = False
         dgvClientes.Columns(6).Width = 0
     End Sub

@@ -378,8 +378,8 @@ Public Class ExploradorProveedores
     End Sub
 
     Private Sub pbActualizarTabla_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
-        ActualizarTabla()
         chkNoActivos.Checked = False
+        ActualizarTabla()
         txtBuscarNombreProv.Text = ""
         txtBuscarCodigoProv.Text = ""
         txtBuscarNombreProv.Focus()
@@ -424,7 +424,7 @@ Public Class ExploradorProveedores
     End Sub
 
     Private Sub txtBuscarCodigo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigoProv.TextChanged
-        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=1 And Nombre LIKE '%" & txtBuscarCodigoProv.Text & "%';")
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo As Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo FROM Proveedores where estadoBool=1 And idProveedor LIKE '%" & txtBuscarCodigoProv.Text & "%';")
         dgvProveedores.Columns(5).Visible = False
 
     End Sub

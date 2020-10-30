@@ -450,28 +450,31 @@ Public Class MenuPrincipal
 
             Dim Amarillo As Integer = 5
             Dim Naranja As Integer = 10
-            Dim Rojo As Integer = 20
 
-            If numCount > Naranja And numCount <= Rojo Then
-                panelAvisoStock.BackColor = Color.Crimson
-                lblAvisoStock.BackColor = Color.Crimson
-                lblAvisoStock.ForeColor = Color.White
-            End If
-            If numCount > Amarillo And numCount <= Naranja Then
-                btnOcultarAvisoNegro.Visible = True
-                panelAvisoStock.BackColor = Color.DarkOrange
-                lblAvisoStock.BackColor = Color.DarkOrange
-                lblAvisoStock.ForeColor = Color.White
-            End If
+            If numCount = 0 Then
+                panelAvisoStock.Height = 0
+            Else
 
-            If numCount <= Amarillo Then
-                panelAvisoStock.BackColor = Color.Yellow
-                lblAvisoStock.BackColor = Color.Yellow
-                lblAvisoStock.ForeColor = Color.Black
-            End If
+                If numCount <= Amarillo Then
+                    panelAvisoStock.BackColor = Color.Yellow
+                    lblAvisoStock.BackColor = Color.Yellow
+                    lblAvisoStock.ForeColor = Color.Black
+                ElseIf numCount <= Naranja Then
+                    btnOcultarAvisoNegro.Visible = True
+                    panelAvisoStock.BackColor = Color.DarkOrange
+                    lblAvisoStock.BackColor = Color.DarkOrange
+                    lblAvisoStock.ForeColor = Color.White
+                Else
+                    panelAvisoStock.BackColor = Color.Crimson
+                    lblAvisoStock.BackColor = Color.Crimson
+                    lblAvisoStock.ForeColor = Color.White
+                End If
 
-            panelAvisoStock.Visible = True
-            lblAvisoStock.Text = "Tienes " & numCount & " productos por debajo del limite de stock."
+                panelAvisoStock.Visible = True
+                lblAvisoStock.Text = "Tienes " & numCount & " productos por debajo del limite de stock."
+
+            End If
+            
         End If
 
     End Sub

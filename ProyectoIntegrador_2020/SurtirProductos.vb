@@ -545,49 +545,106 @@ Public Class SurtirProductos
     Sub insertarProducto()
         consulta.consultaReturnHide("SELECT idProducto FROM Productos WHERE idProducto=" & txtCodigo.Text & ";")
 
+
         If Not consulta.valorReturn = "" Then
             mostrarMensaje("Ya existe un producto registrado con ese código." & vbCrLf & "No olvide fijarse si el producto se encuentra inactivo.")
 
         Else
+
             consulta.consultaReturnHide("SELECT minimoStock from productos limit 1;")
             Dim limiteStock As Integer = Val(consulta.valorReturn)
 
-            If Val(txtGananciaIngreso.Text) >= 1 Then
-                If Not txtCostoIngreso.Text.Equals("") And Not txtVentaIngreso.Text.Equals("") Then
-                    txtVentaIngreso.Text = ""
-                Else
-                    If txtCostoIngreso.Text.Equals("") And txtVentaIngreso.Text.Equals("") And Not (txtGananciaIngreso.Text) >= 1 Then
-                        consulta.consultaHide("INSERT INTO Productos (idProducto, nombre,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString.ToUpper & "',0,1," & limiteStock & ");")
-                    Else
-                        If Not txtCostoIngreso.Text.Equals("") Then
-                            Dim precioCosto = Val(txtCostoIngreso.Text)
-                            Dim precioVenta As Integer = (precioCosto + ((Val(txtGananciaIngreso.Text) * precioCosto) / 100))
-                            consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCostoIngreso.Text & "," & precioVenta & "," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
-                        Else
-                            If Not txtVentaIngreso.Text.Equals("") Then
-                                Dim precioCosto As Integer = (Val(txtVentaIngreso.Text) / ((Val(txtGananciaIngreso.Text) / 100) + 1))
-                                consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & precioCosto & "," & txtVentaIngreso.Text & "," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
-                            Else
-                                mostrarMensaje("El precio de costo o de venta está vacio" & vbCrLf & "y no es posible hacer el cálculo.")
-                            End If
-                        End If
+            If txtCostoIngreso.Text.Equals("") Then
+                txtCostoIngreso.Text = "0"
+            End If
+            If txtVentaIngreso.Text.Equals("") Then
+                txtVentaIngreso.Text = "0"
+            End If
 
-                    End If
-                End If
-            Else
-                mostrarMensaje("El porcentaje de ganancia tiene que ser mayor a 1")
+            If txtGananciaIngreso.Text.Equals("") Then
+                txtGananciaIngreso.Text = "0"
             End If
 
 
-            If consulta.resultado = 1 Then
-                soloNuevoBool = False
-                tmrOcultarAgregar.Enabled = True
-                panelSurtido.Visible = True
-                limpiarPanelAgregar()
-                Me.Close()
+            If txtCostoIngreso.Text.Equals("0") And txtVentaIngreso.Text.Equals("0") Then
+                If txtGananciaIngreso.Text.Equals("0") Then
+                    consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "',0,0,0," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
+                Else
+                    consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "',0,0," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
+                End If
+
+                If consulta.resultado = 1 Then
+                    soloNuevoBool = False
+                    tmrOcultarAgregar.Enabled = True
+                    panelSurtido.Visible = True
+                    limpiarPanelAgregar()
+                    Me.Close()
+                End If
+            Else
+                If Val(txtGananciaIngreso.Text) > 0 Then
+                    If Not txtCostoIngreso.Text.Equals("0") Then
+                        Dim precioCosto = Val(txtCostoIngreso.Text)
+                        Dim precioVenta As Integer = (precioCosto + ((Val(txtGananciaIngreso.Text) * precioCosto) / 100))
+                        consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCostoIngreso.Text & "," & precioVenta & "," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
+                    Else
+                        Dim precioCosto As Integer = (Val(txtVentaIngreso.Text) / ((Val(txtGananciaIngreso.Text) / 100) + 1))
+                        consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & precioCosto & "," & txtVentaIngreso.Text & "," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
+                    End If
+
+                    If consulta.resultado = 1 Then
+                        soloNuevoBool = False
+                        tmrOcultarAgregar.Enabled = True
+                        panelSurtido.Visible = True
+                        limpiarPanelAgregar()
+                        Me.Close()
+                    End If
+                Else
+                    mostrarMensaje("El porcentaje de ganancia tiene que ser mayor a 0%")
+                End If
             End If
 
         End If
+        
+
+
+
+
+
+
+        'If Not consulta.valorReturn = "" Then
+        '    mostrarMensaje("Ya existe un producto registrado con ese código." & vbCrLf & "No olvide fijarse si el producto se encuentra inactivo.")
+
+        'Else
+        '    consulta.consultaReturnHide("SELECT minimoStock from productos limit 1;")
+        '    Dim limiteStock As Integer = Val(consulta.valorReturn)
+
+        'If Val(txtGananciaIngreso.Text) >= 1 Then
+        '    If Not txtCostoIngreso.Text.Equals("") And Not txtVentaIngreso.Text.Equals("") Then
+        '        txtVentaIngreso.Text = ""
+        '    Else
+        '        If txtCostoIngreso.Text.Equals("") And txtVentaIngreso.Text.Equals("") And Not (txtGananciaIngreso.Text) >= 1 Then
+        '            consulta.consultaHide("INSERT INTO Productos (idProducto, nombre,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString.ToUpper & "',0,1," & limiteStock & ");")
+        '        Else
+        '            If Not txtCostoIngreso.Text.Equals("") Then
+        '                Dim precioCosto = Val(txtCostoIngreso.Text)
+        '                Dim precioVenta As Integer = (precioCosto + ((Val(txtGananciaIngreso.Text) * precioCosto) / 100))
+        '                consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia,cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & txtCostoIngreso.Text & "," & precioVenta & "," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
+        '            Else
+        '                If Not txtVentaIngreso.Text.Equals("") Then
+        '                    Dim precioCosto As Integer = (Val(txtVentaIngreso.Text) / ((Val(txtGananciaIngreso.Text) / 100) + 1))
+        '                    consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & precioCosto & "," & txtVentaIngreso.Text & "," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
+        '                Else
+        '                    mostrarMensaje("El precio de costo o de venta está vacio" & vbCrLf & "y no es posible hacer el cálculo.")
+        '                End If
+        '            End If
+
+        '        End If
+        '    End If
+        'Else
+        '    mostrarMensaje("El porcentaje de ganancia tiene que ser mayor a 1")
+        'End If
+
+        'End If
     End Sub
 
 
