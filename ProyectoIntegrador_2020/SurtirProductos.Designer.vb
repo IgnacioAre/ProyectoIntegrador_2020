@@ -407,7 +407,7 @@ Partial Class SurtirProductos
         Me.txtVentaIngreso.MaxLength = 4
         Me.txtVentaIngreso.Name = "txtVentaIngreso"
         Me.txtVentaIngreso.Size = New System.Drawing.Size(69, 26)
-        Me.txtVentaIngreso.TabIndex = 51
+        Me.txtVentaIngreso.TabIndex = 44
         '
         'lblVenta
         '

@@ -10,6 +10,7 @@ Public Class Notas
 
     Private Sub Notas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         SendMessage(txtNota.Handle, EM_SETCUEBANNER, 0, "Recordatorio...")
+        SendMessage(txtBuscarTexto.Handle, EM_SETCUEBANNER, 0, "Buscar por recordatorio")
     End Sub
 
     '----PLACEHOLDERS----'
@@ -147,4 +148,28 @@ Public Class Notas
             txtNota.ScrollBars = False
         End If
     End Sub
+
+    Private Sub txtBuscarTexto_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarTexto.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+
+        End If
+    End Sub
+
+    Private Sub txtBuscarTexto_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarTexto.TextChanged
+        dgvNotas.DataSource = consulta.mostrarEnTabla("SELECT idNota,Texto as Recordatorio,Usuario as Usuario,fechaCreacion as Creación,importanteBool as i from Notas as n,admin as a where a.idAdmin = n.idAdmin and idNota > 1 and Texto LIKE '%" & txtBuscarTexto.Text & "%' order by importantebool desc,fechaCreacion desc;")
+        dgvNotas.Columns(0).Visible = False
+        dgvNotas.Columns(4).Width = 0
+    End Sub
+
 End Class
