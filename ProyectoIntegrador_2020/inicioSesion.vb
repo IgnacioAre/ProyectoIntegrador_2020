@@ -141,7 +141,15 @@ Public Class inicioSesion
 
                 consultas.consultaReturnHide("Select idAdmin from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
                 Dim idadmin As Byte = Val(consultas.valorReturn)
-                consultas.consultaHide("update notas set idadmin = " & idadmin & " where idnota = 1;")
+
+                consultas.consultaReturnHide("Select idNota from Notas where idNota = 1;")
+                If consultas.valorReturn = 1 Then
+                    consultas.consultaHide("update notas set idadmin = " & idadmin & " where idnota = 1;")
+                Else
+                    consultas.consultaHide("Alter table Notas auto_increment=1;")
+                    consultas.consultaHide("Insert into Notas(Texto,fechaCreacion,importanteBool,idAdmin) values('',now(),0," & idadmin & ");")
+                End If
+
 
                 MenuPrincipal.Show()
                 Me.Close()
