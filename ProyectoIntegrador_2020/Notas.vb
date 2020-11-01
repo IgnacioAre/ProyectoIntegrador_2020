@@ -172,4 +172,20 @@ Public Class Notas
         dgvNotas.Columns(4).Width = 0
     End Sub
 
+    Private Sub txtNota_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNota.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+
+        End If
+    End Sub
 End Class

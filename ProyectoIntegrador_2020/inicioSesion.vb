@@ -77,13 +77,17 @@ Public Class inicioSesion
     '----CAMBIAR FOCO A LA CONTRASEÑA----'
 
     Private Sub txtUsuario_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtUsuarioLogin.KeyPress
-        If Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 65 Or Asc(e.KeyChar) > 122 Then
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
 
-            If e.KeyChar = ChrW(Keys.Enter) Then
+            If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
-                txtContraseñaRegistro.Focus()
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
             End If
+
         End If
     End Sub
 
@@ -388,8 +392,6 @@ Public Class inicioSesion
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
             ElseIf Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            ElseIf Char.IsSeparator(e.KeyChar) Then
                 e.Handled = False
             Else
                 e.Handled = True

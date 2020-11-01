@@ -157,8 +157,9 @@ Public Class GestionarProductos
 
 
     Private Sub txtBuscarProductos_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarProductos.TextChanged
-        dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e FROM Productos where existenteBool = 1 and nombre LIKE '%" & txtBuscarProductos.Text & "%' order by(nombre) asc;")
-        dgvProductos.Columns(7).Width = 0
+        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta,ganancia as '%', Stock FROM Productos where existenteBool = 1 and nombre LIKE '%" & txtBuscarProductos.Text & "%' order by(nombre) asc;")
+        dgvProductos.Columns(6).Width = 50
+        dgvProductos.Columns(7).Width = 80
         txtBuscarCodigo.Text = ""
     End Sub
 
@@ -181,8 +182,9 @@ Public Class GestionarProductos
     End Sub
 
     Private Sub txtBuscarCodigo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigo.TextChanged
-        dgvProductos.DataSource = consulta.mostrarEnTabla("Select idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta, Stock, existenteBool as e FROM Productos where existenteBool = 1 and idProducto LIKE '%" & txtBuscarCodigo.Text & "%' order by(nombre) asc;")
-        dgvProductos.Columns(7).Width = 0
+        dgvProductos.DataSource = consulta.mostrarEnTabla("SELECT idProducto As Código, nombre as Nombre, REPLACE(cantidadUnidad,',','.') as Cantidad, unidad as Medida, precioCosto as Costo, precioVenta as Venta,ganancia as '%', Stock FROM Productos where existenteBool = 1 and idProducto LIKE '%" & txtBuscarCodigo.Text & "%' order by(nombre) asc;")
+        dgvProductos.Columns(6).Width = 50
+        dgvProductos.Columns(7).Width = 80
         txtBuscarProductos.Text = ""
     End Sub
 
@@ -293,7 +295,6 @@ Public Class GestionarProductos
         If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
             btnEditarRegistro.Enabled = True
 
-
             consulta.consultaReturnHide("SELECT idSurtido from surtidoProductos where idProducto=" & idProducto & " order by(idSurtido) desc limit 1;")
             idSurtido = Val(consulta.valorReturn)
             consulta.consultaReturnHide("SELECT precioCosto from surtidoProductos where idProducto=" & idProducto & " order by(idSurtido) desc limit 1;")
@@ -309,10 +310,8 @@ Public Class GestionarProductos
             stockAux = Val(consulta.valorReturn)
             cantidadAux = Val(txtCantidad.Text)
 
-
             tmrMostrarEditarRegistro.Enabled = True
         Else
-            btnEditarRegistro.Enabled = False
             btnEditarRegistro.Enabled = False
         End If
     End Sub
@@ -366,6 +365,7 @@ Public Class GestionarProductos
     Private Sub tmrOcultarEditarRegistro_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrOcultarEditarRegistro.Tick
         If panelEditarRegistro.Width <= 0 Then
             tmrOcultarEditarRegistro.Enabled = False
+            limpiarRegistroSurtido()
         Else
             panelEditarRegistro.Width = panelEditarRegistro.Width - 10
 
@@ -374,7 +374,6 @@ Public Class GestionarProductos
 
     Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
         tmrOcultarEditarRegistro.Enabled = True
-        limpiarRegistroSurtido()
     End Sub
 
 
@@ -431,7 +430,13 @@ Public Class GestionarProductos
 
 
         If txtPrecioCosto.Text.Equals("0") And txtPrecioVenta.Text.Equals("0") Then
-            consulta.consultaHide("UPDATE surtidoProductos set precioCosto=0, precioVenta=0, Cantidad=" & txtCantidad.Text & ", porcentajeGanancia=0 where idSurtido=" & idSurtido & ";")
+
+            If Val(txtPorcentaje.Text) > 0 Then
+                consulta.consultaHide("UPDATE surtidoProductos set precioCosto=0, precioVenta=0, Cantidad=" & txtCantidad.Text & ", porcentajeGanancia=" & txtPorcentaje.Text & " where idSurtido=" & idSurtido & ";")
+            Else
+                consulta.consultaHide("UPDATE surtidoProductos set precioCosto=0, precioVenta=0, Cantidad=" & txtCantidad.Text & ", porcentajeGanancia=0 where idSurtido=" & idSurtido & ";")
+            End If
+
             tmrOcultarEditarRegistro.Enabled = True
             actualizarTablaConId()
             ActualizarTablaRegistro()
@@ -696,6 +701,30 @@ Public Class GestionarProductos
     Private Sub txtPrecioCosto_KeyPress_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPrecioVenta.KeyPress, txtPrecioCosto.KeyPress, txtPorcentaje.KeyPress, txtCantidad.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
+        End If
+    End Sub
+
+    Private Sub dgvRegistroSurtido_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvRegistroSurtido.SelectionChanged
+        If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
+            btnEditarRegistro.Enabled = True
+
+
+            consulta.consultaReturnHide("SELECT idSurtido from surtidoProductos where idProducto=" & idProducto & " order by(idSurtido) desc limit 1;")
+            idSurtido = Val(consulta.valorReturn)
+            consulta.consultaReturnHide("SELECT precioCosto from surtidoProductos where idProducto=" & idProducto & " order by(idSurtido) desc limit 1;")
+            txtPrecioCosto.Text = Val(consulta.valorReturn)
+            consulta.consultaReturnHide("SELECT precioVenta from surtidoProductos where idProducto=" & idProducto & " order by(idSurtido) desc limit 1;")
+            txtPrecioVenta.Text = Val(consulta.valorReturn)
+            consulta.consultaReturnHide("SELECT cantidad from surtidoProductos where idProducto=" & idProducto & " order by(idSurtido) desc limit 1;")
+            txtCantidad.Text = Val(consulta.valorReturn)
+            consulta.consultaReturnHide("SELECT porcentajeGanancia from surtidoProductos where idProducto=" & idProducto & " order by(idSurtido) desc limit 1;")
+            txtPorcentaje.Text = Val(consulta.valorReturn)
+
+            consulta.consultaReturnHide("SELECT Stock from productos where idProducto=" & idProducto & ";")
+            stockAux = Val(consulta.valorReturn)
+            cantidadAux = Val(txtCantidad.Text)
+        Else
+            btnEditarRegistro.Enabled = False
         End If
     End Sub
 End Class

@@ -4,6 +4,7 @@ Public Class Nuevo
 
     Dim consultas As Conexion = New Conexion
     Public idIngresoAdmin As Byte
+    Dim resultado As Byte
 
     '----INICIO DEL FORMULARIO----'
 
@@ -233,7 +234,7 @@ Public Class Nuevo
 
     Private Sub pbMasTel1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMasTel1.Click
         If Not txtTelefono1.Text = "" Then
-            txtTelefono1.ReadOnly = True
+            txtTelefono1.Enabled = False
             txtTelefono2.Visible = True
             txtTelefono2.Focus()
             btnMasTel1.Visible = False
@@ -246,7 +247,7 @@ Public Class Nuevo
 
     Private Sub pbMasTel2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMasTel2.Click
         If Not txtTelefono2.Text = "" Then
-            txtTelefono2.ReadOnly = True
+            txtTelefono2.Enabled = False
             txtTelefono3.Visible = True
             txtTelefono3.Focus()
             btnMasTel2.Visible = False
@@ -259,7 +260,7 @@ Public Class Nuevo
 
     Private Sub pbMasTel3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMasTel3.Click
         If Not txtTelefono3.Text = "" Then
-            txtTelefono3.ReadOnly = True
+            txtTelefono3.Enabled = False
             txtTelefono4.Visible = True
             txtTelefono4.Focus()
             btnMasTel3.Visible = False
@@ -272,7 +273,7 @@ Public Class Nuevo
 
     Private Sub pbMasTel4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMasTel4.Click
         If Not txtTelefono4.Text = "" Then
-            txtTelefono4.ReadOnly = True
+            txtTelefono4.Enabled = False
             txtTelefono5.Visible = True
             txtTelefono5.Focus()
             btnMasTel4.Visible = False
@@ -287,6 +288,19 @@ Public Class Nuevo
     Private Sub txtTelefono1_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono1.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                If Not txtTelefono1.Text = "" Then
+                    txtTelefono1.Enabled = False
+                    txtTelefono2.Visible = True
+                    txtTelefono2.Focus()
+                    btnMasTel1.Visible = False
+                    btnMenosTel1.Visible = True
+                    btnMasTel2.Visible = True
+                Else
+                    txtTelefono1.BackColor = Color.Red
+                End If
+            End If
         End If
     End Sub
 
@@ -294,18 +308,55 @@ Public Class Nuevo
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
 
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                If Not txtTelefono2.Text = "" Then
+                    txtTelefono2.Enabled = False
+                    txtTelefono3.Visible = True
+                    txtTelefono3.Focus()
+                    btnMasTel2.Visible = False
+                    btnMenosTel2.Visible = True
+                    btnMasTel3.Visible = True
+                Else
+                    txtTelefono2.BackColor = Color.Red
+                End If
+            End If
         End If
     End Sub
 
     Private Sub txtTelefono3_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono3.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                If Not txtTelefono3.Text = "" Then
+                    txtTelefono3.Enabled = False
+                    txtTelefono4.Visible = True
+                    txtTelefono4.Focus()
+                    btnMasTel3.Visible = False
+                    btnMenosTel3.Visible = True
+                    btnMasTel4.Visible = True
+                Else
+                    txtTelefono3.BackColor = Color.Red
+                End If
+            End If
         End If
     End Sub
 
     Private Sub txtTelefono4_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTelefono4.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
             e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                If Not txtTelefono4.Text = "" Then
+                    txtTelefono4.Enabled = False
+                    txtTelefono5.Visible = True
+                    txtTelefono5.Focus()
+                    btnMasTel4.Visible = False
+                    btnMenosTel4.Visible = True
+                Else
+                    txtTelefono4.BackColor = Color.Red
+                End If
+            End If
         End If
     End Sub
 
@@ -316,84 +367,124 @@ Public Class Nuevo
     End Sub
 
     Private Sub btnMenosTel1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenosTel1.Click
-        txtTelefono1.ReadOnly = True
-        txtTelefono2.ReadOnly = False
-        txtTelefono3.ReadOnly = False
-        txtTelefono4.ReadOnly = False
-        txtTelefono2.Visible = False
-        txtTelefono2.Text = ""
-        btnMasTel1.Visible = True
-        btnMenosTel1.Visible = False
-        btnMasTel2.Visible = False
-
         If Not txtTelefono3.Text.Equals("") Then
+            ConfirmacionMensaje.btnAceptar.Text = "Si"
+            ConfirmacionMensaje.btnCancelar.Text = "No"
+            resultado = ConfirmacionMensaje.confirmacion("Se eliminaran los demás teléfonos regisrados." & vbCrLf & "                         ¿Está seguro?")
 
-            txtTelefono3.Text = ""
-            txtTelefono3.Visible = False
-            btnMasTel2.Visible = False
-            btnMenosTel2.Visible = False
-            btnMasTel3.Visible = True
+            If resultado = 1 Then
+                txtTelefono1.Enabled = True
+                btnMasTel1.Visible = True
+                btnMenosTel1.Visible = False
 
-            txtTelefono4.Text = ""
-            txtTelefono4.Visible = False
-            btnMasTel3.Visible = False
-            btnMenosTel3.Visible = False
-            btnMasTel4.Visible = False
+                ocultarTel2()
+                ocultarTel3()
+                ocultarTel4()
+                ocultarTel5()
+            End If
+        Else
+            txtTelefono1.Enabled = True
+            btnMasTel1.Visible = True
+            btnMenosTel1.Visible = False
 
-            txtTelefono5.Text = ""
-            txtTelefono5.Visible = False
-            btnMasTel4.Visible = False
-            btnMenosTel4.Visible = False
+            ocultarTel2()
+            ocultarTel3()
         End If
         
+
     End Sub
 
     Private Sub btnMenosTel2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenosTel2.Click
-        txtTelefono2.ReadOnly = False
-        txtTelefono3.ReadOnly = False
-        txtTelefono4.ReadOnly = False
-        txtTelefono3.Visible = False
-        txtTelefono3.Text = ""
-        btnMasTel2.Visible = True
-        btnMenosTel2.Visible = False
-        btnMasTel3.Visible = False
 
-        txtTelefono4.Text = ""
-        txtTelefono4.Visible = False
-        btnMasTel3.Visible = False
-        btnMenosTel3.Visible = False
-        btnMasTel4.Visible = False
+        If Not txtTelefono4.Text.Equals("") Then
+            ConfirmacionMensaje.btnAceptar.Text = "Si"
+            ConfirmacionMensaje.btnCancelar.Text = "No"
+            resultado = ConfirmacionMensaje.confirmacion("Se eliminaran los demás teléfonos regisrados." & vbCrLf & "                         ¿Está seguro?")
 
-        txtTelefono5.Text = ""
-        txtTelefono5.Visible = False
-        btnMasTel4.Visible = False
-        btnMenosTel4.Visible = False
+            If resultado = 1 Then
+                txtTelefono2.Enabled = True
+                btnMasTel2.Visible = True
+                btnMenosTel2.Visible = False
+
+                ocultarTel3()
+                ocultarTel4()
+                ocultarTel5()
+            End If
+        Else
+            txtTelefono2.Enabled = True
+            btnMasTel2.Visible = True
+            btnMenosTel2.Visible = False
+
+            ocultarTel3()
+            ocultarTel4()
+        End If
+
     End Sub
 
     Private Sub btnMenosTel3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenosTel3.Click
-        txtTelefono3.ReadOnly = False
-        txtTelefono4.ReadOnly = False
-        txtTelefono4.Visible = False
-        txtTelefono4.Text = ""
-        btnMasTel3.Visible = True
-        btnMenosTel3.Visible = False
-        btnMasTel4.Visible = False
+        If Not txtTelefono4.Text.Equals("") Then
+            ConfirmacionMensaje.btnAceptar.Text = "Si"
+            ConfirmacionMensaje.btnCancelar.Text = "No"
+            resultado = ConfirmacionMensaje.confirmacion("Se eliminaran los demás teléfonos regisrados." & vbCrLf & "                         ¿Está seguro?")
 
+            If resultado = 1 Then
+                txtTelefono3.Enabled = True
+                btnMasTel3.Visible = True
+                btnMenosTel3.Visible = False
 
-        txtTelefono5.Text = ""
-        txtTelefono5.Visible = False
-        btnMasTel4.Visible = False
-        btnMenosTel4.Visible = False
+                ocultarTel4()
+                ocultarTel5()
+            End If
+        Else
+            txtTelefono3.Enabled = True
+            btnMasTel3.Visible = True
+            btnMenosTel3.Visible = False
+
+            ocultarTel4()
+            ocultarTel5()
+        End If
+
     End Sub
 
     Private Sub btnMenosTel4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMenosTel4.Click
-        txtTelefono4.ReadOnly = False
-        txtTelefono5.Visible = False
-        txtTelefono5.Text = ""
+        txtTelefono4.Enabled = True
         btnMasTel4.Visible = True
+        btnMenosTel4.Visible = False
+
+        ocultarTel5()
+
+    End Sub
+
+
+
+    Sub ocultarTel2()
+        txtTelefono2.Visible = False
+        txtTelefono2.Text = ""
+        txtTelefono2.Enabled = True
+        btnMasTel2.Visible = False
+        btnMenosTel2.Visible = False
+    End Sub
+
+    Sub ocultarTel3()
+        txtTelefono3.Visible = False
+        txtTelefono3.Text = ""
+        txtTelefono3.Enabled = True
+        btnMasTel3.Visible = False
+        btnMenosTel3.Visible = False
+    End Sub
+
+    Sub ocultarTel4()
+        txtTelefono4.Visible = False
+        txtTelefono4.Text = ""
+        txtTelefono4.Enabled = True
+        btnMasTel4.Visible = False
         btnMenosTel4.Visible = False
     End Sub
 
+    Sub ocultarTel5()
+        txtTelefono5.Text = ""
+        txtTelefono5.Visible = False
+    End Sub
 
     Private Sub txtTelefono1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTelefono1.TextChanged
         txtTelefono1.BackColor = Color.White
