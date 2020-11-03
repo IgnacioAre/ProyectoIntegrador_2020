@@ -11,6 +11,7 @@ Public Class MenuPrincipal
 
     Dim yPanelAviso As Integer
     Dim YfijaPanelAviso As Integer
+    Dim nombreAdmin As String
 
     '----FORMULARIO QUE SE VA A MOSTRAR ENCIMA DEL FORMULARIO PRINCIPAL----'
     Public formulario As Form
@@ -25,8 +26,17 @@ Public Class MenuPrincipal
         My.Computer.Audio.Play("./audio/dinero.wav", AudioPlayMode.Background)
         SendMessage(txtPrecioProductos.Handle, EM_SETCUEBANNER, 0, "Nombre del producto")
         panelAvisoStock.SendToBack()
+        obtenerNombreAdmin()
         YfijaPanelAviso = panelAvisoStock.Location.Y
     End Sub
+
+
+
+    Sub obtenerNombreAdmin()
+        consulta.consultaReturnHide("SELECT Usuario as Usuario from Notas as n,admin as a where a.idAdmin = n.idAdmin and n.idAdmin = 1;")
+        nombreAdmin = consulta.valorReturn
+    End Sub
+
 
 
     Private Sub MenuPrincipal_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
@@ -247,11 +257,11 @@ Public Class MenuPrincipal
         lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy")
         Dim hora As Byte = Val(DateTime.Now.ToString("HH"))
         If hora > 6 And hora < 12 Then
-            lblBienvenida.Text = "     ¡Buen día!" & vbCrLf & "    Bienvenido"
+            lblBienvenida.Text = "    ¡Buen día!" & vbCrLf & "Bienvenido " & nombreAdmin.ToLower
         ElseIf hora >= 13 And hora <= 18 Then
-            lblBienvenida.Text = "¡Buenas Tardes!" & vbCrLf & "    Bienvenido"
+            lblBienvenida.Text = " ¡Buenas Tardes!" & vbCrLf & "Bienvenido " & nombreAdmin.ToLower
         Else
-            lblBienvenida.Text = "¡Buenas Noches!" & vbCrLf & "   Bienvenido"
+            lblBienvenida.Text = " ¡Buenas Noches!" & vbCrLf & "Bienvenido " & nombreAdmin.ToLower
         End If
 
     End Sub

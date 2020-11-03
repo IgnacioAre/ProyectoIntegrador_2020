@@ -30,7 +30,6 @@ Partial Class GestionarProductos
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.dgvProductos = New Guna.UI.WinForms.GunaDataGridView()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.txtBuscarProductos = New System.Windows.Forms.TextBox()
@@ -103,23 +102,6 @@ Partial Class GestionarProductos
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'btnCerrar
-        '
-        Me.btnCerrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnCerrar.FlatAppearance.BorderSize = 0
-        Me.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.ForeColor = System.Drawing.Color.White
-        Me.btnCerrar.Location = New System.Drawing.Point(12, 12)
-        Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(28, 27)
-        Me.btnCerrar.TabIndex = 31
-        Me.btnCerrar.Text = "X"
-        Me.btnCerrar.UseVisualStyleBackColor = False
-        '
         'dgvProductos
         '
         Me.dgvProductos.AllowUserToAddRows = False
@@ -155,7 +137,7 @@ Partial Class GestionarProductos
         Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvProductos.EnableHeadersVisualStyles = False
         Me.dgvProductos.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.dgvProductos.Location = New System.Drawing.Point(12, 105)
+        Me.dgvProductos.Location = New System.Drawing.Point(10, 69)
         Me.dgvProductos.Name = "dgvProductos"
         Me.dgvProductos.ReadOnly = True
         Me.dgvProductos.RowHeadersVisible = False
@@ -188,7 +170,7 @@ Partial Class GestionarProductos
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 54)
+        Me.PictureBox1.Location = New System.Drawing.Point(10, 18)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(41, 36)
         Me.PictureBox1.TabIndex = 34
@@ -197,7 +179,7 @@ Partial Class GestionarProductos
         'txtBuscarProductos
         '
         Me.txtBuscarProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarProductos.Location = New System.Drawing.Point(59, 63)
+        Me.txtBuscarProductos.Location = New System.Drawing.Point(57, 27)
         Me.txtBuscarProductos.Name = "txtBuscarProductos"
         Me.txtBuscarProductos.Size = New System.Drawing.Size(244, 26)
         Me.txtBuscarProductos.TabIndex = 33
@@ -222,7 +204,7 @@ Partial Class GestionarProductos
         Me.gpInformacion.Controls.Add(Me.gpRegistro)
         Me.gpInformacion.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gpInformacion.ForeColor = System.Drawing.Color.White
-        Me.gpInformacion.Location = New System.Drawing.Point(12, 364)
+        Me.gpInformacion.Location = New System.Drawing.Point(10, 334)
         Me.gpInformacion.Name = "gpInformacion"
         Me.gpInformacion.Size = New System.Drawing.Size(970, 412)
         Me.gpInformacion.TabIndex = 37
@@ -740,7 +722,7 @@ Partial Class GestionarProductos
         Me.btnModificar.ForeColor = System.Drawing.Color.White
         Me.btnModificar.Image = CType(resources.GetObject("btnModificar.Image"), System.Drawing.Image)
         Me.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnModificar.Location = New System.Drawing.Point(178, 304)
+        Me.btnModificar.Location = New System.Drawing.Point(180, 255)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(150, 54)
         Me.btnModificar.TabIndex = 36
@@ -760,7 +742,7 @@ Partial Class GestionarProductos
         Me.btnNuevo.ForeColor = System.Drawing.Color.White
         Me.btnNuevo.Image = CType(resources.GetObject("btnNuevo.Image"), System.Drawing.Image)
         Me.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnNuevo.Location = New System.Drawing.Point(10, 304)
+        Me.btnNuevo.Location = New System.Drawing.Point(12, 255)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Size = New System.Drawing.Size(150, 54)
         Me.btnNuevo.TabIndex = 35
@@ -781,7 +763,7 @@ Partial Class GestionarProductos
         Me.btnSurtir.ForeColor = System.Drawing.Color.White
         Me.btnSurtir.Image = CType(resources.GetObject("btnSurtir.Image"), System.Drawing.Image)
         Me.btnSurtir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSurtir.Location = New System.Drawing.Point(720, 304)
+        Me.btnSurtir.Location = New System.Drawing.Point(722, 255)
         Me.btnSurtir.Name = "btnSurtir"
         Me.btnSurtir.Size = New System.Drawing.Size(113, 54)
         Me.btnSurtir.TabIndex = 38
@@ -794,7 +776,7 @@ Partial Class GestionarProductos
         Me.pbActualizarTabla.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pbActualizarTabla.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbActualizarTabla.Image = CType(resources.GetObject("pbActualizarTabla.Image"), System.Drawing.Image)
-        Me.pbActualizarTabla.Location = New System.Drawing.Point(858, 250)
+        Me.pbActualizarTabla.Location = New System.Drawing.Point(856, 214)
         Me.pbActualizarTabla.Name = "pbActualizarTabla"
         Me.pbActualizarTabla.Size = New System.Drawing.Size(35, 35)
         Me.pbActualizarTabla.TabIndex = 39
@@ -803,7 +785,7 @@ Partial Class GestionarProductos
         'txtBuscarCodigo
         '
         Me.txtBuscarCodigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarCodigo.Location = New System.Drawing.Point(59, 64)
+        Me.txtBuscarCodigo.Location = New System.Drawing.Point(57, 28)
         Me.txtBuscarCodigo.MaxLength = 13
         Me.txtBuscarCodigo.Name = "txtBuscarCodigo"
         Me.txtBuscarCodigo.Size = New System.Drawing.Size(244, 26)
@@ -823,7 +805,7 @@ Partial Class GestionarProductos
         Me.btnEliminar.ForeColor = System.Drawing.Color.White
         Me.btnEliminar.Image = CType(resources.GetObject("btnEliminar.Image"), System.Drawing.Image)
         Me.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEliminar.Location = New System.Drawing.Point(344, 304)
+        Me.btnEliminar.Location = New System.Drawing.Point(346, 255)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(150, 54)
         Me.btnEliminar.TabIndex = 41
@@ -835,7 +817,7 @@ Partial Class GestionarProductos
         '
         Me.txtMinimoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtMinimoStock.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMinimoStock.Location = New System.Drawing.Point(869, 127)
+        Me.txtMinimoStock.Location = New System.Drawing.Point(867, 91)
         Me.txtMinimoStock.MaxLength = 3
         Me.txtMinimoStock.Name = "txtMinimoStock"
         Me.txtMinimoStock.Size = New System.Drawing.Size(55, 26)
@@ -847,7 +829,7 @@ Partial Class GestionarProductos
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(854, 98)
+        Me.Label3.Location = New System.Drawing.Point(852, 62)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(116, 21)
         Me.Label3.TabIndex = 43
@@ -858,7 +840,7 @@ Partial Class GestionarProductos
         Me.btnAjustarMinimoStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAjustarMinimoStock.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAjustarMinimoStock.Image = CType(resources.GetObject("btnAjustarMinimoStock.Image"), System.Drawing.Image)
-        Me.btnAjustarMinimoStock.Location = New System.Drawing.Point(937, 127)
+        Me.btnAjustarMinimoStock.Location = New System.Drawing.Point(935, 91)
         Me.btnAjustarMinimoStock.Name = "btnAjustarMinimoStock"
         Me.btnAjustarMinimoStock.Size = New System.Drawing.Size(24, 24)
         Me.btnAjustarMinimoStock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -879,7 +861,7 @@ Partial Class GestionarProductos
         Me.chbProdNoActivos.AutoSize = True
         Me.chbProdNoActivos.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chbProdNoActivos.ForeColor = System.Drawing.Color.White
-        Me.chbProdNoActivos.Location = New System.Drawing.Point(645, 65)
+        Me.chbProdNoActivos.Location = New System.Drawing.Point(643, 29)
         Me.chbProdNoActivos.Name = "chbProdNoActivos"
         Me.chbProdNoActivos.Size = New System.Drawing.Size(192, 25)
         Me.chbProdNoActivos.TabIndex = 48
@@ -899,7 +881,7 @@ Partial Class GestionarProductos
         Me.btnAgregarProd.ForeColor = System.Drawing.Color.White
         Me.btnAgregarProd.Image = CType(resources.GetObject("btnAgregarProd.Image"), System.Drawing.Image)
         Me.btnAgregarProd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAgregarProd.Location = New System.Drawing.Point(344, 304)
+        Me.btnAgregarProd.Location = New System.Drawing.Point(346, 255)
         Me.btnAgregarProd.Name = "btnAgregarProd"
         Me.btnAgregarProd.Size = New System.Drawing.Size(150, 54)
         Me.btnAgregarProd.TabIndex = 49
@@ -912,7 +894,7 @@ Partial Class GestionarProductos
         '
         Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(320, 55)
+        Me.PictureBox4.Location = New System.Drawing.Point(318, 19)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(32, 32)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -941,7 +923,6 @@ Partial Class GestionarProductos
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.txtBuscarProductos)
         Me.Controls.Add(Me.dgvProductos)
-        Me.Controls.Add(Me.btnCerrar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "GestionarProductos"
         Me.Text = "Productos"
@@ -964,7 +945,6 @@ Partial Class GestionarProductos
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnCerrar As System.Windows.Forms.Button
     Public WithEvents dgvProductos As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents txtBuscarProductos As System.Windows.Forms.TextBox

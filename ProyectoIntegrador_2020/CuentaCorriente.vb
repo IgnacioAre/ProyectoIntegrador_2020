@@ -132,7 +132,6 @@ Public Class CuentaCorriente
 
         btnDebe.Enabled = True
         btnHaber.Enabled = True
-        btnVerRegistro.Enabled = True
 
         ActualizarTablaRegistroVenta()
     End Sub
@@ -253,40 +252,14 @@ Public Class CuentaCorriente
     End Sub
 
 
-    Private Sub btnVerRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerRegistro.Click
-        gbRegistroCompras.Visible = True
-        btnVerRegistro.Visible = False
-        btnOcultarRegistro.Visible = True
-    End Sub
-
-    Private Sub btnOcultarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarRegistro.Click
-        gbRegistroCompras.Visible = False
-        btnVerRegistro.Visible = True
-        btnOcultarRegistro.Visible = False
-    End Sub
-
     Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         limpiarDebe()
     End Sub
 
 
-    Private Sub btnVerDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalleDebe.Click
-        txtDetalleDebe.Visible = True
-        txtDetalleDebe.Text = ""
-        btnVerDetalleDebe.Visible = False
-        btnOcultarDetalleDebe.Visible = True
-        txtDetalleDebe.Focus()
-    End Sub
-
-    Private Sub btnOcultarDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalleDebe.Click
-        txtDetalleDebe.Visible = False
-        btnVerDetalleDebe.Visible = True
-        btnOcultarDetalleDebe.Visible = False
-    End Sub
-
     Private Sub txtDetalle_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDetalleDebe.KeyPress
-        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-            e.Handled = True
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
+            e.Handled = False
 
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
@@ -305,7 +278,7 @@ Public Class CuentaCorriente
         gbDebe.Visible = False
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         MenuPrincipal.formularioBool = False
         Me.Close()
         MenuPrincipal.lblTituloVentana.Text = "Menú Principal"
@@ -321,18 +294,12 @@ Public Class CuentaCorriente
     Private Sub limpiarDebe()
         gbDebe.Visible = False
         txtDineroDebe.Text = ""
-        btnOcultarDetalleDebe.Visible = False
-        btnVerDetalleDebe.Visible = True
         txtDetalleDebe.Text = ""
-        txtDetalleDebe.Visible = False
     End Sub
 
     Sub limpiarHaber()
         gbHaber.Visible = False
         txtDineroHaber.Text = ""
-        btnOcultarDetalleHaber.Visible = False
-        btnVerDetalleHaber.Visible = True
-        txtDetalleHaber.Visible = False
         txtDetalleHaber.Text = ""
     End Sub
 
@@ -340,7 +307,6 @@ Public Class CuentaCorriente
     Private Sub dgvRegistroVentas_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvRegistroVentas.SelectionChanged
         Dim row As DataGridViewRow = dgvRegistroVentas.CurrentRow
 
-        txtDetalleHaber.Visible = False
 
         If dgvRegistroVentas.SelectedCells.Count <> 0 Then
             idCompra = dgvRegistroVentas.SelectedCells(0).Value
@@ -422,19 +388,7 @@ Public Class CuentaCorriente
 
 
 
-    Private Sub btnOcultarDetalleHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalleHaber.Click
-        txtDetalleHaber.Visible = False
-        btnVerDetalleHaber.Visible = True
-        btnOcultarDetalleHaber.Visible = False
-    End Sub
-
-    Private Sub btnVerDetalleHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalleHaber.Click
-        txtDetalleHaber.Visible = True
-        txtDetalleHaber.Text = ""
-        btnVerDetalleHaber.Visible = False
-        btnOcultarDetalleHaber.Visible = True
-        txtDetalleHaber.Focus()
-    End Sub
+    
 
     Private Sub btnCobrarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDescontarHaber.Click
         pagarDeuda()
@@ -522,8 +476,8 @@ Public Class CuentaCorriente
     End Sub
 
     Private Sub txtDetalleHaber_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDetalleHaber.KeyPress
-        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-            e.Handled = True
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
+            e.Handled = False
 
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False

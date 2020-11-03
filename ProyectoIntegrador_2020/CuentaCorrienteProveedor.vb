@@ -58,7 +58,6 @@ Public Class CuentaCorrienteProveedor
         limpiarHaber()
         gbDebe.Visible = True
         gbHaber.Visible = False
-        btnVerDetalleDebe.Visible = True
         btnPagarTodoRegistro.Enabled = True
         txtDineroDebe.Focus()
 
@@ -75,7 +74,6 @@ Public Class CuentaCorrienteProveedor
 
         btnDebe.Enabled = True
         btnHaber.Enabled = True
-        btnVerRegistro.Enabled = True
 
         chkRegistroCompleto.Checked = False
         ActualizarTablaRegistroVenta()
@@ -130,18 +128,12 @@ Public Class CuentaCorrienteProveedor
     Private Sub limpiarDebe()
         gbHaber.Visible = False
         txtDineroHaber.Text = ""
-        btnOcultarDetalleHaber.Visible = False
-        btnVerDetalleHaber.Visible = True
         txtDetalleHaber.Text = ""
-        txtDetalleHaber.Visible = False
     End Sub
 
     Sub limpiarHaber()
         gbDebe.Visible = False
         txtDineroHaber.Text = ""
-        btnOcultarDetalleDebe.Visible = False
-        btnVerDetalleDebe.Visible = True
-        txtDetalleDebe.Visible = False
         txtDetalleDebe.Text = ""
     End Sub
 
@@ -180,21 +172,6 @@ Public Class CuentaCorrienteProveedor
     Private Sub mostrarMensaje(ByVal mensajeObtenido As String)
         Dim mensaje As New Mensaje(mensajeObtenido)
     End Sub
-
-
-
-    Private Sub btnVerRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerRegistro.Click
-        gbRegistroCompras.Visible = True
-        btnVerRegistro.Visible = False
-        btnOcultarRegistro.Visible = True
-    End Sub
-
-    Private Sub btnOcultarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarRegistro.Click
-        gbRegistroCompras.Visible = False
-        btnVerRegistro.Visible = True
-        btnOcultarRegistro.Visible = False
-    End Sub
-
 
 
     Private Sub dgvRegistroCompras_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvRegistroCompras.SelectionChanged
@@ -273,19 +250,6 @@ Public Class CuentaCorrienteProveedor
     End Sub
 
 
-    Private Sub btnOcultarDetalleHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalleDebe.Click
-        txtDetalleDebe.Visible = False
-        btnVerDetalleDebe.Visible = True
-        btnOcultarDetalleDebe.Visible = False
-    End Sub
-
-    Private Sub btnVerDetalleHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalleDebe.Click
-        txtDetalleDebe.Visible = True
-        txtDetalleDebe.Text = ""
-        btnVerDetalleDebe.Visible = False
-        btnOcultarDetalleDebe.Visible = True
-        txtDetalleDebe.Focus()
-    End Sub
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
         MenuPrincipal.formularioBool = False
@@ -418,19 +382,6 @@ Public Class CuentaCorrienteProveedor
 
     End Sub
 
-    Private Sub btnVerDetalleDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerDetalleHaber.Click
-        txtDetalleHaber.Visible = True
-        txtDetalleHaber.Text = ""
-        btnVerDetalleHaber.Visible = False
-        btnOcultarDetalleHaber.Visible = True
-        txtDetalleHaber.Focus()
-    End Sub
-
-    Private Sub btnOcultarDetalleDebe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOcultarDetalleHaber.Click
-        txtDetalleHaber.Visible = False
-        btnVerDetalleHaber.Visible = True
-        btnOcultarDetalleHaber.Visible = False
-    End Sub
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarHaber.Click
         limpiarHaber()

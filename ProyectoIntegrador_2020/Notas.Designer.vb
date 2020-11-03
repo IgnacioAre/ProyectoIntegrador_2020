@@ -26,7 +26,6 @@ Partial Class Notas
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Notas))
-        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.dgvNotas = New Guna.UI.WinForms.GunaDataGridView()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.btnModificar = New System.Windows.Forms.Button()
@@ -38,23 +37,6 @@ Partial Class Notas
         CType(Me.dgvNotas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'btnCerrar
-        '
-        Me.btnCerrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnCerrar.FlatAppearance.BorderSize = 0
-        Me.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.ForeColor = System.Drawing.Color.White
-        Me.btnCerrar.Location = New System.Drawing.Point(5, 4)
-        Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(28, 27)
-        Me.btnCerrar.TabIndex = 24
-        Me.btnCerrar.Text = "X"
-        Me.btnCerrar.UseVisualStyleBackColor = False
         '
         'dgvNotas
         '
@@ -214,15 +196,15 @@ Partial Class Notas
         Me.txtBuscarTexto.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtBuscarTexto.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarTexto.Location = New System.Drawing.Point(109, 25)
+        Me.txtBuscarTexto.Location = New System.Drawing.Point(66, 21)
         Me.txtBuscarTexto.Name = "txtBuscarTexto"
-        Me.txtBuscarTexto.Size = New System.Drawing.Size(391, 31)
+        Me.txtBuscarTexto.Size = New System.Drawing.Size(434, 31)
         Me.txtBuscarTexto.TabIndex = 53
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(62, 20)
+        Me.PictureBox1.Location = New System.Drawing.Point(19, 16)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(41, 36)
         Me.PictureBox1.TabIndex = 52
@@ -242,7 +224,6 @@ Partial Class Notas
         Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.dgvNotas)
-        Me.Controls.Add(Me.btnCerrar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Notas"
         Me.Text = "Notas"
@@ -252,7 +233,6 @@ Partial Class Notas
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnCerrar As System.Windows.Forms.Button
     Friend WithEvents dgvNotas As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents btnGuardar As System.Windows.Forms.Button
     Friend WithEvents btnModificar As System.Windows.Forms.Button

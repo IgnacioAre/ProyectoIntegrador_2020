@@ -98,7 +98,7 @@ Public Class SurtirProductos
 
     Sub insertarCompra()
 
-        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
+        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 1 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
             Dim precioCosto As Integer = (Val(txtImporteCosto.Text) / Val(txtCantidad.Text))
             Dim precioVenta As Integer = (precioCosto + ((Val(txtGanancia.Text) * precioCosto) / 100))
             nuevaCompra.Add(New Surtido(contadorCompra, txtCodigoProducto.Text, txtImporteCosto.Text, precioVenta, precioCosto, txtCantidad.Text, lblNombre.Text, txtGanancia.Text))
@@ -351,7 +351,7 @@ Public Class SurtirProductos
     End Sub
 
     Private Sub txtCodigoProducto_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCodigoProducto.TextChanged
-        If txtCodigoProducto.TextLength >= 2 Then
+        If txtCodigoProducto.TextLength >= 1 Then
             consulta.consultaReturnHide("SELECT Nombre FROM productos where idProducto=" & txtCodigoProducto.Text & ";")
             lblNombre.Text = consulta.valorReturn
             consulta.consultaReturnHide("SELECT REPLACE(cantidadUnidad,',','.') FROM productos where idProducto=" & txtCodigoProducto.Text & ";")

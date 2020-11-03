@@ -42,7 +42,7 @@ Public Class GestionarProductos
         surtir.ShowDialog()
     End Sub
 
-    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
     End Sub
 
@@ -444,7 +444,7 @@ Public Class GestionarProductos
             If Val(txtPorcentaje.Text) > 0 Then
                 If Not txtPrecioCosto.Text.Equals("0") And Not txtPrecioVenta.Text.Equals("0") Then
                     precioCosto = Val(txtPrecioCosto.Text)
-                    precioVenta = Val(txtPrecioVenta.Text)
+                    precioVenta = (precioCosto + ((Val(txtPorcentaje.Text) * precioCosto) / 100))
                     consulta.consultaHide("UPDATE surtidoProductos set precioCosto=" & precioCosto & ", precioVenta=" & precioVenta & ", Cantidad=" & txtCantidad.Text & ", porcentajeGanancia=" & txtPorcentaje.Text & " where idSurtido=" & idSurtido & ";")
                 Else
                     If Not txtPrecioCosto.Text.Equals("0") Then

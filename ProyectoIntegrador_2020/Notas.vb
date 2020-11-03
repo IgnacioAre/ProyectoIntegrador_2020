@@ -27,7 +27,7 @@ Public Class Notas
         ActualizarTablaNotas()
     End Sub
 
-    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
     End Sub
 
@@ -112,6 +112,7 @@ Public Class Notas
         If resultado = 1 Then
             consulta.consultaHide("delete from notas where idNota =  " & idNota & ";")
             ActualizarTablaNotas()
+            txtNota.Text = ""
         Else
             mostrarMensaje("No se pudo eliminar la nota.")
         End If
@@ -145,13 +146,13 @@ Public Class Notas
         If txtNota.Text.Count >= 27 Then
             txtNota.Multiline = True
         Else
-            txtNota.ScrollBars = False
+            txtNota.Multiline = False
         End If
     End Sub
 
     Private Sub txtBuscarTexto_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarTexto.KeyPress
-        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-            e.Handled = True
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
+            e.Handled = False
 
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
@@ -173,8 +174,8 @@ Public Class Notas
     End Sub
 
     Private Sub txtNota_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNota.KeyPress
-        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-            e.Handled = True
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
+            e.Handled = False
 
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False

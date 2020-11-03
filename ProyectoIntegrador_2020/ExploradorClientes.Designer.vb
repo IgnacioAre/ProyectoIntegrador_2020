@@ -44,7 +44,6 @@ Partial Class ExploradorClientes
         Me.btnEditarTel = New System.Windows.Forms.PictureBox()
         Me.dgvTelefono = New Guna.UI.WinForms.GunaDataGridView()
         Me.chkNoActivos = New System.Windows.Forms.CheckBox()
-        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.pbActualizarTabla = New System.Windows.Forms.PictureBox()
         Me.gpInformacion = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -105,7 +104,6 @@ Partial Class ExploradorClientes
         Me.panelClientes.Controls.Add(Me.btnActivo)
         Me.panelClientes.Controls.Add(Me.GroupBox1)
         Me.panelClientes.Controls.Add(Me.chkNoActivos)
-        Me.panelClientes.Controls.Add(Me.btnCerrar)
         Me.panelClientes.Controls.Add(Me.pbActualizarTabla)
         Me.panelClientes.Controls.Add(Me.gpInformacion)
         Me.panelClientes.Controls.Add(Me.PictureBox1)
@@ -123,7 +121,7 @@ Partial Class ExploradorClientes
         '
         Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(354, 24)
+        Me.PictureBox4.Location = New System.Drawing.Point(398, 30)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(32, 32)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -136,7 +134,7 @@ Partial Class ExploradorClientes
         Me.txtBuscarCodigoCli.Location = New System.Drawing.Point(93, 33)
         Me.txtBuscarCodigoCli.MaxLength = 13
         Me.txtBuscarCodigoCli.Name = "txtBuscarCodigoCli"
-        Me.txtBuscarCodigoCli.Size = New System.Drawing.Size(244, 26)
+        Me.txtBuscarCodigoCli.Size = New System.Drawing.Size(299, 26)
         Me.txtBuscarCodigoCli.TabIndex = 55
         Me.txtBuscarCodigoCli.Visible = False
         '
@@ -145,7 +143,7 @@ Partial Class ExploradorClientes
         Me.txtBuscarNombreCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBuscarNombreCli.Location = New System.Drawing.Point(93, 32)
         Me.txtBuscarNombreCli.Name = "txtBuscarNombreCli"
-        Me.txtBuscarNombreCli.Size = New System.Drawing.Size(244, 26)
+        Me.txtBuscarNombreCli.Size = New System.Drawing.Size(299, 26)
         Me.txtBuscarNombreCli.TabIndex = 54
         '
         'btnActivo
@@ -294,23 +292,6 @@ Partial Class ExploradorClientes
         Me.chkNoActivos.TabIndex = 24
         Me.chkNoActivos.Text = "Clientes no activos"
         Me.chkNoActivos.UseVisualStyleBackColor = True
-        '
-        'btnCerrar
-        '
-        Me.btnCerrar.BackColor = System.Drawing.Color.Black
-        Me.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnCerrar.FlatAppearance.BorderSize = 0
-        Me.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.ForeColor = System.Drawing.Color.White
-        Me.btnCerrar.Location = New System.Drawing.Point(3, 3)
-        Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(28, 27)
-        Me.btnCerrar.TabIndex = 23
-        Me.btnCerrar.Text = "X"
-        Me.btnCerrar.UseVisualStyleBackColor = False
         '
         'pbActualizarTabla
         '
@@ -851,7 +832,6 @@ Partial Class ExploradorClientes
     Friend WithEvents btnEliminarTel As System.Windows.Forms.PictureBox
     Friend WithEvents btnEditarTel As System.Windows.Forms.PictureBox
     Friend WithEvents btnAgregarTel As System.Windows.Forms.PictureBox
-    Friend WithEvents btnCerrar As System.Windows.Forms.Button
     Friend WithEvents panelEditarRegistro As System.Windows.Forms.Panel
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents txtDetalleRegistro As System.Windows.Forms.TextBox
