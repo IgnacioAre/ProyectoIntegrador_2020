@@ -339,30 +339,32 @@ Public Class CuentaCorriente
                 ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
                 ConfirmacionMensaje.entradaDatos("Ingrese el nombre del cobrador:")
                 resultadosEntrada = ConfirmacionMensaje.resultadoTxt
-            Loop While resultadosEntrada = ""
+            Loop While resultadosEntrada = "" And ConfirmacionMensaje.resultado = 1
+
+            If Not resultadosEntrada = "" Then
+                consultas.consultaHide("UPDATE compraCliente set adeudoBool=0 where adeudoBool <> 2 AND idCliente=" & idCliente & ";")
+                If consultas.resultado = 1 Then
+
+                    'ACTUALIZO LA DEUDA EN EL CLIENTE
+
+                    consultas.consultaReturnHide("SELECT Saldo from Clientes where idCliente=" & idCliente & ";")
+                    Dim saldoActual As Long = Val(consultas.valorReturn)
+
+                    consultas.consultaHide("UPDATE Clientes set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idCliente=" & idCliente & ";")
 
 
-            consultas.consultaHide("UPDATE compraCliente set adeudoBool=0 where adeudoBool <> 2 AND idCliente=" & idCliente & ";")
-            If consultas.resultado = 1 Then
-
-                'ACTUALIZO LA DEUDA EN EL CLIENTE
-
-                consultas.consultaReturnHide("SELECT Saldo from Clientes where idCliente=" & idCliente & ";")
-                Dim saldoActual As Long = Val(consultas.valorReturn)
-
-                consultas.consultaHide("UPDATE Clientes set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idCliente=" & idCliente & ";")
-
-
-                If txtDetalleHaber.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO compraCliente (Saldo,Cobrador,fechaCompra,adeudoBool,idCliente) VALUES (-" & txtDineroHaber.Text & ",'" & resultadosEntrada & "',NOW(),2," & idCliente & ");")
-                Else
-                    consultas.consultaHide("INSERT INTO compraCliente (Saldo,Detalle,Cobrador,fechaCompra,adeudoBool,idCliente) VALUES (-" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "','" & resultadosEntrada & "',NOW(),2," & idCliente & ");")
+                    If txtDetalleHaber.Text.Equals("") Then
+                        consultas.consultaHide("INSERT INTO compraCliente (Saldo,Cobrador,fechaCompra,adeudoBool,idCliente) VALUES (-" & txtDineroHaber.Text & ",'" & resultadosEntrada & "',NOW(),2," & idCliente & ");")
+                    Else
+                        consultas.consultaHide("INSERT INTO compraCliente (Saldo,Detalle,Cobrador,fechaCompra,adeudoBool,idCliente) VALUES (-" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "','" & resultadosEntrada & "',NOW(),2," & idCliente & ");")
+                    End If
+                    ActualizarTablaRegistroVenta()
+                    actualizarTablaConId()
+                    txtBuscarNombreCli.Focus()
+                    limpiarHaber()
                 End If
-                ActualizarTablaRegistroVenta()
-                actualizarTablaConId()
-                txtBuscarNombreCli.Focus()
-                limpiarHaber()
             End If
+            
 
         End If
     End Sub

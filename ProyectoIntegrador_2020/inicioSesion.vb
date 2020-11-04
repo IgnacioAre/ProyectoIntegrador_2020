@@ -5,6 +5,8 @@ Public Class inicioSesion
     Dim consultas As Conexion = New Conexion
     Dim ruta As String = "./usuario/"
     Dim archivoGuardarNombreUsr As String = "usuario.txt"
+    Dim resultado As Byte
+    Dim resultadoEntrada As String
 
     '----CLAVE PARA CREAR UN USUARIO ADMIN----'
     Dim claveAdmin As String = "7r7w7x"
@@ -440,6 +442,34 @@ Public Class inicioSesion
                 e.Handled = True
             End If
 
+        End If
+    End Sub
+
+    Private Sub linkRecuperarContraseña_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles linkRecuperarContraseña.LinkClicked
+        ConfirmacionMensaje.btnAceptar.Text = "Si"
+        ConfirmacionMensaje.btnCancelar.Text = "No"
+        resultado = ConfirmacionMensaje.confirmacion("  ¿Quiere que le envien su contraseña" & vbCrLf & "    al correo asociado a su cuenta?")
+
+        If resultado = 1 Then
+            Do
+                ConfirmacionMensaje.btnAceptar.Text = "Aceptar"
+                ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
+                ConfirmacionMensaje.entradaDatos("Ingrese su nombre de usuario:")
+                resultadoEntrada = ConfirmacionMensaje.resultadoTxt
+            Loop While resultadoEntrada = "" And ConfirmacionMensaje.resultado = 1
+
+            If Not resultadoEntrada = "" Then
+                consultas.consultaReturnHide("SELECT CAST(aes_decrypt(contraseña,'2@17501896') as char) FROM Admin where usuario='" & resultadoEntrada & "';")
+                If Not consultas.valorReturn = "" Then
+                    Dim contraseña As String = consultas.valorReturn
+                    consultas.consultaReturnHide("SELECT correo FROM Admin where usuario='" & resultadoEntrada & "';")
+                    Dim correo As String = consultas.valorReturn
+                    enviarCorreo("new.visual@edusalto.uy", "newvisual@2020", resultadoEntrada & " su contraseña es: " & contraseña, "Contraseña de ingreso", correo)
+                Else
+                    mostrarMensaje("  No existe un usuario con ese nombre," & vbCrLf & "  asegurese que este bien escrito.")
+                End If
+                
+            End If
         End If
     End Sub
 
