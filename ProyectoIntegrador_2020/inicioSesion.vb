@@ -345,7 +345,7 @@ Public Class inicioSesion
 
     Sub crearUsuarioAdmin()
         If txtClaveAdminRegistro.Text.Equals(claveAdmin) Then
-            If Not txtUsuarioRegistro.Text.Equals("") And Not txtContraseñaRegistro.Text.Equals("") And Not txtRepContraseñaRegistro.Text.Equals("") Then
+            If Not txtUsuarioRegistro.Text.Equals("") And Not txtContraseñaRegistro.Text.Equals("") And Not txtRepContraseñaRegistro.Text.Equals("") And Not txtCorreo.Text.Equals("") Then
                 If Not txtContraseñaRegistro.Text.Equals(txtRepContraseñaRegistro.Text) Then
                     mostrarMensaje("Las contraseñas no coinciden." & vbCrLf & "Intente nuevamente.")
                 Else

@@ -58,7 +58,7 @@ Public Class Notas
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
         If Not txtNota.Text.Equals("") Then
-
+            btnModificar.Enabled = True
             consulta.consultaReturnHide("select idadmin from notas where idnota = 1;")
             Dim idadmin As Byte = Val(consulta.valorReturn)
 
@@ -94,6 +94,7 @@ Public Class Notas
 
     Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
         editarBool = True
+        btnModificar.Enabled = False
         consulta.consultaReturnHide("select texto from notas where idnota =  " & idNota & ";")
         txtNota.Text = consulta.valorReturn
         dgvNotas.Enabled = False
@@ -112,6 +113,7 @@ Public Class Notas
         If resultado = 1 Then
             consulta.consultaHide("delete from notas where idNota =  " & idNota & ";")
             ActualizarTablaNotas()
+            dgvNotas.Enabled = True
             txtNota.Text = ""
         Else
             mostrarMensaje("No se pudo eliminar la nota.")

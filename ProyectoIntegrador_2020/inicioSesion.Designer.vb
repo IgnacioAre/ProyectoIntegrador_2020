@@ -60,7 +60,7 @@ Partial Class inicioSesion
         Me.lblAceptable1 = New System.Windows.Forms.Label()
         Me.lblAceptable2 = New System.Windows.Forms.Label()
         Me.panelRegistro = New System.Windows.Forms.Panel()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtCorreo = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.panelTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -481,7 +481,7 @@ Partial Class inicioSesion
         '
         Me.panelRegistro.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.panelRegistro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panelRegistro.Controls.Add(Me.TextBox1)
+        Me.panelRegistro.Controls.Add(Me.txtCorreo)
         Me.panelRegistro.Controls.Add(Me.Label3)
         Me.panelRegistro.Controls.Add(Me.lblAceptable2)
         Me.panelRegistro.Controls.Add(Me.lblAceptable1)
@@ -503,15 +503,15 @@ Partial Class inicioSesion
         Me.panelRegistro.TabIndex = 19
         Me.panelRegistro.Visible = False
         '
-        'TextBox1
+        'txtCorreo
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.TextBox1.Location = New System.Drawing.Point(82, 199)
-        Me.TextBox1.MaxLength = 30
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(215, 27)
-        Me.TextBox1.TabIndex = 3
+        Me.txtCorreo.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCorreo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.txtCorreo.Location = New System.Drawing.Point(82, 199)
+        Me.txtCorreo.MaxLength = 30
+        Me.txtCorreo.Name = "txtCorreo"
+        Me.txtCorreo.Size = New System.Drawing.Size(215, 27)
+        Me.txtCorreo.TabIndex = 3
         '
         'Label3
         '
@@ -588,7 +588,7 @@ Partial Class inicioSesion
     Friend WithEvents lblAceptable1 As System.Windows.Forms.Label
     Friend WithEvents lblAceptable2 As System.Windows.Forms.Label
     Friend WithEvents panelRegistro As System.Windows.Forms.Panel
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtCorreo As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents linkRecuperarContraseña As System.Windows.Forms.LinkLabel
 End Class

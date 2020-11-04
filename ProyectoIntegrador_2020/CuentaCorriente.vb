@@ -13,13 +13,13 @@ Public Class CuentaCorriente
 
     Private Sub Pruebas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         consultas.establecerConexion()
-        SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
+        SendMessage(txtBuscarNombreCli.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
         limpiarHaber()
         limpiarDebe()
     End Sub
 
     Private Sub CuentaCorriente_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
-        txtBuscarClientes.Focus()
+        txtBuscarNombreCli.Focus()
         btnDebe.Enabled = False
         btnHaber.Enabled = False
         actualizarTabla()
@@ -41,8 +41,8 @@ Public Class CuentaCorriente
 
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
-    Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
+    Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarNombreCli.TextChanged
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarNombreCli.Text & "%';")
         dgvClientes.Columns(3).Width = 0
     End Sub
 
@@ -88,7 +88,7 @@ Public Class CuentaCorriente
             actualizarTablaConId()
             ActualizarTablaRegistroVenta()
             limpiarDebe()
-            txtBuscarClientes.Focus()
+            txtBuscarNombreCli.Focus()
             limpiarDebe()
 
         Else
@@ -133,12 +133,12 @@ Public Class CuentaCorriente
     '----MUESTRA O ESCONDE CAMPO DE AGREGAR DETALLE----'
 
 
-    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
+    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         actualizarTabla()
         limpiarDebe()
         limpiarHaber()
-        txtBuscarClientes.Text = ""
-        txtBuscarClientes.Focus()
+        txtBuscarNombreCli.Text = ""
+        txtBuscarNombreCli.Focus()
     End Sub
 
     '----MÉTODO QUE ACTUALIZA LA TABLA----'
@@ -183,18 +183,18 @@ Public Class CuentaCorriente
     '----MÉTODO QUE SOLO DEJA INGRESAR NÚMEROS Y TECLA RETROCESO----'
 
     Private Sub txtDinero_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDineroDebe.KeyPress
-            If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-                e.Handled = True
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
 
-                If e.KeyChar = ChrW(Keys.Enter) Then
+            If e.KeyChar = ChrW(Keys.Enter) Then
                 If txtDineroDebe.Text.Equals("") Then
                     e.Handled = True
                     mostrarMensaje("El saldo no puede estar vacio.")
                 Else
                     actualizarDeuda()
                 End If
-                End If
             End If
+        End If
     End Sub
 
     '----MÉTODO QUE PINTA DE ROJO LOS SALDOS QUE NO SEAN PERMITIDOS POR EL ADMINISTRADOR----'
@@ -210,7 +210,7 @@ Public Class CuentaCorriente
         End If
     End Sub
 
-    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
+    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarNombreCli.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             dgvClientes.Focus()
         Else
@@ -360,7 +360,7 @@ Public Class CuentaCorriente
                 End If
                 ActualizarTablaRegistroVenta()
                 actualizarTablaConId()
-                txtBuscarClientes.Focus()
+                txtBuscarNombreCli.Focus()
                 limpiarHaber()
             End If
 
@@ -481,5 +481,21 @@ Public Class CuentaCorriente
             End If
 
         End If
+    End Sub
+
+    Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox4.Click
+        actualizarTabla()
+        If txtBuscarNombreCli.Visible Then
+            txtBuscarCodigoCli.Visible = True
+            txtBuscarNombreCli.Visible = False
+        Else
+            txtBuscarNombreCli.Visible = True
+            txtBuscarCodigoCli.Visible = False
+        End If
+    End Sub
+
+    Private Sub txtBuscarCodigoCli_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigoCli.TextChanged
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND idCliente LIKE '%" & txtBuscarCodigoCli.Text & "%';")
+        dgvClientes.Columns(3).Width = 0
     End Sub
 End Class

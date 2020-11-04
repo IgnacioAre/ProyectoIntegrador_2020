@@ -13,13 +13,13 @@ Public Class CuentaCorrienteProveedor
     '----INICIO DEL FORMULARIO----'
 
     Private Sub Pruebas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        txtBuscarClientes.Focus()
+        txtBuscarNombreProv.Focus()
         Me.ttpHaber.SetToolTip(btnHaber, "Aquí podrás añadir dinero a la cuenta del cliente.")
         Me.ttpHaber.SetToolTip(btnHaber, "Aquí podrás descontar o pagar todo el dinero a la cuenta del cliente.")
         btnDebe.Enabled = False
         btnHaber.Enabled = False
         consultas.establecerConexion()
-        SendMessage(txtBuscarClientes.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por nombre")
+        SendMessage(txtBuscarNombreProv.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por nombre")
         actualizarTabla()
     End Sub
 
@@ -34,8 +34,8 @@ Public Class CuentaCorrienteProveedor
 
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
-    Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo FROM Proveedores where estadoBool=1 And Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
+    Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarNombreProv.TextChanged
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo FROM Proveedores where estadoBool=1 And Nombre LIKE '%" & txtBuscarNombreProv.Text & "%';")
     End Sub
 
     Private Sub btnCerrar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -83,11 +83,11 @@ Public Class CuentaCorrienteProveedor
     '----MUESTRA O ESCONDE CAMPO DE AGREGAR DETALLE----'
 
 
-    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
+    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         actualizarTabla()
         ActualizarTablaRegistroVenta()
-        txtBuscarClientes.Text = ""
-        txtBuscarClientes.Focus()
+        txtBuscarNombreProv.Text = ""
+        txtBuscarNombreProv.Focus()
     End Sub
 
     '----MÉTODO QUE ACTUALIZA LA TABLA----'
@@ -151,7 +151,7 @@ Public Class CuentaCorrienteProveedor
         End If
     End Sub
 
-    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
+    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarNombreProv.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             dgvProveedores.Focus()
         Else
@@ -242,7 +242,7 @@ Public Class CuentaCorrienteProveedor
                 End If
                 ActualizarTablaRegistroVenta()
                 actualizarTablaConId()
-                txtBuscarClientes.Focus()
+                txtBuscarNombreProv.Focus()
                 limpiarHaber()
             End If
 
@@ -251,7 +251,7 @@ Public Class CuentaCorrienteProveedor
 
 
 
-    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         MenuPrincipal.formularioBool = False
         Me.Close()
         MenuPrincipal.lblTituloVentana.Text = "Menú Principal"
@@ -374,7 +374,7 @@ Public Class CuentaCorrienteProveedor
             actualizarTablaConId()
             ActualizarTablaRegistroVenta()
             limpiarDebe()
-            txtBuscarClientes.Focus()
+            txtBuscarNombreProv.Focus()
 
         Else
             mostrarMensaje("Error. Verifique el dinero ingresado.")
@@ -454,5 +454,20 @@ Public Class CuentaCorrienteProveedor
             End If
 
         End If
+    End Sub
+
+    Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox4.Click
+        actualizarTabla()
+        If txtBuscarNombreProv.Visible Then
+            txtBuscarCodigoProv.Visible = True
+            txtBuscarNombreProv.Visible = False
+        Else
+            txtBuscarNombreProv.Visible = True
+            txtBuscarCodigoProv.Visible = False
+        End If
+    End Sub
+
+    Private Sub txtBuscarCodigoProv_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigoProv.TextChanged
+        dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo FROM Proveedores where estadoBool=1 And idProveedor LIKE '%" & txtBuscarCodigoProv.Text & "%';")
     End Sub
 End Class

@@ -30,15 +30,13 @@ Partial Class CuentaCorrienteProveedor
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.txtBuscarClientes = New System.Windows.Forms.TextBox()
+        Me.txtBuscarNombreProv = New System.Windows.Forms.TextBox()
         Me.btnDebe = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.dgvProveedores = New Guna.UI.WinForms.GunaDataGridView()
-        Me.pbActualizarTabla = New System.Windows.Forms.PictureBox()
         Me.dgvRegistroCompras = New Guna.UI.WinForms.GunaDataGridView()
         Me.gbRegistroCompras = New System.Windows.Forms.GroupBox()
         Me.chkRegistroCompleto = New System.Windows.Forms.CheckBox()
-        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.btnPagarTodoRegistro = New System.Windows.Forms.Button()
         Me.gbDebe = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -61,22 +59,24 @@ Partial Class CuentaCorrienteProveedor
         Me.btnHaber = New System.Windows.Forms.Button()
         Me.ttpHaber = New System.Windows.Forms.ToolTip(Me.components)
         Me.ttpDebe = New System.Windows.Forms.ToolTip(Me.components)
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.txtBuscarCodigoProv = New System.Windows.Forms.TextBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvRegistroCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbRegistroCompras.SuspendLayout()
         Me.gbDebe.SuspendLayout()
         Me.gbHaber.SuspendLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'txtBuscarClientes
+        'txtBuscarNombreProv
         '
-        Me.txtBuscarClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarClientes.Location = New System.Drawing.Point(136, 21)
-        Me.txtBuscarClientes.Name = "txtBuscarClientes"
-        Me.txtBuscarClientes.Size = New System.Drawing.Size(244, 26)
-        Me.txtBuscarClientes.TabIndex = 0
+        Me.txtBuscarNombreProv.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarNombreProv.Location = New System.Drawing.Point(71, 20)
+        Me.txtBuscarNombreProv.Name = "txtBuscarNombreProv"
+        Me.txtBuscarNombreProv.Size = New System.Drawing.Size(299, 26)
+        Me.txtBuscarNombreProv.TabIndex = 0
         '
         'btnDebe
         '
@@ -98,7 +98,7 @@ Partial Class CuentaCorrienteProveedor
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(89, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(24, 11)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(41, 36)
         Me.PictureBox1.TabIndex = 14
@@ -139,12 +139,12 @@ Partial Class CuentaCorrienteProveedor
         Me.dgvProveedores.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvProveedores.EnableHeadersVisualStyles = False
         Me.dgvProveedores.GridColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(62, Byte), Integer))
-        Me.dgvProveedores.Location = New System.Drawing.Point(89, 62)
+        Me.dgvProveedores.Location = New System.Drawing.Point(27, 62)
         Me.dgvProveedores.Name = "dgvProveedores"
         Me.dgvProveedores.ReadOnly = True
         Me.dgvProveedores.RowHeadersVisible = False
         Me.dgvProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProveedores.Size = New System.Drawing.Size(673, 180)
+        Me.dgvProveedores.Size = New System.Drawing.Size(735, 180)
         Me.dgvProveedores.TabIndex = 18
         Me.dgvProveedores.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
         Me.dgvProveedores.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
@@ -168,16 +168,6 @@ Partial Class CuentaCorrienteProveedor
         Me.dgvProveedores.ThemeStyle.RowsStyle.Height = 22
         Me.dgvProveedores.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
         Me.dgvProveedores.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'pbActualizarTabla
-        '
-        Me.pbActualizarTabla.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbActualizarTabla.Image = CType(resources.GetObject("pbActualizarTabla.Image"), System.Drawing.Image)
-        Me.pbActualizarTabla.Location = New System.Drawing.Point(16, 103)
-        Me.pbActualizarTabla.Name = "pbActualizarTabla"
-        Me.pbActualizarTabla.Size = New System.Drawing.Size(35, 35)
-        Me.pbActualizarTabla.TabIndex = 23
-        Me.pbActualizarTabla.TabStop = False
         '
         'dgvRegistroCompras
         '
@@ -271,23 +261,6 @@ Partial Class CuentaCorrienteProveedor
         Me.chkRegistroCompleto.TabIndex = 34
         Me.chkRegistroCompleto.Text = "Ver Registro Completo"
         Me.chkRegistroCompleto.UseVisualStyleBackColor = True
-        '
-        'btnCerrar
-        '
-        Me.btnCerrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.btnCerrar.FlatAppearance.BorderSize = 0
-        Me.btnCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.ForeColor = System.Drawing.Color.White
-        Me.btnCerrar.Location = New System.Drawing.Point(6, 7)
-        Me.btnCerrar.Name = "btnCerrar"
-        Me.btnCerrar.Size = New System.Drawing.Size(28, 27)
-        Me.btnCerrar.TabIndex = 30
-        Me.btnCerrar.Text = "X"
-        Me.btnCerrar.UseVisualStyleBackColor = False
         '
         'btnPagarTodoRegistro
         '
@@ -552,28 +525,48 @@ Partial Class CuentaCorrienteProveedor
         Me.btnHaber.Text = "Debe"
         Me.btnHaber.UseVisualStyleBackColor = False
         '
+        'PictureBox4
+        '
+        Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
+        Me.PictureBox4.Location = New System.Drawing.Point(379, 13)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(32, 32)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox4.TabIndex = 55
+        Me.PictureBox4.TabStop = False
+        '
+        'txtBuscarCodigoProv
+        '
+        Me.txtBuscarCodigoProv.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarCodigoProv.Location = New System.Drawing.Point(71, 20)
+        Me.txtBuscarCodigoProv.MaxLength = 13
+        Me.txtBuscarCodigoProv.Name = "txtBuscarCodigoProv"
+        Me.txtBuscarCodigoProv.Size = New System.Drawing.Size(299, 26)
+        Me.txtBuscarCodigoProv.TabIndex = 54
+        Me.txtBuscarCodigoProv.Visible = False
+        '
         'CuentaCorrienteProveedor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.CadetBlue
         Me.ClientSize = New System.Drawing.Size(1010, 750)
+        Me.Controls.Add(Me.PictureBox4)
+        Me.Controls.Add(Me.txtBuscarCodigoProv)
         Me.Controls.Add(Me.gbHaber)
         Me.Controls.Add(Me.gbDebe)
-        Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.gbRegistroCompras)
-        Me.Controls.Add(Me.pbActualizarTabla)
         Me.Controls.Add(Me.dgvProveedores)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnHaber)
         Me.Controls.Add(Me.btnDebe)
-        Me.Controls.Add(Me.txtBuscarClientes)
+        Me.Controls.Add(Me.txtBuscarNombreProv)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "CuentaCorrienteProveedor"
         Me.Text = "Pruebas"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvProveedores, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvRegistroCompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbRegistroCompras.ResumeLayout(False)
         Me.gbRegistroCompras.PerformLayout()
@@ -581,16 +574,15 @@ Partial Class CuentaCorrienteProveedor
         Me.gbDebe.PerformLayout()
         Me.gbHaber.ResumeLayout(False)
         Me.gbHaber.PerformLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents txtBuscarClientes As System.Windows.Forms.TextBox
+    Friend WithEvents txtBuscarNombreProv As System.Windows.Forms.TextBox
     Friend WithEvents btnDebe As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents pbActualizarTabla As System.Windows.Forms.PictureBox
     Friend WithEvents gbRegistroCompras As System.Windows.Forms.GroupBox
-    Friend WithEvents btnCerrar As System.Windows.Forms.Button
     Friend WithEvents btnPagarTodoRegistro As System.Windows.Forms.Button
     Friend WithEvents gbDebe As System.Windows.Forms.GroupBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -616,4 +608,6 @@ Partial Class CuentaCorrienteProveedor
     Friend WithEvents ttpDebe As System.Windows.Forms.ToolTip
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
+    Friend WithEvents txtBuscarCodigoProv As System.Windows.Forms.TextBox
 End Class
