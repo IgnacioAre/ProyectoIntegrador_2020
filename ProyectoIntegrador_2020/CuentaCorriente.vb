@@ -42,15 +42,8 @@ Public Class CuentaCorriente
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-
         dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
-
-        consultas.consultaReturnHide("Select count(idCliente) from Clientes;")
-        Dim cantClientes As Integer = Val(consultas.valorReturn)
-
-        If cantClientes > 0 Then
-            dgvClientes.Columns(3).Width = 0
-        End If
+        dgvClientes.Columns(3).Width = 0
     End Sub
 
     Private Sub btnActualizarDeuda_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarDeuda.Click
@@ -152,8 +145,6 @@ Public Class CuentaCorriente
 
     Private Sub actualizarTabla()
         dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes WHERE estadoBool=1;")
-
-        dgvClientes.Columns(3).Visible = True
         dgvClientes.Columns(3).Width = 0
 
     End Sub

@@ -113,7 +113,7 @@ Public Class MenuPrincipal
         Else
             tmrMostrarMenu.Enabled = True
             imgLogo.Width = 291
-            lblTituloVentana.Location = New Point(241, 6)
+            lblTituloVentana.Location = New Point(206, 6)
 
         End If
     End Sub
@@ -505,5 +505,15 @@ Public Class MenuPrincipal
         yPanelAviso = panelAvisoStock.Location.Y
         YfijaPanelAviso = panelAvisoStock.Location.Y
         tmrOcultarAviso.Enabled = True
+    End Sub
+
+    Private Sub btnInforme_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInforme.Click
+        lblTituloVentana.Text = "Informe"
+        submenuFalse()
+        tmrOcultarSubMenu.Enabled = True
+        If formularioBool = True Then formulario.Close()
+        openFromOnPanel(Of Informe)()
+        formularioBool = True
+        tmrOcultarAbout.Enabled = True
     End Sub
 End Class
