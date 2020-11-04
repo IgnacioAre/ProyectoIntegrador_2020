@@ -39,34 +39,37 @@ Partial Class inicioSesion
         Me.lblCheckUsuario = New System.Windows.Forms.Label()
         Me.chbGuardarUsuario = New System.Windows.Forms.CheckBox()
         Me.panelLogin = New System.Windows.Forms.Panel()
+        Me.linkRecuperarContraseña = New System.Windows.Forms.LinkLabel()
         Me.panelOjo = New System.Windows.Forms.Panel()
         Me.pbEsconder = New System.Windows.Forms.PictureBox()
         Me.pbMostrar = New System.Windows.Forms.PictureBox()
-        Me.panelRegistro = New System.Windows.Forms.Panel()
-        Me.lblAceptable2 = New System.Windows.Forms.Label()
-        Me.lblAceptable1 = New System.Windows.Forms.Label()
-        Me.pbRegresar = New System.Windows.Forms.PictureBox()
-        Me.btnRegistrar = New System.Windows.Forms.Button()
-        Me.txtClaveAdminRegistro = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtRepContraseñaRegistro = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtContraseñaRegistro = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtUsuarioRegistro = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ttpAdmin = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtUsuarioRegistro = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtContraseñaRegistro = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtRepContraseñaRegistro = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtClaveAdminRegistro = New System.Windows.Forms.TextBox()
+        Me.btnRegistrar = New System.Windows.Forms.Button()
+        Me.pbRegresar = New System.Windows.Forms.PictureBox()
+        Me.lblAceptable1 = New System.Windows.Forms.Label()
+        Me.lblAceptable2 = New System.Windows.Forms.Label()
+        Me.panelRegistro = New System.Windows.Forms.Panel()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.panelTitulo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelLogin.SuspendLayout()
         Me.panelOjo.SuspendLayout()
         CType(Me.pbEsconder, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbMostrar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.panelRegistro.SuspendLayout()
         CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelRegistro.SuspendLayout()
         Me.SuspendLayout()
         '
         'panelTitulo
@@ -127,7 +130,7 @@ Partial Class inicioSesion
         Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(148, 5)
+        Me.PictureBox1.Location = New System.Drawing.Point(148, 34)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(114, 119)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -145,7 +148,7 @@ Partial Class inicioSesion
         Me.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEntrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEntrar.ForeColor = System.Drawing.Color.White
-        Me.btnEntrar.Location = New System.Drawing.Point(83, 364)
+        Me.btnEntrar.Location = New System.Drawing.Point(83, 393)
         Me.btnEntrar.Name = "btnEntrar"
         Me.btnEntrar.Size = New System.Drawing.Size(202, 62)
         Me.btnEntrar.TabIndex = 12
@@ -159,7 +162,7 @@ Partial Class inicioSesion
         Me.txtContraseñaLogin.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtContraseñaLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContraseñaLogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.txtContraseñaLogin.Location = New System.Drawing.Point(83, 268)
+        Me.txtContraseñaLogin.Location = New System.Drawing.Point(83, 297)
         Me.txtContraseñaLogin.Name = "txtContraseñaLogin"
         Me.txtContraseñaLogin.Size = New System.Drawing.Size(202, 24)
         Me.txtContraseñaLogin.TabIndex = 2
@@ -170,7 +173,7 @@ Partial Class inicioSesion
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(64, 230)
+        Me.Label2.Location = New System.Drawing.Point(64, 259)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(116, 24)
         Me.Label2.TabIndex = 10
@@ -183,7 +186,7 @@ Partial Class inicioSesion
         Me.txtUsuarioLogin.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtUsuarioLogin.Font = New System.Drawing.Font("Century Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsuarioLogin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.txtUsuarioLogin.Location = New System.Drawing.Point(83, 160)
+        Me.txtUsuarioLogin.Location = New System.Drawing.Point(83, 189)
         Me.txtUsuarioLogin.MaxLength = 30
         Me.txtUsuarioLogin.Name = "txtUsuarioLogin"
         Me.txtUsuarioLogin.Size = New System.Drawing.Size(233, 26)
@@ -196,7 +199,7 @@ Partial Class inicioSesion
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(64, 122)
+        Me.Label1.Location = New System.Drawing.Point(64, 151)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(81, 24)
         Me.Label1.TabIndex = 8
@@ -206,21 +209,21 @@ Partial Class inicioSesion
         '
         Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Panel1.BackColor = System.Drawing.Color.Black
-        Me.Panel1.Location = New System.Drawing.Point(39, 445)
+        Me.Panel1.Location = New System.Drawing.Point(39, 474)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(303, 1)
         Me.Panel1.TabIndex = 14
         '
         'linkCrearUsuario
         '
-        Me.linkCrearUsuario.ActiveLinkColor = System.Drawing.Color.Turquoise
+        Me.linkCrearUsuario.ActiveLinkColor = System.Drawing.Color.Crimson
         Me.linkCrearUsuario.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.linkCrearUsuario.AutoSize = True
         Me.linkCrearUsuario.Cursor = System.Windows.Forms.Cursors.Hand
         Me.linkCrearUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.linkCrearUsuario.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.linkCrearUsuario.LinkColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.linkCrearUsuario.Location = New System.Drawing.Point(36, 470)
+        Me.linkCrearUsuario.Location = New System.Drawing.Point(36, 518)
         Me.linkCrearUsuario.Name = "linkCrearUsuario"
         Me.linkCrearUsuario.Size = New System.Drawing.Size(91, 16)
         Me.linkCrearUsuario.TabIndex = 15
@@ -233,7 +236,7 @@ Partial Class inicioSesion
         Me.lblCheckUsuario.AutoSize = True
         Me.lblCheckUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCheckUsuario.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.lblCheckUsuario.Location = New System.Drawing.Point(104, 321)
+        Me.lblCheckUsuario.Location = New System.Drawing.Point(104, 350)
         Me.lblCheckUsuario.Name = "lblCheckUsuario"
         Me.lblCheckUsuario.Size = New System.Drawing.Size(112, 16)
         Me.lblCheckUsuario.TabIndex = 17
@@ -246,7 +249,7 @@ Partial Class inicioSesion
         Me.chbGuardarUsuario.Cursor = System.Windows.Forms.Cursors.Hand
         Me.chbGuardarUsuario.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.chbGuardarUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chbGuardarUsuario.Location = New System.Drawing.Point(82, 322)
+        Me.chbGuardarUsuario.Location = New System.Drawing.Point(82, 351)
         Me.chbGuardarUsuario.Name = "chbGuardarUsuario"
         Me.chbGuardarUsuario.Size = New System.Drawing.Size(15, 14)
         Me.chbGuardarUsuario.TabIndex = 18
@@ -256,6 +259,7 @@ Partial Class inicioSesion
         '
         Me.panelLogin.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.panelLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panelLogin.Controls.Add(Me.linkRecuperarContraseña)
         Me.panelLogin.Controls.Add(Me.panelOjo)
         Me.panelLogin.Controls.Add(Me.PictureBox1)
         Me.panelLogin.Controls.Add(Me.chbGuardarUsuario)
@@ -270,15 +274,31 @@ Partial Class inicioSesion
         Me.panelLogin.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelLogin.Location = New System.Drawing.Point(0, 40)
         Me.panelLogin.Name = "panelLogin"
-        Me.panelLogin.Size = New System.Drawing.Size(402, 513)
+        Me.panelLogin.Size = New System.Drawing.Size(402, 570)
         Me.panelLogin.TabIndex = 19
+        '
+        'linkRecuperarContraseña
+        '
+        Me.linkRecuperarContraseña.ActiveLinkColor = System.Drawing.Color.Crimson
+        Me.linkRecuperarContraseña.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.linkRecuperarContraseña.AutoSize = True
+        Me.linkRecuperarContraseña.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.linkRecuperarContraseña.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.linkRecuperarContraseña.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.linkRecuperarContraseña.LinkColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.linkRecuperarContraseña.Location = New System.Drawing.Point(207, 519)
+        Me.linkRecuperarContraseña.Name = "linkRecuperarContraseña"
+        Me.linkRecuperarContraseña.Size = New System.Drawing.Size(162, 16)
+        Me.linkRecuperarContraseña.TabIndex = 22
+        Me.linkRecuperarContraseña.TabStop = True
+        Me.linkRecuperarContraseña.Text = "¿Olvidaste tu contraseña?"
         '
         'panelOjo
         '
         Me.panelOjo.BackColor = System.Drawing.Color.White
         Me.panelOjo.Controls.Add(Me.pbEsconder)
         Me.panelOjo.Controls.Add(Me.pbMostrar)
-        Me.panelOjo.Location = New System.Drawing.Point(285, 268)
+        Me.panelOjo.Location = New System.Drawing.Point(282, 297)
         Me.panelOjo.Name = "panelOjo"
         Me.panelOjo.Size = New System.Drawing.Size(34, 24)
         Me.panelOjo.TabIndex = 21
@@ -306,10 +326,163 @@ Partial Class inicioSesion
         Me.pbMostrar.TabIndex = 19
         Me.pbMostrar.TabStop = False
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.Label4.Location = New System.Drawing.Point(29, 11)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(356, 31)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "CREAR USUARIO ADMIN"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.Label5.Location = New System.Drawing.Point(34, 67)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(190, 24)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "Nombre de usuario"
+        '
+        'txtUsuarioRegistro
+        '
+        Me.txtUsuarioRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsuarioRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.txtUsuarioRegistro.Location = New System.Drawing.Point(83, 111)
+        Me.txtUsuarioRegistro.MaxLength = 30
+        Me.txtUsuarioRegistro.Name = "txtUsuarioRegistro"
+        Me.txtUsuarioRegistro.Size = New System.Drawing.Size(215, 27)
+        Me.txtUsuarioRegistro.TabIndex = 2
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.Label6.Location = New System.Drawing.Point(33, 242)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(116, 24)
+        Me.Label6.TabIndex = 3
+        Me.Label6.Text = "Contraseña"
+        '
+        'txtContraseñaRegistro
+        '
+        Me.txtContraseñaRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContraseñaRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.txtContraseñaRegistro.Location = New System.Drawing.Point(82, 286)
+        Me.txtContraseñaRegistro.MaxLength = 30
+        Me.txtContraseñaRegistro.Name = "txtContraseñaRegistro"
+        Me.txtContraseñaRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtContraseñaRegistro.Size = New System.Drawing.Size(215, 26)
+        Me.txtContraseñaRegistro.TabIndex = 4
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.Label7.Location = New System.Drawing.Point(33, 325)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(186, 24)
+        Me.Label7.TabIndex = 5
+        Me.Label7.Text = "Repetir contraseña"
+        '
+        'txtRepContraseñaRegistro
+        '
+        Me.txtRepContraseñaRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtRepContraseñaRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.txtRepContraseñaRegistro.Location = New System.Drawing.Point(82, 369)
+        Me.txtRepContraseñaRegistro.MaxLength = 30
+        Me.txtRepContraseñaRegistro.Name = "txtRepContraseñaRegistro"
+        Me.txtRepContraseñaRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtRepContraseñaRegistro.Size = New System.Drawing.Size(215, 26)
+        Me.txtRepContraseñaRegistro.TabIndex = 5
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.Label8.Location = New System.Drawing.Point(33, 409)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(155, 24)
+        Me.Label8.TabIndex = 7
+        Me.Label8.Text = "Clave de admin"
+        '
+        'txtClaveAdminRegistro
+        '
+        Me.txtClaveAdminRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClaveAdminRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.txtClaveAdminRegistro.Location = New System.Drawing.Point(82, 453)
+        Me.txtClaveAdminRegistro.MaxLength = 30
+        Me.txtClaveAdminRegistro.Name = "txtClaveAdminRegistro"
+        Me.txtClaveAdminRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtClaveAdminRegistro.Size = New System.Drawing.Size(215, 26)
+        Me.txtClaveAdminRegistro.TabIndex = 6
+        '
+        'btnRegistrar
+        '
+        Me.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnRegistrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnRegistrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRegistrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRegistrar.ForeColor = System.Drawing.Color.White
+        Me.btnRegistrar.Location = New System.Drawing.Point(277, 513)
+        Me.btnRegistrar.Name = "btnRegistrar"
+        Me.btnRegistrar.Size = New System.Drawing.Size(112, 44)
+        Me.btnRegistrar.TabIndex = 9
+        Me.btnRegistrar.Text = "Registrar"
+        Me.btnRegistrar.UseVisualStyleBackColor = False
+        '
+        'pbRegresar
+        '
+        Me.pbRegresar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbRegresar.Image = CType(resources.GetObject("pbRegresar.Image"), System.Drawing.Image)
+        Me.pbRegresar.Location = New System.Drawing.Point(11, 525)
+        Me.pbRegresar.Name = "pbRegresar"
+        Me.pbRegresar.Size = New System.Drawing.Size(31, 32)
+        Me.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbRegresar.TabIndex = 10
+        Me.pbRegresar.TabStop = False
+        '
+        'lblAceptable1
+        '
+        Me.lblAceptable1.AutoSize = True
+        Me.lblAceptable1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAceptable1.ForeColor = System.Drawing.Color.Red
+        Me.lblAceptable1.Location = New System.Drawing.Point(303, 287)
+        Me.lblAceptable1.Name = "lblAceptable1"
+        Me.lblAceptable1.Size = New System.Drawing.Size(27, 25)
+        Me.lblAceptable1.TabIndex = 11
+        Me.lblAceptable1.Tag = ""
+        Me.lblAceptable1.Text = "X"
+        Me.lblAceptable1.Visible = False
+        '
+        'lblAceptable2
+        '
+        Me.lblAceptable2.AutoSize = True
+        Me.lblAceptable2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAceptable2.ForeColor = System.Drawing.Color.Red
+        Me.lblAceptable2.Location = New System.Drawing.Point(303, 369)
+        Me.lblAceptable2.Name = "lblAceptable2"
+        Me.lblAceptable2.Size = New System.Drawing.Size(27, 25)
+        Me.lblAceptable2.TabIndex = 12
+        Me.lblAceptable2.Tag = ""
+        Me.lblAceptable2.Text = "X"
+        Me.lblAceptable2.Visible = False
+        '
         'panelRegistro
         '
         Me.panelRegistro.BackColor = System.Drawing.Color.FromArgb(CType(CType(122, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.panelRegistro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panelRegistro.Controls.Add(Me.TextBox1)
+        Me.panelRegistro.Controls.Add(Me.Label3)
         Me.panelRegistro.Controls.Add(Me.lblAceptable2)
         Me.panelRegistro.Controls.Add(Me.lblAceptable1)
         Me.panelRegistro.Controls.Add(Me.pbRegresar)
@@ -323,169 +496,40 @@ Partial Class inicioSesion
         Me.panelRegistro.Controls.Add(Me.txtUsuarioRegistro)
         Me.panelRegistro.Controls.Add(Me.Label5)
         Me.panelRegistro.Controls.Add(Me.Label4)
+        Me.panelRegistro.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelRegistro.Location = New System.Drawing.Point(0, 40)
         Me.panelRegistro.Name = "panelRegistro"
-        Me.panelRegistro.Size = New System.Drawing.Size(402, 513)
+        Me.panelRegistro.Size = New System.Drawing.Size(402, 570)
         Me.panelRegistro.TabIndex = 19
         Me.panelRegistro.Visible = False
         '
-        'lblAceptable2
+        'TextBox1
         '
-        Me.lblAceptable2.AutoSize = True
-        Me.lblAceptable2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAceptable2.ForeColor = System.Drawing.Color.Red
-        Me.lblAceptable2.Location = New System.Drawing.Point(304, 324)
-        Me.lblAceptable2.Name = "lblAceptable2"
-        Me.lblAceptable2.Size = New System.Drawing.Size(27, 25)
-        Me.lblAceptable2.TabIndex = 12
-        Me.lblAceptable2.Tag = ""
-        Me.lblAceptable2.Text = "X"
-        Me.lblAceptable2.Visible = False
+        Me.TextBox1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.TextBox1.Location = New System.Drawing.Point(82, 199)
+        Me.TextBox1.MaxLength = 30
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(215, 27)
+        Me.TextBox1.TabIndex = 3
         '
-        'lblAceptable1
+        'Label3
         '
-        Me.lblAceptable1.AutoSize = True
-        Me.lblAceptable1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAceptable1.ForeColor = System.Drawing.Color.Red
-        Me.lblAceptable1.Location = New System.Drawing.Point(304, 235)
-        Me.lblAceptable1.Name = "lblAceptable1"
-        Me.lblAceptable1.Size = New System.Drawing.Size(27, 25)
-        Me.lblAceptable1.TabIndex = 11
-        Me.lblAceptable1.Tag = ""
-        Me.lblAceptable1.Text = "X"
-        Me.lblAceptable1.Visible = False
-        '
-        'pbRegresar
-        '
-        Me.pbRegresar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbRegresar.Image = CType(resources.GetObject("pbRegresar.Image"), System.Drawing.Image)
-        Me.pbRegresar.Location = New System.Drawing.Point(12, 462)
-        Me.pbRegresar.Name = "pbRegresar"
-        Me.pbRegresar.Size = New System.Drawing.Size(31, 32)
-        Me.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbRegresar.TabIndex = 10
-        Me.pbRegresar.TabStop = False
-        '
-        'btnRegistrar
-        '
-        Me.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnRegistrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnRegistrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRegistrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRegistrar.ForeColor = System.Drawing.Color.White
-        Me.btnRegistrar.Location = New System.Drawing.Point(278, 451)
-        Me.btnRegistrar.Name = "btnRegistrar"
-        Me.btnRegistrar.Size = New System.Drawing.Size(112, 44)
-        Me.btnRegistrar.TabIndex = 9
-        Me.btnRegistrar.Text = "Registrar"
-        Me.btnRegistrar.UseVisualStyleBackColor = False
-        '
-        'txtClaveAdminRegistro
-        '
-        Me.txtClaveAdminRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtClaveAdminRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.txtClaveAdminRegistro.Location = New System.Drawing.Point(83, 408)
-        Me.txtClaveAdminRegistro.MaxLength = 30
-        Me.txtClaveAdminRegistro.Name = "txtClaveAdminRegistro"
-        Me.txtClaveAdminRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtClaveAdminRegistro.Size = New System.Drawing.Size(215, 26)
-        Me.txtClaveAdminRegistro.TabIndex = 8
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.Label8.Location = New System.Drawing.Point(34, 364)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(155, 24)
-        Me.Label8.TabIndex = 7
-        Me.Label8.Text = "Clave de admin"
-        '
-        'txtRepContraseñaRegistro
-        '
-        Me.txtRepContraseñaRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRepContraseñaRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.txtRepContraseñaRegistro.Location = New System.Drawing.Point(83, 324)
-        Me.txtRepContraseñaRegistro.MaxLength = 30
-        Me.txtRepContraseñaRegistro.Name = "txtRepContraseñaRegistro"
-        Me.txtRepContraseñaRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtRepContraseñaRegistro.Size = New System.Drawing.Size(215, 26)
-        Me.txtRepContraseñaRegistro.TabIndex = 6
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.Label7.Location = New System.Drawing.Point(34, 280)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(186, 24)
-        Me.Label7.TabIndex = 5
-        Me.Label7.Text = "Repetir contraseña"
-        '
-        'txtContraseñaRegistro
-        '
-        Me.txtContraseñaRegistro.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtContraseñaRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.txtContraseñaRegistro.Location = New System.Drawing.Point(83, 234)
-        Me.txtContraseñaRegistro.MaxLength = 30
-        Me.txtContraseñaRegistro.Name = "txtContraseñaRegistro"
-        Me.txtContraseñaRegistro.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtContraseñaRegistro.Size = New System.Drawing.Size(215, 26)
-        Me.txtContraseñaRegistro.TabIndex = 4
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(34, 190)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(116, 24)
-        Me.Label6.TabIndex = 3
-        Me.Label6.Text = "Contraseña"
-        '
-        'txtUsuarioRegistro
-        '
-        Me.txtUsuarioRegistro.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsuarioRegistro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.txtUsuarioRegistro.Location = New System.Drawing.Point(83, 143)
-        Me.txtUsuarioRegistro.MaxLength = 30
-        Me.txtUsuarioRegistro.Name = "txtUsuarioRegistro"
-        Me.txtUsuarioRegistro.Size = New System.Drawing.Size(215, 27)
-        Me.txtUsuarioRegistro.TabIndex = 2
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(34, 99)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(190, 24)
-        Me.Label5.TabIndex = 1
-        Me.Label5.Text = "Nombre de usuario"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(33, 17)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(356, 31)
-        Me.Label4.TabIndex = 0
-        Me.Label4.Text = "CREAR USUARIO ADMIN"
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.Label3.Location = New System.Drawing.Point(33, 155)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(184, 24)
+        Me.Label3.TabIndex = 13
+        Me.Label3.Text = "Correo electrónico"
         '
         'inicioSesion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(402, 553)
+        Me.ClientSize = New System.Drawing.Size(402, 610)
         Me.Controls.Add(Me.panelRegistro)
         Me.Controls.Add(Me.panelLogin)
         Me.Controls.Add(Me.panelTitulo)
@@ -503,9 +547,9 @@ Partial Class inicioSesion
         Me.panelOjo.ResumeLayout(False)
         CType(Me.pbEsconder, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbMostrar, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelRegistro.ResumeLayout(False)
         Me.panelRegistro.PerformLayout()
-        CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -524,24 +568,27 @@ Partial Class inicioSesion
     Friend WithEvents chbGuardarUsuario As System.Windows.Forms.CheckBox
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents panelLogin As System.Windows.Forms.Panel
-    Friend WithEvents panelRegistro As System.Windows.Forms.Panel
-    Friend WithEvents txtContraseñaRegistro As System.Windows.Forms.TextBox
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents txtUsuarioRegistro As System.Windows.Forms.TextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents btnRegistrar As System.Windows.Forms.Button
-    Friend WithEvents txtClaveAdminRegistro As System.Windows.Forms.TextBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents txtRepContraseñaRegistro As System.Windows.Forms.TextBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents pbRegresar As System.Windows.Forms.PictureBox
-    Friend WithEvents lblAceptable2 As System.Windows.Forms.Label
-    Friend WithEvents lblAceptable1 As System.Windows.Forms.Label
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents ToolTip2 As System.Windows.Forms.ToolTip
     Friend WithEvents pbEsconder As System.Windows.Forms.PictureBox
     Friend WithEvents pbMostrar As System.Windows.Forms.PictureBox
     Friend WithEvents ttpAdmin As System.Windows.Forms.ToolTip
     Friend WithEvents panelOjo As System.Windows.Forms.Panel
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents txtUsuarioRegistro As System.Windows.Forms.TextBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents txtContraseñaRegistro As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents txtRepContraseñaRegistro As System.Windows.Forms.TextBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents txtClaveAdminRegistro As System.Windows.Forms.TextBox
+    Friend WithEvents btnRegistrar As System.Windows.Forms.Button
+    Friend WithEvents pbRegresar As System.Windows.Forms.PictureBox
+    Friend WithEvents lblAceptable1 As System.Windows.Forms.Label
+    Friend WithEvents lblAceptable2 As System.Windows.Forms.Label
+    Friend WithEvents panelRegistro As System.Windows.Forms.Panel
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents linkRecuperarContraseña As System.Windows.Forms.LinkLabel
 End Class

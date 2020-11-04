@@ -101,10 +101,10 @@
     End Sub
 
     Private Sub btnImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImprimir.Click
-        PrintDialog1.Document = PrintDocument1
-        If PrintDialog1.ShowDialog = Windows.Forms.DialogResult.Yes Then
-            PrintDocument1.Print()
-        End If
+        PrintDocument1.Print()
+    End Sub
 
+    Private Sub pbRegresar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbRegresar.Click
+        panelBuscarCliente.Visible = True
     End Sub
 End Class

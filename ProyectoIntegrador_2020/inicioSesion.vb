@@ -268,6 +268,15 @@ Public Class inicioSesion
         If txtContraseñaRegistro.Text.Count >= 8 Then
             lblAceptable1.Text = "✓"
             lblAceptable1.ForeColor = Color.Green
+
+            If txtRepContraseñaRegistro.Text.Count >= 8 And txtRepContraseñaRegistro.Text.Equals(txtContraseñaRegistro.Text) Then
+                lblAceptable2.Text = "✓"
+                lblAceptable2.ForeColor = Color.Green
+            Else
+                lblAceptable2.Text = "X"
+                lblAceptable2.ForeColor = Color.Red
+            End If
+
         Else
             lblAceptable1.Text = "X"
             lblAceptable1.ForeColor = Color.Red
@@ -442,4 +451,5 @@ Public Class inicioSesion
 
         End If
     End Sub
+
 End Class

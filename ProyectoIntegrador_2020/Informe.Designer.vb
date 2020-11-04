@@ -37,17 +37,19 @@ Partial Class Informe
         Me.PrintPreviewControl1 = New System.Windows.Forms.PrintPreviewControl()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.panelBuscarCliente = New System.Windows.Forms.Panel()
+        Me.btnFacturar = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.dgvRegistroVentas = New Guna.UI.WinForms.GunaDataGridView()
         Me.dgvClientes = New Guna.UI.WinForms.GunaDataGridView()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.txtBuscarClientes = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnFacturar = New System.Windows.Forms.Button()
+        Me.pbRegresar = New System.Windows.Forms.PictureBox()
         Me.panelSuperior.SuspendLayout()
         Me.panelBuscarCliente.SuspendLayout()
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnImprimir
@@ -56,11 +58,11 @@ Partial Class Informe
         Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnImprimir.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnImprimir.ForeColor = System.Drawing.Color.White
-        Me.btnImprimir.Location = New System.Drawing.Point(17, 11)
+        Me.btnImprimir.Location = New System.Drawing.Point(76, 14)
         Me.btnImprimir.Name = "btnImprimir"
         Me.btnImprimir.Size = New System.Drawing.Size(86, 31)
         Me.btnImprimir.TabIndex = 1
-        Me.btnImprimir.Text = "Imprimir"
+        Me.btnImprimir.Text = "Guardar"
         Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnImprimir.UseVisualStyleBackColor = False
         '
@@ -71,7 +73,7 @@ Partial Class Informe
         Me.btnZoomMenos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnZoomMenos.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnZoomMenos.ForeColor = System.Drawing.Color.White
-        Me.btnZoomMenos.Location = New System.Drawing.Point(578, 11)
+        Me.btnZoomMenos.Location = New System.Drawing.Point(574, 11)
         Me.btnZoomMenos.Name = "btnZoomMenos"
         Me.btnZoomMenos.Size = New System.Drawing.Size(75, 31)
         Me.btnZoomMenos.TabIndex = 2
@@ -86,7 +88,7 @@ Partial Class Informe
         Me.btnZoomMas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnZoomMas.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnZoomMas.ForeColor = System.Drawing.Color.White
-        Me.btnZoomMas.Location = New System.Drawing.Point(677, 11)
+        Me.btnZoomMas.Location = New System.Drawing.Point(673, 11)
         Me.btnZoomMas.Name = "btnZoomMas"
         Me.btnZoomMas.Size = New System.Drawing.Size(75, 31)
         Me.btnZoomMas.TabIndex = 3
@@ -96,14 +98,14 @@ Partial Class Informe
         '
         'panelSuperior
         '
-        Me.panelSuperior.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panelSuperior.Controls.Add(Me.pbRegresar)
         Me.panelSuperior.Controls.Add(Me.btnImprimir)
         Me.panelSuperior.Controls.Add(Me.btnZoomMas)
         Me.panelSuperior.Controls.Add(Me.btnZoomMenos)
+        Me.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelSuperior.Location = New System.Drawing.Point(0, 0)
         Me.panelSuperior.Name = "panelSuperior"
-        Me.panelSuperior.Size = New System.Drawing.Size(766, 56)
+        Me.panelSuperior.Size = New System.Drawing.Size(762, 56)
         Me.panelSuperior.TabIndex = 4
         '
         'PrintDocument1
@@ -111,13 +113,12 @@ Partial Class Informe
         '
         'PrintPreviewControl1
         '
-        Me.PrintPreviewControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PrintPreviewControl1.AutoZoom = False
+        Me.PrintPreviewControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PrintPreviewControl1.Document = Me.PrintDocument1
         Me.PrintPreviewControl1.Location = New System.Drawing.Point(0, 56)
         Me.PrintPreviewControl1.Name = "PrintPreviewControl1"
-        Me.PrintPreviewControl1.Size = New System.Drawing.Size(763, 414)
+        Me.PrintPreviewControl1.Size = New System.Drawing.Size(762, 422)
         Me.PrintPreviewControl1.TabIndex = 5
         Me.PrintPreviewControl1.Zoom = 0.37363636363636366R
         '
@@ -127,17 +128,45 @@ Partial Class Informe
         '
         'panelBuscarCliente
         '
+        Me.panelBuscarCliente.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panelBuscarCliente.Controls.Add(Me.btnFacturar)
         Me.panelBuscarCliente.Controls.Add(Me.Label1)
         Me.panelBuscarCliente.Controls.Add(Me.dgvRegistroVentas)
         Me.panelBuscarCliente.Controls.Add(Me.dgvClientes)
         Me.panelBuscarCliente.Controls.Add(Me.PictureBox1)
         Me.panelBuscarCliente.Controls.Add(Me.txtBuscarClientes)
-        Me.panelBuscarCliente.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelBuscarCliente.Location = New System.Drawing.Point(0, 0)
+        Me.panelBuscarCliente.Location = New System.Drawing.Point(0, 3)
         Me.panelBuscarCliente.Name = "panelBuscarCliente"
-        Me.panelBuscarCliente.Size = New System.Drawing.Size(762, 478)
+        Me.panelBuscarCliente.Size = New System.Drawing.Size(762, 475)
         Me.panelBuscarCliente.TabIndex = 6
+        '
+        'btnFacturar
+        '
+        Me.btnFacturar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnFacturar.BackColor = System.Drawing.Color.Crimson
+        Me.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFacturar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFacturar.ForeColor = System.Drawing.Color.White
+        Me.btnFacturar.Location = New System.Drawing.Point(601, 432)
+        Me.btnFacturar.Name = "btnFacturar"
+        Me.btnFacturar.Size = New System.Drawing.Size(119, 31)
+        Me.btnFacturar.TabIndex = 30
+        Me.btnFacturar.Text = "Facturar"
+        Me.btnFacturar.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnFacturar.UseVisualStyleBackColor = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.Location = New System.Drawing.Point(48, 184)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(197, 22)
+        Me.Label1.TabIndex = 29
+        Me.Label1.Text = "Registro de compras"
         '
         'dgvRegistroVentas
         '
@@ -180,7 +209,7 @@ Partial Class Informe
         Me.dgvRegistroVentas.ReadOnly = True
         Me.dgvRegistroVentas.RowHeadersVisible = False
         Me.dgvRegistroVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvRegistroVentas.Size = New System.Drawing.Size(668, 197)
+        Me.dgvRegistroVentas.Size = New System.Drawing.Size(668, 194)
         Me.dgvRegistroVentas.TabIndex = 24
         Me.dgvRegistroVentas.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Dark
         Me.dgvRegistroVentas.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(52, Byte), Integer))
@@ -288,31 +317,16 @@ Partial Class Informe
         Me.txtBuscarClientes.Size = New System.Drawing.Size(282, 26)
         Me.txtBuscarClientes.TabIndex = 26
         '
-        'Label1
+        'pbRegresar
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(48, 184)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(197, 22)
-        Me.Label1.TabIndex = 29
-        Me.Label1.Text = "Registro de compras"
-        '
-        'btnFacturar
-        '
-        Me.btnFacturar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnFacturar.BackColor = System.Drawing.Color.Crimson
-        Me.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnFacturar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFacturar.ForeColor = System.Drawing.Color.White
-        Me.btnFacturar.Location = New System.Drawing.Point(601, 435)
-        Me.btnFacturar.Name = "btnFacturar"
-        Me.btnFacturar.Size = New System.Drawing.Size(119, 31)
-        Me.btnFacturar.TabIndex = 30
-        Me.btnFacturar.Text = "Facturar"
-        Me.btnFacturar.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnFacturar.UseVisualStyleBackColor = False
+        Me.pbRegresar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbRegresar.Image = CType(resources.GetObject("pbRegresar.Image"), System.Drawing.Image)
+        Me.pbRegresar.Location = New System.Drawing.Point(12, 13)
+        Me.pbRegresar.Name = "pbRegresar"
+        Me.pbRegresar.Size = New System.Drawing.Size(31, 32)
+        Me.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbRegresar.TabIndex = 11
+        Me.pbRegresar.TabStop = False
         '
         'Informe
         '
@@ -331,6 +345,7 @@ Partial Class Informe
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -348,4 +363,5 @@ Partial Class Informe
     Friend WithEvents txtBuscarClientes As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnFacturar As System.Windows.Forms.Button
+    Friend WithEvents pbRegresar As System.Windows.Forms.PictureBox
 End Class
