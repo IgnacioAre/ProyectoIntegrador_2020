@@ -130,7 +130,7 @@ Public Class inicioSesion
     Sub Entrar()
 
         Try
-            consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
+            consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = AES_ENCRYPT('" & txtContraseñaLogin.Text & "','2@17501896');")
 
             If Not consultas.valorReturn = "" Then
                 If chbGuardarUsuario.Checked Then
@@ -139,18 +139,9 @@ Public Class inicioSesion
                     guardarUsuarioTxt("")
                 End If
 
-                consultas.consultaReturnHide("Select idAdmin from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = sha2('" & txtContraseñaLogin.Text & "',256);")
-                Dim idadmin As Byte = Val(consultas.valorReturn)
-
-                consultas.consultaReturnHide("Select idNota from Notas where idNota = 1;")
-                If consultas.valorReturn = 1 Then
-                    consultas.consultaHide("update notas set idadmin = " & idadmin & " where idnota = 1;")
-                Else
-                    consultas.consultaHide("Alter table Notas auto_increment=1;")
-                    consultas.consultaHide("Insert into Notas(Texto,fechaCreacion,importanteBool,idAdmin) values('',now(),0," & idadmin & ");")
-                End If
-
-
+                consultas.consultaHide("UPDATE Admin set logeadoBool=0")
+                consultas.consultaReturnHide("Select idAdmin from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = AES_ENCRYPT('" & txtContraseñaLogin.Text & "','2@17501896');")
+                consultas.consultaHide("UPDATE Admin set logeadoBool=1 where idAdmin=" & consultas.valorReturn)
                 MenuPrincipal.Show()
                 Me.Close()
             Else
@@ -355,7 +346,7 @@ Public Class inicioSesion
                         mostrarMensaje("Ya existe un usuario registrado con ese nombre." & vbCrLf & "Intente con otro nombre de usuario.")
                     Else
 
-                        consultas.consultaHide("Insert into admin (usuario,contraseña) values ('" & txtUsuarioRegistro.Text.ToUpper & "',sha2('" & txtContraseñaRegistro.Text & "',256));")
+                        consultas.consultaHide("Insert into admin (usuario,contraseña,correo,logeadoBool) values ('" & txtUsuarioRegistro.Text.ToUpper & "', AES_ENCRYPT('" & txtContraseñaRegistro.Text & "','2@17501896'),'" & txtCorreo.Text & "',0);")
                         If consultas.resultado = 1 Then
                             mostrarMensaje("Usuario creado exitosamente!")
                             txtUsuarioLogin.Text = txtUsuarioRegistro.Text

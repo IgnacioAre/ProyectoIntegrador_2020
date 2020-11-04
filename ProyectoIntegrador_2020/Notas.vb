@@ -59,7 +59,7 @@ Public Class Notas
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
         If Not txtNota.Text.Equals("") Then
             btnModificar.Enabled = True
-            consulta.consultaReturnHide("select idadmin from notas where idnota = 1;")
+            consulta.consultaReturnHide("select idadmin from Admin where logeadoBool = 1;")
             Dim idadmin As Byte = Val(consulta.valorReturn)
 
             If editarBool = False Then

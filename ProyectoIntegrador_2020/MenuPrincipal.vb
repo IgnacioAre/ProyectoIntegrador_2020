@@ -33,7 +33,7 @@ Public Class MenuPrincipal
 
 
     Sub obtenerNombreAdmin()
-        consulta.consultaReturnHide("SELECT Usuario as Usuario from Notas as n,admin as a where a.idAdmin = n.idAdmin and n.idAdmin = 1;")
+        consulta.consultaReturnHide("SELECT Usuario FROM Admin where logeadoBool=1;")
         nombreAdmin = consulta.valorReturn
     End Sub
 
