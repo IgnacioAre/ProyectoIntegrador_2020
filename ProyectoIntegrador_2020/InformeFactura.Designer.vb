@@ -39,6 +39,7 @@ Partial Class InformeFactura
         '
         'panelFactura
         '
+        Me.panelFactura.BackColor = System.Drawing.SystemColors.Highlight
         Me.panelFactura.Controls.Add(Me.panelSuperior)
         Me.panelFactura.Controls.Add(Me.PrintPreviewControl1)
         Me.panelFactura.Dock = System.Windows.Forms.DockStyle.Fill
@@ -49,11 +50,13 @@ Partial Class InformeFactura
         '
         'panelSuperior
         '
+        Me.panelSuperior.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panelSuperior.BackColor = System.Drawing.SystemColors.Highlight
         Me.panelSuperior.Controls.Add(Me.pbRegresar)
         Me.panelSuperior.Controls.Add(Me.btnImprimir)
         Me.panelSuperior.Controls.Add(Me.btnZoomMas)
         Me.panelSuperior.Controls.Add(Me.btnZoomMenos)
-        Me.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelSuperior.Location = New System.Drawing.Point(0, 0)
         Me.panelSuperior.Name = "panelSuperior"
         Me.panelSuperior.Size = New System.Drawing.Size(607, 56)
@@ -61,33 +64,38 @@ Partial Class InformeFactura
         '
         'pbRegresar
         '
+        Me.pbRegresar.BackColor = System.Drawing.Color.Crimson
         Me.pbRegresar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbRegresar.Image = CType(resources.GetObject("pbRegresar.Image"), System.Drawing.Image)
-        Me.pbRegresar.Location = New System.Drawing.Point(12, 13)
+        Me.pbRegresar.Location = New System.Drawing.Point(3, 3)
         Me.pbRegresar.Name = "pbRegresar"
         Me.pbRegresar.Size = New System.Drawing.Size(32, 32)
-        Me.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbRegresar.TabIndex = 11
         Me.pbRegresar.TabStop = False
         '
         'btnImprimir
         '
         Me.btnImprimir.BackColor = System.Drawing.Color.MediumBlue
+        Me.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnImprimir.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnImprimir.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnImprimir.ForeColor = System.Drawing.Color.White
-        Me.btnImprimir.Location = New System.Drawing.Point(76, 14)
+        Me.btnImprimir.Image = CType(resources.GetObject("btnImprimir.Image"), System.Drawing.Image)
+        Me.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnImprimir.Location = New System.Drawing.Point(76, 3)
         Me.btnImprimir.Name = "btnImprimir"
-        Me.btnImprimir.Size = New System.Drawing.Size(86, 31)
+        Me.btnImprimir.Size = New System.Drawing.Size(143, 50)
         Me.btnImprimir.TabIndex = 1
-        Me.btnImprimir.Text = "Guardar"
-        Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnImprimir.Text = "  Guardar"
+        Me.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnImprimir.UseVisualStyleBackColor = False
         '
         'btnZoomMas
         '
         Me.btnZoomMas.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnZoomMas.BackColor = System.Drawing.Color.SteelBlue
+        Me.btnZoomMas.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnZoomMas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnZoomMas.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnZoomMas.ForeColor = System.Drawing.Color.White
@@ -103,6 +111,7 @@ Partial Class InformeFactura
         '
         Me.btnZoomMenos.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnZoomMenos.BackColor = System.Drawing.Color.SteelBlue
+        Me.btnZoomMenos.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnZoomMenos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnZoomMenos.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnZoomMenos.ForeColor = System.Drawing.Color.White
@@ -120,10 +129,11 @@ Partial Class InformeFactura
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PrintPreviewControl1.AutoZoom = False
+        Me.PrintPreviewControl1.BackColor = System.Drawing.Color.SteelBlue
         Me.PrintPreviewControl1.Document = Me.PrintDocument1
-        Me.PrintPreviewControl1.Location = New System.Drawing.Point(3, 62)
+        Me.PrintPreviewControl1.Location = New System.Drawing.Point(0, 62)
         Me.PrintPreviewControl1.Name = "PrintPreviewControl1"
-        Me.PrintPreviewControl1.Size = New System.Drawing.Size(604, 467)
+        Me.PrintPreviewControl1.Size = New System.Drawing.Size(607, 467)
         Me.PrintPreviewControl1.TabIndex = 5
         Me.PrintPreviewControl1.Zoom = 0.37363636363636366R
         '
@@ -144,9 +154,9 @@ Partial Class InformeFactura
         Me.Name = "InformeFactura"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Informe2"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.panelFactura.ResumeLayout(False)
         Me.panelSuperior.ResumeLayout(False)
-        Me.panelSuperior.PerformLayout()
         CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

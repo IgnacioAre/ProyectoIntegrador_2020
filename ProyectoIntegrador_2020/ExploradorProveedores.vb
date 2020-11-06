@@ -23,7 +23,7 @@ Public Class ExploradorProveedores
 
     Sub ultimaModificacion()
         consultas.consultaReturnHide("SELECT fechaIngreso FROM Proveedores order by(fechaIngreso) desc limit 1")
-        lblUltimoIngreso.Text = "Último cliente registrado: " & consultas.valorReturn
+        lblUltimoIngreso.Text = "Último proveedor registrado: " & consultas.valorReturn
     End Sub
 
     '----MOSTRAR FORMULARIO "NUEVO" EN EL MENÚ PRINCIPAL----'
@@ -238,18 +238,21 @@ Public Class ExploradorProveedores
 
 
     Private Sub btnAgregarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarTel.Click
+        ConfirmacionMensaje.soloNumBool = True
         resultadosTxt = ConfirmacionMensaje.entradaDatos("Nuevo número telfónico:")
-
-        consultas.consultaHide("INSERT INTO telefonoProveedor (numeroTel, idProveedor) VALUES ('" & resultadosTxt & "'," & idProveedor & ");")
-        ActualizarTablaTelefono()
+        If Not ConfirmacionMensaje.resultadoTxt.Equals("") And ConfirmacionMensaje.resultado = 1 Then
+            consultas.consultaHide("INSERT INTO telefonoProveedor (numeroTel, idProveedor) VALUES ('" & resultadosTxt & "'," & idProveedor & ");")
+            ActualizarTablaTelefono()
+        End If
+        ConfirmacionMensaje.soloNumBool = False
     End Sub
 
 
     Private Sub btnEliminarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminarTel.Click
-        Dim idTel As String
-        idTel = dgvTelefono.CurrentRow.Cells(0).Value.ToString
+        Dim idTel As Integer
+        idTel = dgvTelefono.CurrentRow.Cells(0).Value
 
-        consultas.consultaHide("DELETE FROM telefonoCliente where idTelefono=" & idTel & ";")
+        consultas.consultaHide("DELETE FROM telefonoProveedor where idTelefono=" & idTel)
         ActualizarTablaTelefono()
     End Sub
 
@@ -270,7 +273,7 @@ Public Class ExploradorProveedores
     End Sub
 
     Private Sub btnEditarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarTel.Click
-
+        ConfirmacionMensaje.soloNumBool = True
         Dim idTel As String
         Dim num As String
         idTel = dgvTelefono.CurrentRow.Cells(0).Value.ToString
@@ -283,7 +286,7 @@ Public Class ExploradorProveedores
             consultas.consultaHide("UPDATE telefonoCliente set numeroTel='" & resultadosTxt & "' where idTelefono=" & idTel & ";")
             ActualizarTablaTelefono()
         End If
-
+        ConfirmacionMensaje.soloNumBool = False
     End Sub
 
     Private Sub btnEditarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarRegistro.Click

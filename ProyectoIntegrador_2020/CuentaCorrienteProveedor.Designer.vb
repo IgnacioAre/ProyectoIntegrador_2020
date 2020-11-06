@@ -42,7 +42,6 @@ Partial Class CuentaCorrienteProveedor
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btnDescontarHaber = New System.Windows.Forms.Button()
         Me.txtDetalleDebe = New System.Windows.Forms.TextBox()
-        Me.chbDebe = New System.Windows.Forms.CheckBox()
         Me.btnCerrarDebe = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -53,7 +52,6 @@ Partial Class CuentaCorrienteProveedor
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtDetalleHaber = New System.Windows.Forms.TextBox()
         Me.btnActualizarDeuda = New System.Windows.Forms.Button()
-        Me.chbHaber = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtDineroHaber = New System.Windows.Forms.TextBox()
         Me.btnHaber = New System.Windows.Forms.Button()
@@ -61,6 +59,7 @@ Partial Class CuentaCorrienteProveedor
         Me.ttpDebe = New System.Windows.Forms.ToolTip(Me.components)
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.txtBuscarCodigoProv = New System.Windows.Forms.TextBox()
+        Me.lblUltimaCompra = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvRegistroCompras, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -287,7 +286,6 @@ Partial Class CuentaCorrienteProveedor
         Me.gbDebe.Controls.Add(Me.Label6)
         Me.gbDebe.Controls.Add(Me.btnDescontarHaber)
         Me.gbDebe.Controls.Add(Me.txtDetalleDebe)
-        Me.gbDebe.Controls.Add(Me.chbDebe)
         Me.gbDebe.Controls.Add(Me.btnCerrarDebe)
         Me.gbDebe.Controls.Add(Me.Label3)
         Me.gbDebe.Controls.Add(Me.Label4)
@@ -336,18 +334,6 @@ Partial Class CuentaCorrienteProveedor
         Me.txtDetalleDebe.Name = "txtDetalleDebe"
         Me.txtDetalleDebe.Size = New System.Drawing.Size(296, 26)
         Me.txtDetalleDebe.TabIndex = 39
-        '
-        'chbDebe
-        '
-        Me.chbDebe.AutoSize = True
-        Me.chbDebe.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chbDebe.ForeColor = System.Drawing.Color.Blue
-        Me.chbDebe.Location = New System.Drawing.Point(18, 242)
-        Me.chbDebe.Name = "chbDebe"
-        Me.chbDebe.Size = New System.Drawing.Size(155, 20)
-        Me.chbDebe.TabIndex = 37
-        Me.chbDebe.Text = "Importante (Notas)"
-        Me.chbDebe.UseVisualStyleBackColor = True
         '
         'btnCerrarDebe
         '
@@ -403,7 +389,6 @@ Partial Class CuentaCorrienteProveedor
         Me.gbHaber.Controls.Add(Me.Label2)
         Me.gbHaber.Controls.Add(Me.txtDetalleHaber)
         Me.gbHaber.Controls.Add(Me.btnActualizarDeuda)
-        Me.gbHaber.Controls.Add(Me.chbHaber)
         Me.gbHaber.Controls.Add(Me.Label1)
         Me.gbHaber.Controls.Add(Me.txtDineroHaber)
         Me.gbHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -478,18 +463,6 @@ Partial Class CuentaCorrienteProveedor
         Me.btnActualizarDeuda.Text = "Guardar"
         Me.btnActualizarDeuda.UseVisualStyleBackColor = False
         '
-        'chbHaber
-        '
-        Me.chbHaber.AutoSize = True
-        Me.chbHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chbHaber.ForeColor = System.Drawing.Color.Blue
-        Me.chbHaber.Location = New System.Drawing.Point(32, 221)
-        Me.chbHaber.Name = "chbHaber"
-        Me.chbHaber.Size = New System.Drawing.Size(155, 20)
-        Me.chbHaber.TabIndex = 2
-        Me.chbHaber.Text = "Importante (Notas)"
-        Me.chbHaber.UseVisualStyleBackColor = True
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -546,12 +519,25 @@ Partial Class CuentaCorrienteProveedor
         Me.txtBuscarCodigoProv.TabIndex = 54
         Me.txtBuscarCodigoProv.Visible = False
         '
+        'lblUltimaCompra
+        '
+        Me.lblUltimaCompra.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblUltimaCompra.AutoSize = True
+        Me.lblUltimaCompra.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUltimaCompra.ForeColor = System.Drawing.Color.Black
+        Me.lblUltimaCompra.Location = New System.Drawing.Point(670, 11)
+        Me.lblUltimaCompra.Name = "lblUltimaCompra"
+        Me.lblUltimaCompra.Size = New System.Drawing.Size(219, 19)
+        Me.lblUltimaCompra.TabIndex = 60
+        Me.lblUltimaCompra.Text = "Última compra: 05/11/2020"
+        '
         'CuentaCorrienteProveedor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.CadetBlue
         Me.ClientSize = New System.Drawing.Size(1010, 750)
+        Me.Controls.Add(Me.lblUltimaCompra)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.txtBuscarCodigoProv)
         Me.Controls.Add(Me.gbHaber)
@@ -589,7 +575,6 @@ Partial Class CuentaCorrienteProveedor
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtDineroDebe As System.Windows.Forms.TextBox
     Friend WithEvents btnCerrarDebe As System.Windows.Forms.Button
-    Friend WithEvents chbDebe As System.Windows.Forms.CheckBox
     Friend WithEvents txtDetalleDebe As System.Windows.Forms.TextBox
     Friend WithEvents chkRegistroCompleto As System.Windows.Forms.CheckBox
     Public WithEvents dgvProveedores As Guna.UI.WinForms.GunaDataGridView
@@ -600,7 +585,6 @@ Partial Class CuentaCorrienteProveedor
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtDetalleHaber As System.Windows.Forms.TextBox
     Friend WithEvents btnActualizarDeuda As System.Windows.Forms.Button
-    Friend WithEvents chbHaber As System.Windows.Forms.CheckBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtDineroHaber As System.Windows.Forms.TextBox
     Friend WithEvents btnHaber As System.Windows.Forms.Button
@@ -610,4 +594,5 @@ Partial Class CuentaCorrienteProveedor
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents txtBuscarCodigoProv As System.Windows.Forms.TextBox
+    Friend WithEvents lblUltimaCompra As System.Windows.Forms.Label
 End Class

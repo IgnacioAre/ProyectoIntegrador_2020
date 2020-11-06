@@ -22,6 +22,7 @@ Public Class CuentaCorrienteProveedor
         SendMessage(txtBuscarNombreProv.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por nombre")
         SendMessage(txtBuscarCodigoProv.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por código")
         actualizarTabla()
+        ultimaCompra()
     End Sub
 
     '----PLACEHOLDERS----'
@@ -33,6 +34,13 @@ Public Class CuentaCorrienteProveedor
     <MarshalAs(UnmanagedType.LPWStr)> ByVal lParam As String) As Int32
     End Function
 
+
+    Sub ultimaCompra()
+        consultas.consultaReturnHide("select fechaVenta from ventaProveedor order by(fechaVenta) desc limit 1;")
+        lblUltimaCompra.Text = "Última compra: " & consultas.valorReturn
+    End Sub
+
+
     '----MÉTODO PARA BUSCAR LOS CLIENTES POR NOMBRE----'
 
     Private Sub txtBuscarCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarNombreProv.TextChanged
@@ -42,8 +50,6 @@ Public Class CuentaCorrienteProveedor
     Private Sub btnCerrar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
-
-
 
 
     '----HACE VISIBLE LA SECCIÓN DE UNA NUEVA COMPRA----'
@@ -89,19 +95,9 @@ Public Class CuentaCorrienteProveedor
 
 
         chkRegistroCompleto.Checked = False
-        ActualizarTablaRegistroVenta()
+        ActualizarTablaRegistroCompra()
     End Sub
 
-
-    '----MUESTRA O ESCONDE CAMPO DE AGREGAR DETALLE----'
-
-
-    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        actualizarTabla()
-        ActualizarTablaRegistroVenta()
-        txtBuscarNombreProv.Text = ""
-        txtBuscarNombreProv.Focus()
-    End Sub
 
     '----MÉTODO QUE ACTUALIZA LA TABLA----'
 
@@ -130,11 +126,9 @@ Public Class CuentaCorrienteProveedor
 
 
 
-    Public Sub ActualizarTablaRegistroVenta()
+    Public Sub ActualizarTablaRegistroCompra()
         dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle as Comentario,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND p.idProveedor=" & idProveedor & " order by(idVenta) desc;")
-
         dgvRegistroCompras.Columns(0).Visible = False
-
     End Sub
 
 
@@ -210,7 +204,7 @@ Public Class CuentaCorrienteProveedor
                 consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroDebe.Text)) & " where idProveedor=" & idProveedor & ";")
 
                 txtDineroDebe.Text = ""
-                ActualizarTablaRegistroVenta()
+                ActualizarTablaRegistroCompra()
                 actualizarTablaConId()
             End If
 
@@ -259,7 +253,7 @@ Public Class CuentaCorrienteProveedor
                 Else
                     consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Detalle,Cobrador,fechaVenta,adeudoBool,idProveedor) VALUES (-" & txtDineroDebe.Text & ",'" & txtDetalleDebe.Text & "','" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
                 End If
-                ActualizarTablaRegistroVenta()
+                ActualizarTablaRegistroCompra()
                 actualizarTablaConId()
                 txtBuscarNombreProv.Focus()
                 limpiarHaber()
@@ -302,19 +296,11 @@ Public Class CuentaCorrienteProveedor
 
     Private Sub chkRegistroCompleto_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkRegistroCompleto.CheckedChanged
         If chkRegistroCompleto.Checked Then
-            gbDebe.Visible = False
-            btnHaber.Enabled = False
-            'Aqui podrá ver el registro completo pero sin los cobros realizados.
-            dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle,Cobrador,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND p.idProveedor=" & idProveedor & ";")
-
+            dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle,Cobrador,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND p.idProveedor=" & idProveedor & " order by(idVenta) desc;")
             dgvRegistroCompras.Columns(0).Visible = False
-
-
         Else
-            btnHaber.Enabled = True
             'Aqui solo podrá ver los registros que estén sin cobrar.
-            dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND p.idProveedor=" & idProveedor & ";")
-
+            dgvRegistroCompras.DataSource = consultas.mostrarEnTabla("SELECT idVenta,vp.Saldo,Detalle,fechaVenta As Fecha FROM ventaProveedor as vp,Proveedores as p WHERE vp.idProveedor = p.idProveedor AND adeudoBool=1 AND p.idProveedor=" & idProveedor & " order by(idVenta) desc;")
             dgvRegistroCompras.Columns(0).Visible = False
         End If
     End Sub
@@ -349,7 +335,7 @@ Public Class CuentaCorrienteProveedor
             consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroDebe.Text)) & " where idProveedor=" & idProveedor & ";")
 
             txtDineroDebe.Text = ""
-            ActualizarTablaRegistroVenta()
+            ActualizarTablaRegistroCompra()
             actualizarTablaConId()
             txtDineroDebe.Focus()
             limpiarHaber()
@@ -378,7 +364,8 @@ Public Class CuentaCorrienteProveedor
                 consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,Detalle,fechaVenta,adeudoBool,idProveedor) Values(" & txtDineroHaber.Text & ",'" & txtDetalleHaber.Text & "'" & ",now(),1," & idProveedor & ");")
             End If
 
-
+        Else
+            mostrarMensaje("Error. Verifique el dinero ingresado.")
         End If
 
 
@@ -396,13 +383,11 @@ Public Class CuentaCorrienteProveedor
 
             consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual + Val(txtDineroHaber.Text)) & " where idProveedor=" & idProveedor & ";")
 
+            ultimaCompra()
             actualizarTablaConId()
-            ActualizarTablaRegistroVenta()
+            ActualizarTablaRegistroCompra()
             limpiarDebe()
             txtBuscarNombreProv.Focus()
-
-        Else
-            mostrarMensaje("Error. Verifique el dinero ingresado.")
         End If
 
     End Sub
@@ -418,7 +403,7 @@ Public Class CuentaCorrienteProveedor
 
         If dgvRegistroCompras.Columns(e.ColumnIndex).Name = "Saldo" Then
 
-            Dim valor As Integer = Val(e.Value)
+            Dim valor As Long = Val(e.Value)
 
             If valor < 0 Then
                 dgvRegistroCompras.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.Red
@@ -433,7 +418,7 @@ Public Class CuentaCorrienteProveedor
             e.Handled = True
 
             If e.KeyChar = ChrW(Keys.Enter) Then
-                If txtDineroDebe.Text.Equals("") Then
+                If txtDineroHaber.Text.Equals("") Then
                     e.Handled = True
                     mostrarMensaje("El saldo no puede estar vacio.")
                 Else

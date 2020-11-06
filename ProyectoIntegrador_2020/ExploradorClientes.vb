@@ -101,25 +101,6 @@ Public Class ExploradorClientes
     End Sub
 
 
-
-    Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
-
-        If chbPermitido.Checked Then
-            permitido = 1
-        Else
-            permitido = 0
-        End If
-
-        consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text.ToUpper & "', maxPermitidoBool=" & permitido & " WHERE idCliente=" & idCliente & ";")
-
-        If consultas.resultado = 1 Then
-            gpInformacion.Visible = False
-        End If
-
-        actualizarTablaConId()
-        chkNoActivos.Checked = False
-    End Sub
-
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNoActivo.Click
         resultado = ConfirmacionMensaje.confirmacion("   ¿Seguro que desea quitar este cliente?")
         If resultado = 1 Then
@@ -134,7 +115,7 @@ Public Class ExploradorClientes
     'ACTUALIZA LA TABLA
 
     Sub ActualizarTabla()
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=1;")
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, fechaIngreso As Ingreso, Direccion As Dirección, estadoBool As Activo,maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 order by(nombre);")
 
         dgvClientes.Columns(5).Visible = False
         dgvClientes.Columns(6).Width = 0
@@ -261,10 +242,12 @@ Public Class ExploradorClientes
 
 
     Private Sub btnAgregarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarTel.Click
+        ConfirmacionMensaje.soloNumBool = True
         resultadosTxt = ConfirmacionMensaje.entradaDatos("Nuevo número telfónico:")
 
         consultas.consultaHide("INSERT INTO telefonoCliente (numeroTel, idCliente) VALUES ('" & resultadosTxt & "'," & idCliente & ");")
         ActualizarTablaTelefono()
+        ConfirmacionMensaje.soloNumBool = False
     End Sub
 
 
@@ -280,7 +263,7 @@ Public Class ExploradorClientes
 
 
     Private Sub btnEditarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarTel.Click
-
+        ConfirmacionMensaje.soloNumBool = True
         Dim idTel As String
         Dim num As String
         idTel = dgvTelefono.CurrentRow.Cells(0).Value.ToString
@@ -293,7 +276,7 @@ Public Class ExploradorClientes
             consultas.consultaHide("UPDATE telefonoCliente set numeroTel='" & resultadosTxt & "' where idTelefono=" & idTel & ";")
             ActualizarTablaTelefono()
         End If
-
+        ConfirmacionMensaje.soloNumBool = False
     End Sub
 
     Private Sub btnEditarRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarRegistro.Click

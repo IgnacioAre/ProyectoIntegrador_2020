@@ -5,6 +5,7 @@ Public Class ConfirmacionMensaje
 
     Public resultado As Byte = 0
     Public resultadoTxt As String
+    Public soloNumBool As Boolean = False
 
 
     Function entradaDatos(ByVal mensaje As String)
@@ -62,16 +63,27 @@ Public Class ConfirmacionMensaje
     End Sub
 
     Private Sub txtEntrada_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtEntrada.KeyPress
-        If Not Char.IsLetter(e.KeyChar) And Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Not Char.IsWhiteSpace(e.KeyChar) And Asc(e.KeyChar) <> 46 Then
-            If e.KeyChar = ChrW(Keys.Enter) Then
-                resultado = 1
-                If Not txtEntrada.Text.Equals("") Then resultadoTxt = txtEntrada.Text
-                txtEntrada.Text = ""
-                Me.Close()
-            Else
+        If soloNumBool Then
+
+            If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
                 e.Handled = True
             End If
+
+        Else
+
+            If Not Char.IsLetter(e.KeyChar) And Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Not Char.IsWhiteSpace(e.KeyChar) And Asc(e.KeyChar) <> 46 Then
+                If e.KeyChar = ChrW(Keys.Enter) Then
+                    resultado = 1
+                    If Not txtEntrada.Text.Equals("") Then resultadoTxt = txtEntrada.Text
+                    txtEntrada.Text = ""
+                    Me.Close()
+                Else
+                    e.Handled = True
+                End If
+            End If
+
         End If
+        
     End Sub
 
     Private Sub ConfirmacionMensaje_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

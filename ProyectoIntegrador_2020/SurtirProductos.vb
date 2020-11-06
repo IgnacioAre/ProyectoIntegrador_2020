@@ -6,6 +6,7 @@ Public Class SurtirProductos
 
     'Este contador sirve como índice para ver el número de compra ya ingresado.
     Dim contadorCompra As Byte = 0
+
     Dim ultimoCont As Integer = 0
     Dim oneBackBool As Boolean = False
     Public soloNuevoBool As Boolean = False
@@ -260,7 +261,7 @@ Public Class SurtirProductos
 
     Private Sub btnFinalizarCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFinalizarSurtido.Click
         Dim resultado As Byte
-        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
+        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 1 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
 
             consulta.consultaReturnHide("SELECT idProducto FROM Productos WHERE idProducto = " & txtCodigoProducto.Text & ";")
 

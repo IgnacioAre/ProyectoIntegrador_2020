@@ -40,6 +40,13 @@
 
         Dim fon2 As New Font(FontFamily.GenericSansSerif, 12, FontStyle.Regular)
 
+        Dim i As Integer = 1
+
+        Do While (i <= moduloAuxiliar.cantidadRegistroInforme)
+
+            i += 1
+        Loop
+
         Dim rek As New Rectangle(170, 30, xWidth, yHeight)
         e.Graphics.DrawRectangle(Pens.Black, rek)
         e.Graphics.DrawString(moduloAuxiliar.valueSaldo, fon2, Brushes.Black, 230, 32)

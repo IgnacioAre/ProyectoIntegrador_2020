@@ -77,7 +77,8 @@ Public Class CuentaCorriente
                 consultas.consultaHide("INSERT INTO compraCliente(Saldo,Detalle,fechaCompra,adeudoBool,idCliente) Values(" & txtDineroDebe.Text & ",'" & txtDetalleDebe.Text & "'" & ",now(),1," & idCliente & ");")
             End If
 
-
+        Else
+            mostrarMensaje("Error. Verifique el dinero ingresado.")
         End If
 
 
@@ -101,9 +102,6 @@ Public Class CuentaCorriente
             txtBuscarNombreCli.Focus()
             limpiarDebe()
             ultimaCompra()
-
-        Else
-            mostrarMensaje("Error. Verifique el dinero ingresado.")
         End If
 
     End Sub
@@ -151,17 +149,6 @@ Public Class CuentaCorriente
         ActualizarTablaRegistroVenta()
     End Sub
 
-
-    '----MUESTRA O ESCONDE CAMPO DE AGREGAR DETALLE----'
-
-
-    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        actualizarTabla()
-        limpiarDebe()
-        limpiarHaber()
-        txtBuscarNombreCli.Text = ""
-        txtBuscarNombreCli.Focus()
-    End Sub
 
     '----MÉTODO QUE ACTUALIZA LA TABLA----'
 
@@ -389,7 +376,6 @@ Public Class CuentaCorriente
                     actualizarTablaConId()
                     txtBuscarNombreCli.Focus()
                     limpiarHaber()
-                    ultimaCompra()
                 End If
             End If
 
@@ -426,7 +412,6 @@ Public Class CuentaCorriente
                 actualizarTablaConId()
                 txtDineroHaber.Focus()
                 limpiarHaber()
-                ultimaCompra()
             End If
 
         Else
@@ -437,15 +422,11 @@ Public Class CuentaCorriente
 
     Private Sub chkRegistroCompleto_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkRegistroCompleto.CheckedChanged
         If chkRegistroCompleto.Checked Then
-            gbHaber.Visible = False
-            btnHaber.Enabled = False
-            'Aqui podrá ver el registro completo pero sin los cobros realizados.
             dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,Cobrador,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND c.idCliente=" & idCliente & " order by(idCompra) desc;")
             dgvRegistroVentas.Columns(0).Visible = False
 
 
         Else
-            btnHaber.Enabled = True
             'Aqui solo podrá ver los registros que estén sin cobrar.
             dgvRegistroVentas.DataSource = consultas.mostrarEnTabla("SELECT idCompra,cc.Saldo,Detalle,fechaCompra As Fecha FROM compraCliente as cc,Clientes as c WHERE cc.idCliente = c.idCliente AND adeudoBool=1 AND c.idCliente=" & idCliente & " order by(idCompra) desc;")
             dgvRegistroVentas.Columns(0).Visible = False
@@ -529,4 +510,5 @@ Public Class CuentaCorriente
         dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND idCliente LIKE '%" & txtBuscarCodigoCli.Text & "%';")
         dgvClientes.Columns(3).Width = 0
     End Sub
+
 End Class
