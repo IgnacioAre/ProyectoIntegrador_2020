@@ -20,6 +20,7 @@ Public Class CuentaCorrienteProveedor
         btnHaber.Enabled = False
         consultas.establecerConexion()
         SendMessage(txtBuscarNombreProv.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por nombre")
+        SendMessage(txtBuscarCodigoProv.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por código")
         actualizarTabla()
     End Sub
 

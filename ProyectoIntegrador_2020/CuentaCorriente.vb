@@ -14,6 +14,7 @@ Public Class CuentaCorriente
     Private Sub Pruebas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         consultas.establecerConexion()
         SendMessage(txtBuscarNombreCli.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
+        SendMessage(txtBuscarCodigoCli.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por código")
         limpiarHaber()
         limpiarDebe()
         ultimaCompra()

@@ -122,7 +122,7 @@
     <Compile Include="InformeFactura.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="moduloFactura.vb" />
+    <Compile Include="moduloAuxiliar.vb" />
     <Compile Include="Surtido.vb" />
     <Compile Include="Conexion.vb" />
     <Compile Include="ConfirmacionMensaje.Designer.vb">

@@ -39,6 +39,7 @@ Public Class ExploradorClientes
     Private Sub btnNuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevo.Click
         Nuevo.lblTitulo.Text = "Nuevo Cliente"
         Nuevo.ShowDialog()
+        Me.Close()
     End Sub
 
 
@@ -177,7 +178,7 @@ Public Class ExploradorClientes
 
 
 
-    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
+    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ActualizarTabla()
         chkNoActivos.Checked = False
         txtBuscarNombreCli.Text = ""

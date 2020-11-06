@@ -56,15 +56,11 @@ Public Class Nuevo
 
                 If txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0, NOW(),1, 1);")
 
-
-
-
-
                 If consultas.resultado = 1 Then
                     mostrarMensaje("Cliente " & txtNombre.Text & " registrado correctamente!")
-
                     limpiarCampos()
                     Me.Close()
+                    moduloAuxiliar.cargarExploradorClientes()
                 End If
             End If
 
@@ -95,12 +91,10 @@ Public Class Nuevo
 
 
 
-
-
                 If consultas.resultado = 1 Then
                     mostrarMensaje("Proveedor " & txtNombre.Text & " registrado correctamente!")
-
                     limpiarCampos()
+                    moduloAuxiliar.cargarExploradorProveedores()
                     Me.Close()
                 End If
 

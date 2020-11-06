@@ -100,7 +100,7 @@ Public Class GestionarProductos
 
 
 
-    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
+    Private Sub pbActualizarTabla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         txtNombre.Text = ""
         ActualizarTablaProductos()
     End Sub

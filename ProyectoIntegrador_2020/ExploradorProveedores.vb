@@ -18,9 +18,13 @@ Public Class ExploradorProveedores
         ActualizarTabla()
         SendMessage(txtBuscarNombreProv.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por nombre")
         SendMessage(txtBuscarCodigoProv.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por código")
+        ultimaModificacion()
     End Sub
 
-
+    Sub ultimaModificacion()
+        consultas.consultaReturnHide("SELECT fechaIngreso FROM Proveedores order by(fechaIngreso) desc limit 1")
+        lblUltimoIngreso.Text = "Último cliente registrado: " & consultas.valorReturn
+    End Sub
 
     '----MOSTRAR FORMULARIO "NUEVO" EN EL MENÚ PRINCIPAL----'
 
@@ -377,7 +381,7 @@ Public Class ExploradorProveedores
         End If
     End Sub
 
-    Private Sub pbActualizarTabla_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbActualizarTabla.Click
+    Private Sub pbActualizarTabla_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
         chkNoActivos.Checked = False
         ActualizarTabla()
         txtBuscarNombreProv.Text = ""

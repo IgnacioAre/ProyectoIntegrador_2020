@@ -29,8 +29,6 @@ Partial Class buscarInforme
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(buscarInforme))
-        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.panelBuscarCliente = New System.Windows.Forms.Panel()
         Me.btnFacturar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -43,13 +41,6 @@ Partial Class buscarInforme
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'PrintDocument1
-        '
-        '
-        'PrintDialog1
-        '
-        Me.PrintDialog1.UseEXDialog = True
         '
         'panelBuscarCliente
         '
@@ -257,8 +248,6 @@ Partial Class buscarInforme
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
-    Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
     Friend WithEvents panelBuscarCliente As System.Windows.Forms.Panel
     Friend WithEvents dgvRegistroVentas As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents dgvClientes As Guna.UI.WinForms.GunaDataGridView

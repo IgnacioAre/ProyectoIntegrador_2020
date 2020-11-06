@@ -120,6 +120,7 @@ Partial Class InformeFactura
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PrintPreviewControl1.AutoZoom = False
+        Me.PrintPreviewControl1.Document = Me.PrintDocument1
         Me.PrintPreviewControl1.Location = New System.Drawing.Point(3, 62)
         Me.PrintPreviewControl1.Name = "PrintPreviewControl1"
         Me.PrintPreviewControl1.Size = New System.Drawing.Size(604, 467)

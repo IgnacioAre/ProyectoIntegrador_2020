@@ -77,7 +77,6 @@ Partial Class GestionarProductos
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnNuevo = New System.Windows.Forms.Button()
         Me.btnSurtir = New System.Windows.Forms.Button()
-        Me.pbActualizarTabla = New System.Windows.Forms.PictureBox()
         Me.txtBuscarCodigo = New System.Windows.Forms.TextBox()
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.txtMinimoStock = New System.Windows.Forms.TextBox()
@@ -97,7 +96,6 @@ Partial Class GestionarProductos
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnEditarRegistro, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvRegistroSurtido, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btnAjustarMinimoStock, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -771,17 +769,6 @@ Partial Class GestionarProductos
         Me.btnSurtir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSurtir.UseVisualStyleBackColor = False
         '
-        'pbActualizarTabla
-        '
-        Me.pbActualizarTabla.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pbActualizarTabla.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbActualizarTabla.Image = CType(resources.GetObject("pbActualizarTabla.Image"), System.Drawing.Image)
-        Me.pbActualizarTabla.Location = New System.Drawing.Point(856, 214)
-        Me.pbActualizarTabla.Name = "pbActualizarTabla"
-        Me.pbActualizarTabla.Size = New System.Drawing.Size(35, 35)
-        Me.pbActualizarTabla.TabIndex = 39
-        Me.pbActualizarTabla.TabStop = False
-        '
         'txtBuscarCodigo
         '
         Me.txtBuscarCodigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -915,7 +902,6 @@ Partial Class GestionarProductos
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnEliminar)
         Me.Controls.Add(Me.txtBuscarCodigo)
-        Me.Controls.Add(Me.pbActualizarTabla)
         Me.Controls.Add(Me.btnSurtir)
         Me.Controls.Add(Me.gpInformacion)
         Me.Controls.Add(Me.btnModificar)
@@ -938,7 +924,6 @@ Partial Class GestionarProductos
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnEditarRegistro, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvRegistroSurtido, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pbActualizarTabla, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btnAjustarMinimoStock, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -961,7 +946,6 @@ Partial Class GestionarProductos
     Friend WithEvents txtStock As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents btnSurtir As System.Windows.Forms.Button
-    Friend WithEvents pbActualizarTabla As System.Windows.Forms.PictureBox
     Friend WithEvents txtBuscarCodigo As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents cbxMedida As System.Windows.Forms.ComboBox

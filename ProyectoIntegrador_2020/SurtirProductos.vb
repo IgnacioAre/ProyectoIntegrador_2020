@@ -332,7 +332,7 @@ Public Class SurtirProductos
             'ACTUALIZA EL STOCK DE PRODUCTOS
             consulta.consultaReturnHide("SELECT Stock FROM Productos WHERE idProducto=" & ideProducto & ";")
             stockActual = consulta.valorReturn
-            consulta.consultaHide("UPDATE Productos set Stock=" & (stockActual + Cantidad) & ", precioCosto=" & precioCosto & ", precioVenta=" & precioVenta & " where idProducto=" & ideProducto & ";")
+            consulta.consultaHide("UPDATE Productos set Stock=" & (stockActual + Cantidad) & ", precioCosto=" & precioCosto & ", precioVenta=" & precioVenta & ", ganancia=" & Porcentaje & " where idProducto=" & ideProducto & ";")
 
 
             If consulta.resultado = 1 Then
@@ -340,6 +340,7 @@ Public Class SurtirProductos
                 contadorCompra = 0
                 ultimoCont = 0
                 TituloContador()
+                moduloAuxiliar.cargarProductos()
                 Me.Close()
             Else
                 mostrarMensaje("Ocurrió un error al intentar surtir el producto " & ideProducto)
@@ -619,6 +620,7 @@ Public Class SurtirProductos
                     tmrOcultarAgregar.Enabled = True
                     panelSurtido.Visible = True
                     limpiarPanelAgregar()
+                    moduloAuxiliar.cargarProductos()
                     Me.Close()
                 End If
 
