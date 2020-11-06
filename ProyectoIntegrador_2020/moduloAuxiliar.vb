@@ -28,12 +28,6 @@
     End Sub
 
 
-    Function cantidadRegistro() As Integer
-        cantidadRegistroInforme = buscarInforme.obtenerCantidadRegistro()
-        Return cantidadRegistroInforme
-    End Function
-
-    
 
 
 

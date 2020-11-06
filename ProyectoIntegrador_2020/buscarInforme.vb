@@ -2,7 +2,6 @@
 
     Dim consultas As Conexion = New Conexion
     Dim idCliente As Integer
-    Dim cantidadRegistros As Integer
 
     Private Sub Informe_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ActualizarTabla()
@@ -41,27 +40,20 @@
         moduloAuxiliar.headerComentario = dgvRegistroVentas.Columns(2).HeaderText
         moduloAuxiliar.headerFecha = dgvRegistroVentas.Columns(3).HeaderText
 
-        obtenerCantidadRegistro()
-        MsgBox(cantidadRegistros)
+        consultas.consultaReturnHide("SELECT COUNT(idCompra) from compraCliente as cc,Clientes as c where cc.idCliente = c.idCliente and cc.idCliente=" & idCliente)
 
-        For i As Integer = 0 To cantidadRegistros
+        For i As Integer = 0 To Val(consultas.valorReturn)
             'Guardar los valores de cada columna.
             Dim row = (dgvRegistroVentas.CurrentCell.RowIndex + i)
             moduloAuxiliar.valueSaldo = dgvRegistroVentas.Item(dgvRegistroVentas.Columns(1).HeaderText, row).Value.ToString
             moduloAuxiliar.valuesComentario = dgvRegistroVentas.Item(dgvRegistroVentas.Columns(2).HeaderText, row).Value.ToString
             moduloAuxiliar.valuesFecha = dgvRegistroVentas.Item(dgvRegistroVentas.Columns(3).HeaderText, row).Value.ToString
-            MsgBox(moduloAuxiliar.valueSaldo)
         Next
 
         Dim informeF As New InformeFactura()
         informeF.ShowDialog()
     End Sub
 
-    Function obtenerCantidadRegistro() As Integer
-        consultas.consultaReturnHide("SELECT COUNT(idCompra) from compraCliente as cc,Clientes as c where cc.idCliente = c.idCliente and cc.idCliente=" & idCliente)
-
-        Return cantidadRegistros
-    End Function
 
     Private Sub dgvRegistroVentas_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvRegistroVentas.SelectionChanged
         If dgvRegistroVentas.SelectedCells.Count <> 0 Then

@@ -43,23 +43,25 @@
         Dim i As Integer = 1
 
         Do While (i <= moduloAuxiliar.cantidadRegistroInforme)
+            Dim rek As New Rectangle(170, 30, xWidth, yHeight)
+            e.Graphics.DrawRectangle(Pens.Black, rek)
+            e.Graphics.DrawString(moduloAuxiliar.valueSaldo, fon2, Brushes.Black, 230, 32)
 
+            Dim rek2 As New Rectangle(330, 30, xWidth, yHeight)
+            e.Graphics.DrawRectangle(Pens.Black, rek2)
+            e.Graphics.DrawString(moduloAuxiliar.valuesComentario, fon2, Brushes.Black, 390, 32)
+
+            Dim rek3 As New Rectangle(490, 30, 230, yHeight)
+            e.Graphics.DrawRectangle(Pens.Black, rek3)
+            e.Graphics.DrawString(moduloAuxiliar.valuesFecha, fon2, Brushes.Black, 510, 32)
             i += 1
         Loop
 
-        Dim rek As New Rectangle(170, 30, xWidth, yHeight)
-        e.Graphics.DrawRectangle(Pens.Black, rek)
-        e.Graphics.DrawString(moduloAuxiliar.valueSaldo, fon2, Brushes.Black, 230, 32)
-
-        Dim rek2 As New Rectangle(330, 30, xWidth, yHeight)
-        e.Graphics.DrawRectangle(Pens.Black, rek2)
-        e.Graphics.DrawString(moduloAuxiliar.valuesComentario, fon2, Brushes.Black, 390, 32)
-
-        Dim rek3 As New Rectangle(490, 30, 230, yHeight)
-        e.Graphics.DrawRectangle(Pens.Black, rek3)
-        e.Graphics.DrawString(moduloAuxiliar.valuesFecha, fon2, Brushes.Black, 510, 32)
+        
 
     End Sub
+
+
 
 
     Private Sub pbRegresar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbRegresar.Click
