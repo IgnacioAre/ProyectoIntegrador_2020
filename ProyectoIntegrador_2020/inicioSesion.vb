@@ -102,12 +102,7 @@ Public Class inicioSesion
     End Sub
 
     Private Sub btnRegresar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbRegresar.Click
-        txtUsuarioRegistro.Text = ""
-        txtContraseñaRegistro.Text = ""
-        txtRepContraseñaRegistro.Text = ""
-        txtClaveAdminRegistro.Text = ""
-        panelLogin.Visible = True
-        panelRegistro.Visible = False
+        limpiarRegistro()
         lblTitulo.Text = "Iniciar Sesión  |  El Cofre"
         txtUsuarioLogin.Focus()
     End Sub
@@ -130,7 +125,7 @@ Public Class inicioSesion
 
 
     Sub Entrar()
-
+        
         Try
             consultas.consultaReturnHide("Select usuario,contraseña from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = AES_ENCRYPT('" & txtContraseñaLogin.Text & "','2@17501896');")
 
@@ -141,8 +136,9 @@ Public Class inicioSesion
                     guardarUsuarioTxt("")
                 End If
 
+
                 consultas.consultaHide("UPDATE Admin set logeadoBool=0")
-                consultas.consultaReturnHide("Select idAdmin from admin where usuario = '" & txtUsuarioLogin.Text.ToUpper & "' and contraseña = AES_ENCRYPT('" & txtContraseñaLogin.Text & "','2@17501896');")
+                consultas.consultaReturnHide("Select idAdmin from admin where usuario = '" & txtUsuarioLogin.Text & "' and contraseña = AES_ENCRYPT('" & txtContraseñaLogin.Text & "','2@17501896');")
                 consultas.consultaHide("UPDATE Admin set logeadoBool=1 where idAdmin=" & consultas.valorReturn)
                 MenuPrincipal.Show()
                 Me.Close()
@@ -352,14 +348,7 @@ Public Class inicioSesion
                         If consultas.resultado = 1 Then
                             mostrarMensaje("Usuario creado exitosamente!")
                             txtUsuarioLogin.Text = txtUsuarioRegistro.Text
-                            txtUsuarioRegistro.Text = ""
-                            txtContraseñaRegistro.Text = ""
-                            txtRepContraseñaRegistro.Text = ""
-                            txtClaveAdminRegistro.Text = ""
-                            panelRegistro.Hide()
-                            txtContraseñaLogin.Select()
-                            txtContraseñaLogin.Focus()
-                            panelLogin.Show()
+                            limpiarRegistro()
                         Else
                             mostrarMensaje("Error al intentar crear usuario.")
                         End If
@@ -372,6 +361,20 @@ Public Class inicioSesion
         Else
             mostrarMensaje("La clave de administrador es incorrecta." & vbCrLf & "Intentelo nuevamente.")
         End If
+    End Sub
+
+
+
+    Sub limpiarRegistro()
+        txtUsuarioRegistro.Text = ""
+        txtContraseñaRegistro.Text = ""
+        txtRepContraseñaRegistro.Text = ""
+        txtClaveAdminRegistro.Text = ""
+        txtCorreo.Text = ""
+        panelLogin.Visible = True
+        panelRegistro.Visible = False
+        txtContraseñaLogin.Select()
+        txtContraseñaLogin.Focus()
     End Sub
 
 
@@ -473,4 +476,18 @@ Public Class inicioSesion
         End If
     End Sub
 
+    Private Sub txtCorreo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCorreo.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 64 And Asc(e.KeyChar) <> 46 Then
+            e.Handled = True
+
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+
+        End If
+    End Sub
 End Class

@@ -110,12 +110,19 @@
     <Compile Include="Estadisticas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Informe.Designer.vb">
-      <DependentUpon>Informe.vb</DependentUpon>
+    <Compile Include="buscarInforme.Designer.vb">
+      <DependentUpon>buscarInforme.vb</DependentUpon>
     </Compile>
-    <Compile Include="Informe.vb">
+    <Compile Include="buscarInforme.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="InformeFactura.Designer.vb">
+      <DependentUpon>InformeFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InformeFactura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="moduloFactura.vb" />
     <Compile Include="Surtido.vb" />
     <Compile Include="Conexion.vb" />
     <Compile Include="ConfirmacionMensaje.Designer.vb">
@@ -217,8 +224,11 @@
     <EmbeddedResource Include="Estadisticas.resx">
       <DependentUpon>Estadisticas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Informe.resx">
-      <DependentUpon>Informe.vb</DependentUpon>
+    <EmbeddedResource Include="buscarInforme.resx">
+      <DependentUpon>buscarInforme.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformeFactura.resx">
+      <DependentUpon>InformeFactura.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SurtirProductos.resx">
       <DependentUpon>SurtirProductos.vb</DependentUpon>

@@ -8,6 +8,7 @@ Public Class MenuPrincipal
     Dim submenuProductoBool As Boolean = False
     Public resultado As Byte
     Public resultadoTxt As String
+    Dim hora As Byte
 
     Dim yPanelAviso As Integer
     Dim YfijaPanelAviso As Integer
@@ -34,7 +35,12 @@ Public Class MenuPrincipal
 
     Sub obtenerNombreAdmin()
         consulta.consultaReturnHide("SELECT Usuario FROM Admin where logeadoBool=1;")
-        nombreAdmin = consulta.valorReturn
+        Dim result As String = consulta.valorReturn
+        Dim primeraLetra As String = result.Substring(0, 1).ToUpper
+
+        Dim otrasLetras As String = result.Substring(1, result.Count - 1).ToLower
+
+        nombreAdmin = primeraLetra & otrasLetras
     End Sub
 
 
@@ -251,18 +257,11 @@ Public Class MenuPrincipal
     End Sub
 
     '----MUESTRA LA HORA Y FECHA EN EL FORMULARIO----'
-
+    Dim inicioBool As Boolean = True
     Private Sub tmrHoraFecha_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrHoraFecha.Tick
         lblHora.Text = DateTime.Now.ToString("HH:mm:ss")
         lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy")
-        Dim hora As Byte = Val(DateTime.Now.ToString("HH"))
-        If hora > 6 And hora < 12 Then
-            lblBienvenida.Text = "    ¡Buen día!" & vbCrLf & "Bienvenido " & nombreAdmin.ToLower
-        ElseIf hora >= 13 And hora <= 18 Then
-            lblBienvenida.Text = " ¡Buenas Tardes!" & vbCrLf & "Bienvenido " & nombreAdmin.ToLower
-        Else
-            lblBienvenida.Text = " ¡Buenas Noches!" & vbCrLf & "Bienvenido " & nombreAdmin.ToLower
-        End If
+        hora = Val(DateTime.Now.ToString("HH"))
 
     End Sub
 
@@ -350,7 +349,7 @@ Public Class MenuPrincipal
 
     Private Sub btnNuevoProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoProveedor.Click
         lblTituloVentana.Text = "Explorador de Proveedores"
-        If formularioBool = True Then formulario.Close()
+        If formularioBool Then formulario.Close()
         openFromOnPanel(Of ExploradorProveedores)()
         formularioBool = True
         tmrOcultarAbout.Enabled = True
@@ -358,7 +357,7 @@ Public Class MenuPrincipal
 
     Private Sub btnGestionarProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarProveedor.Click
         lblTituloVentana.Text = "Cuanta Corriente de Proveedores"
-        If formularioBool = True Then formulario.Close()
+        If formularioBool Then formulario.Close()
         openFromOnPanel(Of CuentaCorrienteProveedor)()
         formularioBool = True
         tmrOcultarAbout.Enabled = True
@@ -367,7 +366,7 @@ Public Class MenuPrincipal
     
     Private Sub btnActualizarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         lblTituloVentana.Text = "Actualizar Productos"
-        If formularioBool = True Then formulario.Close()
+        If formularioBool Then formulario.Close()
         openFromOnPanel(Of GestionarProductos)()
         formularioBool = True
         tmrOcultarAbout.Enabled = True
@@ -434,7 +433,7 @@ Public Class MenuPrincipal
         lblTituloVentana.Text = "Notas"
         submenuFalse()
         tmrOcultarSubMenu.Enabled = True
-        If formularioBool = True Then formulario.Close()
+        If formularioBool Then formulario.Close()
         openFromOnPanel(Of Notas)()
         formularioBool = True
         tmrOcultarAbout.Enabled = True
@@ -443,7 +442,7 @@ Public Class MenuPrincipal
 
     Private Sub btnEstadistica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEstadistica.Click
         lblTituloVentana.Text = "Estadísticas"
-        If formularioBool = True Then formulario.Close()
+        If formularioBool Then formulario.Close()
         openFromOnPanel(Of Estadisticas)()
         formularioBool = True
         tmrOcultarAbout.Enabled = True
@@ -511,9 +510,22 @@ Public Class MenuPrincipal
         lblTituloVentana.Text = "Informe"
         submenuFalse()
         tmrOcultarSubMenu.Enabled = True
-        If formularioBool = True Then formulario.Close()
-        openFromOnPanel(Of Informe)()
+        If formularioBool Then formulario.Close()
+        openFromOnPanel(Of buscarInforme)()
         formularioBool = True
         tmrOcultarAbout.Enabled = True
+    End Sub
+
+
+    Private Sub MenuPrincipal_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
+        hora = Val(DateTime.Now.ToString("HH"))
+
+        If hora > 6 And hora <= 12 Then
+            lblBienvenida.Text = "    ¡Buen día!" & vbCrLf & "Bienvenido " & nombreAdmin
+        ElseIf hora >= 13 And hora <= 18 Then
+            lblBienvenida.Text = " ¡Buenas Tardes!" & vbCrLf & "Bienvenido " & nombreAdmin
+        Else
+            lblBienvenida.Text = " ¡Buenas Noches!" & vbCrLf & "Bienvenido " & nombreAdmin
+        End If
     End Sub
 End Class

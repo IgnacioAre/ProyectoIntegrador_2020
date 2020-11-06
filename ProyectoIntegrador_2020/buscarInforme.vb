@@ -1,4 +1,4 @@
-﻿Public Class Informe
+﻿Public Class buscarInforme
 
     Dim consultas As Conexion = New Conexion
     Dim idCliente As Integer
@@ -6,11 +6,10 @@
     Private Sub Informe_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ActualizarTabla()
         ActualizarTablaRegistro()
-        PrintPreviewControl1.AutoZoom = True
     End Sub
 
-    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
 
+    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
         Dim xWidth As Integer = 160
         Dim yHeight As Integer = 20
 
@@ -63,6 +62,7 @@
 
     End Sub
 
+
     Private Sub txtBuscarClientes_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
         dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
     End Sub
@@ -88,23 +88,29 @@
         ActualizarTablaRegistro()
     End Sub
 
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFacturar.Click
-        panelBuscarCliente.Visible = False
+    Private Sub btnFacturar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFacturar.Click
+        'Guardar los header del dgvRegistroVentas
+        moduloFactura.headerSaldo = dgvRegistroVentas.Columns(1).HeaderText
+        moduloFactura.headerComentario = dgvRegistroVentas.Columns(2).HeaderText
+        moduloFactura.headerFecha = dgvRegistroVentas.Columns(3).HeaderText
+
+        'Guardar los valores de cada columna.
+        Dim row = dgvRegistroVentas.CurrentCell.RowIndex
+        moduloFactura.valueSaldo = dgvRegistroVentas.Item(dgvRegistroVentas.Columns(1).HeaderText, row).Value.ToString
+        moduloFactura.valuesComentario = dgvRegistroVentas.Item(dgvRegistroVentas.Columns(2).HeaderText, row).Value.ToString
+        moduloFactura.valuesFecha = dgvRegistroVentas.Item(dgvRegistroVentas.Columns(3).HeaderText, row).Value.ToString
+
+        InformeFactura.ShowDialog()
     End Sub
 
-    Private Sub btnZoomMenos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnZoomMenos.Click
-        PrintPreviewControl1.AutoZoom = True
+
+    Private Sub dgvRegistroVentas_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvRegistroVentas.SelectionChanged
+        If dgvRegistroVentas.SelectedCells.Count <> 0 Then
+            btnFacturar.Enabled = True
+        Else
+            btnFacturar.Enabled = False
+        End If
     End Sub
 
-    Private Sub btnZoomMas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnZoomMas.Click
-        PrintPreviewControl1.Zoom = 1.2
-    End Sub
 
-    Private Sub btnImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImprimir.Click
-        PrintDocument1.Print()
-    End Sub
-
-    Private Sub pbRegresar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbRegresar.Click
-        panelBuscarCliente.Visible = True
-    End Sub
 End Class

@@ -16,6 +16,7 @@ Public Class CuentaCorriente
         SendMessage(txtBuscarNombreCli.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
         limpiarHaber()
         limpiarDebe()
+        ultimaCompra()
     End Sub
 
     Private Sub CuentaCorriente_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
@@ -24,6 +25,14 @@ Public Class CuentaCorriente
         btnHaber.Enabled = False
         actualizarTabla()
     End Sub
+
+
+
+    Sub ultimaCompra()
+        consultas.consultaReturnHide("select fechaCompra from compracliente order by(fechaCompra) desc limit 1;")
+        lblUltimaCompra.Text = "Última compra: " & consultas.valorReturn
+    End Sub
+
 
     Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         MenuPrincipal.formularioBool = False
@@ -90,6 +99,7 @@ Public Class CuentaCorriente
             limpiarDebe()
             txtBuscarNombreCli.Focus()
             limpiarDebe()
+            ultimaCompra()
 
         Else
             mostrarMensaje("Error. Verifique el dinero ingresado.")
@@ -112,6 +122,7 @@ Public Class CuentaCorriente
         gbDebe.Visible = False
         btnPagarTodoRegistro.Enabled = True
         txtDineroHaber.Focus()
+
     End Sub
 
 
@@ -119,12 +130,22 @@ Public Class CuentaCorriente
 
     Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvClientes.SelectionChanged
         If dgvClientes.SelectedCells.Count <> 0 Then
+            btnDebe.Enabled = True
+            btnHaber.Enabled = True
+
             idCliente = dgvClientes.SelectedCells(0).Value
             saldo = dgvClientes.SelectedCells(2).Value
+        Else
+            btnDebe.Enabled = False
+            btnHaber.Enabled = False
         End If
 
-        btnDebe.Enabled = True
-        btnHaber.Enabled = True
+        consultas.consultaReturnHide("SELECT Saldo FROM clientes where idCliente=" & idCliente & ";")
+        If Val(consultas.valorReturn) = 0 Then
+            btnPagarTodoRegistro.Enabled = False
+        Else
+            btnPagarTodoRegistro.Enabled = True
+        End If
 
         ActualizarTablaRegistroVenta()
     End Sub
@@ -322,7 +343,12 @@ Public Class CuentaCorriente
         End If
     End Sub
 
-    Private Sub btnEliminarTodoRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPagarTodoRegistro.Click
+    Private Sub btnPagarTodoRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPagarTodoRegistro.Click
+        pagarTodoDeuda()
+    End Sub
+
+
+    Sub pagarTodoDeuda()
         confirmacion = ConfirmacionMensaje.confirmacion("            ¿Seguro que desea cobrar" & vbCrLf & "             todo el saldo?")
         If confirmacion = 1 Then
 
@@ -362,34 +388,22 @@ Public Class CuentaCorriente
                     actualizarTablaConId()
                     txtBuscarNombreCli.Focus()
                     limpiarHaber()
+                    ultimaCompra()
                 End If
             End If
-            
+
 
         End If
     End Sub
-
-    Private Sub btnPagarTodo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-
-        consultas.consultaReturnHide("SELECT SUM(Saldo) FROM compraCliente where adeudoBool=1 AND idCliente=" & idCliente & ";")
-        If Not consultas.valorReturn = "0" Then
-            txtDineroHaber.Text = consultas.valorReturn
-        End If
-
-    End Sub
-
-
 
     
 
-    Private Sub btnCobrarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDescontarHaber.Click
-        pagarDeuda()
-        limpiarHaber()
+    Private Sub btnDescontarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDescontarHaber.Click
+        descontarDeuda()
     End Sub
 
 
-    Sub pagarDeuda()
+    Sub descontarDeuda()
         If Not txtDineroHaber.Text.Equals("") And Not txtDineroHaber.Text.Equals("0") Then
 
             If txtDetalleHaber.Text.Equals("") Then
@@ -405,11 +419,17 @@ Public Class CuentaCorriente
 
             consultas.consultaHide("UPDATE Clientes set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idCliente=" & idCliente & ";")
 
-            txtDineroHaber.Text = ""
-            ActualizarTablaRegistroVenta()
-            actualizarTablaConId()
-            txtDineroHaber.Focus()
+            If consultas.resultado = 1 Then
+                txtDineroHaber.Text = ""
+                ActualizarTablaRegistroVenta()
+                actualizarTablaConId()
+                txtDineroHaber.Focus()
+                limpiarHaber()
+                ultimaCompra()
+            End If
 
+        Else
+            mostrarMensaje("Debe introducir la cantidad de dinero.")
         End If
     End Sub
 
@@ -450,12 +470,20 @@ Public Class CuentaCorriente
             e.Handled = True
 
             If e.KeyChar = ChrW(Keys.Enter) Then
-                If txtDineroDebe.Text.Equals("") Then
+
+                If txtDineroHaber.Text.Equals("") Then
                     e.Handled = True
-                    mostrarMensaje("El saldo no puede estar vacio.")
+                    mostrarMensaje("Debe introducir la cantidad de dinero.")
                 Else
-                    pagarDeuda()
+                    consultas.consultaReturnHide("SELECT Saldo FROM clientes where idCliente=" & idCliente & ";")
+                    If txtDineroHaber.Text.Equals(consultas.valorReturn) Then
+                        pagarTodoDeuda()
+                    Else
+                        descontarDeuda()
+                    End If
+
                 End If
+
             End If
         End If
     End Sub

@@ -117,24 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pbRegresar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        3QAAAN0BcFOiBwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADoSURBVFhHxdSx
-        DcIwEAVQswETsAMFQ4CAmjWYgjJ9JmAQJqBEoqOnhcr8S5zETr6gsT8nPWT/i7iTgnDe+7+ioRINlWio
-        REMlGirRUImGCqhDgzUVUPbBmwo/F0DNWJ7L1wVQe7jAnPVzQPEFUDb8HR44jvu5hO+fhPHwKu7lFmYk
-        gWy4CXP6i3S4CbOaww664Vdo/yDK6xd4RBe1O7hTFNzgLFLDsnsfFdjhBevx+yppOKRLbOKHSkovwxL2
-        o9zGvVKmgXgJHrZLPGHF+jnR0KAWLM+Nhko0VKKhEg2VaKhEQyUa6nj3ASv8lVYOA4gcAAAAAElFTkSu
-        QmCC
-</value>
-  </data>
   <metadata name="PrintDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="PrintDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="PictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA

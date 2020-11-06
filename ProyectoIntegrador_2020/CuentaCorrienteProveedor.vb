@@ -68,12 +68,24 @@ Public Class CuentaCorrienteProveedor
 
     Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvProveedores.SelectionChanged
         If dgvProveedores.SelectedCells.Count <> 0 Then
+            btnDebe.Enabled = True
+            btnHaber.Enabled = True
             idProveedor = dgvProveedores.SelectedCells(0).Value
             nombreProveedor = dgvProveedores.SelectedCells(1).Value
+
+        Else
+            btnDebe.Enabled = False
+            btnHaber.Enabled = False
         End If
 
-        btnDebe.Enabled = True
-        btnHaber.Enabled = True
+
+        consultas.consultaReturnHide("SELECT Saldo FROM proveedores where idProveedor=" & idProveedor & ";")
+        If Val(consultas.valorReturn) = 0 Then
+            btnPagarTodoRegistro.Enabled = False
+        Else
+            btnPagarTodoRegistro.Enabled = True
+        End If
+
 
         chkRegistroCompleto.Checked = False
         ActualizarTablaRegistroVenta()
@@ -205,6 +217,12 @@ Public Class CuentaCorrienteProveedor
     End Sub
 
     Private Sub btnEliminarTodoRegistro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPagarTodoRegistro.Click
+        pagarTodoDeuda()
+    End Sub
+
+
+
+    Sub pagarTodoDeuda()
         confirmacion = ConfirmacionMensaje.confirmacion("             ¿Seguro que desea pagar" & vbCrLf & "              todo el saldo?")
         If confirmacion = 1 Then
 
@@ -265,9 +283,15 @@ Public Class CuentaCorrienteProveedor
             If e.KeyChar = ChrW(Keys.Enter) Then
                 If txtDineroDebe.Text.Equals("") Then
                     e.Handled = True
-                    mostrarMensaje("El saldo no puede estar vacio.")
+                    mostrarMensaje("Debe introducir la cantidad de dinero.")
                 Else
-                    pagarDeuda()
+                    consultas.consultaReturnHide("SELECT Saldo FROM Proveedores where idProveedor=" & idProveedor)
+                    If txtDineroDebe.Text.Equals(consultas.valorReturn) Then
+                        pagarTodoDeuda()
+                    Else
+                        descontarDeuda()
+                    End If
+
                 End If
             End If
         End If
@@ -302,12 +326,12 @@ Public Class CuentaCorrienteProveedor
 
 
     Private Sub btnPagarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDescontarHaber.Click
-        pagarDeuda()
+        descontarDeuda()
     End Sub
 
 
 
-    Sub pagarDeuda()
+    Sub descontarDeuda()
         If Val(txtDineroDebe.Text) > 0 Then
 
             If txtDetalleDebe.Text.Equals("") Then

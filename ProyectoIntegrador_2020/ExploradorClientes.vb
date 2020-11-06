@@ -18,11 +18,20 @@ Public Class ExploradorClientes
         panelEditarRegistro.Width = 0
         SendMessage(txtBuscarNombreCli.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por nombre")
         SendMessage(txtBuscarCodigoCli.Handle, EM_SETCUEBANNER, 0, "Buscar cliente por código")
+        ultimaModificacion()
     End Sub
 
     Private Sub ExploradorClientes_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
         ActualizarTabla()
     End Sub
+
+
+
+    Sub ultimaModificacion()
+        consultas.consultaReturnHide("SELECT fechaIngreso FROM clientes order by(fechaIngreso) desc limit 1")
+        lblUltimoIngreso.Text = "Último cliente registrado: " & consultas.valorReturn
+    End Sub
+
 
 
     '----MOSTRAR FORMULARIO "NUEVO" EN EL MENÚ PRINCIPAL----'
