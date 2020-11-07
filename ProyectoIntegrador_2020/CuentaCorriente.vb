@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.IO
 
 Public Class CuentaCorriente
 
@@ -102,6 +103,7 @@ Public Class CuentaCorriente
             txtBuscarNombreCli.Focus()
             limpiarDebe()
             ultimaCompra()
+            backupAutomatico()
         End If
 
     End Sub
@@ -376,6 +378,7 @@ Public Class CuentaCorriente
                     actualizarTablaConId()
                     txtBuscarNombreCli.Focus()
                     limpiarHaber()
+                    backupAutomatico()
                 End If
             End If
 
@@ -383,7 +386,7 @@ Public Class CuentaCorriente
         End If
     End Sub
 
-    
+
 
     Private Sub btnDescontarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDescontarHaber.Click
         descontarDeuda()
@@ -412,6 +415,7 @@ Public Class CuentaCorriente
                 actualizarTablaConId()
                 txtDineroHaber.Focus()
                 limpiarHaber()
+                backupAutomatico()
             End If
 
         Else
@@ -510,5 +514,19 @@ Public Class CuentaCorriente
         dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo, maxPermitidoBool As p FROM Clientes WHERE estadoBool=1 AND idCliente LIKE '%" & txtBuscarCodigoCli.Text & "%';")
         dgvClientes.Columns(3).Width = 0
     End Sub
+
+
+    Sub backupAutomatico()
+        Try
+            If Not Directory.Exists("C:\Backups") Then
+                Directory.CreateDirectory("C:\Backups")
+            End If
+
+            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
+        Catch ex As Exception
+            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
+        End Try
+    End Sub
+
 
 End Class

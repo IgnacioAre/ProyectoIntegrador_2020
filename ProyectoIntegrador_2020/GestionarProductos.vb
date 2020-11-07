@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.IO
 
 Public Class GestionarProductos
 
@@ -193,7 +194,7 @@ Public Class GestionarProductos
         ActualizarTablaRegistro()
 
         Dim rowSurtido As DataGridViewRow = dgvProductos.CurrentRow
-        
+
         If dgvRegistroSurtido.SelectedCells.Count <> 0 Then
             panelPreciosMod.Visible = False
             txtCostoMod.Text = ""
@@ -202,7 +203,7 @@ Public Class GestionarProductos
         Else
             panelPreciosMod.Visible = True
         End If
-        
+
     End Sub
 
     Private Sub btnCerrarInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrarInfo.Click
@@ -257,6 +258,7 @@ Public Class GestionarProductos
                         gpInformacion.Visible = False
                         limpiarPreciosMod()
                         actualizarTablaConId()
+                        backupAutomatico()
                     End If
                 Else
                     If Val(txtGananciaMod.Text) > 0 Then
@@ -277,6 +279,7 @@ Public Class GestionarProductos
                             gpInformacion.Visible = False
                             limpiarPreciosMod()
                             actualizarTablaConId()
+                            backupAutomatico()
                         End If
                     Else
                         mostrarMensaje("El porcentaje de ganancia tiene que ser mayor a 0%")
@@ -727,4 +730,17 @@ Public Class GestionarProductos
             btnEditarRegistro.Enabled = False
         End If
     End Sub
+
+    Sub backupAutomatico()
+        Try
+            If Not Directory.Exists("C:\Backups") Then
+                Directory.CreateDirectory("C:\Backups")
+            End If
+
+            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
+        Catch ex As Exception
+            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
+        End Try
+    End Sub
+
 End Class

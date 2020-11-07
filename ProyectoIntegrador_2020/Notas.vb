@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.IO
 
 Public Class Notas
 
@@ -33,7 +34,7 @@ Public Class Notas
 
 
     Sub ActualizarTablaNotas()
-        dgvNotas.DataSource = consulta.mostrarEnTabla("SELECT idNota,Texto as Recordatorio,Usuario as Usuario,fechaCreacion as Creación,importanteBool as i from Notas as n,admin as a where a.idAdmin = n.idAdmin and idNota > 1 order by importantebool desc,fechaCreacion desc;")
+        dgvNotas.DataSource = consulta.mostrarEnTabla("SELECT idNota,Texto as Recordatorio,Usuario as Usuario,fechaCreacion as Creación,importanteBool as i from Notas as n,admin as a where a.idAdmin = n.idAdmin order by importantebool desc,fechaCreacion desc;")
         dgvNotas.Columns(0).Visible = False
         dgvNotas.Columns(4).Width = 0
 
@@ -58,7 +59,6 @@ Public Class Notas
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
         If Not txtNota.Text.Equals("") Then
-            btnModificar.Enabled = True
             consulta.consultaReturnHide("select idadmin from Admin where logeadoBool = 1;")
             Dim idadmin As Byte = Val(consulta.valorReturn)
 
@@ -80,12 +80,14 @@ Public Class Notas
 
             If consulta.resultado = 1 Then
                 ActualizarTablaNotas()
+                btnModificar.Enabled = True
                 txtNota.Text = ""
                 txtNota.Multiline = False
                 SendMessage(txtNota.Handle, EM_SETCUEBANNER, 0, "Recordatorio...")
                 dgvNotas.Enabled = True
                 chbImportanteBool.Checked = False
-                editarBool = 0
+                editarBool = False
+                backupAutomatico()
             End If
 
         End If
@@ -115,6 +117,7 @@ Public Class Notas
             ActualizarTablaNotas()
             dgvNotas.Enabled = True
             txtNota.Text = ""
+            backupAutomatico()
         Else
             mostrarMensaje("No se pudo eliminar la nota.")
         End If
@@ -191,4 +194,17 @@ Public Class Notas
 
         End If
     End Sub
+
+    Sub backupAutomatico()
+        Try
+            If Not Directory.Exists("C:\Backups") Then
+                Directory.CreateDirectory("C:\Backups")
+            End If
+
+            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
+        Catch ex As Exception
+            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
+        End Try
+    End Sub
+
 End Class

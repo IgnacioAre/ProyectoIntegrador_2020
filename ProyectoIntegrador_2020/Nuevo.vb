@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.IO
 
 Public Class Nuevo
 
@@ -59,8 +60,9 @@ Public Class Nuevo
                 If consultas.resultado = 1 Then
                     mostrarMensaje("Cliente " & txtNombre.Text & " registrado correctamente!")
                     limpiarCampos()
-                    Me.Close()
                     moduloAuxiliar.cargarExploradorClientes()
+                    backupAutomatico()
+                    Me.Close()
                 End If
             End If
 
@@ -95,6 +97,7 @@ Public Class Nuevo
                     mostrarMensaje("Proveedor " & txtNombre.Text & " registrado correctamente!")
                     limpiarCampos()
                     moduloAuxiliar.cargarExploradorProveedores()
+                    backupAutomatico()
                     Me.Close()
                 End If
 
@@ -409,7 +412,7 @@ Public Class Nuevo
             ocultarTel2()
             ocultarTel3()
         End If
-        
+
 
     End Sub
 
@@ -519,6 +522,18 @@ Public Class Nuevo
 
     Private Sub txtTelefono4_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTelefono4.TextChanged
         txtTelefono4.BackColor = Color.White
+    End Sub
+
+    Sub backupAutomatico()
+        Try
+            If Not Directory.Exists("C:\Backups") Then
+                Directory.CreateDirectory("C:\Backups")
+            End If
+
+            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
+        Catch ex As Exception
+            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
+        End Try
     End Sub
 
 End Class

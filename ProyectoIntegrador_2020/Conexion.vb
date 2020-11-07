@@ -98,7 +98,7 @@ Public Class Conexion
             adaptador.Fill(tabla)
             resultado = 1
         Catch ex As Exception
-            MsgBox("Error al conectar con la base de datos " & ex.Message)
+            mostrarMensaje("Error al conectar con la base de datos " & ex.Message)
         Finally
             conexion.Close()
         End Try
@@ -132,12 +132,11 @@ Public Class Conexion
             Dim reader As New MySqlDataAdapter(sql, Me.conexion)
             reader.Fill(ds, "Historial")
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            mostrarMensaje(ex.ToString)
         End Try
 
         Return ds
     End Function
-
 
 
     '----MENSAJE PERSONALIZADO----'

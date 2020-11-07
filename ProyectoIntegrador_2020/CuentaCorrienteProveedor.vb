@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.IO
 
 Public Class CuentaCorrienteProveedor
 
@@ -257,6 +258,7 @@ Public Class CuentaCorrienteProveedor
                 actualizarTablaConId()
                 txtBuscarNombreProv.Focus()
                 limpiarHaber()
+                backupAutomatico()
             End If
 
         End If
@@ -339,7 +341,7 @@ Public Class CuentaCorrienteProveedor
             actualizarTablaConId()
             txtDineroDebe.Focus()
             limpiarHaber()
-
+            backupAutomatico()
         End If
     End Sub
 
@@ -388,6 +390,7 @@ Public Class CuentaCorrienteProveedor
             ActualizarTablaRegistroCompra()
             limpiarDebe()
             txtBuscarNombreProv.Focus()
+            backupAutomatico()
         End If
 
     End Sub
@@ -446,7 +449,7 @@ Public Class CuentaCorrienteProveedor
 
         End If
 
-        
+
     End Sub
 
     Private Sub txtDetalleDebe_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDetalleDebe.KeyPress
@@ -480,4 +483,17 @@ Public Class CuentaCorrienteProveedor
     Private Sub txtBuscarCodigoProv_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigoProv.TextChanged
         dgvProveedores.DataSource = consultas.mostrarEnTabla("SELECT idProveedor As ID, Nombre,Saldo FROM Proveedores where estadoBool=1 And idProveedor LIKE '%" & txtBuscarCodigoProv.Text & "%';")
     End Sub
+
+    Sub backupAutomatico()
+        Try
+            If Not Directory.Exists("C:\Backups") Then
+                Directory.CreateDirectory("C:\Backups")
+            End If
+
+            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
+        Catch ex As Exception
+            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
+        End Try
+    End Sub
+
 End Class

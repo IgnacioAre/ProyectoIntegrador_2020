@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.IO
 
 Public Class SurtirProductos
 
@@ -90,7 +91,7 @@ Public Class SurtirProductos
                 insertarCompra()
                 txtCodigoProducto.Focus()
             End If
-            
+
         Else
             mostrarMensaje("Debe rellenar todos los campos.")
         End If
@@ -342,6 +343,7 @@ Public Class SurtirProductos
                 ultimoCont = 0
                 TituloContador()
                 moduloAuxiliar.cargarProductos()
+                backupAutomatico()
                 Me.Close()
             Else
                 mostrarMensaje("Ocurrió un error al intentar surtir el producto " & ideProducto)
@@ -585,7 +587,7 @@ Public Class SurtirProductos
                         consulta.consultaHide("INSERT INTO Productos (idProducto, nombre, precioCosto, precioVenta, ganancia, cantidadUnidad, unidad, Stock,existenteBool,minimoStock) VALUES(" & txtCodigo.Text & ",'" & txtNombre.Text.ToUpper & "'," & precioCosto & "," & txtVentaIngreso.Text & "," & txtGananciaIngreso.Text & "," & txtCantidadUnidad.Text & ",'" & cbxMedida.SelectedItem.ToString & "',0,1," & limiteStock & ");")
                     End If
 
-                    
+
                 Else
                     mostrarMensaje("El porcentaje de ganancia tiene que ser mayor a 0%")
                 End If
@@ -622,6 +624,7 @@ Public Class SurtirProductos
                     panelSurtido.Visible = True
                     limpiarPanelAgregar()
                     moduloAuxiliar.cargarProductos()
+                    backupAutomatico()
                     Me.Close()
                 End If
 
@@ -637,7 +640,7 @@ Public Class SurtirProductos
             txtCodigoProducto.Text = txtCodigo.Text
             lblNombre.Text = txtNombre.Text.ToUpper & " " & txtCantidadUnidad.Text & " " & cbxMedida.SelectedItem.ToString
         End If
-        
+
     End Sub
 
     Private Sub txtCodigo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCodigo.TextChanged
@@ -688,4 +691,17 @@ Public Class SurtirProductos
             e.Handled = True
         End If
     End Sub
+
+    Sub backupAutomatico()
+        Try
+            If Not Directory.Exists("C:\Backups") Then
+                Directory.CreateDirectory("C:\Backups")
+            End If
+
+            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
+        Catch ex As Exception
+            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
+        End Try
+    End Sub
+
 End Class

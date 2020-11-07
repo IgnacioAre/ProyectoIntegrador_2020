@@ -1,4 +1,6 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.IO
+
 Public Class MenuPrincipal
 
     Dim consulta As Conexion = New Conexion
@@ -8,6 +10,7 @@ Public Class MenuPrincipal
     Dim submenuProductoBool As Boolean = False
     Public resultado As Byte
     Public resultadoTxt As String
+    Dim rutaBackup As String
     Dim hora As Byte
 
     Dim yPanelAviso As Integer
@@ -63,7 +66,7 @@ Public Class MenuPrincipal
         ConfirmacionMensaje.btnAceptar.Text = "Si"
         ConfirmacionMensaje.btnCancelar.Text = "No"
         resultado = ConfirmacionMensaje.confirmacion("                            ¿Desea Salir?")
-        
+
         If resultado = 1 Then
             Me.Close()
             End
@@ -248,18 +251,18 @@ Public Class MenuPrincipal
     '----MÉTODO PARA MOSTRAR FORMULARIOS EN UN PANEL----'
 
     Public Sub openFromOnPanel(Of FormH As {Form, New})()
-        Formulario = PanelContenedor.Controls.OfType(Of FormH)().FirstOrDefault()
-        If Formulario Is Nothing Then
-            Formulario = New FormH()
-            Formulario.TopLevel = False
-            Formulario.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-            Formulario.Dock = DockStyle.Fill
-            PanelContenedor.Controls.Add(Formulario)
-            PanelContenedor.Tag = Formulario
-            Formulario.Show()
-            Formulario.BringToFront()
+        formulario = PanelContenedor.Controls.OfType(Of FormH)().FirstOrDefault()
+        If formulario Is Nothing Then
+            formulario = New FormH()
+            formulario.TopLevel = False
+            formulario.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+            formulario.Dock = DockStyle.Fill
+            PanelContenedor.Controls.Add(formulario)
+            PanelContenedor.Tag = formulario
+            formulario.Show()
+            formulario.BringToFront()
         Else
-            Formulario.BringToFront()
+            formulario.BringToFront()
         End If
     End Sub
 
@@ -383,7 +386,7 @@ Public Class MenuPrincipal
 
 
 
-    
+
     Private Sub btnActualizarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         lblTituloVentana.Text = "Actualizar Productos"
         If formularioBool Then formulario.Close()
@@ -475,7 +478,7 @@ Public Class MenuPrincipal
         If numCount = 0 Then
             panelAvisoStock.Visible = False
         Else
-            
+
 
             Dim Amarillo As Integer = 5
             Dim Naranja As Integer = 10
@@ -503,7 +506,7 @@ Public Class MenuPrincipal
                 lblAvisoStock.Text = "Tienes " & numCount & " productos por debajo del limite de stock."
 
             End If
-            
+
         End If
 
     End Sub
@@ -559,5 +562,30 @@ Public Class MenuPrincipal
         Else
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub btnBackup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBackup.Click
+
+        Try
+            If Not Directory.Exists("C:\Backups") Then
+                Directory.CreateDirectory("C:\Backups")
+            End If
+        Catch ex As Exception
+
+        End Try
+
+        SaveFileDialog1.Filter = "SQL Backup Files|*.sql"
+        SaveFileDialog1.FileName = "elcofre_" & Today.Date.ToString("dd-MM-yyyy") & ".sql"
+
+        If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+            rutaBackup = SaveFileDialog1.FileName
+
+            Try
+                Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>" & rutaBackup & " & exit")
+            Catch ex As Exception
+                mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
+            End Try
+        End If
+
     End Sub
 End Class

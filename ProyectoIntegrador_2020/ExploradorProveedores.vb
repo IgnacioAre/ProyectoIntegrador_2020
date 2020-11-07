@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.IO
 
 Public Class ExploradorProveedores
 
@@ -80,7 +81,7 @@ Public Class ExploradorProveedores
             mskFechaIngreso.Text = row.Cells(3).Value.ToString
 
             txtDireccion.Text = row.Cells(4).Value.ToString
-            
+
         End If
 
         ActualizarTablaRegistroVentas()
@@ -95,9 +96,10 @@ Public Class ExploradorProveedores
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False
+            backupAutomatico()
+            ActualizarTabla()
         End If
 
-        ActualizarTabla()
     End Sub
 
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNoActivo.Click
@@ -254,6 +256,7 @@ Public Class ExploradorProveedores
         If Not ConfirmacionMensaje.resultadoTxt.Equals("") And ConfirmacionMensaje.resultado = 1 Then
             consultas.consultaHide("INSERT INTO telefonoProveedor (numeroTel, idProveedor) VALUES ('" & resultadosTxt & "'," & idProveedor & ");")
             ActualizarTablaTelefono()
+            backupAutomatico()
         End If
         ConfirmacionMensaje.soloNumBool = False
     End Sub
@@ -262,9 +265,12 @@ Public Class ExploradorProveedores
     Private Sub btnEliminarTel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminarTel.Click
         Dim idTel As Integer
         idTel = dgvTelefono.CurrentRow.Cells(0).Value
+        If idTel > 0 Then
+            consultas.consultaHide("DELETE FROM telefonoProveedor where idTelefono=" & idTel)
+            ActualizarTablaTelefono()
+            backupAutomatico()
+        End If
 
-        consultas.consultaHide("DELETE FROM telefonoProveedor where idTelefono=" & idTel)
-        ActualizarTablaTelefono()
     End Sub
 
 
@@ -483,4 +489,17 @@ Public Class ExploradorProveedores
             txtBuscarCodigoProv.Visible = False
         End If
     End Sub
+
+    Sub backupAutomatico()
+        Try
+            If Not Directory.Exists("C:\Backups") Then
+                Directory.CreateDirectory("C:\Backups")
+            End If
+
+            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
+        Catch ex As Exception
+            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
+        End Try
+    End Sub
+
 End Class
