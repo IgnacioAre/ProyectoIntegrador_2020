@@ -362,7 +362,7 @@ Partial Class CuentaCorriente
         Me.gbRegistroCompras.Size = New System.Drawing.Size(517, 474)
         Me.gbRegistroCompras.TabIndex = 25
         Me.gbRegistroCompras.TabStop = False
-        Me.gbRegistroCompras.Text = "Registro de Compras"
+        Me.gbRegistroCompras.Text = "Registro de Ventas"
         '
         'chkRegistroCompleto
         '

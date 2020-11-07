@@ -42,7 +42,7 @@ Partial Class MenuPrincipal
         Me.btnProductos = New System.Windows.Forms.Button()
         Me.submenuProveedores = New System.Windows.Forms.Panel()
         Me.btnGestionarProveedor = New System.Windows.Forms.Button()
-        Me.btnNuevoProveedor = New System.Windows.Forms.Button()
+        Me.btnExploradorProveedores = New System.Windows.Forms.Button()
         Me.btnProveedores = New System.Windows.Forms.Button()
         Me.submenuClientes = New System.Windows.Forms.Panel()
         Me.btnCuentaCorrienteClientes = New System.Windows.Forms.Button()
@@ -299,7 +299,7 @@ Partial Class MenuPrincipal
         '
         Me.submenuProveedores.BackColor = System.Drawing.Color.White
         Me.submenuProveedores.Controls.Add(Me.btnGestionarProveedor)
-        Me.submenuProveedores.Controls.Add(Me.btnNuevoProveedor)
+        Me.submenuProveedores.Controls.Add(Me.btnExploradorProveedores)
         Me.submenuProveedores.Dock = System.Windows.Forms.DockStyle.Top
         Me.submenuProveedores.Location = New System.Drawing.Point(0, 273)
         Me.submenuProveedores.Name = "submenuProveedores"
@@ -328,26 +328,26 @@ Partial Class MenuPrincipal
         Me.btnGestionarProveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnGestionarProveedor.UseVisualStyleBackColor = False
         '
-        'btnNuevoProveedor
+        'btnExploradorProveedores
         '
-        Me.btnNuevoProveedor.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.btnNuevoProveedor.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnNuevoProveedor.FlatAppearance.BorderSize = 0
-        Me.btnNuevoProveedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnNuevoProveedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnNuevoProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNuevoProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNuevoProveedor.ForeColor = System.Drawing.Color.White
-        Me.btnNuevoProveedor.Image = CType(resources.GetObject("btnNuevoProveedor.Image"), System.Drawing.Image)
-        Me.btnNuevoProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnNuevoProveedor.Location = New System.Drawing.Point(3, 0)
-        Me.btnNuevoProveedor.Name = "btnNuevoProveedor"
-        Me.btnNuevoProveedor.Padding = New System.Windows.Forms.Padding(22, 0, 0, 0)
-        Me.btnNuevoProveedor.Size = New System.Drawing.Size(204, 54)
-        Me.btnNuevoProveedor.TabIndex = 4
-        Me.btnNuevoProveedor.Text = " Explorador de Proveedores"
-        Me.btnNuevoProveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnNuevoProveedor.UseVisualStyleBackColor = False
+        Me.btnExploradorProveedores.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.btnExploradorProveedores.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExploradorProveedores.FlatAppearance.BorderSize = 0
+        Me.btnExploradorProveedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnExploradorProveedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnExploradorProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExploradorProveedores.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExploradorProveedores.ForeColor = System.Drawing.Color.White
+        Me.btnExploradorProveedores.Image = CType(resources.GetObject("btnExploradorProveedores.Image"), System.Drawing.Image)
+        Me.btnExploradorProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExploradorProveedores.Location = New System.Drawing.Point(3, 0)
+        Me.btnExploradorProveedores.Name = "btnExploradorProveedores"
+        Me.btnExploradorProveedores.Padding = New System.Windows.Forms.Padding(22, 0, 0, 0)
+        Me.btnExploradorProveedores.Size = New System.Drawing.Size(204, 54)
+        Me.btnExploradorProveedores.TabIndex = 4
+        Me.btnExploradorProveedores.Text = " Explorador de Proveedores"
+        Me.btnExploradorProveedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnExploradorProveedores.UseVisualStyleBackColor = False
         '
         'btnProveedores
         '
@@ -866,7 +866,7 @@ Partial Class MenuPrincipal
     Friend WithEvents btnProductos As System.Windows.Forms.Button
     Friend WithEvents submenuProveedores As System.Windows.Forms.Panel
     Friend WithEvents btnGestionarProveedor As System.Windows.Forms.Button
-    Friend WithEvents btnNuevoProveedor As System.Windows.Forms.Button
+    Friend WithEvents btnExploradorProveedores As System.Windows.Forms.Button
     Friend WithEvents tmrMostrarSubMenu As System.Windows.Forms.Timer
     Friend WithEvents tmrOcultarSubMenu As System.Windows.Forms.Timer
     Friend WithEvents dgvPreciosRapidos As Guna.UI.WinForms.GunaDataGridView

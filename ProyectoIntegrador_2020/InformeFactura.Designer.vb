@@ -67,7 +67,7 @@ Partial Class InformeFactura
         Me.pbRegresar.BackColor = System.Drawing.Color.Crimson
         Me.pbRegresar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbRegresar.Image = CType(resources.GetObject("pbRegresar.Image"), System.Drawing.Image)
-        Me.pbRegresar.Location = New System.Drawing.Point(3, 3)
+        Me.pbRegresar.Location = New System.Drawing.Point(0, 0)
         Me.pbRegresar.Name = "pbRegresar"
         Me.pbRegresar.Size = New System.Drawing.Size(32, 32)
         Me.pbRegresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage

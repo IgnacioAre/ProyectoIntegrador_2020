@@ -136,7 +136,7 @@ Public Class SurtirProductos
 
     Private Sub btnVolverCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVolverCompra.Click
 
-        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
+        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 1 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
             For Each item As Surtido In nuevaCompra
                 If item.FuncionContador = contadorCompra Then
                     item.FuncionIdProducto = txtCodigoProducto.Text
@@ -215,7 +215,7 @@ Public Class SurtirProductos
 
     Private Sub btnSiguienteCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSiguienteCompra.Click
 
-        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 2 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
+        If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 1 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
             For Each item As Surtido In nuevaCompra
                 If item.FuncionContador = contadorCompra Then
                     item.FuncionIdProducto = txtCodigoProducto.Text

@@ -215,8 +215,19 @@ Public Class ExploradorProveedores
     End Sub
 
     Private Sub txtDireccion_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDireccion.KeyPress
-        If Not Char.IsLetter(e.KeyChar) And Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Not Char.IsWhiteSpace(e.KeyChar) And Asc(e.KeyChar) <> 46 Then
-            e.Handled = True
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
+            e.Handled = False
+
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+
         End If
     End Sub
 

@@ -213,6 +213,7 @@
     <Compile Include="CuentaCorriente.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="valoresFactura.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConfirmacionMensaje.resx">

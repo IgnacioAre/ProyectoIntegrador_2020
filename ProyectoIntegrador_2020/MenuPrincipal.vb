@@ -360,7 +360,12 @@ Public Class MenuPrincipal
         tmrOcultarAbout.Enabled = True
     End Sub
 
-    Private Sub btnNuevoProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNuevoProveedor.Click
+    Private Sub btnNuevoProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExploradorProveedores.Click
+        mostrarExploradorProveedores()
+    End Sub
+
+    Sub mostrarExploradorProveedores()
+        '----MOSTRAR FORMULARIO "Explorador de Proveedores" EN EL MENÚ PRINCIPAL----'
         lblTituloVentana.Text = "Explorador de Proveedores"
         If formularioBool Then formulario.Close()
         openFromOnPanel(Of ExploradorProveedores)()
@@ -369,18 +374,13 @@ Public Class MenuPrincipal
     End Sub
 
     Private Sub btnGestionarProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGestionarProveedor.Click
-        mostrarExploradorProveedores()
-    End Sub
-
-
-    Sub mostrarExploradorProveedores()
-        '----MOSTRAR FORMULARIO "Explorador de Proveedores" EN EL MENÚ PRINCIPAL----'
         lblTituloVentana.Text = "Cuanta Corriente de Proveedores"
         If formularioBool Then formulario.Close()
         openFromOnPanel(Of CuentaCorrienteProveedor)()
         formularioBool = True
         tmrOcultarAbout.Enabled = True
     End Sub
+
 
 
     
@@ -546,6 +546,18 @@ Public Class MenuPrincipal
             lblBienvenida.Text = " ¡Buenas Tardes!" & vbCrLf & "Bienvenido " & nombreAdmin
         Else
             lblBienvenida.Text = " ¡Buenas Noches!" & vbCrLf & "Bienvenido " & nombreAdmin
+        End If
+    End Sub
+
+    Private Sub txtPrecioProductos_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPrecioProductos.KeyPress
+        If Char.IsLetter(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsControl(e.KeyChar) Then
+            e.Handled = False
+        ElseIf Char.IsSeparator(e.KeyChar) Then
+            e.Handled = False
+        Else
+            e.Handled = True
         End If
     End Sub
 End Class

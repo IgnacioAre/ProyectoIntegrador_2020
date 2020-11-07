@@ -1,16 +1,13 @@
 ﻿Module moduloAuxiliar
 
+    Public nuevoValor As List(Of valoresFactura) = New List(Of valoresFactura)
 
-
+    Public nombreCliente As String
     Public headerSaldo As String
     Public headerComentario As String
     Public headerFecha As String
 
-    Public valueSaldo As String
-    Public valuesComentario As String
-    Public valuesFecha As String
 
-    Public cantidadRegistroInforme As Integer
 
     Sub cargarExploradorClientes()
         MenuPrincipal.mostrarExploradorClientes()

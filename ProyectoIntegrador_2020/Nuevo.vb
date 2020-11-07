@@ -42,7 +42,7 @@ Public Class Nuevo
 
 
             Else
-                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text & "', 0, NOW(),'" & txtDireccion.Text & "', 1, 1);")
+                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, Direccion, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0, NOW(),'" & txtDireccion.Text.ToUpper & "', 1, 1);")
 
                 If Not txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then
                     consultas.consultaHide("INSERT INTO Clientes (Nombre, Saldo, fechaIngreso, estadoBool, maxPermitidoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0, NOW(),1, 1);")
@@ -75,7 +75,7 @@ Public Class Nuevo
 
 
 
-                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text & "', 0,'" & txtDireccion.Text & "', NOW(), 1);")
+                If txtTelefono1.Text.Equals("") And Not txtDireccion.Text.Equals("") Then consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, Direccion, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0,'" & txtDireccion.Text.ToUpper & "', NOW(), 1);")
 
                 If Not txtTelefono1.Text.Equals("") And txtDireccion.Text.Equals("") Then
                     consultas.consultaHide("INSERT INTO Proveedores (Nombre, Saldo, fechaIngreso, estadoBool) VALUES ('" & txtNombre.Text.ToUpper & "', 0, NOW(), 1);")
@@ -194,6 +194,16 @@ Public Class Nuevo
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             txtDireccion.Focus()
+        Else
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
         End If
     End Sub
 
@@ -201,6 +211,21 @@ Public Class Nuevo
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             txtTelefono1.Focus()
+        Else
+            If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
+                e.Handled = False
+
+                If Char.IsLetter(e.KeyChar) Then
+                    e.Handled = False
+                ElseIf Char.IsControl(e.KeyChar) Then
+                    e.Handled = False
+                ElseIf Char.IsSeparator(e.KeyChar) Then
+                    e.Handled = False
+                Else
+                    e.Handled = True
+                End If
+
+            End If
         End If
     End Sub
 

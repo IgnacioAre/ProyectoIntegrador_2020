@@ -68,9 +68,10 @@ Public Class ConfirmacionMensaje
             If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
                 e.Handled = True
             End If
+            txtEntrada.MaxLength = 15
 
         Else
-
+            txtEntrada.MaxLength = 50
             If Not Char.IsLetter(e.KeyChar) And Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Not Char.IsWhiteSpace(e.KeyChar) And Asc(e.KeyChar) <> 46 Then
                 If e.KeyChar = ChrW(Keys.Enter) Then
                     resultado = 1

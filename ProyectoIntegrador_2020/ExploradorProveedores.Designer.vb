@@ -337,7 +337,7 @@ Partial Class ExploradorProveedores
         Me.GroupBox2.Size = New System.Drawing.Size(365, 357)
         Me.GroupBox2.TabIndex = 26
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Registro de Ventas"
+        Me.GroupBox2.Text = "Registro de Compras"
         '
         'panelEditarRegistro
         '
