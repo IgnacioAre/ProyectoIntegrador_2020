@@ -10,6 +10,7 @@
         Dim xPosicionSaldo As Integer = 20
         Dim xPosicionComentario As Integer = 180
         Dim xPosicionFecha As Integer = 600
+        Dim yPosicionHead As Integer = 120
 
         'Tamaño del ancho en cada rectángulo
         Dim xSaldo As Integer = 160
@@ -18,8 +19,6 @@
         'Tamaño del alto en cada rectángulo
         Dim yHeight As Integer = 20
 
-        'Posicion de inicio del nombre del cliente.
-        Dim yPosicionHead As Integer = 120
 
 
         '--------------------------HEADER--------------------------'
@@ -47,17 +46,34 @@
         e.Graphics.DrawString(moduloAuxiliar.headerFecha, fon, Brushes.Black, rect3, strings)
 
 
-        '--------------------------Nombre cliente--------------------------'
+        '--------------------------Cabecera--------------------------'
 
-        Dim fon2 As New Font(FontFamily.GenericSansSerif, 20, FontStyle.Bold)
         Dim strings2 As New StringFormat
         strings2.Alignment = StringAlignment.Center
         strings2.LineAlignment = StringAlignment.Center
 
-        Dim nombreRec As New Rectangle(300, 60, 300, 40)
-        e.Graphics.FillRectangle(Brushes.White, nombreRec)
-        e.Graphics.DrawRectangle(Pens.White, nombreRec)
-        e.Graphics.DrawString(moduloAuxiliar.nombreCliente, fon2, Brushes.Black, nombreRec, strings2)
+        Dim fon4 As New Font(FontFamily.GenericSansSerif, 15, FontStyle.Underline)
+        Dim subtituloCliente As New Rectangle(10, 10, 200, 30)
+        e.Graphics.FillRectangle(Brushes.White, subtituloCliente)
+        e.Graphics.DrawRectangle(Pens.White, subtituloCliente)
+        e.Graphics.DrawString("Nombre del cliente:", fon4, Brushes.Black, subtituloCliente, strings2)
+
+        Dim fon5 As New Font(FontFamily.GenericSansSerif, 15, FontStyle.Bold)
+        Dim nombreCliente As New Rectangle(10, 60, 400, 40)
+        e.Graphics.FillRectangle(Brushes.White, nombreCliente)
+        e.Graphics.DrawRectangle(Pens.White, nombreCliente)
+        e.Graphics.DrawString(moduloAuxiliar.nombreCliente, fon5, Brushes.Black, nombreCliente, strings2)
+
+        Dim subtituloComercio As New Rectangle(530, 10, 250, 30)
+        e.Graphics.FillRectangle(Brushes.White, subtituloComercio)
+        e.Graphics.DrawRectangle(Pens.White, subtituloComercio)
+        e.Graphics.DrawString("Nombre del comercio:", fon4, Brushes.Black, subtituloComercio, strings2)
+
+        Dim fon2 As New Font(FontFamily.GenericSansSerif, 24, FontStyle.Bold)
+        Dim nombreComercio As New Rectangle(600, 60, 250, 40)
+        e.Graphics.FillRectangle(Brushes.White, nombreComercio)
+        e.Graphics.DrawRectangle(Pens.White, nombreComercio)
+        e.Graphics.DrawString("EL COFRE", fon2, Brushes.Black, nombreComercio, strings2)
 
         '--------------------------VALORES--------------------------'
 
@@ -68,9 +84,13 @@
 
         Dim yGeneral As Integer = 140
 
-        Dim i As Integer = 1
+        Dim i As Integer = 0
+
 
         For Each item As valoresFactura In moduloAuxiliar.nuevoValor
+
+            i += 1
+
             Dim rek1 As New Rectangle(xPosicionSaldo, yGeneral, xSaldo, yHeight)
             e.Graphics.DrawRectangle(Pens.Black, rek1)
             e.Graphics.DrawString(item.FuncionValueSaldo, fon3, Brushes.Black, rek1, strings3)
@@ -84,7 +104,18 @@
             e.Graphics.DrawString(item.FuncionValueFecha, fon3, Brushes.Black, rek3, strings3)
 
             yGeneral += 20
+
+            If (i > 44) Then
+                e.HasMorePages = True
+                i = 0
+            Else
+                e.HasMorePages = False
+            End If
+
+
         Next
+
+
 
     End Sub
 
