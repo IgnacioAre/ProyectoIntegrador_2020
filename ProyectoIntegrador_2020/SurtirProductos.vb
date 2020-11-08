@@ -343,7 +343,6 @@ Public Class SurtirProductos
                 ultimoCont = 0
                 TituloContador()
                 moduloAuxiliar.cargarProductos()
-                backupAutomatico()
                 Me.Close()
             Else
                 mostrarMensaje("Ocurrió un error al intentar surtir el producto " & ideProducto)
@@ -624,7 +623,6 @@ Public Class SurtirProductos
                     panelSurtido.Visible = True
                     limpiarPanelAgregar()
                     moduloAuxiliar.cargarProductos()
-                    backupAutomatico()
                     Me.Close()
                 End If
 
@@ -692,16 +690,5 @@ Public Class SurtirProductos
         End If
     End Sub
 
-    Sub backupAutomatico()
-        Try
-            If Not Directory.Exists("C:\Backups") Then
-                Directory.CreateDirectory("C:\Backups")
-            End If
-
-            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
-        Catch ex As Exception
-            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
-        End Try
-    End Sub
 
 End Class

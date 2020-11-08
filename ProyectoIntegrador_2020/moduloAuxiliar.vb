@@ -6,7 +6,7 @@
     Public headerSaldo As String
     Public headerComentario As String
     Public headerFecha As String
-
+    Public cantidadFilas As Integer
 
 
     Sub cargarExploradorClientes()

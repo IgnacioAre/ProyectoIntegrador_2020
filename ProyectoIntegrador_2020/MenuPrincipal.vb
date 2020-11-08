@@ -12,6 +12,7 @@ Public Class MenuPrincipal
     Public resultadoTxt As String
     Dim rutaBackup As String
     Dim hora As Byte
+    Dim resultadoEntrada As String
 
     Dim yPanelAviso As Integer
     Dim YfijaPanelAviso As Integer
@@ -68,6 +69,7 @@ Public Class MenuPrincipal
         resultado = ConfirmacionMensaje.confirmacion("                            ¿Desea Salir?")
 
         If resultado = 1 Then
+            backupAutomatico()
             Me.Close()
             End
         End If
@@ -302,6 +304,7 @@ Public Class MenuPrincipal
     Private Sub pbCerrarSesion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbCerrarSesion.Click
         resultado = ConfirmacionMensaje.confirmacion("                   ¿Desea Cerrar Sesión?")
         If resultado = 1 Then
+            backupAutomatico()
             inicioSesion.Show()
             Me.Close()
         End If
@@ -565,27 +568,53 @@ Public Class MenuPrincipal
     End Sub
 
     Private Sub btnBackup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBackup.Click
+        Do
+            ConfirmacionMensaje.btnAceptar.Text = "Aceptar"
+            ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
+            ConfirmacionMensaje.txtEntrada.PasswordChar = "*"
+            ConfirmacionMensaje.entradaDatos("Ingrese la clave de administrador:")
+            resultadoEntrada = ConfirmacionMensaje.resultadoTxt
+        Loop While resultadoEntrada = "" And ConfirmacionMensaje.resultado = 1
 
+        If resultadoEntrada = "7r7w7x" Then
+            ConfirmacionMensaje.resultadoTxt = ""
+            ConfirmacionMensaje.txtEntrada.PasswordChar = ""
+            Try
+                If Not Directory.Exists("C:\Backups") Then
+                    Directory.CreateDirectory("C:\Backups")
+                End If
+            Catch ex As Exception
+
+            End Try
+
+            SaveFileDialog1.Filter = "SQL Backup Files|*.sql"
+            SaveFileDialog1.FileName = "elcofre_" & Today.Date.ToString("dd-MM-yyyy") & ".sql"
+
+            If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+                rutaBackup = SaveFileDialog1.FileName
+
+                Try
+                    'Process.Start("cmd", "start /b & /C cd C:\")
+                    Process.Start("cmd", "/C cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>" & rutaBackup & " & exit")
+                Catch ex As Exception
+                    mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
+                End Try
+            End If
+        End If
+
+    End Sub
+
+    Sub backupAutomatico()
         Try
             If Not Directory.Exists("C:\Backups") Then
                 Directory.CreateDirectory("C:\Backups")
             End If
+
+            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
         Catch ex As Exception
-
+            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
         End Try
-
-        SaveFileDialog1.Filter = "SQL Backup Files|*.sql"
-        SaveFileDialog1.FileName = "elcofre_" & Today.Date.ToString("dd-MM-yyyy") & ".sql"
-
-        If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
-            rutaBackup = SaveFileDialog1.FileName
-
-            Try
-                Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>" & rutaBackup & " & exit")
-            Catch ex As Exception
-                mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
-            End Try
-        End If
-
     End Sub
+
+
 End Class

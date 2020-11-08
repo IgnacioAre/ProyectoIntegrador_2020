@@ -25,6 +25,8 @@ Partial Class InformeFactura
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(InformeFactura))
         Me.panelFactura = New System.Windows.Forms.Panel()
         Me.panelSuperior = New System.Windows.Forms.Panel()
+        Me.contadorPagina = New System.Windows.Forms.NumericUpDown()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.pbRegresar = New System.Windows.Forms.PictureBox()
         Me.btnImprimir = New System.Windows.Forms.Button()
         Me.btnZoomMas = New System.Windows.Forms.Button()
@@ -34,6 +36,7 @@ Partial Class InformeFactura
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.panelFactura.SuspendLayout()
         Me.panelSuperior.SuspendLayout()
+        CType(Me.contadorPagina, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -53,6 +56,8 @@ Partial Class InformeFactura
         Me.panelSuperior.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panelSuperior.BackColor = System.Drawing.SystemColors.Highlight
+        Me.panelSuperior.Controls.Add(Me.contadorPagina)
+        Me.panelSuperior.Controls.Add(Me.Label1)
         Me.panelSuperior.Controls.Add(Me.pbRegresar)
         Me.panelSuperior.Controls.Add(Me.btnImprimir)
         Me.panelSuperior.Controls.Add(Me.btnZoomMas)
@@ -61,6 +66,27 @@ Partial Class InformeFactura
         Me.panelSuperior.Name = "panelSuperior"
         Me.panelSuperior.Size = New System.Drawing.Size(607, 56)
         Me.panelSuperior.TabIndex = 4
+        '
+        'contadorPagina
+        '
+        Me.contadorPagina.Location = New System.Drawing.Point(289, 31)
+        Me.contadorPagina.Maximum = New Decimal(New Integer() {300, 0, 0, 0})
+        Me.contadorPagina.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.contadorPagina.Name = "contadorPagina"
+        Me.contadorPagina.Size = New System.Drawing.Size(60, 20)
+        Me.contadorPagina.TabIndex = 14
+        Me.contadorPagina.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(285, 8)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(64, 20)
+        Me.Label1.TabIndex = 13
+        Me.Label1.Text = "Página:"
         '
         'pbRegresar
         '
@@ -157,6 +183,8 @@ Partial Class InformeFactura
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.panelFactura.ResumeLayout(False)
         Me.panelSuperior.ResumeLayout(False)
+        Me.panelSuperior.PerformLayout()
+        CType(Me.contadorPagina, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbRegresar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -170,4 +198,6 @@ Partial Class InformeFactura
     Friend WithEvents PrintPreviewControl1 As System.Windows.Forms.PrintPreviewControl
     Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
     Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents contadorPagina As System.Windows.Forms.NumericUpDown
 End Class

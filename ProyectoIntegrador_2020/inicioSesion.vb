@@ -15,6 +15,7 @@ Public Class inicioSesion
 
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         txtContraseñaLogin.UseSystemPasswordChar = True
+        txtContraseñaLogin.Text = "prueba123"
         Me.ToolTip1.SetToolTip(lblAceptable1, "La contraseña debe contenter al menos 8 caracteres.")
         Me.ToolTip2.SetToolTip(lblAceptable2, "Las contraseñas deben coincidir.")
         Me.ttpAdmin.SetToolTip(txtClaveAdminRegistro, "Consulte la clave con el creador del software.")
@@ -449,6 +450,8 @@ Public Class inicioSesion
     End Sub
 
     Private Sub linkRecuperarContraseña_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles linkRecuperarContraseña.LinkClicked
+        Dim usuario As String = ""
+
         ConfirmacionMensaje.btnAceptar.Text = "Si"
         ConfirmacionMensaje.btnCancelar.Text = "No"
         resultado = ConfirmacionMensaje.confirmacion("  ¿Quiere que le envien su contraseña" & vbCrLf & "    al correo asociado a su cuenta?")
@@ -461,19 +464,44 @@ Public Class inicioSesion
                 resultadoEntrada = ConfirmacionMensaje.resultadoTxt
             Loop While resultadoEntrada = "" And ConfirmacionMensaje.resultado = 1
 
-            If Not resultadoEntrada = "" Then
-                consultas.consultaReturnHide("SELECT CAST(aes_decrypt(contraseña,'2@17501896') as char) FROM Admin where usuario='" & resultadoEntrada & "';")
-                If Not consultas.valorReturn = "" Then
-                    Dim contraseña As String = consultas.valorReturn
-                    consultas.consultaReturnHide("SELECT correo FROM Admin where usuario='" & resultadoEntrada & "';")
-                    Dim correo As String = consultas.valorReturn
-                    enviarCorreo("new.visual@edusalto.uy", "newvisual@2020", resultadoEntrada & " su contraseña es: " & contraseña, "Contraseña de ingreso", correo)
+            If ConfirmacionMensaje.resultado = 1 Then
+                If Not resultadoEntrada = "" Then
+                    usuario = resultadoEntrada
+                    ConfirmacionMensaje.resultadoTxt = ""
+                    Do
+                        ConfirmacionMensaje.txtEntrada.PasswordChar = "*"
+                        ConfirmacionMensaje.btnAceptar.Text = "Aceptar"
+                        ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
+                        ConfirmacionMensaje.entradaDatos("Ingrese la clave de administrador:")
+                        resultadoEntrada = ConfirmacionMensaje.resultadoTxt
+                    Loop While resultadoEntrada = "" And ConfirmacionMensaje.resultado = 1
+
+                    If ConfirmacionMensaje.resultado = 1 Then
+                        If resultadoEntrada = "7r7w7x" Then
+                            ConfirmacionMensaje.resultadoTxt = ""
+                            consultas.consultaReturnHide("SELECT CAST(aes_decrypt(contraseña,'2@17501896') as char) FROM Admin where usuario='" & usuario & "';")
+                            If Not consultas.valorReturn = "" Then
+                                Dim contraseña As String = consultas.valorReturn
+                                consultas.consultaReturnHide("SELECT correo FROM Admin where usuario='" & usuario & "';")
+                                Dim correo As String = consultas.valorReturn
+                                mostrarMensaje("Espere por favor, en un momento le llegará la confirmación.")
+                                enviarCorreo("new.visual@edusalto.uy", "newvisual@2020", usuario & " su contraseña es: " & contraseña, "Contraseña de ingreso", correo)
+                            Else
+                                mostrarMensaje("No existe un usuario con ese nombre.")
+                            End If
+                        Else
+                            mostrarMensaje("  La clave de admin es erronea." & vbCrLf & "  Intente nuevamente.")
+                        End If
+                    End If
+
                 Else
-                    mostrarMensaje("  No existe un usuario con ese nombre," & vbCrLf & "  asegurese que este bien escrito.")
+                    mostrarMensaje("  No existe un usuario con ese nombre." & vbCrLf & "  Asegurese que este bien escrito.")
                 End If
-                
             End If
+            
         End If
+
+        ConfirmacionMensaje.txtEntrada.PasswordChar = ""
     End Sub
 
     Private Sub txtCorreo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCorreo.KeyPress

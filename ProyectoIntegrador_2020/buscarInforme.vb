@@ -50,6 +50,9 @@
         moduloAuxiliar.nombreCliente = nombreCliente
 
         consultas.consultaReturnHide("SELECT COUNT(idCompra) from compraCliente as cc,Clientes as c where cc.idCliente = c.idCliente and cc.idCliente=" & idCliente)
+
+        moduloAuxiliar.cantidadFilas = Val(consultas.valorReturn)
+
         Dim j As Integer = 0
 
         For i As Integer = 1 To Val(consultas.valorReturn)

@@ -87,7 +87,6 @@ Public Class Notas
                 dgvNotas.Enabled = True
                 chbImportanteBool.Checked = False
                 editarBool = False
-                backupAutomatico()
             End If
 
         End If
@@ -117,7 +116,6 @@ Public Class Notas
             ActualizarTablaNotas()
             dgvNotas.Enabled = True
             txtNota.Text = ""
-            backupAutomatico()
         Else
             mostrarMensaje("No se pudo eliminar la nota.")
         End If
@@ -195,16 +193,5 @@ Public Class Notas
         End If
     End Sub
 
-    Sub backupAutomatico()
-        Try
-            If Not Directory.Exists("C:\Backups") Then
-                Directory.CreateDirectory("C:\Backups")
-            End If
-
-            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
-        Catch ex As Exception
-            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
-        End Try
-    End Sub
 
 End Class

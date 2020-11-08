@@ -258,7 +258,6 @@ Public Class ExploradorClientes
         If Not ConfirmacionMensaje.resultadoTxt.Equals("") And ConfirmacionMensaje.resultado = 1 Then
             consultas.consultaHide("INSERT INTO telefonoCliente (numeroTel, idCliente) VALUES ('" & resultadosTxt & "'," & idCliente & ");")
             ActualizarTablaTelefono()
-            backupAutomatico()
         End If
         ConfirmacionMensaje.soloNumBool = False
     End Sub
@@ -270,7 +269,6 @@ Public Class ExploradorClientes
         If idTel > 0 Then
             consultas.consultaHide("DELETE FROM telefonoCliente where idTelefono=" & idTel & ";")
             ActualizarTablaTelefono()
-            backupAutomatico()
         End If
     End Sub
 
@@ -290,8 +288,6 @@ Public Class ExploradorClientes
         If ConfirmacionMensaje.resultado = 1 Then
             consultas.consultaHide("UPDATE telefonoCliente set numeroTel='" & resultadosTxt & "' where idTelefono=" & idTel & ";")
             ActualizarTablaTelefono()
-            backupAutomatico()
-            backupAutomatico()
         End If
         ConfirmacionMensaje.soloNumBool = False
     End Sub
@@ -487,22 +483,9 @@ Public Class ExploradorClientes
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False
-            backupAutomatico()
         End If
 
         ActualizarTabla()
-    End Sub
-
-    Sub backupAutomatico()
-        Try
-            If Not Directory.Exists("C:\Backups") Then
-                Directory.CreateDirectory("C:\Backups")
-            End If
-
-            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
-        Catch ex As Exception
-            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
-        End Try
     End Sub
 
 End Class

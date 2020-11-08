@@ -27,7 +27,10 @@ Module correo
             MsgBox("El mensaje fue enviado correctamente. ", MsgBoxStyle.Information, "Mensaje")
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Mensajeria 1.0 vb.net ®", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, "Mensajeria | New Visual", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MsgBox("En caso de no poder recibir el correo puede crearse otra cuenta de usuario administrador o contactese con el desarrollador.")
         End Try
     End Sub
+
+
 End Module

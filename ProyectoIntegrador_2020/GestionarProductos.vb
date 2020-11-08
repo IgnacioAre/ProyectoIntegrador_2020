@@ -258,7 +258,6 @@ Public Class GestionarProductos
                         gpInformacion.Visible = False
                         limpiarPreciosMod()
                         actualizarTablaConId()
-                        backupAutomatico()
                     End If
                 Else
                     If Val(txtGananciaMod.Text) > 0 Then
@@ -279,7 +278,6 @@ Public Class GestionarProductos
                             gpInformacion.Visible = False
                             limpiarPreciosMod()
                             actualizarTablaConId()
-                            backupAutomatico()
                         End If
                     Else
                         mostrarMensaje("El porcentaje de ganancia tiene que ser mayor a 0%")
@@ -731,16 +729,5 @@ Public Class GestionarProductos
         End If
     End Sub
 
-    Sub backupAutomatico()
-        Try
-            If Not Directory.Exists("C:\Backups") Then
-                Directory.CreateDirectory("C:\Backups")
-            End If
-
-            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
-        Catch ex As Exception
-            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
-        End Try
-    End Sub
 
 End Class

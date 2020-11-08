@@ -96,7 +96,6 @@ Public Class ExploradorProveedores
 
         If consultas.resultado = 1 Then
             gpInformacion.Visible = False
-            backupAutomatico()
             ActualizarTabla()
         End If
 
@@ -256,7 +255,6 @@ Public Class ExploradorProveedores
         If Not ConfirmacionMensaje.resultadoTxt.Equals("") And ConfirmacionMensaje.resultado = 1 Then
             consultas.consultaHide("INSERT INTO telefonoProveedor (numeroTel, idProveedor) VALUES ('" & resultadosTxt & "'," & idProveedor & ");")
             ActualizarTablaTelefono()
-            backupAutomatico()
         End If
         ConfirmacionMensaje.soloNumBool = False
     End Sub
@@ -268,7 +266,6 @@ Public Class ExploradorProveedores
         If idTel > 0 Then
             consultas.consultaHide("DELETE FROM telefonoProveedor where idTelefono=" & idTel)
             ActualizarTablaTelefono()
-            backupAutomatico()
         End If
 
     End Sub
@@ -490,16 +487,5 @@ Public Class ExploradorProveedores
         End If
     End Sub
 
-    Sub backupAutomatico()
-        Try
-            If Not Directory.Exists("C:\Backups") Then
-                Directory.CreateDirectory("C:\Backups")
-            End If
-
-            Process.Start("cmd", "/k cd C:\xampp\mysql\bin & " & " mysqldump -h localhost -u proyecto -pproyecto2020 elcofre>C:\Backups\elcofre.sql" & " & exit")
-        Catch ex As Exception
-            mostrarMensaje("No se pudo hacer un backup. " & ex.Message)
-        End Try
-    End Sub
 
 End Class
