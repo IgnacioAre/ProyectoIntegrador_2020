@@ -88,6 +88,7 @@ Partial Class buscarInforme
         Me.btnFacturar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnFacturar.BackColor = System.Drawing.Color.Crimson
         Me.btnFacturar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnFacturar.Enabled = False
         Me.btnFacturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFacturar.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFacturar.ForeColor = System.Drawing.Color.White

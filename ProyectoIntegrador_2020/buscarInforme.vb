@@ -41,8 +41,11 @@ Public Class buscarInforme
 
     Private Sub dgvClientes_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgvClientes.SelectionChanged
         If dgvClientes.SelectedCells.Count <> 0 Then
+            btnFacturar.Enabled = True
             idCliente = dgvClientes.SelectedCells(0).Value
             nombreCliente = dgvClientes.SelectedCells(1).Value
+        Else
+            btnFacturar.Enabled = False
         End If
 
 
