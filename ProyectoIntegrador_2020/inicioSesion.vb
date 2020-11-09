@@ -15,7 +15,6 @@ Public Class inicioSesion
 
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         txtContraseñaLogin.UseSystemPasswordChar = True
-        txtContraseñaLogin.Text = "prueba123"
         Me.ToolTip1.SetToolTip(lblAceptable1, "La contraseña debe contenter al menos 8 caracteres.")
         Me.ToolTip2.SetToolTip(lblAceptable2, "Las contraseñas deben coincidir.")
         Me.ttpAdmin.SetToolTip(txtClaveAdminRegistro, "Consulte la clave con el creador del software.")
