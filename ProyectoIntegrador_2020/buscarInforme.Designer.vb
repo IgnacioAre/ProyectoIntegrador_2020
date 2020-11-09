@@ -37,7 +37,7 @@ Partial Class buscarInforme
         Me.dgvRegistroVentas = New Guna.UI.WinForms.GunaDataGridView()
         Me.dgvClientes = New Guna.UI.WinForms.GunaDataGridView()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.txtBuscarClientes = New System.Windows.Forms.TextBox()
+        Me.txtBuscarNombreCli = New System.Windows.Forms.TextBox()
         Me.panelBuscarCliente.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -55,7 +55,7 @@ Partial Class buscarInforme
         Me.panelBuscarCliente.Controls.Add(Me.dgvRegistroVentas)
         Me.panelBuscarCliente.Controls.Add(Me.dgvClientes)
         Me.panelBuscarCliente.Controls.Add(Me.PictureBox1)
-        Me.panelBuscarCliente.Controls.Add(Me.txtBuscarClientes)
+        Me.panelBuscarCliente.Controls.Add(Me.txtBuscarNombreCli)
         Me.panelBuscarCliente.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelBuscarCliente.Location = New System.Drawing.Point(0, 0)
         Me.panelBuscarCliente.Name = "panelBuscarCliente"
@@ -251,13 +251,13 @@ Partial Class buscarInforme
         Me.PictureBox1.TabIndex = 27
         Me.PictureBox1.TabStop = False
         '
-        'txtBuscarClientes
+        'txtBuscarNombreCli
         '
-        Me.txtBuscarClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarClientes.Location = New System.Drawing.Point(52, 21)
-        Me.txtBuscarClientes.Name = "txtBuscarClientes"
-        Me.txtBuscarClientes.Size = New System.Drawing.Size(299, 26)
-        Me.txtBuscarClientes.TabIndex = 26
+        Me.txtBuscarNombreCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarNombreCli.Location = New System.Drawing.Point(52, 21)
+        Me.txtBuscarNombreCli.Name = "txtBuscarNombreCli"
+        Me.txtBuscarNombreCli.Size = New System.Drawing.Size(299, 26)
+        Me.txtBuscarNombreCli.TabIndex = 26
         '
         'buscarInforme
         '
@@ -281,7 +281,7 @@ Partial Class buscarInforme
     Friend WithEvents dgvRegistroVentas As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents dgvClientes As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents txtBuscarClientes As System.Windows.Forms.TextBox
+    Friend WithEvents txtBuscarNombreCli As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnFacturar As System.Windows.Forms.Button
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox

@@ -1,4 +1,6 @@
-﻿Public Class buscarInforme
+﻿Imports System.Runtime.InteropServices
+
+Public Class buscarInforme
 
     Dim consultas As moduloConexion = New moduloConexion
     Dim idCliente As Integer
@@ -9,11 +11,20 @@
     Private Sub Informe_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ActualizarTabla()
         ActualizarTablaRegistro()
+        SendMessage(txtBuscarNombreCli.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por nombre")
+        SendMessage(txtBuscarCodigoCli.Handle, EM_SETCUEBANNER, 0, "Buscar proveedor por código")
     End Sub
 
+    Private Const EM_SETCUEBANNER As Integer = &H1501
 
-    Private Sub txtBuscarClientes_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarClientes.TextChanged
-        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarClientes.Text & "%';")
+    <DllImport("user32.dll", CharSet:=CharSet.Auto)>
+    Private Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As Integer,
+    <MarshalAs(UnmanagedType.LPWStr)> ByVal lParam As String) As Int32
+    End Function
+
+
+    Private Sub txtBuscarClientes_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarNombreCli.TextChanged
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo FROM Clientes WHERE estadoBool=1 AND Nombre LIKE '%" & txtBuscarNombreCli.Text & "%';")
     End Sub
 
 
@@ -82,7 +93,7 @@
     End Sub
 
 
-    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
+    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarNombreCli.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             dgvClientes.Focus()
         Else
@@ -112,4 +123,14 @@
         End If
     End Sub
 
+    Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox4.Click
+        ActualizarTabla()
+        If txtBuscarNombreCli.Visible Then
+            txtBuscarCodigoCli.Visible = True
+            txtBuscarNombreCli.Visible = False
+        Else
+            txtBuscarNombreCli.Visible = True
+            txtBuscarCodigoCli.Visible = False
+        End If
+    End Sub
 End Class
