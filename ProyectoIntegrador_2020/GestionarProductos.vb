@@ -3,7 +3,7 @@ Imports System.IO
 
 Public Class GestionarProductos
 
-    Dim consulta As Conexion = New Conexion()
+    Dim consulta As moduloConexion = New moduloConexion()
 
     Dim idProducto As Long
     Dim idSurtido As Integer

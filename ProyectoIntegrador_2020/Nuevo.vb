@@ -3,7 +3,7 @@ Imports System.IO
 
 Public Class Nuevo
 
-    Dim consultas As Conexion = New Conexion
+    Dim consultas As moduloConexion = New moduloConexion
     Public idIngresoAdmin As Byte
     Dim resultado As Byte
 

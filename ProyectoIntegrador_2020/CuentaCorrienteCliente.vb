@@ -1,9 +1,9 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.IO
 
-Public Class CuentaCorriente
+Public Class CuentaCorrienteCliente
 
-    Dim consultas As Conexion = New Conexion
+    Dim consultas As moduloConexion = New moduloConexion
     Dim idCliente As Integer
     Dim idCompra As Integer
     Dim resultadosEntrada As String

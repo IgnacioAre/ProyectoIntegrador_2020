@@ -3,7 +3,7 @@ Imports System.IO
 
 Public Class Notas
 
-    Dim consulta As Conexion = New Conexion()
+    Dim consulta As moduloConexion = New moduloConexion()
     Dim editarBool As Boolean = False
     Dim idNota As Integer
     Dim resultado As Byte

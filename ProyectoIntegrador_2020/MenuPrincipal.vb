@@ -3,7 +3,7 @@ Imports System.IO
 
 Public Class MenuPrincipal
 
-    Dim consulta As Conexion = New Conexion
+    Dim consulta As moduloConexion = New moduloConexion
     Dim moverMenuBool As Boolean = False
     Dim submenuClienteBool As Boolean = False
     Dim submenuProveedorBool As Boolean = False
@@ -311,7 +311,7 @@ Public Class MenuPrincipal
     End Sub
 
     Private Sub txtPrecioProductos_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPrecioProductos.KeyUp
-        Dim conectar = New Conexion
+        Dim conectar = New moduloConexion
         dgvPreciosRapidos.DataSource = conectar.mostrarRapidoProductoEnTabla()
         dgvPreciosRapidos.Columns(2).Width = 100
 
@@ -345,7 +345,7 @@ Public Class MenuPrincipal
         '----MOSTRAR FORMULARIO "Cuenta Corriente" EN EL MENÚ PRINCIPAL----'
         lblTituloVentana.Text = "Cuenta Corriente de Clientes"
         If formularioBool = True Then formulario.Close()
-        openFromOnPanel(Of CuentaCorriente)()
+        openFromOnPanel(Of CuentaCorrienteCliente)()
         formularioBool = True
         tmrOcultarAbout.Enabled = True
     End Sub

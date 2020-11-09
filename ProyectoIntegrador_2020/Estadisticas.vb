@@ -1,6 +1,6 @@
 ﻿Public Class Estadisticas
 
-    Dim consulta As Conexion = New Conexion()
+    Dim consulta As moduloConexion = New moduloConexion()
     Dim tamañoAltoPanelTotal As Integer
     Dim saldoTotalGrafica As Long
     Dim saldoTotalDeuda As Long

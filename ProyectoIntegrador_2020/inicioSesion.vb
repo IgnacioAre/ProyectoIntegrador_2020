@@ -2,7 +2,7 @@
 Imports System.IO
 Public Class inicioSesion
 
-    Dim consultas As Conexion = New Conexion
+    Dim consultas As moduloConexion = New moduloConexion
     Dim ruta As String = "./usuario/"
     Dim archivoGuardarNombreUsr As String = "usuario.txt"
     Dim resultado As Byte

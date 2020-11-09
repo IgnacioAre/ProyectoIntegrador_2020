@@ -3,7 +3,7 @@ Imports System.IO
 
 Public Class ExploradorProveedores
 
-    Dim consultas As Conexion = New Conexion
+    Dim consultas As moduloConexion = New moduloConexion
     Dim idProveedor As Integer
     Dim resultado As Byte
     Dim resultadosTxt As String

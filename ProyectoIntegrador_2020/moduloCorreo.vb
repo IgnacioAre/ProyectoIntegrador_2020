@@ -1,7 +1,7 @@
 ﻿Imports System.Net.Mail
 Imports System.Net
 
-Module correo
+Module moduloCorreo
 
     Private correos As New MailMessage
     Private envios As New SmtpClient

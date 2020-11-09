@@ -3,7 +3,7 @@ Imports System.IO
 
 Public Class CuentaCorrienteProveedor
 
-    Dim consultas As Conexion = New Conexion
+    Dim consultas As moduloConexion = New moduloConexion
     Dim idProveedor As Integer
     Dim nombreProveedor As String
     Dim idCompra As Integer

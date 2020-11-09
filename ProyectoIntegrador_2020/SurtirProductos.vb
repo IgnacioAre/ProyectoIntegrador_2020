@@ -3,7 +3,7 @@ Imports System.IO
 
 Public Class SurtirProductos
 
-    Dim consulta As Conexion = New Conexion()
+    Dim consulta As moduloConexion = New moduloConexion()
 
     'Este contador sirve como índice para ver el número de compra ya ingresado.
     Dim contadorCompra As Byte = 0
@@ -13,7 +13,7 @@ Public Class SurtirProductos
     Public soloNuevoBool As Boolean = False
 
     'En este arraylist almaceno los productos que seran ingresados al finalizar la compra
-    Dim nuevaCompra As List(Of Surtido) = New List(Of Surtido)
+    Dim nuevaCompra As List(Of moduloSurtido) = New List(Of moduloSurtido)
 
 
     Private Sub SurtitProductos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -103,7 +103,7 @@ Public Class SurtirProductos
         If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 1 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
             Dim precioCosto As Integer = (Val(txtImporteCosto.Text) / Val(txtCantidad.Text))
             Dim precioVenta As Integer = (precioCosto + ((Val(txtGanancia.Text) * precioCosto) / 100))
-            nuevaCompra.Add(New Surtido(contadorCompra, txtCodigoProducto.Text, txtImporteCosto.Text, precioVenta, precioCosto, txtCantidad.Text, lblNombre.Text, txtGanancia.Text))
+            nuevaCompra.Add(New moduloSurtido(contadorCompra, txtCodigoProducto.Text, txtImporteCosto.Text, precioVenta, precioCosto, txtCantidad.Text, lblNombre.Text, txtGanancia.Text))
             contadorCompra += 1
             ultimoCont = contadorCompra
             vaciarCampos()
@@ -138,7 +138,7 @@ Public Class SurtirProductos
     Private Sub btnVolverCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVolverCompra.Click
 
         If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 1 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
-            For Each item As Surtido In nuevaCompra
+            For Each item As moduloSurtido In nuevaCompra
                 If item.FuncionContador = contadorCompra Then
                     item.FuncionIdProducto = txtCodigoProducto.Text
                     item.FuncionCostoTotal = txtImporteCosto.Text
@@ -157,7 +157,7 @@ Public Class SurtirProductos
             vaciarCampos()
 
             btnOtraCompra.Enabled = False
-            For Each item As Surtido In nuevaCompra
+            For Each item As moduloSurtido In nuevaCompra
                 If item.FuncionContador = contadorCompra Then
                     txtCodigoProducto.Text = item.FuncionIdProducto
                     txtImporteCosto.Text = item.FuncionCostoTotal
@@ -176,7 +176,7 @@ Public Class SurtirProductos
                 btnOtraCompra.Enabled = False
                 contadorCompra -= 1
                 TituloContador()
-                For Each item As Surtido In nuevaCompra
+                For Each item As moduloSurtido In nuevaCompra
                     If item.FuncionContador = contadorCompra Then
                         txtCodigoProducto.Text = item.FuncionIdProducto
                         txtImporteCosto.Text = item.FuncionCostoTotal
@@ -217,7 +217,7 @@ Public Class SurtirProductos
     Private Sub btnSiguienteCompra_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSiguienteCompra.Click
 
         If Val(txtImporteCosto.Text) > 0 And txtCodigoProducto.Text.Count >= 1 And Val(txtCantidad.Text) > 0 And Val(txtGanancia.Text) > 0 Then
-            For Each item As Surtido In nuevaCompra
+            For Each item As moduloSurtido In nuevaCompra
                 If item.FuncionContador = contadorCompra Then
                     item.FuncionIdProducto = txtCodigoProducto.Text
                     item.FuncionCostoTotal = txtImporteCosto.Text
@@ -234,7 +234,7 @@ Public Class SurtirProductos
 
 
             vaciarCampos()
-            For Each item As Surtido In nuevaCompra
+            For Each item As moduloSurtido In nuevaCompra
                 If item.FuncionContador = contadorCompra Then
                     txtCodigoProducto.Text = item.FuncionIdProducto
                     txtImporteCosto.Text = item.FuncionCostoTotal
@@ -304,7 +304,7 @@ Public Class SurtirProductos
         Dim existeProd As Boolean = False
 
 
-        For Each item As Surtido In nuevaCompra
+        For Each item As moduloSurtido In nuevaCompra
 
             ideProducto = item.FuncionIdProducto
 
@@ -318,7 +318,7 @@ Public Class SurtirProductos
             insertarCompra()
         End If
 
-        For Each item As Surtido In nuevaCompra
+        For Each item As moduloSurtido In nuevaCompra
 
             precioCosto = item.FuncionCosto
             precioVenta = item.FuncionVenta

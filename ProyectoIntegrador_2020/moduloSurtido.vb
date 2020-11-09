@@ -1,4 +1,4 @@
-﻿Public Class Surtido
+﻿Public Class moduloSurtido
     Private idContador As Integer
     Private idProducto As Long
     Private precioTotal As Integer
@@ -88,7 +88,7 @@
     End Property
 
 
-    
+
     Public Property FuncionPorcentaje() As Integer
         Get
             Return Porcentaje

@@ -3,7 +3,7 @@ Imports System.IO
 
 Public Class ExploradorClientes
 
-    Dim consultas As Conexion = New Conexion
+    Dim consultas As moduloConexion = New moduloConexion
     Dim idCliente As Integer
     Dim permitido As Byte
     Dim resultado As Byte

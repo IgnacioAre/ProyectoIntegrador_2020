@@ -1,10 +1,10 @@
 ﻿Public Class buscarInforme
 
-    Dim consultas As Conexion = New Conexion
+    Dim consultas As moduloConexion = New moduloConexion
     Dim idCliente As Integer
     Dim nombreClientes As String
 
-    Public guardarValorFactura As List(Of valoresFactura) = New List(Of valoresFactura)
+    Public guardarValorFactura As List(Of moduloValoresFactura) = New List(Of moduloValoresFactura)
 
     Private Sub Informe_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ActualizarTabla()
@@ -60,7 +60,7 @@
             saldo = dgvRegistroVentas.Item(dgvRegistroVentas.Columns(1).HeaderText, j).Value
             comentario = dgvRegistroVentas.Item(dgvRegistroVentas.Columns(2).HeaderText, j).Value.ToString
             fecha = dgvRegistroVentas.Item(dgvRegistroVentas.Columns(3).HeaderText, j).Value.ToString
-            moduloAuxiliar.nuevoValor.Add(New valoresFactura(saldo, comentario, fecha))
+            moduloAuxiliar.nuevoValor.Add(New moduloValoresFactura(saldo, comentario, fecha))
 
             If j < i Then
                 j += 1

@@ -1,4 +1,4 @@
-﻿Public Class valoresFactura
+﻿Public Class moduloValoresFactura
 
     Public valueSaldo As Integer
     Public valueComentario As String

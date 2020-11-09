@@ -1,5 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
-Public Class Conexion
+Public Class moduloConexion
 
 
     Private conexion As New MySqlConnection("data source=localhost;user id=proyecto;password='proyecto2020';database=elcofre;port=3306;CHARSET=utf8;")

@@ -1,6 +1,6 @@
 ﻿Module moduloAuxiliar
 
-    Public nuevoValor As List(Of valoresFactura) = New List(Of valoresFactura)
+    Public nuevoValor As List(Of moduloValoresFactura) = New List(Of moduloValoresFactura)
 
     Public nombreCliente As String
     Public headerSaldo As String
