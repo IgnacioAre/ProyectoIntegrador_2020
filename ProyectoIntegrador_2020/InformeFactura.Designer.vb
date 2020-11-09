@@ -69,11 +69,12 @@ Partial Class InformeFactura
         '
         'contadorPagina
         '
+        Me.contadorPagina.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.contadorPagina.Location = New System.Drawing.Point(289, 31)
         Me.contadorPagina.Maximum = New Decimal(New Integer() {300, 0, 0, 0})
         Me.contadorPagina.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.contadorPagina.Name = "contadorPagina"
-        Me.contadorPagina.Size = New System.Drawing.Size(60, 20)
+        Me.contadorPagina.Size = New System.Drawing.Size(60, 22)
         Me.contadorPagina.TabIndex = 14
         Me.contadorPagina.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
@@ -102,7 +103,7 @@ Partial Class InformeFactura
         '
         'btnImprimir
         '
-        Me.btnImprimir.BackColor = System.Drawing.Color.MediumBlue
+        Me.btnImprimir.BackColor = System.Drawing.Color.Indigo
         Me.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnImprimir.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

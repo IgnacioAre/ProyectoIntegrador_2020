@@ -268,11 +268,11 @@ Partial Class Nuevo
         Me.btnRegistrarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRegistrarCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRegistrarCliente.ForeColor = System.Drawing.Color.White
-        Me.btnRegistrarCliente.Location = New System.Drawing.Point(231, 328)
+        Me.btnRegistrarCliente.Location = New System.Drawing.Point(246, 325)
         Me.btnRegistrarCliente.Name = "btnRegistrarCliente"
-        Me.btnRegistrarCliente.Size = New System.Drawing.Size(157, 44)
+        Me.btnRegistrarCliente.Size = New System.Drawing.Size(133, 49)
         Me.btnRegistrarCliente.TabIndex = 10
-        Me.btnRegistrarCliente.Text = "Registrar Cliente"
+        Me.btnRegistrarCliente.Text = "Registrar"
         Me.btnRegistrarCliente.UseVisualStyleBackColor = False
         '
         'txtTelefono1

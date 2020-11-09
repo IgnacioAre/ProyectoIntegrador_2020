@@ -116,6 +116,7 @@ Public Class InformeFactura
 
                     yGeneral += 20
                 Next
+                yGeneral = 140
             Else
 
                 '-----------------------Algoritmo para generar varios documentos-------------------------------------'
@@ -143,9 +144,9 @@ Public Class InformeFactura
 
                         yGeneral += 20
                     Next
+                    yGeneral = 140
                     filaActual += filasPorPagina
                     paginaActual += 1
-
                     If j < cantPaginas Then
                         e.HasMorePages = True
                         yGeneral = 140
@@ -183,12 +184,9 @@ Public Class InformeFactura
 
 
     Private Sub btnImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImprimir.Click
-        PrintDialog1.Document = PrintDocument1
-        If PrintDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
-            PrintDocument1.Print()
-        End If
-
+        PrintDocument1.Print()
     End Sub
+
 
     Private Sub contadorPagina_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles contadorPagina.ValueChanged
         PrintPreviewControl1.StartPage = contadorPagina.Value - 1
