@@ -82,4 +82,34 @@
     End Sub
 
 
+    Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarClientes.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            dgvClientes.Focus()
+        Else
+            If Char.IsLetter(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            ElseIf Char.IsSeparator(e.KeyChar) Then
+                e.Handled = False
+            Else
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub txtBuscarCodigoCli_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBuscarCodigoCli.TextChanged
+        dgvClientes.DataSource = consultas.mostrarEnTabla("SELECT idCliente As ID, Nombre, Saldo FROM Clientes WHERE estadoBool=1 AND idCliente LIKE '%" & txtBuscarCodigoCli.Text & "%';")
+    End Sub
+
+    Private Sub txtBuscarCodigoCli_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarCodigoCli.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                dgvClientes.Focus()
+            End If
+        End If
+    End Sub
+
 End Class

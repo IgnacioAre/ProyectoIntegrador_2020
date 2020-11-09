@@ -512,5 +512,13 @@ Public Class CuentaCorrienteCliente
         dgvClientes.Columns(3).Width = 0
     End Sub
 
+    Private Sub txtBuscarCodigoCli_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarCodigoCli.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
 
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                dgvClientes.Focus()
+            End If
+        End If
+    End Sub
 End Class

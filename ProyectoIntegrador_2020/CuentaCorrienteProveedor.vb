@@ -9,6 +9,7 @@ Public Class CuentaCorrienteProveedor
     Dim idCompra As Integer
     Dim resultadosEntrada As String
     Dim confirmacion As Byte
+    Dim saldo As Long
 
 
     '----INICIO DEL FORMULARIO----'
@@ -80,7 +81,7 @@ Public Class CuentaCorrienteProveedor
             btnHaber.Enabled = True
             idProveedor = dgvProveedores.SelectedCells(0).Value
             nombreProveedor = dgvProveedores.SelectedCells(1).Value
-
+            saldo = dgvProveedores.SelectedCells(2).Value
         Else
             btnDebe.Enabled = False
             btnHaber.Enabled = False
@@ -135,8 +136,8 @@ Public Class CuentaCorrienteProveedor
 
     Private Sub limpiarDebe()
         gbHaber.Visible = False
-        txtDineroHaber.Text = ""
-        txtDetalleHaber.Text = ""
+        txtDineroDebe.Text = ""
+        txtDetalleDebe.Text = ""
     End Sub
 
     Sub limpiarHaber()
@@ -257,7 +258,7 @@ Public Class CuentaCorrienteProveedor
                 ActualizarTablaRegistroCompra()
                 actualizarTablaConId()
                 txtBuscarNombreProv.Focus()
-                limpiarHaber()
+                limpiarDebe()
             End If
 
         End If
@@ -313,7 +314,7 @@ Public Class CuentaCorrienteProveedor
     End Sub
 
 
-    Private Sub btnPagarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDescontarHaber.Click
+    Private Sub btnPagarHaber_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDescontarDebe.Click
         descontarDeuda()
     End Sub
 
@@ -339,7 +340,7 @@ Public Class CuentaCorrienteProveedor
             ActualizarTablaRegistroCompra()
             actualizarTablaConId()
             txtDineroDebe.Focus()
-            limpiarHaber()
+            limpiarDebe()
         End If
     End Sub
 
@@ -431,8 +432,8 @@ Public Class CuentaCorrienteProveedor
 
 
     Private Sub txtDetalleHaber_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDetalleHaber.KeyPress
-        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-            e.Handled = True
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
+            e.Handled = False
 
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
@@ -446,12 +447,11 @@ Public Class CuentaCorrienteProveedor
 
         End If
 
-
     End Sub
 
     Private Sub txtDetalleDebe_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDetalleDebe.KeyPress
-        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
-            e.Handled = True
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
+            e.Handled = False
 
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
@@ -482,4 +482,21 @@ Public Class CuentaCorrienteProveedor
     End Sub
 
 
+    Private Sub txtDineroDebe_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDineroDebe.TextChanged
+        If saldo = Val(txtDineroDebe.Text) Then
+            btnDescontarDebe.Enabled = False
+        Else
+            btnDescontarDebe.Enabled = True
+        End If
+    End Sub
+
+    Private Sub txtBuscarCodigoProv_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarCodigoProv.KeyPress
+        If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+            e.Handled = True
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                dgvProveedores.Focus()
+            End If
+        End If
+    End Sub
 End Class

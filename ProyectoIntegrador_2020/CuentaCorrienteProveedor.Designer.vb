@@ -40,7 +40,7 @@ Partial Class CuentaCorrienteProveedor
         Me.btnPagarTodoRegistro = New System.Windows.Forms.Button()
         Me.gbDebe = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.btnDescontarHaber = New System.Windows.Forms.Button()
+        Me.btnDescontarDebe = New System.Windows.Forms.Button()
         Me.txtDetalleDebe = New System.Windows.Forms.TextBox()
         Me.btnCerrarDebe = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -284,7 +284,7 @@ Partial Class CuentaCorrienteProveedor
         '
         Me.gbDebe.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbDebe.Controls.Add(Me.Label6)
-        Me.gbDebe.Controls.Add(Me.btnDescontarHaber)
+        Me.gbDebe.Controls.Add(Me.btnDescontarDebe)
         Me.gbDebe.Controls.Add(Me.txtDetalleDebe)
         Me.gbDebe.Controls.Add(Me.btnCerrarDebe)
         Me.gbDebe.Controls.Add(Me.Label3)
@@ -311,21 +311,21 @@ Partial Class CuentaCorrienteProveedor
         Me.Label6.TabIndex = 44
         Me.Label6.Text = "Comentario"
         '
-        'btnDescontarHaber
+        'btnDescontarDebe
         '
-        Me.btnDescontarHaber.BackColor = System.Drawing.Color.Crimson
-        Me.btnDescontarHaber.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnDescontarHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.btnDescontarHaber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.btnDescontarHaber.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDescontarHaber.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDescontarHaber.ForeColor = System.Drawing.Color.White
-        Me.btnDescontarHaber.Location = New System.Drawing.Point(240, 65)
-        Me.btnDescontarHaber.Name = "btnDescontarHaber"
-        Me.btnDescontarHaber.Size = New System.Drawing.Size(122, 51)
-        Me.btnDescontarHaber.TabIndex = 43
-        Me.btnDescontarHaber.Text = "Descontar"
-        Me.btnDescontarHaber.UseVisualStyleBackColor = False
+        Me.btnDescontarDebe.BackColor = System.Drawing.Color.Crimson
+        Me.btnDescontarDebe.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDescontarDebe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.btnDescontarDebe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.btnDescontarDebe.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDescontarDebe.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDescontarDebe.ForeColor = System.Drawing.Color.White
+        Me.btnDescontarDebe.Location = New System.Drawing.Point(240, 65)
+        Me.btnDescontarDebe.Name = "btnDescontarDebe"
+        Me.btnDescontarDebe.Size = New System.Drawing.Size(122, 51)
+        Me.btnDescontarDebe.TabIndex = 43
+        Me.btnDescontarDebe.Text = "Descontar"
+        Me.btnDescontarDebe.UseVisualStyleBackColor = False
         '
         'txtDetalleDebe
         '
@@ -333,12 +333,13 @@ Partial Class CuentaCorrienteProveedor
         Me.txtDetalleDebe.Location = New System.Drawing.Point(39, 173)
         Me.txtDetalleDebe.Name = "txtDetalleDebe"
         Me.txtDetalleDebe.Size = New System.Drawing.Size(296, 26)
-        Me.txtDetalleDebe.TabIndex = 39
+        Me.txtDetalleDebe.TabIndex = 34
         '
         'btnCerrarDebe
         '
         Me.btnCerrarDebe.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrarDebe.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.btnCerrarDebe.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCerrarDebe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnCerrarDebe.FlatAppearance.BorderSize = 0
         Me.btnCerrarDebe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
@@ -415,6 +416,7 @@ Partial Class CuentaCorrienteProveedor
         '
         Me.btnCerrarHaber.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrarHaber.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.btnCerrarHaber.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCerrarHaber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnCerrarHaber.FlatAppearance.BorderSize = 0
         Me.btnCerrarHaber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
@@ -445,7 +447,7 @@ Partial Class CuentaCorrienteProveedor
         Me.txtDetalleHaber.Location = New System.Drawing.Point(32, 139)
         Me.txtDetalleHaber.Name = "txtDetalleHaber"
         Me.txtDetalleHaber.Size = New System.Drawing.Size(292, 26)
-        Me.txtDetalleHaber.TabIndex = 5
+        Me.txtDetalleHaber.TabIndex = 1
         '
         'btnActualizarDeuda
         '
@@ -579,7 +581,7 @@ Partial Class CuentaCorrienteProveedor
     Friend WithEvents chkRegistroCompleto As System.Windows.Forms.CheckBox
     Public WithEvents dgvProveedores As Guna.UI.WinForms.GunaDataGridView
     Public WithEvents dgvRegistroCompras As Guna.UI.WinForms.GunaDataGridView
-    Friend WithEvents btnDescontarHaber As System.Windows.Forms.Button
+    Friend WithEvents btnDescontarDebe As System.Windows.Forms.Button
     Friend WithEvents gbHaber As System.Windows.Forms.GroupBox
     Friend WithEvents btnCerrarHaber As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label

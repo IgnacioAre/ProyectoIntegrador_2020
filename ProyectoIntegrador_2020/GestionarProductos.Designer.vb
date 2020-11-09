@@ -179,7 +179,7 @@ Partial Class GestionarProductos
         Me.txtBuscarProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBuscarProductos.Location = New System.Drawing.Point(57, 27)
         Me.txtBuscarProductos.Name = "txtBuscarProductos"
-        Me.txtBuscarProductos.Size = New System.Drawing.Size(244, 26)
+        Me.txtBuscarProductos.Size = New System.Drawing.Size(299, 26)
         Me.txtBuscarProductos.TabIndex = 33
         '
         'gpInformacion
@@ -775,7 +775,7 @@ Partial Class GestionarProductos
         Me.txtBuscarCodigo.Location = New System.Drawing.Point(57, 28)
         Me.txtBuscarCodigo.MaxLength = 13
         Me.txtBuscarCodigo.Name = "txtBuscarCodigo"
-        Me.txtBuscarCodigo.Size = New System.Drawing.Size(244, 26)
+        Me.txtBuscarCodigo.Size = New System.Drawing.Size(299, 26)
         Me.txtBuscarCodigo.TabIndex = 40
         Me.txtBuscarCodigo.Visible = False
         '
@@ -881,7 +881,7 @@ Partial Class GestionarProductos
         '
         Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(318, 19)
+        Me.PictureBox4.Location = New System.Drawing.Point(362, 21)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(32, 32)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
