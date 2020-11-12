@@ -79,6 +79,8 @@ Public Class CuentaCorrienteProveedor
         If dgvProveedores.SelectedCells.Count <> 0 Then
             btnDebe.Enabled = True
             btnHaber.Enabled = True
+            chkRegistroCompleto.Checked = False
+
             idProveedor = dgvProveedores.SelectedCells(0).Value
             nombreProveedor = dgvProveedores.SelectedCells(1).Value
             saldo = dgvProveedores.SelectedCells(2).Value
@@ -135,13 +137,13 @@ Public Class CuentaCorrienteProveedor
 
 
     Private Sub limpiarDebe()
-        gbHaber.Visible = False
+        gbDebe.Visible = False
         txtDineroDebe.Text = ""
         txtDetalleDebe.Text = ""
     End Sub
 
     Sub limpiarHaber()
-        gbDebe.Visible = False
+        gbHaber.Visible = False
         txtDineroHaber.Text = ""
         txtDetalleDebe.Text = ""
     End Sub
@@ -238,29 +240,29 @@ Public Class CuentaCorrienteProveedor
                 ConfirmacionMensaje.btnCancelar.Text = "Cancelar"
                 ConfirmacionMensaje.entradaDatos("Ingrese el nombre del cobrador:")
                 resultadosEntrada = ConfirmacionMensaje.resultadoTxt
-            Loop While resultadosEntrada = ""
+            Loop While resultadosEntrada = "" And ConfirmacionMensaje.resultado = 1
 
+            If Not resultadosEntrada = "" Then
+                consultas.consultaHide("UPDATE ventaProveedor set adeudoBool=0 where adeudoBool <> 2 AND idProveedor=" & idProveedor & ";")
 
-            consultas.consultaHide("UPDATE ventaProveedor set adeudoBool=0 where adeudoBool <> 2 AND idProveedor=" & idProveedor & ";")
+                If consultas.resultado = 1 Then
+                    'ACTUALIZO LA DEUDA EN EL PROVEEDOR
 
-            If consultas.resultado = 1 Then
-                'ACTUALIZO LA DEUDA EN EL PROVEEDOR
+                    consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
+                    Dim saldoActual As Long = Val(consultas.valorReturn)
 
-                consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
-                Dim saldoActual As Long = Val(consultas.valorReturn)
-
-                consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroDebe.Text)) & " where idProveedor=" & idProveedor & ";")
-                If txtDetalleDebe.Text.Equals("") Then
-                    consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Cobrador,fechaVenta,adeudoBool,idProveedor) VALUES (-" & txtDineroDebe.Text & ",'" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
-                Else
-                    consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Detalle,Cobrador,fechaVenta,adeudoBool,idProveedor) VALUES (-" & txtDineroDebe.Text & ",'" & txtDetalleDebe.Text & "','" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
+                    consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroDebe.Text)) & " where idProveedor=" & idProveedor & ";")
+                    If txtDetalleDebe.Text.Equals("") Then
+                        consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Cobrador,fechaVenta,adeudoBool,idProveedor) VALUES (-" & txtDineroDebe.Text & ",'" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
+                    Else
+                        consultas.consultaHide("INSERT INTO ventaProveedor (Saldo,Detalle,Cobrador,fechaVenta,adeudoBool,idProveedor) VALUES (-" & txtDineroDebe.Text & ",'" & txtDetalleDebe.Text & "','" & resultadosEntrada & "',NOW(),2," & idProveedor & ");")
+                    End If
+                    ActualizarTablaRegistroCompra()
+                    actualizarTablaConId()
+                    txtBuscarNombreProv.Focus()
+                    limpiarDebe()
                 End If
-                ActualizarTablaRegistroCompra()
-                actualizarTablaConId()
-                txtBuscarNombreProv.Focus()
-                limpiarDebe()
             End If
-
         End If
     End Sub
 
@@ -329,18 +331,19 @@ Public Class CuentaCorrienteProveedor
                 consultas.consultaHide("INSERT INTO ventaProveedor(Saldo,Detalle,fechaVenta,adeudoBool,idProveedor) Values(-" & txtDineroDebe.Text & ",'" & txtDetalleDebe.Text & "'" & ",now(),1," & idProveedor & ");")
             End If
 
-            'ACTUALIZO LA DEUDA EN EL CLIENTE
+            'ACTUALIZO LA DEUDA EN EL PROVEEDOR
 
             consultas.consultaReturnHide("SELECT Saldo from Proveedores where idProveedor=" & idProveedor & ";")
             Dim saldoActual As Integer = Val(consultas.valorReturn)
 
             consultas.consultaHide("UPDATE Proveedores set Saldo=" & (saldoActual - Val(txtDineroDebe.Text)) & " where idProveedor=" & idProveedor & ";")
 
-            txtDineroDebe.Text = ""
-            ActualizarTablaRegistroCompra()
-            actualizarTablaConId()
-            txtDineroDebe.Focus()
-            limpiarDebe()
+            If consultas.resultado = 1 Then
+                ActualizarTablaRegistroCompra()
+                actualizarTablaConId()
+                txtDineroDebe.Focus()
+                limpiarDebe()
+            End If
         End If
     End Sub
 
@@ -387,7 +390,7 @@ Public Class CuentaCorrienteProveedor
             ultimaCompra()
             actualizarTablaConId()
             ActualizarTablaRegistroCompra()
-            limpiarDebe()
+            limpiarHaber()
             txtBuscarNombreProv.Focus()
         End If
 
@@ -435,6 +438,19 @@ Public Class CuentaCorrienteProveedor
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
             e.Handled = False
 
+            If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 Then
+                e.Handled = True
+
+                If e.KeyChar = ChrW(Keys.Enter) Then
+                    If txtDineroHaber.Text.Equals("") Then
+                        e.Handled = True
+                        mostrarMensaje("El saldo no puede estar vacio.")
+                    Else
+                        actualizarSaldo()
+                    End If
+                End If
+            End If
+
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
             ElseIf Char.IsControl(e.KeyChar) Then
@@ -452,6 +468,21 @@ Public Class CuentaCorrienteProveedor
     Private Sub txtDetalleDebe_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDetalleDebe.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
             e.Handled = False
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                If txtDineroDebe.Text.Equals("") Then
+                    e.Handled = True
+                    mostrarMensaje("Debe introducir la cantidad de dinero.")
+                Else
+                    consultas.consultaReturnHide("SELECT Saldo FROM Proveedores where idProveedor=" & idProveedor)
+                    If txtDineroDebe.Text.Equals(consultas.valorReturn) Then
+                        pagarTodoDeuda()
+                    Else
+                        descontarDeuda()
+                    End If
+
+                End If
+            End If
 
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False

@@ -71,6 +71,9 @@
     <Reference Include="Guna.UI">
       <HintPath>..\..\..\..\Downloads\Guna.UI-Framework-Lib-master(1)\Guna.UI-Framework-Lib-master\Guna.UI-Framework-Lib\.net 4.0\Guna.UI.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\Visual Studio 2010\itextsharp.xfaworker-dll-5.5.10\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="mysql.data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -114,12 +117,6 @@
       <DependentUpon>buscarInforme.vb</DependentUpon>
     </Compile>
     <Compile Include="buscarInforme.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InformeFactura.Designer.vb">
-      <DependentUpon>InformeFactura.vb</DependentUpon>
-    </Compile>
-    <Compile Include="InformeFactura.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="moduloAuxiliar.vb" />
@@ -213,7 +210,6 @@
     <Compile Include="CuentaCorrienteCliente.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="moduloValoresFactura.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConfirmacionMensaje.resx">
@@ -227,9 +223,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="buscarInforme.resx">
       <DependentUpon>buscarInforme.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InformeFactura.resx">
-      <DependentUpon>InformeFactura.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SurtirProductos.resx">
       <DependentUpon>SurtirProductos.vb</DependentUpon>

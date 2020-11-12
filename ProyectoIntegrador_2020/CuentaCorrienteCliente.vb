@@ -132,6 +132,7 @@ Public Class CuentaCorrienteCliente
         If dgvClientes.SelectedCells.Count <> 0 Then
             btnDebe.Enabled = True
             btnHaber.Enabled = True
+            chkRegistroCompleto.Checked = False
 
             idCliente = dgvClientes.SelectedCells(0).Value
             saldo = dgvClientes.SelectedCells(2).Value
@@ -262,6 +263,15 @@ Public Class CuentaCorrienteCliente
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
             e.Handled = False
 
+            If e.KeyChar = ChrW(Keys.Enter) Then
+                If txtDineroDebe.Text.Equals("") Then
+                    e.Handled = True
+                    mostrarMensaje("El saldo no puede estar vacio.")
+                Else
+                    actualizarDeuda()
+                End If
+            End If
+
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
             ElseIf Char.IsControl(e.KeyChar) Then
@@ -358,6 +368,7 @@ Public Class CuentaCorrienteCliente
 
             If Not resultadosEntrada = "" Then
                 consultas.consultaHide("UPDATE compraCliente set adeudoBool=0 where adeudoBool <> 2 AND idCliente=" & idCliente & ";")
+
                 If consultas.resultado = 1 Then
 
                     'ACTUALIZO LA DEUDA EN EL CLIENTE
@@ -408,7 +419,6 @@ Public Class CuentaCorrienteCliente
             consultas.consultaHide("UPDATE Clientes set Saldo=" & (saldoActual - Val(txtDineroHaber.Text)) & " where idCliente=" & idCliente & ";")
 
             If consultas.resultado = 1 Then
-                txtDineroHaber.Text = ""
                 ActualizarTablaRegistroVenta()
                 actualizarTablaConId()
                 txtDineroHaber.Focus()
@@ -482,6 +492,23 @@ Public Class CuentaCorrienteCliente
     Private Sub txtDetalleHaber_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDetalleHaber.KeyPress
         If Not (IsNumeric(e.KeyChar)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 And Asc(e.KeyChar) <> 44 Then
             e.Handled = False
+
+            If e.KeyChar = ChrW(Keys.Enter) Then
+
+                If txtDineroHaber.Text.Equals("") Then
+                    e.Handled = True
+                    mostrarMensaje("Debe introducir la cantidad de dinero.")
+                Else
+                    consultas.consultaReturnHide("SELECT Saldo FROM clientes where idCliente=" & idCliente & ";")
+                    If txtDineroHaber.Text.Equals(consultas.valorReturn) Then
+                        pagarTodoDeuda()
+                    Else
+                        descontarDeuda()
+                    End If
+
+                End If
+
+            End If
 
             If Char.IsLetter(e.KeyChar) Then
                 e.Handled = False
