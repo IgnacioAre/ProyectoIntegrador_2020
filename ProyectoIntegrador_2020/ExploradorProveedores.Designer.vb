@@ -305,8 +305,6 @@ Partial Class ExploradorProveedores
         '
         'gpInformacion
         '
-        Me.gpInformacion.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gpInformacion.Controls.Add(Me.GroupBox2)
         Me.gpInformacion.Controls.Add(Me.btnCerrarInfo)
         Me.gpInformacion.Controls.Add(Me.btnActualizar)
@@ -331,8 +329,6 @@ Partial Class ExploradorProveedores
         '
         'GroupBox2
         '
-        Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.Controls.Add(Me.panelEditarRegistro)
         Me.GroupBox2.Controls.Add(Me.btnEditarRegistro)
         Me.GroupBox2.Controls.Add(Me.dgvRegistroVentas)
@@ -499,7 +495,6 @@ Partial Class ExploradorProveedores
         '
         Me.btnCerrarInfo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrarInfo.BackColor = System.Drawing.Color.Black
-        Me.btnCerrarInfo.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCerrarInfo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnCerrarInfo.FlatAppearance.BorderSize = 0
         Me.btnCerrarInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver

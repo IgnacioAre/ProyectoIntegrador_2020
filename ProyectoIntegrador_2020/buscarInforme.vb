@@ -149,6 +149,7 @@ Public Class buscarInforme
     End Sub
 
 
+<<<<<<< HEAD
     Private Sub txtBuscarClientes_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBuscarNombreCli.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
             dgvClientes.Focus()
@@ -189,4 +190,6 @@ Public Class buscarInforme
             txtBuscarCodigoCli.Visible = False
         End If
     End Sub
+=======
+>>>>>>> parent of e76d0ef... Corrección de erroes.
 End Class

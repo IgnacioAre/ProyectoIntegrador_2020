@@ -476,9 +476,9 @@ Public Class ExploradorClientes
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
 
         If chbPermitido.Checked Then
-            consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text.ToUpper & "', maxPermitidoBool=1 WHERE idCliente=" & idCliente & ";")
+            consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text.ToUpper & "', estadoBool=1 WHERE idCliente=" & idCliente & ";")
         Else
-            consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text.ToUpper & "', maxPermitidoBool=0 WHERE idCliente=" & idCliente & ";")
+            consultas.consultaHide("UPDATE Clientes SET Nombre= '" & txtNombre.Text.ToUpper & "', Direccion='" & txtDireccion.Text.ToUpper & "', estadoBool=0 WHERE idCliente=" & idCliente & ";")
         End If
 
         If consultas.resultado = 1 Then

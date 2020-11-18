@@ -22,6 +22,7 @@ Partial Class buscarInforme
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+<<<<<<< HEAD
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(buscarInforme))
         Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -32,9 +33,16 @@ Partial Class buscarInforme
         Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+=======
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(buscarInforme))
+>>>>>>> parent of e76d0ef... Corrección de erroes.
         Me.panelBuscarCliente = New System.Windows.Forms.Panel()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.txtBuscarCodigoCli = New System.Windows.Forms.TextBox()
         Me.btnFacturar = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dgvRegistroVentas = New Guna.UI.WinForms.GunaDataGridView()
@@ -44,7 +52,6 @@ Partial Class buscarInforme
         Me.dgvRegistroVentasOculto = New Guna.UI.WinForms.GunaDataGridView()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.panelBuscarCliente.SuspendLayout()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,9 +61,12 @@ Partial Class buscarInforme
         'panelBuscarCliente
         '
         Me.panelBuscarCliente.BackColor = System.Drawing.Color.SteelBlue
+<<<<<<< HEAD
         Me.panelBuscarCliente.Controls.Add(Me.dgvRegistroVentasOculto)
         Me.panelBuscarCliente.Controls.Add(Me.PictureBox4)
         Me.panelBuscarCliente.Controls.Add(Me.txtBuscarCodigoCli)
+=======
+>>>>>>> parent of e76d0ef... Corrección de erroes.
         Me.panelBuscarCliente.Controls.Add(Me.btnFacturar)
         Me.panelBuscarCliente.Controls.Add(Me.Label1)
         Me.panelBuscarCliente.Controls.Add(Me.dgvRegistroVentas)
@@ -68,27 +78,6 @@ Partial Class buscarInforme
         Me.panelBuscarCliente.Name = "panelBuscarCliente"
         Me.panelBuscarCliente.Size = New System.Drawing.Size(762, 478)
         Me.panelBuscarCliente.TabIndex = 6
-        '
-        'PictureBox4
-        '
-        Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(357, 17)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(32, 32)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox4.TabIndex = 60
-        Me.PictureBox4.TabStop = False
-        '
-        'txtBuscarCodigoCli
-        '
-        Me.txtBuscarCodigoCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBuscarCodigoCli.Location = New System.Drawing.Point(52, 20)
-        Me.txtBuscarCodigoCli.MaxLength = 13
-        Me.txtBuscarCodigoCli.Name = "txtBuscarCodigoCli"
-        Me.txtBuscarCodigoCli.Size = New System.Drawing.Size(299, 26)
-        Me.txtBuscarCodigoCli.TabIndex = 59
-        Me.txtBuscarCodigoCli.Visible = False
         '
         'btnFacturar
         '
@@ -261,6 +250,7 @@ Partial Class buscarInforme
         '
         'txtBuscarNombreCli
         '
+<<<<<<< HEAD
         Me.txtBuscarNombreCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBuscarNombreCli.Location = New System.Drawing.Point(52, 21)
         Me.txtBuscarNombreCli.Name = "txtBuscarNombreCli"
@@ -333,6 +323,13 @@ Partial Class buscarInforme
         Me.dgvRegistroVentasOculto.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Silver
         Me.dgvRegistroVentasOculto.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
         Me.dgvRegistroVentasOculto.Visible = False
+=======
+        Me.txtBuscarClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscarClientes.Location = New System.Drawing.Point(52, 21)
+        Me.txtBuscarClientes.Name = "txtBuscarClientes"
+        Me.txtBuscarClientes.Size = New System.Drawing.Size(282, 26)
+        Me.txtBuscarClientes.TabIndex = 26
+>>>>>>> parent of e76d0ef... Corrección de erroes.
         '
         'buscarInforme
         '
@@ -345,7 +342,6 @@ Partial Class buscarInforme
         Me.Text = "Informe"
         Me.panelBuscarCliente.ResumeLayout(False)
         Me.panelBuscarCliente.PerformLayout()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvRegistroVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -360,8 +356,11 @@ Partial Class buscarInforme
     Friend WithEvents txtBuscarNombreCli As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnFacturar As System.Windows.Forms.Button
+<<<<<<< HEAD
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents txtBuscarCodigoCli As System.Windows.Forms.TextBox
     Friend WithEvents dgvRegistroVentasOculto As Guna.UI.WinForms.GunaDataGridView
     Friend WithEvents SaveFileDialog1 As System.Windows.Forms.SaveFileDialog
+=======
+>>>>>>> parent of e76d0ef... Corrección de erroes.
 End Class

@@ -133,6 +133,7 @@ C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegr
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.MenuPrincipal.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.ExploradorClientes.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Resources.resources
+C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.CuentaCorriente.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Notas.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.Nuevo.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.GestionarProductos.resources
@@ -142,5 +143,9 @@ C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegr
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.pdb
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.vbprojResolveAssemblyReference.cache
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.buscarInforme.resources
+<<<<<<< HEAD
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.CuentaCorrienteCliente.resources
 C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\bin\Debug\itextsharp.dll
+=======
+C:\Users\ignac\OneDrive\Documentos\GitHub\ProyectoIntegrador_2020\ProyectoIntegrador_2020\obj\x86\Debug\ProyectoIntegrador_2020.InformeFactura.resources
+>>>>>>> parent of e76d0ef... Corrección de erroes.

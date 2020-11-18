@@ -217,7 +217,6 @@ Partial Class CuentaCorrienteCliente
         '
         Me.btnCerrarInfo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrarInfo.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.btnCerrarInfo.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCerrarInfo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.btnCerrarInfo.FlatAppearance.BorderSize = 0
         Me.btnCerrarInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
@@ -248,7 +247,7 @@ Partial Class CuentaCorrienteCliente
         Me.txtDetalleDebe.Location = New System.Drawing.Point(32, 157)
         Me.txtDetalleDebe.Name = "txtDetalleDebe"
         Me.txtDetalleDebe.Size = New System.Drawing.Size(292, 26)
-        Me.txtDetalleDebe.TabIndex = 1
+        Me.txtDetalleDebe.TabIndex = 5
         '
         'btnActualizarDeuda
         '
@@ -448,13 +447,12 @@ Partial Class CuentaCorrienteCliente
         Me.txtDetalleHaber.Location = New System.Drawing.Point(38, 172)
         Me.txtDetalleHaber.Name = "txtDetalleHaber"
         Me.txtDetalleHaber.Size = New System.Drawing.Size(296, 26)
-        Me.txtDetalleHaber.TabIndex = 34
+        Me.txtDetalleHaber.TabIndex = 39
         '
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
@@ -530,7 +528,7 @@ Partial Class CuentaCorrienteCliente
         Me.lblUltimaCompra.TabIndex = 59
         Me.lblUltimaCompra.Text = "Última compra:"
         '
-        'CuentaCorrienteCliente
+        'CuentaCorriente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -548,7 +546,7 @@ Partial Class CuentaCorrienteCliente
         Me.Controls.Add(Me.btnDebe)
         Me.Controls.Add(Me.txtBuscarNombreCli)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "CuentaCorrienteCliente"
+        Me.Name = "CuentaCorriente"
         Me.Text = "Pruebas"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).EndInit()
